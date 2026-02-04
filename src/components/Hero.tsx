@@ -41,26 +41,15 @@ export default function Hero() {
                 className="container mx-auto px-6 md:px-12 flex flex-col items-center text-center z-10"
             >
                 <div className="mb-8 relative inline-block">
-                    {isLoading ? (
-                        <SkeletonTheme baseColor="#202020" highlightColor="#444">
-                            <div className="flex flex-col items-center gap-2">
-                                <Skeleton width={300} height={100} className="md:w-[600px] lg:w-[800px]" />
-                                <Skeleton width={200} height={40} />
-                            </div>
-                        </SkeletonTheme>
-                    ) : (
-                        <motion.div variants={fadeUp}>
-                            <h1 className="relative text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-white drop-shadow-2xl">
-                                OMAR <br className="md:hidden" />
-                                MUBAIDIN
-                            </h1>
-                            <div className="hidden md:block absolute -right-12 -top-8 rotate-12">
-                                <span className="px-3 py-1 bg-neon text-black text-xs font-bold rounded-full uppercase tracking-wider">
-                                    Verified Dev
-                                </span>
-                            </div>
-                        </motion.div>
-                    )}
+                    <h1 className="relative text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-white drop-shadow-2xl z-20">
+                        OMAR <br className="md:hidden" />
+                        MUBAIDIN
+                    </h1>
+                    <div className="hidden md:block absolute -right-12 -top-8 rotate-12">
+                        <span className="px-3 py-1 bg-neon text-black text-xs font-bold rounded-full uppercase tracking-wider">
+                            Verified Dev
+                        </span>
+                    </div>
                 </div>
 
                 <motion.h2 variants={fadeUp} className="text-xl md:text-2xl text-white/90 font-medium max-w-2xl mb-10 leading-relaxed h-[60px] flex items-center justify-center">
