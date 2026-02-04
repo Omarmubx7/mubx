@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import { PopupModal } from 'react-calendly';
 import { useState, useEffect } from 'react';
+import Badge from './ui/Badge';
 
 export default function Services() {
     const services = [
@@ -86,7 +87,7 @@ export default function Services() {
                             className="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-neon/50 transition-all duration-300 hover:bg-white/10 group backdrop-blur-sm flex flex-col"
                         >
                             <div className="flex justify-between items-start mb-4">
-                                <span className="text-xs font-bold text-muted uppercase tracking-wider">{service.label}</span>
+                                <Badge variant="neon" className="mb-2">{service.label}</Badge>
                                 <h3 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-transparent group-hover:from-neon/50 group-hover:to-transparent transition-colors">
                                     0{index + 1}
                                 </h3>

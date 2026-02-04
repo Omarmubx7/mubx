@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import { projectCard, staggerContainer } from '@/lib/motion';
+import Badge from './ui/Badge';
+import Image from 'next/image';
 
 
 export default function Projects() {
@@ -81,7 +83,14 @@ export default function Projects() {
                                 <div className="flex items-center justify-between mb-6">
                                     <div className="w-16 h-16 rounded-2xl bg-white p-3 flex items-center justify-center overflow-hidden border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(255,30,30,0.3)] transition-all duration-500">
                                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img src={project.logo} alt={`${project.title} by Omar Mubaidin - ${project.tech.join(', ')}`} className="w-full h-full object-contain" />
+                                        <div className="relative w-full h-full">
+                                            <Image
+                                                src={project.logo}
+                                                alt={`${project.title} by Omar Mubaidin - ${project.tech.join(', ')}`}
+                                                fill
+                                                className="object-contain"
+                                            />
+                                        </div>
                                     </div>
                                     <div className="flex gap-3">
                                         <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-neon hover:text-black transition-all duration-300 hover:scale-110 border border-white/5" title="View Live">
@@ -112,9 +121,9 @@ export default function Projects() {
 
                                     <div className="flex flex-wrap gap-2">
                                         {project.tech.map((t) => (
-                                            <span key={t} className="text-[10px] font-bold px-3 py-1 bg-white/5 rounded-full text-white/70 border border-white/5 uppercase tracking-wide">
+                                            <Badge key={t} variant="outline" className="text-[10px] py-0.5">
                                                 {t}
-                                            </span>
+                                            </Badge>
                                         ))}
                                     </div>
                                 </div>

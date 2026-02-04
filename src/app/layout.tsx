@@ -50,6 +50,38 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
       <body className="bg-background text-foreground antialiased selection:bg-neon selection:text-black">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Person",
+                  "name": "Omar Mubaidin",
+                  "url": "https://mubx.dev", // Using the preferred domain mentioned
+                  "jobTitle": "Web Developer",
+                  "sameAs": [
+                    "https://github.com/Omarmubx7",
+                    "https://linkedin.com/in/omarmubx"
+                  ]
+                },
+                {
+                  "@type": "ProfessionalService",
+                  "name": "MUBX",
+                  "description": "High-performance web development for verified systems and startups.",
+                  "url": "https://mubx.dev",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Amman",
+                    "addressCountry": "JO"
+                  },
+                  "priceRange": "$$"
+                }
+              ]
+            })
+          }}
+        />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
