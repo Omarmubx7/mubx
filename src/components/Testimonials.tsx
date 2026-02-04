@@ -7,20 +7,20 @@ import { Quote } from 'lucide-react';
 export default function Testimonials() {
     const testimonials = [
         {
-            client: 'Vynex Media',
-            role: 'Agency Lead',
+            client: 'Mahmoud Hussam',
+            role: 'Agency Lead @ Vynex Media',
             text: "Omar helped us launch faster and look more professional by building a high-performance landing page. He was reliable, proactive, and delivered on time.",
             bg: 'from-orange-500/10 to-orange-500/0'
         },
         {
-            client: 'HTU Martial Arts',
-            role: 'Club Manager',
+            client: 'Big Rami',
+            role: 'Club Manager @ HTU Martial Arts',
             text: "Our old process for members was messy; after Omar’s system, managing bookings and payments became seamless. I’d recommend him to any club that needs solid web systems.",
             bg: 'from-red-600/10 to-red-600/0'
         },
         {
-            client: 'BloB.JO',
-            role: 'Founder',
+            client: 'Hassan Emad',
+            role: 'Founder @ BloB.JO',
             text: "Customers can now explore designs and track orders online, turning what used to be manual communication into a smoother digital flow. The print-on-demand store he built is a game changer.",
             bg: 'from-blue-500/10 to-blue-500/0'
         }
@@ -72,7 +72,6 @@ export default function Testimonials() {
                                 <div>
                                     <h4 className="text-white font-bold">{t.client}</h4>
                                     <p className="text-sm text-white/50">{t.role}</p>
-                                    <p className="text-xs text-neon/70 mt-1 font-medium">— Omar Mubaidin, MUBX</p>
                                 </div>
                             </div>
                         </motion.div>

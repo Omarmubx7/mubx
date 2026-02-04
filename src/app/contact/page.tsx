@@ -13,13 +13,42 @@ export default function ContactPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSent, setIsSent] = useState(false);
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    // --------------------------------------------------------------------------
+    // 💡 TODO for User:
+    // 1. Go to https://formspree.io
+    // 2. Create a new form
+    // 3. Paste the Form ID here (e.g., "xnayqowz")
+    // --------------------------------------------------------------------------
+    const FORMSPREE_ID = "YOUR_FORM_ID_HERE";
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setIsSubmitting(false);
-        setIsSent(true);
+
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                setIsSent(true);
+            } else {
+                alert("Something went wrong. Please try again or email me directly.");
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Error sending message. Please check your connection.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -69,6 +98,7 @@ export default function ContactPage() {
                                     <div className="space-y-2">
                                         <label className="text-sm font-bold text-white uppercase tracking-wider">Your Name</label>
                                         <input
+                                            name="name"
                                             required
                                             type="text"
                                             placeholder="John Doe"
@@ -78,6 +108,7 @@ export default function ContactPage() {
                                     <div className="space-y-2">
                                         <label className="text-sm font-bold text-white uppercase tracking-wider">Email Address</label>
                                         <input
+                                            name="email"
                                             required
                                             type="email"
                                             placeholder="john@company.com"
@@ -90,6 +121,7 @@ export default function ContactPage() {
                                     <div className="space-y-2">
                                         <label className="text-sm font-bold text-white uppercase tracking-wider">Business Name</label>
                                         <input
+                                            name="business"
                                             type="text"
                                             placeholder="Company Ltd."
                                             className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors"
@@ -97,7 +129,7 @@ export default function ContactPage() {
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-sm font-bold text-white uppercase tracking-wider">Project Type</label>
-                                        <select className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors appearance-none">
+                                        <select name="type" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors appearance-none">
                                             <option>Landing Page</option>
                                             <option>E-commerce MVP</option>
                                             <option>Web Application</option>
@@ -110,7 +142,7 @@ export default function ContactPage() {
                                 <div className="grid md:grid-cols-2 gap-8">
                                     <div className="space-y-2">
                                         <label className="text-sm font-bold text-white uppercase tracking-wider">Budget Range (JD)</label>
-                                        <select className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors appearance-none">
+                                        <select name="budget" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors appearance-none">
                                             <option>150 - 300 JD</option>
                                             <option>300 - 600 JD</option>
                                             <option>600 - 1000 JD</option>
@@ -119,7 +151,7 @@ export default function ContactPage() {
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-sm font-bold text-white uppercase tracking-wider">Timeline</label>
-                                        <select className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors appearance-none">
+                                        <select name="timeline" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors appearance-none">
                                             <option>ASAP (1-2 weeks)</option>
                                             <option>Standard (2-4 weeks)</option>
                                             <option>Flexible</option>
@@ -130,6 +162,7 @@ export default function ContactPage() {
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-white uppercase tracking-wider">Project Details</label>
                                     <textarea
+                                        name="details"
                                         required
                                         rows={4}
                                         placeholder="Tell me about your goals, specific features you need, and any design preferences..."
