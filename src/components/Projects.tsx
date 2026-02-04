@@ -1,0 +1,120 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { ExternalLink, Github } from 'lucide-react';
+import { projectCard, staggerContainer } from '@/lib/motion';
+import Link from 'next/link';
+
+export default function Projects() {
+    const projects = [
+        {
+            title: 'Vynex Media',
+            description: 'Visual production agency platform. High-performance landing page with SEO optimization and smooth frame interactions.',
+            tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
+            links: { live: 'https://vynexmedia.lovable.app/', code: 'https://github.com/Omarmubx7/vynexmedia' },
+            logo: '/images/vynex-logo.png',
+            caseStudy: {
+                problem: 'Needed a modern website matching their high visual production quality.',
+                role: 'Full implementation: architecture, frontend, performance.',
+                outcome: 'Professional page for client acquisition with smooth lead capture.'
+            }
+        },
+        {
+            title: 'HTU Martial Arts',
+            description: 'University sports club management system. Handles membership bookings, user profiles, and admin dashboards.',
+            tech: ['PHP', 'MySQL', 'Bootstrap', 'Authentication'],
+            links: { live: 'https://htumartialarts.42web.io/?i=1', code: 'https://github.com/Omarmubx7/htu_martial_arts-man' },
+            logo: '/images/htu-logo.png',
+            caseStudy: {
+                problem: 'Manual management of members and bookings via messages/sheets.',
+                role: 'Database design, PHP backend, Admin dashboard.',
+                outcome: 'Centralized management reducing manual work.'
+            }
+        },
+        {
+            title: 'BloB.JO',
+            description: 'Jordan\'s premier Print-on-Demand e-commerce store. Features custom product design capability and dynamic order tracking.',
+            tech: ['React', 'Node.js', 'E-commerce', 'UX Design'],
+            links: { live: 'https://www.blobjor.me/', code: 'https://github.com/Omarmubx7/blobjor' },
+            logo: '/images/blobjor-logo.png',
+            caseStudy: {
+                problem: 'Lack of local POD store with custom design tools.',
+                role: 'Product UX, E-commerce flow, Frontend.',
+                outcome: 'Digital order flow replacing manual communication.'
+            }
+        },
+    ];
+
+    return (
+        <section id="projects" className="py-24 relative">
+            <div className="container mx-auto px-6 md:px-12">
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-3xl md:text-5xl font-bold mb-16 text-center"
+                >
+                    SELECTED <span className="text-neon">PROJECTS</span>
+                </motion.h2>
+
+                <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                >
+                    {projects.map((project) => (
+                        <motion.div
+                            key={project.title}
+                            variants={projectCard}
+                            whileHover={{ y: -10 }}
+                            className="group relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-neon/50 transition-all duration-300 backdrop-blur-sm overflow-hidden flex flex-col h-full"
+                        >
+                            {/* Glow Effect */}
+                            <div className="absolute inset-0 bg-neon/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                            <div className="relative z-10 flex flex-col h-full">
+                                <div className="flex items-center justify-between mb-6">
+                                    <div className="w-16 h-16 rounded-2xl bg-white p-3 flex items-center justify-center overflow-hidden border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(225,245,0,0.3)] transition-all duration-500">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src={project.logo} alt={`${project.title} logo`} className="w-full h-full object-contain" />
+                                    </div>
+                                    <div className="flex gap-3">
+                                        <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-neon hover:text-black transition-all duration-300 hover:scale-110 border border-white/5" title="View Live">
+                                            <ExternalLink className="w-5 h-5" />
+                                        </a>
+                                        <a href={project.links.code} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-neon hover:text-black transition-all duration-300 hover:scale-110 border border-white/5" title="View Code">
+                                            <Github className="w-5 h-5" />
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <h3 className="text-2xl font-bold mb-3 group-hover:text-neon transition-colors duration-300">{project.title}</h3>
+                                <p className="text-muted text-base mb-6 leading-relaxed">{project.description}</p>
+
+                                <div className="mt-auto space-y-5">
+                                    <div className="bg-black/40 p-5 rounded-xl border border-white/5 backdrop-blur-md group-hover:border-white/10 transition-colors">
+                                        <div className="grid grid-cols-1 gap-3 text-sm">
+                                            <div className="flex gap-2"><span className="text-neon font-bold min-w-[70px]">PROBLEM:</span> <span className="text-white/80">{project.caseStudy.problem}</span></div>
+                                            <div className="flex gap-2"><span className="text-neon font-bold min-w-[70px]">ROLE:</span> <span className="text-white/80">{project.caseStudy.role}</span></div>
+                                            <div className="flex gap-2"><span className="text-neon font-bold min-w-[70px]">OUTCOME:</span> <span className="text-white/80">{project.caseStudy.outcome}</span></div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.tech.map((t) => (
+                                            <span key={t} className="text-xs font-bold px-3 py-1.5 bg-white/10 rounded-full text-white/90 border border-white/5 shadow-sm">
+                                                {t}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
+        </section>
+    );
+}
