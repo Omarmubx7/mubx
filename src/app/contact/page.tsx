@@ -14,12 +14,10 @@ export default function ContactPage() {
     const [isSent, setIsSent] = useState(false);
 
     // --------------------------------------------------------------------------
-    // 💡 TODO for User:
-    // 1. Go to https://formspree.io
-    // 2. Create a new form
-    // 3. Paste the Form ID here (e.g., "xnayqowz")
+    // Formspree Integration
+    // Endpoint: https://formspree.io/f/xojnaqoo
     // --------------------------------------------------------------------------
-    const FORMSPREE_ID = "YOUR_FORM_ID_HERE";
+    const FORMSPREE_ID = "xojnaqoo";
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
