@@ -19,10 +19,19 @@ export default function Hero() {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
-            {/* Background Elements (Parallax or Glow) */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-900/20 via-black to-black -z-20" />
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon/5 rounded-full blur-[120px] -z-10 animate-pulse-slow" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan/5 rounded-full blur-[120px] -z-10 animate-pulse-slow delay-1000" />
+            {/* Background Elements */}
+            <div className="absolute inset-0 bg-black -z-30" />
+
+            {/* Grid Pattern */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#202020_1px,transparent_1px),linear-gradient(to_bottom,#202020_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-20 opacity-20" />
+
+            {/* Spotlight / Glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-neon/10 via-neon/5 to-transparent blur-3xl -z-10" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-transparent via-white/5 to-transparent blur-[100px] -z-10" />
+
+            {/* Floating particles or accents */}
+            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-neon rounded-full animate-pulse blur-[1px] opacity-50" />
+            <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-cyan rounded-full animate-pulse delay-700 blur-[2px] opacity-40" />
 
             <motion.div
                 variants={staggerContainer}
