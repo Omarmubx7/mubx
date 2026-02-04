@@ -22,13 +22,14 @@ export default function Navbar() {
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-transparent backdrop-blur-sm"
         >
             <Link href="/" className="group relative z-50">
-                <div className="flex items-center justify-center w-10 h-10 overflow-hidden rounded-xl border border-white/10 group-hover:border-neon/50 transition-colors bg-black">
+                <div className="relative h-12 w-auto min-w-[100px] transition-transform group-hover:scale-105">
                     <Image
-                        src="/logo.png"
+                        src="/mubxlogo.png"
                         alt="MUBX Logo"
-                        width={40}
-                        height={40}
-                        className="w-full h-full object-cover"
+                        width={180}
+                        height={60}
+                        className="h-full w-auto object-contain"
+                        priority
                     />
                 </div>
             </Link>

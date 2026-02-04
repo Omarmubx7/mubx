@@ -13,16 +13,15 @@ export default function Footer() {
                     {/* Col 1: Brand */}
                     <div className="space-y-6">
                         <Link href="/" className="flex items-center gap-2 group">
-                            <span className="flex items-center justify-center w-10 h-10 overflow-hidden border border-white/10 rounded-xl group-hover:border-neon/50 transition-colors bg-black">
+                            <span className="relative h-16 w-auto min-w-[120px] transition-transform group-hover:scale-105">
                                 <Image
-                                    src="/logo.png"
+                                    src="/mubxlogo.png"
                                     alt="MUBX Logo"
-                                    width={40}
-                                    height={40}
-                                    className="w-full h-full object-cover"
+                                    width={200}
+                                    height={80}
+                                    className="h-full w-auto object-contain"
                                 />
                             </span>
-                            <span className="font-bold text-xl text-white tracking-tight">MUBX</span>
                         </Link>
                         <p className="text-muted leading-relaxed max-w-xs">
                             Built by Omar Mubaidin — Web Developer & CS Student in Amman, Jordan. Creating secure, high-performance web systems.
