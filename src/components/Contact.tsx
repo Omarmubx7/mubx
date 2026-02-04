@@ -35,7 +35,7 @@ export default function Contact() {
                         CS student and web developer building secure, data‑driven systems in Amman, Jordan.
                     </p>
                     <p className="text-muted text-lg max-w-xl mx-auto mb-12">
-                        Whether you need a full-stack audit, a database redesign, or a complete product build, I'm ready to engineer the solution.
+                        Whether you need a full-stack audit, a database redesign, or a complete product build, I'm ready to architect the solution.
                     </p>
 
                     <div className="flex flex-col items-center justify-center gap-6 mb-12">

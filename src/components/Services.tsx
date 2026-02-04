@@ -45,7 +45,7 @@ export default function Services() {
                         WHAT I <span className="text-neon">DELIVER</span>
                     </h2>
                     <p className="text-muted text-lg mb-4">
-                        I work with small businesses, media agencies, and growing online brands that need reliable, secure web systems—not just pretty landing pages.
+                        I work with small businesses, media agencies, and growing online brands that need reliable, secure web systems - not just pretty landing pages.
                     </p>
                     <p className="text-sm text-neon/80 uppercase tracking-widest font-semibold border border-neon/20 inline-block px-4 py-2 rounded-full bg-neon/5">
                         Projects start from 150 JD

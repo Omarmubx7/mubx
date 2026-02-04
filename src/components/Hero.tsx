@@ -32,7 +32,7 @@ export default function Hero() {
                 </motion.h1>
 
                 <motion.p variants={fadeUp} className="text-lg md:text-xl text-muted max-w-2xl mb-8 leading-relaxed">
-                    Founder of <span className="text-white font-semibold">MUBX</span>. I don't just build websites; I engineer <span className="text-cyan">secure, data-driven systems</span>.
+                    Founder of <span className="text-white font-semibold">MUBX</span>. I don't just build websites; I architect <span className="text-cyan">secure, data-driven systems</span>.
                     Bridging the gap between CS theory and production-grade applications.
                 </motion.p>
 

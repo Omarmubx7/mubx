@@ -12,7 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Omar Mubaidin (MUB Mubaidin) | MUBX - Computer Science & Web Developer',
   description: 'Portfolio of Omar Mubaidin (MUB). Computer Science student and Full Stack Web Developer in Amman, Jordan. Founder of MUBX, building secure, high-performance systems.',
-  keywords: ['Omar Mubaidin', 'MUB Mubaidin', 'MUBX', 'MUB', 'Mubaidin', 'Web Developer', 'Jordan', 'Computer Science', 'Next.js', 'React', 'Software Engineer'],
+  keywords: ['Omar Mubaidin', 'MUB Mubaidin', 'MUBX', 'MUB', 'Mubaidin', 'Web Developer', 'Jordan', 'Computer Science', 'Next.js', 'React', 'Tech Geek'],
   authors: [{ name: 'Omar Mubaidin', url: 'https://mubx.com' }],
   creator: 'Omar Mubaidin',
   openGraph: {

@@ -21,14 +21,14 @@ export default function About() {
                         </motion.h2>
 
                         <motion.p variants={fadeUp} className="text-muted text-lg leading-relaxed">
-                            I don't just write code; I engineer systems. As a Computer Science Student in Amman, I bridge the gap between theoretical computer science and production-grade software.
+                            I don't just write code; I architect systems. As a Computer Science Student in Amman, I bridge the gap between theoretical computer science and production-grade software.
                         </motion.p>
 
                         <motion.div variants={fadeUp} className="space-y-4">
                             <div className="p-6 bg-white/5 rounded-xl border border-white/5 backdrop-blur-sm">
                                 <h3 className="text-xl font-bold text-white mb-2">The Mission</h3>
                                 <p className="text-muted">
-                                    My goal is simple: build impactful, high-performance web products that solve real problems. I treat every project as a step towards mastering the craft—combining security, database efficiency, and sleek UX.
+                                    My goal is simple: build impactful, high-performance web products that solve real problems. I treat every project as a step towards mastering the craft - combining security, database efficiency, and sleek UX.
                                 </p>
                             </div>
 
