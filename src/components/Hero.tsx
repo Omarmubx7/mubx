@@ -5,13 +5,20 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { fadeUp, staggerContainer } from '@/lib/motion';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { useState, useEffect } from 'react';
+import TypingText from './ui/TypingText';
 
 export default function Hero() {
-    // const techStack = ['Next.js 15', 'TypeScript', 'MySQL', 'PHP', 'Security', 'Cryptography'];
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setIsLoading(false), 800);
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
-            {/* Background Elements (Parallax or Glow) */}
             {/* Background Elements (Parallax or Glow) */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-900/20 via-black to-black -z-20" />
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon/5 rounded-full blur-[120px] -z-10 animate-pulse-slow" />
@@ -24,21 +31,46 @@ export default function Hero() {
                 viewport={{ once: true }}
                 className="container mx-auto px-6 md:px-12 flex flex-col items-center text-center z-10"
             >
-                <motion.div variants={fadeUp} className="mb-8 relative inline-block">
-                    <span className="absolute -inset-1 bg-gradient-to-r from-neon/20 to-cyan/20 blur-xl opacity-50 animate-pulse rounded-full" />
-                    <h1 className="relative text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
-                        OMAR <br className="md:hidden" />
-                        MUBAIDIN
-                    </h1>
-                    <div className="hidden md:block absolute -right-12 -top-8 rotate-12">
-                        <span className="px-3 py-1 bg-neon text-black text-xs font-bold rounded-full uppercase tracking-wider">
-                            Verified Dev
-                        </span>
-                    </div>
-                </motion.div>
+                <div className="mb-8 relative inline-block">
+                    {isLoading ? (
+                        <SkeletonTheme baseColor="#202020" highlightColor="#444">
+                            <div className="flex flex-col items-center gap-2">
+                                <Skeleton width={300} height={100} className="md:w-[600px] lg:w-[800px]" />
+                                <Skeleton width={200} height={40} />
+                            </div>
+                        </SkeletonTheme>
+                    ) : (
+                        <motion.div variants={fadeUp}>
+                            <span className="absolute -inset-1 bg-gradient-to-r from-neon/20 to-cyan/20 blur-xl opacity-50 animate-pulse rounded-full" />
+                            <h1 className="relative text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
+                                OMAR <br className="md:hidden" />
+                                MUBAIDIN
+                            </h1>
+                            <div className="hidden md:block absolute -right-12 -top-8 rotate-12">
+                                <span className="px-3 py-1 bg-neon text-black text-xs font-bold rounded-full uppercase tracking-wider">
+                                    Verified Dev
+                                </span>
+                            </div>
+                        </motion.div>
+                    )}
+                </div>
 
-                <motion.h2 variants={fadeUp} className="text-xl md:text-2xl text-white/90 font-medium max-w-2xl mb-10 leading-relaxed">
-                    I build <span className="text-neon font-bold">fast, secure web systems</span> for brands that want to scale.
+                <motion.h2 variants={fadeUp} className="text-xl md:text-2xl text-white/90 font-medium max-w-2xl mb-10 leading-relaxed h-[60px] flex items-center justify-center">
+                    {isLoading ? (
+                        <SkeletonTheme baseColor="#202020" highlightColor="#444">
+                            <Skeleton width={400} height={24} />
+                            {/* SEO Fallback: Hidden visually but present for crawlers if JS fails or before hydration */}
+                            <span className="sr-only">Web Developer & CS Student in Amman, Jordan. Founder of MUBX.</span>
+                        </SkeletonTheme>
+                    ) : (
+                        <TypingText
+                            strings={[
+                                "Web Developer & CS Student in Amman",
+                                "Founder of MUBX",
+                                "I build <span class='text-neon font-bold'>fast, secure web systems</span>"
+                            ]}
+                        />
+                    )}
                 </motion.h2>
 
                 <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 mb-16">

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 import SmoothScroll from '@/components/SmoothScroll';
 
 const inter = Inter({
@@ -10,15 +11,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mubx.dev'),
   title: 'Omar Mubaidin | MUBX - Web Developer & CS Student in Amman, Jordan',
   description: 'MUBX | Portfolio of Omar Mubaidin. I build fast, secure web systems for brands that want to scale. Computer Science Student & Full Stack Web Developer based in Amman.',
   keywords: ['Omar Mubaidin', 'MUB Mubaidin', 'MUBX', 'MUB', 'Mubaidin', 'Web Developer', 'Jordan', 'Computer Science', 'Next.js', 'React', 'Tech Geek'],
-  authors: [{ name: 'Omar Mubaidin', url: 'https://mubx.com' }],
+  authors: [{ name: 'Omar Mubaidin', url: 'https://mubx.dev' }],
   creator: 'Omar Mubaidin',
   openGraph: {
     title: 'Omar Mubaidin (MUB) | MUBX - Computer Science & Web Developer',
     description: 'Portfolio of Omar Mubaidin (MUB). CS student and Web Developer in Jordan. Founder of MUBX.',
-    url: 'https://mubx.com',
     siteName: 'MUBX Portfolio',
     locale: 'en_US',
     type: 'website',
