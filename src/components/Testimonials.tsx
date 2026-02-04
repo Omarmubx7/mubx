@@ -72,6 +72,7 @@ export default function Testimonials() {
                                 <div>
                                     <h4 className="text-white font-bold">{t.client}</h4>
                                     <p className="text-sm text-white/50">{t.role}</p>
+                                    <p className="text-xs text-neon/70 mt-1 font-medium">— Omar Mubaidin, MUBX</p>
                                 </div>
                             </div>
                         </motion.div>

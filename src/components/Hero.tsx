@@ -12,8 +12,10 @@ export default function Hero() {
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
             {/* Background Elements (Parallax or Glow) */}
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon/10 rounded-full blur-[100px] -z-10" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan/10 rounded-full blur-[100px] -z-10" />
+            {/* Background Elements (Parallax or Glow) */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-900/20 via-black to-black -z-20" />
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon/5 rounded-full blur-[120px] -z-10 animate-pulse-slow" />
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan/5 rounded-full blur-[120px] -z-10 animate-pulse-slow delay-1000" />
 
             <motion.div
                 variants={staggerContainer}
@@ -58,15 +60,19 @@ export default function Hero() {
                 </motion.div>
 
                 {/* Social Proof / Trust Strip */}
-                <motion.div variants={fadeUp} className="flex flex-col items-center gap-4 opacity-70">
-                    <p className="text-sm text-muted uppercase tracking-widest font-semibold">Creator of BloB.JO & Founder of MUBX</p>
+                <motion.div variants={fadeUp} className="flex flex-col items-center gap-6 opacity-80">
+                    <div className="flex flex-col items-center gap-1">
+                        <p className="text-sm text-muted uppercase tracking-widest font-bold">Creator of BloB.JO & Founder of MUBX</p>
+                        <p className="text-xs text-muted/60 font-medium">Trusted by student clubs, agencies, and local brands in Jordan.</p>
+                    </div>
+
                     <div className="flex flex-wrap justify-center gap-8 items-center grayscale hover:grayscale-0 transition-all duration-500">
                         {/* Text placeholders for logos as per request */}
-                        <span className="text-white/40 font-bold text-lg">HTU Martial Arts</span>
+                        <span className="text-white/40 font-bold text-lg hover:text-white transition-colors">HTU Martial Arts</span>
                         <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
-                        <span className="text-white/40 font-bold text-lg">BloB.JO</span>
+                        <span className="text-white/40 font-bold text-lg hover:text-white transition-colors">BloB.JO</span>
                         <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
-                        <span className="text-white/40 font-bold text-lg">Vynex Media</span>
+                        <span className="text-white/40 font-bold text-lg hover:text-white transition-colors">Vynex Media</span>
                     </div>
                 </motion.div>
             </motion.div>

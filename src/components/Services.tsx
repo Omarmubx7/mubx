@@ -48,15 +48,28 @@ export default function Services() {
                     variants={fadeUp}
                     className="text-center mb-16 max-w-3xl mx-auto"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold mb-6">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-3xl md:text-5xl font-bold mb-6"
+                    >
                         WHAT I <span className="text-neon">DELIVER</span>
-                    </h2>
+                    </motion.h2>
                     <p className="text-muted text-lg mb-8">
                         Reliable, secure web systems for small businesses and growing brands.
                     </p>
-                    <span className="inline-block px-6 py-2 rounded-full border border-neon/30 bg-neon/10 text-neon font-bold tracking-wider uppercase text-sm animate-pulse">
-                        Projects start from 150 JD
-                    </span>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="inline-block relative"
+                    >
+                        <div className="absolute inset-0 bg-neon blur-md opacity-20" />
+                        <span className="relative z-10 inline-block px-8 py-3 rounded-full bg-neon text-black font-black tracking-widest uppercase text-sm transform hover:scale-105 transition-transform cursor-default shadow-[0_0_15px_rgba(225,245,0,0.4)]">
+                            Projects start from 150 JD
+                        </span>
+                    </motion.div>
                 </motion.div>
 
                 <motion.div

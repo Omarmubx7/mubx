@@ -5,6 +5,7 @@ import { Mail, Github, Linkedin, MapPin } from 'lucide-react';
 import { fadeUp } from '@/lib/motion';
 import { PopupModal } from 'react-calendly';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Contact() {
     const [isOpen, setIsOpen] = useState(false);
@@ -43,13 +44,10 @@ export default function Contact() {
 
                     <div className="flex flex-col items-center justify-center gap-6 mb-12">
                         <div className="flex flex-col md:flex-row gap-4">
-                            <button
-                                onClick={() => setIsOpen(true)}
-                                className="flex items-center gap-2 px-8 py-4 bg-neon text-black font-bold rounded-full hover:bg-white transition-all transform hover:scale-105 cursor-pointer"
-                            >
+                            <Link href="/contact" className="flex items-center gap-2 px-8 py-4 bg-neon text-black font-bold rounded-full hover:bg-white transition-all transform hover:scale-105 cursor-pointer">
                                 <Mail className="w-5 h-5" />
                                 Get a Project Estimate
-                            </button>
+                            </Link>
                             <a
                                 href="https://github.com/Omarmubx7"
                                 target="_blank"
@@ -74,6 +72,10 @@ export default function Contact() {
                             <p>Phone / WhatsApp: <span className="text-white">+962 780 090 453</span></p>
                         </div>
                     </div>
+
+                    <p className="text-sm text-muted/60 max-w-lg mx-auto mb-8 border-t border-white/5 pt-6">
+                        Typical projects: <span className="text-white/80">landing pages, e-commerce MVPs, and web systems</span> for startups in Amman and worldwide.
+                    </p>
 
                     <div className="flex items-center justify-center gap-2 text-muted text-sm">
                         <MapPin className="w-4 h-4 text-neon" />

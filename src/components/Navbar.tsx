@@ -19,8 +19,10 @@ export default function Navbar() {
             variants={fadeUp}
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-transparent backdrop-blur-sm"
         >
-            <Link href="/" className="text-2xl font-black tracking-tighter text-white">
-                MUBX<span className="text-neon">.</span>
+            <Link href="/" className="group relative z-50">
+                <div className="flex items-center justify-center w-10 h-10 bg-black/50 border border-white/10 rounded-xl backdrop-blur-md group-hover:border-neon/50 transition-colors">
+                    <span className="text-lg font-black text-white tracking-tighter group-hover:text-neon transition-colors">M<span className="text-neon">.</span></span>
+                </div>
             </Link>
 
             <div className="hidden md:flex items-center gap-8">
@@ -33,6 +35,13 @@ export default function Navbar() {
                         {link.name}
                     </Link>
                 ))}
+                <Link
+                    href="#"
+                    className="text-sm font-medium text-gray-300 hover:text-neon transition-colors flex items-center gap-1"
+                >
+                    Lab / Articles <span className="text-[10px] bg-neon/10 text-neon px-1.5 py-0.5 rounded-full">Soon</span>
+                </Link>
+
                 <Link
                     href="#contact"
                     className="px-4 py-2 text-sm font-bold text-black bg-neon rounded-full hover:bg-white transition-colors"
