@@ -17,27 +17,23 @@ export default function About() {
                     {/* Left Column: Story & Vision */}
                     <div className="space-y-6">
                         <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold">
-                            FROM <span className="text-neon">LAB</span> TO <span className="text-cyan">LIVE</span>
+                            FROM <span className="text-neon">LAB</span> TO <span className="text-white">LIVE</span>
                         </motion.h2>
 
                         <motion.p variants={fadeUp} className="text-muted text-lg leading-relaxed">
-                            I don't just write code; I architect systems. As a Computer Science Student in Amman, I bridge the gap between theoretical computer science and production-grade software.
+                            Code meant for production, not just grading. I bridge the gap between CS theory and scalable, secure web apps.
                         </motion.p>
 
-                        <motion.div variants={fadeUp} className="space-y-4">
-                            <div className="p-6 bg-white/5 rounded-xl border border-white/5 backdrop-blur-sm">
-                                <h3 className="text-xl font-bold text-white mb-2">The Mission</h3>
-                                <p className="text-muted">
-                                    My goal is simple: build impactful, high-performance web products that solve real problems. I treat every project as a step towards mastering the craft - combining security, database efficiency, and sleek UX.
-                                </p>
-                            </div>
-
-                            <div className="p-6 bg-white/5 rounded-xl border border-white/5 backdrop-blur-sm">
-                                <h3 className="text-xl font-bold text-white mb-2">The Mindset</h3>
-                                <p className="text-muted">
-                                    "Try a new thing every day." Whether it's experimenting with cryptography, optimizing SQL queries, or exploring the latest Next.js features, I stay ahead of the curve to deliver modern solutions.
-                                </p>
-                            </div>
+                        <motion.div variants={fadeUp} className="flex flex-wrap gap-4 pt-4">
+                            <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white font-medium">
+                                <span className="text-neon font-bold">CS</span> Architecture
+                            </span>
+                            <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white font-medium">
+                                <span className="text-cyan font-bold">DB</span> Optimization
+                            </span>
+                            <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white font-medium">
+                                <span className="text-white font-bold">UX</span> Engineering
+                            </span>
                         </motion.div>
                     </div>
 

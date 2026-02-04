@@ -19,7 +19,7 @@ export default function Navbar() {
             variants={fadeUp}
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-transparent backdrop-blur-sm"
         >
-            <Link href="/" className="text-xl font-bold tracking-tighter text-white">
+            <Link href="/" className="text-2xl font-black tracking-tighter text-white">
                 MUBX<span className="text-neon">.</span>
             </Link>
 

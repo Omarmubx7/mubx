@@ -21,49 +21,52 @@ export default function Hero() {
                 viewport={{ once: true }}
                 className="container mx-auto px-6 md:px-12 flex flex-col items-center text-center z-10"
             >
-                <motion.p variants={fadeUp} className="text-neon font-bold tracking-wide text-sm md:text-base mb-4 uppercase flex items-center gap-2">
-                    <span className="w-2 h-2 bg-neon rounded-full animate-pulse" />
-                    Computer Science Student & Web Developer
-                </motion.p>
-
-                <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-tight">
-                    OMAR <br className="md:hidden" />
-                    <span className="text-white">MUBAIDIN</span>
-                </motion.h1>
-
-                <motion.p variants={fadeUp} className="text-lg md:text-xl text-muted max-w-2xl mb-8 leading-relaxed">
-                    Founder of <span className="text-white font-semibold">MUBX</span>. I don't just build websites; I architect <span className="text-cyan">secure, data-driven systems</span>.
-                    Bridging the gap between CS theory and production-grade applications.
-                </motion.p>
-
-                <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-3 mb-10">
-                    {techStack.map((tech) => (
-                        <span
-                            key={tech}
-                            className="px-4 py-2 text-sm font-bold text-white/90 bg-white/5 border border-white/10 rounded-full backdrop-blur-md hover:border-cyan/50 transition-colors cursor-default"
-                        >
-                            {tech}
+                <motion.div variants={fadeUp} className="mb-8 relative inline-block">
+                    <span className="absolute -inset-1 bg-gradient-to-r from-neon/20 to-cyan/20 blur-xl opacity-50 animate-pulse rounded-full" />
+                    <h1 className="relative text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
+                        OMAR <br className="md:hidden" />
+                        MUBAIDIN
+                    </h1>
+                    <div className="hidden md:block absolute -right-12 -top-8 rotate-12">
+                        <span className="px-3 py-1 bg-neon text-black text-xs font-bold rounded-full uppercase tracking-wider">
+                            Verified Dev
                         </span>
-                    ))}
+                    </div>
                 </motion.div>
 
-                <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
-                    <Link
-                        href="#projects"
-                        className="group flex items-center gap-2 px-8 py-4 bg-neon text-black font-bold rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(225,245,0,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
-                    >
-                        View Work
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                <motion.h2 variants={fadeUp} className="text-xl md:text-2xl text-white/90 font-medium max-w-2xl mb-10 leading-relaxed">
+                    I build <span className="text-neon font-bold">fast, secure web systems</span> for brands that want to scale.
+                </motion.h2>
+
+                <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 mb-16">
                     <a
-                        href="/cv.pdf" // Placeholder path
+                        href="https://wa.me/962780090453"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center gap-2 px-8 py-4 bg-transparent border border-white/20 text-white font-medium rounded-full hover:bg-white/10 transition-all"
+                        className="group flex items-center justify-center gap-2 px-8 py-4 bg-neon text-black font-bold text-lg rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(225,245,0,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
                     >
-                        Download CV
-                        <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+                        Work with MUBX
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </a>
+                    <Link
+                        href="#projects"
+                        className="group flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white/20 text-white font-medium text-lg rounded-full hover:bg-white/10 transition-all"
+                    >
+                        View Work
+                    </Link>
+                </motion.div>
+
+                {/* Social Proof / Trust Strip */}
+                <motion.div variants={fadeUp} className="flex flex-col items-center gap-4 opacity-70">
+                    <p className="text-sm text-muted uppercase tracking-widest font-semibold">Creator of BloB.JO & Founder of MUBX</p>
+                    <div className="flex flex-wrap justify-center gap-8 items-center grayscale hover:grayscale-0 transition-all duration-500">
+                        {/* Text placeholders for logos as per request */}
+                        <span className="text-white/40 font-bold text-lg">HTU Martial Arts</span>
+                        <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
+                        <span className="text-white/40 font-bold text-lg">BloB.JO</span>
+                        <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
+                        <span className="text-white/40 font-bold text-lg">Vynex Media</span>
+                    </div>
                 </motion.div>
             </motion.div>
         </section>

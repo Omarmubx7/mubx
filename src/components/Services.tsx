@@ -8,18 +8,24 @@ import { useState, useEffect } from 'react';
 export default function Services() {
     const services = [
         {
+            label: 'Service 01',
             title: 'LANDING PAGE + DEPLOYMENT',
-            description: 'I design and build a fast, responsive landing page tailored to your brand, then handle deployment so it’s live on your domain with proper SEO and analytics. Ideal for small businesses needing a high-impact web presence.',
+            description: 'I design and build a fast, responsive landing page tailored to your brand, then handle deployment so it’s live on your domain with proper SEO and analytics.',
+            idealHeight: 'Ideal for: New businesses needing a high-impact presence.',
             details: ['Responsive Design', 'SEO Setup', 'Analytics Integration', 'Fast Performance'],
         },
         {
+            label: 'Service 02',
             title: 'E-COMMERCE MVP',
-            description: 'End-to-end e-commerce experience with product catalog, cart, and checkout flow. Focused on clear UX and performance to give you a solid foundation you can grow later, without the bloat.',
+            description: 'End-to-end e-commerce experience with product catalog, cart, and checkout flow. Focused on clear UX and performance to give you a solid foundation.',
+            idealHeight: 'Ideal for: Brands starting to sell online.',
             details: ['Product Catalog', 'Shopping Cart', 'Checkout Flow', 'Admin Dashboard'],
         },
         {
+            label: 'Service 03',
             title: 'DATABASE + SECURITY AUDIT',
-            description: 'I review your current app’s database structure, queries, and security practices. You get a technical report with fixes. Perfect for teams with existing products that feel slow or vulnerable.',
+            description: 'I review your current app’s database structure, queries, and security practices. You get a technical report with fixes.',
+            idealHeight: 'Ideal for: Teams with slow or vulnerable apps.',
             details: ['Schema Review', 'Query Optimization', 'Security Analysis', 'Performance Tuning'],
         },
     ];
