@@ -50,8 +50,7 @@ export default function Hero() {
                         </SkeletonTheme>
                     ) : (
                         <motion.div variants={fadeUp}>
-                            <span className="absolute -inset-1 bg-gradient-to-r from-neon/20 to-cyan/20 blur-xl opacity-50 animate-pulse rounded-full" />
-                            <h1 className="relative text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
+                            <h1 className="relative text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-white drop-shadow-2xl">
                                 OMAR <br className="md:hidden" />
                                 MUBAIDIN
                             </h1>
