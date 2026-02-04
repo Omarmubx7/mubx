@@ -81,7 +81,7 @@ export default function Contact() {
 
             {mounted && (
                 <PopupModal
-                    url="https://calendly.com/omarmubaidin/30min"
+                    url="https://calendly.com/omarmubaidincs/30min"
                     onModalClose={() => setIsOpen(false)}
                     open={isOpen}
                     rootElement={document.getElementById("root") || document.body}
