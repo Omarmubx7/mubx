@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { fadeUp } from '@/lib/motion';
 
+import Image from 'next/image';
+
 export default function Navbar() {
     const links = [
         { name: 'About', href: '#about' },
@@ -20,8 +22,14 @@ export default function Navbar() {
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-transparent backdrop-blur-sm"
         >
             <Link href="/" className="group relative z-50">
-                <div className="flex items-center justify-center w-10 h-10 bg-black/50 border border-white/10 rounded-xl backdrop-blur-md group-hover:border-neon/50 transition-colors">
-                    <span className="text-lg font-black text-white tracking-tighter group-hover:text-neon transition-colors">M<span className="text-neon">.</span></span>
+                <div className="flex items-center justify-center w-10 h-10 overflow-hidden rounded-xl border border-white/10 group-hover:border-neon/50 transition-colors bg-black">
+                    <Image
+                        src="/logo.png"
+                        alt="MUBX Logo"
+                        width={40}
+                        height={40}
+                        className="w-full h-full object-cover"
+                    />
                 </div>
             </Link>
 

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Github, Linkedin, Instagram, Mail, ArrowRight } from 'lucide-react';
 
+import Image from 'next/image';
+
 export default function Footer() {
     return (
         <footer className="py-16 border-t border-white/5 bg-black/50 backdrop-blur-sm relative overflow-hidden">
@@ -11,8 +13,14 @@ export default function Footer() {
                     {/* Col 1: Brand */}
                     <div className="space-y-6">
                         <Link href="/" className="flex items-center gap-2 group">
-                            <span className="flex items-center justify-center w-10 h-10 bg-black/50 border border-white/10 rounded-xl group-hover:border-neon/50 transition-colors">
-                                <span className="text-lg font-black text-white tracking-tighter">M<span className="text-neon">.</span></span>
+                            <span className="flex items-center justify-center w-10 h-10 overflow-hidden border border-white/10 rounded-xl group-hover:border-neon/50 transition-colors bg-black">
+                                <Image
+                                    src="/logo.png"
+                                    alt="MUBX Logo"
+                                    width={40}
+                                    height={40}
+                                    className="w-full h-full object-cover"
+                                />
                             </span>
                             <span className="font-bold text-xl text-white tracking-tight">MUBX</span>
                         </Link>

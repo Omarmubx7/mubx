@@ -11,6 +11,8 @@ import { useState, useEffect } from 'react';
 
 import Link from 'next/link';
 
+import { projects } from '@/lib/projects'; // Import shared data
+
 export default function Projects() {
     const [isLoading, setIsLoading] = useState(true);
 
@@ -19,47 +21,7 @@ export default function Projects() {
         return () => clearTimeout(timer);
     }, []);
 
-    const projects = [
-        {
-            title: 'Vynex Media',
-            description: 'Visual production agency platform. High-performance landing page with SEO optimization and smooth frame interactions.',
-            tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
-            links: { live: 'https://vynexmedia.lovable.app/', code: 'https://github.com/Omarmubx7/vynexmedia' },
-            logo: '/images/vynex-logo.png',
-            metrics: '20% Conversion Rate',
-            caseStudy: {
-                problem: 'Needed a modern website matching their high visual production quality.',
-                role: 'Full implementation: architecture, frontend, performance.',
-                outcome: 'Professional page for client acquisition with smooth lead capture.'
-            }
-        },
-        {
-            title: 'HTU Martial Arts',
-            description: 'University sports club management system. Handles membership bookings, user profiles, and admin dashboards.',
-            tech: ['PHP', 'MySQL', 'Bootstrap', 'Authentication'],
-            links: { live: 'https://htumartialarts.42web.io/?i=1', code: 'https://github.com/Omarmubx7/htu_martial_arts-man' },
-            logo: '/images/htu-logo.png',
-            metrics: '100+ Active Members',
-            caseStudy: {
-                problem: 'Manual management of members and bookings via messages/sheets.',
-                role: 'Database design, PHP backend, Admin dashboard.',
-                outcome: 'Centralized management reducing manual work.'
-            }
-        },
-        {
-            title: 'BloB.JO',
-            description: 'Jordan\'s premier Print-on-Demand e-commerce store. Features custom product design capability and dynamic order tracking.',
-            tech: ['React', 'Node.js', 'E-commerce', 'UX Design'],
-            links: { live: 'https://www.blobjor.me/', code: 'https://github.com/Omarmubx7/blobjor' },
-            logo: '/images/blobjor-logo.png',
-            metrics: 'Full E-com Flow',
-            caseStudy: {
-                problem: 'Lack of local POD store with custom design tools.',
-                role: 'Product UX, E-commerce flow, Frontend.',
-                outcome: 'Digital order flow replacing manual communication.'
-            }
-        },
-    ];
+    // Local projects definition removed to use shared source of truth
 
     return (
         <section id="projects" className="py-24 relative">
@@ -81,7 +43,6 @@ export default function Projects() {
                                     <div className="flex items-center justify-between mb-6">
                                         <Skeleton width={64} height={64} className="rounded-2xl" />
                                         <div className="flex gap-3">
-                                            <Skeleton circle width={40} height={40} />
                                             <Skeleton circle width={40} height={40} />
                                         </div>
                                     </div>
@@ -110,8 +71,6 @@ export default function Projects() {
                                 <div className="absolute inset-0 bg-neon/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                                 <div className="relative z-10 flex flex-col h-full">
-                                    import Link from 'next/link'; // Ensure Link is imported
-
                                     <div className="flex items-center justify-between mb-6">
                                         <Link href={`/projects/${project.slug}`} className="w-16 h-16 rounded-2xl bg-white p-3 flex items-center justify-center overflow-hidden border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(255,30,30,0.3)] transition-all duration-500 cursor-pointer">
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -128,9 +87,12 @@ export default function Projects() {
                                             <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-neon hover:text-black transition-all duration-300 hover:scale-110 border border-white/5" title="View Live">
                                                 <ExternalLink className="w-5 h-5" />
                                             </a>
+                                            {/* GitHub button removed as requested */}
+                                            {/* 
                                             <a href={project.links.code} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-neon hover:text-black transition-all duration-300 hover:scale-110 border border-white/5" title="View Code">
                                                 <Github className="w-5 h-5" />
                                             </a>
+                                            */}
                                         </div>
                                     </div>
 
