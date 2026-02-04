@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
+import { PopupModal } from 'react-calendly';
+import { useState, useEffect } from 'react';
 
 export default function Services() {
     const services = [
@@ -21,6 +23,13 @@ export default function Services() {
             details: ['Schema Review', 'Query Optimization', 'Security Analysis', 'Performance Tuning'],
         },
     ];
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     return (
         <section id="services" className="py-24 relative">
@@ -78,14 +87,23 @@ export default function Services() {
                 </motion.div>
 
                 <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex justify-center">
-                    <a
-                        href="#contact"
-                        className="px-8 py-4 bg-transparent border border-neon text-neon font-bold rounded-full hover:bg-neon hover:text-black transition-all uppercase tracking-wide"
+                    <button
+                        onClick={() => setIsOpen(true)}
+                        className="px-8 py-4 bg-transparent border border-neon text-neon font-bold rounded-full hover:bg-neon hover:text-black transition-all uppercase tracking-wide cursor-pointer"
                     >
                         Book a Free 20-min Call
-                    </a>
+                    </button>
                 </motion.div>
             </div>
+
+            {mounted && (
+                <PopupModal
+                    url="https://calendly.com/omarmubaidin/30min"
+                    onModalClose={() => setIsOpen(false)}
+                    open={isOpen}
+                    rootElement={document.getElementById("root") || document.body}
+                />
+            )}
         </section>
     );
 }

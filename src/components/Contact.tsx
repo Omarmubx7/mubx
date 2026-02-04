@@ -3,8 +3,17 @@
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, MapPin } from 'lucide-react';
 import { fadeUp } from '@/lib/motion';
+import { PopupModal } from 'react-calendly';
+import { useState, useEffect } from 'react';
 
 export default function Contact() {
+    const [isOpen, setIsOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     return (
         <section id="contact" className="py-24 relative overflow-hidden">
             {/* Background Glow */}
@@ -31,15 +40,13 @@ export default function Contact() {
 
                     <div className="flex flex-col items-center justify-center gap-6 mb-12">
                         <div className="flex flex-col md:flex-row gap-4">
-                            <a
-                                href="mailto:omarmubaidin@proton.me"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 px-8 py-4 bg-neon text-black font-bold rounded-full hover:bg-white transition-all transform hover:scale-105"
+                            <button
+                                onClick={() => setIsOpen(true)}
+                                className="flex items-center gap-2 px-8 py-4 bg-neon text-black font-bold rounded-full hover:bg-white transition-all transform hover:scale-105 cursor-pointer"
                             >
                                 <Mail className="w-5 h-5" />
                                 Get a Project Estimate
-                            </a>
+                            </button>
                             <a
                                 href="https://github.com/Omarmubx7"
                                 target="_blank"
@@ -71,6 +78,15 @@ export default function Contact() {
                     </div>
                 </motion.div>
             </div>
+
+            {mounted && (
+                <PopupModal
+                    url="https://calendly.com/omarmubaidin/30min"
+                    onModalClose={() => setIsOpen(false)}
+                    open={isOpen}
+                    rootElement={document.getElementById("root") || document.body}
+                />
+            )}
         </section>
     );
 }
