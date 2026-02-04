@@ -72,14 +72,14 @@ export default function Projects() {
                             key={project.title}
                             variants={projectCard}
                             whileHover={{ y: -10, scale: 1.02 }}
-                            className="group relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-neon/50 transition-all duration-300 backdrop-blur-sm overflow-hidden flex flex-col h-full hover:shadow-[0_0_30px_rgba(225,245,0,0.1)]"
+                            className="group relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-neon/50 transition-all duration-300 backdrop-blur-sm overflow-hidden flex flex-col h-full hover:shadow-[0_0_30px_rgba(255,30,30,0.1)]"
                         >
                             {/* Glow Effect */}
                             <div className="absolute inset-0 bg-neon/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                             <div className="relative z-10 flex flex-col h-full">
                                 <div className="flex items-center justify-between mb-6">
-                                    <div className="w-16 h-16 rounded-2xl bg-white p-3 flex items-center justify-center overflow-hidden border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(225,245,0,0.3)] transition-all duration-500">
+                                    <div className="w-16 h-16 rounded-2xl bg-white p-3 flex items-center justify-center overflow-hidden border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(255,30,30,0.3)] transition-all duration-500">
                                         {/* eslint-disable-next-line @next/next/no-img-element */}
                                         <img src={project.logo} alt={`${project.title} by Omar Mubaidin - ${project.tech.join(', ')}`} className="w-full h-full object-contain" />
                                     </div>

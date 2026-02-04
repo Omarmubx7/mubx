@@ -46,7 +46,7 @@ export default function Hero() {
                         href="https://wa.me/962780090453"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center justify-center gap-2 px-8 py-4 bg-neon text-black font-bold text-lg rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(225,245,0,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
+                        className="group flex items-center justify-center gap-2 px-8 py-4 bg-neon text-black font-bold text-lg rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,30,30,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
                     >
                         Work with MUBX
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
