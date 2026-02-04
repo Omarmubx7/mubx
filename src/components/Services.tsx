@@ -34,6 +34,7 @@ export default function Services() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
     }, []);
 
@@ -110,14 +111,50 @@ export default function Services() {
                 </motion.div>
             </div>
 
-            {mounted && (
-                <PopupModal
-                    url="https://calendly.com/omarmubaidincs/30min"
-                    onModalClose={() => setIsOpen(false)}
-                    open={isOpen}
-                    rootElement={document.getElementById("root") || document.body}
-                />
-            )}
-        </section>
+            {/* Simple FAQ / Process Section */}
+            <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="mt-24 max-w-4xl mx-auto px-6 md:px-12"
+            >
+                <div className="text-center mb-12">
+                    <h3 className="text-2xl font-bold text-white mb-4">COMMON QUESTIONS</h3>
+                    <div className="h-1 w-20 bg-neon mx-auto rounded-full" />
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                    <motion.div variants={fadeUp} className="bg-white/5 p-6 rounded-xl border border-white/5">
+                        <h4 className="font-bold text-white mb-2">Do you work with startups?</h4>
+                        <p className="text-muted text-sm">Yes. I specialize in helping fast-paced startups and small businesses get their MVP to market securely and quickly.</p>
+                    </motion.div>
+                    <motion.div variants={fadeUp} className="bg-white/5 p-6 rounded-xl border border-white/5">
+                        <h4 className="font-bold text-white mb-2">What is your typical timeline?</h4>
+                        <p className="text-muted text-sm">A standard landing page takes 3-5 days. Full e-commerce sites or web apps typically take 2-4 weeks depending on complexity.</p>
+                    </motion.div>
+                    <motion.div variants={fadeUp} className="bg-white/5 p-6 rounded-xl border border-white/5">
+                        <h4 className="font-bold text-white mb-2">Do you handle hosting?</h4>
+                        <p className="text-muted text-sm">Absolutely. I deploy your site (usually on Vercel or VPS), configure your domain, and ensure SSL security is active.</p>
+                    </motion.div>
+                    <motion.div variants={fadeUp} className="bg-white/5 p-6 rounded-xl border border-white/5">
+                        <h4 className="font-bold text-white mb-2">What tech do you use?</h4>
+                        <p className="text-muted text-sm">I primarily use Next.js, React, and Tailwind CSS for frontend, with Supabase or MySQL for backend data handling.</p>
+                    </motion.div>
+                </div>
+            </motion.div>
+
+
+            {
+                mounted && (
+                    <PopupModal
+                        url="https://calendly.com/omarmubaidincs/30min"
+                        onModalClose={() => setIsOpen(false)}
+                        open={isOpen}
+                        rootElement={document.getElementById("root") || document.body}
+                    />
+                )
+            }
+        </section >
     );
 }

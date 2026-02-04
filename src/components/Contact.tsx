@@ -11,6 +11,7 @@ export default function Contact() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
     }, []);
 
@@ -27,15 +28,17 @@ export default function Contact() {
                     variants={fadeUp}
                     className="relative z-10"
                 >
-                    <span className="text-neon font-medium tracking-wide uppercase mb-4 block">Let's Connect</span>
+                    <span className="text-neon font-medium tracking-wide uppercase mb-4 block">Let&apos;s Connect</span>
                     <h2 className="text-4xl md:text-6xl font-bold mb-4">
                         Ready to build with <span className="text-white">MUBX</span>?
                     </h2>
-                    <p className="text-neon/80 text-lg mb-8 font-medium">
-                        CS student and web developer building secure, data‑driven systems in Amman, Jordan.
+                    <p className="text-muted text-lg mb-8 max-w-2xl mx-auto">
+                        Ready to scale? I&apos;m currently accepting new projects for Q1.
+                        <br />
+                        Let&apos;s discuss how we can engineer your growth.
                     </p>
                     <p className="text-muted text-lg max-w-xl mx-auto mb-12">
-                        Whether you need a full-stack audit, a database redesign, or a complete product build, I'm ready to architect the solution.
+                        Whether you need a full-stack audit, a database redesign, or a complete product build, I&apos;m ready to architect the solution.
                     </p>
 
                     <div className="flex flex-col items-center justify-center gap-6 mb-12">

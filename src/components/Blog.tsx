@@ -24,7 +24,7 @@ export default function Blog() {
                             ENGINEERING <span className="text-neon">NOTES</span>
                         </h2>
                         <p className="text-muted text-lg max-w-xl">
-                            "Try a new thing every day." Documenting my journey from CS theory to production code.
+                            We&apos;re building something special. Check back soon for insights on web development, security, and scaling systems.
                         </p>
                     </motion.div>
 

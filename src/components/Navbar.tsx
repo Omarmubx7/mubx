@@ -37,7 +37,7 @@ export default function Navbar() {
                     href="#contact"
                     className="px-4 py-2 text-sm font-bold text-black bg-neon rounded-full hover:bg-white transition-colors"
                 >
-                    Let's Talk
+                    Let&apos;s Talk
                 </Link>
             </div>
 

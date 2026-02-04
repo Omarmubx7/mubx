@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Omar Mubaidin (MUB Mubaidin) | MUBX - Computer Science & Web Developer',
-  description: 'Portfolio of Omar Mubaidin (MUB). Computer Science student and Full Stack Web Developer in Amman, Jordan. Founder of MUBX, building secure, high-performance systems.',
+  title: 'Omar Mubaidin | MUBX - Web Developer & CS Student in Amman, Jordan',
+  description: 'MUBX | Portfolio of Omar Mubaidin. I build fast, secure web systems for brands that want to scale. Computer Science Student & Full Stack Web Developer based in Amman.',
   keywords: ['Omar Mubaidin', 'MUB Mubaidin', 'MUBX', 'MUB', 'Mubaidin', 'Web Developer', 'Jordan', 'Computer Science', 'Next.js', 'React', 'Tech Geek'],
   authors: [{ name: 'Omar Mubaidin', url: 'https://mubx.com' }],
   creator: 'Omar Mubaidin',

@@ -22,9 +22,7 @@ export default function BlogIndex() {
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
                             ENGINEERING <span className="text-neon">NOTES</span>
                         </h1>
-                        <p className="text-xl text-muted max-w-2xl">
-                            "Try a new thing every day." A collection of technical deep dives, learnings, and project retrospectives.
-                        </p>
+                        <p className="text-xl text-muted">We&apos;re currently writing content. Check back soon.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

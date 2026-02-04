@@ -1,12 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 
 export default function Hero() {
-    const techStack = ['Next.js 15', 'TypeScript', 'MySQL', 'PHP', 'Security', 'Cryptography'];
+    // const techStack = ['Next.js 15', 'TypeScript', 'MySQL', 'PHP', 'Security', 'Cryptography'];
 
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">

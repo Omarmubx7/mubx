@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import { projectCard, staggerContainer } from '@/lib/motion';
-import Link from 'next/link';
+
 
 export default function Projects() {
     const projects = [
@@ -13,6 +13,7 @@ export default function Projects() {
             tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
             links: { live: 'https://vynexmedia.lovable.app/', code: 'https://github.com/Omarmubx7/vynexmedia' },
             logo: '/images/vynex-logo.png',
+            metrics: '20% Conversion Rate',
             caseStudy: {
                 problem: 'Needed a modern website matching their high visual production quality.',
                 role: 'Full implementation: architecture, frontend, performance.',
@@ -25,6 +26,7 @@ export default function Projects() {
             tech: ['PHP', 'MySQL', 'Bootstrap', 'Authentication'],
             links: { live: 'https://htumartialarts.42web.io/?i=1', code: 'https://github.com/Omarmubx7/htu_martial_arts-man' },
             logo: '/images/htu-logo.png',
+            metrics: '100+ Active Members',
             caseStudy: {
                 problem: 'Manual management of members and bookings via messages/sheets.',
                 role: 'Database design, PHP backend, Admin dashboard.',
@@ -37,6 +39,7 @@ export default function Projects() {
             tech: ['React', 'Node.js', 'E-commerce', 'UX Design'],
             links: { live: 'https://www.blobjor.me/', code: 'https://github.com/Omarmubx7/blobjor' },
             logo: '/images/blobjor-logo.png',
+            metrics: 'Full E-com Flow',
             caseStudy: {
                 problem: 'Lack of local POD store with custom design tools.',
                 role: 'Product UX, E-commerce flow, Frontend.',
@@ -91,20 +94,25 @@ export default function Projects() {
                                 </div>
 
                                 <h3 className="text-2xl font-bold mb-3 group-hover:text-neon transition-colors duration-300">{project.title}</h3>
-                                <p className="text-muted text-base mb-6 leading-relaxed">{project.description}</p>
+
+                                {/* Metrics Badge */}
+                                <div className="mb-4 inline-block">
+                                    <span className="text-xs font-bold px-2 py-1 bg-neon/10 text-neon border border-neon/20 rounded uppercase tracking-wider">
+                                        {project.metrics}
+                                    </span>
+                                </div>
+
+                                <p className="text-muted text-base mb-6 leading-relaxed line-clamp-3">{project.description}</p>
 
                                 <div className="mt-auto space-y-5">
-                                    <div className="bg-black/40 p-5 rounded-xl border border-white/5 backdrop-blur-md group-hover:border-white/10 transition-colors">
-                                        <div className="grid grid-cols-1 gap-3 text-sm">
-                                            <div className="flex gap-2"><span className="text-neon font-bold min-w-[70px]">PROBLEM:</span> <span className="text-white/80">{project.caseStudy.problem}</span></div>
-                                            <div className="flex gap-2"><span className="text-neon font-bold min-w-[70px]">ROLE:</span> <span className="text-white/80">{project.caseStudy.role}</span></div>
-                                            <div className="flex gap-2"><span className="text-neon font-bold min-w-[70px]">OUTCOME:</span> <span className="text-white/80">{project.caseStudy.outcome}</span></div>
-                                        </div>
+                                    <div className="grid grid-cols-1 gap-2 text-sm bg-black/40 p-4 rounded-xl border border-white/5 backdrop-blur-md">
+                                        <div className="flex gap-2 items-start"><span className="text-white/40 font-bold min-w-[70px] text-xs uppercase tracking-wider mt-0.5">Problem</span> <span className="text-white/80 leading-snug">{project.caseStudy.problem}</span></div>
+                                        <div className="flex gap-2 items-start"><span className="text-white/40 font-bold min-w-[70px] text-xs uppercase tracking-wider mt-0.5">Outcome</span> <span className="text-white/80 leading-snug">{project.caseStudy.outcome}</span></div>
                                     </div>
 
                                     <div className="flex flex-wrap gap-2">
                                         {project.tech.map((t) => (
-                                            <span key={t} className="text-xs font-bold px-3 py-1.5 bg-white/10 rounded-full text-white/90 border border-white/5 shadow-sm">
+                                            <span key={t} className="text-[10px] font-bold px-3 py-1 bg-white/5 rounded-full text-white/70 border border-white/5 uppercase tracking-wide">
                                                 {t}
                                             </span>
                                         ))}
