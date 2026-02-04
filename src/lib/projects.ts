@@ -7,11 +7,12 @@ export interface Project {
     links: { live: string; code?: string };
     logo: string;
     metrics: string;
+    timeframe: string; // Added field
     caseStudy: {
         problem: string;
         role: string;
+        solution: string; // Renaming/Explicitly adding solution for clarity if needed, or mapping details to it
         outcome: string;
-        details?: string; // Extended details for the page
     }
 }
 
@@ -24,11 +25,12 @@ export const projects: Project[] = [
         links: { live: 'https://vynexmedia.lovable.app/', code: 'https://github.com/Omarmubx7/vynexmedia' },
         logo: '/images/vynex-logo.png',
         metrics: '20% Conversion Rate',
+        timeframe: '2 Weeks',
         caseStudy: {
             problem: 'Needed a modern website matching their high visual production quality.',
             role: 'Full implementation: architecture, frontend, performance.',
+            solution: 'I built a Next.js application focusing on heavy media optimization, preventing layout shifts while delivering 4K visuals.',
             outcome: 'Professional page for client acquisition with smooth lead capture.',
-            details: 'Vynex Media required a digital presence that mirrored their high-end video production quality. I built a Next.js application focusing on heavy media optimization, preventing layout shifts while delivering 4K visuals. The result is a lightning-fast portfolio that acts as their primary sales tool.'
         }
     },
     {
@@ -39,11 +41,12 @@ export const projects: Project[] = [
         links: { live: 'https://htumartialarts.42web.io/?i=1', code: 'https://github.com/Omarmubx7/htu_martial_arts-man' },
         logo: '/images/htu-logo.png',
         metrics: '100+ Active Members',
+        timeframe: '1 Month',
         caseStudy: {
             problem: 'Manual management of members and bookings via messages/sheets.',
             role: 'Database design, PHP backend, Admin dashboard.',
-            outcome: 'Centralized management reducing manual work.',
-            details: 'The HTU Martial Arts club was drowning in paperwork. Pass cards were paper, bookings were DM-based. I engineered a complete management system with PHP/MySQL that handles user registration, session booking limits, and admin oversight. This digitized the entire workflow for 100+ students.'
+            solution: 'I engineered a complete management system with PHP/MySQL that handles user registration, session booking limits, and admin oversight.',
+            outcome: 'Centralized management reducing manual work. Digitized the entire workflow for 100+ students.',
         }
     },
     {
@@ -54,11 +57,12 @@ export const projects: Project[] = [
         links: { live: 'https://www.blobjor.me/', code: 'https://github.com/Omarmubx7/blobjor' },
         logo: '/images/blobjor-logo.png',
         metrics: 'Full E-com Flow',
+        timeframe: '3 Weeks',
         caseStudy: {
             problem: 'Lack of local POD store with custom design tools.',
             role: 'Product UX, E-commerce flow, Frontend.',
-            outcome: 'Digital order flow replacing manual communication.',
-            details: 'BloB.JO aims to revolutionize merchandise in Jordan. I built a custom frontend that allows users to visualize designs on products before buying. The system integrates clear order tracking and a seamless checkout experience, bridging the gap between local artists and wearable products.'
+            solution: 'I built a custom frontend that allows users to visualize designs on products before buying. The system integrates clear order tracking and a seamless checkout experience.',
+            outcome: 'Digital order flow replacing manual communication. Bridges the gap between local artists and wearable products.',
         }
     },
 ];

@@ -77,6 +77,8 @@ export default function RootLayout({
                     "addressLocality": "Amman",
                     "addressCountry": "JO"
                   },
+                  "areaServed": ["Jordan", "Remote"],
+                  "serviceType": ["Web Development", "E-commerce", "Dashboards"],
                   "priceRange": "$$"
                 }
               ]

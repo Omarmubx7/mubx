@@ -9,6 +9,8 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useState, useEffect } from 'react';
 
 
+import Link from 'next/link';
+
 export default function Projects() {
     const [isLoading, setIsLoading] = useState(true);
 
@@ -108,8 +110,10 @@ export default function Projects() {
                                 <div className="absolute inset-0 bg-neon/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                                 <div className="relative z-10 flex flex-col h-full">
+                                    import Link from 'next/link'; // Ensure Link is imported
+
                                     <div className="flex items-center justify-between mb-6">
-                                        <div className="w-16 h-16 rounded-2xl bg-white p-3 flex items-center justify-center overflow-hidden border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(255,30,30,0.3)] transition-all duration-500">
+                                        <Link href={`/projects/${project.slug}`} className="w-16 h-16 rounded-2xl bg-white p-3 flex items-center justify-center overflow-hidden border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(255,30,30,0.3)] transition-all duration-500 cursor-pointer">
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
                                             <div className="relative w-full h-full">
                                                 <Image
@@ -119,7 +123,7 @@ export default function Projects() {
                                                     className="object-contain"
                                                 />
                                             </div>
-                                        </div>
+                                        </Link>
                                         <div className="flex gap-3">
                                             <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-neon hover:text-black transition-all duration-300 hover:scale-110 border border-white/5" title="View Live">
                                                 <ExternalLink className="w-5 h-5" />
@@ -130,7 +134,9 @@ export default function Projects() {
                                         </div>
                                     </div>
 
-                                    <h3 className="text-2xl font-bold mb-3 group-hover:text-neon transition-colors duration-300">{project.title}</h3>
+                                    <Link href={`/projects/${project.slug}`} className="inline-block">
+                                        <h3 className="text-2xl font-bold mb-3 group-hover:text-neon transition-colors duration-300 cursor-pointer">{project.title}</h3>
+                                    </Link>
 
                                     {/* Metrics Badge */}
                                     <div className="mb-4 inline-block">

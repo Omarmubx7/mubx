@@ -93,6 +93,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                                         <span className="text-xs font-bold text-white/50 uppercase tracking-wider block mb-1">Role</span>
                                         <span className="text-white">{project.caseStudy.role}</span>
                                     </div>
+                                    <div>
+                                        <span className="text-xs font-bold text-white/50 uppercase tracking-wider block mb-1">Timeline</span>
+                                        <span className="text-white">{project.timeframe}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +107,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                                 {/* Placeholder for actual screenshot, using logo for now or generic pattern */}
                                 <Image
                                     src={project.logo}
-                                    alt={`${project.title} logo`}
+                                    alt={`${project.title} - ${project.tech.join(', ')} project by Omar Mubaidin / MUBX`}
                                     width={200}
                                     height={200}
                                     className="object-contain opacity-80 group-hover:scale-110 transition-transform duration-500"
@@ -115,7 +119,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                                 <p className="text-muted mb-8">{project.caseStudy.problem}</p>
 
                                 <h3 className="text-2xl font-bold text-white mb-4">The Solution</h3>
-                                <p className="text-muted mb-8">{project.caseStudy.details || project.caseStudy.outcome}</p>
+                                <p className="text-muted mb-8">{project.caseStudy.solution}</p>
+
+                                <h3 className="text-2xl font-bold text-white mb-4">The Outcome</h3>
+                                <p className="text-muted mb-8">{project.caseStudy.outcome}</p>
                             </div>
                         </div>
                     </div>

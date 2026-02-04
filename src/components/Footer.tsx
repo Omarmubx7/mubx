@@ -38,9 +38,9 @@ export default function Footer() {
                     <div className="space-y-6">
                         <h4 className="text-sm font-bold text-white uppercase tracking-widest">Connect</h4>
                         <div className="flex flex-col gap-4">
-                            <a href="mailto:contact@mubx.dev" className="flex items-center gap-2 text-muted hover:text-neon transition-colors group">
+                            <a href="mailto:omarmubaidin@proton.me" className="flex items-center gap-2 text-muted hover:text-neon transition-colors group">
                                 <Mail className="w-4 h-4" />
-                                <span>contact@mubx.dev</span>
+                                <span>omarmubaidin@proton.me</span>
                                 <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                             </a>
                             <a href="https://wa.me/962780090453" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors">
@@ -54,9 +54,21 @@ export default function Footer() {
                             <a href="https://linkedin.com/in/omarmubx" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="LinkedIn">
                                 <Linkedin className="w-5 h-5" />
                             </a>
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="Instagram">
+                            <a href="https://www.instagram.com/mubx.dev?igsh=MTg4bDVqMGdwbGdpbQ==" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="Instagram">
                                 <Instagram className="w-5 h-5" />
                             </a>
+                        </div>
+
+                        {/* Social Proof Strip */}
+                        <div className="pt-4 mt-4 border-t border-white/5">
+                            <p className="text-xs text-muted/50 mb-2">Selected Projects</p>
+                            <div className="flex flex-wrap gap-2 text-xs font-mono text-white/40">
+                                <span>HTU Martial Arts</span>
+                                <span>•</span>
+                                <span>BloB.JO</span>
+                                <span>•</span>
+                                <span>Vynex Media</span>
+                            </div>
                         </div>
                     </div>
                 </div>

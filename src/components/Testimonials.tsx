@@ -54,7 +54,7 @@ export default function Testimonials() {
                         <motion.div
                             key={i}
                             variants={fadeUp}
-                            className={`relative p-8 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm overflow-hidden group`}
+                            className={`relative p-8 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm overflow-hidden group hover:scale-[1.02] hover:border-neon/30 hover:shadow-[0_0_20px_rgba(255,30,30,0.1)] transition-all duration-300`}
                         >
                             {/* Subtle dynamic background tint */}
                             <div className={`absolute inset-0 bg-gradient-to-br ${t.bg} opacity-20 group-hover:opacity-40 transition-opacity`} />
