@@ -13,12 +13,12 @@ export default function Footer() {
                     {/* Col 1: Brand */}
                     <div className="space-y-6">
                         <Link href="/" className="flex items-center gap-2 group">
-                            <span className="relative h-16 w-auto min-w-[120px] transition-transform group-hover:scale-105">
+                            <span className="relative h-20 w-auto min-w-[160px] transition-transform group-hover:scale-105">
                                 <Image
                                     src="/mubxlogo.png"
                                     alt="MUBX Logo"
-                                    width={200}
-                                    height={80}
+                                    width={260}
+                                    height={100}
                                     className="h-full w-auto object-contain"
                                 />
                             </span>
