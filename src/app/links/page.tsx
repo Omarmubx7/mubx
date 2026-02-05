@@ -2,8 +2,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 import Badge from '@/components/ui/Badge';
 import { Github, Linkedin, Globe, Phone, Instagram, ArrowRight, Mail, Briefcase, Code } from 'lucide-react';
 
@@ -101,7 +100,7 @@ export default function LinksPage() {
             {/* Background Texture (Consistent with Home) */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#202020_1px,transparent_1px),linear-gradient(to_bottom,#202020_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10 opacity-20" />
 
-            <Navbar />
+
 
             <div className="flex-grow pt-32 pb-20">
                 <div className="container mx-auto px-6 md:px-12 max-w-4xl">
@@ -163,7 +162,6 @@ export default function LinksPage() {
                 </div>
             </div>
 
-            <Footer />
         </main>
     );
 }
