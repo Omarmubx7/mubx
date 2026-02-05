@@ -49,31 +49,27 @@ export default function Hero() {
                             Verified Dev
                         </span>
                     </div>
-                    {/* Value Proposition under title */}
-                    <div className="mt-6 md:mt-8 min-h-[60px] w-full max-w-xl mx-auto">
+                    {/* Clean Subtitle - Unified Block via Typing Effect */}
+                    <div className="mt-4 w-full max-w-4xl mx-auto min-h-[60px]">
                         <TypingText
                             strings={[
-                                "I build <span class='text-neon font-bold'>fast, secure web systems</span>.",
-                                "I help <span class='text-neon font-bold'>Jordanian businesses</span> grow.",
-                                "Turn visitors into <span class='text-neon font-bold'>paying customers</span>."
+                                "Verified developer helping Jordanian brands turn visitors into paying customers in <span class='text-neon font-bold'>under 2 weeks</span>."
                             ]}
+                            className="text-xl md:text-2xl text-white/90 font-medium leading-relaxed"
+                            loop={false}
+                            delay={30}
                         />
                     </div>
                 </div>
 
-                <motion.div variants={fadeUp} className="mb-10 max-w-2xl">
-                    <p className="text-white/80 text-lg md:text-xl font-medium leading-relaxed">
-                        I help Jordanian brands turn visitors into paying customers in <span className="text-neon font-bold">under 2 weeks</span>.
-                    </p>
-                </motion.div>
-
-                <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 mb-16">
+                {/* Main CTA - Larger & Higher Contrast */}
+                <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 mb-20">
                     <a
                         href="#contact"
-                        className="group flex items-center justify-center gap-2 px-8 py-4 bg-neon text-black font-bold text-lg rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,30,30,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
+                        className="group flex items-center justify-center gap-3 px-10 py-5 bg-neon text-black font-black text-xl rounded-full hover:bg-white transition-all transform hover:scale-[1.02] shadow-[0_0_30px_rgba(255,30,30,0.4)] hover:shadow-[0_0_40px_rgba(255,255,255,0.5)]"
                     >
                         Get a Project Estimate
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                     </a>
                 </motion.div>
 

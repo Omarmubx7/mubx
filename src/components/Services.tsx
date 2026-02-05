@@ -101,7 +101,7 @@ export default function Services() {
                             <motion.div
                                 key={service.title}
                                 variants={fadeUp}
-                                className="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-neon/50 transition-all duration-300 hover:bg-white/10 group backdrop-blur-sm flex flex-col"
+                                className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-neon/50 hover:bg-white/[0.07] transition-all duration-300 group backdrop-blur-sm flex flex-col h-full shadow-lg hover:shadow-neon/10"
                             >
                                 <div className="flex justify-between items-start mb-4">
                                     <Badge variant="neon" className="mb-2">{service.price}</Badge>

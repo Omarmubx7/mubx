@@ -142,14 +142,14 @@ export default function Contact() {
                                 }
                             }} className="space-y-4">
                                 <div>
-                                    <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2">Your Email</label>
-                                    <input type="email" name="email" id="email" required className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon focus:outline-none transition-colors" placeholder="name@company.com" />
+                                    <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ml-1">Your Email</label>
+                                    <input type="email" name="email" id="email" required className="w-full bg-black/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all placeholder:text-white/20" placeholder="name@company.com" />
                                 </div>
                                 <div>
-                                    <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted mb-2">Project Details</label>
-                                    <textarea name="message" id="message" rows={4} required className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon focus:outline-none transition-colors resize-none" placeholder="I need a landing page for..."></textarea>
+                                    <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ml-1">Project Details</label>
+                                    <textarea name="message" id="message" rows={4} required className="w-full bg-black/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all resize-none placeholder:text-white/20" placeholder="I need a landing page for..."></textarea>
                                 </div>
-                                <button type="submit" className="w-full py-4 bg-neon text-black font-bold rounded-lg hover:bg-white transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed">
+                                <button type="submit" className="w-full py-4 bg-neon text-black font-bold text-lg rounded-xl hover:bg-white transition-all transform hover:scale-[1.01] shadow-[0_0_20px_rgba(255,30,30,0.2)] disabled:opacity-50 disabled:cursor-not-allowed">
                                     Send Inquiry
                                 </button>
                             </form>

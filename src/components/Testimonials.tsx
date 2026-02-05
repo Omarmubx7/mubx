@@ -66,33 +66,32 @@ export default function Testimonials() {
                         <motion.div
                             key={i}
                             variants={fadeUp}
-                            className={`relative p-8 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm overflow-hidden group hover:scale-[1.02] hover:border-neon/30 hover:shadow-[0_0_20px_rgba(255,30,30,0.1)] transition-all duration-300`}
+                            className={`relative p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm overflow-hidden group hover:scale-[1.02] hover:border-neon/30 hover:shadow-[0_0_30px_rgba(255,30,30,0.1)] transition-all duration-300 flex flex-col h-full`}
                         >
                             {/* Subtle dynamic background tint */}
-                            <div className={`absolute inset-0 bg-gradient-to-br ${t.bg} opacity-20 group-hover:opacity-40 transition-opacity`} />
+                            <div className={`absolute inset-0 bg-gradient-to-br ${t.bg} opacity-10 group-hover:opacity-25 transition-opacity`} />
 
-                            <Quote className="w-8 h-8 text-white/20 mb-6" />
+                            <Quote className="w-10 h-10 text-neon/20 mb-6" />
 
-                            <p className="text-muted text-lg leading-relaxed mb-6 font-medium">
+                            <p className="text-white/90 text-lg leading-loose mb-8 font-medium italic relative z-10 flex-grow">
                                 &quot;{t.text}&quot;
                             </p>
 
-                            <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center font-bold text-neon border border-white/10">
+                            <div className="flex items-center gap-4 mt-auto relative z-10 pt-6 border-t border-white/5">
+                                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-bold text-neon border border-white/10 text-lg shrink-0">
                                     {t.client[0]}
                                 </div>
-                                <div>
-                                    <div className="flex items-center gap-2">
-                                        <h3 className="text-white font-bold">{t.client}</h3>
+                                <div className="leading-tight">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <h3 className="text-white font-bold text-base">{t.client}</h3>
                                         {t.socialLink && (
-                                            <a href={t.socialLink} target="_blank" rel="noopener noreferrer" className="text-white/20 hover:text-white transition-colors" title={`Visit ${t.client}'s site`}>
-                                                <LinkIcon className="w-3 h-3" />
+                                            <a href={t.socialLink} target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white transition-colors" title={`Visit ${t.client}'s site`}>
+                                                <LinkIcon className="w-3.5 h-3.5" />
                                             </a>
                                         )}
                                     </div>
-                                    <p className="text-xs text-muted mb-0.5">{t.project}, {t.year}</p>
-                                    <p className="text-xs text-bold text-neon mb-0.5">{t.outcome}</p>
-                                    <p className="text-sm text-white/50">{t.role}</p>
+                                    <p className="text-neon text-xs font-bold uppercase tracking-wide mb-0.5">{t.outcome}</p>
+                                    <p className="text-white/40 text-xs">{t.role}, {t.year}</p>
                                 </div>
                             </div>
                         </motion.div>

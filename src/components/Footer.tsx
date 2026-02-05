@@ -9,9 +9,9 @@ export default function Footer() {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-neon/50 to-transparent opacity-50" />
 
             <div className="container mx-auto px-6 md:px-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-                    {/* Col 1: Brand */}
-                    <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-16">
+                    {/* Col 1: Brand (Span 2 cols on desktop) */}
+                    <div className="md:col-span-2 space-y-6">
                         <Link href="/" className="flex items-center gap-2 group">
                             <span className="relative h-20 w-auto min-w-[160px] transition-transform group-hover:scale-105">
                                 <Image

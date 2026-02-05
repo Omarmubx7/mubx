@@ -65,7 +65,7 @@ export default function Projects() {
                                 key={project.title}
                                 variants={projectCard}
                                 whileHover={{ y: -10, scale: 1.02 }}
-                                className="group relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-neon/50 transition-all duration-300 backdrop-blur-sm overflow-hidden flex flex-col h-full hover:shadow-[0_0_30px_rgba(255,30,30,0.1)]"
+                                className="group relative p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-neon/50 transition-all duration-300 backdrop-blur-sm overflow-hidden flex flex-col h-full hover:shadow-[0_0_30px_rgba(255,30,30,0.15)] hover:bg-white/[0.07]"
                             >
                                 {/* Glow Effect */}
                                 <div className="absolute inset-0 bg-neon/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -141,9 +141,9 @@ export default function Projects() {
                                             </div>
                                         )}
 
-                                        <div className="flex flex-wrap gap-2">
+                                        <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
                                             {project.tech.map((t) => (
-                                                <Badge key={t} variant="outline" className="text-[10px] py-0.5">
+                                                <Badge key={t} variant="outline" className="text-xs px-3 py-1 rounded-full border-white/10 bg-black/20 text-muted/80">
                                                     {t}
                                                 </Badge>
                                             ))}
