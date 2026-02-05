@@ -85,7 +85,7 @@ export default function Hero() {
                 </motion.div>
 
                 {/* Social Proof / Trust Strip */}
-                <motion.div variants={fadeUp} className="flex flex-col items-center gap-8 opacity-90 w-full max-w-4xl">
+                <motion.div variants={fadeUp} className="flex flex-col items-center gap-8 opacity-90 w-full max-w-4xl min-h-[400px] md:min-h-[160px]">
                     <div className="flex flex-col items-center gap-1">
                         <p className="text-sm text-muted uppercase tracking-widest font-bold">Trusted by Local Leaders</p>
                     </div>
