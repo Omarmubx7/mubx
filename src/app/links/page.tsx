@@ -66,6 +66,17 @@ export default function LinksPage() {
             {/* Background Effects */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neon/5 via-black to-black -z-10" />
 
+            {/* Logo Background Watermark */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] overflow-hidden -z-5">
+                <Image
+                    src="/icon.png"
+                    alt="Background Logo"
+                    width={800}
+                    height={800}
+                    className="object-contain animate-pulse-slow"
+                />
+            </div>
+
             <div className="w-full max-w-[640px] mx-auto z-10 flex flex-col gap-12 py-12">
 
                 {/* 1. Identity Block */}
