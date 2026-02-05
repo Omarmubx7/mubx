@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   icons: {
-    icon: '/favicon-new.png',
-    shortcut: '/favicon-new.png',
-    apple: '/favicon-new.png',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico', // Ideally apple-touch-icon.png, but falling back for consistency
   },
   openGraph: {
     title: 'Omar Mubaidin (MUB) | MUBX - Computer Science & Web Developer',
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/favicon-new.png', // Ideally should be a larger OG image, but using logo as placeholder
+        url: '/favicon.ico', // Ideally should be a larger OG image, but using logo as placeholder
         width: 800,
         height: 600,
         alt: 'MUBX Logo',
