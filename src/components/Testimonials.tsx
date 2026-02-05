@@ -14,10 +14,10 @@ export default function Testimonials() {
             outcome: 'Vynex Media — +20% leads in first month',
             text: "Omar helped us launch faster and look more professional by building a high-performance landing page. He was reliable, proactive, and delivered on time.",
             bg: 'from-orange-500/10 to-orange-500/0',
-            socialLink: 'https://linkedin.com/in/mahmoud-hussam' // Placeholder or real if known
+            socialLink: 'https://www.instagram.com/vynexmedia.jo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' // Placeholder or real if known
         },
         {
-            client: 'Big Rami',
+            client: 'Ali Hiasat',
             role: 'Club Manager @ HTU Martial Arts',
             project: 'Club Management System',
             year: '2025',
@@ -34,7 +34,7 @@ export default function Testimonials() {
             outcome: 'BloB Store — 200% online sales boost',
             text: "Customers can now explore designs and track orders online, turning what used to be manual communication into a smoother digital flow. The print-on-demand store he built is a game changer.",
             bg: 'from-blue-500/10 to-blue-500/0',
-            socialLink: 'https://blob.jo'
+            socialLink: 'https://blobjor.me'
         }
     ];
 
