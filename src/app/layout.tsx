@@ -17,18 +17,32 @@ export const metadata: Metadata = {
   keywords: ['Omar Mubaidin', 'MUB Mubaidin', 'MUBX', 'MUB', 'Mubaidin', 'Web Developer', 'Jordan', 'Computer Science', 'Next.js', 'React', 'Tech Geek'],
   authors: [{ name: 'Omar Mubaidin', url: 'https://mubx.dev' }],
   creator: 'Omar Mubaidin',
+  icons: {
+    icon: '/favicon-new.png',
+    shortcut: '/favicon-new.png',
+    apple: '/favicon-new.png',
+  },
   openGraph: {
     title: 'Omar Mubaidin (MUB) | MUBX - Computer Science & Web Developer',
     description: 'Portfolio of Omar Mubaidin (MUB). CS student and Web Developer in Jordan. Founder of MUBX.',
     siteName: 'MUBX Portfolio',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: 'https://mubx.dev/favicon-new.png', // Using the logo as the main visual for now
+        width: 800,
+        height: 600,
+        alt: 'MUBX Logo',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Omar Mubaidin (MUB) | MUBX',
     description: 'Computer Science student & Web Developer in Amman, Jordan. Building secure, data-driven systems.',
     creator: '@omarmubx',
+    images: ['https://mubx.dev/favicon-new.png'],
   },
   robots: {
     index: true,
@@ -61,6 +75,7 @@ export default function RootLayout({
                   "@type": "Person",
                   "name": "Omar Mubaidin",
                   "url": "https://mubx.dev", // Using the preferred domain mentioned
+                  "image": "https://mubx.dev/favicon-new.png",
                   "jobTitle": "Web Developer",
                   "sameAs": [
                     "https://github.com/Omarmubx7",
@@ -70,6 +85,8 @@ export default function RootLayout({
                 {
                   "@type": "ProfessionalService",
                   "name": "MUBX",
+                  "image": "https://mubx.dev/favicon-new.png",
+                  "logo": "https://mubx.dev/favicon-new.png",
                   "description": "High-performance web development for verified systems and startups.",
                   "url": "https://mubx.dev",
                   "address": {
