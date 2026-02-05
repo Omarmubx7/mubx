@@ -53,10 +53,20 @@ export default function Hero() {
                     <div className="mt-4 w-full max-w-4xl mx-auto min-h-[60px]">
                         <TypingText
                             strings={[
-                                "Verified developer helping Jordanian brands turn visitors into paying customers in <span class='text-neon font-bold'>under 2 weeks</span>."
+                                "Verified developer helping Jordanian brands turn visitors into paying customers in <span class='text-neon font-bold'>under 2 weeks</span>.",
+                                "I build <span class='text-neon font-bold'>lightning-fast websites</span> that Google loves and customers trust.",
+                                "Secure, scalable systems designed to <span class='text-neon font-bold'>outperform your competition</span>.",
+                                "From minimal landing pages to <span class='text-neon font-bold'>complex e-commerce MVPs</span>.",
+                                "I don't just write code; I <span class='text-neon font-bold'>engineer business growth</span>.",
+                                "Get a <span class='text-neon font-bold'>Silicon Valley standard</span> product, built locally in Amman.",
+                                "Stop losing customers to <span class='text-neon font-bold'>slow loading times</span>.",
+                                "Turning complex problems into <span class='text-neon font-bold'>simple, elegant solutions</span>.",
+                                "Your technical partner for <span class='text-neon font-bold'>digital transformation</span>.",
+                                "Trusted by <span class='text-neon font-bold'>HTU, BloB.JO, and Vynex Media</span>.",
+                                "Let's build something <span class='text-neon font-bold'>extraordinary</span> together."
                             ]}
                             className="text-xl md:text-2xl text-white/90 font-medium leading-relaxed"
-                            loop={false}
+                            loop={true}
                             delay={30}
                         />
                     </div>
