@@ -10,18 +10,21 @@ export default function BlogPreview() {
         {
             title: "Why your landing page is slow (and how to fix it)",
             excerpt: "Speed isn't just a metric; it's revenue. Learn how to shave seconds off your load time using Next.js optimization techniques.",
+            value: "Helps turn more visitors into customers.",
             slug: "landing-page-performance",
             date: "Feb 1, 2026"
         },
         {
             title: "How I built BloB.JO's secure checkout",
             excerpt: "A technical deep dive into building a secure, custom e-commerce flow with payment integration for a Jordanian brand.",
+            value: "Secure payments for local market needs.",
             slug: "blob-jo-checkout",
             date: "Jan 15, 2026"
         },
         {
             title: "Security first: Protecting client data",
             excerpt: "Why simpler stacks are often more secure, and how we implement database protection for local startups.",
+            value: "Keeps your customer data safe and private.",
             slug: "security-first-approach",
             date: "Jan 05, 2026"
         }
@@ -67,8 +70,12 @@ export default function BlogPreview() {
                             <h3 className="text-xl font-bold text-white mb-4 group-hover:text-neon transition-colors">
                                 {post.title}
                             </h3>
-                            <p className="text-muted text-sm leading-relaxed mb-6 flex-grow">
+                            <p className="text-muted text-sm leading-relaxed mb-4 flex-grow">
                                 {post.excerpt}
+                            </p>
+                            <p className="text-xs text-neon font-bold mb-6 flex items-center gap-2">
+                                <span className="w-1 h-1 bg-neon rounded-full" />
+                                {post.value}
                             </p>
                             <Link href={`/blog/${post.slug}`} className="text-white text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
                                 Read Article <ArrowRight className="w-4 h-4 text-neon" />

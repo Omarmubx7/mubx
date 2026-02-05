@@ -21,24 +21,12 @@ export default function About() {
                         </motion.h2>
 
                         <motion.p variants={fadeUp} className="text-muted text-lg leading-relaxed">
-                            I am a Computer Science student and <span className="text-white font-medium">Full Stack Web Developer</span> based in Jordan.
+                            I’m <span className="text-white font-bold">Omar Mubaidin</span>, a Computer Science student and web developer based in Jordan.
                             <br /><br />
-                            Unlike typical template-users, I focus on <span className="text-neon">database efficiency, security, and raw performance</span>.
-                            My background in CS theory allows me to build systems that scale, not just pages that look good.
+                            Unlike typical template-users, I engineer <span className="text-neon">performance</span>. My academic background in CS allows me to build secure, database-driven systems that safeguard your customer data and load instantly.
                         </motion.p>
 
                         <div className="pt-6">
-                            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Tech Stack & Tools</h3>
-                            <div className="flex flex-wrap gap-2">
-                                {['Next.js 14', 'React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Supabase', 'Tailwind', 'Framer Motion', 'Git'].map((tech) => (
-                                    <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs text-white/80 font-mono">
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="pt-6 border-t border-white/10 mt-6">
                             <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Achievements</h3>
                             <ul className="space-y-2 text-muted text-sm">
                                 <li className="flex items-center gap-2">
@@ -50,6 +38,13 @@ export default function About() {
                                     Built & Deployed 10+ Production Apps
                                 </li>
                             </ul>
+                        </div>
+
+                        <div className="pt-6 border-t border-white/10 mt-6 opacity-80">
+                            <h3 className="text-white/60 font-bold mb-3 uppercase tracking-wider text-xs">Tech Stack</h3>
+                            <div className="flex flex-wrap gap-2 text-[10px] text-muted/60 font-mono">
+                                <span>Next.js • React • TypeScript • Node.js • Supabase • Tailwind</span>
+                            </div>
                         </div>
 
                     </div>

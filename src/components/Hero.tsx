@@ -49,24 +49,13 @@ export default function Hero() {
                             Verified Dev
                         </span>
                     </div>
+                    {/* Value Proposition under title */}
+                    <div className="mt-6 md:mt-8">
+                        <h2 className="text-xl md:text-3xl text-white/90 font-medium max-w-3xl mx-auto leading-relaxed">
+                            I build <span className="text-neon font-bold">fast, secure web systems</span> for businesses in Jordan.
+                        </h2>
+                    </div>
                 </div>
-
-                <motion.h2 variants={fadeUp} className="text-xl md:text-2xl text-white/90 font-medium max-w-2xl mb-10 leading-relaxed h-[60px] flex items-center justify-center">
-                    <span className="sr-only">Web Developer & CS Student in Amman, Jordan. Founder of MUBX. Building fast, secure web systems.</span>
-                    {isLoading ? (
-                        <SkeletonTheme baseColor="#202020" highlightColor="#444">
-                            <Skeleton width={400} height={24} />
-                        </SkeletonTheme>
-                    ) : (
-                        <TypingText
-                            strings={[
-                                "Web Developer & CS Student in Amman",
-                                "Founder of MUBX",
-                                "I build <span class='text-neon font-bold'>fast, secure web systems</span>"
-                            ]}
-                        />
-                    )}
-                </motion.h2>
 
                 <motion.div variants={fadeUp} className="mb-10 max-w-2xl">
                     <p className="text-white/80 text-lg md:text-xl font-medium leading-relaxed">
@@ -82,36 +71,35 @@ export default function Hero() {
                         Get a Project Estimate
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </a>
-                    <Link
-                        href="#projects"
-                        className="group flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white/20 text-white font-medium text-lg rounded-full hover:bg-white/10 transition-all"
-                    >
-                        View Work
-                    </Link>
                 </motion.div>
 
                 {/* Social Proof / Trust Strip */}
-                <motion.div variants={fadeUp} className="flex flex-col items-center gap-6 opacity-80">
+                <motion.div variants={fadeUp} className="flex flex-col items-center gap-8 opacity-90 w-full max-w-4xl">
                     <div className="flex flex-col items-center gap-1">
-                        <p className="text-sm text-muted uppercase tracking-widest font-bold">Creator of BloB.JO & Founder of MUBX</p>
-                        <p className="text-xs text-muted/60 font-medium">Trusted by student clubs, agencies, and local brands in Jordan.</p>
+                        <p className="text-sm text-muted uppercase tracking-widest font-bold">Trusted by Local Leaders</p>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-8 items-center grayscale hover:grayscale-0 transition-all duration-500">
-                        <Link href="/projects/htu-martial-arts" className="text-white/40 font-bold text-lg hover:text-white transition-colors hover:underline decoration-neon decoration-2 underline-offset-4 flex flex-col items-center gap-1 group">
-                            HTU Martial Arts
-                            <span className="text-[10px] text-neon opacity-0 group-hover:opacity-100 transition-opacity font-mono">100+ Members</span>
-                        </Link>
-                        <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
-                        <Link href="/projects/blob-jo" className="text-white/40 font-bold text-lg hover:text-white transition-colors hover:underline decoration-neon decoration-2 underline-offset-4 flex flex-col items-center gap-1 group">
-                            BloB.JO
-                            <span className="text-[10px] text-neon opacity-0 group-hover:opacity-100 transition-opacity font-mono">Full E-com</span>
-                        </Link>
-                        <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
-                        <Link href="/projects/vynex-media" className="text-white/40 font-bold text-lg hover:text-white transition-colors hover:underline decoration-neon decoration-2 underline-offset-4 flex flex-col items-center gap-1 group">
-                            Vynex Media
-                            <span className="text-[10px] text-neon opacity-0 group-hover:opacity-100 transition-opacity font-mono">Top SEO</span>
-                        </Link>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+                        {/* Card 1 */}
+                        <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+                            <span className="text-white font-bold text-lg">HTU Martial Arts</span>
+                            <span className="text-xs text-muted mb-2">Club Management System</span>
+                            <span className="text-neon font-mono text-xs font-bold">100+ Members Managed</span>
+                        </div>
+
+                        {/* Card 2 */}
+                        <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+                            <span className="text-white font-bold text-lg">BloB.JO</span>
+                            <span className="text-xs text-muted mb-2">E-commerce Store</span>
+                            <span className="text-neon font-mono text-xs font-bold">Full Digital Branch</span>
+                        </div>
+
+                        {/* Card 3 */}
+                        <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+                            <span className="text-white font-bold text-lg">Vynex Media</span>
+                            <span className="text-xs text-muted mb-2">Agency Portfolio</span>
+                            <span className="text-neon font-mono text-xs font-bold">+20% Lead Conversion</span>
+                        </div>
                     </div>
                 </motion.div>
             </motion.div>

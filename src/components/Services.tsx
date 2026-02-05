@@ -3,6 +3,7 @@
 
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
+import { ArrowRight } from 'lucide-react';
 import dynamic from 'next/dynamic';
 const PopupModal = dynamic(() => import('react-calendly').then((mod) => mod.PopupModal), {
     ssr: false
@@ -15,30 +16,30 @@ export default function Services() {
     const services = [
         {
             label: 'Service 01',
-            title: 'WEB DEVELOPMENT + DEPLOYMENT',
-            description: 'I design and build a fast, responsive landing page tailored to your brand, then handle deployment so it’s live on your domain with proper SEO and analytics.',
-            idealHeight: 'Ideal for: New businesses needing a high-impact presence.',
-            deliverables: 'Includes: 1-Page Site, Copy Assistance, Hosting Setup, Basic SEO, Analytics.',
-            details: ['Responsive Design', 'SEO Setup', 'Analytics Integration', 'Fast Performance'],
-            price: 'Starting at 150 JD'
+            title: 'LANDING PAGE',
+            description: 'A high-conversion landing page tailored to your brand. Perfect for ads, events, or launching a new product.',
+            idealHeight: 'Timeline: 5–7 Days',
+            deliverables: 'Deliverables: 1-Page Design, Copywriting, Mobile Responsive, Hosting Setup, Basic Analytics.',
+            details: ['Responsive Design', 'Speed Optimization', 'SEO Basics', 'Analytics Setup'],
+            price: 'From 200 JD'
         },
         {
             label: 'Service 02',
-            title: 'E-COMMERCE SOLUTIONS',
-            description: 'End-to-end e-commerce experience with product catalog, cart, and checkout flow. Focused on clear UX and performance to give you a solid foundation.',
-            idealHeight: 'Ideal for: Brands starting to sell online.',
-            deliverables: 'Includes: Product DB, Cart, Checkout, Admin Panel, Payment Integration.',
-            details: ['Product Catalog', 'Shopping Cart', 'Checkout Flow', 'Admin Dashboard'],
-            price: 'Starting at 350 JD'
+            title: 'BUSINESS WEBSITE',
+            description: 'A complete multi-page website to establish authority. Includes a CMS so you can edit content yourself.',
+            idealHeight: 'Timeline: 1–2 Weeks',
+            deliverables: 'Deliverables: 5-Page Site, CMS/Admin Panel, Dynamic Forms, Map Integration.',
+            details: ['CMS Integration', 'Advanced SEO', 'Blog / News Section', 'Contact Forms'],
+            price: 'From 350 JD'
         },
         {
             label: 'Service 03',
-            title: 'MAINTENANCE & RETAINER',
-            description: 'Monthly support to keep your site secure, updated, and fast. I handle the technical headaches so you can focus on business.',
-            idealHeight: 'Ideal for: Growing businesses who need a tech partner.',
-            deliverables: 'Includes: Weekly Backups, Security Patches, Content Updates, 24/7 Monitoring.',
-            details: ['Security Updates', 'Content Edits', 'Performance Checks', 'Priority Support'],
-            price: '50 JD / Month'
+            title: 'E-COMMERCE MVP',
+            description: 'Start selling online with a custom store. Optimized for performance and secure local payments.',
+            idealHeight: 'Timeline: 2–3 Weeks',
+            deliverables: 'Deliverables: Product DB, Cart & Checkout, Payment Gateway (ZainCash/CliQ), Admin Dashboard.',
+            details: ['Product Catalog', 'Shopping Cart', 'Secure Checkout', 'Order Management'],
+            price: 'From 550 JD'
         },
     ];
 
@@ -71,22 +72,11 @@ export default function Services() {
                         viewport={{ once: true }}
                         className="text-3xl md:text-5xl font-bold mb-6"
                     >
-                        WHAT I <span className="text-neon">DELIVER</span>
+                        SERVICES & <span className="text-neon">PRICING</span>
                     </motion.h2>
                     <p className="text-muted text-lg mb-8">
-                        Reliable, secure web systems for small businesses and growing brands.
+                        Clear packages. No hidden fees. Delivered on time.
                     </p>
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="inline-block relative"
-                    >
-                        <div className="absolute inset-0 bg-neon blur-md opacity-20" />
-                        <a href="#contact" className="relative z-10 inline-block px-8 py-3 rounded-full bg-neon text-black font-black tracking-widest uppercase text-sm transform hover:scale-105 transition-transform cursor-pointer shadow-[0_0_15px_rgba(255,30,30,0.4)]">
-                            Projects start from 150 JD
-                        </a>
-                    </motion.div>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -114,28 +104,28 @@ export default function Services() {
                                 className="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-neon/50 transition-all duration-300 hover:bg-white/10 group backdrop-blur-sm flex flex-col"
                             >
                                 <div className="flex justify-between items-start mb-4">
-                                    <Badge variant="neon" className="mb-2">{service.label}</Badge>
-                                    <h3 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-transparent group-hover:from-neon/50 group-hover:to-transparent transition-colors">
-                                        0{index + 1}
-                                    </h3>
+                                    <Badge variant="neon" className="mb-2">{service.price}</Badge>
                                 </div>
 
                                 <h4 className="text-xl font-bold mb-4 text-white group-hover:text-neon transition-colors uppercase">
                                     {service.title}
                                 </h4>
-                                <p className="text-muted leading-relaxed mb-4 flex-grow">
+                                <p className="text-muted leading-relaxed mb-4 flex-grow text-sm">
                                     {service.description}
                                 </p>
-                                <p className="text-xs text-neon font-mono mb-4">
-                                    {service.deliverables}
-                                </p>
-                                <p className="text-sm text-white/80 font-medium italic mb-6 border-l-2 border-neon pl-3">
-                                    {service.idealHeight}
-                                </p>
 
-                                <ul className="space-y-2 mb-6 border-t border-white/10 pt-6">
+                                <div className="mb-4">
+                                    <p className="text-sm text-neon font-bold mb-1">
+                                        {service.idealHeight}
+                                    </p>
+                                    <p className="text-xs text-muted/80">
+                                        {service.deliverables}
+                                    </p>
+                                </div>
+
+                                <ul className="space-y-2 mb-6 border-t border-white/10 pt-6 mt-auto">
                                     {service.details.map((detail) => (
-                                        <li key={detail} className="text-sm text-white/80 flex items-center gap-2">
+                                        <li key={detail} className="text-xs text-white/80 flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 bg-neon rounded-full" />
                                             {detail}
                                         </li>
@@ -146,44 +136,46 @@ export default function Services() {
                 </div>
 
                 <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex justify-center">
-                    <button
-                        onClick={() => setIsOpen(true)}
-                        className="px-8 py-4 bg-transparent border border-neon text-neon font-bold rounded-full hover:bg-neon hover:text-black transition-all uppercase tracking-wide cursor-pointer"
+                    <a
+                        href="#contact"
+                        className="px-8 py-4 bg-neon text-black font-bold text-lg rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,30,30,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] flex items-center gap-2"
                     >
-                        Book a Free 20-min Call
-                    </button>
+                        Get a Project Estimate
+                        <ArrowRight className="w-5 h-5" />
+                    </a>
                 </motion.div>
             </div>
 
-            {/* Simple FAQ / Process Section */}
+            {/* How It Works Section */}
             <motion.div
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="mt-24 max-w-4xl mx-auto px-6 md:px-12"
+                className="mt-24 max-w-5xl mx-auto px-6 md:px-12"
             >
                 <div className="text-center mb-12">
-                    <h3 className="text-2xl font-bold text-white mb-4">COMMON QUESTIONS</h3>
+                    <h3 className="text-2xl font-bold text-white mb-4">HOW IT WORKS</h3>
                     <div className="h-1 w-20 bg-neon mx-auto rounded-full" />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
-                    <motion.div variants={fadeUp} className="bg-white/5 p-6 rounded-xl border border-white/5">
-                        <h4 className="font-bold text-white mb-2">Do you work with startups?</h4>
-                        <p className="text-muted text-sm">Yes. I specialize in helping fast-paced startups and small businesses get their MVP to market securely and quickly.</p>
+                <div className="grid md:grid-cols-3 gap-8 text-center">
+                    <motion.div variants={fadeUp} className="bg-white/5 p-8 rounded-xl border border-white/5 relative">
+                        <div className="absolute -top-4 -left-4 w-10 h-10 bg-neon text-black font-bold flex items-center justify-center rounded-full text-xl shadow-[0_0_15px_rgba(255,30,30,0.5)]">1</div>
+                        <h4 className="font-bold text-white text-lg mb-2">Free Discovery Call</h4>
+                        <p className="text-muted text-sm">We chat for 20 mins to understand your goals. No sales pressure, just clarity.</p>
                     </motion.div>
-                    <motion.div variants={fadeUp} className="bg-white/5 p-6 rounded-xl border border-white/5">
-                        <h4 className="font-bold text-white mb-2">What is your typical timeline?</h4>
-                        <p className="text-muted text-sm">A standard landing page takes 3-5 days. Full e-commerce sites or web apps typically take 2-4 weeks depending on complexity.</p>
+
+                    <motion.div variants={fadeUp} className="bg-white/5 p-8 rounded-xl border border-white/5 relative">
+                        <div className="absolute -top-4 -left-4 w-10 h-10 bg-neon text-black font-bold flex items-center justify-center rounded-full text-xl shadow-[0_0_15px_rgba(255,30,30,0.5)]">2</div>
+                        <h4 className="font-bold text-white text-lg mb-2">Proposal in 24 Hours</h4>
+                        <p className="text-muted text-sm">You get a clear plan with deadline and price. You approve, and I start building.</p>
                     </motion.div>
-                    <motion.div variants={fadeUp} className="bg-white/5 p-6 rounded-xl border border-white/5">
-                        <h4 className="font-bold text-white mb-2">Do you handle hosting?</h4>
-                        <p className="text-muted text-sm">Absolutely. I deploy your site (usually on Vercel or VPS), configure your domain, and ensure SSL security is active.</p>
-                    </motion.div>
-                    <motion.div variants={fadeUp} className="bg-white/5 p-6 rounded-xl border border-white/5">
-                        <h4 className="font-bold text-white mb-2">What tech do you use?</h4>
-                        <p className="text-muted text-sm">I primarily use Next.js, React, and Tailwind CSS for frontend, with Supabase or MySQL for backend data handling.</p>
+
+                    <motion.div variants={fadeUp} className="bg-white/5 p-8 rounded-xl border border-white/5 relative">
+                        <div className="absolute -top-4 -left-4 w-10 h-10 bg-neon text-black font-bold flex items-center justify-center rounded-full text-xl shadow-[0_0_15px_rgba(255,30,30,0.5)]">3</div>
+                        <h4 className="font-bold text-white text-lg mb-2">Build & Launch</h4>
+                        <p className="text-muted text-sm">I build your system, you review it, and we go live. Simple as that.</p>
                     </motion.div>
                 </div>
             </motion.div>

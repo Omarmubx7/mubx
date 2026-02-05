@@ -59,10 +59,20 @@ export default function Contact() {
                                         <span className="text-white font-bold">Accepting 2 New Projects (Q1)</span>
                                     </div>
                                     <p className="text-muted text-sm leading-relaxed">
-                                        I typically reply within <span className="text-neon font-bold">24 hours</span>.
+                                        I read every message myself and reply within <span className="text-neon font-bold">24 hours</span>.
                                         <br />
                                         Currently prioritizing e-commerce and SaaS projects.
                                     </p>
+                                </div>
+
+                                <div className="mt-4">
+                                    <p className="text-xs text-muted/60 mb-1">
+                                        Need a faster reply?
+                                    </p>
+                                    <a href="https://wa.me/962791234567" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-white hover:text-neon flex items-center gap-2 transition-colors">
+                                        <span className="w-2 h-2 bg-green-500 rounded-full" />
+                                        WhatsApp: Best for quick voice notes
+                                    </a>
                                 </div>
                             </div>
 
