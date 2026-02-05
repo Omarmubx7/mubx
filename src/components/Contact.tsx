@@ -83,7 +83,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <p className="text-xs uppercase tracking-wider text-muted/60">Email</p>
-                                        <a href="mailto:omarmubaidin@proton.me" className="font-medium">omarmubaidin@proton.me</a>
+                                        <a href="mailto:mubxdev@proton.me" className="font-medium">mubxdev@proton.me</a>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4 text-muted hover:text-white transition-colors">
