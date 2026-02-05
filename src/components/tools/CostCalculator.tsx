@@ -54,7 +54,7 @@ export default function CostCalculator() {
     const calculateTotal = () => {
         const base = selections.pages + selections.design;
         const featureTotal = selections.features.reduce((acc: number, id: string) => {
-            const feature = options[2].choices.find(c => c.id === id);
+            const feature = options[2].choices.find(c => (c as any).id === id);
             return acc + (feature ? feature.price : 0);
         }, 0);
         return base + featureTotal;
