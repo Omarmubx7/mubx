@@ -33,7 +33,7 @@ export default function Footer() {
                         <h4 className="text-sm font-bold text-white uppercase tracking-widest">Navigation</h4>
                         <nav className="flex flex-col gap-4">
                             <Link href="/" className="text-muted hover:text-white hover:translate-x-1 transition-all">Home</Link>
-                            <Link href="/about" className="text-muted hover:text-white hover:translate-x-1 transition-all">About</Link>
+                            <Link href="/#about" className="text-muted hover:text-white hover:translate-x-1 transition-all">About</Link>
                             <Link href="/#projects" className="text-muted hover:text-white hover:translate-x-1 transition-all">Work</Link>
                             <Link href="/#services" className="text-muted hover:text-white hover:translate-x-1 transition-all">Services</Link>
                             <Link href="/blog" className="text-muted hover:text-white hover:translate-x-1 transition-all">Lab</Link>

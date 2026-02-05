@@ -77,7 +77,7 @@ export default function Projects() {
                                             <div className="relative w-full h-full">
                                                 <Image
                                                     src={project.logo}
-                                                    alt={`${project.title} by Omar Mubaidin - ${project.tech.join(', ')}`}
+                                                    alt={`${project.title} - ${project.description.split('.')[0]} by Omar Mubaidin - ${project.tech.join(', ')}`}
                                                     fill
                                                     className="object-contain"
                                                 />

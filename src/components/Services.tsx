@@ -179,7 +179,7 @@ export default function Services() {
                         url="https://calendly.com/omarmubaidincs/30min"
                         onModalClose={() => setIsOpen(false)}
                         open={isOpen}
-                        rootElement={document.getElementById("root") || document.body}
+                        rootElement={document.body}
                     />
                 )
             }

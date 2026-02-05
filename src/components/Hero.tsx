@@ -53,11 +53,10 @@ export default function Hero() {
                 </div>
 
                 <motion.h2 variants={fadeUp} className="text-xl md:text-2xl text-white/90 font-medium max-w-2xl mb-10 leading-relaxed h-[60px] flex items-center justify-center">
+                    <span className="sr-only">Web Developer & CS Student in Amman, Jordan. Founder of MUBX. Building fast, secure web systems.</span>
                     {isLoading ? (
                         <SkeletonTheme baseColor="#202020" highlightColor="#444">
                             <Skeleton width={400} height={24} />
-                            {/* SEO Fallback: Hidden visually but present for crawlers if JS fails or before hydration */}
-                            <span className="sr-only">Web Developer & CS Student in Amman, Jordan. Founder of MUBX.</span>
                         </SkeletonTheme>
                     ) : (
                         <TypingText
