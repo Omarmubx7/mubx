@@ -58,7 +58,7 @@ export default function Contact() {
                                 GitHub
                             </a>
                             <a
-                                href="https://linkedin.com/in/omarmubx"
+                                href="https://www.linkedin.com/in/omarmubaidin"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium rounded-full transition-all"

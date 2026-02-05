@@ -58,7 +58,7 @@ export default function Footer() {
                             <a href="https://github.com/Omarmubx7" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="GitHub">
                                 <Github className="w-5 h-5" />
                             </a>
-                            <a href="https://linkedin.com/in/omarmubx" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="LinkedIn">
+                            <a href="https://www.linkedin.com/in/omarmubaidin" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="LinkedIn">
                                 <Linkedin className="w-5 h-5" />
                             </a>
                             <a href="https://www.instagram.com/mubx.dev?igsh=MTg4bDVqMGdwbGdpbQ==" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="Instagram">

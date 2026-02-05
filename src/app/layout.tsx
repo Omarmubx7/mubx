@@ -64,7 +64,7 @@ export default function RootLayout({
                   "jobTitle": "Web Developer",
                   "sameAs": [
                     "https://github.com/Omarmubx7",
-                    "https://linkedin.com/in/omarmubx"
+                    "https://www.linkedin.com/in/omarmubaidin"
                   ]
                 },
                 {

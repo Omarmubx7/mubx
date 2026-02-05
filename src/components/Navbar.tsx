@@ -55,6 +55,15 @@ export default function Navbar() {
                 </Link>
 
                 <Link
+                    href="/cv.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-gray-300 hover:text-neon transition-colors flex items-center gap-1"
+                >
+                    Resume
+                </Link>
+
+                <Link
                     href="#contact"
                     className="px-4 py-2 text-sm font-bold text-black bg-neon rounded-full hover:bg-white transition-colors"
                 >
@@ -96,6 +105,15 @@ export default function Navbar() {
                             className="text-2xl font-bold text-white hover:text-neon transition-colors uppercase tracking-wider"
                         >
                             Lab / Articles
+                        </Link>
+                        <Link
+                            href="/cv.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setIsOpen(false)}
+                            className="text-2xl font-bold text-white hover:text-neon transition-colors uppercase tracking-wider"
+                        >
+                            Resume
                         </Link>
                         <Link
                             href="#contact"
