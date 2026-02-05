@@ -45,10 +45,10 @@ export default function Navbar() {
                     </Link>
                 ))}
                 <Link
-                    href="#"
+                    href="/blog"
                     className="text-sm font-medium text-gray-300 hover:text-neon transition-colors flex items-center gap-1"
                 >
-                    Lab / Articles <span className="text-[10px] bg-neon/10 text-neon px-1.5 py-0.5 rounded-full">Soon</span>
+                    Lab / Articles
                 </Link>
 
                 <Link

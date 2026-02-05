@@ -74,12 +74,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                                     <ExternalLink className="w-4 h-4" />
                                     View Live
                                 </a>
-                                {project.links.code && (
-                                    <a href={project.links.code} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 text-white font-bold rounded-full hover:bg-white/10 transition-all">
-                                        <Github className="w-4 h-4" />
-                                        GitHub
-                                    </a>
-                                )}
+                                {project.links.code && null}
                             </div>
 
                             <div className="bg-white/5 border border-white/5 rounded-2xl p-8 backdrop-blur-sm">
