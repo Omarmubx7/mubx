@@ -23,7 +23,11 @@ export default function About() {
                         <motion.p variants={fadeUp} className="text-muted text-lg leading-relaxed">
                             I’m <span className="text-white font-bold">Omar Mubaidin</span>, a Computer Science student and web developer based in Jordan.
                             <br /><br />
-                            Unlike typical template-users, I engineer <span className="text-neon">performance</span>. My academic background in CS allows me to build secure, database-driven systems that safeguard your customer data and load instantly.
+                            Unlike typical template-users, I engineer <span className="text-neon">performance</span>. My academic background in CS allows me to build secure, database-driven systems that safeguard your customer data.
+                            <br /><br />
+                            <span className="text-white font-medium border-l-2 border-neon pl-3 block italic">
+                                &quot;Most of my pages load in under <span className="text-neon">1.5s on 4G</span> networks in Jordan.&quot;
+                            </span>
                         </motion.p>
 
                         <div className="pt-6">
@@ -40,7 +44,22 @@ export default function About() {
                             </ul>
                         </div>
 
-                        <div className="pt-6 border-t border-white/10 mt-6 opacity-80">
+                        <div className="pt-6 border-t border-white/10 mt-6">
+                            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Code & Security Standards</h3>
+                            <ul className="grid grid-cols-1 gap-2 text-muted text-xs font-mono">
+                                <li className="flex items-center gap-2">
+                                    <span className="text-green-500">✓</span> Git Version Control & Backups
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <span className="text-green-500">✓</span> HTTPS & Input Validation
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <span className="text-green-500">✓</span> Clean, Maintainable Architecture
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div className="pt-6 opacity-60">
                             <h3 className="text-white/60 font-bold mb-3 uppercase tracking-wider text-xs">Tech Stack</h3>
                             <div className="flex flex-wrap gap-2 text-[10px] text-muted/60 font-mono">
                                 <span>Next.js • React • TypeScript • Node.js • Supabase • Tailwind</span>

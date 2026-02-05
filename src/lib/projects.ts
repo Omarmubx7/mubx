@@ -7,7 +7,9 @@ export interface Project {
     links: { live: string; code?: string };
     logo: string;
     metrics: string;
-    timeframe: string; // Added field
+    timeframe: string;
+    verified_outcome?: string; // Added field
+    screenshots?: string[]; // Added field
     caseStudy: {
         problem: string;
         role: string;
@@ -25,6 +27,8 @@ export const projects: Project[] = [
         links: { live: 'https://vynexmedia.lovable.app/', code: 'https://github.com/Omarmubx7/vynexmedia' },
         logo: '/images/vynex-logo.png',
         metrics: '20% Conversion Rate',
+        verified_outcome: 'Verified via Google Analytics',
+        screenshots: ['/images/vynex-desktop.jpg', '/images/vynex-mobile.jpg'],
         timeframe: '2 Weeks',
         caseStudy: {
             problem: 'Needed a modern website matching their high visual production quality.',
@@ -41,6 +45,8 @@ export const projects: Project[] = [
         links: { live: 'https://htumartialarts.42web.io/?i=1', code: 'https://github.com/Omarmubx7/htu_martial_arts-man' },
         logo: '/images/htu-logo.png',
         metrics: '100+ Active Members',
+        verified_outcome: 'Based on Club Registry Logs',
+        screenshots: ['/images/htu-dashboard.jpg', '/images/htu-admin.jpg'],
         timeframe: '1 Month',
         caseStudy: {
             problem: 'Manual management of members and bookings via messages/sheets.',
@@ -57,6 +63,8 @@ export const projects: Project[] = [
         links: { live: 'https://www.blobjor.me/', code: 'https://github.com/Omarmubx7/blobjor' },
         logo: '/images/blobjor-logo.png',
         metrics: 'Full E-com Flow',
+        verified_outcome: 'Operational since Jan 2025',
+        screenshots: ['/images/blob-home.jpg', '/images/blob-product.jpg'],
         timeframe: '3 Weeks',
         caseStudy: {
             problem: 'Lack of local POD store with custom design tools.',

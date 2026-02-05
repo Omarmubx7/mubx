@@ -112,8 +112,35 @@ export default function Projects() {
                                     <div className="mt-auto space-y-5">
                                         <div className="grid grid-cols-1 gap-2 text-sm bg-black/40 p-4 rounded-xl border border-white/5 backdrop-blur-md">
                                             <div className="flex gap-2 items-start"><span className="text-white/40 font-bold min-w-[70px] text-xs uppercase tracking-wider mt-0.5">Problem</span> <span className="text-white/80 leading-snug">{project.caseStudy.problem}</span></div>
-                                            <div className="flex gap-2 items-start"><span className="text-white/40 font-bold min-w-[70px] text-xs uppercase tracking-wider mt-0.5">Outcome</span> <span className="text-white/80 leading-snug">{project.caseStudy.outcome}</span></div>
+                                            <div className="flex gap-2 items-start"><span className="text-white/40 font-bold min-w-[70px] text-xs uppercase tracking-wider mt-0.5">Outcome</span>
+                                                <div className="flex flex-col">
+                                                    <span className="text-white/80 leading-snug">{project.caseStudy.outcome}</span>
+                                                    {project.verified_outcome && (
+                                                        <span className="text-[10px] text-green-400 font-mono mt-1 flex items-center gap-1">
+                                                            <span className="w-1 h-1 bg-green-400 rounded-full animate-pulse" />
+                                                            {project.verified_outcome}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        {/* Screenshots Preview */}
+                                        {project.screenshots && (
+                                            <div className="grid grid-cols-2 gap-2 mt-4">
+                                                {project.screenshots.map((src, idx) => (
+                                                    <div key={idx} className="relative aspect-video bg-black/50 rounded-lg overflow-hidden border border-white/5 group-hover:border-neon/30 transition-colors">
+                                                        {/* Placeholder for real image - using a colored div for now if image missing */}
+                                                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10 flex items-center justify-center">
+                                                            <span className="text-[9px] text-white/30 uppercase tracking-widest font-bold">Preview</span>
+                                                        </div>
+                                                        {/* Actual Image component - uncomment when files exist
+                                                        <Image src={src} alt="Project screenshot" fill className="object-cover opacity-60 hover:opacity-100 transition-opacity" />
+                                                        */}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
 
                                         <div className="flex flex-wrap gap-2">
                                             {project.tech.map((t) => (

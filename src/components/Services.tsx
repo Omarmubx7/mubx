@@ -169,7 +169,7 @@ export default function Services() {
                     <motion.div variants={fadeUp} className="bg-white/5 p-8 rounded-xl border border-white/5 relative">
                         <div className="absolute -top-4 -left-4 w-10 h-10 bg-neon text-black font-bold flex items-center justify-center rounded-full text-xl shadow-[0_0_15px_rgba(255,30,30,0.5)]">2</div>
                         <h4 className="font-bold text-white text-lg mb-2">Proposal in 24 Hours</h4>
-                        <p className="text-muted text-sm">You get a clear plan with deadline and price. You approve, and I start building.</p>
+                        <p className="text-muted text-sm">You get a clear plan with deadline and price. <strong>50% upfront, 50% on launch</strong>, includes 2 revision rounds.</p>
                     </motion.div>
 
                     <motion.div variants={fadeUp} className="bg-white/5 p-8 rounded-xl border border-white/5 relative">

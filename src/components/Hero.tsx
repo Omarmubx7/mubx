@@ -87,21 +87,21 @@ export default function Hero() {
                         {/* Card 1 */}
                         <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
                             <span className="text-white font-bold text-lg">HTU Martial Arts</span>
-                            <span className="text-xs text-muted mb-2">Club Management System</span>
+                            <span className="text-xs text-muted mb-2">University Club System</span>
                             <span className="text-neon font-mono text-xs font-bold">100+ Members Managed</span>
                         </div>
 
                         {/* Card 2 */}
                         <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
                             <span className="text-white font-bold text-lg">BloB.JO</span>
-                            <span className="text-xs text-muted mb-2">E-commerce Store</span>
+                            <span className="text-xs text-muted mb-2">Amman, Print-on-Demand Brand</span>
                             <span className="text-neon font-mono text-xs font-bold">Full Digital Branch</span>
                         </div>
 
                         {/* Card 3 */}
                         <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
                             <span className="text-white font-bold text-lg">Vynex Media</span>
-                            <span className="text-xs text-muted mb-2">Agency Portfolio</span>
+                            <span className="text-xs text-muted mb-2">Digital Agency</span>
                             <span className="text-neon font-mono text-xs font-bold">+20% Lead Conversion</span>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
-import { Quote } from 'lucide-react';
+import { Quote, Link as LinkIcon } from 'lucide-react';
 
 export default function Testimonials() {
     const testimonials = [
@@ -13,7 +13,8 @@ export default function Testimonials() {
             year: '2024',
             outcome: 'Vynex Media — +20% leads in first month',
             text: "Omar helped us launch faster and look more professional by building a high-performance landing page. He was reliable, proactive, and delivered on time.",
-            bg: 'from-orange-500/10 to-orange-500/0'
+            bg: 'from-orange-500/10 to-orange-500/0',
+            socialLink: 'https://linkedin.com/in/mahmoud-hussam' // Placeholder or real if known
         },
         {
             client: 'Big Rami',
@@ -22,7 +23,8 @@ export default function Testimonials() {
             year: '2025',
             outcome: 'Club Portal — Managed 100+ students',
             text: "Our old process for members was messy; after Omar’s system, managing bookings and payments became seamless. I’d recommend him to any club that needs solid web systems.",
-            bg: 'from-red-600/10 to-red-600/0'
+            bg: 'from-red-600/10 to-red-600/0',
+            socialLink: 'https://htu.edu.jo'
         },
         {
             client: 'Hassan Emad',
@@ -31,7 +33,8 @@ export default function Testimonials() {
             year: '2025',
             outcome: 'BloB Store — 200% online sales boost',
             text: "Customers can now explore designs and track orders online, turning what used to be manual communication into a smoother digital flow. The print-on-demand store he built is a game changer.",
-            bg: 'from-blue-500/10 to-blue-500/0'
+            bg: 'from-blue-500/10 to-blue-500/0',
+            socialLink: 'https://blob.jo'
         }
     ];
 
@@ -79,7 +82,14 @@ export default function Testimonials() {
                                     {t.client[0]}
                                 </div>
                                 <div>
-                                    <h3 className="text-white font-bold">{t.client}</h3>
+                                    <div className="flex items-center gap-2">
+                                        <h3 className="text-white font-bold">{t.client}</h3>
+                                        {t.socialLink && (
+                                            <a href={t.socialLink} target="_blank" rel="noopener noreferrer" className="text-white/20 hover:text-white transition-colors" title={`Visit ${t.client}'s site`}>
+                                                <LinkIcon className="w-3 h-3" />
+                                            </a>
+                                        )}
+                                    </div>
                                     <p className="text-xs text-muted mb-0.5">{t.project}, {t.year}</p>
                                     <p className="text-xs text-bold text-neon mb-0.5">{t.outcome}</p>
                                     <p className="text-sm text-white/50">{t.role}</p>

@@ -99,7 +99,12 @@ export default function Contact() {
                         </div>
 
                         {/* Simple Lead Form */}
-                        <div className="bg-white/5 p-8 rounded-3xl border border-white/10">
+                        <div className="bg-white/5 p-8 rounded-3xl border border-white/10 relative overflow-hidden">
+                            {/* Budget Filter Badge */}
+                            <div className="absolute top-0 right-0 bg-white/10 px-3 py-1 rounded-bl-xl text-[10px] text-white/60 font-medium uppercase tracking-wider backdrop-blur-md">
+                                Projects from 200 JD
+                            </div>
+
                             <h3 className="text-xl font-bold text-white mb-6">Tell me about your project</h3>
                             <form onSubmit={async (e) => {
                                 e.preventDefault();
@@ -148,8 +153,8 @@ export default function Contact() {
                                     Send Inquiry
                                 </button>
                             </form>
-                            <p className="text-xs text-muted/40 text-center mt-4">
-                                No spam. Direct to my encrypted inbox.
+                            <p className="text-xs text-muted/60 text-center mt-4 leading-relaxed">
+                                If we&apos;re not a fit, I&apos;ll still reply with suggestions or a direction within 24 hours.
                             </p>
                         </div>
                     </div>
@@ -164,6 +169,33 @@ export default function Contact() {
                     </div>
                 </motion.div>
             </div>
+
+            {/* FAQ Section - Added for Trust */}
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                className="mt-24 text-left max-w-3xl mx-auto border-t border-white/10 pt-16 relative z-10"
+            >
+                <div className="container mx-auto px-6 md:px-12">
+                    <h3 className="text-2xl font-bold text-white mb-8 text-center">Common Questions</h3>
+                    <div className="space-y-6">
+                        <div className="bg-white/5 p-6 rounded-xl border border-white/5">
+                            <h4 className="text-white font-bold mb-2 text-sm uppercase tracking-wide">Do you work with non-tech founders?</h4>
+                            <p className="text-muted text-sm leading-relaxed">Yes! I explain everything in plain English. No jargon. I handle the hosting, domains, and tech setup so you can focus on business.</p>
+                        </div>
+                        <div className="bg-white/5 p-6 rounded-xl border border-white/5">
+                            <h4 className="text-white font-bold mb-2 text-sm uppercase tracking-wide">Do you sign contracts?</h4>
+                            <p className="text-muted text-sm leading-relaxed">Absolutely. Every project starts with a clear contract outlining dates, deliverables, and costs. No surprises.</p>
+                        </div>
+                        <div className="bg-white/5 p-6 rounded-xl border border-white/5">
+                            <h4 className="text-white font-bold mb-2 text-sm uppercase tracking-wide">Do you support after launch?</h4>
+                            <p className="text-muted text-sm leading-relaxed">Yes. I offer a 1-month support period for bugs, and can discuss retainer packages for ongoing updates.</p>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
 
             {mounted && (
                 <PopupModal
