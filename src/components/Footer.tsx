@@ -46,9 +46,9 @@ export default function Footer() {
                     <div className="space-y-6">
                         <h3 className="text-sm font-bold text-white uppercase tracking-widest">Connect</h3>
                         <div className="flex flex-col gap-4">
-                            <a href="mailto:omarmubaidin@proton.me" className="flex items-center gap-2 text-muted hover:text-neon transition-colors group">
+                            <a href="mailto:mubxdev@proton.me" className="flex items-center gap-2 text-muted hover:text-neon transition-colors group">
                                 <Mail className="w-4 h-4" />
-                                <span>omarmubaidin@proton.me</span>
+                                <span>mubxdev@proton.me</span>
                                 <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                             </a>
                             <a href="https://wa.me/962780090453" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors">
