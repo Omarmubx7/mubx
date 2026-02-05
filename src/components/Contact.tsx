@@ -101,7 +101,7 @@ export default function Contact() {
                         {/* Simple Lead Form */}
                         <div className="bg-white/5 p-8 rounded-3xl border border-white/10">
                             <h3 className="text-xl font-bold text-white mb-6">Tell me about your project</h3>
-                            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" className="space-y-4">
+                            <form action="https://formspree.io/f/xojnaqoo" method="POST" className="space-y-4">
                                 <div>
                                     <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2">Your Email</label>
                                     <input type="email" name="email" id="email" required className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon focus:outline-none transition-colors" placeholder="name@company.com" />
