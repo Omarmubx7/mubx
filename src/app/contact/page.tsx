@@ -8,47 +8,18 @@ import { fadeUp } from '@/lib/motion';
 import { useForm, ValidationError } from '@formspree/react';
 import { Send, CheckCircle, Loader2 } from 'lucide-react';
 import Badge from '@/components/ui/Badge';
+import { useRouter } from 'next/navigation';
 
 export default function ContactPage() {
     // --------------------------------------------------------------------------
     // Formspree Integration
     // Endpoint: https://formspree.io/f/xojnaqoo
     // --------------------------------------------------------------------------
+    const router = useRouter();
     const [state, handleSubmit] = useForm("xojnaqoo");
 
     if (state.succeeded) {
-        return (
-            <main className="bg-black min-h-screen selection:bg-neon selection:text-black">
-                <Navbar />
-                <div className="pt-32 pb-24 container mx-auto px-6 md:px-12">
-                    <motion.div
-                        initial="hidden"
-                        animate="visible"
-                        variants={fadeUp}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <div className="bg-white/5 border border-white/10 p-8 md:p-12 rounded-3xl backdrop-blur-sm relative overflow-hidden min-h-[400px] flex flex-col items-center justify-center text-center">
-                            {/* Background Glow */}
-                            <div className="absolute -top-20 -right-20 w-80 h-80 bg-neon/5 blur-[100px] rounded-full pointer-events-none" />
-
-                            <motion.div
-                                initial={{ scale: 0.8, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                className="w-20 h-20 bg-neon/10 rounded-full flex items-center justify-center mb-6 text-neon"
-                            >
-                                <CheckCircle className="w-10 h-10" />
-                            </motion.div>
-                            <h3 className="text-3xl font-bold text-white mb-2">Request Received!</h3>
-                            <p className="text-muted max-w-md">
-                                Thanks for reaching out. I&apos;ll review your project details and get back to you shortly with an estimate.
-                            </p>
-                            <a href="/" className="mt-8 px-6 py-3 bg-white/10 text-white font-bold rounded-full hover:bg-white/20 transition-all">Back to Home</a>
-                        </div>
-                    </motion.div>
-                </div>
-                <Footer />
-            </main>
-        );
+        router.push('/success');
     }
 
     return (

@@ -71,9 +71,7 @@ export default function Hero() {
 
                 <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 mb-16">
                     <a
-                        href="https://wa.me/962780090453"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="mailto:omarmubaidin@proton.me"
                         className="group flex items-center justify-center gap-2 px-8 py-4 bg-neon text-black font-bold text-lg rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,30,30,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
                     >
                         Work with MUBX
