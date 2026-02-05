@@ -34,7 +34,7 @@ export default function Hero() {
 
             <motion.div
                 variants={staggerContainer}
-                initial="hidden"
+                initial="visible" // Crucial for LCP: Start visible
                 whileInView="visible"
                 viewport={{ once: true }}
                 className="container mx-auto px-6 md:px-12 flex flex-col items-center text-center z-10"

@@ -55,13 +55,13 @@ export default function Footer() {
                             </a>
                         </div>
                         <div className="flex gap-4 pt-2">
-                            <a href="https://github.com/Omarmubx7" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="Visit GitHub Profile">
+                            <a href="https://github.com/Omarmubx7" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="Visit GitHub Profile">
                                 <Github className="w-5 h-5" />
                             </a>
-                            <a href="https://www.linkedin.com/in/omarmubaidin" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="LinkedIn">
+                            <a href="https://www.linkedin.com/in/omarmubaidin" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="LinkedIn">
                                 <Linkedin className="w-5 h-5" />
                             </a>
-                            <a href="https://www.instagram.com/mubx.dev?igsh=MTg4bDVqMGdwbGdpbQ==" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="Instagram">
+                            <a href="https://www.instagram.com/mubx.dev?igsh=MTg4bDVqMGdwbGdpbQ==" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="Instagram">
                                 <Instagram className="w-5 h-5" />
                             </a>
                         </div>
@@ -70,11 +70,11 @@ export default function Footer() {
                         <div className="pt-4 mt-4 border-t border-white/5">
                             <p className="text-xs text-muted/50 mb-2">Selected Projects</p>
                             <div className="flex flex-wrap gap-2 text-xs font-mono text-white/40">
-                                <span>HTU Martial Arts</span>
-                                <span>•</span>
-                                <span>BloB.JO</span>
-                                <span>•</span>
-                                <span>Vynex Media</span>
+                                <span className="py-2">HTU Martial Arts</span>
+                                <span className="py-2">•</span>
+                                <span className="py-2">BloB.JO</span>
+                                <span className="py-2">•</span>
+                                <span className="py-2">Vynex Media</span>
                             </div>
                         </div>
                     </div>
