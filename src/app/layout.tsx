@@ -28,7 +28,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  // icons: handled by file-system (src/app/icon.png)
+  icons: {
+    icon: '/favicon-new.png',
+    apple: '/icon.png', // Uses the high-res 512x512 icon
+  },
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,

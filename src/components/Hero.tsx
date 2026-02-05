@@ -43,6 +43,7 @@ export default function Hero() {
                     <h1 className="relative text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-white drop-shadow-2xl z-20">
                         OMAR <br className="md:hidden" />
                         MUBAIDIN
+                        <span className="sr-only"> - Professional Full Stack Web Developer in Jordan</span>
                     </h1>
                     <div className="hidden md:block absolute -right-12 -top-8 rotate-12">
                         <span className="px-3 py-1 bg-neon text-black text-xs font-bold rounded-full uppercase tracking-wider">
