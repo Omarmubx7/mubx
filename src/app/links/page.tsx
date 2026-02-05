@@ -64,14 +64,14 @@ export default function LinksPage() {
             target="_blank"
             rel="noopener noreferrer"
             className={`group relative flex items-center justify-between p-6 rounded-3xl transition-all duration-300 border backdrop-blur-sm ${isPrimary
-                    ? "bg-white text-black border-white hover:bg-neutral-200 hover:border-neutral-200 shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-                    : "bg-white/5 border-white/10 hover:border-neon/50 hover:bg-white/[0.07] text-white"
+                ? "bg-white text-black border-white hover:bg-neutral-200 hover:border-neutral-200 shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+                : "bg-white/5 border-white/10 hover:border-neon/50 hover:bg-white/[0.07] text-white"
                 }`}
         >
             <div className="flex items-center gap-5">
                 <div className={`p-3 rounded-xl transition-colors duration-300 ${isPrimary
-                        ? "bg-black/10 text-black"
-                        : "bg-white/5 text-white/70 group-hover:text-neon"
+                    ? "bg-black/10 text-black"
+                    : "bg-white/5 text-white/70 group-hover:text-neon"
                     }`}>
                     <link.icon className="w-6 h-6" />
                 </div>
@@ -88,8 +88,8 @@ export default function LinksPage() {
             </div>
 
             <div className={`pr-2 transition-all duration-300 ${isPrimary
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0"
+                ? "translate-x-0 opacity-100"
+                : "-translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0"
                 }`}>
                 <ArrowRight className={`w-5 h-5 ${isPrimary ? "text-black" : "text-neon"}`} />
             </div>
@@ -127,9 +127,9 @@ export default function LinksPage() {
                         </p>
 
                         <div className="flex flex-wrap justify-center gap-3">
-                            <Badge variant="default">⚡ NEXT.JS</Badge>
-                            <Badge variant="default">TS TYPESCRIPT</Badge>
-                            <Badge variant="default">TAILWIND</Badge>
+                            <Badge variant="outline">⚡ NEXT.JS</Badge>
+                            <Badge variant="outline">TS TYPESCRIPT</Badge>
+                            <Badge variant="outline">TAILWIND</Badge>
                             <Badge variant="neon">FREELANCE</Badge>
                         </div>
                     </header>
