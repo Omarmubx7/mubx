@@ -10,7 +10,7 @@ interface TypingTextProps {
 
 export default function TypingText({ strings, className = "" }: TypingTextProps) {
     return (
-        <div className={`inline-block ${className}`}>
+        <div className={`inline-block font-sans ${className}`}>
             <Typewriter
                 options={{
                     strings: strings,
