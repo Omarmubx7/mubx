@@ -9,6 +9,7 @@ import { useForm, ValidationError } from '@formspree/react';
 import { Send, CheckCircle, Loader2 } from 'lucide-react';
 import Badge from '@/components/ui/Badge';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function ContactPage() {
     // --------------------------------------------------------------------------
@@ -18,9 +19,11 @@ export default function ContactPage() {
     const router = useRouter();
     const [state, handleSubmit] = useForm("xojnaqoo");
 
-    if (state.succeeded) {
-        router.push('/success');
-    }
+    useEffect(() => {
+        if (state.succeeded) {
+            router.push('/success');
+        }
+    }, [state.succeeded, router]);
 
     return (
         <main className="bg-black min-h-screen selection:bg-neon selection:text-black">
