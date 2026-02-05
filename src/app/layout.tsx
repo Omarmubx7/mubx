@@ -29,8 +29,8 @@ export const metadata: Metadata = {
     canonical: siteConfig.url,
   },
   icons: {
-    icon: '/favicon-new.png',
-    apple: '/icon.png', // Uses the high-res 512x512 icon
+    icon: '/favicon.png', // Updated filename
+    apple: '/icon.png', // Keeping high-res for Apple if that's preferred, or switch to favicon.png if identical
   },
   openGraph: {
     title: siteConfig.title,

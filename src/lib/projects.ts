@@ -28,7 +28,7 @@ export const projects: Project[] = [
         logo: '/images/vynex-logo.png',
         metrics: '20% Conversion Rate',
         verified_outcome: 'Verified via Google Analytics',
-        screenshots: ['/images/vynex-desktop.png'],
+        screenshots: ['/images/Vynex Media.png'],
         timeframe: '2 Weeks',
         caseStudy: {
             problem: 'Needed a modern website matching their high visual production quality.',
@@ -46,7 +46,7 @@ export const projects: Project[] = [
         logo: '/images/htu-logo.png',
         metrics: '100+ Active Members',
         verified_outcome: 'Based on Club Registry Logs',
-        screenshots: ['/images/htu-desktop.png'],
+        screenshots: ['/images/HTU Martial Arts.png'],
         timeframe: '1 Month',
         caseStudy: {
             problem: 'Manual management of members and bookings via messages/sheets.',
@@ -64,7 +64,7 @@ export const projects: Project[] = [
         logo: '/images/blobjor-logo.png',
         metrics: 'Full E-com Flow',
         verified_outcome: 'Operational since Jan 2025',
-        screenshots: ['/images/blob-desktop.png'],
+        screenshots: ['/images/BloB.JO.png'],
         timeframe: '3 Weeks',
         caseStudy: {
             problem: 'Lack of local POD store with custom design tools.',
