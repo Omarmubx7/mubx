@@ -1,0 +1,46 @@
+
+> mubx-portfolio@0.1.0 lint
+> eslint
+
+
+C:\Users\omara\mubx\src\app\contact\page.tsx
+  9:16  warning  'CheckCircle' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\mubx\src\app\projects\[slug]\page.tsx
+  7:24  warning  'Github' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\mubx\src\app\success\page.tsx
+  37:55  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\omara\mubx\src\components\Blog.tsx
+  52:39  warning  'i' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\mubx\src\components\Hero.tsx
+  6:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\mubx\src\components\Projects.tsx
+   4:24  warning  'Github' is defined but never used                                                            @typescript-eslint/no-unused-vars
+   5:23  warning  'staggerContainer' is defined but never used                                                  @typescript-eslint/no-unused-vars
+  76:46  warning  Unused eslint-disable directive (no problems were reported from '@next/next/no-img-element')
+
+C:\Users\omara\mubx\src\components\Services.tsx
+  41:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\omara\mubx\src\components\Services.tsx:41:9
+  39 |
+  40 |     useEffect(() => {
+> 41 |         setMounted(true);
+     |         ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  42 |         const timer = setTimeout(() => setIsLoading(false), 1000); // Simulated delay
+  43 |         return () => clearTimeout(timer);
+  44 |     }, []);  react-hooks/set-state-in-effect
+
+Γ£û 9 problems (2 errors, 7 warnings)
+  0 errors and 1 warning potentially fixable with the `--fix` option.
+

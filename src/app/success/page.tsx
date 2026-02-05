@@ -34,7 +34,7 @@ export default function SuccessPage() {
 
                         <h1 className="text-4xl font-bold text-white mb-4">Request Received!</h1>
                         <p className="text-muted text-lg mb-8 max-w-md mx-auto">
-                            Thanks for reaching out! I've received your project details and will be in touch shortly with an estimate.
+                            Thanks for reaching out! I&apos;ve received your project details and will be in touch shortly with an estimate.
                         </p>
 
                         <Link

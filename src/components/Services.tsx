@@ -38,9 +38,12 @@ export default function Services() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        setMounted(true);
-        const timer = setTimeout(() => setIsLoading(false), 1000); // Simulated delay
-        return () => clearTimeout(timer);
+        const mountTimer = setTimeout(() => setMounted(true), 0);
+        const timer = setTimeout(() => setIsLoading(false), 1000);
+        return () => {
+            clearTimeout(mountTimer);
+            clearTimeout(timer);
+        };
     }, []);
 
     return (

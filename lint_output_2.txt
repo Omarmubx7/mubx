@@ -1,0 +1,14 @@
+
+> mubx-portfolio@0.1.0 lint
+> eslint
+
+
+C:\Users\omara\mubx\src\app\success\page.tsx
+  37:55  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\omara\mubx\src\components\Projects.tsx
+  76:46  warning  Unused eslint-disable directive (no problems were reported from '@next/next/no-img-element')
+
+Γ£û 2 problems (1 error, 1 warning)
+  0 errors and 1 warning potentially fixable with the `--fix` option.
+

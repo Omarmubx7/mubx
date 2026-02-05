@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
-import { projectCard, staggerContainer } from '@/lib/motion';
+import { ExternalLink } from 'lucide-react';
+import { projectCard } from '@/lib/motion';
 import Badge from './ui/Badge';
 import Image from 'next/image';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
@@ -73,7 +73,6 @@ export default function Projects() {
                                 <div className="relative z-10 flex flex-col h-full">
                                     <div className="flex items-center justify-between mb-6">
                                         <Link href={`/projects/${project.slug}`} className="w-16 h-16 rounded-2xl bg-white p-3 flex items-center justify-center overflow-hidden border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(255,30,30,0.3)] transition-all duration-500 cursor-pointer">
-                                            {/* eslint-disable-next-line @next/next/no-img-element */}
                                             <div className="relative w-full h-full">
                                                 <Image
                                                     src={project.logo}

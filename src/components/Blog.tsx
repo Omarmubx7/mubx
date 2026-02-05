@@ -49,7 +49,7 @@ export default function Blog() {
                     viewport={{ once: true }}
                     className="grid grid-cols-1 md:grid-cols-3 gap-6"
                 >
-                    {posts.map((post, i) => (
+                    {posts.map((post) => (
                         <motion.div
                             key={post.slug}
                             variants={fadeUp}

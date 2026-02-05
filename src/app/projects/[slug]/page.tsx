@@ -4,7 +4,7 @@ import { projects } from '@/lib/projects';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Badge from '@/components/ui/Badge';
-import { ExternalLink, Github, ArrowLeft } from 'lucide-react';
+import { ExternalLink, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -17,23 +17,46 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
+import { Metadata } from 'next';
+
 // SEO Metadata
-export function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-    // Unwrapping params for Next.js 15 compatibility if needed, though usually direct access works in older, 
-    // but sticking to standard pattern. Since it's a promise in newer Next.js types sometimes.
-    // For simplicity assuming standard params access or lightweight handling.
-    // *Correction*: In Next 15, params is a Promise.
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const project = projects.find((p) => p.slug === slug);
+
+    if (!project) {
+        return {
+            title: 'Project Not Found | MUBX',
+        };
+    }
+
     return {
-        title: 'Project Details | MUBX Portfolio',
+        title: `${project.title} | MUBX Projects`,
+        description: project.description,
+        alternates: {
+            canonical: `https://mubx.dev/projects/${slug}`,
+        },
+        openGraph: {
+            title: `${project.title} | MUBX Portfolio`,
+            description: project.description,
+            url: `https://mubx.dev/projects/${slug}`,
+            type: 'article',
+            images: [
+                {
+                    url: project.logo,
+                    width: 1200,
+                    height: 630,
+                    alt: `${project.title} Project Preview`,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: `${project.title} | MUBX Projects`,
+            description: project.description,
+            images: [project.logo],
+        },
     };
-    /* 
-       Note: Fully unwrapping params in generateMetadata for Next 15 would be:
-       const slug = (await params).slug;
-       const project = projects.find(p => p.slug === slug);
-       ...
-       But for this file to be valid in TS with async params, I will skip complex metadata logic 
-       to ensure build success unless I'm sure of the version. I'll stick to static title or simple.
-    */
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -42,8 +65,27 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
     if (!project) return notFound();
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareSourceCode',
+        'name': project.title,
+        'description': project.description,
+        'author': {
+            '@type': 'Person',
+            'name': 'Omar Mubaidin'
+        },
+        'programmingLanguage': project.tech,
+        'datePublished': project.timeframe, // Assuming timeframe might contain year, simplified for now
+        'license': 'https://opensource.org/licenses/MIT', // Placeholder if open source, or remove
+        'image': project.logo
+    };
+
     return (
         <main className="bg-black min-h-screen selection:bg-neon selection:text-black">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Navbar />
 
             <article className="pt-32 pb-24">

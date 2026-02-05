@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useState, useEffect } from 'react';

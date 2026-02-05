@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 import { fadeUp } from '@/lib/motion';
 import { useForm, ValidationError } from '@formspree/react';
-import { Send, CheckCircle, Loader2 } from 'lucide-react';
+import { Send, Loader2 } from 'lucide-react';
 import Badge from '@/components/ui/Badge';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';

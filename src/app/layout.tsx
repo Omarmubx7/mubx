@@ -12,11 +12,32 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mubx.dev'),
-  title: 'Omar Mubaidin | MUBX - Web Developer & CS Student in Amman, Jordan',
-  description: 'MUBX | Portfolio of Omar Mubaidin. I build fast, secure web systems for brands that want to scale. Computer Science Student & Full Stack Web Developer based in Amman.',
-  keywords: ['Omar Mubaidin', 'MUB Mubaidin', 'MUBX', 'MUB', 'Mubaidin', 'Web Developer', 'Jordan', 'Computer Science', 'Next.js', 'React', 'Tech Geek'],
+  title: {
+    default: 'Omar Mubaidin | MUBX - Web Developer & CS Student in Amman, Jordan',
+    template: '%s | MUBX - Omar Mubaidin',
+  },
+  description: 'MUBX | Portfolio of Omar Mubaidin. I build fast, secure, and visually stunning web systems for brands that want to scale. Computer Science Student & Full Stack Web Developer based in Amman, Jordan.',
+  keywords: [
+    'Omar Mubaidin',
+    'MUB Mubaidin',
+    'MUBX',
+    'MUB',
+    'Mubaidin',
+    'Web Developer Amman',
+    'Web Developer Jordan',
+    'Software Engineer Jordan',
+    'Next.js Developer',
+    'React Developer',
+    'Full Stack Developer',
+    'Computer Science Student',
+    'Custom Web Development'
+  ],
   authors: [{ name: 'Omar Mubaidin', url: 'https://mubx.dev' }],
   creator: 'Omar Mubaidin',
+  publisher: 'MUBX',
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: '/favicon-new.png',
     shortcut: '/favicon-new.png',
@@ -24,13 +45,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Omar Mubaidin (MUB) | MUBX - Computer Science & Web Developer',
-    description: 'Portfolio of Omar Mubaidin (MUB). CS student and Web Developer in Jordan. Founder of MUBX.',
+    description: 'Portfolio of Omar Mubaidin (MUB). CS student and Web Developer in Jordan. Founder of MUBX. Building high-performance web experiences.',
+    url: 'https://mubx.dev',
     siteName: 'MUBX Portfolio',
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: 'https://mubx.dev/favicon-new.png', // Using the logo as the main visual for now
+        url: '/favicon-new.png', // Ideally should be a larger OG image, but using logo as placeholder
         width: 800,
         height: 600,
         alt: 'MUBX Logo',
@@ -41,8 +63,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Omar Mubaidin (MUB) | MUBX',
     description: 'Computer Science student & Web Developer in Amman, Jordan. Building secure, data-driven systems.',
-    creator: '@omarmubx',
-    images: ['https://mubx.dev/favicon-new.png'],
+    creator: '@omarmubx', // Update if this handle is incorrect/placeholder
+    images: ['/favicon-new.png'],
   },
   robots: {
     index: true,
