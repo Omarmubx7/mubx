@@ -123,7 +123,7 @@ export default function CostCalculator() {
                             </div>
 
                             <a
-                                href="#contact"
+                                href="/#contact"
                                 className="block w-full py-4 bg-neon text-black font-bold text-lg rounded-xl hover:bg-white transition-all hover:scale-[1.02]"
                             >
                                 Get Exact Quote

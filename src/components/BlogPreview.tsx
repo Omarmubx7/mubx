@@ -8,25 +8,25 @@ import { fadeUp, staggerContainer } from '@/lib/motion';
 export default function BlogPreview() {
     const posts = [
         {
-            title: "Why your landing page is slow (and how to fix it)",
-            excerpt: "Speed isn't just a metric; it's revenue. Learn how to shave seconds off your load time using Next.js optimization techniques.",
-            value: "Helps turn more visitors into customers.",
-            slug: "landing-page-performance",
-            date: "Feb 1, 2026"
+            title: "The State of E-commerce in Jordan (2026)",
+            excerpt: "How to skip monthly fees by integrating Zain Cash & CliQ directly into your custom Next.js store.",
+            value: "Stop renting your store. Own it.",
+            slug: "ecommerce-in-jordan-guide",
+            date: "Feb 5, 2026"
         },
         {
-            title: "How I built BloB.JO's secure checkout",
-            excerpt: "A technical deep dive into building a secure, custom e-commerce flow with payment integration for a Jordanian brand.",
-            value: "Secure payments for local market needs.",
-            slug: "blob-jo-checkout",
-            date: "Jan 15, 2026"
+            title: "Next.js vs WordPress: The 2026 Comparison",
+            excerpt: "Why modern businesses in Amman are migrating to Headless architectures for 100/100 performance.",
+            value: "Performance wins customers.",
+            slug: "nextjs-vs-wordpress",
+            date: "Feb 4, 2026"
         },
         {
-            title: "Security first: Protecting client data",
-            excerpt: "Why simpler stacks are often more secure, and how we implement database protection for local startups.",
-            value: "Keeps your customer data safe and private.",
-            slug: "security-first-approach",
-            date: "Jan 05, 2026"
+            title: "How I built BloB.JO's print-on-demand system",
+            excerpt: "A technical deep dive into building a complex custom e-commerce flow with React and Node.js.",
+            value: "Case Study: Local Success.",
+            slug: "building-blob-jo",
+            date: "Jan 28, 2026"
         }
     ];
 
