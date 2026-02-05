@@ -134,6 +134,7 @@ export default function Projects() {
                                                             src={src}
                                                             alt="Project screenshot"
                                                             fill
+                                                            sizes="(max-width: 768px) 50vw, 25vw"
                                                             className="object-cover opacity-60 hover:opacity-100 transition-opacity"
                                                         />
                                                     </div>
