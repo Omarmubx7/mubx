@@ -51,7 +51,7 @@ export default function Hero() {
                         </span>
                     </div>
                     {/* Clean Subtitle - Unified Block via Typing Effect */}
-                    <div className="mt-4 w-full max-w-4xl mx-auto min-h-[60px]">
+                    <div className="mt-4 w-full max-w-4xl mx-auto min-h-[140px] md:min-h-[80px] flex items-center justify-center">
                         <TypingText
                             strings={[
                                 "Verified developer helping Jordanian brands turn visitors into paying customers in <span class='text-neon font-bold'>under 2 weeks</span>.",
