@@ -38,6 +38,7 @@ export default function Footer() {
                             <Link href="/#services" className="text-muted hover:text-white hover:translate-x-1 transition-all">Services</Link>
                             <Link href="/blog" className="text-muted hover:text-white hover:translate-x-1 transition-all">Lab</Link>
                             <Link href="/contact" className="text-muted hover:text-white hover:translate-x-1 transition-all">Contact</Link>
+                            <Link href="/tools/website-cost-calculator-jordan" className="text-neon hover:text-white hover:translate-x-1 transition-all font-bold mt-2">Cost Calculator</Link>
                         </nav>
                     </div>
 

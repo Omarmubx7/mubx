@@ -11,8 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '',
         '/about',
         '/contact',
-        '/services',
+        '/services/ecommerce',
         '/blog',
+        '/tools/website-cost-calculator-jordan',
+        '/blog/ecommerce-in-jordan-guide',
+        '/blog/nextjs-vs-wordpress',
+        '/blog/building-blob-jo',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),

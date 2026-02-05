@@ -4,26 +4,38 @@ import Footer from '@/components/Footer';
 import Badge from '@/components/ui/Badge';
 import Link from 'next/link';
 
+import { siteConfig } from '@/config/seo';
+
 export const metadata = {
-    title: 'Lab / Articles | MUBX',
-    description: 'Technical deep dives and case studies by Omar Mubaidin.',
+    title: 'Web Dev Lab & Articles | MUBX - Omar Mubaidin',
+    description: 'Technical deep dives on Next.js, E-commerce in Jordan, and High-Performance Web Development. The lab where I document my engineering process.',
+    alternates: {
+        canonical: `${siteConfig.url}/blog`
+    }
 };
 
 export default function BlogPage() {
     const posts = [
         {
+            slug: 'ecommerce-in-jordan-guide',
+            title: 'The State of E-commerce in Jordan (2026)',
+            excerpt: 'Everything you need to know about selling online in Jordan. Payment gateways, local logistics, and technical setup.',
+            date: 'Feb 05, 2026',
+            tags: ['E-commerce', 'Guide', 'Business']
+        },
+        {
+            slug: 'nextjs-vs-wordpress',
+            title: 'Next.js vs WordPress: The 2026 Comparison',
+            excerpt: 'Why modern businesses are migrating to Headless architectures. A deep dive into performance, security, and ROI.',
+            date: 'Feb 04, 2026',
+            tags: ['Tech', 'Comparison', 'Performance']
+        },
+        {
             slug: 'building-blob-jo',
             title: 'How I built BloB.JO, Jordan’s print-on-demand store',
             excerpt: 'Solving the logistics and UX challenges of a local POD market using React and Node.js.',
-            date: 'Feb 05, 2026',
-            tags: ['E-commerce', 'React', 'Business Logic']
-        },
-        {
-            slug: 'htu-system-breakdown',
-            title: 'From sheets to system: HTU Martial Arts app breakdown',
-            excerpt: 'Migrating a manual paper-based workflow to a fully digital PHP/MySQL management dashboard.',
             date: 'Jan 28, 2026',
-            tags: ['System Design', 'PHP', 'Database']
+            tags: ['Case Study', 'React', 'Business Logic']
         }
     ];
 
@@ -47,7 +59,7 @@ export default function BlogPage() {
                         {posts.map((post) => (
                             <Link
                                 key={post.slug}
-                                href="#"
+                                href={`/blog/${post.slug}`}
                                 className="block p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-neon/50 hover:bg-white/10 transition-all group"
                             >
                                 <div className="flex justify-between items-start mb-4">
