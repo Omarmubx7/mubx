@@ -130,13 +130,12 @@ export default function Projects() {
                                             <div className="grid grid-cols-2 gap-2 mt-4">
                                                 {project.screenshots.map((src, idx) => (
                                                     <div key={idx} className="relative aspect-video bg-black/50 rounded-lg overflow-hidden border border-white/5 group-hover:border-neon/30 transition-colors">
-                                                        {/* Placeholder for real image - using a colored div for now if image missing */}
-                                                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10 flex items-center justify-center">
-                                                            <span className="text-[9px] text-white/30 uppercase tracking-widest font-bold">Preview</span>
-                                                        </div>
-                                                        {/* Actual Image component - uncomment when files exist
-                                                        <Image src={src} alt="Project screenshot" fill className="object-cover opacity-60 hover:opacity-100 transition-opacity" />
-                                                        */}
+                                                        <Image
+                                                            src={src}
+                                                            alt="Project screenshot"
+                                                            fill
+                                                            className="object-cover opacity-60 hover:opacity-100 transition-opacity"
+                                                        />
                                                     </div>
                                                 ))}
                                             </div>
