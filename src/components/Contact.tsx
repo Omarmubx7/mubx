@@ -45,34 +45,68 @@ export default function Contact() {
                         Whether you need a full-stack audit, a database redesign, or a complete product build, I&apos;m ready to architect the solution.
                     </p>
 
-                    <div className="flex flex-col items-center justify-center gap-6 mb-12">
-                        <div className="flex flex-col md:flex-row gap-4">
-                            <Link href="/contact" className="flex items-center gap-2 px-8 py-4 bg-neon text-black font-bold rounded-full hover:bg-white transition-all transform hover:scale-105 cursor-pointer">
-                                <Mail className="w-5 h-5" />
-                                Get a Project Estimate
-                            </Link>
-                            <a
-                                href="https://github.com/Omarmubx7"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium rounded-full transition-all"
-                            >
-                                <Github className="w-5 h-5" />
-                                GitHub
-                            </a>
-                            <a
-                                href="https://www.linkedin.com/in/omarmubaidin"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium rounded-full transition-all"
-                            >
-                                <Linkedin className="w-5 h-5" />
-                                LinkedIn
-                            </a>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left mb-16">
+                        {/* Contact Info & Urgency */}
+                        <div className="flex flex-col justify-center space-y-8">
+                            <div>
+                                <h3 className="text-2xl font-bold text-white mb-4">Availability & Response</h3>
+                                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="relative">
+                                            <div className="w-3 h-3 bg-green-500 rounded-full animate-ping absolute inset-0" />
+                                            <div className="w-3 h-3 bg-green-500 rounded-full relative" />
+                                        </div>
+                                        <span className="text-white font-bold">Accepting 2 New Projects (Q1)</span>
+                                    </div>
+                                    <p className="text-muted text-sm leading-relaxed">
+                                        I typically reply within <span className="text-neon font-bold">24 hours</span>.
+                                        <br />
+                                        Currently prioritizing e-commerce and SaaS projects.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-4 text-muted hover:text-white transition-colors">
+                                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                                        <Mail className="w-5 h-5 text-neon" />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs uppercase tracking-wider text-muted/60">Email</p>
+                                        <a href="mailto:omarmubaidin@proton.me" className="font-medium">omarmubaidin@proton.me</a>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-4 text-muted hover:text-white transition-colors">
+                                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                                        <MapPin className="w-5 h-5 text-neon" />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs uppercase tracking-wider text-muted/60">Location</p>
+                                        <p className="font-medium">Amman, Jordan (Remote Available)</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="text-muted text-sm mt-4">
-                            <p>Email: <a href="mailto:omarmubaidin@proton.me" className="text-white hover:text-neon transition-colors">omarmubaidin@proton.me</a></p>
-                            <p>Phone / WhatsApp: <span className="text-white">+962 780 090 453</span></p>
+
+                        {/* Simple Lead Form */}
+                        <div className="bg-white/5 p-8 rounded-3xl border border-white/10">
+                            <h3 className="text-xl font-bold text-white mb-6">Tell me about your project</h3>
+                            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" className="space-y-4">
+                                <div>
+                                    <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2">Your Email</label>
+                                    <input type="email" name="email" id="email" required className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon focus:outline-none transition-colors" placeholder="name@company.com" />
+                                </div>
+                                <div>
+                                    <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted mb-2">Project Details</label>
+                                    <textarea name="message" id="message" rows={4} required className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon focus:outline-none transition-colors resize-none" placeholder="I need a landing page for..."></textarea>
+                                </div>
+                                <button type="submit" className="w-full py-4 bg-neon text-black font-bold rounded-lg hover:bg-white transition-all transform hover:scale-[1.02]">
+                                    Send Inquiry
+                                </button>
+                            </form>
+                            <p className="text-xs text-muted/40 text-center mt-4">
+                                No spam. Direct to my encrypted inbox.
+                            </p>
                         </div>
                     </div>
 

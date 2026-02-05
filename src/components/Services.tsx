@@ -18,21 +18,27 @@ export default function Services() {
             title: 'WEB DEVELOPMENT + DEPLOYMENT',
             description: 'I design and build a fast, responsive landing page tailored to your brand, then handle deployment so it’s live on your domain with proper SEO and analytics.',
             idealHeight: 'Ideal for: New businesses needing a high-impact presence.',
+            deliverables: 'Includes: 1-Page Site, Copy Assistance, Hosting Setup, Basic SEO, Analytics.',
             details: ['Responsive Design', 'SEO Setup', 'Analytics Integration', 'Fast Performance'],
+            price: 'Starting at 150 JD'
         },
         {
             label: 'Service 02',
             title: 'E-COMMERCE SOLUTIONS',
             description: 'End-to-end e-commerce experience with product catalog, cart, and checkout flow. Focused on clear UX and performance to give you a solid foundation.',
             idealHeight: 'Ideal for: Brands starting to sell online.',
+            deliverables: 'Includes: Product DB, Cart, Checkout, Admin Panel, Payment Integration.',
             details: ['Product Catalog', 'Shopping Cart', 'Checkout Flow', 'Admin Dashboard'],
+            price: 'Starting at 350 JD'
         },
         {
             label: 'Service 03',
-            title: 'DATABASE & SECURITY AUDIT',
-            description: 'I review your current app’s database structure, queries, and security practices. You get a technical report with fixes.',
-            idealHeight: 'Ideal for: Teams with slow or vulnerable apps.',
-            details: ['Schema Review', 'Query Optimization', 'Security Analysis', 'Performance Tuning'],
+            title: 'MAINTENANCE & RETAINER',
+            description: 'Monthly support to keep your site secure, updated, and fast. I handle the technical headaches so you can focus on business.',
+            idealHeight: 'Ideal for: Growing businesses who need a tech partner.',
+            deliverables: 'Includes: Weekly Backups, Security Patches, Content Updates, 24/7 Monitoring.',
+            details: ['Security Updates', 'Content Edits', 'Performance Checks', 'Priority Support'],
+            price: '50 JD / Month'
         },
     ];
 
@@ -119,6 +125,9 @@ export default function Services() {
                                 </h4>
                                 <p className="text-muted leading-relaxed mb-4 flex-grow">
                                     {service.description}
+                                </p>
+                                <p className="text-xs text-neon font-mono mb-4">
+                                    {service.deliverables}
                                 </p>
                                 <p className="text-sm text-white/80 font-medium italic mb-6 border-l-2 border-neon pl-3">
                                     {service.idealHeight}

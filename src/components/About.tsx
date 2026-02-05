@@ -22,21 +22,36 @@ export default function About() {
 
                         <motion.p variants={fadeUp} className="text-muted text-lg leading-relaxed">
                             I am a Computer Science student and <span className="text-white font-medium">Full Stack Web Developer</span> based in Jordan.
-                            I specialize in building <span className="text-neon">Next.js</span> applications that are fast, secure, and scalable.
-                            My focus is bridging the gap between strong CS theory and real-world production systems.
+                            <br /><br />
+                            Unlike typical template-users, I focus on <span className="text-neon">database efficiency, security, and raw performance</span>.
+                            My background in CS theory allows me to build systems that scale, not just pages that look good.
                         </motion.p>
 
-                        <motion.div variants={fadeUp} className="flex flex-wrap gap-4 pt-4">
-                            <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white font-medium">
-                                <span className="text-neon font-bold">Next.js</span> Expert
-                            </span>
-                            <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white font-medium">
-                                <span className="text-cyan font-bold">Secure</span> Systems
-                            </span>
-                            <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white font-medium">
-                                <span className="text-white font-bold">UX</span> Engineering
-                            </span>
-                        </motion.div>
+                        <div className="pt-6">
+                            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Tech Stack & Tools</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {['Next.js 14', 'React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Supabase', 'Tailwind', 'Framer Motion', 'Git'].map((tech) => (
+                                    <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs text-white/80 font-mono">
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="pt-6 border-t border-white/10 mt-6">
+                            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Achievements</h3>
+                            <ul className="space-y-2 text-muted text-sm">
+                                <li className="flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 bg-neon rounded-full" />
+                                    Top 5% in CS Class (GPA Highlight)
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 bg-neon rounded-full" />
+                                    Built & Deployed 10+ Production Apps
+                                </li>
+                            </ul>
+                        </div>
+
                     </div>
 
                     {/* Right Column: Stats / Visual (Abstract Representation) */}
