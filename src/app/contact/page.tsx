@@ -78,14 +78,13 @@ export default function ContactPage() {
                         {/* Background Glow */}
                         <div className="absolute -top-20 -right-20 w-80 h-80 bg-neon/5 blur-[100px] rounded-full pointer-events-none" />
 
-                        <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+                        <form onSubmit={handleSubmit} className="space-y-8 relative z-10" noValidate>
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-white uppercase tracking-wider">Your Name</label>
                                     <input
                                         name="name"
                                         id="name"
-                                        required
                                         type="text"
                                         placeholder="John Doe"
                                         className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors"
@@ -97,7 +96,6 @@ export default function ContactPage() {
                                     <input
                                         name="email"
                                         id="email"
-                                        required
                                         type="email"
                                         placeholder="john@company.com"
                                         className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors"
@@ -154,7 +152,6 @@ export default function ContactPage() {
                                 <textarea
                                     name="details"
                                     id="details"
-                                    required
                                     rows={4}
                                     placeholder="Tell me about your goals, specific features you need, and any design preferences..."
                                     className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors resize-none"
