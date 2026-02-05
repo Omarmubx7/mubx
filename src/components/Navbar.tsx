@@ -27,7 +27,7 @@ export default function Navbar() {
             <Link href="/" className="group relative z-50">
                 <div className="relative h-16 w-auto min-w-[140px] transition-transform group-hover:scale-105">
                     <Image
-                        src="/mubxlogo.png"
+                        src="/icon.png"
                         alt="MUBX Logo"
                         width={220}
                         height={80}

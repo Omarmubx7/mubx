@@ -12,61 +12,45 @@ const inter = Inter({
   display: 'swap',
 });
 
+import { siteConfig } from '@/config/seo';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mubx.dev'),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'Omar Mubaidin | MUBX - Web Developer & CS Student in Amman, Jordan',
-    template: '%s | MUBX - Omar Mubaidin',
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name} - ${siteConfig.author.name}`,
   },
-  description: 'MUBX | Portfolio of Omar Mubaidin. I build fast, secure, and visually stunning web systems for brands that want to scale. Computer Science Student & Full Stack Web Developer based in Amman, Jordan.',
-  keywords: [
-    'Omar Mubaidin',
-    'MUB Mubaidin',
-    'MUBX',
-    'MUB',
-    'Mubaidin',
-    'Web Developer Amman',
-    'Web Developer Jordan',
-    'Software Engineer Jordan',
-    'Next.js Developer',
-    'React Developer',
-    'Full Stack Developer',
-    'Computer Science Student',
-    'Custom Web Development'
-  ],
-  authors: [{ name: 'Omar Mubaidin', url: 'https://mubx.dev' }],
-  creator: 'Omar Mubaidin',
-  publisher: 'MUBX',
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
+  creator: siteConfig.author.name,
+  publisher: siteConfig.name,
   alternates: {
     canonical: '/',
   },
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico', // Ideally apple-touch-icon.png, but falling back for consistency
-  },
+  // icons: handled by file-system (src/app/icon.png)
   openGraph: {
-    title: 'Omar Mubaidin (MUB) | MUBX - Computer Science & Web Developer',
-    description: 'Portfolio of Omar Mubaidin (MUB). CS student and Web Developer in Jordan. Founder of MUBX. Building high-performance web experiences.',
-    url: 'https://mubx.dev',
-    siteName: 'MUBX Portfolio',
-    locale: 'en_US',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: `${siteConfig.name} Portfolio`,
+    locale: siteConfig.locale,
     type: 'website',
     images: [
       {
-        url: '/favicon.ico', // Ideally should be a larger OG image, but using logo as placeholder
-        width: 800,
-        height: 600,
-        alt: 'MUBX Logo',
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} Logo`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Omar Mubaidin (MUB) | MUBX',
-    description: 'Computer Science student & Web Developer in Amman, Jordan. Building secure, data-driven systems.',
-    creator: '@omarmubx', // Update if this handle is incorrect/placeholder
-    images: ['/favicon-new.png'],
+    title: siteConfig.title,
+    description: siteConfig.description,
+    creator: siteConfig.author.twitter,
+    images: [siteConfig.ogImage],
   },
   robots: {
     index: true,

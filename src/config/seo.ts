@@ -1,0 +1,34 @@
+export const siteConfig = {
+    name: "MUBX",
+    title: "Omar Mubaidin | MUBX - Web Developer & CS Student in Amman, Jordan",
+    description: "MUBX | Portfolio of Omar Mubaidin. I build fast, secure, and visually stunning web systems for brands that want to scale. Computer Science Student & Full Stack Web Developer based in Amman, Jordan.",
+    url: "https://mubx.dev",
+    author: {
+        name: "Omar Mubaidin",
+        url: "https://mubx.dev",
+        twitter: "@omarmubx",
+    },
+    keywords: [
+        'Omar Mubaidin',
+        'MUB Mubaidin',
+        'MUBX',
+        'MUB',
+        'Mubaidin',
+        'Web Developer Amman',
+        'Web Developer Jordan',
+        'Software Engineer Jordan',
+        'Next.js Developer',
+        'React Developer',
+        'Full Stack Developer',
+        'Computer Science Student',
+        'Custom Web Development'
+    ],
+    ogImage: "/icon.png", // Recommended size 1200x630
+    links: {
+        github: "https://github.com/Omarmubx7",
+        linkedin: "https://www.linkedin.com/in/omarmubaidin",
+    },
+    locale: 'en_US',
+};
+
+export type SiteConfig = typeof siteConfig;

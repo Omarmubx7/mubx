@@ -1,9 +1,10 @@
 
 import { MetadataRoute } from 'next';
 import { projects } from '@/lib/projects';
+import { siteConfig } from '@/config/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://mubx.dev';
+    const baseUrl = siteConfig.url;
 
     // Static Routes
     const routes = [

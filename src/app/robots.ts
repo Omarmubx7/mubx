@@ -1,5 +1,5 @@
-
 import { MetadataRoute } from 'next';
+import { siteConfig } from '@/config/seo';
 
 export default function robots(): MetadataRoute.Robots {
     return {
@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://mubx.dev/sitemap.xml',
+        sitemap: `${siteConfig.url}/sitemap.xml`,
     };
 }
