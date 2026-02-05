@@ -78,6 +78,7 @@ export default function Projects() {
                                                     src={project.logo}
                                                     alt={`${project.title} - ${project.description.split('.')[0]} by Omar Mubaidin - ${project.tech.join(', ')}`}
                                                     fill
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                                     className="object-contain"
                                                 />
                                             </div>

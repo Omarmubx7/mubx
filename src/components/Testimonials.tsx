@@ -70,7 +70,7 @@ export default function Testimonials() {
                                     {t.client[0]}
                                 </div>
                                 <div>
-                                    <h4 className="text-white font-bold">{t.client}</h4>
+                                    <h3 className="text-white font-bold">{t.client}</h3>
                                     <p className="text-sm text-white/50">{t.role}</p>
                                 </div>
                             </div>

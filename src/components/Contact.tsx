@@ -3,7 +3,10 @@
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, MapPin } from 'lucide-react';
 import { fadeUp } from '@/lib/motion';
-import { PopupModal } from 'react-calendly';
+import dynamic from 'next/dynamic';
+const PopupModal = dynamic(() => import('react-calendly').then((mod) => mod.PopupModal), {
+    ssr: false
+});
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 

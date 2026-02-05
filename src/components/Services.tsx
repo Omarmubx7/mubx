@@ -3,7 +3,10 @@
 
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
-import { PopupModal } from 'react-calendly';
+import dynamic from 'next/dynamic';
+const PopupModal = dynamic(() => import('react-calendly').then((mod) => mod.PopupModal), {
+    ssr: false
+});
 import { useState, useEffect } from 'react';
 import Badge from './ui/Badge';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
