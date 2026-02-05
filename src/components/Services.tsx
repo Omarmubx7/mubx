@@ -70,9 +70,9 @@ export default function Services() {
                         className="inline-block relative"
                     >
                         <div className="absolute inset-0 bg-neon blur-md opacity-20" />
-                        <span className="relative z-10 inline-block px-8 py-3 rounded-full bg-neon text-black font-black tracking-widest uppercase text-sm transform hover:scale-105 transition-transform cursor-default shadow-[0_0_15px_rgba(255,30,30,0.4)]">
+                        <a href="#contact" className="relative z-10 inline-block px-8 py-3 rounded-full bg-neon text-black font-black tracking-widest uppercase text-sm transform hover:scale-105 transition-transform cursor-pointer shadow-[0_0_15px_rgba(255,30,30,0.4)]">
                             Projects start from 150 JD
-                        </span>
+                        </a>
                     </motion.div>
                 </motion.div>
 

@@ -95,12 +95,11 @@ export default function Hero() {
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-8 items-center grayscale hover:grayscale-0 transition-all duration-500">
-                        {/* Text placeholders for logos as per request */}
-                        <span className="text-white/40 font-bold text-lg hover:text-white transition-colors">HTU Martial Arts</span>
+                        <Link href="/projects/vynex-media" className="text-white/40 font-bold text-lg hover:text-white transition-colors hover:underline decoration-neon decoration-2 underline-offset-4">HTU Martial Arts</Link>
                         <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
-                        <span className="text-white/40 font-bold text-lg hover:text-white transition-colors">BloB.JO</span>
+                        <Link href="/projects/blob-jo" className="text-white/40 font-bold text-lg hover:text-white transition-colors hover:underline decoration-neon decoration-2 underline-offset-4">BloB.JO</Link>
                         <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
-                        <span className="text-white/40 font-bold text-lg hover:text-white transition-colors">Vynex Media</span>
+                        <Link href="/projects/vynex-media" className="text-white/40 font-bold text-lg hover:text-white transition-colors hover:underline decoration-neon decoration-2 underline-offset-4">Vynex Media</Link>
                     </div>
                 </motion.div>
             </motion.div>

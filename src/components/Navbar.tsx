@@ -1,17 +1,20 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { fadeUp } from '@/lib/motion';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 import Image from 'next/image';
 
 export default function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
     const links = [
-        { name: 'About', href: '#about' },
-        { name: 'Services', href: '#services' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'About', href: '/#about' },
+        { name: 'Services', href: '/#services' },
+        { name: 'Projects', href: '/#projects' },
+        { name: 'Contact', href: '/#contact' },
     ];
 
     return (
@@ -59,11 +62,51 @@ export default function Navbar() {
                 </Link>
             </div>
 
-            {/* Mobile Menu Toggle (Simplified for now) */}
-            <div className="md:hidden text-neon">
-                {/* Placeholder for hamburger */}
-                Menu
-            </div>
+            {/* Mobile Menu Toggle */}
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="md:hidden relative z-50 p-2 text-neon hover:text-white transition-colors"
+                aria-label="Toggle Menu"
+            >
+                {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+            </button>
+
+            {/* Mobile Navigation Content */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="absolute top-0 left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 p-6 pt-24 md:hidden flex flex-col gap-6 shadow-2xl"
+                    >
+                        {links.map((link) => (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                onClick={() => setIsOpen(false)}
+                                className="text-2xl font-bold text-white hover:text-neon transition-colors uppercase tracking-wider"
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
+                        <Link
+                            href="/blog"
+                            onClick={() => setIsOpen(false)}
+                            className="text-2xl font-bold text-white hover:text-neon transition-colors uppercase tracking-wider"
+                        >
+                            Lab / Articles
+                        </Link>
+                        <Link
+                            href="#contact"
+                            onClick={() => setIsOpen(false)}
+                            className="text-2xl font-bold text-neon hover:text-white transition-colors uppercase tracking-wider"
+                        >
+                            Let&apos;s Talk
+                        </Link>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.nav>
     );
 }
