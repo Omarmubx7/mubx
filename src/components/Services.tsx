@@ -107,9 +107,9 @@ export default function Services() {
                                     <Badge variant="neon" className="mb-2">{service.price}</Badge>
                                 </div>
 
-                                <h4 className="text-xl font-bold mb-4 text-white group-hover:text-neon transition-colors uppercase">
+                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-neon transition-colors uppercase">
                                     {service.title}
-                                </h4>
+                                </h3>
                                 <p className="text-muted leading-relaxed mb-4 flex-grow text-sm">
                                     {service.description}
                                 </p>

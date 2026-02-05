@@ -84,7 +84,7 @@ export default function Projects() {
                                             </div>
                                         </Link>
                                         <div className="flex gap-3">
-                                            <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-neon hover:text-black transition-all duration-300 hover:scale-110 border border-white/5" title="View Live">
+                                            <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-neon hover:text-black transition-all duration-300 hover:scale-110 border border-white/5" aria-label={`View ${project.title} Live`}>
                                                 <ExternalLink className="w-5 h-5" />
                                             </a>
                                             {/* GitHub button removed as requested */}

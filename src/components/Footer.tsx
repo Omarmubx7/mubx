@@ -30,7 +30,7 @@ export default function Footer() {
 
                     {/* Col 2: Navigation */}
                     <div className="space-y-6">
-                        <h4 className="text-sm font-bold text-white uppercase tracking-widest">Navigation</h4>
+                        <h3 className="text-sm font-bold text-white uppercase tracking-widest">Navigation</h3>
                         <nav className="flex flex-col gap-4">
                             <Link href="/" className="text-muted hover:text-white hover:translate-x-1 transition-all">Home</Link>
                             <Link href="/#about" className="text-muted hover:text-white hover:translate-x-1 transition-all">About</Link>
@@ -43,7 +43,7 @@ export default function Footer() {
 
                     {/* Col 3: Connect */}
                     <div className="space-y-6">
-                        <h4 className="text-sm font-bold text-white uppercase tracking-widest">Connect</h4>
+                        <h3 className="text-sm font-bold text-white uppercase tracking-widest">Connect</h3>
                         <div className="flex flex-col gap-4">
                             <a href="mailto:omarmubaidin@proton.me" className="flex items-center gap-2 text-muted hover:text-neon transition-colors group">
                                 <Mail className="w-4 h-4" />
@@ -55,7 +55,7 @@ export default function Footer() {
                             </a>
                         </div>
                         <div className="flex gap-4 pt-2">
-                            <a href="https://github.com/Omarmubx7" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="GitHub">
+                            <a href="https://github.com/Omarmubx7" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="Visit GitHub Profile">
                                 <Github className="w-5 h-5" />
                             </a>
                             <a href="https://www.linkedin.com/in/omarmubaidin" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-all border border-white/5 hover:border-neon/30" aria-label="LinkedIn">
