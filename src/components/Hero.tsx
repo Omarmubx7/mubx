@@ -50,10 +50,14 @@ export default function Hero() {
                         </span>
                     </div>
                     {/* Value Proposition under title */}
-                    <div className="mt-6 md:mt-8">
-                        <h2 className="text-xl md:text-3xl text-white/90 font-medium max-w-3xl mx-auto leading-relaxed">
-                            I build <span className="text-neon font-bold">fast, secure web systems</span> for businesses in Jordan.
-                        </h2>
+                    <div className="mt-6 md:mt-8 min-h-[60px]">
+                        <TypingText
+                            strings={[
+                                "I build <span class='text-neon font-bold'>fast, secure web systems</span>.",
+                                "I help <span class='text-neon font-bold'>Jordanian businesses</span> grow.",
+                                "Turn visitors into <span class='text-neon font-bold'>paying customers</span>."
+                            ]}
+                        />
                     </div>
                 </div>
 

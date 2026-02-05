@@ -101,7 +101,41 @@ export default function Contact() {
                         {/* Simple Lead Form */}
                         <div className="bg-white/5 p-8 rounded-3xl border border-white/10">
                             <h3 className="text-xl font-bold text-white mb-6">Tell me about your project</h3>
-                            <form action="https://formspree.io/f/xojnaqoo" method="POST" className="space-y-4">
+                            <form onSubmit={async (e) => {
+                                e.preventDefault();
+                                const form = e.target as HTMLFormElement;
+                                const formData = new FormData(form);
+                                const submitBtn = form.querySelector('button[type="submit"]');
+
+                                if (submitBtn) {
+                                    submitBtn.innerHTML = 'Sending...';
+                                    (submitBtn as HTMLButtonElement).disabled = true;
+                                }
+
+                                try {
+                                    const response = await fetch("https://formspree.io/f/xojnaqoo", {
+                                        method: "POST",
+                                        body: formData,
+                                        headers: {
+                                            'Accept': 'application/json'
+                                        }
+                                    });
+
+                                    if (response.ok) {
+                                        form.reset();
+                                        alert("Thanks for your message! I'll get back to you within 24 hours.");
+                                    } else {
+                                        alert("Oops! There was a problem submitting your form. Please try again or message me on WhatsApp.");
+                                    }
+                                } catch (error) {
+                                    alert("Oops! There was a problem submitting your form. Please check your connection.");
+                                } finally {
+                                    if (submitBtn) {
+                                        submitBtn.innerHTML = 'Send Inquiry';
+                                        (submitBtn as HTMLButtonElement).disabled = false;
+                                    }
+                                }
+                            }} className="space-y-4">
                                 <div>
                                     <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2">Your Email</label>
                                     <input type="email" name="email" id="email" required className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon focus:outline-none transition-colors" placeholder="name@company.com" />
@@ -110,7 +144,7 @@ export default function Contact() {
                                     <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted mb-2">Project Details</label>
                                     <textarea name="message" id="message" rows={4} required className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neon focus:outline-none transition-colors resize-none" placeholder="I need a landing page for..."></textarea>
                                 </div>
-                                <button type="submit" className="w-full py-4 bg-neon text-black font-bold rounded-lg hover:bg-white transition-all transform hover:scale-[1.02]">
+                                <button type="submit" className="w-full py-4 bg-neon text-black font-bold rounded-lg hover:bg-white transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed">
                                     Send Inquiry
                                 </button>
                             </form>
