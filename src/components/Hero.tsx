@@ -4,17 +4,10 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { fadeUp, staggerContainer } from '@/lib/motion';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import { useState, useEffect } from 'react';
 import TypingText from './ui/TypingText';
 
 export default function Hero() {
-    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 800);
-        return () => clearTimeout(timer);
-    }, []);
 
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
