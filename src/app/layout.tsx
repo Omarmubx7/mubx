@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   creator: siteConfig.author.name,
   publisher: siteConfig.name,
   alternates: {
-    canonical: '/',
+    canonical: siteConfig.url,
   },
   icons: {
     icon: '/favicon-new.png',
