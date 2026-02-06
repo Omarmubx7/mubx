@@ -7,6 +7,7 @@ import { fadeUp, staggerContainer } from '@/lib/motion';
 import TypingText from './ui/TypingText';
 import MagneticButton from './ui/MagneticButton';
 import TextReveal from './ui/TextReveal';
+import Image from 'next/image';
 
 export default function Hero() {
 
@@ -36,9 +37,22 @@ export default function Hero() {
             >
                 <div className="mb-8 relative inline-block">
                     {/* Availability Badge */}
-                    <div className="flex items-center justify-center gap-2 mb-8 mx-auto px-4 py-1.5 bg-white/5 w-fit rounded-full border border-white/10 backdrop-blur-md">
+                    <div className="flex items-center justify-center gap-2 mb-6 mx-auto px-4 py-1.5 bg-white/5 w-fit rounded-full border border-white/10 backdrop-blur-md">
                         <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                         <span className="text-xs font-bold text-white/80 uppercase tracking-wider">Available for New Projects</span>
+                    </div>
+
+                    {/* Profile Photo - Added as requested */}
+                    <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-full overflow-hidden border-2 border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.1)] group">
+                        <Image
+                            src="/omarmub.png"
+                            alt="Omar Mubaidin"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                        {/* Inner Glow */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     </div>
 
                     <h1 className="relative text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1] text-white drop-shadow-2xl z-20 mb-6">
