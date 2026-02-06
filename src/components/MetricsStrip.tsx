@@ -42,11 +42,10 @@ export default function MetricsStrip() {
     return (
         <section className="border-y border-white/5 bg-black z-20 relative">
             <div className="container mx-auto">
-                <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5 bg-white/[0.02]">
-                    <MetricItem value="100" suffix="+" label="Members Managed" />
-                    <MetricItem value="200" suffix="%" label="Avg. Sales Boost" />
-                    <MetricItem value="98" suffix="/100" label="Performance Score" />
-                    <MetricItem value="Zain" suffix=" & CliQ" label="Local Payments" />
+                <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/5 bg-white/[0.02]">
+                    <MetricItem value="100" suffix="+" label="Members Managed – HTU Club Portal" />
+                    <MetricItem value="20" prefix="+" suffix="%" label="Leads – Vynex Media Landing Page" />
+                    <MetricItem value="200" suffix="%" label="Sales Boost – BloB POD Store" />
                 </div>
             </div>
         </section>
