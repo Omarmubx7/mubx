@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Badge from '@/components/ui/Badge';
@@ -89,13 +90,14 @@ export default function NeonCardPage() {
 
                         <div className="bg-neon/5 border border-neon/20 rounded-xl p-6">
                             <h4 className="text-neon font-bold mb-2 flex items-center gap-2">
-                                💡 Why this helps SEO
+                                🚀 Need Custom UI Components?
                             </h4>
-                            <p className="text-sm text-white/80">
-                                By releasing this free tool, we encourage other developers to link back to
-                                <span className="font-mono text-neon mx-1">mubx.dev</span>
-                                as the source. This builds Domain Authority.
+                            <p className="text-sm text-white/80 mb-4">
+                                I build performant, interaction-heavy interfaces for startups and agencies.
                             </p>
+                            <Link href="/#contact" className="text-xs font-bold uppercase tracking-wider text-white border-b border-white/20 pb-0.5 hover:text-neon hover:border-neon transition-colors">
+                                Book a Project &rarr;
+                            </Link>
                         </div>
                     </div>
                 </div>
