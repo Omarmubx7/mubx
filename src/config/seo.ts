@@ -1,7 +1,7 @@
 export const siteConfig = {
     name: "MUBX",
-    title: "Omar Mubaidin | MUBX - Web Developer & CS Student in Amman, Jordan",
-    description: "MUBX | Portfolio of Omar Mubaidin. I build fast, secure, and visually stunning web systems for brands that want to scale. Computer Science Student & Full Stack Web Developer based in Amman, Jordan.",
+    title: "Omar Mubaidin | Web Developer in Amman, Jordan",
+    description: "Omar Mubaidin (MUBX): Building fast, secure web systems in Amman. Full Stack Developer & CS Student specializing in Next.js and E-commerce services.",
     url: "https://mubx.dev",
     author: {
         name: "Omar Mubaidin",
