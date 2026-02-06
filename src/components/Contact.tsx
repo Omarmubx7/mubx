@@ -106,6 +106,20 @@ export default function Contact() {
                             </div>
 
                             <h3 className="text-xl font-bold text-white mb-6">Tell me about your project</h3>
+
+                            {/* Why Clients Choose MUBX - Compact Bullets */}
+                            <div className="flex flex-wrap gap-4 text-xs font-bold text-white/80 mb-6 font-mono">
+                                <span className="flex items-center gap-2 px-2 py-1 bg-white/5 rounded border border-white/10">
+                                    <span className="text-neon">✓</span> Fast Replies
+                                </span>
+                                <span className="flex items-center gap-2 px-2 py-1 bg-white/5 rounded border border-white/10">
+                                    <span className="text-neon">✓</span> Security First
+                                </span>
+                                <span className="flex items-center gap-2 px-2 py-1 bg-white/5 rounded border border-white/10">
+                                    <span className="text-neon">✓</span> Arabic Support
+                                </span>
+                            </div>
+
                             <form onSubmit={async (e) => {
                                 e.preventDefault();
                                 const form = e.target as HTMLFormElement;
@@ -141,6 +155,47 @@ export default function Contact() {
                                     }
                                 }
                             }} className="space-y-4">
+                                {/* Qualifiers Row */}
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+                                    <div className="space-y-1">
+                                        <label htmlFor="goal" className="text-[10px] font-bold text-white uppercase tracking-wider">Goal</label>
+                                        <select
+                                            id="goal"
+                                            name="goal"
+                                            className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-neon transition-colors appearance-none cursor-pointer"
+                                        >
+                                            <option>New Website</option>
+                                            <option>Redesign</option>
+                                            <option>E-commerce</option>
+                                            <option>Custom App</option>
+                                        </select>
+                                    </div>
+                                    <div className="space-y-1">
+                                        <label htmlFor="budget" className="text-[10px] font-bold text-white uppercase tracking-wider">Budget</label>
+                                        <select
+                                            id="budget"
+                                            name="budget"
+                                            className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-neon transition-colors appearance-none cursor-pointer"
+                                        >
+                                            <option>200 - 500 JD</option>
+                                            <option>500 - 1000 JD</option>
+                                            <option>1000 - 2500 JD</option>
+                                            <option>2500+ JD</option>
+                                        </select>
+                                    </div>
+                                    <div className="space-y-1">
+                                        <label htmlFor="deadline" className="text-[10px] font-bold text-white uppercase tracking-wider">Deadline</label>
+                                        <select
+                                            id="deadline"
+                                            name="deadline"
+                                            className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-neon transition-colors appearance-none cursor-pointer"
+                                        >
+                                            <option>ASAP</option>
+                                            <option>1 Month</option>
+                                            <option>Flexible</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div>
                                     <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ml-1">Your Email</label>
                                     <input type="email" name="email" id="email" required className="w-full bg-black/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all placeholder:text-white/20" placeholder="name@company.com" />

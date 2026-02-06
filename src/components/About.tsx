@@ -31,33 +31,34 @@ export default function About() {
                         </motion.p>
 
                         <div className="pt-6">
-                            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Achievements</h3>
-                            <ul className="space-y-2 text-muted text-sm">
-                                <li className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 bg-neon rounded-full" />
-                                    Top 5% in CS Class (GPA Highlight)
+                            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Why clients choose me</h3>
+                            <ul className="space-y-4">
+                                <li className="flex gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
+                                        <span className="text-neon font-bold">01</span>
+                                    </div>
+                                    <div>
+                                        <strong className="text-white block mb-1">Performance & Speed</strong>
+                                        <p className="text-sm text-muted">Pages load in under 1.5s, improving extensive Google ranking.</p>
+                                    </div>
                                 </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 bg-neon rounded-full" />
-                                    Built & Deployed 10+ Production Apps
+                                <li className="flex gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
+                                        <span className="text-neon font-bold">02</span>
+                                    </div>
+                                    <div>
+                                        <strong className="text-white block mb-1">Local Payment Expert</strong>
+                                        <p className="text-sm text-muted">Official integration experience with Zain Cash & CliQ.</p>
+                                    </div>
                                 </li>
-                            </ul>
-                        </div>
-
-                        <div className="pt-6 border-t border-white/10 mt-6">
-                            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Who I Work Best With</h3>
-                            <ul className="space-y-3 text-muted text-sm">
-                                <li className="flex items-start gap-3">
-                                    <span className="text-neon mt-1">★</span>
-                                    <span><strong className="text-white">Serious Founders:</strong> You treat your website as a business asset, not just a checklist item.</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="text-neon mt-1">★</span>
-                                    <span><strong className="text-white">Growth-Minded:</strong> You care about speed, SEO, and user experience because you know they drive sales.</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="text-neon mt-1">★</span>
-                                    <span><strong className="text-white">Ready to Invest:</strong> You want a custom-engineered solution that outperforms generic templates.</span>
+                                <li className="flex gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
+                                        <span className="text-neon font-bold">03</span>
+                                    </div>
+                                    <div>
+                                        <strong className="text-white block mb-1">Reliability</strong>
+                                        <p className="text-sm text-muted">100% project completion rate. I don't ghost.</p>
+                                    </div>
                                 </li>
                             </ul>
                         </div>

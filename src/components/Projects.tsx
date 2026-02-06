@@ -64,93 +64,51 @@ export default function Projects() {
                             <motion.div
                                 key={project.title}
                                 variants={projectCard}
-                                whileHover={{ y: -10, scale: 1.02 }}
-                                className="group relative p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-neon/50 transition-all duration-300 backdrop-blur-sm overflow-hidden flex flex-col h-full hover:shadow-[0_0_30px_rgba(255,30,30,0.15)] hover:bg-white/[0.07]"
+                                whileHover={{ y: -5 }}
+                                className="group relative p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-neon/50 transition-all duration-300 backdrop-blur-sm flex flex-col h-full hover:shadow-[0_0_30px_rgba(255,30,30,0.15)] hover:bg-white/[0.07]"
                             >
-                                {/* Glow Effect */}
-                                <div className="absolute inset-0 bg-neon/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                                <div className="relative z-10 flex flex-col h-full">
-                                    <div className="flex items-center justify-between mb-6">
-                                        <Link href={`/projects/${project.slug}`} className="w-16 h-16 rounded-2xl bg-white p-3 flex items-center justify-center overflow-hidden border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(255,30,30,0.3)] transition-all duration-500 cursor-pointer">
-                                            <div className="relative w-full h-full">
-                                                <Image
-                                                    src={project.logo}
-                                                    alt={`${project.title} - ${project.description.split('.')[0]} by Omar Mubaidin - ${project.tech.join(', ')}`}
-                                                    fill
-                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                    className="object-contain"
-                                                />
-                                            </div>
-                                        </Link>
-                                        <div className="flex gap-3">
-                                            <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-neon hover:text-black transition-all duration-300 hover:scale-110 border border-white/5" aria-label={`View ${project.title} Live`}>
-                                                <ExternalLink className="w-5 h-5" />
-                                            </a>
-                                            {/* GitHub button removed as requested */}
-                                            {/* 
-                                            <a href={project.links.code} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-neon hover:text-black transition-all duration-300 hover:scale-110 border border-white/5" title="View Code">
-                                                <Github className="w-5 h-5" />
-                                            </a>
-                                            */}
+                                {/* Card Header: Logo & Title */}
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="w-12 h-12 rounded-xl bg-white p-2 flex items-center justify-center border border-white/10">
+                                        <div className="relative w-full h-full">
+                                            <Image
+                                                src={project.logo}
+                                                alt={`${project.title} Logo`}
+                                                fill
+                                                className="object-contain"
+                                            />
                                         </div>
                                     </div>
-
-                                    <Link href={`/projects/${project.slug}`} className="inline-block">
-                                        <h3 className="text-2xl font-bold mb-3 group-hover:text-neon transition-colors duration-300 cursor-pointer">{project.title}</h3>
-                                    </Link>
-
-                                    {/* Metrics Badge */}
-                                    <div className="mb-4 inline-block">
-                                        <span className="text-xs font-bold px-2 py-1 bg-neon/10 text-neon border border-neon/20 rounded uppercase tracking-wider">
-                                            {project.metrics}
-                                        </span>
-                                    </div>
-
-                                    <p className="text-muted text-base mb-6 leading-relaxed line-clamp-3">{project.description}</p>
-
-                                    <div className="mt-auto space-y-5">
-                                        <div className="grid grid-cols-1 gap-2 text-sm bg-black/40 p-4 rounded-xl border border-white/5 backdrop-blur-md">
-                                            <div className="flex gap-2 items-start"><span className="text-white/40 font-bold min-w-[70px] text-xs uppercase tracking-wider mt-0.5">Problem</span> <span className="text-white/80 leading-snug">{project.caseStudy.problem}</span></div>
-                                            <div className="flex gap-2 items-start"><span className="text-white/40 font-bold min-w-[70px] text-xs uppercase tracking-wider mt-0.5">Outcome</span>
-                                                <div className="flex flex-col">
-                                                    <span className="text-white/80 leading-snug">{project.caseStudy.outcome}</span>
-                                                    {project.verified_outcome && (
-                                                        <span className="text-[10px] text-green-400 font-mono mt-1 flex items-center gap-1">
-                                                            <span className="w-1 h-1 bg-green-400 rounded-full animate-pulse" />
-                                                            {project.verified_outcome}
-                                                        </span>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Screenshots Preview */}
-                                        {project.screenshots && (
-                                            <div className="grid grid-cols-2 gap-2 mt-4">
-                                                {project.screenshots.map((src, idx) => (
-                                                    <div key={idx} className="relative aspect-video bg-black/50 rounded-lg overflow-hidden border border-white/5 group-hover:border-neon/30 transition-colors">
-                                                        <Image
-                                                            src={src}
-                                                            alt="Project screenshot"
-                                                            fill
-                                                            sizes="(max-width: 768px) 50vw, 25vw"
-                                                            className="object-cover opacity-60 hover:opacity-100 transition-opacity"
-                                                        />
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-
-                                        <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
-                                            {project.tech.map((t) => (
-                                                <Badge key={t} variant="outline" className="text-xs px-3 py-1 rounded-full border-white/10 bg-black/20 text-muted/80">
-                                                    {t}
-                                                </Badge>
-                                            ))}
-                                        </div>
+                                    <div>
+                                        <h3 className="text-xl font-bold text-white group-hover:text-neon transition-colors">{project.title}</h3>
+                                        <span className="text-xs text-muted uppercase tracking-wider font-medium">{project.metrics}</span>
                                     </div>
                                 </div>
+
+                                {/* 1-Line Result (The Hook) */}
+                                <div className="mb-6">
+                                    <p className="text-white font-medium text-lg leading-snug">
+                                        {project.caseStudy.outcome}
+                                    </p>
+                                </div>
+
+                                {/* Stack Tags */}
+                                <div className="flex flex-wrap gap-2 mb-8 mt-auto">
+                                    {project.tech.map((t) => (
+                                        <Badge key={t} variant="outline" className="text-[10px] px-2 py-1 rounded-md border-white/10 bg-black/20 text-muted/80 uppercase tracking-wider font-mono">
+                                            {t}
+                                        </Badge>
+                                    ))}
+                                </div>
+
+                                {/* Action */}
+                                <Link
+                                    href={`/projects/${project.slug}`}
+                                    className="w-full py-3 flex items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-neon hover:text-black hover:border-neon transition-all group-hover:translate-y-1"
+                                >
+                                    Read Case Study
+                                    <ExternalLink className="w-4 h-4" />
+                                </Link>
                             </motion.div>
                         ))}
                 </div>

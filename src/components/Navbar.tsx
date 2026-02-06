@@ -13,7 +13,7 @@ export default function Navbar() {
     const links = [
         { name: 'Services', href: '/#services' },
         { name: 'Projects', href: '/#projects' },
-        { name: 'Articles', href: '/blog' },
+        { name: 'From the Lab', href: '/blog' },
         { name: 'Testimonials', href: '/#testimonials' },
         { name: 'Contact', href: '/#contact' },
     ];

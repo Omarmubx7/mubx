@@ -67,15 +67,18 @@ export default function BlogPreview() {
                             className="group relative p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-neon/30 hover:bg-white/10 transition-all duration-300 flex flex-col items-start h-full"
                         >
                             <div className="text-xs font-mono text-neon mb-4 uppercase tracking-widest">{post.date}</div>
-                            <h3 className="text-xl font-bold text-white mb-4 group-hover:text-neon transition-colors">
+                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-neon transition-colors">
                                 {post.title}
                             </h3>
-                            <p className="text-muted text-sm leading-relaxed mb-4 flex-grow">
-                                {post.excerpt}
+                            <p className="text-xs font-bold text-white/60 uppercase tracking-wider mb-3">
+                                For Founders:
+                            </p>
+                            <p className="text-muted text-sm leading-relaxed mb-4 flex-grow border-l-2 border-white/10 pl-3">
+                                {post.value}
                             </p>
                             <p className="text-xs text-neon font-bold mb-6 flex items-center gap-2">
                                 <span className="w-1 h-1 bg-neon rounded-full" />
-                                {post.value}
+                                {post.excerpt.substring(0, 50)}...
                             </p>
                             <Link href={`/blog/${post.slug}`} className="text-white text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
                                 Read Article <ArrowRight className="w-4 h-4 text-neon" />
