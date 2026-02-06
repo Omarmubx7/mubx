@@ -72,7 +72,6 @@ export const projects: Project[] = [
             role: 'Product UX, E-commerce flow, Frontend.',
             solution: 'I built a custom frontend that allows users to visualize designs on products before buying. The system integrates clear order tracking and a seamless checkout experience.',
             outcome: 'Digital order flow replacing manual communication. Bridges the gap between local artists and wearable products.',
-            caseStudyUrl: '/blog/building-blob-jo'
         }
     }
 ];

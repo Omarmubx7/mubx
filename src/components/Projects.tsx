@@ -115,10 +115,11 @@ export default function Projects() {
 
                                 {/* Action */}
                                 <Link
-                                    href={project.caseStudy.caseStudyUrl || `/projects/${project.slug}`}
+                                    href={project.caseStudy.caseStudyUrl || project.links.live}
+                                    target={project.caseStudy.caseStudyUrl ? "_self" : "_blank"}
                                     className="w-full py-3 flex items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-neon hover:text-black hover:border-neon transition-all group-hover:translate-y-1"
                                 >
-                                    Read Case Study
+                                    {project.caseStudy.caseStudyUrl ? "Read Case Study" : "Visit Live Website"}
                                     <ExternalLink className="w-4 h-4" />
                                 </Link>
                             </motion.div>

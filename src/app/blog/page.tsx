@@ -38,11 +38,11 @@ export default function BlogPage() {
             tags: ['Tech', 'Comparison', 'Performance']
         },
         {
-            slug: 'building-blob-jo',
-            title: 'How I built BloB.JO, Jordan’s print-on-demand store',
-            excerpt: 'Solving the logistics and UX challenges of a local POD market using React and Node.js.',
-            date: 'Jan 28, 2026',
-            tags: ['Case Study', 'React', 'Business Logic']
+            slug: 'nextjs-vs-wordpress',
+            title: 'Next.js vs WordPress: The 2026 Comparison',
+            excerpt: 'Why modern businesses are migrating to Headless architectures. A deep dive into performance, security, and ROI.',
+            date: 'Feb 04, 2026',
+            tags: ['Tech', 'Comparison', 'Performance']
         }
     ];
 
