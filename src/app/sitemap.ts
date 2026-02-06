@@ -17,7 +17,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/tools/website-cost-calculator-jordan',
         '/blog/ecommerce-in-jordan-guide',
         '/blog/nextjs-vs-wordpress',
-        '/blog/building-blob-jo',
+        '/blog/nextjs-mobile-performance',
+        '/client/demo',
+        '/tools/neon-gradient-card',
+        '/links',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
