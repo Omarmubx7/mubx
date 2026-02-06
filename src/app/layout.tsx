@@ -5,6 +5,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import SmoothScroll from '@/components/SmoothScroll';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import ChatWidget from '@/components/ChatWidget';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -116,6 +117,7 @@ export default function RootLayout({
         <SmoothScroll>{children}</SmoothScroll>
         <SpeedInsights />
         <Analytics />
+        <ChatWidget />
       </body>
     </html>
   );
