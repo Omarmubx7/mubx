@@ -24,11 +24,12 @@ export default function BlogPreview() {
             date: "Feb 4, 2026"
         },
         {
-            title: "How I built BloB.JO's print-on-demand system",
+            title: "Building BloB.JO: A Custom Print-on-Demand System",
             excerpt: "A technical deep dive into building a complex custom e-commerce flow with React and Node.js.",
             value: "Case Study: Local Success.",
             tags: ["Case Study", "Full Stack"],
             slug: "building-blob-jo",
+            website: "https://www.blobjor.me/",
             date: "Jan 28, 2026"
         }
     ];
@@ -96,13 +97,29 @@ export default function BlogPreview() {
                                 ))}
                             </div>
 
-                            <Link href={`/blog/${post.slug}`} className="text-white text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all w-full pt-4 border-t border-white/5">
-                                Read Article <ArrowRight className="w-4 h-4 text-neon" />
-                            </Link>
+                            </div>
+
+                            <div className="flex gap-4 items-center w-full pt-4 border-t border-white/5 mt-auto">
+                                <Link href={`/blog/${post.slug}`} className="text-white text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                                    Read Article <ArrowRight className="w-4 h-4 text-neon" />
+                                </Link>
+                                
+                                {/* @ts-ignore */}
+                                {post.website && (
+                                    <a 
+                                        href={post.website} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="text-muted text-xs font-bold hover:text-white transition-colors ml-auto flex items-center gap-1"
+                                    >
+                                        Visit Site <span className="text-[10px] text-neon">↗</span>
+                                    </a>
+                                )}
+                            </div>
                         </motion.div>
                     ))}
-                </div>
             </div>
-        </section>
+        </div>
+        </section >
     );
 }
