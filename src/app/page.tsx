@@ -27,11 +27,11 @@ export default function Home() {
       <Hero />
       <MetricsStrip />
       <SkillTicker />
-      <About />
       <Services />
       <Projects />
-      <BlogPreview />
       <Testimonials />
+      <About />
+      <BlogPreview />
       <Contact />
       <Footer />
     </main>

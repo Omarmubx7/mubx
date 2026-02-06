@@ -15,29 +15,29 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 export default function Services() {
     const services = [
         {
-            label: 'Service 01',
+            label: 'Quick Launch',
             title: 'LANDING PAGE',
-            description: 'A high-conversion landing page tailored to your brand. Perfect for ads, events, or launching a new product.',
+            description: 'High-conversion, lightning-fast single page designed to turn ads & visitors into leads.',
             idealHeight: 'Timeline: 5–7 Days',
-            deliverables: 'Deliverables: 1-Page Design, Copywriting, Mobile Responsive, Hosting Setup, Basic Analytics.',
+            deliverables: 'Includes: Copywriting, Speed Optimization (90+), Basic Analytics, Hosting Setup.',
             details: ['Responsive Design', 'Speed Optimization', 'SEO Basics', 'Analytics Setup'],
             price: 'From 200 JD'
         },
         {
-            label: 'Service 02',
+            label: 'Growth',
             title: 'BUSINESS WEBSITE',
-            description: 'A complete multi-page website to establish authority. Includes a CMS so you can edit content yourself.',
+            description: 'A robust multi-page platform to establish authority. Includes a CMS so you can edit content.',
             idealHeight: 'Timeline: 1–2 Weeks',
-            deliverables: 'Deliverables: 5-Page Site, CMS/Admin Panel, Dynamic Forms, Map Integration.',
+            deliverables: 'Includes: 5-Page Custom Design, CMS Integration, Advanced SEO, Contact Forms.',
             details: ['CMS Integration', 'Advanced SEO', 'Blog / News Section', 'Contact Forms'],
             price: 'From 350 JD'
         },
         {
-            label: 'Service 03',
-            title: 'E-COMMERCE MVP',
-            description: 'Start selling online with a custom store. Optimized for performance and secure local payments.',
+            label: 'Scale',
+            title: 'CUSTOM WEB SYSTEM',
+            description: 'E-commerce or SaaS. Scalable architecture with secure local payments (Zain Cash/CliQ).',
             idealHeight: 'Timeline: 2–3 Weeks',
-            deliverables: 'Deliverables: Product DB, Cart & Checkout, Payment Gateway (ZainCash/CliQ), Admin Dashboard.',
+            deliverables: 'Includes: Custom DB, Secure Auth, Payment Gateway, Admin Dashboard.',
             details: ['Product Catalog', 'Shopping Cart', 'Secure Checkout', 'Order Management'],
             price: 'From 550 JD'
         },
