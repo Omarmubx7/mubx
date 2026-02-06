@@ -35,37 +35,27 @@ export default function Hero() {
                 className="container mx-auto px-6 md:px-12 flex flex-col items-center text-center z-10"
             >
                 <div className="mb-8 relative inline-block">
-                    <h1 className="relative text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-white drop-shadow-2xl z-20">
-                        <TextReveal text="OMAR" className="block" />
-                        <TextReveal text="MUBAIDIN" className="block" delay={0.1} />
-                        <span className="sr-only"> - Professional Full Stack Web Developer in Jordan</span>
+                    {/* Availability Badge */}
+                    <div className="flex items-center justify-center gap-2 mb-8 mx-auto px-4 py-1.5 bg-white/5 w-fit rounded-full border border-white/10 backdrop-blur-md">
+                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                        <span className="text-xs font-bold text-white/80 uppercase tracking-wider">Available for New Projects</span>
+                    </div>
+
+                    <h1 className="relative text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1] text-white drop-shadow-2xl z-20 mb-6">
+                        I build <span className="text-neon">fast, secure</span><br className="hidden md:block" /> web systems for<br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">founders in Jordan.</span>
                     </h1>
-                    <div className="hidden md:block absolute -right-12 -top-8 rotate-12">
-                        <span className="px-3 py-1 bg-neon text-black text-xs font-bold rounded-full uppercase tracking-wider">
+
+                    <div className="hidden md:block absolute -right-4 top-20 rotate-12 opacity-80">
+                        <span className="px-3 py-1 bg-neon text-black text-xs font-bold rounded-full uppercase tracking-wider shadow-lg shadow-neon/20">
                             Verified Dev
                         </span>
                     </div>
-                    {/* Clean Subtitle - Unified Block via Typing Effect */}
-                    <div className="mt-4 w-full max-w-4xl mx-auto min-h-[140px] md:min-h-[80px] flex items-center justify-center">
-                        <TypingText
-                            strings={[
-                                "Verified developer helping Jordanian brands turn visitors into paying customers in <span class='text-neon font-bold'>under 2 weeks</span>.",
-                                "I build <span class='text-neon font-bold'>lightning-fast websites</span> that Google loves and customers trust.",
-                                "Secure, scalable systems designed to <span class='text-neon font-bold'>outperform your competition</span>.",
-                                "From minimal landing pages to <span class='text-neon font-bold'>complex e-commerce MVPs</span>.",
-                                "I don't just write code; I <span class='text-neon font-bold'>engineer business growth</span>.",
-                                "Get a <span class='text-neon font-bold'>Silicon Valley standard</span> product, built locally in Amman.",
-                                "Stop losing customers to <span class='text-neon font-bold'>slow loading times</span>.",
-                                "Turning complex problems into <span class='text-neon font-bold'>simple, elegant solutions</span>.",
-                                "Your technical partner for <span class='text-neon font-bold'>digital transformation</span>.",
-                                "Trusted by <span class='text-neon font-bold'>HTU, BloB.JO, and Vynex Media</span>.",
-                                "Let's build something <span class='text-neon font-bold'>extraordinary</span> together."
-                            ]}
-                            className="text-xl md:text-2xl text-white/90 font-medium leading-relaxed"
-                            loop={true}
-                            delay={30}
-                        />
-                    </div>
+
+                    <p className="mt-8 text-xl md:text-2xl text-muted max-w-3xl mx-auto leading-relaxed font-light">
+                        Custom-engineered for performance, security, and local payments <span className="text-white font-medium">(Zain Cash, CliQ)</span>.
+                        <br className="hidden md:block" /> Stop losing customers to slow, generic templates.
+                    </p>
                 </div>
 
                 {/* Main CTA - Larger & Higher Contrast */}
