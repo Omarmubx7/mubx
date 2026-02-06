@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 };
 
 import Hero from '@/components/Hero';
+import SkillTicker from '@/components/SkillTicker';
 import About from '@/components/About';
 import Services from '@/components/Services';
 import Projects from '@/components/Projects';
@@ -23,6 +24,7 @@ export default function Home() {
     <main className="relative flex flex-col min-h-screen">
       <Navbar />
       <Hero />
+      <SkillTicker />
       <About />
       <Services />
       <Projects />
