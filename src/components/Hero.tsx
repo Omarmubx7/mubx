@@ -103,23 +103,23 @@ export default function Hero() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="relative w-full max-w-[420px] mx-auto"
                         >
-                            {/* Card Container */}
-                            <div className="relative bg-white rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5 group">
+                            {/* Card Container - Transparent */}
+                            <div className="relative group">
                                 {/* Image */}
-                                <div className="relative aspect-[4/5] w-full bg-white">
+                                <div className="relative aspect-[4/5] w-full">
                                     <Image
                                         src="/omarmub.png"
                                         alt="Omar Mubaidin - Full Stack Developer"
                                         fill
-                                        className="object-cover object-top scale-[1.02] group-hover:scale-105 transition-transform duration-700"
+                                        className="object-contain object-bottom scale-110 group-hover:scale-115 transition-transform duration-700 drop-shadow-2xl"
                                         priority
                                     />
-                                    {/* Overlay Gradient for consistency if needed, currently kept minimal as requested "keep white bg" */}
-                                    <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-3xl pointer-events-none" />
+                                    {/* Bottom Fade to blend with section */}
+                                    <div className="absolute -bottom-1 left-0 right-0 h-24 bg-gradient-to-t from-black to-transparent z-10" />
                                 </div>
 
                                 {/* Floating Tech Badge on Image */}
-                                <div className="absolute bottom-4 right-4 bg-black/90 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl shadow-xl flex items-center gap-3">
+                                <div className="absolute bottom-4 right-4 bg-black/90 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl shadow-xl flex items-center gap-3 z-20">
                                     <div className="flex -space-x-2">
                                         <div className="w-6 h-6 rounded-full bg-[#0070F3] border border-black flex items-center justify-center text-[8px] text-white font-bold">N</div>
                                         <div className="w-6 h-6 rounded-full bg-[#3178C6] border border-black flex items-center justify-center text-[8px] text-white font-bold">TS</div>
