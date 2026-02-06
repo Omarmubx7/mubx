@@ -4,7 +4,7 @@ import InfiniteMarquee from './ui/InfiniteMarquee';
 import {
     Code, Layout, Workflow, MessageCircle, ShoppingCart,
     Smartphone, Database, Search, Zap, Globe,
-    PenTool, Layers, Box, Terminal
+    PenTool, Layers, Box, Terminal, MapPin, Lock
 } from 'lucide-react';
 
 const skillsRow1 = [
