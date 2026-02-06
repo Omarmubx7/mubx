@@ -9,6 +9,14 @@ import { fadeUp, staggerContainer } from '@/lib/motion';
 export default function BlogPreview() {
     const posts = [
         {
+            title: "Next.js Mobile Performance: Fixing LCP & CLS",
+            excerpt: "How I improved Mobile LCP from 2.5s to 0.8s on 4G networks using Next.js 15 features.",
+            value: "Global Technical Guide.",
+            tags: ["Performance", "React"],
+            slug: "nextjs-mobile-performance",
+            date: "Feb 6, 2026"
+        },
+        {
             title: "The State of E-commerce in Jordan (2026)",
             excerpt: "How to skip monthly fees by integrating Zain Cash & CliQ directly into your custom Next.js store.",
             value: "Stop renting your store. Own it.",
