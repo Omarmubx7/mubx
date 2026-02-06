@@ -5,6 +5,8 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import TypingText from './ui/TypingText';
+import MagneticButton from './ui/MagneticButton';
+import TextReveal from './ui/TextReveal';
 
 export default function Hero() {
 
@@ -34,8 +36,8 @@ export default function Hero() {
             >
                 <div className="mb-8 relative inline-block">
                     <h1 className="relative text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-white drop-shadow-2xl z-20">
-                        OMAR <br className="md:hidden" />
-                        MUBAIDIN
+                        <TextReveal text="OMAR" className="block" />
+                        <TextReveal text="MUBAIDIN" className="block" delay={0.1} />
                         <span className="sr-only"> - Professional Full Stack Web Developer in Jordan</span>
                     </h1>
                     <div className="hidden md:block absolute -right-12 -top-8 rotate-12">
@@ -68,13 +70,15 @@ export default function Hero() {
 
                 {/* Main CTA - Larger & Higher Contrast */}
                 <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 mb-20">
-                    <a
-                        href="#contact"
-                        className="group flex items-center justify-center gap-3 px-10 py-5 bg-neon text-black font-black text-xl rounded-full hover:bg-white transition-all transform hover:scale-[1.02] shadow-[0_0_30px_rgba(255,30,30,0.4)] hover:shadow-[0_0_40px_rgba(255,255,255,0.5)]"
-                    >
-                        Get a Project Estimate
-                        <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                    </a>
+                    <MagneticButton>
+                        <a
+                            href="#contact"
+                            className="group flex items-center justify-center gap-3 px-10 py-5 bg-neon text-black font-black text-xl rounded-full hover:bg-white transition-all shadow-[0_0_30px_rgba(255,30,30,0.4)] hover:shadow-[0_0_40px_rgba(255,255,255,0.5)]"
+                        >
+                            Get a Project Estimate
+                            <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                        </a>
+                    </MagneticButton>
                 </motion.div>
 
                 {/* Social Proof / Trust Strip */}
