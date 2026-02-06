@@ -7,7 +7,18 @@ import Image from 'next/image';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 
 export default function BlogPreview() {
-    const posts = [
+    interface BlogPost {
+        title: string;
+        excerpt: string;
+        value: string;
+        tags: string[];
+        slug: string;
+        date: string;
+        image?: string;
+        website?: string;
+    }
+
+    const posts: BlogPost[] = [
         {
             title: "Next.js Mobile Performance: Fixing LCP & CLS",
             excerpt: "How I improved Mobile LCP from 2.5s to 0.8s on 4G networks using Next.js 15 features.",

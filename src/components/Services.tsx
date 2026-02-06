@@ -29,7 +29,7 @@ export default function Services() {
             description: 'A robust multi-page platform to establish authority. Includes a CMS so you can edit content.',
             idealHeight: 'Timeline: 1–2 Weeks',
             deliverables: 'Includes: 5-Page Custom Design, CMS Integration, Advanced SEO, Contact Forms.',
-            details: ['CMS Integration', 'Advanced SEO', 'Blog / News Section', 'Contact Forms'],
+            details: ['CMS Integration', 'Advanced SEO', 'Blog / News Section', 'Contact Forms', 'Free Hosting & Domain'],
             price: 'From 350 JD'
         },
         {
@@ -38,7 +38,7 @@ export default function Services() {
             description: 'E-commerce or SaaS. Scalable architecture with secure local payments (Zain Cash/CliQ).',
             idealHeight: 'Timeline: 2–3 Weeks',
             deliverables: 'Includes: Custom DB, Secure Auth, Payment Gateway, Admin Dashboard.',
-            details: ['Product Catalog', 'Shopping Cart', 'Secure Checkout', 'Order Management'],
+            details: ['Product Catalog', 'Shopping Cart', 'Secure Checkout', 'Order Management', 'Managed Hosting'],
             price: 'From 550 JD'
         },
     ];
@@ -102,8 +102,8 @@ export default function Services() {
                                 key={service.title}
                                 variants={fadeUp}
                                 className={`p-8 rounded-3xl border transition-all duration-300 group backdrop-blur-sm flex flex-col h-full shadow-lg relative ${index === 1
-                                        ? 'bg-white/10 border-neon shadow-[0_0_30px_rgba(255,30,30,0.15)] scale-105 z-10'
-                                        : 'bg-white/5 border-white/10 hover:border-neon/50 hover:bg-white/[0.07] hover:shadow-neon/10'
+                                    ? 'bg-white/10 border-neon shadow-[0_0_30px_rgba(255,30,30,0.15)] scale-105 z-10'
+                                    : 'bg-white/5 border-white/10 hover:border-neon/50 hover:bg-white/[0.07] hover:shadow-neon/10'
                                     }`}
                             >
                                 {index === 1 && (
