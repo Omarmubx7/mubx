@@ -101,10 +101,18 @@ export default function Services() {
                             <motion.div
                                 key={service.title}
                                 variants={fadeUp}
-                                className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-neon/50 hover:bg-white/[0.07] transition-all duration-300 group backdrop-blur-sm flex flex-col h-full shadow-lg hover:shadow-neon/10"
+                                className={`p-8 rounded-3xl border transition-all duration-300 group backdrop-blur-sm flex flex-col h-full shadow-lg relative ${index === 1
+                                        ? 'bg-white/10 border-neon shadow-[0_0_30px_rgba(255,30,30,0.15)] scale-105 z-10'
+                                        : 'bg-white/5 border-white/10 hover:border-neon/50 hover:bg-white/[0.07] hover:shadow-neon/10'
+                                    }`}
                             >
+                                {index === 1 && (
+                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-neon text-black text-xs font-bold px-4 py-1.5 rounded-full shadow-lg uppercase tracking-wider">
+                                        Most Popular
+                                    </div>
+                                )}
                                 <div className="flex justify-between items-start mb-4">
-                                    <Badge variant="neon" className="mb-2">{service.price}</Badge>
+                                    <Badge variant={index === 1 ? 'neon' : 'outline'} className="mb-2">{service.price}</Badge>
                                 </div>
 
                                 <h3 className="text-xl font-bold mb-4 text-white group-hover:text-neon transition-colors uppercase">
