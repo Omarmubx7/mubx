@@ -8,28 +8,28 @@ import {
 } from 'lucide-react';
 
 const skillsRow1 = [
-    { name: "CMS Setup", icon: Layout },
-    { name: "n8n Workflows", icon: Workflow },
-    { name: "Wireframing", icon: Layers },
-    { name: "Copywriting", icon: PenTool },
-    { name: "Framer Expert", icon: Box },
-    { name: "WhatsApp Bots", icon: MessageCircle },
+    { name: "Full Stack Architecture", icon: Layers },
+    { name: "Next.js & React Expertise", icon: Code },
+    { name: "Database Design", icon: Database },
+    { name: "Secure Auth Systems", icon: Lock },
+    { name: "High-Performance SEO", icon: Search },
+    { name: "Amman Based", icon: MapPin },
+    { name: "UI/UX Engineering", icon: PenTool },
 ];
 
 const skillsRow2 = [
-    { name: "SEO Optimization", icon: Search },
-    { name: "Landing Pages", icon: Globe },
-    { name: "Custom Code", icon: Code },
-    { name: "E-commerce", icon: ShoppingCart },
-    { name: "Mobile Responsive", icon: Smartphone },
-    { name: "Performance", icon: Zap },
-    { name: "API Integration", icon: Terminal },
+    { name: "E-commerce Solutions", icon: ShoppingCart },
+    { name: "System Scalability", icon: Zap },
+    { name: "Custom Web Apps", icon: Globe },
+    { name: "Technical Consulting", icon: MessageCircle },
+    { name: "Mobile-First Design", icon: Smartphone },
+    { name: "API Development", icon: Terminal },
 ];
 
 const SkillPill = ({ name, Icon }: { name: string, Icon: any }) => (
-    <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white/80 hover:text-white hover:border-neon/50 hover:bg-white/10 transition-all cursor-default">
-        <Icon className="w-4 h-4 text-neon" />
-        <span className="text-sm font-medium whitespace-nowrap">{name}</span>
+    <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-black/40 border border-white/10 backdrop-blur-md text-white/90 hover:text-neon hover:border-neon/50 hover:bg-white/5 transition-all duration-300 cursor-default group shadow-lg shadow-black/20">
+        <Icon className="w-4 h-4 text-white/50 group-hover:text-neon transition-colors" />
+        <span className="text-sm font-bold tracking-wide whitespace-nowrap">{name}</span>
     </div>
 );
 
