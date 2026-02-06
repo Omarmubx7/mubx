@@ -32,16 +32,7 @@ export default function BlogPreview() {
             slug: "nextjs-vs-wordpress",
             date: "Feb 4, 2026"
         },
-        {
-            title: "Building BloB.JO: A Custom Print-on-Demand System",
-            excerpt: "A technical deep dive into building a complex custom e-commerce flow with React and Node.js.",
-            value: "Case Study: Local Success.",
-            tags: ["Case Study", "Full Stack"],
-            slug: "building-blob-jo",
-            website: "https://www.blobjor.me/",
-            image: "/images/BloB.JO.png",
-            date: "Jan 28, 2026"
-        }
+
     ];
 
     return (
