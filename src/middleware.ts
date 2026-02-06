@@ -1,16 +1,14 @@
+
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-    const url = request.nextUrl;
-    const hostname = url.hostname;
+    const host = request.headers.get('host');
 
-    // Check if we're on the 'www' subdomain
-    if (hostname.startsWith('www.')) {
-        const newHostname = hostname.replace('www.', '');
-        const newUrl = new URL(url.toString());
-        newUrl.hostname = newHostname;
-        return NextResponse.redirect(newUrl);
+    if (host && host.startsWith('www.')) {
+        const newDomain = host.replace('www.', '');
+        const newUrl = `https://${newDomain}${request.nextUrl.pathname}${request.nextUrl.search}`;
+        return NextResponse.redirect(newUrl, 301);
     }
 
     return NextResponse.next();
