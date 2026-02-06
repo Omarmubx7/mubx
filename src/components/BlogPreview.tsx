@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 
 export default function BlogPreview() {
@@ -30,6 +31,7 @@ export default function BlogPreview() {
             tags: ["Case Study", "Full Stack"],
             slug: "building-blob-jo",
             website: "https://www.blobjor.me/",
+            image: "/images/BloB.JO.png",
             date: "Jan 28, 2026"
         }
     ];
@@ -70,6 +72,19 @@ export default function BlogPreview() {
                             variants={fadeUp}
                             className="group relative p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-neon/30 hover:bg-white/10 transition-all duration-300 flex flex-col items-start h-full"
                         >
+                            {/* Post Image (Optional) */}
+                            {/* @ts-ignore */}
+                            {post.image && (
+                                <div className="w-full relative aspect-video mb-6 rounded-xl overflow-hidden border border-white/10 group-hover:border-neon/30 transition-colors">
+                                    <Image
+                                        src={post.image}
+                                        alt={post.title}
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                </div>
+                            )}
+
                             <div className="flex justify-between w-full items-center mb-4">
                                 <span className="text-xs font-mono text-neon uppercase tracking-widest">{post.date}</span>
                             </div>
