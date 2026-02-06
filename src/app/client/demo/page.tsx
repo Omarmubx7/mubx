@@ -120,7 +120,7 @@ export default function ClientPortalDemo() {
                             <div className="p-6 rounded-2xl bg-gradient-to-br from-neon/10 to-transparent border border-neon/20">
                                 <h4 className="font-bold text-neon mb-2">Need a Change?</h4>
                                 <p className="text-sm text-muted mb-4">Requesting a scope change? Schedule a quick sync.</p>
-                                <span className="text-xs font-bold uppercase tracking-wider text-white border-b border-white/20 pb-0.5">Book Call -></span>
+                                <span className="text-xs font-bold uppercase tracking-wider text-white border-b border-white/20 pb-0.5">Book Call &rarr;</span>
                             </div>
                         </div>
                     </div>
