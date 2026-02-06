@@ -114,8 +114,6 @@ export default function Hero() {
                                         className="object-contain object-bottom scale-110 group-hover:scale-115 transition-transform duration-700 drop-shadow-2xl"
                                         priority
                                     />
-                                    {/* Bottom Fade to blend with section */}
-                                    <div className="absolute -bottom-1 left-0 right-0 h-24 bg-gradient-to-t from-black to-transparent z-10" />
                                 </div>
                             </div>
 
