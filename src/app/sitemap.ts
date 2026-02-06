@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/about',
         '/contact',
         '/ar',
+        '/services',
         '/services/ecommerce',
         '/blog',
         '/tools/website-cost-calculator-jordan',
