@@ -11,9 +11,10 @@ import Image from 'next/image';
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const links = [
-        { name: 'About', href: '/#about' },
         { name: 'Services', href: '/#services' },
         { name: 'Projects', href: '/#projects' },
+        { name: 'Articles', href: '/blog' },
+        { name: 'Testimonials', href: '/#testimonials' },
         { name: 'Contact', href: '/#contact' },
     ];
 
@@ -47,13 +48,7 @@ export default function Navbar() {
                         {link.name}
                     </Link>
                 ))}
-                <Link
-                    href="/blog"
-                    className="text-sm font-medium text-gray-300 hover:text-neon transition-colors flex items-center gap-1"
-                >
-                    Lab / Articles
-                </Link>
-
+                {/* Resume Link */}
                 <Link
                     href="/cv.pdf"
                     target="_blank"
@@ -65,9 +60,9 @@ export default function Navbar() {
 
                 <Link
                     href="#contact"
-                    className="px-4 py-2 text-sm font-bold text-black bg-neon rounded-full hover:bg-white transition-colors"
+                    className="px-5 py-2.5 text-sm font-bold text-black bg-neon rounded-full hover:bg-white transition-all shadow-[0_0_15px_rgba(255,30,30,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"
                 >
-                    Let&apos;s Talk
+                    Get Estimate
                 </Link>
             </div>
 
