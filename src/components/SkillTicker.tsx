@@ -40,7 +40,7 @@ export default function SkillTicker() {
             <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
             <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
-            <div className="flex flex-col gap-6 transform -rotate-2 scale-105 origin-center opacity-80 hover:opacity-100 transition-opacity">
+            <div className="flex flex-col gap-6 opacity-80 hover:opacity-100 transition-opacity">
                 <InfiniteMarquee direction="left" speed={40}>
                     {skillsRow1.map((skill) => (
                         <SkillPill key={skill.name} name={skill.name} Icon={skill.icon} />
