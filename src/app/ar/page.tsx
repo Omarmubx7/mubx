@@ -65,13 +65,13 @@ export default function ArabicLandingPage() {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a
-                        href="https://wa.me/962790000000" // Replace with actual number
+                        href="https://calendly.com/omarmubaidincs/30min"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-8 py-4 bg-neon text-black font-bold text-lg rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,30,30,0.3)] flex items-center gap-2"
                     >
                         <MessageCircle className="w-5 h-5" />
-                        تواصل معي واتساب
+                        احجز مكالمة (مجاناً)
                     </a>
                     <Link
                         href="/#projects"
@@ -151,13 +151,13 @@ export default function ArabicLandingPage() {
 
                 <div className="text-center mt-12">
                     <a
-                        href="https://wa.me/962790000000" // Replace with actual number
+                        href="https://calendly.com/omarmubaidincs/30min"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold text-lg rounded-full hover:bg-gray-200 transition-colors"
+                        className="px-8 py-4 bg-neon text-black font-bold text-lg rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,30,30,0.3)] flex items-center gap-2"
                     >
-                        احجز استشارتك المجانية
                         <MessageCircle className="w-5 h-5" />
+                        احجز مكالمة استشارية
                     </a>
                 </div>
             </section>

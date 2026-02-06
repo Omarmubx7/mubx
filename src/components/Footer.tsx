@@ -40,6 +40,7 @@ export default function Footer() {
                             <Link href="/contact" className="text-muted hover:text-white hover:translate-x-1 transition-all">Contact</Link>
                             <Link href="/tools/website-cost-calculator-jordan" className="text-neon hover:text-white hover:translate-x-1 transition-all font-bold mt-2">Cost Calculator</Link>
                             <Link href="/tools/neon-gradient-card" className="text-muted hover:text-white hover:translate-x-1 transition-all">Free Tools (Open Source)</Link>
+                            <Link href="/ar" className="text-neon hover:text-white hover:translate-x-1 transition-all font-bold mt-2 ltr:text-right">Arabic Version (عربي)</Link>
                         </nav>
 
                         <div className="pt-6 border-t border-white/5 mt-6">
@@ -60,8 +61,8 @@ export default function Footer() {
                                 <span>mubxdev@proton.me</span>
                                 <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                             </a>
-                            <a href="https://wa.me/962780090453" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors">
-                                WhatsApp: +962 780 090 453
+                            <a href="https://calendly.com/omarmubaidincs/30min" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors">
+                                Book a Call
                             </a>
                         </div>
                         <div className="flex gap-4 pt-2">
