@@ -15,6 +15,7 @@ export interface Project {
         role: string;
         solution: string; // Renaming/Explicitly adding solution for clarity if needed, or mapping details to it
         outcome: string;
+        caseStudyUrl?: string;
     }
 }
 
@@ -71,6 +72,7 @@ export const projects: Project[] = [
             role: 'Product UX, E-commerce flow, Frontend.',
             solution: 'I built a custom frontend that allows users to visualize designs on products before buying. The system integrates clear order tracking and a seamless checkout experience.',
             outcome: 'Digital order flow replacing manual communication. Bridges the gap between local artists and wearable products.',
+            caseStudyUrl: '/blog/building-blob-jo'
         }
     }
 ];
