@@ -13,108 +13,132 @@ export default function Hero() {
 
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
+        <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 bg-black -z-30" />
-
-            {/* Grid Pattern */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#202020_1px,transparent_1px),linear-gradient(to_bottom,#202020_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-20 opacity-20" />
 
-            {/* Spotlight / Glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-neon/10 via-neon/5 to-transparent blur-3xl -z-10" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-transparent via-white/5 to-transparent blur-[100px] -z-10" />
+            {/* Spotlights */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neon/5 blur-[120px] -z-10 rounded-full mix-blend-screen" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan/5 blur-[120px] -z-10 rounded-full mix-blend-screen" />
 
-            {/* Floating particles or accents */}
-            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-neon rounded-full animate-pulse blur-[1px] opacity-50" />
-            <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-cyan rounded-full animate-pulse delay-700 blur-[2px] opacity-40" />
+            <div className="container mx-auto px-6 md:px-12">
+                <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
 
-            <motion.div
-                variants={staggerContainer}
-                initial="visible" // Crucial for LCP: Start visible
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="container mx-auto px-6 md:px-12 flex flex-col items-center text-center z-10"
-            >
-                <div className="mb-8 relative inline-block">
-                    {/* Availability Badge */}
-                    <div className="flex items-center justify-center gap-2 mb-6 mx-auto px-4 py-1.5 bg-white/5 w-fit rounded-full border border-white/10 backdrop-blur-md">
-                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                        <span className="text-xs font-bold text-white/80 uppercase tracking-wider">Available for New Projects</span>
-                    </div>
-
-                    {/* Profile Photo - Added as requested */}
-                    <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-full overflow-hidden border-2 border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.1)] group">
-                        <Image
-                            src="/omarmub.png"
-                            alt="Omar Mubaidin"
-                            fill
-                            className="object-cover"
-                            priority
-                        />
-                        {/* Inner Glow */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    </div>
-
-                    <h1 className="relative text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1] text-white drop-shadow-2xl z-20 mb-6">
-                        I build <span className="text-neon">fast, secure</span><br className="hidden md:block" /> web systems for<br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">founders in Jordan.</span>
-                    </h1>
-
-                    <div className="hidden md:block absolute -right-4 top-20 rotate-12 opacity-80">
-                        <span className="px-3 py-1 bg-neon text-black text-xs font-bold rounded-full uppercase tracking-wider shadow-lg shadow-neon/20">
-                            Verified Dev
-                        </span>
-                    </div>
-
-                    <p className="mt-8 text-xl md:text-2xl text-muted max-w-3xl mx-auto leading-relaxed font-light">
-                        Custom-engineered for performance, security, and local payments <span className="text-white font-medium">(Zain Cash, CliQ)</span>.
-                        <br className="hidden md:block" /> Stop losing customers to slow, generic templates.
-                    </p>
-                </div>
-
-                {/* Main CTA - Larger & Higher Contrast */}
-                <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 mb-20">
-                    <MagneticButton>
-                        <a
-                            href="#contact"
-                            className="group flex items-center justify-center gap-3 px-10 py-5 bg-neon text-black font-black text-xl rounded-full hover:bg-white transition-all shadow-[0_0_30px_rgba(255,30,30,0.4)] hover:shadow-[0_0_40px_rgba(255,255,255,0.5)]"
+                    {/* Left Column: Text Stack */}
+                    <div className="flex-1 text-center lg:text-left z-10">
+                        <motion.div
+                            variants={staggerContainer}
+                            initial="hidden"
+                            animate="visible"
+                            className="flex flex-col items-center lg:items-start"
                         >
-                            Get a Project Estimate
-                            <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                        </a>
-                    </MagneticButton>
-                </motion.div>
+                            {/* Trust Badge */}
+                            <motion.div variants={fadeUp} className="mb-6 inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full backdrop-blur-md">
+                                <span className="flex h-2 w-2 relative">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                </span>
+                                <span className="text-xs font-bold text-white/80 uppercase tracking-wider">
+                                    Available · Trusted by HTU, BloB.JO, Vynex
+                                </span>
+                            </motion.div>
 
-                {/* Social Proof / Trust Strip */}
-                <motion.div variants={fadeUp} className="flex flex-col items-center gap-8 opacity-90 w-full max-w-4xl min-h-[400px] md:min-h-[160px]">
-                    <div className="flex flex-col items-center gap-1">
-                        <p className="text-sm text-muted uppercase tracking-widest font-bold">Trusted by Local Leaders</p>
+                            {/* Main Headline */}
+                            <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-6 tracking-tight">
+                                Turn your website into <br className="hidden lg:block" />
+                                <span className="text-neon">revenue.</span>
+                            </motion.h1>
+
+                            {/* Subheadline */}
+                            <motion.p variants={fadeUp} className="text-lg md:text-xl text-muted leading-relaxed max-w-2xl mb-8 font-light">
+                                I build custom, secure web systems for founders in Jordan.
+                                <span className="block mt-2">
+                                    No templates. Just high-performance code with native <span className="text-white font-medium">Zain Cash & CliQ</span> integration.
+                                </span>
+                            </motion.p>
+
+                            {/* CTA Buttons */}
+                            <motion.div variants={fadeUp} className="flex flex-col items-center lg:items-start gap-4 mb-10 w-full sm:w-auto">
+                                <MagneticButton>
+                                    <a
+                                        href="#contact"
+                                        className="group w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-neon text-black font-black text-lg rounded-full hover:bg-white transition-all shadow-[0_0_20px_rgba(255,30,30,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
+                                    >
+                                        Get My Project Estimate
+                                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    </a>
+                                </MagneticButton>
+                                <span className="text-xs text-muted/60 font-medium">
+                                    Clear plan & pricing in 24 hours. No pressure.
+                                </span>
+
+                                <div className="mt-2">
+                                    <a href="#projects" className="text-white font-bold text-sm hover:text-neon transition-colors border-b border-transparent hover:border-neon pb-0.5">
+                                        View my projects →
+                                    </a>
+                                </div>
+                            </motion.div>
+
+                            {/* Trust Bullets (Microcopy) */}
+                            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-xs font-medium text-white/40 border-t border-white/5 pt-6 w-full justify-center lg:justify-start">
+                                <span className="flex items-center gap-2">
+                                    <span className="text-neon text-lg">›</span> Performance Optimized
+                                </span>
+                                <span className="flex items-center gap-2">
+                                    <span className="text-neon text-lg">›</span> Security Standards
+                                </span>
+                                <span className="flex items-center gap-2">
+                                    <span className="text-neon text-lg">›</span> Local Payments Ready
+                                </span>
+                            </motion.div>
+                        </motion.div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-                        {/* Card 1 */}
-                        <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
-                            <span className="text-white font-bold text-lg">HTU Martial Arts</span>
-                            <span className="text-xs text-muted mb-2">University Club System</span>
-                            <span className="text-neon font-mono text-xs font-bold">100+ Members Managed</span>
-                        </div>
+                    {/* Right Column: Hero Image Card */}
+                    <div className="flex-1 lg:max-w-[500px] mb-10 lg:mb-0 relative z-20">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="relative w-full max-w-[420px] mx-auto"
+                        >
+                            {/* Card Container */}
+                            <div className="relative bg-white rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5 group">
+                                {/* Image */}
+                                <div className="relative aspect-[4/5] w-full bg-white">
+                                    <Image
+                                        src="/omarmub.png"
+                                        alt="Omar Mubaidin - Full Stack Developer"
+                                        fill
+                                        className="object-cover object-top scale-[1.02] group-hover:scale-105 transition-transform duration-700"
+                                        priority
+                                    />
+                                    {/* Overlay Gradient for consistency if needed, currently kept minimal as requested "keep white bg" */}
+                                    <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-3xl pointer-events-none" />
+                                </div>
 
-                        {/* Card 2 */}
-                        <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
-                            <span className="text-white font-bold text-lg">BloB.JO</span>
-                            <span className="text-xs text-muted mb-2">Amman, Print-on-Demand Brand</span>
-                            <span className="text-neon font-mono text-xs font-bold">Full Digital Branch</span>
-                        </div>
+                                {/* Floating Tech Badge on Image */}
+                                <div className="absolute bottom-4 right-4 bg-black/90 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl shadow-xl flex items-center gap-3">
+                                    <div className="flex -space-x-2">
+                                        <div className="w-6 h-6 rounded-full bg-[#0070F3] border border-black flex items-center justify-center text-[8px] text-white font-bold">N</div>
+                                        <div className="w-6 h-6 rounded-full bg-[#3178C6] border border-black flex items-center justify-center text-[8px] text-white font-bold">TS</div>
+                                    </div>
+                                    <div>
+                                        <span className="block text-[10px] text-muted font-bold uppercase tracking-wider">Stack</span>
+                                        <span className="block text-xs text-white font-bold">Next.js Expert</span>
+                                    </div>
+                                </div>
+                            </div>
 
-                        {/* Card 3 */}
-                        <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
-                            <span className="text-white font-bold text-lg">Vynex Media</span>
-                            <span className="text-xs text-muted mb-2">Digital Agency</span>
-                            <span className="text-neon font-mono text-xs font-bold">+20% Lead Conversion</span>
-                        </div>
+                            {/* Decorative Elements behind card */}
+                            <div className="absolute -top-6 -right-6 w-24 h-24 bg-neon rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob" />
+                            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-cyan rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000" />
+                        </motion.div>
                     </div>
-                </motion.div>
-            </motion.div>
+
+                </div>
+            </div>
         </section>
     );
 }
