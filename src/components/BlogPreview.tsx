@@ -29,10 +29,10 @@ export default function BlogPreview() {
             excerpt: "Why modern businesses in Amman are migrating to Headless architectures for 100/100 performance.",
             value: "Performance wins customers.",
             tags: ["Performance", "Tech Strategy"],
+            tags: ["Performance", "Tech Strategy"],
             slug: "nextjs-vs-wordpress",
             date: "Feb 4, 2026"
-        },
-
+        }
     ];
 
     return (
