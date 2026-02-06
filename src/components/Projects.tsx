@@ -85,6 +85,18 @@ export default function Projects() {
                                     </div>
                                 </div>
 
+                                {/* Project Screenshot (if available) - Replaces the manual placeholder requested by user */}
+                                {project.screenshots && project.screenshots.length > 0 && (
+                                    <div className="relative w-full aspect-video mb-6 rounded-xl overflow-hidden border border-white/10 group-hover:border-neon/30 transition-colors">
+                                        <Image
+                                            src={project.screenshots[0]}
+                                            alt={`${project.title} Screenshot`}
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        />
+                                    </div>
+                                )}
+
                                 {/* 1-Line Result (The Hook) */}
                                 <div className="mb-6">
                                     <p className="text-white font-medium text-lg leading-snug">
@@ -103,7 +115,7 @@ export default function Projects() {
 
                                 {/* Action */}
                                 <Link
-                                    href={`/projects/${project.slug}`}
+                                    href={project.caseStudy.caseStudyUrl || `/projects/${project.slug}`}
                                     className="w-full py-3 flex items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-neon hover:text-black hover:border-neon transition-all group-hover:translate-y-1"
                                 >
                                     Read Case Study
