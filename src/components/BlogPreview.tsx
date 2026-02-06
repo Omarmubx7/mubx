@@ -97,18 +97,16 @@ export default function BlogPreview() {
                                 ))}
                             </div>
 
-                            </div>
-
                             <div className="flex gap-4 items-center w-full pt-4 border-t border-white/5 mt-auto">
                                 <Link href={`/blog/${post.slug}`} className="text-white text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
                                     Read Article <ArrowRight className="w-4 h-4 text-neon" />
                                 </Link>
-                                
+
                                 {/* @ts-ignore */}
                                 {post.website && (
-                                    <a 
-                                        href={post.website} 
-                                        target="_blank" 
+                                    <a
+                                        href={post.website}
+                                        target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-muted text-xs font-bold hover:text-white transition-colors ml-auto flex items-center gap-1"
                                     >
@@ -118,8 +116,8 @@ export default function BlogPreview() {
                             </div>
                         </motion.div>
                     ))}
+                </div>
             </div>
-        </div>
         </section >
     );
 }
