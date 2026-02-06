@@ -45,16 +45,19 @@ export default function About() {
                         </div>
 
                         <div className="pt-6 border-t border-white/10 mt-6">
-                            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Code & Security Standards</h3>
-                            <ul className="grid grid-cols-1 gap-2 text-muted text-xs font-mono">
-                                <li className="flex items-center gap-2">
-                                    <span className="text-green-500">✓</span> Git Version Control & Backups
+                            <h3 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Who I Work Best With</h3>
+                            <ul className="space-y-3 text-muted text-sm">
+                                <li className="flex items-start gap-3">
+                                    <span className="text-neon mt-1">★</span>
+                                    <span><strong className="text-white">Serious Founders:</strong> You treat your website as a business asset, not just a checklist item.</span>
                                 </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-green-500">✓</span> HTTPS & Input Validation
+                                <li className="flex items-start gap-3">
+                                    <span className="text-neon mt-1">★</span>
+                                    <span><strong className="text-white">Growth-Minded:</strong> You care about speed, SEO, and user experience because you know they drive sales.</span>
                                 </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-green-500">✓</span> Clean, Maintainable Architecture
+                                <li className="flex items-start gap-3">
+                                    <span className="text-neon mt-1">★</span>
+                                    <span><strong className="text-white">Ready to Invest:</strong> You want a custom-engineered solution that outperforms generic templates.</span>
                                 </li>
                             </ul>
                         </div>

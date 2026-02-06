@@ -36,10 +36,18 @@ export default function Footer() {
                             <Link href="/#about" className="text-muted hover:text-white hover:translate-x-1 transition-all">About</Link>
                             <Link href="/#projects" className="text-muted hover:text-white hover:translate-x-1 transition-all">Work</Link>
                             <Link href="/#services" className="text-muted hover:text-white hover:translate-x-1 transition-all">Services</Link>
-                            <Link href="/blog" className="text-muted hover:text-white hover:translate-x-1 transition-all">Lab</Link>
+                            <Link href="/blog" className="text-muted hover:text-white hover:translate-x-1 transition-all">Articles</Link>
                             <Link href="/contact" className="text-muted hover:text-white hover:translate-x-1 transition-all">Contact</Link>
                             <Link href="/tools/website-cost-calculator-jordan" className="text-neon hover:text-white hover:translate-x-1 transition-all font-bold mt-2">Cost Calculator</Link>
                         </nav>
+
+                        <div className="pt-6 border-t border-white/5 mt-6">
+                            <p className="text-[10px] uppercase tracking-widest text-muted/50 mb-3 font-bold">Payments Supported</p>
+                            <div className="flex gap-2">
+                                <span className="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs text-white/60 font-mono">Zain Cash</span>
+                                <span className="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs text-white/60 font-mono">CliQ</span>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Col 3: Connect */}

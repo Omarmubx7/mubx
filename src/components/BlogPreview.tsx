@@ -42,7 +42,7 @@ export default function BlogPreview() {
                 >
                     <div>
                         <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold mb-4">
-                            FROM THE <span className="text-neon">LAB</span>
+                            ARTICLES & <span className="text-neon">INSIGHTS</span>
                         </motion.h2>
                         <motion.p variants={fadeUp} className="text-muted text-lg max-w-xl">
                             Technical deep dives and thoughts on performance, security, and the future of web development.
