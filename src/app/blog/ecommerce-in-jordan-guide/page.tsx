@@ -37,14 +37,14 @@ export default function BlogPost() {
 
                     <h2>1. The Payment Gateway Problem</h2>
                     <p>
-                        Traditionally, getting a credit card gateway in Jordan required a massive deposit. Now, digital wallets rule the market.
-                        [Content Coming Soon: Detailed comparison of Zain Cash vs Visa integration]
+                        Traditionally, getting a credit card gateway (Network International) required a ~500 JOD deposit and weeks of paperwork.
+                        Now, digital wallets like **Zain Cash** allow you to launch instantly, though they often require manual payment verification unless you use a custom API integration.
                     </p>
 
                     <h2>2. Shopify vs Custom Development</h2>
                     <p>
-                        Shopify is great, but the monthly fees add up. For Jordanian businesses, a custom Next.js store often pays for itself in 6 months.
-                        [Content Coming Soon: Cost breakdown table]
+                        Shopify is great, but the monthly fees add up ($29/mo + 2% transaction fees).
+                        For Jordanian businesses, a custom Next.js store often pays for itself in 6 months because you own the code. You pay $0 in "platform fees", just your $5/mo hosting.
                     </p>
 
                     <div className="my-12 p-8 bg-white/5 rounded-2xl border border-white/10">

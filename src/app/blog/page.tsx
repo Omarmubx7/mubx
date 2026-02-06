@@ -17,6 +17,13 @@ export const metadata = {
 export default function BlogPage() {
     const posts = [
         {
+            slug: 'nextjs-mobile-performance',
+            title: 'Optimizing Mobile Performance in Next.js',
+            excerpt: 'How I improved LCP from 2.5s to 0.8s on 4G networks using Next.js 15 features.',
+            date: 'Feb 06, 2026',
+            tags: ['Performance', 'Guide', 'Global']
+        },
+        {
             slug: 'ecommerce-in-jordan-guide',
             title: 'The State of E-commerce in Jordan (2026)',
             excerpt: 'Everything you need to know about selling online in Jordan. Payment gateways, local logistics, and technical setup.',

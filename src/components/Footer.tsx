@@ -39,6 +39,7 @@ export default function Footer() {
                             <Link href="/blog" className="text-muted hover:text-white hover:translate-x-1 transition-all">Articles</Link>
                             <Link href="/contact" className="text-muted hover:text-white hover:translate-x-1 transition-all">Contact</Link>
                             <Link href="/tools/website-cost-calculator-jordan" className="text-neon hover:text-white hover:translate-x-1 transition-all font-bold mt-2">Cost Calculator</Link>
+                            <Link href="/tools/neon-gradient-card" className="text-muted hover:text-white hover:translate-x-1 transition-all">Free Tools (Open Source)</Link>
                         </nav>
 
                         <div className="pt-6 border-t border-white/5 mt-6">
