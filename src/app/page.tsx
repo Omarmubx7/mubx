@@ -23,7 +23,9 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const meta = siteConfig.metadata[lang];
 
   return {
-    title: meta.title,
+    title: {
+      absolute: meta.title,
+    },
     description: meta.description,
     openGraph: {
       ...siteConfig.openGraph,

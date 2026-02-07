@@ -33,12 +33,12 @@ export const siteConfig = {
     locale: 'en_US',
     metadata: {
         en: {
-            title: "Omar Mubaidin | Full Stack Web Developer in Amman, Jordan",
-            description: "Build fast, secure web systems in Amman with MUBX. I help startups and businesses launch high-performance Next.js websites and custom e-commerce stores.",
+            title: "Omar Mubaidin - Web Developer & CS Student",
+            description: "I help startups build fast, secure web systems. Computer Science student and Full Stack Developer based in Amman, Jordan.",
         },
         ar: {
-            title: "عمر مبيضين | مطور ويب شامل في عمان، الأردن",
-            description: "صمم موقعك مع MUBX في عمان. نحن نطور أنظمة ويب آمنة ومتاجر إلكترونية مخصصة تدعم الدفع المحلي. ابدأ رحلتك الرقمية مع حلول Next.js السريعة والقابلة للتوسع.",
+            title: "عمر مبيضين - مطور ويب وطالب علوم حاسوب",
+            description: "مطور ويب شامل في عمان. أساعد الشركات الناشئة في بناء أنظمة ومتاجر إلكترونية سريعة وآمنة.",
         }
     },
     openGraph: {
