@@ -60,8 +60,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
 }
 
-export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params;
+import { Locale } from '@/lib/dictionaries';
+
+export default async function ProjectPage(props: {
+    params: Promise<{ slug: string }>,
+    searchParams: Promise<{ lang?: string }>
+}) {
+    const { slug } = await props.params;
+    const searchParams = await props.searchParams;
+    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+
     const project = projects.find((p) => p.slug === slug);
 
     if (!project) return notFound();
@@ -82,7 +90,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     };
 
     return (
-        <LanguageProvider initialLocale="en">
+        <LanguageProvider initialLocale={lang}>
             <main className="bg-black min-h-screen selection:bg-neon selection:text-black">
                 <script
                     type="application/ld+json"

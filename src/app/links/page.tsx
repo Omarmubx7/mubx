@@ -12,7 +12,16 @@ export const metadata: Metadata = {
     description: 'Connect with Omar Mubaidin - Full Stack Web Developer. Social links, portfolio, and contact info.',
 };
 
-export default function LinksPage() {
+import { Locale } from '@/lib/dictionaries';
+
+type Props = {
+    searchParams: Promise<{ lang?: string }>
+}
+
+export default async function LinksPage(props: Props) {
+    const searchParams = await props.searchParams;
+    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+
     // Group 1: High Intent / Work
     const workLinks = [
         {
@@ -97,7 +106,7 @@ export default function LinksPage() {
     );
 
     return (
-        <LanguageProvider initialLocale="en">
+        <LanguageProvider initialLocale={lang}>
             <main className="relative flex flex-col min-h-screen bg-black">
                 {/* Background Texture (Consistent with Home) */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#202020_1px,transparent_1px),linear-gradient(to_bottom,#202020_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10 opacity-20" />

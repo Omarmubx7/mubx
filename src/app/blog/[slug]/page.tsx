@@ -12,7 +12,16 @@ export function generateStaticParams() {
     }));
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
+import { Locale } from '@/lib/dictionaries';
+
+export default async function BlogPost(props: {
+    params: Promise<{ slug: string }>,
+    searchParams: Promise<{ lang?: string }>
+}) {
+    const params = await props.params;
+    const searchParams = await props.searchParams;
+    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+
     const post = blogPosts.find((p) => p.slug === params.slug);
 
     if (!post) {
@@ -20,7 +29,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     }
 
     return (
-        <LanguageProvider initialLocale="en">
+        <LanguageProvider initialLocale={lang}>
             <main className="relative flex flex-col min-h-screen">
                 <Navbar />
 

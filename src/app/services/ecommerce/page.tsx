@@ -13,9 +13,18 @@ export const metadata: Metadata = {
     }
 };
 
-export default function EcommercePage() {
+import { Locale } from '@/lib/dictionaries';
+
+type Props = {
+    searchParams: Promise<{ lang?: string }>
+}
+
+export default async function EcommercePage(props: Props) {
+    const searchParams = await props.searchParams;
+    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+
     return (
-        <LanguageProvider initialLocale="en">
+        <LanguageProvider initialLocale={lang}>
             <main className="min-h-screen bg-background text-foreground selection:bg-neon selection:text-black">
                 <Navbar />
 

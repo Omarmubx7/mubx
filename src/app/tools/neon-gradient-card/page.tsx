@@ -14,7 +14,16 @@ export const metadata: Metadata = {
     }
 };
 
-export default function NeonCardPage() {
+import { Locale } from '@/lib/dictionaries';
+
+type Props = {
+    searchParams: Promise<{ lang?: string }>
+}
+
+export default async function NeonCardPage(props: Props) {
+    const searchParams = await props.searchParams;
+    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+
     const codeString = `export default function NeonCard({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative group w-full max-w-sm">
@@ -30,7 +39,7 @@ export default function NeonCardPage() {
 }`;
 
     return (
-        <LanguageProvider initialLocale="en">
+        <LanguageProvider initialLocale={lang}>
             <main className="min-h-screen bg-black selection:bg-neon selection:text-black">
                 <Navbar />
                 <div className="pt-32 pb-24 container mx-auto px-6 md:px-12">

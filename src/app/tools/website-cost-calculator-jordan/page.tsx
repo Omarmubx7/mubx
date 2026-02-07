@@ -13,9 +13,18 @@ export const metadata: Metadata = {
     }
 };
 
-export default function CalculatorPage() {
+import { Locale } from '@/lib/dictionaries';
+
+type Props = {
+    searchParams: Promise<{ lang?: string }>
+}
+
+export default async function CalculatorPage(props: Props) {
+    const searchParams = await props.searchParams;
+    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+
     return (
-        <LanguageProvider initialLocale="en">
+        <LanguageProvider initialLocale={lang}>
             <main className="min-h-screen bg-background selection:bg-neon selection:text-black">
                 <Navbar />
                 <section className="pt-32 pb-20 container mx-auto px-6 md:px-12">

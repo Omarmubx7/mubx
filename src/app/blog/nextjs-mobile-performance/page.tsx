@@ -14,9 +14,18 @@ export const metadata: Metadata = {
     }
 };
 
-export default function BlogPost() {
+import { Locale } from '@/lib/dictionaries';
+
+type Props = {
+    searchParams: Promise<{ lang?: string }>
+}
+
+export default async function BlogPost(props: Props) {
+    const searchParams = await props.searchParams;
+    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+
     return (
-        <LanguageProvider initialLocale="en">
+        <LanguageProvider initialLocale={lang}>
             <main className="min-h-screen bg-black selection:bg-neon selection:text-black">
                 <Navbar />
                 <article className="pt-32 pb-24 container mx-auto px-6 md:px-12 max-w-4xl">

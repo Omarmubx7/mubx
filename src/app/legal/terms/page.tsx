@@ -6,9 +6,18 @@ export const metadata = {
     description: 'Terms and Conditions for MUBX Services.',
 };
 
-export default function TermsPage() {
+import { Locale } from '@/lib/dictionaries';
+
+type Props = {
+    searchParams: Promise<{ lang?: string }>
+}
+
+export default async function TermsPage(props: Props) {
+    const searchParams = await props.searchParams;
+    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+
     return (
-        <LanguageProvider initialLocale="en">
+        <LanguageProvider initialLocale={lang}>
             <div className="container mx-auto px-6 py-32 text-foreground max-w-4xl bg-background min-h-screen">
                 <h1 className="text-4xl md:text-5xl font-bold mb-4">Terms of Service</h1>
                 <p className="text-muted mb-12">Last Updated: {new Date().toLocaleDateString()}</p>
