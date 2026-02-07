@@ -1,0 +1,78 @@
+==============================================================================
+SERVICE PROTOCOL: CUSTOM LINK TREE (BIO PAGE)
+==============================================================================
+
+SERVICE:      Custom Link Tree
+PRICE:        50 JD
+TIMELINE:     2-3 Days
+DELIVERABLES: Custom Domain, Advanced Design, Unlimited Links, Analytics
+
+------------------------------------------------------------------------------
+1. COMPLETE KICKOFF PROMPT (COPY & PASTE)
+------------------------------------------------------------------------------
+"Act as an expert Full Stack Developer specializing in Next.js 15, Tailwind CSS, and Framer Motion.
+I need a premium 'Link Tree' style bio page. This is NOT a basic list; it must look designing and high-end.
+
+# Project Specs
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS (Mobile-First approach)
+- **Icons**: Lucide React
+- **Animations**: Framer Motion (staggered fade-ins, hover effects)
+- **Font**: Geist Sans / Inter (hosted optimized)
+- **Deployment**: Vercel
+
+# Design Vision
+- **Theme**: Glassmorphism (dark mode default) with neon accents.
+- **Layout**: 
+  - Centered single column (max-w-md mx-auto).
+  - Top: Circular profile picture (priority load) + Name + Verified Badge + Short Bio.
+  - Middle: Stack of link cards (Work, Socials, Contact).
+  - Bottom: Small footer/copyright.
+- **Interactions**: Cards should have a subtle scale/glow on hover.
+
+# Functional Requirements
+1. **Performance**: LCP under 0.8s. Use `next/image` with priority for the avatar.
+2. **SEO**: Static Metadata (Title: [Name] | Links, Desc: [Bio]).
+3. **Analytics**: All external links must use a helper component `LinkCard` that handles `target='_blank'` and can easily add `onClick` tracking events later.
+4. **Socials**: A row of icon-only buttons for Instagram, LinkedIn, GitHub, etc.
+
+# File Structure Preference
+- `src/app/page.tsx` (Main layout)
+- `src/components/profile-header.tsx` (Avatar & Bio)
+- `src/components/link-card.tsx` (Reusable button with animations)
+- `src/components/social-row.tsx` (Horizontal icons)
+- `src/config/data.ts` (Store the links data array here for easy editing)
+
+Please start by setting up the project structure and creating the `data.ts` file with dummy data, then build the components."
+
+------------------------------------------------------------------------------
+2. CHECKLIST SPECIFICS
+------------------------------------------------------------------------------
+[ ] DESIGN & CONTENT
+    - [ ] Profile Picture: High-res square/circle, optimized to WebP.
+    - [ ] Bio: Short, punchy text (< 160 chars).
+    - [ ] Links: Grouped logically (e.g., 'Work', 'Socials', 'Contact').
+    - [ ] Social Icons: Lucide React icons used.
+    - [ ] Theme: Verified against client branding (Colors/Fonts).
+
+[ ] DOMAIN & SEO
+    - [ ] Domain: e.g., links.clientname.com or clientname.com
+    - [ ] Title Tag: "Name | Links" (Keep short, < 60 chars).
+    - [ ] Favicon: Custom icon generated (minimum 32x32).
+
+[ ] ANALYTICS (CRITICAL)
+    - [ ] Event Tracking: 'click_link' events set up in GA4 or Plausible.
+    - [ ] UTM Parameters: Added to outgoing links if requested (e.g., ?utm_source=linkbio).
+
+[ ] DEPLOYMENT
+    - [ ] Deployment Target: Vercel (recommended for speed).
+    - [ ] Cache Control: Standard Vercel caching headers.
+
+------------------------------------------------------------------------------
+3. OFTEN FORGOTTEN & ESSENTIALS
+------------------------------------------------------------------------------
+[ ] EXTRAS
+    - [ ] QR Code: Generate a styled QR code for print.
+    - [ ] VCard: "Save Contact" button (.vcf file download).
+    - [ ] Custom 404: Simple "Page not found" redirecting to home.
+    - [ ] Footer: "Built by MUBX" link (Backlink for SEO).

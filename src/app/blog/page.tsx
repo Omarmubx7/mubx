@@ -8,7 +8,7 @@ import { siteConfig } from '@/config/seo';
 
 export const metadata = {
     title: 'Web Dev Lab & Articles | MUBX - Omar Mubaidin',
-    description: 'Technical deep dives on Next.js, E-commerce in Jordan, and High-Performance Web Development. The lab where I document my engineering process.',
+    description: 'Deep dives on Next.js, E-commerce in Jordan, and High-Performance Web Dev. The lab where I document my process.',
     alternates: {
         canonical: `${siteConfig.url}/blog`
     }

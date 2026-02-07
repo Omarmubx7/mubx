@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
     title: 'Web Development Services in Amman | MUBX',
-    description: 'Specialized web development services including E-commerce solutions, marketing landing pages, and custom web applications. Based in Amman, Jordan.',
+    description: 'Expert web development in Amman: E-commerce, landing pages, and custom web apps. High-performance solutions by MUBX.',
     alternates: {
         canonical: `${siteConfig.url}/services`
     }

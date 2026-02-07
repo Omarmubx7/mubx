@@ -9,7 +9,7 @@ import { Download, Calendar, Mail, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'About Omar Mubaidin | MUBX - Web Developer & CS Student',
-    description: 'The story behind MUBX. I am a Computer Science student and Full Stack Developer in Amman, Jordan, obsessed with web performance and local e-commerce growth.',
+    description: 'Meet MUBX: A Computer Science student & Full Stack Developer in Amman, obsessed with web performance & local e-commerce.',
     keywords: [
         'Omar Mubaidin',
         'Omar Mubaidin Bio',

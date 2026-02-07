@@ -1,0 +1,70 @@
+==============================================================================
+MASTER PROTOCOL: PRE-FLIGHT, HANDOFF & MAINTENANCE (ALL PROJECTS)
+==============================================================================
+
+Use this checklist for EVERY project type to ensure nothing falls through the cracks.
+
+------------------------------------------------------------------------------
+1. LEGAL & COMPLIANCE (PROTECT YOURSELF & CLIENT)
+------------------------------------------------------------------------------
+[ ] CONTRACT / AGREEMENT
+    - [ ] Scope of Work signed (Deliverables clearly defined).
+    - [ ] Payment Terms agreed (e.g., 50% Upfront, 50% on Delivery).
+    - [ ] "Scope Creep" clause included (Extra work = Extra pay).
+
+[ ] SITE LEGAL PAGES
+    - [ ] Privacy Policy (Required if collecting emails/analytics).
+    - [ ] Terms of Service.
+    - [ ] Refund Policy (CRITICAL for E-commerce/Web Systems).
+    - [ ] Cookie Consent Banner (if using tracking pixels/GA4).
+
+------------------------------------------------------------------------------
+2. CLIENT EDUCATION & HANDOFF
+------------------------------------------------------------------------------
+[ ] RECORDED TRAINING (LOOM)
+    - [ ] "How to edit text/images" (if CMS used).
+    - [ ] "How to view form submissions/leads".
+    - [ ] "How to view analytics".
+    - [ ] Keep video under 10 mins.
+
+[ ] RECURRING COSTS SHEET
+    - [ ] Create a PDF listing all monthly costs for the client:
+        - Domain: ~$15/year
+        - Vercel: Free (Hobby) or $20/mo (Pro).
+        - Database (Supabase): Free or $25/mo.
+        - Third-party APIs (Resend, Sanity, etc.).
+
+[ ] CREDENTIALS TRANSFER
+    - [ ] Securely share passwords (use 1Password link or similar).
+    - [ ] Transfer Vercel/Domain ownership to Client's account (or keep on yours with maintenance fee).
+
+------------------------------------------------------------------------------
+3. QUALITY ASSURANCE (QA) - THE "OOPS" LIST
+------------------------------------------------------------------------------
+[ ] ERROR HANDLING
+    - [ ] Custom `not-found.tsx` (404 Page) created?
+    - [ ] Custom `error.tsx` (500 Page) created?
+    - [ ] "Empty States" designed? (e.g., No blog posts found).
+
+[ ] BROWSER & DEVICE TESTING
+    - [ ] Tested on Safari (iOS)? (Often breaks flexbox/gradients).
+    - [ ] Tested on Chrome (Android)?
+    - [ ] Tested on Firefox?
+
+[ ] FORM SPAM PROTECTION
+    - [ ] Honeypot field hidden in forms?
+    - [ ] Rate limiting enabled?
+
+------------------------------------------------------------------------------
+4. POST-LAUNCH SURVIVAL
+------------------------------------------------------------------------------
+[ ] MONITORING
+    - [ ] Uptime Robot (Free) setup to ping site every 5 mins.
+    - [ ] Sentry (Free tier) connected for error logging.
+
+[ ] BACKUPS
+    - [ ] Database Backups scheduled (Daily/Weekly).
+    - [ ] CMS Layout/Content export saved locally.
+
+[ ] ASK FOR REVIEW
+    - [ ] Send follow-up email 1 week later asking for a Google Review/Testimonial.

@@ -7,6 +7,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import ChatWidget from '@/components/ChatWidget';
 
+import SkipToContent from '@/components/SkipToContent';
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -77,6 +79,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
       <body className="bg-background text-foreground antialiased selection:bg-neon selection:text-black">
+        <SkipToContent />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

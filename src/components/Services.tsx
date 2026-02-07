@@ -15,6 +15,15 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 export default function Services() {
     const services = [
         {
+            label: 'Link Bio',
+            title: 'CUSTOM LINK TREE',
+            description: 'Advanced designing and custom domain for your social media presence.',
+            idealHeight: 'Timeline: 2–3 Days',
+            deliverables: 'Includes: Custom Domain Setup, Advanced Design, Unlimited Links, Analytics.',
+            details: ['Custom Domain', 'Advanced Design', 'Social Integration', 'Analytics'],
+            price: '50 JD'
+        },
+        {
             label: 'Quick Launch',
             title: 'LANDING PAGE',
             description: 'High-conversion, lightning-fast single page designed to turn ads & visitors into leads.',
@@ -70,7 +79,7 @@ export default function Services() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-bold mb-6"
+                        className="text-3xl md:text-5xl font-bold mb-6 break-words"
                     >
                         SERVICES & <span className="text-neon">PRICING</span>
                     </motion.h2>
@@ -79,9 +88,9 @@ export default function Services() {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
                     {isLoading
-                        ? Array.from({ length: 3 }).map((_, i) => (
+                        ? Array.from({ length: 4 }).map((_, i) => (
                             <SkeletonTheme key={i} baseColor="#202020" highlightColor="#444">
                                 <div className="p-8 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm flex flex-col h-full">
                                     <div className="flex justify-between items-start mb-4">
@@ -101,21 +110,21 @@ export default function Services() {
                             <motion.div
                                 key={service.title}
                                 variants={fadeUp}
-                                className={`p-8 rounded-3xl border transition-all duration-300 group backdrop-blur-sm flex flex-col h-full shadow-lg relative ${index === 1
+                                className={`p-6 md:p-8 rounded-3xl border transition-all duration-300 group backdrop-blur-sm flex flex-col h-full shadow-lg relative ${index === 2
                                     ? 'bg-white/10 border-neon shadow-[0_0_30px_rgba(255,30,30,0.15)] scale-105 z-10'
                                     : 'bg-white/5 border-white/10 hover:border-neon/50 hover:bg-white/[0.07] hover:shadow-neon/10'
                                     }`}
                             >
-                                {index === 1 && (
-                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-neon text-black text-xs font-bold px-4 py-1.5 rounded-full shadow-lg uppercase tracking-wider">
+                                {index === 2 && (
+                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-neon text-black text-xs font-bold px-4 py-1.5 rounded-full shadow-lg uppercase tracking-wider whitespace-nowrap">
                                         Most Popular
                                     </div>
                                 )}
                                 <div className="flex justify-between items-start mb-4">
-                                    <Badge variant={index === 1 ? 'neon' : 'outline'} className="mb-2">{service.price}</Badge>
+                                    <Badge variant={index === 2 ? 'neon' : 'outline'} className="mb-2">{service.price}</Badge>
                                 </div>
 
-                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-neon transition-colors uppercase">
+                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-neon transition-colors uppercase break-words hyphens-auto">
                                     {service.title}
                                 </h3>
                                 <p className="text-muted leading-relaxed mb-4 flex-grow text-sm">

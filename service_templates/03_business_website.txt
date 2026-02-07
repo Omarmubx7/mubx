@@ -1,0 +1,79 @@
+==============================================================================
+SERVICE PROTOCOL: BUSINESS WEBSITE (GROWTH)
+==============================================================================
+
+SERVICE:      Business Website
+PRICE:        From 350 JD
+TIMELINE:     1-2 Weeks
+DELIVERABLES: 5-Page Custom Design, CMS Integration, Advanced SEO, Contact Forms
+
+------------------------------------------------------------------------------
+1. COMPLETE KICKOFF PROMPT (COPY & PASTE)
+------------------------------------------------------------------------------
+"Act as a Senior Web Architect. I need a corporate/business website built with Next.js 15 and a Headless CMS.
+The goal is to build trust and authority. The client must be able to edit blog posts and team members easily.
+
+# Project Specs
+- **Framework**: Next.js 15 (App Router)
+- **CMS**: Sanity.io (preferred) or Contentful.
+- **Styling**: Tailwind CSS
+- **SEO**: `next-sitemap` + structured data (LD-JSON).
+- **Localization**: Prepared for i18n (en/ar) routing structure.
+
+# Content Architecture (CMS Schemas)
+1. **Post**: Title, Slug, Main Image, Body (Portable Text), Categories, Author.
+2. **Author**: Name, Image, Bio.
+3. **Service**: Title, Description, Icon Name, Price (optional).
+4. **TeamMember**: Name, Role, Image, Linkedin URL.
+
+# Site Map & Layout
+- **Navbar**: Logo, Links (Home, About, Services, Blog, Contact), CTA ('Get Quote').
+- **Home**: Hero, Service Highlights, Latest Insights (Blog), Partners.
+- **Services Index**: Grid of all services.
+- **Service Detail** (dynamic `[slug]`): Detailed explanation + FAQ + CTA.
+- **About**: Company Story, Values, Team Grid.
+- **Contact**: Map, Info, Form.
+
+# Technical Requirements
+1. **ISR**: Use Incremental Static Regeneration (`revalidate: 60`) for CMS pages.
+2. **Images**: Use `sanity-image` helper for hot-spot cropping and automatic optimization.
+3. **SEO**: Auto-generate sitemap.xml from CMS slugs.
+
+Please start by defining the Sanity schemas and the Next.js folder structure for these routes."
+
+------------------------------------------------------------------------------
+2. CHECKLIST SPECIFICS
+------------------------------------------------------------------------------
+[ ] CMS INTEGRATION
+    - [ ] Sanity/Contentful project created.
+    - [ ] Schemas defined: Post, Author, Category, Service.
+    - [ ] Webhooks configured to trigger revalidation on publish.
+
+[ ] CONTENT & PAGES
+    - [ ] About Page: Team section, Company Story.
+    - [ ] Services Page: Dedicated schema markup for each service.
+    - [ ] Blog: Index page with pagination, individual slug pages.
+    - [ ] Legal: Privacy Policy & Terms pages created.
+
+[ ] SEO (ADVANCED)
+    - [ ] Dynamic Sitemap: Auto-generated from CMS slugs.
+    - [ ] Structured Data: Organization, BreadcrumbList, Article (for blog).
+    - [ ] Open Graph: Dynamic OG images for blog posts (using `@vercel/og` or CMS image).
+
+[ ] LOCALIZATION (OPTIONAL)
+    - [ ] i18n setup if Arabic/English is required (next-intl).
+    - [ ] RTL support checked in Tailwind (rtl: class modifiers).
+    - [ ] Font: Cairo (for Arabic) & Inter (for English).
+
+------------------------------------------------------------------------------
+3. OFTEN FORGOTTEN & ESSENTIALS
+------------------------------------------------------------------------------
+[ ] CLIENT HANDOFF
+    - [ ] CMS Training Video: Record a Loom showing how to add a blog post.
+    - [ ] Editor Access: Invite client email to Sanity/Contentful.
+    - [ ] "Draft Mode": Ensure client can preview before publishing.
+
+[ ] QUALITY OF LIFE
+    - [ ] 404 Page: Custom design helping users find their way back.
+    - [ ] Search Bar: If blog has > 10 posts, add search.
+    - [ ] Breadcrumbs: Navigation trail for SEO and UX.

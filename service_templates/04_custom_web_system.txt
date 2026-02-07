@@ -1,0 +1,84 @@
+==============================================================================
+SERVICE PROTOCOL: CUSTOM WEB SYSTEM (SCALE - SAAS/E-COMM)
+==============================================================================
+
+SERVICE:      Custom Web System
+PRICE:        From 550 JD
+TIMELINE:     2-3 Weeks
+DELIVERABLES: Custom DB, Secure Auth, Payment Gateway (Zain Cash/CliQ), Admin Dashboard
+
+------------------------------------------------------------------------------
+1. COMPLETE KICKOFF PROMPT (COPY & PASTE)
+------------------------------------------------------------------------------
+"Act as a Principal Software Engineer. I need to architect a scalable web application (SaaS/E-commerce) with secure authentication, database management, and payments.
+
+# Project Specs
+- **Framework**: Next.js 15 (App Router)
+- **Database**: Supabase (PostgreSQL) + Drizzle ORM.
+- **Auth**: Clerk (recommended for speed) or Supabase Auth.
+- **UI Library**: Shadcn/ui (complete set: Tables, Dialogs, dropdowns).
+- **State Management**: TanStack Query (React Query) for client-side data.
+
+# Architecture Layers
+1. **Public Layer**: Marketing pages (Home, Pricing).
+2. **Auth Layer**: Login/Signup/Forgot Password.
+3. **App Layer** (Protected): 
+   - layout: Sidebar + Top Navigation.
+   - dashboard: Overview metrics (Charts via Recharts).
+   - settings: Profile, Billing.
+4. **Admin Layer** (Role-based): User management, Transaction logs.
+
+# Specific integrations (Jordan Context)
+- **Payments**: 
+  - Zain Cash (Webhook handler required).
+  - CliQ (Manual flow: User uploads screenshot -> Admin approves).
+- **Notifications**: Transaction emails via Resend.
+
+# Security Requirements
+- **RLS**: Row Level Security enabled on Supabase.
+- **Middleware**: Protect `/app` and `/admin` routes.
+- **Zod**: Strict validation on all Server Actions.
+
+Please start by designing the Database Schema (Drizzle schema) for Users, Orders, and Products."
+
+------------------------------------------------------------------------------
+2. CHECKLIST SPECIFICS
+------------------------------------------------------------------------------
+[ ] ARCHITECTURE & DB
+    - [ ] Database Schema Design (ER Diagram approved).
+    - [ ] Supabase Project setup.
+    - [ ] Row Level Security (RLS) policies written and tested.
+    - [ ] Migrations pipeline set up (Drizzle/Prisma).
+
+[ ] AUTHENTICATION
+    - [ ] Sign Up / Sign In flows (Email, Google, etc.).
+    - [ ] Protected Routes Middleware configured.
+    - [ ] User Roles (Admin vs User) implemented in public.users table or metadata.
+
+[ ] PAYMENTS (JORDAN SPECIALIZED)
+    - [ ] Zain Cash API: Merchant Wallet connected, Webhook handler secure.
+    - [ ] CliQ: 'Pay via CliQ' instruction modal + Admin manual approval flow.
+    - [ ] Receipt generation (PDF) on success.
+
+[ ] ADMIN DASHBOARD
+    - [ ] Overview Stats (Revenue, Users).
+    - [ ] Data Tables (Tanstack Table) with sorting/filtering.
+    - [ ] CRUD operations for core resources.
+
+[ ] SECURITY AUDIT
+    - [ ] SQL Injection prevention (via ORM).
+    - [ ] XSS protection (React default + sanitization).
+    - [ ] API Rate Limiting strict rules.
+
+------------------------------------------------------------------------------
+3. OFTEN FORGOTTEN & ESSENTIALS
+------------------------------------------------------------------------------
+[ ] CRITICAL INFRASTRUCTURE
+    - [ ] Uptime Monitoring: Ping service every 5 mins.
+    - [ ] Database Backups: PITR (Point-in-time recovery) enabled in Supabase.
+    - [ ] Error Logging: Sentry connected to catch production crashes.
+
+[ ] LEGAL & COMPLIANCE
+    - [ ] Terms of Service: Explicitly defined for SaaS users.
+    - [ ] Refund Policy: Clear rules for disputes.
+    - [ ] Transaction Emails: "Receipt" email delivery verified (DKIM/SPF records).

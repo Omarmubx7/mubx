@@ -1,0 +1,120 @@
+==============================================================================
+MUBX SERVICE DELIVERY PROTOCOL & CHECKLIST
+==============================================================================
+
+SERVICE NAME: [Insert Service Name e.g., Link Tree / Landing Page / Web System]
+CLIENT NAME:  [Insert Client Name]
+DATE:         [DD/MM/YYYY]
+
+------------------------------------------------------------------------------
+1. SYSTEM PROMPT (FOR AI ASSISTANCE)
+------------------------------------------------------------------------------
+Copy and paste this prompt when starting the project to ensure quality conformity:
+
+"You are an expert Full Stack Developer at MUBX, specializing in high-performance Next.js applications.
+Your goal is to build a [Link Tree / Landing Page / Web System] that is visually stunning ('Awwwards' level), secure, and optimized for Jordan's market (Zain Cash/CliQ ready).
+
+Constraints & Style Guide:
+- Framework: Next.js 15 (App Router)
+- Styling: Tailwind CSS (Mobile First) with 'Neon' accents (#HTU_GREEN or Brand Color).
+- Typography: Inter or modern sans-serif. Bold, readable headings.
+- Animations: Framer Motion (fade-up, stagger) for premium feel.
+- Code Quality: Strict TypeScript, no 'any' types, component modularity.
+- Performance: Core Web Vitals optimized (LCP < 1.2s).
+
+Deliverables:
+1. Fully responsive UI.
+2. SEO-ready metadata structure.
+3. Clean, maintainable codebase."
+
+------------------------------------------------------------------------------
+2. SECURITY CHECKLIST
+------------------------------------------------------------------------------
+[ ] ENVIRONMENT VARIABLES
+    - [ ] .env.local created and added to .gitignore
+    - [ ] API Keys (Supabase, Stripe, etc.) are never hardcoded.
+
+[ ] HEADERS & CONFIG
+    - [ ] next.config.ts configures security headers (X-Content-Type-Options, X-Frame-Options).
+    - [ ] Content Security Policy (CSP) configured if handling sensitive data.
+
+[ ] VALIDATION
+    - [ ] Zod schemas implemented for all form inputs.
+    - [ ] API routes validate request body and method.
+    - [ ] Rate limiting enabled for public APIs (using Upstash or similar).
+
+[ ] DATABASE (If Applicable)
+    - [ ] Row Level Security (RLS) policies enabled.
+    - [ ] No public write access.
+
+------------------------------------------------------------------------------
+3. SEO & DISCOVERABILITY
+------------------------------------------------------------------------------
+[ ] METADATA (src/config/seo.ts or page.tsx)
+    - [ ] Title Tag < 60 characters (e.g., "Brand Name | Keyword - City").
+    - [ ] Meta Description < 120 characters, actionable and clear.
+    - [ ] Open Graph Images (1200x630px) generated and linked.
+    - [ ] Canonical URL set to prevent duplicate content issues.
+
+[ ] TECHNICAL SEO
+    - [ ] sitemap.xml generated (using next-sitemap or custom route).
+    - [ ] robots.txt configured to allow indexing (User-agent: * Allow: /).
+    - [ ] Semantic HTML used (h1, h2, nav, main, footer).
+    - [ ] Images have descriptive 'alt' text.
+
+[ ] SCHEMA MARKUP (JSON-LD)
+    - [ ] Organization/LocalBusiness schema added.
+    - [ ] 'Service' or 'Product' schema added for main offerings.
+
+------------------------------------------------------------------------------
+4. PERFORMANCE & UX
+------------------------------------------------------------------------------
+[ ] ASSETS
+    - [ ] Images converted to WebP/AVIF.
+    - [ ] Font files subsetted and self-hosted or optimzed via next/font.
+    - [ ] SVGs used for icons (Lucide React) instead of large PNGs.
+
+[ ] LOADING STATES
+    - [ ] Skeletons/Suspense boundaries implemented for data fetching.
+    - [ ] Lazy loading for below-the-fold components (next/dynamic).
+
+------------------------------------------------------------------------------
+5. DOMAIN & INFRASTRUCTURE
+------------------------------------------------------------------------------
+[ ] DOMAIN SETUP
+    - [ ] Domain purchased (Namecheap/GoDaddy/Local).
+    - [ ] DNS propagation checked.
+    - [ ] Nameservers pointed to Vercel/Netlify/Hosting.
+
+[ ] SSL/TLS
+    - [ ] SSL Certificate active (Auto-provisioned by Vercel).
+    - [ ] HTTP redirects to HTTPS automatically.
+
+[ ] ANALYTICS
+    - [ ] Google Analytics 4 (GA4) property created.
+    - [ ] Microsoft Clarity/Hotjar installed for heatmaps (optional).
+    - [ ] Privacy policy updated to reflect tracking.
+
+------------------------------------------------------------------------------
+6. DEPLOYMENT PROCESS
+------------------------------------------------------------------------------
+[ ] PRE-FLIGHT
+    - [ ] `npm run build` passes without lint errors.
+    - [ ] `npm run type-check` passes.
+    - [ ] All sensitive keys added to Vercel Project Settings.
+
+[ ] LAUNCH
+    - [ ] Deploy to Production branch (main).
+    - [ ] Verify functionality on live URL.
+    - [ ] Test contact forms and API endpoints in production.
+
+[ ] POST-LAUNCH
+    - [ ] Submit Sitemap to Google Search Console.
+    - [ ] Test PageSpeed Insights (Target: 90+ Mobile).
+    - [ ] Hand over credentials/documentation to client.
+
+------------------------------------------------------------------------------
+7. NOTES & EXTRAS
+------------------------------------------------------------------------------
+[ ] 
+[ ] 
