@@ -86,12 +86,12 @@ export default function Hero() {
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="flex-1 relative h-[500px] w-full flex items-center justify-center group order-2 lg:order-none"
+                        className="flex-1 relative h-[600px] lg:h-[700px] w-full flex items-center justify-center group order-2 lg:order-none"
                     >
                         <div className="absolute inset-0 bg-gradient-to-tr from-neon/10 to-transparent rounded-full blur-[60px] animate-pulse-slow" />
 
                         {/* Profile Image with Hover Effect */}
-                        <div className="relative w-full h-full max-w-[500px] max-h-[600px] transition-transform duration-500 ease-out group-hover:scale-[1.02]">
+                        <div className="relative w-full h-full max-w-[550px] max-h-[800px] transition-transform duration-500 ease-out group-hover:scale-[1.02]">
                             <Image
                                 src="/omarmub.webp"
                                 alt={t.hero.imageAlt}
