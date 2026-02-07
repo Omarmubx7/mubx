@@ -10,20 +10,19 @@ export const siteConfig = {
     },
     keywords: [
         'Omar Mubaidin',
-        'MUB Mubaidin',
         'MUBX',
-        'MUB',
-        'Mubaidin',
         'Web Developer Amman',
         'Web Developer Jordan',
         'Software Engineer Jordan',
         'Next.js Developer',
-        'React Developer',
         'Full Stack Developer',
         'Computer Science Student',
         'Custom Web Development',
         'E-commerce Jordan',
-        'Zain Cash Integration'
+        'Zain Cash Integration',
+        'Startups',
+        'Secure Web Systems',
+        'Fast Web Systems'
     ],
     ogImage: "/icon.png", // Recommended size 1200x630
     links: {
@@ -33,11 +32,11 @@ export const siteConfig = {
     locale: 'en_US',
     metadata: {
         en: {
-            title: "Omar Mubaidin - Web Developer & CS Student",
+            title: "Omar Mubaidin — Web Developer & Computer Science Student",
             description: "I help startups build fast, secure web systems. Computer Science student and Full Stack Developer based in Amman, Jordan.",
         },
         ar: {
-            title: "عمر مبيضين - مطور ويب وطالب علوم حاسوب",
+            title: "عمر مبيضين — مطور ويب شامل وطالب علوم حاسوب في عمان",
             description: "مطور ويب شامل في عمان. أساعد الشركات الناشئة في بناء أنظمة ومتاجر إلكترونية سريعة وآمنة.",
         }
     },
