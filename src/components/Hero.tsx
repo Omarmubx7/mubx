@@ -19,8 +19,8 @@ export default function Hero() {
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#202020_1px,transparent_1px),linear-gradient(to_bottom,#202020_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-20 opacity-20" />
 
             {/* Spotlights */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neon/5 blur-[120px] -z-10 rounded-full mix-blend-screen" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan/5 blur-[120px] -z-10 rounded-full mix-blend-screen" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neon/5 blur-[80px] -z-10 rounded-full mix-blend-screen" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan/5 blur-[80px] -z-10 rounded-full mix-blend-screen" />
 
             <div className="container mx-auto px-6 md:px-12">
                 <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
@@ -111,7 +111,8 @@ export default function Hero() {
                                         src="/omarmub.png"
                                         alt="Omar Mubaidin - Full Stack Developer"
                                         fill
-                                        className="object-contain object-bottom scale-110 group-hover:scale-115 transition-transform duration-700 drop-shadow-2xl"
+                                        sizes="(max-width: 768px) 100vw, 500px"
+                                        className="object-contain object-bottom scale-110 group-hover:scale-115 transition-transform duration-700 drop-shadow-2xl will-change-transform"
                                         priority
                                     />
                                 </div>

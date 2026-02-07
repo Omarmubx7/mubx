@@ -23,7 +23,7 @@ export const siteConfig = {
         'Computer Science Student',
         'Custom Web Development'
     ],
-    ogImage: "/omarmub.png", // Recommended size 1200x630
+    ogImage: "/icon.png", // Recommended size 1200x630
     links: {
         github: "https://github.com/Omarmubx7",
         linkedin: "https://www.linkedin.com/in/omarmubaidin",
