@@ -11,25 +11,24 @@ import { useState, useEffect } from 'react';
 
 import Link from 'next/link';
 
-import { projects } from '@/lib/projects'; // Import shared data
-
+import { getProjects } from '@/lib/projects';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Projects() {
     const [isLoading, setIsLoading] = useState(true);
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
 
     const getHref = (path: string) => {
         if (path.startsWith('http')) return path; // Don't modify external links
         return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
     };
 
+    const projectsData = getProjects(language);
+
     useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 1200); // Slightly longer delay than Hero
+        const timer = setTimeout(() => setIsLoading(false), 1200);
         return () => clearTimeout(timer);
     }, []);
-
-    // Local projects definition removed to use shared source of truth
 
     return (
         <section id="projects" className="py-24 relative">
@@ -40,7 +39,7 @@ export default function Projects() {
                     viewport={{ once: true }}
                     className="text-3xl md:text-5xl font-bold mb-16 text-center"
                 >
-                    SELECTED <span className="text-neon">PROJECTS</span>
+                    {t.projects.titleStart} <span className="text-neon">{t.projects.titleHighlight}</span>
                 </motion.h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -68,7 +67,7 @@ export default function Projects() {
                                 </div>
                             </SkeletonTheme>
                         ))
-                        : projects.map((project) => (
+                        : projectsData.map((project) => (
                             <motion.div
                                 key={project.title}
                                 variants={projectCard}
@@ -93,7 +92,7 @@ export default function Projects() {
                                     </div>
                                 </div>
 
-                                {/* Project Screenshot (if available) - Replaces the manual placeholder requested by user */}
+                                {/* Project Screenshot (if available) */}
                                 {project.screenshots && project.screenshots.length > 0 && (
                                     <div className="relative w-full aspect-video mb-6 rounded-xl overflow-hidden border border-white/10 group-hover:border-neon/30 transition-colors">
                                         <Image
@@ -127,7 +126,7 @@ export default function Projects() {
                                     target={project.caseStudy.caseStudyUrl ? "_self" : "_blank"}
                                     className="w-full py-3 flex items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-neon hover:text-black hover:border-neon transition-all group-hover:translate-y-1"
                                 >
-                                    {project.caseStudy.caseStudyUrl ? "Read Case Study" : "Visit Live Website"}
+                                    {project.caseStudy.caseStudyUrl ? t.projects.readCaseStudy : t.projects.visitLive}
                                     <ExternalLink className="w-4 h-4" />
                                 </Link>
                             </motion.div>

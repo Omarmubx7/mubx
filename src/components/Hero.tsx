@@ -94,7 +94,7 @@ export default function Hero() {
                         <div className="relative w-full h-full max-w-[500px] max-h-[600px] transition-transform duration-500 ease-out group-hover:scale-[1.02]">
                             <Image
                                 src="/omarmub.png"
-                                alt="Omar Mubaidin - Full Stack Developer"
+                                alt={t.hero.imageAlt}
                                 fill
                                 sizes="(max-width: 768px) 100vw, 500px"
                                 className="object-contain object-bottom scale-110 group-hover:scale-115 transition-transform duration-700 drop-shadow-2xl will-change-transform dark:grayscale-[0.1] grayscale-0"

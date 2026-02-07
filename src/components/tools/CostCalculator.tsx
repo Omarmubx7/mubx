@@ -1,41 +1,31 @@
+
 'use client';
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, RefreshCw } from 'lucide-react';
 
-const options = [
-    {
-        id: 'pages',
-        title: 'Number of Pages',
-        choices: [
-            { label: 'One Page (Landing)', price: 300, desc: 'High conversion single page.' },
-            { label: 'Standard (5 Pages)', price: 500, desc: 'Home, About, Services, Contact, etc.' },
-            { label: 'Large (10+ Pages)', price: 800, desc: 'Complex content structure.' },
-        ]
-    },
-    {
-        id: 'design',
-        title: 'Design Style',
-        choices: [
-            { label: 'Clean & Standard', price: 0, desc: 'Professional, functional design.' },
-            { label: 'Premium & Animated', price: 250, desc: 'Award-winning visuals & logic.' },
-        ]
-    },
-    {
-        id: 'features',
-        title: 'Functionality',
-        multi: true,
-        choices: [
-            { id: 'cms', label: 'CMS (Manage Content)', price: 150 },
-            { id: 'bilingual', label: 'Bilingual (Ar/En)', price: 200 },
-            { id: 'ecommerce', label: 'E-commerce System', price: 400 },
-            { id: 'seo', label: 'Advanced SEO Setup', price: 100 },
-        ]
-    }
-];
+interface Props {
+    ui: {
+        estimatedInvestment: string;
+        disclaimer: string;
+        getQuote: string;
+        reset: string;
+    };
+    options: {
+        id: string;
+        title: string;
+        multi?: boolean;
+        choices: {
+            id?: string;
+            label: string;
+            price: number;
+            desc?: string;
+        }[];
+    }[];
+}
 
-export default function CostCalculator() {
+export default function CostCalculator({ ui, options }: Props) {
     const [selections, setSelections] = useState<any>({
         pages: 300,
         design: 0,
@@ -53,8 +43,12 @@ export default function CostCalculator() {
 
     const calculateTotal = () => {
         const base = selections.pages + selections.design;
+        // Find features option (id: 'features')
+        const featuresOption = options.find(o => o.id === 'features');
+        if (!featuresOption) return base;
+
         const featureTotal = selections.features.reduce((acc: number, id: string) => {
-            const feature = options[2].choices.find(c => (c as any).id === id);
+            const feature = featuresOption.choices.find(c => (c as any).id === id);
             return acc + (feature ? feature.price : 0);
         }, 0);
         return base + featureTotal;
@@ -112,28 +106,28 @@ export default function CostCalculator() {
                     <div className="relative">
                         <div className="sticky top-8 bg-black/40 border border-white/10 rounded-2xl p-8 text-center space-y-6">
                             <div>
-                                <div className="text-muted text-sm uppercase tracking-wider font-bold mb-2">Estimated Investment</div>
+                                <div className="text-muted text-sm uppercase tracking-wider font-bold mb-2">{ui.estimatedInvestment}</div>
                                 <div className="text-6xl font-black text-white tracking-tighter">
                                     {calculateTotal()} <span className="text-2xl text-neon">JOD</span>
                                 </div>
                             </div>
 
                             <div className="text-sm text-muted">
-                                *This is a rough estimate based on standard requirements. Final project scope may vary.
+                                {ui.disclaimer}
                             </div>
 
                             <a
                                 href="/#contact"
                                 className="block w-full py-4 bg-neon text-black font-bold text-lg rounded-xl hover:bg-white transition-all hover:scale-[1.02]"
                             >
-                                Get Exact Quote
+                                {ui.getQuote}
                             </a>
 
                             <button
                                 onClick={() => setSelections({ pages: 300, design: 0, features: [] })}
                                 className="flex items-center justify-center gap-2 w-full py-3 text-sm font-medium text-muted hover:text-white transition-colors"
                             >
-                                <RefreshCw className="w-4 h-4" /> Reset Calculator
+                                <RefreshCw className="w-4 h-4" /> {ui.reset}
                             </button>
                         </div>
                     </div>

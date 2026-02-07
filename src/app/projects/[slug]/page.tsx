@@ -61,6 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 import { Locale } from '@/lib/dictionaries';
+import { getProjects } from '@/lib/projects';
 
 export default async function ProjectPage(props: {
     params: Promise<{ slug: string }>,
@@ -70,6 +71,7 @@ export default async function ProjectPage(props: {
     const searchParams = await props.searchParams;
     const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
 
+    const projects = getProjects(lang);
     const project = projects.find((p) => p.slug === slug);
 
     if (!project) return notFound();

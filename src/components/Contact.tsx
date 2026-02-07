@@ -164,10 +164,9 @@ export default function Contact() {
                                             name="goal"
                                             className="w-full bg-background border border-border rounded-lg px-3 py-2 text-xs text-foreground focus:outline-none focus:border-neon transition-colors appearance-none cursor-pointer"
                                         >
-                                            <option>New Website</option>
-                                            <option>Redesign</option>
-                                            <option>E-commerce</option>
-                                            <option>Custom App</option>
+                                            {t.contact.form.goalOptions.map((opt: string) => (
+                                                <option key={opt}>{opt}</option>
+                                            ))}
                                         </select>
                                     </div>
                                     <div className="space-y-1">
@@ -177,10 +176,9 @@ export default function Contact() {
                                             name="budget"
                                             className="w-full bg-background border border-border rounded-lg px-3 py-2 text-xs text-foreground focus:outline-none focus:border-neon transition-colors appearance-none cursor-pointer"
                                         >
-                                            <option>200 - 500 JD</option>
-                                            <option>500 - 1000 JD</option>
-                                            <option>1000 - 2500 JD</option>
-                                            <option>2500+ JD</option>
+                                            {t.contact.form.budgetOptions.map((opt: string) => (
+                                                <option key={opt}>{opt}</option>
+                                            ))}
                                         </select>
                                     </div>
                                     <div className="space-y-1">
@@ -190,19 +188,19 @@ export default function Contact() {
                                             name="deadline"
                                             className="w-full bg-background border border-border rounded-lg px-3 py-2 text-xs text-foreground focus:outline-none focus:border-neon transition-colors appearance-none cursor-pointer"
                                         >
-                                            <option>ASAP</option>
-                                            <option>1 Month</option>
-                                            <option>Flexible</option>
+                                            {t.contact.form.deadlineOptions.map((opt: string) => (
+                                                <option key={opt}>{opt}</option>
+                                            ))}
                                         </select>
                                     </div>
                                 </div>
                                 <div>
                                     <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ml-1">{t.contact.form.email}</label>
-                                    <input type="email" name="email" id="email" required className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all placeholder:text-muted/50" placeholder="name@company.com" />
+                                    <input type="email" name="email" id="email" required className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all placeholder:text-muted/50" placeholder={t.contact.form.emailPlaceholder} />
                                 </div>
                                 <div>
                                     <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ml-1">{t.contact.form.details}</label>
-                                    <textarea name="message" id="message" rows={4} required className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all resize-none placeholder:text-muted/50" placeholder="I need a landing page for..."></textarea>
+                                    <textarea name="message" id="message" rows={4} required className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all resize-none placeholder:text-muted/50" placeholder={t.contact.form.detailsPlaceholder}></textarea>
                                 </div>
                                 <button type="submit" className="w-full py-4 bg-neon text-black font-bold text-lg rounded-xl hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all transform hover:scale-[1.01] shadow-[0_0_20px_rgba(255,30,30,0.2)] disabled:opacity-50 disabled:cursor-not-allowed">
                                     {t.contact.form.submit}
@@ -222,14 +220,15 @@ export default function Contact() {
                         <MapPin className="w-4 h-4 text-neon" />
                         <span>{t.contact.locationVal}</span>
                     </div>
-                </motion.div>
-            </div>
+                </motion.div >
+            </div >
 
             {/* FAQ Section - Added for Trust */}
-            <motion.div
+            < motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true }
+                }
                 variants={fadeUp}
                 className="mt-24 text-left rtl:text-right max-w-3xl mx-auto border-t border-border pt-16 relative z-10"
             >
@@ -250,7 +249,7 @@ export default function Contact() {
                         </div>
                     </div>
                 </div>
-            </motion.div>
+            </motion.div >
 
             {mounted && (
                 <PopupModal
@@ -260,6 +259,6 @@ export default function Contact() {
                     rootElement={document.getElementById("root") || document.body}
                 />
             )}
-        </section>
+        </section >
     );
 }

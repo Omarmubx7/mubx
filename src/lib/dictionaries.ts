@@ -27,6 +27,7 @@ export const dictionary = {
             description: 'I help businesses and startups build high-performance web systems. From simple landing pages to complex SaaS platforms.',
             ctaPrimary: 'Book a FREE Call',
             ctaSecondary: 'View My Work',
+            imageAlt: 'Omar Mubaidin - Full Stack Developer',
         },
         services: {
             title: 'SERVICES &',
@@ -165,10 +166,15 @@ export const dictionary = {
                 security: "Security First",
                 arabicSupport: "Arabic Support",
                 goal: "Goal",
+                goalOptions: ['New Website', 'Redesign', 'E-commerce', 'Custom App'],
                 budget: "Budget",
+                budgetOptions: ['200 - 500 JD', '500 - 1000 JD', '1000 - 2500 JD', '2500+ JD'],
                 deadline: "Deadline",
+                deadlineOptions: ['ASAP', '1 Month', 'Flexible'],
                 email: "Your Email",
+                emailPlaceholder: "name@company.com",
                 details: "Project Details",
+                detailsPlaceholder: "I need a landing page for...",
                 submit: "Send Inquiry",
                 sending: "Sending...",
                 footer: "If we're not a fit, I'll still reply with suggestions or a direction within 24 hours.",
@@ -224,6 +230,184 @@ export const dictionary = {
                 }
             ]
         },
+        projects: {
+            titleStart: 'SELECTED',
+            titleHighlight: 'PROJECTS',
+            readCaseStudy: 'Read Case Study',
+            visitLive: 'Visit Live Website'
+        },
+        servicesPage: {
+            ecommerce: {
+                titleStart: 'Sell Online in',
+                titleHighlight: 'Jordan',
+                titleEnd: 'Without Limits.',
+                subtitleStart: 'Custom e-commerce stores designed for the Jordanian market. Accept',
+                subtitleHighlight: 'Zain Cash, CliQ, and Visa',
+                subtitleEnd: 'directly into your bank account. No heavy monthly fees.',
+                cta: 'Get Your Store Quote',
+                benefitsTitle: 'Why Custom Development?',
+                benefits: [
+                    { highlight: '✓', text: 'Own your data & customer list.' },
+                    { highlight: '✓ Result:', text: '0% Transaction fees to platforms.' },
+                    { highlight: '✓', text: 'Integrated Local Payments (Zain Cash / CliQ).' },
+                    { highlight: '✓', text: 'Bilingual (Arabic & English) built-in.' }
+                ],
+                caseStudy: {
+                    title: 'Case Study: BloB.JO',
+                    desc: "We helped BloB.JO launch a custom Print-on-Demand store in Amman. Users can design products specifically on the site—something Shopify couldn't do easily.",
+                    outcome: 'Outcome: Full operational flow in 3 weeks.'
+                },
+                faq: {
+                    title: 'Frequently Asked Questions',
+                    items: [
+                        {
+                            q: 'How much does an e-commerce website cost in Jordan?',
+                            a: 'A custom, high-performance e-commerce store typically starts at 700 JOD depending on complexity. This is a one-time investment compared to paying monthly fees forever on other platforms.'
+                        },
+                        {
+                            q: 'Can I accept Zain Cash and CliQ?',
+                            a: 'Yes. We integrate local Jordanian payment methodologies so you can get paid instantly and securely without international settlement delays.'
+                        },
+                        {
+                            q: 'Do you provide Arabic language support?',
+                            a: 'Absolutely. All our e-commerce solutions are built with RTL (Right-to-Left) support from day one, ensuring a perfect experience for your Arab customers.'
+                        }
+                    ]
+                }
+            }
+        },
+        blog: {
+            badge: 'The Lab',
+            titleStart: 'WRITING &',
+            titleHighlight: 'THOUGHTS',
+            description: 'Behind the scenes of my projects and technical experiments.',
+            readMore: 'Read Article',
+            backToNotes: 'Back to Notes'
+        },
+        tools: {
+            calculator: {
+                title: 'Website Cost',
+                titleHighlight: 'Calculator',
+                description: 'Get an instant ballpark estimate for your next web project in Jordan. No email required to see the price.',
+                howItWorks: {
+                    title: 'How is this calculated?',
+                    desc: 'Web development pricing in Jordan varies wildly. This calculator is based on high-quality, custom development using modern tech stacks (Next.js, React) rather than cheap WordPress templates.',
+                    list: [
+                        'Standard Design: Clean, professional, mobile-responsive.',
+                        'Premium Design: Custom animations, unique layouts, and award-winning aesthetics.',
+                        'Bilingual: Full RTL (Arabic) support and content management.'
+                    ]
+                },
+                ui: {
+                    estimatedInvestment: 'Estimated Investment',
+                    disclaimer: '*This is a rough estimate based on standard requirements. Final project scope may vary.',
+                    getQuote: 'Get Exact Quote',
+                    reset: 'Reset Calculator'
+                },
+                options: [
+                    {
+                        id: 'pages',
+                        title: 'Number of Pages',
+                        choices: [
+                            { label: 'One Page (Landing)', price: 300, desc: 'High conversion single page.' },
+                            { label: 'Standard (5 Pages)', price: 500, desc: 'Home, About, Services, Contact, etc.' },
+                            { label: 'Large (10+ Pages)', price: 800, desc: 'Complex content structure.' },
+                        ]
+                    },
+                    {
+                        id: 'design',
+                        title: 'Design Style',
+                        choices: [
+                            { label: 'Clean & Standard', price: 0, desc: 'Professional, functional design.' },
+                            { label: 'Premium & Animated', price: 250, desc: 'Award-winning visuals & logic.' },
+                        ]
+                    },
+                    {
+                        id: 'features',
+                        title: 'Functionality',
+                        multi: true,
+                        choices: [
+                            { id: 'cms', label: 'CMS (Manage Content)', price: 150 },
+                            { id: 'bilingual', label: 'Bilingual (Ar/En)', price: 200 },
+                            { id: 'ecommerce', label: 'E-commerce System', price: 400 },
+                            { id: 'seo', label: 'Advanced SEO Setup', price: 100 },
+                        ]
+                    }
+                ]
+            }
+        },
+        legalPage: {
+            privacy: {
+                title: 'Privacy Policy',
+                lastUpdated: 'Last Updated:',
+                sections: [
+                    {
+                        title: '1. Introduction',
+                        content: 'Welcome to MUBX. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website (regardless of where you visit it from) and tell you about your privacy rights and how the law protects you.'
+                    },
+                    {
+                        title: '2. Data We Collect',
+                        content: 'We may collect, use, store and transfer different kinds of personal data about you which we have grouped together follows:',
+                        list: [
+                            'Identity Data: includes first name, last name, username or similar identifier.',
+                            'Contact Data: includes email address and telephone number (submitted via forms).',
+                            'Technical Data: includes internet protocol (IP) address, browser type and version, time zone setting and location.',
+                            'Usage Data: includes information about how you use our website and services (e.g., analytics).'
+                        ]
+                    },
+                    {
+                        title: '3. How We Use Your Data',
+                        content: 'We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:',
+                        list: [
+                            'To allow us to contact you regarding a project inquiry.',
+                            'To improve our website, products/services, marketing of customer relationships and experiences.',
+                            'To comply with a legal or regulatory obligation.'
+                        ]
+                    },
+                    {
+                        title: '4. Cookies & Analytics',
+                        content: 'We use Vercel Analytics to understand how visitors interact with our website. This data is anonymized and does not directly identify you. You can set your browser to refuse all or some browser cookies, or to alert you when websites set or access cookies.'
+                    },
+                    {
+                        title: '5. Contact Us',
+                        content: 'If you have any questions about this privacy policy or our privacy practices, please contact us at:',
+                        email: 'Email: mubxdev@proton.me',
+                        location: 'Location: Amman, Jordan'
+                    }
+                ]
+            },
+            terms: {
+                title: 'Terms of Service',
+                lastUpdated: 'Last Updated:',
+                sections: [
+                    {
+                        title: '1. Agreement to Terms',
+                        content: 'These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and MUBX ("we," "us" or "our"), concerning your access to and use of the website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).'
+                    },
+                    {
+                        title: '2. Intellectual Property Rights',
+                        content: 'Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the “Content”) and the trademarks, service marks, and logos contained therein (the “Marks”) are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws.'
+                    },
+                    {
+                        title: '3. Services & Payments',
+                        content: 'Project Engagement: All development services are subject to a specific proposal or contract signed by both parties. Payments: We accept payments via Bank Transfer, Zain Cash, and CliQ. Refunds: Refunds are handled on a case-by-case basis as outlined in your specific Service Agreement. Generally, deposits are non-refundable once work has commenced.'
+                    },
+                    {
+                        title: '4. Limitations of Liability',
+                        content: 'In no event will we or our directors, employees, or agents be liable to you or any third party for any direct, indirect, consequential, exemplary, incidental, special, or punitive damages, including lost profit, lost revenue, loss of data, or other damages arising from your use of the site or our services, even if we have been advised of the possibility of such damages.'
+                    },
+                    {
+                        title: '5. Governing Law',
+                        content: 'These Terms shall be governed by and defined following the laws of The Hashemite Kingdom of Jordan. MUBX and yourself irrevocably consent that the courts of Jordan shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.'
+                    },
+                    {
+                        title: '6. Contact Us',
+                        content: 'To resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at:',
+                        email: 'Email: mubxdev@proton.me'
+                    }
+                ]
+            }
+        }
     },
     ar: {
         nav: {
@@ -251,6 +435,7 @@ export const dictionary = {
             description: 'أساعد الشركات والناشئة في بناء أنظمة ويب عالية الأداء. من صفحات الهبوط البسيطة إلى منصات SaaS المعقدة.',
             ctaPrimary: 'احجز مكالمة مجانية',
             ctaSecondary: 'شاهد أعمالي',
+            imageAlt: 'عمر عبيدات - مطور ويب متكامل',
         },
         services: {
             title: 'الخدمات و',
@@ -388,10 +573,15 @@ export const dictionary = {
                 security: "أمان أولاً",
                 arabicSupport: "دعم مخصص",
                 goal: "الهدف",
+                goalOptions: ['موقع جديد', 'إعادة تصميم', 'متجر إلكتروني', 'تطبيق مخصص'],
                 budget: "الميزانية",
+                budgetOptions: ['200 - 500 دينار', '500 - 1000 دينار', '1000 - 2500 دينار', '2500+ دينار'],
                 deadline: "الموعد النهائي",
+                deadlineOptions: ['بأسرع وقت', 'شهر واحد', 'مرن'],
                 email: "بريدك الالكتروني",
+                emailPlaceholder: "name@company.com",
                 details: "تفاصيل المشروع",
+                detailsPlaceholder: "أحتاج صفحة هبوط لـ...",
                 submit: "إرسال الاستفسار",
                 sending: "جاري الإرسال...",
                 footer: "إذا لم نكن مناسبين لبعضنا، سأرد عليك باقتراحات أو توجيه خلال 24 ساعة.",
@@ -447,5 +637,183 @@ export const dictionary = {
                 }
             ]
         },
+        projects: {
+            titleStart: 'أبرز',
+            titleHighlight: 'المشاريع',
+            readCaseStudy: 'اقرأ الحالة الدراسية',
+            visitLive: 'زيارة الموقع'
+        },
+        servicesPage: {
+            ecommerce: {
+                titleStart: 'بع منتجاتك اونلاين في',
+                titleHighlight: 'الأردن',
+                titleEnd: 'بدون حدود.',
+                subtitleStart: 'متاجر إلكترونية مخصصة للسوق الأردني. اقبل',
+                subtitleHighlight: 'زين كاش، كليك، وفيزا',
+                subtitleEnd: 'مباشرة في حسابك البنكي. بدون رسوم شهرية باهظة.',
+                cta: 'احصل على عرض لمتجرك',
+                benefitsTitle: 'لماذا التطوير المخصص؟',
+                benefits: [
+                    { highlight: '✓', text: 'امتلك بياناتك وقائمة عملائك.' },
+                    { highlight: '✓ النتيجة:', text: '0% رسوم معاملات للمنصات.' },
+                    { highlight: '✓', text: 'دفع محلي متكامل (زين كاش / كليك).' },
+                    { highlight: '✓', text: 'ثنائي اللغة (عربي وإنجليزي) مدمج.' }
+                ],
+                caseStudy: {
+                    title: 'دراسة حالة: BloB.JO',
+                    desc: "ساعدنا BloB.JO في إطلاق متجر طباعة حسب الطلب مخصص في عمان. يمكن للمستخدمين تصميم المنتجات مباشرة على الموقع - وهو أمر لم يكن Shopify قادراً على فعله بسهولة.",
+                    outcome: 'النتيجة: تشغيل كامل خلال 3 أسابيع.'
+                },
+                faq: {
+                    title: 'أسئلة شائعة',
+                    items: [
+                        {
+                            q: 'كم تكلفة إنشاء متجر إلكتروني في الأردن؟',
+                            a: 'يبدأ المتجر الإلكتروني المخصص عالي الأداء عادةً من 700 دينار أردني حسب التعقيد. هذا استثمار لمرة واحدة مقارنة بدفع رسوم شهرية للأبد على منصات أخرى.'
+                        },
+                        {
+                            q: 'هل يمكنني قبول زين كاش وكليك؟',
+                            a: 'نعم. نقوم بدمج طرق الدفع المحلية الأردنية لتتمكن من استلام أموالك فوراً وبأمان دون تأخيرات التسوية الدولية.'
+                        },
+                        {
+                            q: 'هل توفرون دعم اللغة العربية؟',
+                            a: 'بالتأكيد. جميع حلولنا للتجارة الإلكترونية مبنية بدعم كامل للغة العربية (RTL) من اليوم الأول، لضمان تجربة مثالية لعملائك العرب.'
+                        }
+                    ]
+                }
+            }
+        },
+        blog: {
+            badge: 'المختبر',
+            titleStart: 'مقالات و',
+            titleHighlight: 'أفكار',
+            description: 'خلف الكواليس لمشاريعي وتجاربي التقنية.',
+            readMore: 'اقرأ المقال',
+            backToNotes: 'عودة للمقالات'
+        },
+        tools: {
+            calculator: {
+                title: 'حاسبة تكلفة',
+                titleHighlight: 'الموقع',
+                description: 'احصل على تقدير فوري لمشروع الويب القادم في الأردن. لا يلزم بريد إلكتروني لرؤية السعر.',
+                howItWorks: {
+                    title: 'كيف يتم الحساب؟',
+                    desc: 'أسعار تطوير الويب في الأردن تتفاوت بشكل كبير. تعتمد هذه الحاسبة على تطوير مخصص عالي الجودة باستخدام تقنيات حديثة (Next.js, React) بدلاً من قوالب ووردبريس الرخيصة.',
+                    list: [
+                        'تصميم قياسي: نظيف، احترافي، ومتجاوب مع الجوال.',
+                        'تصميم متميز: رسوم متحركة مخصصة، تخطيطات فريدة، وجماليات حائزة على جوائز.',
+                        'ثنائي اللغة: دعم كامل للغة العربية (RTL) وإدارة المحتوى.'
+                    ]
+                },
+                ui: {
+                    estimatedInvestment: 'الاستثمار المقدر',
+                    disclaimer: '*هذا تقدير تقريبي بناءً على المتطلبات القياسية. قد يختلف نطاق المشروع النهائي.',
+                    getQuote: 'احصل على عرض دقيق',
+                    reset: 'تصفير الحاسبة'
+                },
+                options: [
+                    {
+                        id: 'pages',
+                        title: 'عدد الصفحات',
+                        choices: [
+                            { label: 'صفحة واحدة (هبوط)', price: 300, desc: 'تحويل عالي لصفحة واحدة.' },
+                            { label: 'موقع قياسي (5 صفحات)', price: 500, desc: 'الرئيسية، من نحن، الخدمات، اتصل بنا، إلخ.' },
+                            { label: 'موقع كبير (10+ صفحات)', price: 800, desc: 'هيكل محتوى معقد.' },
+                        ]
+                    },
+                    {
+                        id: 'design',
+                        title: 'أسلوب التصميم',
+                        choices: [
+                            { label: 'نظيف وقياسي', price: 0, desc: 'تصميم احترافي وعملي.' },
+                            { label: 'متميز ومتحرك', price: 250, desc: 'مرئيات ومنطق حائز على جوائز.' },
+                        ]
+                    },
+                    {
+                        id: 'features',
+                        title: 'الوظائف والميزات',
+                        multi: true,
+                        choices: [
+                            { id: 'cms', label: 'نظام إدارة محتوى (CMS)', price: 150 },
+                            { id: 'bilingual', label: 'ثنائي اللغة (عربي/إنجليزي)', price: 200 },
+                            { id: 'ecommerce', label: 'نظام تجارة إلكترونية', price: 400 },
+                            { id: 'seo', label: 'إعداد SEO متقدم', price: 100 },
+                        ]
+                    }
+                ]
+            }
+        },
+        legalPage: {
+            privacy: {
+                title: 'سياسة الخصوصية',
+                lastUpdated: 'آخر تحديث:',
+                sections: [
+                    {
+                        title: '1. مقدمة',
+                        content: 'مرحباً بك في MUBX. نحن نحترم خصوصيتك وملتزمون بحماية بياناتك الشخصية. ستعلمك سياسة الخصوصية هذه بكيفية اعتنائنا ببياناتك الشخصية عند زيارتك لموقعنا وتخبرك عن حقوق الخصوصية الخاصة بك وكيف يحميك القانون.'
+                    },
+                    {
+                        title: '2. البيانات التي نجمعها',
+                        content: 'قد نقوم بجمع واستخدام وتخزين ونقل أنواع مختلفة من البيانات الشخصية عنك والتي قمنا بتجميعها معاً كما يلي:',
+                        list: [
+                            'بيانات الهوية: الاسم الأول، اسم العائلة، اسم المستخدم أو معرف مشابه.',
+                            'بيانات الاتصال: العنوان البريدي، عنوان البريد الإلكتروني ورقم الهاتف.',
+                            'البيانات التقنية: عنوان بروتوكول الإنترنت (IP)، نوع المتصفح وإصداره، المنطقة الزمنية والموقع.',
+                            'بيانات الاستخدام: معلومات حول كيفية استخدامك لموقعنا وخدماتنا.'
+                        ]
+                    },
+                    {
+                        title: '3. كيف نستخدم بياناتك',
+                        content: 'سنستخدم بياناتك الشخصية فقط عندما يسمح القانون لنا بذلك. الأكثر شيوعاً، سنستخدم بياناتك الشخصية في الظروف التالية:',
+                        list: [
+                            'للسماح لنا بالاتصال بك بشأن استفسار مشروع.',
+                            'لتحسين موقعنا ومنتجاتنا/خدماتنا وتسويقنا.',
+                            'للامتثال لالتزام قانوني أو تنظيمي.'
+                        ]
+                    },
+                    {
+                        title: '4. ملفات تعريف الارتباط والتحليلات',
+                        content: 'نستخدم تحليلات Vercel لفهم كيفية تفاعل الزوار مع موقعنا. هذه البيانات مجهولة المصدر ولا تحدد هويتك مباشرة. يمكنك ضبط متصفحك لرفض كل أو بعض ملفات تعريف الارتباط، أو لتنبيهك عندما تقوم مواقع الويب بتعيين أو الوصول إلى ملفات تعريف الارتباط.'
+                    },
+                    {
+                        title: '5. اتصل بنا',
+                        content: 'إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه أو ممارسات الخصوصية لدينا، يرجى الاتصال بنا عبر:',
+                        email: 'البريد: mubxdev@proton.me',
+                        location: 'الموقع: عمان، الأردن'
+                    }
+                ]
+            },
+            terms: {
+                title: 'شروط الخدمة',
+                lastUpdated: 'آخر تحديث:',
+                sections: [
+                    {
+                        title: '1. الموافقة على الشروط',
+                        content: 'تشكل شروط الخدمة هذه اتفاقية ملزمة قانوناً بينك، سواء شخصياً أو نيابة عن كيان ("أنت") و MUBX ("نحن")، فيما يتعلق بوصولك واستخدامك للموقع.'
+                    },
+                    {
+                        title: '2. حقوق الملكية الفكرية',
+                        content: 'ما لم يذكر خلاف ذلك، الموقع هو ملكيتنا الخاصة وجميع التعليمات البرمجية وقواعد البيانات والوظائف والبرمجيات وتصميمات الموقع والنصوص والصور والرسومات على الموقع ("المحتوى") والعلامات التجارية والشعارات مملوكة لنا أو مرخصة لنا، ومحمية بموجب قوانين حقوق النشر.'
+                    },
+                    {
+                        title: '3. الخدمات والدفعات',
+                        content: 'المشاركة في المشروع: تخضع جميع خدمات التطوير لاقتراح محدد أو عقد موقع من قبل الطرفين. الدفعات: نقبل الدفع عبر التحويل البنكي، زين كاش، وكليك. الاسترداد: يتم التعامل مع الاسترداد على أساس كل حالة على حدة كما هو موضح في اتفاقية الخدمة الخاصة بك. بشكل عام، الودائع غير قابلة للاسترداد بمجرد بدء العمل.'
+                    },
+                    {
+                        title: '4. حدود المسؤولية',
+                        content: 'في أي حال من الأحوال، لن نكون مسؤولين تجاهك أو تجاه أي طرف ثالث عن أي أضرار مباشرة أو غير مباشرة أو تبعية أو عرضية أو خاصة أو عقابية، بما في ذلك خسارة الأرباح أو الإيرادات المفقودة أو فقدان البيانات.'
+                    },
+                    {
+                        title: '5. القانون الحاكم',
+                        content: 'تحكم هذه الشروط وتفسر وفقاً لقوانين المملكة الأردنية الهاشمية. توافق أنت و MUBX بشكل لا رجعة فيه على أن محاكم الأردن لها الحق الحصري في حل أي نزاع قد ينشأ.'
+                    },
+                    {
+                        title: '6. اتصل بنا',
+                        content: 'لحل شكوى بخصوص الموقع أو لتلقي مزيد من المعلومات بخصوص استخدام الموقع، يرجى الاتصال بنا عبر:',
+                        email: 'البريد: mubxdev@proton.me'
+                    }
+                ]
+            }
+        }
     }
 };

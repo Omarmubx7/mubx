@@ -12,7 +12,8 @@ export function generateStaticParams() {
     }));
 }
 
-import { Locale } from '@/lib/dictionaries';
+import { Locale, dictionary } from '@/lib/dictionaries';
+import { getBlogPost } from '@/lib/blog-data';
 
 export default async function BlogPost(props: {
     params: Promise<{ slug: string }>,
@@ -22,7 +23,8 @@ export default async function BlogPost(props: {
     const searchParams = await props.searchParams;
     const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
 
-    const post = blogPosts.find((p) => p.slug === params.slug);
+    const post = getBlogPost(params.slug, lang);
+    const t = dictionary[lang].blog;
 
     if (!post) {
         notFound();
@@ -38,8 +40,8 @@ export default async function BlogPost(props: {
                     <div className="absolute top-0 right-0 w-1/2 h-96 bg-neon/5 blur-[100px] rounded-full -z-10" />
 
                     <div className="container mx-auto px-6 md:px-12 max-w-4xl">
-                        <Link href="/blog" className="inline-flex items-center gap-2 text-muted hover:text-white transition-colors mb-8">
-                            <ArrowLeft className="w-4 h-4" /> Back to Notes
+                        <Link href="/blog" className="inline-flex items-center gap-2 text-muted hover:text-white transition-colors mb-8 group">
+                            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> {t.backToNotes}
                         </Link>
 
                         <header className="mb-12">

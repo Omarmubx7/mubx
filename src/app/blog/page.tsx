@@ -16,7 +16,8 @@ export const metadata = {
     }
 };
 
-import { Locale } from '@/lib/dictionaries';
+import { Locale, dictionary } from '@/lib/dictionaries';
+import { getBlogPosts } from '@/lib/blog-data';
 
 type Props = {
     searchParams: Promise<{ lang?: string }>
@@ -26,7 +27,8 @@ export default async function BlogPage(props: Props) {
     const searchParams = await props.searchParams;
     const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
 
-    const posts = blogPosts;
+    const posts = getBlogPosts(lang);
+    const t = dictionary[lang].blog;
 
     return (
         <LanguageProvider initialLocale={lang}>
@@ -36,12 +38,12 @@ export default async function BlogPage(props: Props) {
                 <div className="pt-32 pb-24 container mx-auto px-6 md:px-12">
                     <div className="max-w-3xl mx-auto">
                         <div className="mb-16">
-                            <Badge variant="neon" className="mb-4">The Lab</Badge>
+                            <Badge variant="neon" className="mb-4">{t.badge}</Badge>
                             <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
-                                WRITING & <span className="text-neon">THOUGHTS</span>
+                                {t.titleStart} <span className="text-neon">{t.titleHighlight}</span>
                             </h1>
                             <p className="text-muted text-lg">
-                                Behind the scenes of my projects and technical experiments.
+                                {t.description}
                             </p>
                         </div>
 
@@ -64,6 +66,7 @@ export default async function BlogPage(props: Props) {
                                     <p className="text-muted leading-relaxed">
                                         {post.excerpt}
                                     </p>
+                                    <div className="hidden">{t.readMore}</div>
                                 </Link>
                             ))}
                         </div>
