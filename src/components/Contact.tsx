@@ -3,16 +3,12 @@
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, MapPin, Check } from 'lucide-react';
 import { fadeUp } from '@/lib/motion';
-import dynamic from 'next/dynamic';
-const PopupModal = dynamic(() => import('react-calendly').then((mod) => mod.PopupModal), {
-    ssr: false
-});
+
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Contact() {
     const { t, isRTL } = useLanguage();
-    const [isOpen, setIsOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -251,14 +247,6 @@ export default function Contact() {
                 </div>
             </motion.div >
 
-            {mounted && (
-                <PopupModal
-                    url="https://calendly.com/omarmubaidincs/30min"
-                    onModalClose={() => setIsOpen(false)}
-                    open={isOpen}
-                    rootElement={document.getElementById("root") || document.body}
-                />
-            )}
         </section >
     );
 }

@@ -11,17 +11,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '',
         '/about',
         '/contact',
-        '/ar',
         '/services',
         '/services/ecommerce',
         '/blog',
         '/tools/website-cost-calculator-jordan',
-        '/blog/ecommerce-in-jordan-guide',
-        '/blog/nextjs-vs-wordpress',
-        '/blog/nextjs-mobile-performance',
         '/client/demo',
         '/tools/neon-gradient-card',
         '/links',
+        '/legal/privacy',
+        '/legal/terms',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
@@ -34,8 +32,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${baseUrl}/projects/${project.slug}`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
-        priority: 0.9, // Projects are high priority
+        priority: 0.9,
     }));
 
-    return [...routes, ...projectRoutes];
+    // Dynamic Blog Routes
+    // Using import from blog-data
+    const { blogPosts } = require('@/lib/blog-data');
+    const blogRoutes = blogPosts.map((post: any) => ({
+        url: `${baseUrl}/blog/${post.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+    }));
+
+    return [...routes, ...projectRoutes, ...blogRoutes];
 }

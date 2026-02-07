@@ -21,7 +21,9 @@ export const siteConfig = {
         'React Developer',
         'Full Stack Developer',
         'Computer Science Student',
-        'Custom Web Development'
+        'Custom Web Development',
+        'E-commerce Jordan',
+        'Zain Cash Integration'
     ],
     ogImage: "/icon.png", // Recommended size 1200x630
     links: {
@@ -31,12 +33,12 @@ export const siteConfig = {
     locale: 'en_US',
     metadata: {
         en: {
-            title: "Omar Mubaidin | Web Developer in Amman, Jordan",
-            description: "Build fast, secure web systems in Amman with MUBX. Full Stack Dev & CS Student specializing in Next.js & E-commerce.",
+            title: "Omar Mubaidin | Full Stack Web Developer in Amman, Jordan",
+            description: "Build fast, secure web systems in Amman with MUBX. I help startups and businesses launch high-performance Next.js websites and custom e-commerce stores.",
         },
         ar: {
-            title: "عمر مبيضين | مطور ويب في عمان، الأردن",
-            description: "ابني أنظمة ويب سريعة وآمنة في عمان مع MUBX. مطور Full Stack وطالب علوم حاسوب متخصص في Next.js والمتاجر الإلكترونية.",
+            title: "عمر مبيضين | مطور ويب شامل في عمان، الأردن",
+            description: "ابني أنظمة ويب سريعة وآمنة في عمان مع MUBX. متخصص في تطوير متاجر إلكترونية ومواقع Next.js الحديثة للشركات الناشئة.",
         }
     },
     openGraph: {

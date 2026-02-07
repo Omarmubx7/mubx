@@ -4,10 +4,7 @@
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import { ArrowRight } from 'lucide-react';
-import dynamic from 'next/dynamic';
-const PopupModal = dynamic(() => import('react-calendly').then((mod) => mod.PopupModal), {
-    ssr: false
-});
+
 import { useState, useEffect } from 'react';
 import Badge from './ui/Badge';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
@@ -55,15 +52,11 @@ export default function Services() {
         },
     ];
 
-    const [isOpen, setIsOpen] = useState(false);
-    const [mounted, setMounted] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const mountTimer = setTimeout(() => setMounted(true), 0);
         const timer = setTimeout(() => setIsLoading(false), 1000);
         return () => {
-            clearTimeout(mountTimer);
             clearTimeout(timer);
         };
     }, []);
@@ -199,18 +192,6 @@ export default function Services() {
                     </motion.div>
                 </div>
             </motion.div>
-
-
-            {
-                mounted && (
-                    <PopupModal
-                        url="https://calendly.com/omarmubaidincs/30min"
-                        onModalClose={() => setIsOpen(false)}
-                        open={isOpen}
-                        rootElement={document.body}
-                    />
-                )
-            }
         </section >
     );
 }
