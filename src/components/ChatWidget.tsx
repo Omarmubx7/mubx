@@ -81,10 +81,10 @@ export default function ChatWidget() {
     };
 
     const handleSwitchLanguage = (newLang: 'en' | 'ar') => {
-        // Optimistic UI update
         const params = new URLSearchParams(searchParams?.toString() || '');
         params.set('lang', newLang);
-        router.push(`${pathname}?${params.toString()}`);
+        // Force full reload to ensure Server Components (LanguageProvider) pick up the change
+        window.location.href = `${pathname}?${params.toString()}`;
     };
 
     const handleOption = (key: string) => {

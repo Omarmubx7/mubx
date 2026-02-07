@@ -10,19 +10,22 @@ import Badge from '@/components/ui/Badge';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function ContactView() {
     // --------------------------------------------------------------------------
     // Formspree Integration
     // Endpoint: https://formspree.io/f/xojnaqoo
     // --------------------------------------------------------------------------
     const router = useRouter();
+    const { language } = useLanguage();
     const [state, handleSubmit] = useForm("xojnaqoo");
 
     useEffect(() => {
         if (state.succeeded) {
-            router.push('/success');
+            router.push(language === 'en' ? '/success' : `/success?lang=${language}`);
         }
-    }, [state.succeeded, router]);
+    }, [state.succeeded, router, language]);
 
     return (
         <main className="bg-black min-h-screen selection:bg-neon selection:text-black">

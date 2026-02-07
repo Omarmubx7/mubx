@@ -6,8 +6,11 @@ import { motion } from 'framer-motion';
 import { fadeUp } from '@/lib/motion';
 import { CheckCircle } from 'lucide-react';
 import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function SuccessView() {
+    const { language } = useLanguage();
+
     return (
         <main className="bg-black min-h-screen selection:bg-neon selection:text-black">
             <Navbar />
@@ -37,7 +40,7 @@ export default function SuccessView() {
                         </p>
 
                         <Link
-                            href="/"
+                            href={language === 'en' ? '/' : `/?lang=${language}`}
                             className="px-8 py-4 bg-neon text-black font-bold rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,30,30,0.3)]"
                         >
                             Back to Home
