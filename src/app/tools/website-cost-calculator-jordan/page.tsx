@@ -7,7 +7,7 @@ import { siteConfig } from '@/config/seo';
 
 export const metadata: Metadata = {
     title: 'Website Cost Calculator Jordan (2026) | MUBX',
-    description: 'How much does a website cost in Jordan? Use this interactive calculator to get an instant estimate for your business website or e-commerce store.',
+    description: 'How much does a website cost in Jordan? Use our interactive calculator to get an instant, detailed price estimate for your business website or e-commerce store.',
     alternates: {
         canonical: `${siteConfig.url}/tools/website-cost-calculator-jordan`
     }

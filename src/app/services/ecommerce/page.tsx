@@ -7,7 +7,7 @@ import { LanguageProvider } from '@/context/LanguageContext';
 
 export const metadata: Metadata = {
     title: 'E-commerce Website Development in Amman, Jordan | MUBX',
-    description: 'Custom e-commerce solutions for Jordanian businesses. We build fast, secure online stores that accept Zain Cash, CliQ, and Credit Cards. Stop paying monthly fees.',
+    description: 'Custom e-commerce solutions for Jordanian businesses. Build fast, secure online stores accepting Zain Cash & CliQ. Own your data and stop paying monthly fees.',
     alternates: {
         canonical: `${siteConfig.url}/services/ecommerce`
     }
