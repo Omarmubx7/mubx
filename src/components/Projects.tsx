@@ -13,8 +13,16 @@ import Link from 'next/link';
 
 import { projects } from '@/lib/projects'; // Import shared data
 
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function Projects() {
     const [isLoading, setIsLoading] = useState(true);
+    const { language } = useLanguage();
+
+    const getHref = (path: string) => {
+        if (path.startsWith('http')) return path; // Don't modify external links
+        return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
+    };
 
     useEffect(() => {
         const timer = setTimeout(() => setIsLoading(false), 1200); // Slightly longer delay than Hero
@@ -115,7 +123,7 @@ export default function Projects() {
 
                                 {/* Action */}
                                 <Link
-                                    href={project.caseStudy.caseStudyUrl || project.links.live}
+                                    href={getHref(project.caseStudy.caseStudyUrl || project.links.live)}
                                     target={project.caseStudy.caseStudyUrl ? "_self" : "_blank"}
                                     className="w-full py-3 flex items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-neon hover:text-black hover:border-neon transition-all group-hover:translate-y-1"
                                 >

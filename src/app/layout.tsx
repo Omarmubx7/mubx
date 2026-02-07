@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Suspense } from 'react';
 import './globals.css';
 import 'react-loading-skeleton/dist/skeleton.css';
 import SmoothScroll from '@/components/SmoothScroll';
@@ -128,7 +129,9 @@ export default function RootLayout({
           <SmoothScroll>{children}</SmoothScroll>
           <SpeedInsights />
           <Analytics />
-          <ChatWidget />
+          <Suspense fallback={null}>
+            <ChatWidget />
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>

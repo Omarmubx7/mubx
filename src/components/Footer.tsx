@@ -6,7 +6,11 @@ import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Footer() {
-    const { t, isRTL } = useLanguage();
+    const { t, isRTL, language } = useLanguage();
+
+    const getHref = (path: string) => {
+        return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
+    };
 
     return (
         <footer className="py-16 border-t border-border bg-card/50 backdrop-blur-sm relative overflow-hidden">
@@ -16,7 +20,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-16">
                     {/* Col 1: Brand (Span 2 cols on desktop) */}
                     <div className="md:col-span-2 space-y-6">
-                        <Link href="/" className="flex items-center gap-2 group">
+                        <Link href={getHref('/')} className="flex items-center gap-2 group">
                             <span className="relative h-20 w-auto min-w-[160px] transition-transform group-hover:scale-105">
                                 <Image
                                     src="/icon.png"
@@ -36,15 +40,15 @@ export default function Footer() {
                     <div className="space-y-6">
                         <h3 className="text-sm font-bold text-foreground uppercase tracking-widest">{t.footer.navigation}</h3>
                         <nav className="flex flex-col gap-4">
-                            <Link href="/" className="text-muted hover:text-foreground hover:translate-x-1 transition-all flex items-center gap-1 group-hover:gap-2"><span>{t.nav.home}</span></Link>
-                            <Link href="/#about" className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.about}</Link>
-                            <Link href="/#projects" className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.work}</Link>
-                            <Link href="/#services" className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.services}</Link>
-                            <Link href="/blog" className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.articles}</Link>
-                            <Link href="/links" className="text-muted hover:text-foreground hover:translate-x-1 transition-all">My Link Tree</Link>
-                            <Link href="/contact" className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.contact}</Link>
-                            <Link href="/tools/website-cost-calculator-jordan" className="text-neon hover:text-foreground hover:translate-x-1 transition-all font-bold mt-2">{t.nav.costCalc}</Link>
-                            <Link href="/tools/neon-gradient-card" className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.freeTools}</Link>
+                            <Link href={getHref('/')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all flex items-center gap-1 group-hover:gap-2"><span>{t.nav.home}</span></Link>
+                            <Link href={getHref('/#about')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.about}</Link>
+                            <Link href={getHref('/#projects')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.work}</Link>
+                            <Link href={getHref('/#services')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.services}</Link>
+                            <Link href={getHref('/blog')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.articles}</Link>
+                            <Link href={getHref('/links')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">My Link Tree</Link>
+                            <Link href={getHref('/contact')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.contact}</Link>
+                            <Link href={getHref('/tools/website-cost-calculator-jordan')} className="text-neon hover:text-foreground hover:translate-x-1 transition-all font-bold mt-2">{t.nav.costCalc}</Link>
+                            <Link href={getHref('/tools/neon-gradient-card')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.freeTools}</Link>
                         </nav>
 
                         <div className="pt-6 border-t border-border mt-6">
@@ -100,8 +104,8 @@ export default function Footer() {
                         &copy; {new Date().getFullYear()} MUBX. {t.footer.rights}
                     </p>
                     <div className="flex gap-6">
-                        <Link href="/legal/privacy" className="text-xs text-muted/60 hover:text-foreground transition-colors">{t.footer.legal.privacy}</Link>
-                        <Link href="/legal/terms" className="text-xs text-muted/60 hover:text-foreground transition-colors">{t.footer.legal.terms}</Link>
+                        <Link href={getHref('/legal/privacy')} className="text-xs text-muted/60 hover:text-foreground transition-colors">{t.footer.legal.privacy}</Link>
+                        <Link href={getHref('/legal/terms')} className="text-xs text-muted/60 hover:text-foreground transition-colors">{t.footer.legal.terms}</Link>
                     </div>
                 </div>
             </div>

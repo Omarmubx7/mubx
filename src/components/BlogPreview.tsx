@@ -6,9 +6,15 @@ import Link from 'next/link';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import { blogPosts } from '@/lib/blog-data';
 import Badge from './ui/Badge';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function BlogPreview() {
     const posts = blogPosts.slice(0, 3);
+    const { language } = useLanguage();
+
+    const getHref = (path: string) => {
+        return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
+    };
 
     return (
         <section className="py-24 relative border-t border-white/5">
@@ -29,7 +35,7 @@ export default function BlogPreview() {
                         </motion.p>
                     </div>
                     <motion.div variants={fadeUp}>
-                        <Link href="/blog" className="flex items-center gap-2 text-white hover:text-neon transition-colors font-bold group">
+                        <Link href={getHref('/blog')} className="flex items-center gap-2 text-white hover:text-neon transition-colors font-bold group">
                             Read all articles
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
@@ -64,7 +70,7 @@ export default function BlogPreview() {
                             </div>
 
                             <div className="flex gap-4 items-center w-full pt-4 border-t border-white/5 mt-auto">
-                                <Link href={`/blog/${post.slug}`} className="text-white text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                                <Link href={getHref(`/blog/${post.slug}`)} className="text-white text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
                                     Read Article <ArrowRight className="w-4 h-4 text-neon" />
                                 </Link>
                             </div>

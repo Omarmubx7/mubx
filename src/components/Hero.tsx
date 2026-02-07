@@ -9,7 +9,11 @@ import { fadeUp, staggerContainer } from '@/lib/motion';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Hero() {
-    const { t, isRTL } = useLanguage();
+    const { t, isRTL, language } = useLanguage();
+
+    const getHref = (path: string) => {
+        return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
+    };
 
     return (
         <section className="relative min-h-screen flex items-start lg:items-center pt-32 pb-20 overflow-hidden bg-background transition-colors duration-300">
@@ -68,7 +72,7 @@ export default function Hero() {
                                 {t.hero.ctaPrimary}
                             </a>
                             <Link
-                                href="/#projects"
+                                href={getHref('/#projects')}
                                 className="px-8 py-4 bg-card border border-border text-foreground font-bold text-lg rounded-full hover:bg-muted/10 transition-all flex items-center gap-2 justify-center group"
                             >
                                 {t.hero.ctaSecondary}

@@ -12,14 +12,18 @@ import { LanguageToggle } from './LanguageToggle';
 
 const NavbarContent = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
+
+    const getHref = (path: string) => {
+        return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
+    };
 
     const links = [
-        { name: t.nav.services, href: '/#services' },
-        { name: t.nav.projects, href: '/#projects' },
-        { name: t.nav.lab, href: '/blog' },
-        { name: t.nav.testimonials, href: '/#testimonials' },
-        { name: t.nav.contact, href: '/#contact' },
+        { name: t.nav.services, href: getHref('/#services') },
+        { name: t.nav.projects, href: getHref('/#projects') },
+        { name: t.nav.lab, href: getHref('/blog') },
+        { name: t.nav.testimonials, href: getHref('/#testimonials') },
+        { name: t.nav.contact, href: getHref('/#contact') },
     ];
 
     return (
@@ -29,7 +33,7 @@ const NavbarContent = () => {
             variants={fadeUp}
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-background/80 backdrop-blur-sm border-b border-white/5"
         >
-            <Link href="/" className="group relative z-50">
+            <Link href={getHref('/')} className="group relative z-50">
                 <div className="relative h-16 w-auto min-w-[140px] transition-transform group-hover:scale-105">
                     <Image
                         src="/icon.png"
@@ -68,7 +72,7 @@ const NavbarContent = () => {
                 <LanguageToggle />
 
                 <Link
-                    href="#contact"
+                    href={getHref('#contact')}
                     className="px-5 py-2.5 text-sm font-bold text-black bg-neon rounded-full hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all shadow-[0_0_15px_rgba(255,30,30,0.3)] hover:shadow-[0_0_25px_rgba(255,30,30,0.4)] ml-2"
                 >
                     {t.nav.estimate}
@@ -111,7 +115,7 @@ const NavbarContent = () => {
                             <LanguageToggle />
                         </div>
                         <Link
-                            href="#contact"
+                            href={getHref('#contact')}
                             onClick={() => setIsOpen(false)}
                             className="text-2xl font-bold text-neon hover:text-foreground transition-colors uppercase tracking-wider mb-8"
                         >

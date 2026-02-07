@@ -1,17 +1,18 @@
 'use client';
 
 import { useLanguage } from '@/context/LanguageContext';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 export function LanguageToggle() {
     const { language } = useLanguage();
     const router = useRouter();
+    const pathname = usePathname();
     const searchParams = useSearchParams();
 
     const switchLanguage = (newLang: string) => {
         const params = new URLSearchParams(searchParams.toString());
         params.set('lang', newLang);
-        router.push(`/?${params.toString()}`);
+        router.push(`${pathname}?${params.toString()}`);
     };
 
     return (
