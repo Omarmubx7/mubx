@@ -13,7 +13,7 @@ export default function Hero() {
 
 
     return (
-        <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
+        <section className="relative min-h-screen flex items-start lg:items-center pt-32 pb-20 overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 bg-black -z-30" />
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#202020_1px,transparent_1px),linear-gradient(to_bottom,#202020_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-20 opacity-20" />
@@ -23,7 +23,7 @@ export default function Hero() {
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan/5 blur-[80px] -z-10 rounded-full mix-blend-screen" />
 
             <div className="container mx-auto px-6 md:px-12">
-                <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
+                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
                     {/* Left Column: Text Stack */}
                     <div className="flex-1 text-center lg:text-left z-10">
