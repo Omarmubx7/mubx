@@ -37,6 +37,7 @@ export default function Footer() {
                             <Link href="/#projects" className="text-muted hover:text-white hover:translate-x-1 transition-all">Work</Link>
                             <Link href="/#services" className="text-muted hover:text-white hover:translate-x-1 transition-all">Services</Link>
                             <Link href="/blog" className="text-muted hover:text-white hover:translate-x-1 transition-all">Articles</Link>
+                            <Link href="/links" className="text-muted hover:text-white hover:translate-x-1 transition-all">My Link Tree</Link>
                             <Link href="/contact" className="text-muted hover:text-white hover:translate-x-1 transition-all">Contact</Link>
                             <Link href="/tools/website-cost-calculator-jordan" className="text-neon hover:text-white hover:translate-x-1 transition-all font-bold mt-2">Cost Calculator</Link>
                             <Link href="/tools/neon-gradient-card" className="text-muted hover:text-white hover:translate-x-1 transition-all">Free Tools (Open Source)</Link>
@@ -95,9 +96,10 @@ export default function Footer() {
                     <p className="text-sm text-muted">
                         &copy; {new Date().getFullYear()} MUBX. All rights reserved.
                     </p>
-                    <p className="text-xs text-muted/60">
-                        Designed with precision in Amman.
-                    </p>
+                    <div className="flex gap-6">
+                        <Link href="/legal/privacy" className="text-xs text-muted/60 hover:text-white transition-colors">Privacy Policy</Link>
+                        <Link href="/legal/terms" className="text-xs text-muted/60 hover:text-white transition-colors">Terms of Service</Link>
+                    </div>
                 </div>
             </div>
         </footer>

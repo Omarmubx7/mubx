@@ -47,7 +47,7 @@ export default function Services() {
             description: 'E-commerce or SaaS. Scalable architecture with secure local payments (Zain Cash/CliQ).',
             idealHeight: 'Timeline: 2–3 Weeks',
             deliverables: 'Includes: Custom DB, Secure Auth, Payment Gateway, Admin Dashboard.',
-            details: ['Product Catalog', 'Shopping Cart', 'Secure Checkout', 'Order Management', 'Managed Hosting'],
+            details: ['Product Catalog', 'Shopping Cart', 'Zain Cash / CliQ', 'Order Management', 'Admin Dashboard'],
             price: 'From 550 JD'
         },
     ];
