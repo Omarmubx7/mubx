@@ -3,48 +3,12 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { fadeUp, staggerContainer } from '@/lib/motion';
+import { blogPosts } from '@/lib/blog-data';
+import Badge from './ui/Badge';
 
 export default function BlogPreview() {
-    interface BlogPost {
-        title: string;
-        excerpt: string;
-        value: string;
-        tags: string[];
-        slug: string;
-        date: string;
-        image?: string;
-        website?: string;
-    }
-
-    const posts: BlogPost[] = [
-        {
-            title: "Next.js Mobile Performance: Fixing LCP & CLS",
-            excerpt: "How I improved Mobile LCP from 2.5s to 0.8s on 4G networks using Next.js 15 features.",
-            value: "Global Technical Guide.",
-            tags: ["Performance", "React"],
-            slug: "nextjs-mobile-performance",
-            date: "Feb 6, 2026"
-        },
-        {
-            title: "The State of E-commerce in Jordan (2026)",
-            excerpt: "How to skip monthly fees by integrating Zain Cash & CliQ directly into your custom Next.js store.",
-            value: "Stop renting your store. Own it.",
-            tags: ["E-commerce", "Local Payments"],
-            slug: "ecommerce-in-jordan-guide",
-            date: "Feb 5, 2026"
-        },
-        {
-            title: "Next.js vs WordPress: The 2026 Comparison",
-            excerpt: "Why modern businesses in Amman are migrating to Headless architectures for 100/100 performance.",
-            value: "Performance wins customers.",
-            tags: ["Performance", "Tech Strategy"],
-
-            slug: "nextjs-vs-wordpress",
-            date: "Feb 4, 2026"
-        }
-    ];
+    const posts = blogPosts.slice(0, 3);
 
     return (
         <section className="py-24 relative border-t border-white/5">
@@ -82,19 +46,6 @@ export default function BlogPreview() {
                             variants={fadeUp}
                             className="group relative p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-neon/30 hover:bg-white/10 transition-all duration-300 flex flex-col items-start h-full"
                         >
-                            {/* Post Image (Optional) */}
-                            {/* @ts-ignore */}
-                            {post.image && (
-                                <div className="w-full relative aspect-video mb-6 rounded-xl overflow-hidden border border-white/10 group-hover:border-neon/30 transition-colors">
-                                    <Image
-                                        src={post.image}
-                                        alt={post.title}
-                                        fill
-                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                </div>
-                            )}
-
                             <div className="flex justify-between w-full items-center mb-4">
                                 <span className="text-xs font-mono text-neon uppercase tracking-widest">{post.date}</span>
                             </div>
@@ -103,41 +54,19 @@ export default function BlogPreview() {
                                 {post.title}
                             </h3>
 
-                            {/* Founders Summary Title */}
-                            <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2">
-                                For Founders
-                            </p>
-
-                            {/* Summary Value */}
-                            <p className="text-white font-medium text-sm leading-relaxed mb-4 border-l-2 border-neon pl-3 italic">
-                                "{post.value}"
+                            <p className="text-muted leading-relaxed mb-6">
+                                {post.excerpt}
                             </p>
 
                             {/* Tags */}
                             <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-                                {post.tags.map(tag => (
-                                    <span key={tag} className="text-[10px] font-bold px-2 py-1 rounded bg-white/5 border border-white/10 text-muted uppercase tracking-wider group-hover:border-neon/20 transition-colors">
-                                        {tag}
-                                    </span>
-                                ))}
+                                <Badge variant="ghost" className="pl-0 text-neon/80 font-mono text-xs">{post.tag}</Badge>
                             </div>
 
                             <div className="flex gap-4 items-center w-full pt-4 border-t border-white/5 mt-auto">
                                 <Link href={`/blog/${post.slug}`} className="text-white text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
                                     Read Article <ArrowRight className="w-4 h-4 text-neon" />
                                 </Link>
-
-                                {/* @ts-ignore */}
-                                {post.website && (
-                                    <a
-                                        href={post.website}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-muted text-xs font-bold hover:text-white transition-colors ml-auto flex items-center gap-1"
-                                    >
-                                        Visit Site <span className="text-[10px] text-neon">↗</span>
-                                    </a>
-                                )}
                             </div>
                         </motion.div>
                     ))}

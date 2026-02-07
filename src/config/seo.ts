@@ -29,6 +29,35 @@ export const siteConfig = {
         linkedin: "https://www.linkedin.com/in/omarmubaidin",
     },
     locale: 'en_US',
+    metadata: {
+        en: {
+            title: "Omar Mubaidin | Web Developer in Amman, Jordan",
+            description: "Build fast, secure web systems in Amman with MUBX. Full Stack Dev & CS Student specializing in Next.js & E-commerce.",
+        },
+        ar: {
+            title: "عمر مبيضين | مطور ويب في عمان، الأردن",
+            description: "ابني أنظمة ويب سريعة وآمنة في عمان مع MUBX. مطور Full Stack وطالب علوم حاسوب متخصص في Next.js والمتاجر الإلكترونية.",
+        }
+    },
+    openGraph: {
+        type: 'website',
+        locale: 'en_US',
+        url: 'https://mubx.dev',
+        siteName: 'MUBX',
+        images: [
+            {
+                url: '/icon.png',
+                width: 1200,
+                height: 630,
+                alt: 'MUBX Logo',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        creator: '@omarmubx',
+        images: ['/icon.png'],
+    },
 };
 
 export type SiteConfig = typeof siteConfig;

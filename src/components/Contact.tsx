@@ -1,26 +1,26 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, MapPin } from 'lucide-react';
+import { Mail, Github, Linkedin, MapPin, Check } from 'lucide-react';
 import { fadeUp } from '@/lib/motion';
 import dynamic from 'next/dynamic';
 const PopupModal = dynamic(() => import('react-calendly').then((mod) => mod.PopupModal), {
     ssr: false
 });
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Contact() {
+    const { t, isRTL } = useLanguage();
     const [isOpen, setIsOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
     }, []);
 
     return (
-        <section id="contact" className="py-24 relative overflow-hidden">
+        <section id="contact" className="py-24 relative overflow-hidden bg-background">
             {/* Background Glow */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-96 bg-neon/5 blur-[100px] rounded-full -z-10" />
 
@@ -32,91 +32,91 @@ export default function Contact() {
                     variants={fadeUp}
                     className="relative z-10"
                 >
-                    <span className="text-neon font-medium tracking-wide uppercase mb-4 block">Let&apos;s Connect</span>
-                    <h2 className="text-4xl md:text-6xl font-bold mb-4">
-                        Ready to build with <span className="text-white">MUBX</span>?
+                    <span className="text-neon font-medium tracking-wide uppercase mb-4 block">{t.contact.connect}</span>
+                    <h2 className="text-4xl md:text-6xl font-bold mb-4 text-foreground">
+                        {t.contact.titleStart} <span className="text-foreground">{t.contact.titleHighlight}</span>?
                     </h2>
                     <p className="text-muted text-lg mb-8 max-w-2xl mx-auto">
-                        Ready to scale? I&apos;m currently accepting new projects for Q1.
+                        {t.contact.desc1}
                         <br />
-                        Let&apos;s discuss how we can engineer your growth.
+                        {t.contact.desc2}
                     </p>
                     <p className="text-muted text-lg max-w-xl mx-auto mb-12">
-                        Whether you need a full-stack audit, a database redesign, or a complete product build, I&apos;m ready to architect the solution.
+                        {t.contact.desc3}
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left mb-16">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left rtl:text-right mb-16">
                         {/* Contact Info & Urgency */}
                         <div className="flex flex-col justify-center space-y-8">
                             <div>
-                                <h3 className="text-2xl font-bold text-white mb-4">Availability & Response</h3>
-                                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                                <h3 className="text-2xl font-bold text-foreground mb-4">{t.contact.availability.title}</h3>
+                                <div className="p-6 rounded-2xl bg-card border border-border backdrop-blur-sm">
                                     <div className="flex items-center gap-3 mb-4">
                                         <div className="relative">
                                             <div className="w-3 h-3 bg-green-500 rounded-full animate-ping absolute inset-0" />
                                             <div className="w-3 h-3 bg-green-500 rounded-full relative" />
                                         </div>
-                                        <span className="text-white font-bold">Accepting 2 New Projects (Q1)</span>
+                                        <span className="text-foreground font-bold">{t.contact.availability.status}</span>
                                     </div>
                                     <p className="text-muted text-sm leading-relaxed">
-                                        I read every message myself and reply within <span className="text-neon font-bold">24 hours</span>.
+                                        {t.contact.availability.response} <span className="text-neon font-bold">{t.contact.availability.responseTime}</span>.
                                         <br />
-                                        Currently prioritizing e-commerce and SaaS projects.
+                                        {t.contact.availability.context}
                                     </p>
                                 </div>
 
                                 <div className="mt-4">
                                     <p className="text-xs text-muted/60 mb-1">
-                                        Need a faster reply?
+                                        {t.contact.availability.urgent}
                                     </p>
-                                    <a href="https://wa.me/962791234567" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-white hover:text-neon flex items-center gap-2 transition-colors">
+                                    <a href="https://wa.me/962791234567" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-foreground hover:text-neon flex items-center gap-2 transition-colors">
                                         <span className="w-2 h-2 bg-green-500 rounded-full" />
-                                        WhatsApp: Best for quick voice notes
+                                        {t.contact.availability.whatsapp}
                                     </a>
                                 </div>
                             </div>
 
                             <div className="space-y-4">
-                                <div className="flex items-center gap-4 text-muted hover:text-white transition-colors">
-                                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                                <div className="flex items-center gap-4 text-muted hover:text-foreground transition-colors">
+                                    <div className="w-10 h-10 rounded-full bg-card flex items-center justify-center border border-border">
                                         <Mail className="w-5 h-5 text-neon" />
                                     </div>
                                     <div>
-                                        <p className="text-xs uppercase tracking-wider text-muted/60">Email</p>
+                                        <p className="text-xs uppercase tracking-wider text-muted/60">{t.contact.email}</p>
                                         <a href="mailto:mubxdev@proton.me" className="font-medium">mubxdev@proton.me</a>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-4 text-muted hover:text-white transition-colors">
-                                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                                <div className="flex items-center gap-4 text-muted hover:text-foreground transition-colors">
+                                    <div className="w-10 h-10 rounded-full bg-card flex items-center justify-center border border-border">
                                         <MapPin className="w-5 h-5 text-neon" />
                                     </div>
                                     <div>
-                                        <p className="text-xs uppercase tracking-wider text-muted/60">Location</p>
-                                        <p className="font-medium">Amman, Jordan (Remote Available)</p>
+                                        <p className="text-xs uppercase tracking-wider text-muted/60">{t.contact.location}</p>
+                                        <p className="font-medium">{t.contact.locationVal}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Simple Lead Form */}
-                        <div className="bg-white/5 p-8 rounded-3xl border border-white/10 relative overflow-hidden">
+                        <div className="bg-card p-8 rounded-3xl border border-border relative overflow-hidden">
                             {/* Budget Filter Badge */}
-                            <div className="absolute top-0 right-0 bg-white/10 px-3 py-1 rounded-bl-xl text-[10px] text-white/60 font-medium uppercase tracking-wider backdrop-blur-md">
-                                Projects from 200 JD
+                            <div className={`absolute top-0 ${isRTL ? 'left-0 rounded-br-xl' : 'right-0 rounded-bl-xl'} bg-muted/10 px-3 py-1 text-[10px] text-muted font-medium uppercase tracking-wider backdrop-blur-md`}>
+                                {t.contact.form.badge}
                             </div>
 
-                            <h3 className="text-xl font-bold text-white mb-6">Tell me about your project</h3>
+                            <h3 className="text-xl font-bold text-foreground mb-6">{t.contact.form.title}</h3>
 
                             {/* Why Clients Choose MUBX - Compact Bullets */}
-                            <div className="flex flex-wrap gap-4 text-xs font-bold text-white/80 mb-6 font-mono">
-                                <span className="flex items-center gap-2 px-2 py-1 bg-white/5 rounded border border-white/10">
-                                    <span className="text-neon">✓</span> Fast Replies
+                            <div className="flex flex-wrap gap-4 text-xs font-bold text-muted/80 mb-6 font-mono">
+                                <span className="flex items-center gap-2 px-2 py-1 bg-background rounded border border-border">
+                                    <Check className="w-3 h-3 text-neon" /> {t.contact.form.fastReplies}
                                 </span>
-                                <span className="flex items-center gap-2 px-2 py-1 bg-white/5 rounded border border-white/10">
-                                    <span className="text-neon">✓</span> Security First
+                                <span className="flex items-center gap-2 px-2 py-1 bg-background rounded border border-border">
+                                    <Check className="w-3 h-3 text-neon" /> {t.contact.form.security}
                                 </span>
-                                <span className="flex items-center gap-2 px-2 py-1 bg-white/5 rounded border border-white/10">
-                                    <span className="text-neon">✓</span> Arabic Support
+                                <span className="flex items-center gap-2 px-2 py-1 bg-background rounded border border-border">
+                                    <Check className="w-3 h-3 text-neon" /> {t.contact.form.arabicSupport}
                                 </span>
                             </div>
 
@@ -127,7 +127,7 @@ export default function Contact() {
                                 const submitBtn = form.querySelector('button[type="submit"]');
 
                                 if (submitBtn) {
-                                    submitBtn.innerHTML = 'Sending...';
+                                    submitBtn.innerHTML = t.contact.form.sending;
                                     (submitBtn as HTMLButtonElement).disabled = true;
                                 }
 
@@ -142,15 +142,15 @@ export default function Contact() {
 
                                     if (response.ok) {
                                         form.reset();
-                                        alert("Thanks for your message! I'll get back to you within 24 hours.");
+                                        alert(t.contact.form.success);
                                     } else {
-                                        alert("Oops! There was a problem submitting your form. Please try again or message me on WhatsApp.");
+                                        alert(t.contact.form.error);
                                     }
                                 } catch (error) {
-                                    alert("Oops! There was a problem submitting your form. Please check your connection.");
+                                    alert(t.contact.form.error);
                                 } finally {
                                     if (submitBtn) {
-                                        submitBtn.innerHTML = 'Send Inquiry';
+                                        submitBtn.innerHTML = t.contact.form.submit;
                                         (submitBtn as HTMLButtonElement).disabled = false;
                                     }
                                 }
@@ -158,11 +158,11 @@ export default function Contact() {
                                 {/* Qualifiers Row */}
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
                                     <div className="space-y-1">
-                                        <label htmlFor="goal" className="text-[10px] font-bold text-white uppercase tracking-wider">Goal</label>
+                                        <label htmlFor="goal" className="text-[10px] font-bold text-foreground uppercase tracking-wider">{t.contact.form.goal}</label>
                                         <select
                                             id="goal"
                                             name="goal"
-                                            className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-neon transition-colors appearance-none cursor-pointer"
+                                            className="w-full bg-background border border-border rounded-lg px-3 py-2 text-xs text-foreground focus:outline-none focus:border-neon transition-colors appearance-none cursor-pointer"
                                         >
                                             <option>New Website</option>
                                             <option>Redesign</option>
@@ -171,11 +171,11 @@ export default function Contact() {
                                         </select>
                                     </div>
                                     <div className="space-y-1">
-                                        <label htmlFor="budget" className="text-[10px] font-bold text-white uppercase tracking-wider">Budget</label>
+                                        <label htmlFor="budget" className="text-[10px] font-bold text-foreground uppercase tracking-wider">{t.contact.form.budget}</label>
                                         <select
                                             id="budget"
                                             name="budget"
-                                            className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-neon transition-colors appearance-none cursor-pointer"
+                                            className="w-full bg-background border border-border rounded-lg px-3 py-2 text-xs text-foreground focus:outline-none focus:border-neon transition-colors appearance-none cursor-pointer"
                                         >
                                             <option>200 - 500 JD</option>
                                             <option>500 - 1000 JD</option>
@@ -184,11 +184,11 @@ export default function Contact() {
                                         </select>
                                     </div>
                                     <div className="space-y-1">
-                                        <label htmlFor="deadline" className="text-[10px] font-bold text-white uppercase tracking-wider">Deadline</label>
+                                        <label htmlFor="deadline" className="text-[10px] font-bold text-foreground uppercase tracking-wider">{t.contact.form.deadline}</label>
                                         <select
                                             id="deadline"
                                             name="deadline"
-                                            className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-neon transition-colors appearance-none cursor-pointer"
+                                            className="w-full bg-background border border-border rounded-lg px-3 py-2 text-xs text-foreground focus:outline-none focus:border-neon transition-colors appearance-none cursor-pointer"
                                         >
                                             <option>ASAP</option>
                                             <option>1 Month</option>
@@ -197,30 +197,30 @@ export default function Contact() {
                                     </div>
                                 </div>
                                 <div>
-                                    <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ml-1">Your Email</label>
-                                    <input type="email" name="email" id="email" required className="w-full bg-black/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all placeholder:text-white/20" placeholder="name@company.com" />
+                                    <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ml-1">{t.contact.form.email}</label>
+                                    <input type="email" name="email" id="email" required className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all placeholder:text-muted/50" placeholder="name@company.com" />
                                 </div>
                                 <div>
-                                    <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ml-1">Project Details</label>
-                                    <textarea name="message" id="message" rows={4} required className="w-full bg-black/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all resize-none placeholder:text-white/20" placeholder="I need a landing page for..."></textarea>
+                                    <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ml-1">{t.contact.form.details}</label>
+                                    <textarea name="message" id="message" rows={4} required className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all resize-none placeholder:text-muted/50" placeholder="I need a landing page for..."></textarea>
                                 </div>
-                                <button type="submit" className="w-full py-4 bg-neon text-black font-bold text-lg rounded-xl hover:bg-white transition-all transform hover:scale-[1.01] shadow-[0_0_20px_rgba(255,30,30,0.2)] disabled:opacity-50 disabled:cursor-not-allowed">
-                                    Send Inquiry
+                                <button type="submit" className="w-full py-4 bg-neon text-black font-bold text-lg rounded-xl hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all transform hover:scale-[1.01] shadow-[0_0_20px_rgba(255,30,30,0.2)] disabled:opacity-50 disabled:cursor-not-allowed">
+                                    {t.contact.form.submit}
                                 </button>
                             </form>
                             <p className="text-xs text-muted/60 text-center mt-4 leading-relaxed">
-                                If we&apos;re not a fit, I&apos;ll still reply with suggestions or a direction within 24 hours.
+                                {t.contact.form.footer}
                             </p>
                         </div>
                     </div>
 
-                    <p className="text-sm text-muted/60 max-w-lg mx-auto mb-8 border-t border-white/5 pt-6">
-                        Typical projects: <span className="text-white/80">landing pages, e-commerce MVPs, and web systems</span> for startups in Amman and worldwide.
+                    <p className="text-sm text-muted/60 max-w-lg mx-auto mb-8 border-t border-border pt-6">
+                        {t.contact.typical} <span className="text-foreground/80">{t.contact.typicalList}</span> {t.contact.typicalContext}
                     </p>
 
                     <div className="flex items-center justify-center gap-2 text-muted text-sm">
                         <MapPin className="w-4 h-4 text-neon" />
-                        <span>Amman, Jordan (Available Remote)</span>
+                        <span>{t.contact.locationVal}</span>
                     </div>
                 </motion.div>
             </div>
@@ -231,22 +231,22 @@ export default function Contact() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="mt-24 text-left max-w-3xl mx-auto border-t border-white/10 pt-16 relative z-10"
+                className="mt-24 text-left rtl:text-right max-w-3xl mx-auto border-t border-border pt-16 relative z-10"
             >
                 <div className="container mx-auto px-6 md:px-12">
-                    <h3 className="text-2xl font-bold text-white mb-8 text-center">Common Questions</h3>
+                    <h3 className="text-2xl font-bold text-foreground mb-8 text-center">{t.contact.faq.title}</h3>
                     <div className="space-y-6">
-                        <div className="bg-white/5 p-6 rounded-xl border border-white/5">
-                            <h4 className="text-white font-bold mb-2 text-sm uppercase tracking-wide">Do you work with non-tech founders?</h4>
-                            <p className="text-muted text-sm leading-relaxed">Yes! I explain everything in plain English. No jargon. I handle the hosting, domains, and tech setup so you can focus on business.</p>
+                        <div className="bg-card p-6 rounded-xl border border-border">
+                            <h4 className="text-foreground font-bold mb-2 text-sm uppercase tracking-wide">{t.contact.faq.q1.q}</h4>
+                            <p className="text-muted text-sm leading-relaxed">{t.contact.faq.q1.a}</p>
                         </div>
-                        <div className="bg-white/5 p-6 rounded-xl border border-white/5">
-                            <h4 className="text-white font-bold mb-2 text-sm uppercase tracking-wide">Do you sign contracts?</h4>
-                            <p className="text-muted text-sm leading-relaxed">Absolutely. Every project starts with a clear contract outlining dates, deliverables, and costs. No surprises.</p>
+                        <div className="bg-card p-6 rounded-xl border border-border">
+                            <h4 className="text-foreground font-bold mb-2 text-sm uppercase tracking-wide">{t.contact.faq.q2.q}</h4>
+                            <p className="text-muted text-sm leading-relaxed">{t.contact.faq.q2.a}</p>
                         </div>
-                        <div className="bg-white/5 p-6 rounded-xl border border-white/5">
-                            <h4 className="text-white font-bold mb-2 text-sm uppercase tracking-wide">Do you support after launch?</h4>
-                            <p className="text-muted text-sm leading-relaxed">Yes. I offer a 1-month support period for bugs, and can discuss retainer packages for ongoing updates.</p>
+                        <div className="bg-card p-6 rounded-xl border border-border">
+                            <h4 className="text-foreground font-bold mb-2 text-sm uppercase tracking-wide">{t.contact.faq.q3.q}</h4>
+                            <p className="text-muted text-sm leading-relaxed">{t.contact.faq.q3.a}</p>
                         </div>
                     </div>
                 </div>

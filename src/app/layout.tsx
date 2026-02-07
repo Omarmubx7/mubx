@@ -8,6 +8,8 @@ import { Analytics } from "@vercel/analytics/next";
 import ChatWidget from '@/components/ChatWidget';
 
 import SkipToContent from '@/components/SkipToContent';
+import { ThemeProvider } from '@/components/ThemeProvider';
+
 
 const inter = Inter({
   subsets: ['latin'],
@@ -77,50 +79,57 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning>
       <body className="bg-background text-foreground antialiased selection:bg-neon selection:text-black">
-        <SkipToContent />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Person",
-                  "name": "Omar Mubaidin",
-                  "url": "https://mubx.dev", // Using the preferred domain mentioned
-                  "image": "https://mubx.dev/favicon-new.png",
-                  "jobTitle": "Web Developer",
-                  "sameAs": [
-                    "https://github.com/Omarmubx7",
-                    "https://www.linkedin.com/in/omarmubaidin"
-                  ]
-                },
-                {
-                  "@type": "ProfessionalService",
-                  "name": "MUBX",
-                  "image": "https://mubx.dev/favicon-new.png",
-                  "logo": "https://mubx.dev/favicon-new.png",
-                  "description": "High-performance web development for verified systems and startups.",
-                  "url": "https://mubx.dev",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Amman",
-                    "addressCountry": "JO"
+        <ThemeProvider
+          attribute="data-theme"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SkipToContent />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@graph": [
+                  {
+                    "@type": "Person",
+                    "name": "Omar Mubaidin",
+                    "url": "https://mubx.dev",
+                    "image": "https://mubx.dev/favicon-new.png",
+                    "jobTitle": "Web Developer",
+                    "sameAs": [
+                      "https://github.com/Omarmubx7",
+                      "https://www.linkedin.com/in/omarmubaidin"
+                    ]
                   },
-                  "areaServed": ["Jordan", "Remote"],
-                  "serviceType": ["Web Development", "E-commerce", "Dashboards"],
-                  "priceRange": "$$"
-                }
-              ]
-            })
-          }}
-        />
-        <SmoothScroll>{children}</SmoothScroll>
-        <SpeedInsights />
-        <Analytics />
-        <ChatWidget />
+                  {
+                    "@type": "ProfessionalService",
+                    "name": "MUBX",
+                    "image": "https://mubx.dev/favicon-new.png",
+                    "logo": "https://mubx.dev/favicon-new.png",
+                    "description": "High-performance web development for verified systems and startups.",
+                    "url": "https://mubx.dev",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressLocality": "Amman",
+                      "addressCountry": "JO"
+                    },
+                    "areaServed": ["Jordan", "Remote"],
+                    "serviceType": ["Web Development", "E-commerce", "Dashboards"],
+                    "priceRange": "$$"
+                  }
+                ]
+              })
+            }}
+          />
+          <SmoothScroll>{children}</SmoothScroll>
+          <SpeedInsights />
+          <Analytics />
+          <ChatWidget />
+        </ThemeProvider>
       </body>
     </html>
   );
