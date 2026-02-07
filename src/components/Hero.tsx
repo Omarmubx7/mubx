@@ -93,7 +93,7 @@ export default function Hero() {
                         {/* Profile Image with Hover Effect */}
                         <div className="relative w-full h-full max-w-[500px] max-h-[600px] transition-transform duration-500 ease-out group-hover:scale-[1.02]">
                             <Image
-                                src="/omarmub.png"
+                                src="/omarmub.webp"
                                 alt={t.hero.imageAlt}
                                 fill
                                 sizes="(max-width: 768px) 100vw, 500px"
