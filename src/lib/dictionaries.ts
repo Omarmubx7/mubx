@@ -407,6 +407,26 @@ export const dictionary = {
                     }
                 ]
             }
+        },
+        statsStrip: {
+            members: 'Members Managed – HTU Club Portal',
+            leads: 'Leads – Vynex Media Landing Page',
+            sales: 'Sales Boost – BloB POD Store'
+        },
+        skills: {
+            fullStack: 'Full Stack Architecture',
+            nextReact: 'Next.js & React Expertise',
+            dbDesign: 'Database Design',
+            auth: 'Secure Auth Systems',
+            seo: 'High-Performance SEO',
+            amman: 'Amman Based',
+            uiux: 'UI/UX Engineering',
+            ecommerce: 'E-commerce Solutions',
+            scalability: 'System Scalability',
+            webApps: 'Custom Web Apps',
+            consulting: 'Technical Consulting',
+            mobile: 'Mobile-First Design',
+            api: 'API Development'
         }
     },
     ar: {
@@ -801,19 +821,39 @@ export const dictionary = {
                     },
                     {
                         title: '4. حدود المسؤولية',
-                        content: 'في أي حال من الأحوال، لن نكون مسؤولين تجاهك أو تجاه أي طرف ثالث عن أي أضرار مباشرة أو غير مباشرة أو تبعية أو عرضية أو خاصة أو عقابية، بما في ذلك خسارة الأرباح أو الإيرادات المفقودة أو فقدان البيانات.'
+                        content: 'لن نكون بأي حال من الأحوال نحن أو مديرينا أو موظفينا أو وكلائنا مسؤولين تجاهك أو تجاه أي طرف ثالث عن أي أضرار مباشرة أو غير مباشرة أو تبعية أو نموذجية أو عرضية أو خاصة أو عقابية، بما في ذلك خسارة الأرباح أو الإيرادات المفقودة أو فقدان البيانات أو غيرها من الأضرار الناشئة عن استخدامك للموقع أو خدماتنا، حتى لو تم إخطارنا باحتمالية حدوث مثل هذه الأضرار.'
                     },
                     {
                         title: '5. القانون الحاكم',
-                        content: 'تحكم هذه الشروط وتفسر وفقاً لقوانين المملكة الأردنية الهاشمية. توافق أنت و MUBX بشكل لا رجعة فيه على أن محاكم الأردن لها الحق الحصري في حل أي نزاع قد ينشأ.'
+                        content: 'تخضع هذه الشروط وتفسر وفقاً لقوانين المملكة الأردنية الهاشمية. توافق MUBX وأنت بشكل لا رجعة فيه على أن محاكم الأردن لها الاختصاص الحصري لحل أي نزاع قد ينشأ فيما يتعلق بهذه الشروط.'
                     },
                     {
                         title: '6. اتصل بنا',
-                        content: 'لحل شكوى بخصوص الموقع أو لتلقي مزيد من المعلومات بخصوص استخدام الموقع، يرجى الاتصال بنا عبر:',
+                        content: 'لحل شكوى بخصوص الموقع أو لتلقي مزيد من المعلومات حول استخدام الموقع، يرجى الاتصال بنا عبر:',
                         email: 'البريد: mubxdev@proton.me'
                     }
                 ]
             }
+        },
+        statsStrip: {
+            members: 'أعضاء تم إدارتهم – بوابة نادي HTU',
+            leads: 'عملاء محتملين – صفحة هبوط Vynex Media',
+            sales: 'زيادة المبيعات – متجر BloB'
+        },
+        skills: {
+            fullStack: 'هندسة الويب المتكاملة',
+            nextReact: 'خبراء Next.js & React',
+            dbDesign: 'تصميم قواعد البيانات',
+            auth: 'أنظمة مصادقة آمنة',
+            seo: 'SEO عالي الأداء',
+            amman: 'مقرنا عمان',
+            uiux: 'هندسة تجربة المستخدم',
+            ecommerce: 'حلول التجارة الإلكترونية',
+            scalability: 'قابلية التوسع للنظام',
+            webApps: 'تطبيقات ويب مخصصة',
+            consulting: 'استشارات تقنية',
+            mobile: 'تصميم للجوال أولاً',
+            api: 'تطوير واجهات برمجة (API)'
         }
     }
 };
