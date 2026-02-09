@@ -131,14 +131,14 @@ export default function Services() {
                                     <p className="text-sm text-neon font-bold mb-1">
                                         {service.idealHeight}
                                     </p>
-                                    <p className="text-xs text-muted/80">
+                                    <p className="text-xs text-muted">
                                         {service.deliverables}
                                     </p>
                                 </div>
 
                                 <ul className="space-y-2 mb-6 border-t border-border pt-6 mt-auto">
                                     {service.details.map((detail) => (
-                                        <li key={detail} className="text-xs text-muted/80 flex items-center gap-2">
+                                        <li key={detail} className="text-xs text-muted flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 bg-neon rounded-full" />
                                             {detail}
                                         </li>

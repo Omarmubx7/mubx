@@ -16,7 +16,8 @@
   --foreground: #18181b;
   --neon: #D90429;
   /* Darker red for light mode visibility */
-  --muted: #52525b;
+  --muted: #4b5563;
+  /* Darkened from #52525b for better contrast */
   --card: #f4f4f5;
   --border: #e4e4e7;
   --marquee-duration: 20s;

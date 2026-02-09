@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { dictionary, Locale } from '@/lib/dictionaries';
+import { useSearchParams } from 'next/navigation';
 
 type LanguageContextType = {
     language: Locale;
@@ -14,13 +15,17 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children, initialLocale = 'en' }: { children: ReactNode, initialLocale?: Locale }) {
     const [language, setLanguage] = useState<Locale>(initialLocale);
+    const searchParams = useSearchParams();
 
     // Sync with initialLocale if it changes (e.g., client navigation)
     useEffect(() => {
-        if (initialLocale) {
+        const langParam = searchParams.get('lang');
+        if (langParam === 'ar' || langParam === 'en') {
+            setLanguage(langParam as Locale);
+        } else if (initialLocale) {
             setLanguage(initialLocale);
         }
-    }, [initialLocale]);
+    }, [initialLocale, searchParams]);
 
     // Update document dir and lang attributes
     useEffect(() => {
