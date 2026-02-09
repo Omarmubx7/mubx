@@ -19,6 +19,8 @@ type Props = {
     searchParams: Promise<{ lang?: string }>
 }
 
+import { Suspense } from 'react';
+
 export default async function CalculatorPage(props: Props) {
     const searchParams = await props.searchParams;
     const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
@@ -26,35 +28,37 @@ export default async function CalculatorPage(props: Props) {
     const t = dictionary[lang].tools.calculator;
 
     return (
-        <LanguageProvider initialLocale={lang}>
-            <main className="min-h-screen bg-background selection:bg-neon selection:text-black">
-                <Navbar />
-                <section className="pt-32 pb-20 container mx-auto px-6 md:px-12">
-                    <div className="text-center mb-16 max-w-2xl mx-auto">
-                        <h1 className="text-4xl md:text-5xl font-black mb-6">
-                            {t.title} <span className="text-neon">{t.titleHighlight}</span>
-                        </h1>
-                        <p className="text-xl text-muted">
-                            {t.description}
-                        </p>
-                    </div>
+        <Suspense>
+            <LanguageProvider initialLocale={lang}>
+                <main className="min-h-screen bg-background selection:bg-neon selection:text-black">
+                    <Navbar />
+                    <section className="pt-32 pb-20 container mx-auto px-6 md:px-12">
+                        <div className="text-center mb-16 max-w-2xl mx-auto">
+                            <h1 className="text-4xl md:text-5xl font-black mb-6">
+                                {t.title} <span className="text-neon">{t.titleHighlight}</span>
+                            </h1>
+                            <p className="text-xl text-muted">
+                                {t.description}
+                            </p>
+                        </div>
 
-                    <CostCalculator ui={t.ui} options={t.options as any} />
+                        <CostCalculator ui={t.ui} options={t.options as any} />
 
-                    <div className="mt-20 max-w-3xl mx-auto prose prose-invert">
-                        <h2>{t.howItWorks.title}</h2>
-                        <p>
-                            {t.howItWorks.desc}
-                        </p>
-                        <ul>
-                            {t.howItWorks.list.map((item, index) => (
-                                <li key={index}>{item}</li>
-                            ))}
-                        </ul>
-                    </div>
-                </section>
-                <Footer />
-            </main>
-        </LanguageProvider>
+                        <div className="mt-20 max-w-3xl mx-auto prose prose-invert">
+                            <h2>{t.howItWorks.title}</h2>
+                            <p>
+                                {t.howItWorks.desc}
+                            </p>
+                            <ul>
+                                {t.howItWorks.list.map((item, index) => (
+                                    <li key={index}>{item}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </section>
+                    <Footer />
+                </main>
+            </LanguageProvider>
+        </Suspense>
     );
 }

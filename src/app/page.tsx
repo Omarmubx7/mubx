@@ -41,24 +41,28 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   }
 }
 
+import { Suspense } from 'react';
+
 export default function Home({ searchParams }: Props) {
   const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
 
   return (
-    <LanguageProvider initialLocale={lang}>
-      <main className="relative flex flex-col min-h-screen">
-        <Navbar />
-        <Hero />
-        <MetricsStrip />
-        <SkillTicker />
-        <Services />
-        <Projects />
-        <Testimonials />
-        <About />
-        <BlogPreview />
-        <Contact />
-        <Footer />
-      </main>
-    </LanguageProvider>
+    <Suspense>
+      <LanguageProvider initialLocale={lang}>
+        <main className="relative flex flex-col min-h-screen">
+          <Navbar />
+          <Hero />
+          <MetricsStrip />
+          <SkillTicker />
+          <Services />
+          <Projects />
+          <Testimonials />
+          <About />
+          <BlogPreview />
+          <Contact />
+          <Footer />
+        </main>
+      </LanguageProvider>
+    </Suspense>
   );
 }

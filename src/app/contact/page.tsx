@@ -3,6 +3,7 @@ import { siteConfig } from '@/config/seo';
 import { LanguageProvider } from '@/context/LanguageContext';
 import ContactView from '@/components/ContactView';
 import { Locale } from '@/lib/dictionaries';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
     title: 'Get a Project Estimate | MUBX',
@@ -21,8 +22,10 @@ export default async function ContactPage(props: Props) {
     const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
 
     return (
-        <LanguageProvider initialLocale={lang}>
-            <ContactView />
-        </LanguageProvider>
+        <Suspense>
+            <LanguageProvider initialLocale={lang}>
+                <ContactView />
+            </LanguageProvider>
+        </Suspense>
     );
 }

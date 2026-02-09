@@ -12,6 +12,8 @@ type Props = {
     searchParams: Promise<{ lang?: string }>
 }
 
+import { Suspense } from 'react';
+
 export default async function TermsPage(props: Props) {
     const searchParams = await props.searchParams;
     const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
@@ -19,27 +21,29 @@ export default async function TermsPage(props: Props) {
     const t = dictionary[lang].legalPage.terms;
 
     return (
-        <LanguageProvider initialLocale={lang}>
-            <div className="container mx-auto px-6 py-32 text-foreground max-w-4xl bg-background min-h-screen">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.title}</h1>
-                <p className="text-muted mb-12">{t.lastUpdated} {new Date().toLocaleDateString(lang === 'ar' ? 'ar-JO' : 'en-US')}</p>
+        <Suspense>
+            <LanguageProvider initialLocale={lang}>
+                <div className="container mx-auto px-6 py-32 text-foreground max-w-4xl bg-background min-h-screen">
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.title}</h1>
+                    <p className="text-muted mb-12">{t.lastUpdated} {new Date().toLocaleDateString(lang === 'ar' ? 'ar-JO' : 'en-US')}</p>
 
-                <div className="prose prose-invert prose-lg max-w-none text-foreground">
-                    {t.sections.map((section, index) => (
-                        <section key={index} className="mb-10">
-                            <h2 className="text-2xl font-bold text-foreground mb-4">{section.title}</h2>
-                            <p className="text-muted leading-relaxed mb-4">
-                                {section.content}
-                            </p>
-                            {section.email && (
-                                <p className="text-muted leading-relaxed mt-4">
-                                    <span className="text-foreground font-mono block">{section.email}</span>
+                    <div className="prose prose-invert prose-lg max-w-none text-foreground">
+                        {t.sections.map((section, index) => (
+                            <section key={index} className="mb-10">
+                                <h2 className="text-2xl font-bold text-foreground mb-4">{section.title}</h2>
+                                <p className="text-muted leading-relaxed mb-4">
+                                    {section.content}
                                 </p>
-                            )}
-                        </section>
-                    ))}
+                                {section.email && (
+                                    <p className="text-muted leading-relaxed mt-4">
+                                        <span className="text-foreground font-mono block">{section.email}</span>
+                                    </p>
+                                )}
+                            </section>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </LanguageProvider>
+            </LanguageProvider>
+        </Suspense>
     );
 }

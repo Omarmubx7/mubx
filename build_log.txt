@@ -5,16 +5,22 @@
 Γû▓ Next.js 16.1.6 (Turbopack)
 
   Creating an optimized production build ...
-Γ£ô Compiled successfully in 7.1s
+Γ£ô Compiled successfully in 3.1s
   Running TypeScript ...
   Collecting page data using 11 workers ...
 ΓÜá Using edge runtime on a page currently disables static generation for that page
   Generating static pages using 11 workers (0/28) ...
-Error occurred prerendering page "/blog/ecommerce-in-jordan-guide". Read more: https://nextjs.org/docs/messages/prerender-error
-Error: useLanguage must be used within a LanguageProvider
-    at g (C:\Users\omara\mubx\.next\server\chunks\ssr\_740d1b00._.js:1:15338)
-    at s (C:\Users\omara\mubx\.next\server\chunks\ssr\_2504a11a._.js:1:3512) {
-  digest: '3755203864'
-}
-Export encountered an error on /blog/ecommerce-in-jordan-guide/page: /blog/ecommerce-in-jordan-guide, exiting the build.
+Γ¿» useSearchParams() should be wrapped in a suspense boundary at page "/about". Read more: https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
+    at Q (C:\Users\omara\mubx\.next\server\chunks\ssr\node_modules__pnpm_fd80061c._.js:2:2111)
+    at o (C:\Users\omara\mubx\.next\server\chunks\ssr\node_modules__pnpm_fd80061c._.js:4:5274)
+    at g (C:\Users\omara\mubx\.next\server\chunks\ssr\src_context_LanguageContext_tsx_c3f21350._.js:1:28038)
+    at an (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:84360)
+    at ai (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:86179)
+    at ai (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:104708)
+    at al (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:107953)
+    at as (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:105368)
+    at am (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:112882)
+    at au (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:109985)
+Error occurred prerendering page "/about". Read more: https://nextjs.org/docs/messages/prerender-error
+Export encountered an error on /about/page: /about, exiting the build.
 Γ¿» Next.js build worker exited with code: 1 and signal: null
