@@ -8,6 +8,7 @@ import Projects from '@/components/Projects';
 import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import BlogPreview from '@/components/BlogPreview';
+import TechStack from '@/components/TechStack';
 import Footer from '@/components/Footer';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { Metadata } from 'next';
@@ -58,6 +59,7 @@ export default function Home({ searchParams }: Props) {
           <Projects />
           <Testimonials />
           <About />
+          <TechStack />
           <BlogPreview />
           <Contact />
           <Footer />

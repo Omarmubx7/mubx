@@ -436,6 +436,16 @@ export const dictionary = {
             consulting: 'Technical Consulting',
             mobile: 'Mobile-First Design',
             api: 'API Development'
+        },
+        tech: {
+            title: 'Technical',
+            titleHighlight: 'Expertise',
+            subtitle: 'Modern tools for high-performance systems.',
+            categories: {
+                frontend: 'Frontend & UI',
+                backend: 'Backend & Database',
+                tools: 'Tools & Deployment'
+            }
         }
     },
     ar: {
@@ -464,7 +474,7 @@ export const dictionary = {
             description: 'أساعد الشركات والناشئة في بناء أنظمة ويب عالية الأداء. من صفحات الهبوط البسيطة إلى منصات SaaS المعقدة.',
             ctaPrimary: 'احجز مكالمة مجانية',
             ctaSecondary: 'شاهد أعمالي',
-            imageAlt: 'عمر عبيدات - مطور ويب متكامل',
+            imageAlt: 'عمر مبيضين - مطور ويب متكامل',
         },
         services: {
             title: 'الخدمات و',
@@ -527,7 +537,7 @@ export const dictionary = {
             cta: 'اطلب تقدير للمشروع'
         },
         footer: {
-            brandDesc: 'تم التطوير بواسطة عمر عبيدات — مطور ويب وطالب علوم حاسوب في عمان، الأردن. أصمم أنظمة ويب آمنة وعالية الأداء.',
+            brandDesc: 'تم التطوير بواسطة عمر مبيضين — مطور ويب وطالب علوم حاسوب في عمان، الأردن. أصمم أنظمة ويب آمنة وعالية الأداء.',
             navigation: 'التنقل',
             payments: 'وسائل الدفع المدعومة',
             connect: 'تواصل معنا',
@@ -544,7 +554,7 @@ export const dictionary = {
         about: {
             titleStart: 'مطور ويب في',
             titleHighlight: 'عمان',
-            name: 'عمر عبيدات',
+            name: 'عمر مبيضين',
             descriptionStart: "أنا",
             descriptionMiddle: "، طالب علوم حاسوب ومطور ويب مقيم في الأردن.",
             descriptionEnd: "على عكس مستخدمي القوالب الجاهزة، أنا أهندس",
@@ -872,6 +882,16 @@ export const dictionary = {
             consulting: 'استشارات تقنية',
             mobile: 'تصميم للجوال أولاً',
             api: 'تطوير واجهات برمجة (API)'
+        },
+        tech: {
+            title: 'الخبرة',
+            titleHighlight: 'التقنية',
+            subtitle: 'أدوات حديثة لبناء أنظمة عالية الأداء.',
+            categories: {
+                frontend: 'الواجهة الأمامية وتجربة المستخدم',
+                backend: 'الأنظمة الخلفية وقواعد البيانات',
+                tools: 'الأدوات والبنية التحتية'
+            }
         }
     }
 };

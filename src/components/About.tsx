@@ -65,14 +65,6 @@ export default function About() {
                                 </li>
                             </ul>
                         </div>
-
-                        <div className="pt-6 opacity-60">
-                            <h3 className="text-foreground/60 font-bold mb-3 uppercase tracking-wider text-xs">{t.about.techStack}</h3>
-                            <div className="flex flex-wrap gap-2 text-[10px] text-muted/60 font-mono">
-                                <span>Next.js • React • TypeScript • Node.js • Supabase • Tailwind</span>
-                            </div>
-                        </div>
-
                     </div>
 
                     {/* Right Column: Stats / Visual (Abstract Representation) */}
