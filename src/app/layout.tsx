@@ -11,6 +11,7 @@ import ChatWidget from '@/components/ChatWidget';
 import SkipToContent from '@/components/SkipToContent';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import JsonLd from '@/components/JsonLd';
+import ScrollProgressBar from '@/components/ScrollProgressBar';
 
 
 const inter = Inter({
@@ -122,6 +123,7 @@ export default function RootLayout({
               }
             ]
           }} />
+          <ScrollProgressBar />
           <SmoothScroll>{children}</SmoothScroll>
           <SpeedInsights />
           <Analytics />
