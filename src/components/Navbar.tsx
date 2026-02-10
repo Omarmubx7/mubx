@@ -14,6 +14,18 @@ import { usePathname } from 'next/navigation';
 
 const NavbarContent = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [hidden, setHidden] = useState(false);
+    const { scrollY } = useScroll();
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const previous = scrollY.getPrevious() ?? 0;
+        if (latest > previous && latest > 150) {
+            setHidden(true);
+        } else {
+            setHidden(false);
+        }
+    });
+
     const { t, language } = useLanguage();
 
     const menuVariants = {
@@ -64,8 +76,12 @@ const NavbarContent = () => {
     return (
         <motion.nav
             initial="hidden"
-            animate="visible"
-            variants={fadeUp}
+            animate={hidden ? "hiddenNav" : "visible"}
+            variants={{
+                hidden: { opacity: 0, y: -20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+                hiddenNav: { y: "-100%", transition: { duration: 0.35, ease: "easeInOut" } }
+            }}
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-background/80 backdrop-blur-sm border-b border-white/5"
         >
             <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2">
