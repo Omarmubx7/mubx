@@ -16,7 +16,7 @@ const blogData: Record<Locale, BlogPost[]> = {
       title: "What I learned building a secure login system in PHP + MySQL",
       excerpt: "Moving beyond basic tutorials to understand hashing, sessions, and SQL injection prevention in a real-world student project.",
       tag: "Security",
-      date: "Feb 2026",
+      date: "Feb 10, 2026",
       content: `
       <h2>The Challenge</h2>
       <p>Building authentication seems simple until you start thinking about security. For HTU Martial Arts, I needed a system that wasn't just "functional" but actually secure.</p>
@@ -36,7 +36,7 @@ const blogData: Record<Locale, BlogPost[]> = {
       title: "Designing a clean database schema for a university sports club",
       excerpt: "How I iterated on the HTU Martial Arts database to handle bookings, memberships, and payments without redundancy.",
       tag: "Database",
-      date: "Jan 2026",
+      date: "Jan 15, 2026",
       content: `
       <h2>Normalization Matters</h2>
       <p>My first draft of the schema was a mess. User data was duplicated in booking tables, and tracking membership status was a query nightmare.</p>
@@ -57,7 +57,7 @@ const blogData: Record<Locale, BlogPost[]> = {
       title: "Shipping Vynex Media: Performance lessons from Next.js 15",
       excerpt: "Balancing high-end visual production aesthetics with web performance metrics using Next.js and Framer Motion.",
       tag: "Performance",
-      date: "Dec 2025",
+      date: "Dec 28, 2025",
       content: `
       <h2>Visuals vs. Speed</h2>
       <p>Vynex Media needed to look "expensive." That usually means heavy assets. My challenge was to make it feel instant.</p>
@@ -79,7 +79,7 @@ const blogData: Record<Locale, BlogPost[]> = {
       title: "ما تعلمته من بناء نظام تسجيل دخول آمن بـ PHP و MySQL",
       excerpt: "تجاوز الدروس الأساسية لفهم التشفير، الجلسات، والحماية من حقن SQL في مشروع طلابي حقيقي.",
       tag: "أمن المعلومات",
-      date: "فبراير 2026",
+      date: "10 فبراير 2026",
       content: `
       <h2>التحدي</h2>
       <p>يبدو بناء المصادقة بسيطاً حتى تبدأ في التفكير بالأمان. لنادي فنون القتال في HTU، احتجت لنظام ليس مجرد "وظيفي" بل آمن فعلياً.</p>
@@ -99,7 +99,7 @@ const blogData: Record<Locale, BlogPost[]> = {
       title: "تصميم مخطط قاعدة بيانات نظيف لنادي رياضي جامعي",
       excerpt: "كيف قمت بتطوير قاعدة بيانات HTU Martial Arts للتعامل مع الحجوزات، العضويات، والدفعات بدون تكرار.",
       tag: "قواعد البيانات",
-      date: "يناير 2026",
+      date: "15 يناير 2026",
       content: `
       <h2>أهمية القواعد الطبيعية (Normalization)</h2>
       <p>المسودة الأولى للمخطط كانت فوضوية. بيانات المستخدم كانت مكررة في جداول الحجز، وتتبع حالة العضوية كان كابوساً في الاستعلامات.</p>
@@ -120,7 +120,7 @@ const blogData: Record<Locale, BlogPost[]> = {
       title: "إطلاق Vynex Media: دروس في الأداء من Next.js 15",
       excerpt: "الموازنة بين جماليات الإنتاج المرئي العالي ومقاييس أداء الويب باستخدام Next.js و Framer Motion.",
       tag: "الأداء",
-      date: "ديسمبر 2025",
+      date: "28 ديسمبر 2025",
       content: `
       <h2>المرئيات مقابل السرعة</h2>
       <p>احتاجت Vynex Media لتبدو "باهظة الثمن". وهذا يعني عادةً أصولاً ثقيلة. كان تحدي هو جعلها تبدو فورية.</p>

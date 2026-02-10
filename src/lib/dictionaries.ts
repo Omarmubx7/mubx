@@ -8,7 +8,7 @@ export const dictionary = {
             lab: 'From the Lab',
             testimonials: 'Testimonials',
             contact: 'Contact',
-            resume: 'Resume',
+            resume: 'Download CV (PDF)',
             estimate: 'Get Estimate',
             talk: "Let's Talk",
             home: 'Home',
@@ -36,40 +36,40 @@ export const dictionary = {
             popular: 'Most Popular',
             packages: {
                 linkBio: {
-                    label: 'Link Bio',
-                    title: 'CUSTOM LINK TREE',
-                    desc: 'Advanced designing and custom domain for your social media presence.',
-                    timeline: 'Timeline: 2–3 Days',
-                    deliverables: 'Includes: Custom Domain Setup, Advanced Design, Unlimited Links, Analytics.',
-                    details: ['Custom Domain', 'Advanced Design', 'Social Integration', 'Analytics'],
-                    price: '50 JD'
+                    label: 'Basic',
+                    title: 'Link Tree',
+                    desc: 'A custom, branded link page to aggregate your social media. Better than Linktree.',
+                    timeline: '2-3 Days',
+                    deliverables: 'Hosting Included',
+                    details: ['Custom Design', 'Social Icons', 'Contact Form', 'Fast Loading'],
+                    price: '70 JD'
                 },
                 landing: {
-                    label: 'Quick Launch',
-                    title: 'LANDING PAGE',
-                    desc: 'High-conversion, lightning-fast single page designed to turn ads & visitors into leads.',
-                    timeline: 'Timeline: 5–7 Days',
-                    deliverables: 'Includes: Copywriting, Speed Optimization (90+), Basic Analytics, Hosting Setup.',
-                    details: ['Responsive Design', 'Speed Optimization', 'SEO Basics', 'Analytics Setup'],
-                    price: 'From 200 JD'
+                    label: 'Starter',
+                    title: 'Landing Page',
+                    desc: 'High-conversion single page site. Perfect for ads, events, or product launches.',
+                    timeline: '5-7 Days',
+                    deliverables: '1 Page',
+                    details: ['Copywriting', 'SEO Basics', 'Mobile Ready', 'Analytics'],
+                    price: '300 JD'
                 },
                 business: {
                     label: 'Growth',
-                    title: 'BUSINESS WEBSITE',
-                    desc: 'A robust multi-page platform to establish authority. Includes a CMS so you can edit content.',
-                    timeline: 'Timeline: 1–2 Weeks',
-                    deliverables: 'Includes: 5-Page Custom Design, CMS Integration, Advanced SEO, Contact Forms.',
-                    details: ['CMS Integration', 'Advanced SEO', 'Blog / News Section', 'Contact Forms', 'Free Hosting & Domain'],
-                    price: 'From 350 JD'
+                    title: 'Business Website',
+                    desc: 'Complete multi-page website to establish authority and trust.',
+                    timeline: '2 Weeks',
+                    deliverables: '5 Pages',
+                    details: ['CMS (Manage Content)', 'Bilingual (Ar/En)', 'SEO Advanced', 'Blog Setup'],
+                    price: '500 JD'
                 },
                 system: {
-                    label: 'Scale',
-                    title: 'CUSTOM WEB SYSTEM',
-                    desc: 'E-commerce or SaaS. Scalable architecture with secure local payments (Zain Cash/CliQ).',
-                    timeline: 'Timeline: 2–3 Weeks',
-                    deliverables: 'Includes: Custom DB, Secure Auth, Payment Gateway, Admin Dashboard.',
-                    details: ['Product Catalog', 'Shopping Cart', 'Zain Cash / CliQ', 'Order Management', 'Admin Dashboard'],
-                    price: 'From 550 JD'
+                    label: 'Pro',
+                    title: 'Web System',
+                    desc: 'Custom functionality. E-commerce, booking systems, or SaaS MVPs.',
+                    timeline: '3+ Weeks',
+                    deliverables: 'Custom Scope',
+                    details: ['Database Design', 'User Auth', 'Payment Integration', 'Admin Dashboard'],
+                    price: '1000+ JD'
                 }
             },
             howItWorks: {
@@ -121,7 +121,7 @@ export const dictionary = {
                 title: 'Why clients choose me',
                 reason1: {
                     title: 'Performance & Speed',
-                    desc: 'Pages load in under 1.5s, improving extensive Google ranking.'
+                    desc: 'Pages load in under 1.5s, improving search engine ranking.'
                 },
                 reason2: {
                     title: 'Local Payment Expert',
@@ -154,7 +154,9 @@ export const dictionary = {
                 responseTime: "24 hours",
                 context: "Currently prioritizing e-commerce and SaaS projects.",
                 urgent: "Need a faster reply?",
-                whatsapp: "WhatsApp: Best for quick voice notes"
+                whatsapp: "WhatsApp: Best for quick voice notes",
+                whatsappUrl: "https://wa.me/962791234567",
+                whatsappNumber: "+962 79 123 4567"
             },
             email: "Email",
             location: "Location",
@@ -171,7 +173,11 @@ export const dictionary = {
                 budgetOptions: ['200 - 500 JD', '500 - 1000 JD', '1000 - 2500 JD', '2500+ JD'],
                 deadline: "Deadline",
                 deadlineOptions: ['ASAP', '1 Month', 'Flexible'],
-                email: "Your Email",
+                name: "Your Name",
+                namePlaceholder: "John Doe",
+                business: "Business Name",
+                businessPlaceholder: "Company Ltd.",
+                email: "Email Address",
                 emailPlaceholder: "name@company.com",
                 details: "Project Details",
                 detailsPlaceholder: "I need a landing page for...",
@@ -208,25 +214,28 @@ export const dictionary = {
                     client: 'Mahmoud Hussam',
                     role: 'Agency Lead @ Vynex Media',
                     project: 'Agency Landing Page',
-                    year: '2024',
+                    year: 'Jan 2024',
                     outcome: 'Vynex Media — +20% leads in first month',
-                    text: "Omar helped us launch faster and look more professional by building a high-performance landing page. He was reliable, proactive, and delivered on time."
+                    text: "Omar helped us launch faster and look more professional by building a high-performance landing page. He was reliable, proactive, and delivered on time.",
+                    linkLabel: "View on Instagram"
                 },
                 {
                     client: 'Ali Hiasat',
                     role: 'Club Manager @ HTU Martial Arts',
                     project: 'Club Management System',
-                    year: '2025',
+                    year: 'Feb 2025',
                     outcome: 'Club Portal — Managed 100+ students',
-                    text: "Our old process for members was messy; after Omar’s system, managing bookings and payments became seamless. I’d recommend him to any club that needs solid web systems."
+                    text: "Our old process for members was messy; after Omar’s system, managing bookings and payments became seamless. I’d recommend him to any club that needs solid web systems.",
+                    linkLabel: "Visit HTU.edu.jo"
                 },
                 {
                     client: 'Hassan Emad',
                     role: 'Founder @ BloB.JO',
                     project: 'E-commerce Store',
-                    year: '2025',
+                    year: 'Jan 2025',
                     outcome: 'BloB Store — 200% online sales boost',
-                    text: "Customers can now explore designs and track orders online, turning what used to be manual communication into a smoother digital flow. The print-on-demand store he built is a game changer."
+                    text: "Customers can now explore designs and track orders online, turning what used to be manual communication into a smoother digital flow. The print-on-demand store he built is a game changer.",
+                    linkLabel: "Visit BloB.JO"
                 }
             ]
         },
@@ -436,7 +445,7 @@ export const dictionary = {
             lab: 'المختبر',
             testimonials: 'أراء العملاء',
             contact: 'تواصل معي',
-            resume: 'السيرة الذاتية',
+            resume: 'تحميل السيرة الذاتية',
             estimate: 'اطلب عرض سعر',
             talk: "لنتحدث",
             home: 'الرئيسية',
@@ -464,40 +473,40 @@ export const dictionary = {
             popular: 'الأكثر طلباً',
             packages: {
                 linkBio: {
-                    label: 'رابط البايو',
-                    title: 'شجرة روابط مخصصة',
-                    desc: 'تصميم متقدم ونطاق مخصص لتعزيز تواجدك على وسائل التواصل الاجتماعي.',
-                    timeline: 'المدة: 2–3 أيام',
-                    deliverables: 'يشمل: إعداد النطاق، تصميم متقدم، روابط غير محدودة، تحليلات.',
-                    details: ['نطاق مخصص', 'تصميم متقدم', 'ربط سوشيال ميديا', 'تحليلات'],
-                    price: '50 دينار'
+                    label: 'أساسي',
+                    title: 'شجرة روابط',
+                    desc: 'صفحة روابط مخصصة لجمع كل حساباتك. أفضل وأسرع من Linktree.',
+                    timeline: '2-3 أيام',
+                    deliverables: 'شامل الاستضافة',
+                    details: ['تصميم مخصص', 'أيقونات التواصل', 'نموذج تواصل', 'تحميل سريع'],
+                    price: '70 دينار'
                 },
                 landing: {
-                    label: 'انطلاق سريع',
+                    label: 'بداية',
                     title: 'صفحة هبوط',
-                    desc: 'صفحة واحدة عالية التحويل وسريعة، مصممة لتحويل الزيارات والإعلانات إلى عملاء محتملين.',
-                    timeline: 'المدة: 5–7 أيام',
-                    deliverables: 'يشمل: كتابة المحتوى، تحسين السرعة (90+)، تحليلات أساسية، استضافة.',
-                    details: ['تصميم متجاوب', 'تحسين السرعة', 'تحسين محركات البحث', 'إعداد التحليلات'],
-                    price: 'من 200 دينار'
+                    desc: 'صفحة واحدة عالية التحويل. ممتازة للإعلانات، الفعاليات، أو إطلاق منتج.',
+                    timeline: '5-7 أيام',
+                    deliverables: 'صفحة واحدة',
+                    details: ['كتابة محتوى', 'تحسين SEO', 'متجاوب للجوال', 'تحليلات زوار'],
+                    price: '300 دينار'
                 },
                 business: {
                     label: 'نمو',
                     title: 'موقع شركات',
-                    desc: 'منصة قوية متعددة الصفحات لترسيخ الهوية. تشمل نظام إدارة محتوى (CMS) لتعديل النصوص والمقالات.',
-                    timeline: 'المدة: 1–2 أسبوع',
-                    deliverables: 'يشمل: تصميم 5 صفحات، نظام إدارة، تحسين SEO متقدم، نماذج تواصل.',
-                    details: ['نظام إدارة محتوى', 'SEO متقدم', 'مدونة / أخبار', 'نماذج تواصل', 'استضافة ونطاق مجاني'],
-                    price: 'من 350 دينار'
+                    desc: 'موقع متعدد الصفحات لبناء الثقة وعرض خدماتك باحترافية.',
+                    timeline: '2 أسبوع',
+                    deliverables: '5 صفحات',
+                    details: ['نظام إدارة محتوى', 'لغتين (عربي/إنجليزي)', 'SEO متقدم', 'إعداد مدونة'],
+                    price: '500 دينار'
                 },
                 system: {
-                    label: 'توسع',
-                    title: 'نظام ويب مخصص',
-                    desc: 'متجر الكتروني أو SaaS. بمارية قابلة للتوسع مع دفع محلي آمن (Zain Cash/CliQ).',
-                    timeline: 'المدة: 2–3 أسابيع',
-                    deliverables: 'يشمل: قاعدة بيانات مخصصة، مصادقة آمنة، بوابة دفع، لوحة تحكم.',
-                    details: ['كتالوج منتجات', 'سلة تسوق', 'Zain Cash / CliQ', 'إدارة الطلبات', 'لوحة تحكم'],
-                    price: 'من 550 دينار'
+                    label: 'احترافي',
+                    title: 'نظام مخصص',
+                    desc: 'وظائف مخصصة. متجر إلكتروني، نظام حجز، أو تطبيق ويب،',
+                    timeline: '3+ أسابيع',
+                    deliverables: 'حسب الطلب',
+                    details: ['تصميم قواعد بيانات', 'تسجيل دخول', 'دفع إلكتروني', 'لوحة تحكم'],
+                    price: '1000+ دينار'
                 }
             },
             howItWorks: {
@@ -548,7 +557,7 @@ export const dictionary = {
                 title: 'لماذا يختارني العملاء',
                 reason1: {
                     title: 'السرعة والأداء',
-                    desc: 'صفحات سريعة جداً، مما يحسن ترتيبك في جوجل.'
+                    desc: 'صفحات سريعة جداً، مما يحسن ترتيبك في محركات البحث.'
                 },
                 reason2: {
                     title: 'خبرة الدفع المحلي',
@@ -581,7 +590,9 @@ export const dictionary = {
                 responseTime: "24 ساعة",
                 context: "الأولوية حالياً لمشاريع المتاجر الالكترونية والأنظمة.",
                 urgent: "تحتاج رد أسرع؟",
-                whatsapp: "واتساب: الأفضل للملاحظات الصوتية السريعة"
+                whatsapp: "واتساب: الأفضل للملاحظات الصوتية",
+                whatsappUrl: "https://wa.me/962791234567",
+                whatsappNumber: "+962 79 123 4567"
             },
             email: "البريد الالكتروني",
             location: "الموقع",
@@ -598,6 +609,10 @@ export const dictionary = {
                 budgetOptions: ['200 - 500 دينار', '500 - 1000 دينار', '1000 - 2500 دينار', '2500+ دينار'],
                 deadline: "الموعد النهائي",
                 deadlineOptions: ['بأسرع وقت', 'شهر واحد', 'مرن'],
+                name: "الاسم الكامل",
+                namePlaceholder: "الاسم...",
+                business: "اسم الشركة / المشروع",
+                businessPlaceholder: "اسم الشركة",
                 email: "بريدك الالكتروني",
                 emailPlaceholder: "name@company.com",
                 details: "تفاصيل المشروع",
@@ -633,27 +648,30 @@ export const dictionary = {
             list: [
                 {
                     client: 'محمود حسام',
-                    role: 'قائد الوكالة @ Vynex Media',
+                    role: 'مدير وكالة @ Vynex Media',
                     project: 'صفحة هبوط للوكالة',
-                    year: '2024',
+                    year: 'يناير 2024',
                     outcome: 'Vynex Media — زيادة 20% في العملاء',
-                    text: "ساعدنا عمر في الانطلاق بشكل أسرع والمظهر بشكل أكثر احترافية من خلال بناء صفحة هبوط عالية الأداء. كان موثوقاً ومبادراً وسلم العمل في الوقت المحدد."
+                    text: "ساعدنا عمر في الانطلاق بشكل أسرع ومظهر أكثر احترافية من خلال بناء صفحة هبوط عالية الأداء. كان موثوقاً وسلم العمل في الوقت المحدد.",
+                    linkLabel: "عرض على انستجرام"
                 },
                 {
                     client: 'علي حياصات',
                     role: 'مدير النادي @ HTU Martial Arts',
                     project: 'نظام إدارة النادي',
-                    year: '2025',
+                    year: 'فبراير 2025',
                     outcome: 'بوابة النادي — إدارة 100+ طالب',
-                    text: "كانت عمليتنا القديمة فوضوية؛ بعد نظام عمر، أصبحت إدارة الحجوزات والدفعات سلسة للغاية. أنصح به لأي نادٍ يحتاج أنظمة ويب قوية."
+                    text: "كانت عمليتنا القديمة مع الأعضاء فوضوية؛ بعد نظام عمر، أصبحت إدارة الحجوزات والمدفوعات سلسة للغاية. أوصي به لأي نادٍ يحتاج إلى أنظمة ويب قوية.",
+                    linkLabel: "زيارة الموقع"
                 },
                 {
                     client: 'حسن عماد',
-                    role: 'المؤسس @ BloB.JO',
-                    project: 'متجر الكتروني',
-                    year: '2025',
+                    role: 'مؤسس @ BloB.JO',
+                    project: 'متجر إلكتروني',
+                    year: 'يناير 2025',
                     outcome: 'متجر BloB — زيادة 200% في المبيعات',
-                    text: "يمكن للعملاء الآن استكشاف التصاميم وتتبع الطلبات اونلاين، مما حول التواصل اليدوي إلى تدفق رقمي سلس. المتجر الذي بناه غيّر قواعد اللعبة."
+                    text: "يمكن للعملاء الآن استعراض التصاميم وتتبع الطلبات عبر الإنترنت، مما حول التواصل اليدوي إلى تدفق رقمي سلس. المتجر الذي بناه غيّر قواعد اللعبة بالنسبة لنا.",
+                    linkLabel: "زيارة المتجر"
                 }
             ]
         },

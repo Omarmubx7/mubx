@@ -112,7 +112,7 @@ export default function Services() {
                                     }`}
                             >
                                 {index === 2 && (
-                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-neon text-black text-xs font-bold px-4 py-1.5 rounded-full shadow-lg uppercase tracking-wider whitespace-nowrap">
+                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-neon text-black text-xs font-bold px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(255,30,30,0.4)] uppercase tracking-wider whitespace-nowrap animate-pulse">
                                         {t.services.popular}
                                     </div>
                                 )}
@@ -157,6 +157,10 @@ export default function Services() {
                         <ArrowRight className="w-5 h-5" />
                     </a>
                 </motion.div>
+
+                <p className="text-center text-muted/40 text-xs mt-8 font-mono">
+                    * All prices in JOD (Jordanian Dinar). 1 JOD ≈ $1.41 USD.
+                </p>
             </div>
 
             {/* How It Works Section */}

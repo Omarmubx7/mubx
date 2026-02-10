@@ -48,8 +48,6 @@ export const siteConfig = {
         images: [
             {
                 url: '/icon.png',
-                width: 1200,
-                height: 630,
                 alt: 'MUBX Logo',
             },
         ],

@@ -67,8 +67,9 @@ export default function Testimonials() {
                                     <div className="flex items-center gap-2 mb-1">
                                         <h3 className="text-foreground font-bold text-base">{review.client}</h3>
                                         {socialLinks[i] && (
-                                            <a href={socialLinks[i]} target="_blank" rel="noopener noreferrer" className="text-muted/30 hover:text-foreground transition-colors" title={`Visit ${review.client}'s site`}>
-                                                <LinkIcon className="w-3.5 h-3.5" />
+                                            <a href={socialLinks[i]} target="_blank" rel="noopener noreferrer" className="text-neon/80 hover:text-neon text-[10px] font-bold uppercase tracking-wide border border-neon/20 px-2 py-0.5 rounded-full hover:bg-neon/10 transition-colors flex items-center gap-1">
+                                                <span>{review.linkLabel || 'Visit Website'}</span>
+                                                <LinkIcon className="w-3 h-3" />
                                             </a>
                                         )}
                                     </div>

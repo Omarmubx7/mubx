@@ -21,14 +21,16 @@ import { Locale, dictionary } from '@/lib/dictionaries';
 import { getBlogPosts } from '@/lib/blog-data';
 
 type Props = {
-    searchParams: Promise<{ lang?: string }>
+    searchParams: Promise<{ lang?: string; tag?: string }>
 }
 
 export default async function BlogPage(props: Props) {
     const searchParams = await props.searchParams;
     const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
 
-    const posts = getBlogPosts(lang);
+    const posts = getBlogPosts(lang).filter(post =>
+        !searchParams.tag || post.tag === searchParams.tag
+    );
     const t = dictionary[lang].blog;
 
     return (
@@ -57,8 +59,10 @@ export default async function BlogPage(props: Props) {
                                         className="block p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-neon/50 hover:bg-white/10 transition-all group"
                                     >
                                         <div className="flex justify-between items-start mb-4">
-                                            <div className="flex gap-2 mb-2">
-                                                <Badge variant="ghost" className="pl-0 text-neon/80">{post.tag}</Badge>
+                                            <div className="flex gap-2 mb-2 relative z-20">
+                                                <Link href={`/blog?tag=${post.tag}&lang=${lang === 'ar' ? 'ar' : 'en'}`} className="hover:opacity-80 transition-opacity">
+                                                    <Badge variant="ghost" className="pl-0 text-neon/80 hover:text-neon underline decoration-neon/20 underline-offset-4">{post.tag}</Badge>
+                                                </Link>
                                             </div>
                                             <span className="text-xs text-muted font-mono">{post.date}</span>
                                         </div>

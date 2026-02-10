@@ -65,8 +65,10 @@ export default function BlogPreview() {
                             </p>
 
                             {/* Tags */}
-                            <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-                                <Badge variant="ghost" className="pl-0 text-neon/80 font-mono text-xs">{post.tag}</Badge>
+                            <div className="flex flex-wrap gap-2 mb-6 mt-auto relative z-20">
+                                <Link href={`/blog?tag=${post.tag}`} className="hover:opacity-80 transition-opacity">
+                                    <Badge variant="ghost" className="pl-0 text-neon/80 font-mono text-xs hover:text-neon">{post.tag}</Badge>
+                                </Link>
                             </div>
 
                             <div className="flex gap-4 items-center w-full pt-4 border-t border-white/5 mt-auto">

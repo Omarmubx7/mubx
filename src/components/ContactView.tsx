@@ -18,7 +18,7 @@ export default function ContactView() {
     // Endpoint: https://formspree.io/f/xojnaqoo
     // --------------------------------------------------------------------------
     const router = useRouter();
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
     const [state, handleSubmit] = useForm("xojnaqoo");
 
     useEffect(() => {
@@ -39,14 +39,14 @@ export default function ContactView() {
                     className="max-w-4xl mx-auto"
                 >
                     <div className="text-center mb-16">
-                        <Badge variant="neon" className="mb-6">Project Estimate</Badge>
+                        <Badge variant="neon" className="mb-6">{t.contact.availability.title}</Badge>
                         <h1 className="text-4xl md:text-6xl font-black mb-6">
-                            START YOUR <span className="text-neon">PROJECT</span>
+                            {t.contact.titleStart} <span className="text-neon">{t.contact.titleHighlight}</span>
                         </h1>
                         <p className="text-muted text-lg max-w-2xl mx-auto">
-                            Fill out the form below to get a ballpark estimate and timeline.
+                            {t.contact.desc1}
                             <br />
-                            <span className="text-white/80 font-medium">Replies within 24 hours. Booking for Q1 2026.</span>
+                            <span className="text-foreground/80 font-medium">{t.contact.availability.response} {t.contact.availability.responseTime}.</span>
                         </p>
                     </div>
 
@@ -57,24 +57,24 @@ export default function ContactView() {
                         <form onSubmit={handleSubmit} className="space-y-8 relative z-10" noValidate>
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-white uppercase tracking-wider">Your Name</label>
+                                    <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.name}</label>
                                     <input
                                         name="name"
                                         id="name"
                                         type="text"
-                                        placeholder="John Doe"
-                                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors"
+                                        placeholder={t.contact.form.namePlaceholder}
+                                        className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors"
                                     />
                                     <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-500 text-sm" />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-white uppercase tracking-wider">Email Address</label>
+                                    <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.email}</label>
                                     <input
                                         name="email"
                                         id="email"
                                         type="email"
-                                        placeholder="john@company.com"
-                                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors"
+                                        placeholder={t.contact.form.emailPlaceholder}
+                                        className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors"
                                     />
                                     <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-sm" />
                                 </div>
@@ -82,55 +82,52 @@ export default function ContactView() {
 
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-white uppercase tracking-wider">Business Name</label>
+                                    <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.business}</label>
                                     <input
                                         name="business"
                                         id="business"
                                         type="text"
-                                        placeholder="Company Ltd."
-                                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors"
+                                        placeholder={t.contact.form.businessPlaceholder}
+                                        className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-white uppercase tracking-wider">Project Type</label>
-                                    <select name="type" id="type" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors appearance-none">
-                                        <option>Landing Page</option>
-                                        <option>E-commerce MVP</option>
-                                        <option>Web Application</option>
-                                        <option>Database Audit</option>
-                                        <option>Other</option>
+                                    <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.goal}</label>
+                                    <select name="type" id="type" className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none md:bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] md:bg-[length:20px_20px] md:bg-no-repeat md:bg-[right_1rem_center]">
+                                        {t.contact.form.goalOptions.map((opt) => (
+                                            <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
+                                        ))}
                                     </select>
                                 </div>
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-white uppercase tracking-wider">Budget Range (JD)</label>
-                                    <select name="budget" id="budget" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors appearance-none">
-                                        <option>150 - 300 JD</option>
-                                        <option>300 - 600 JD</option>
-                                        <option>600 - 1000 JD</option>
-                                        <option>1000+ JD</option>
+                                    <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.budget}</label>
+                                    <select name="budget" id="budget" className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none md:bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] md:bg-[length:20px_20px] md:bg-no-repeat md:bg-[right_1rem_center]">
+                                        {t.contact.form.budgetOptions.map((opt) => (
+                                            <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
+                                        ))}
                                     </select>
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-white uppercase tracking-wider">Timeline</label>
-                                    <select name="timeline" id="timeline" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors appearance-none">
-                                        <option>ASAP (1-2 weeks)</option>
-                                        <option>Standard (2-4 weeks)</option>
-                                        <option>Flexible</option>
+                                    <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.deadline}</label>
+                                    <select name="timeline" id="timeline" className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none md:bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] md:bg-[length:20px_20px] md:bg-no-repeat md:bg-[right_1rem_center]">
+                                        {t.contact.form.deadlineOptions.map((opt) => (
+                                            <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
+                                        ))}
                                     </select>
                                 </div>
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-bold text-white uppercase tracking-wider">Project Details</label>
+                                <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.details}</label>
                                 <textarea
                                     name="details"
                                     id="details"
                                     rows={4}
-                                    placeholder="Tell me about your goals, specific features you need, and any design preferences..."
-                                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon/50 transition-colors resize-none"
+                                    placeholder={t.contact.form.detailsPlaceholder}
+                                    className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors resize-none"
                                 />
                                 <ValidationError prefix="Message" field="details" errors={state.errors} className="text-red-500 text-sm" />
                             </div>
@@ -138,7 +135,7 @@ export default function ContactView() {
                             <button
                                 disabled={state.submitting}
                                 type="submit"
-                                className="w-full py-5 bg-neon text-black font-black uppercase tracking-widest text-lg rounded-xl hover:bg-white transition-all transform hover:scale-[1.01] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                                className="w-full py-5 bg-neon text-black font-black uppercase tracking-widest text-lg rounded-xl hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all transform hover:scale-[1.01] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
                             >
                                 {state.submitting ? (
                                     <>
@@ -147,7 +144,7 @@ export default function ContactView() {
                                     </>
                                 ) : (
                                     <>
-                                        Submit Request
+                                        {t.contact.form.submit}
                                         <Send className="w-5 h-5" />
                                     </>
                                 )}

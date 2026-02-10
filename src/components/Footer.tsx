@@ -40,22 +40,22 @@ export default function Footer() {
                     <div className="space-y-6">
                         <h3 className="text-sm font-bold text-foreground uppercase tracking-widest">{t.footer.navigation}</h3>
                         <nav className="flex flex-col gap-4">
-                            <Link href={getHref('/')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all flex items-center gap-1 group-hover:gap-2"><span>{t.nav.home}</span></Link>
-                            <Link href={getHref('/#about')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.about}</Link>
-                            <Link href={getHref('/#projects')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.work}</Link>
-                            <Link href={getHref('/#services')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.services}</Link>
-                            <Link href={getHref('/blog')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.articles}</Link>
-                            <Link href={getHref('/links')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">My Link Tree</Link>
-                            <Link href={getHref('/contact')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.contact}</Link>
+                            <Link href={getHref('/')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all flex items-center gap-1 group-hover:gap-2"><span>{t.nav.home}</span></Link>
+                            <Link href={getHref('/#about')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all">{t.nav.about}</Link>
+                            <Link href={getHref('/#projects')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all">{t.nav.work}</Link>
+                            <Link href={getHref('/#services')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all">{t.nav.services}</Link>
+                            <Link href={getHref('/blog')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all">{t.nav.articles}</Link>
+                            <Link href={getHref('/links')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all">My Link Tree</Link>
+                            <Link href={getHref('/contact')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all">{t.nav.contact}</Link>
                             <Link href={getHref('/tools/website-cost-calculator-jordan')} className="text-neon hover:text-foreground hover:translate-x-1 transition-all font-bold mt-2">{t.nav.costCalc}</Link>
-                            <Link href={getHref('/tools/neon-gradient-card')} className="text-muted hover:text-foreground hover:translate-x-1 transition-all">{t.nav.freeTools}</Link>
+                            <Link href={getHref('/tools/neon-gradient-card')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all">{t.nav.freeTools}</Link>
                         </nav>
 
                         <div className="pt-6 border-t border-border mt-6">
-                            <p className="text-[10px] uppercase tracking-widest text-muted/50 mb-3 font-bold">{t.footer.payments}</p>
+                            <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-3 font-bold">{t.footer.payments}</p>
                             <div className="flex gap-2">
-                                <span className="px-2 py-1 bg-card border border-border rounded text-xs text-muted font-mono">Zain Cash</span>
-                                <span className="px-2 py-1 bg-card border border-border rounded text-xs text-muted font-mono">CliQ</span>
+                                <span className="px-2 py-1 bg-card border border-border rounded text-xs text-muted-foreground font-mono">Zain Cash</span>
+                                <span className="px-2 py-1 bg-card border border-border rounded text-xs text-muted-foreground font-mono">CliQ</span>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ export default function Footer() {
                     <div className="space-y-6">
                         <h3 className="text-sm font-bold text-foreground uppercase tracking-widest">{t.footer.connect}</h3>
                         <div className="flex flex-col gap-4">
-                            <a href="mailto:mubxdev@proton.me" className="flex items-center gap-2 text-muted hover:text-neon transition-colors group">
+                            <a href="mailto:mubxdev@proton.me" className="flex items-center gap-2 text-muted-foreground hover:text-neon transition-colors group">
                                 <Mail className="w-4 h-4" />
                                 <span>mubxdev@proton.me</span>
                                 <ArrowRight className={`w-3 h-3 opacity-0 group-hover:opacity-100 transition-all ${isRTL ? 'translate-x-2 group-hover:translate-x-0 rotate-180' : '-translate-x-2 group-hover:translate-x-0'}`} />
@@ -74,21 +74,21 @@ export default function Footer() {
                             </a>
                         </div>
                         <div className="flex gap-4 pt-2">
-                            <a href="https://github.com/Omarmubx7" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-card hover:bg-muted/10 text-muted hover:text-foreground transition-all border border-border hover:border-neon/30" aria-label="Visit GitHub Profile">
+                            <a href="https://github.com/Omarmubx7" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-card hover:bg-muted/10 text-muted-foreground hover:text-foreground transition-all border border-border hover:border-neon/30" aria-label="Visit GitHub Profile">
                                 <Github className="w-5 h-5" />
                             </a>
-                            <a href="https://www.linkedin.com/in/omarmubaidin" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-card hover:bg-muted/10 text-muted hover:text-foreground transition-all border border-border hover:border-neon/30" aria-label="LinkedIn">
+                            <a href="https://www.linkedin.com/in/omarmubaidin" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-card hover:bg-muted/10 text-muted-foreground hover:text-foreground transition-all border border-border hover:border-neon/30" aria-label="LinkedIn">
                                 <Linkedin className="w-5 h-5" />
                             </a>
-                            <a href="https://www.instagram.com/mubx.dev?igsh=MTg4bDVqMGdwbGdpbQ==" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-card hover:bg-muted/10 text-muted hover:text-foreground transition-all border border-border hover:border-neon/30" aria-label="Instagram">
+                            <a href="https://www.instagram.com/mubx.dev?igsh=MTg4bDVqMGdwbGdpbQ==" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-card hover:bg-muted/10 text-muted-foreground hover:text-foreground transition-all border border-border hover:border-neon/30" aria-label="Instagram">
                                 <Instagram className="w-5 h-5" />
                             </a>
                         </div>
 
                         {/* Social Proof Strip */}
                         <div className="pt-4 mt-4 border-t border-border">
-                            <p className="text-xs text-muted/50 mb-2">{t.footer.selectedProjects}</p>
-                            <div className="flex flex-wrap gap-2 text-xs font-mono text-muted/40">
+                            <p className="text-xs text-muted-foreground mb-2">{t.footer.selectedProjects}</p>
+                            <div className="flex flex-wrap gap-2 text-xs font-mono text-muted-foreground/60">
                                 <span className="py-2">HTU Martial Arts</span>
                                 <span className="py-2">•</span>
                                 <span className="py-2">BloB.JO</span>
@@ -100,12 +100,12 @@ export default function Footer() {
                 </div>
 
                 <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p className="text-sm text-muted">
+                    <p className="text-sm text-muted-foreground">
                         &copy; {new Date().getFullYear()} MUBX. {t.footer.rights}
                     </p>
                     <div className="flex gap-6">
-                        <Link href={getHref('/legal/privacy')} className="text-xs text-muted/60 hover:text-foreground transition-colors">{t.footer.legal.privacy}</Link>
-                        <Link href={getHref('/legal/terms')} className="text-xs text-muted/60 hover:text-foreground transition-colors">{t.footer.legal.terms}</Link>
+                        <Link href={getHref('/legal/privacy')} className="text-xs text-muted-foreground hover:text-foreground transition-colors">{t.footer.legal.privacy}</Link>
+                        <Link href={getHref('/legal/terms')} className="text-xs text-muted-foreground hover:text-foreground transition-colors">{t.footer.legal.terms}</Link>
                     </div>
                 </div>
             </div>

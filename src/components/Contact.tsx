@@ -10,6 +10,7 @@ import { useLanguage } from '@/context/LanguageContext';
 export default function Contact() {
     const { t, isRTL } = useLanguage();
     const [mounted, setMounted] = useState(false);
+    const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
     useEffect(() => {
         setMounted(true);
@@ -65,7 +66,7 @@ export default function Contact() {
                                     <p className="text-xs text-muted/60 mb-1">
                                         {t.contact.availability.urgent}
                                     </p>
-                                    <a href="https://wa.me/962791234567" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-foreground hover:text-neon flex items-center gap-2 transition-colors">
+                                    <a href={t.contact.availability.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-foreground hover:text-neon flex items-center gap-2 transition-colors">
                                         <span className="w-2 h-2 bg-green-500 rounded-full" />
                                         {t.contact.availability.whatsapp}
                                     </a>
@@ -122,10 +123,7 @@ export default function Contact() {
                                 const formData = new FormData(form);
                                 const submitBtn = form.querySelector('button[type="submit"]');
 
-                                if (submitBtn) {
-                                    submitBtn.innerHTML = t.contact.form.sending;
-                                    (submitBtn as HTMLButtonElement).disabled = true;
-                                }
+                                setFormState('submitting');
 
                                 try {
                                     const response = await fetch("https://formspree.io/f/xojnaqoo", {
@@ -138,17 +136,15 @@ export default function Contact() {
 
                                     if (response.ok) {
                                         form.reset();
-                                        alert(t.contact.form.success);
+                                        setFormState('success');
+                                        setTimeout(() => setFormState('idle'), 5000);
                                     } else {
-                                        alert(t.contact.form.error);
+                                        setFormState('error');
+                                        setTimeout(() => setFormState('idle'), 5000);
                                     }
                                 } catch (error) {
-                                    alert(t.contact.form.error);
-                                } finally {
-                                    if (submitBtn) {
-                                        submitBtn.innerHTML = t.contact.form.submit;
-                                        (submitBtn as HTMLButtonElement).disabled = false;
-                                    }
+                                    setFormState('error');
+                                    setTimeout(() => setFormState('idle'), 5000);
                                 }
                             }} className="space-y-4">
                                 {/* Qualifiers Row */}
@@ -198,9 +194,24 @@ export default function Contact() {
                                     <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ml-1">{t.contact.form.details}</label>
                                     <textarea name="message" id="message" rows={4} required className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all resize-none placeholder:text-muted/50" placeholder={t.contact.form.detailsPlaceholder}></textarea>
                                 </div>
-                                <button type="submit" className="w-full py-4 bg-neon text-black font-bold text-lg rounded-xl hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all transform hover:scale-[1.01] shadow-[0_0_20px_rgba(255,30,30,0.2)] disabled:opacity-50 disabled:cursor-not-allowed">
-                                    {t.contact.form.submit}
+                                <button
+                                    type="submit"
+                                    disabled={formState === 'submitting'}
+                                    className="w-full py-4 bg-neon text-black font-bold text-lg rounded-xl hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all transform hover:scale-[1.01] shadow-[0_0_20px_rgba(255,30,30,0.2)] disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {formState === 'submitting' ? t.contact.form.sending : t.contact.form.submit}
                                 </button>
+
+                                {formState === 'success' && (
+                                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 rounded-xl bg-green-500/20 border border-green-500/50 text-green-500 font-bold text-center text-sm">
+                                        {t.contact.form.success}
+                                    </motion.div>
+                                )}
+                                {formState === 'error' && (
+                                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 rounded-xl bg-red-500/20 border border-red-500/50 text-red-500 font-bold text-center text-sm">
+                                        {t.contact.form.error}
+                                    </motion.div>
+                                )}
                             </form>
                             <p className="text-xs text-muted/60 text-center mt-4 leading-relaxed">
                                 {t.contact.form.footer}

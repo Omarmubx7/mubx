@@ -9,13 +9,48 @@ import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
+import { useScrollSpy } from '@/hooks/useScrollSpy';
+import { usePathname } from 'next/navigation';
 
 const NavbarContent = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { t, language } = useLanguage();
 
+    const menuVariants = {
+        hidden: { opacity: 0, y: -20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        },
+        exit: { opacity: 0, y: -20 }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, x: -20 },
+        visible: { opacity: 1, x: 0 }
+    };
+
     const getHref = (path: string) => {
         return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
+    };
+
+    const pathname = usePathname();
+    const activeSection = useScrollSpy(['services', 'projects', 'testimonials', 'contact'], 100);
+
+    const isLinkActive = (href: string) => {
+        if (pathname === '/' || pathname === '/ar') {
+            // Extract hash
+            const hash = href.split('#')[1];
+            if (hash) {
+                return activeSection === hash;
+            }
+        }
+        // Handle normal pages like /blog
+        return pathname === href || (pathname.startsWith(href) && href !== '/');
     };
 
     const links = [
@@ -33,7 +68,7 @@ const NavbarContent = () => {
             variants={fadeUp}
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-background/80 backdrop-blur-sm border-b border-white/5"
         >
-            <Link href={getHref('/')} className="group relative z-50">
+            <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2">
                 <div className="relative h-16 w-auto min-w-[140px] transition-transform group-hover:scale-105">
                     <Image
                         src="/icon.png"
@@ -51,9 +86,17 @@ const NavbarContent = () => {
                     <Link
                         key={link.name}
                         href={link.href}
-                        className="text-sm font-medium text-muted hover:text-neon transition-colors"
+                        className={`text-sm font-medium transition-colors relative ${isLinkActive(link.href) ? 'text-neon font-bold' : 'text-muted hover:text-neon'
+                            }`}
                     >
                         {link.name}
+                        {isLinkActive(link.href) && (
+                            <motion.div
+                                layoutId="activeNav"
+                                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-neon rounded-full"
+                                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                            />
+                        )}
                     </Link>
                 ))}
                 {/* Resume Link */}
@@ -95,32 +138,36 @@ const NavbarContent = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        variants={menuVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
                         className="absolute top-0 left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border p-6 pt-24 md:hidden flex flex-col gap-6 shadow-2xl h-screen"
                     >
                         {links.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                onClick={() => setIsOpen(false)}
-                                className="text-2xl font-bold text-foreground hover:text-neon transition-colors uppercase tracking-wider"
-                            >
-                                {link.name}
-                            </Link>
+                            <motion.div key={link.name} variants={itemVariants}>
+                                <Link
+                                    href={link.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className="text-2xl font-bold text-foreground hover:text-neon transition-colors uppercase tracking-wider"
+                                >
+                                    {link.name}
+                                </Link>
+                            </motion.div>
                         ))}
                         <div className="flex items-center justify-between py-4 border-t border-border mt-auto mb-20">
                             <span className="text-muted">Language</span>
                             <LanguageToggle />
                         </div>
-                        <Link
-                            href={getHref('#contact')}
-                            onClick={() => setIsOpen(false)}
-                            className="text-2xl font-bold text-neon hover:text-foreground transition-colors uppercase tracking-wider mb-8"
-                        >
-                            {t.nav.talk}
-                        </Link>
+                        <motion.div variants={itemVariants}>
+                            <Link
+                                href={getHref('#contact')}
+                                onClick={() => setIsOpen(false)}
+                                className="text-2xl font-bold text-neon hover:text-foreground transition-colors uppercase tracking-wider mb-8 block"
+                            >
+                                {t.nav.talk}
+                            </Link>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
