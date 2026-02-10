@@ -18,17 +18,15 @@ const blogData: Record<Locale, BlogPost[]> = {
       tag: "Security",
       date: "Feb 10, 2026",
       content: `
-      <h2>The Challenge</h2>
-      <p>Building authentication seems simple until you start thinking about security. For HTU Martial Arts, I needed a system that wasn't just "functional" but actually secure.</p>
-      
-      <h3>Key Learnings</h3>
-      <ul>
-        <li><strong>Password Hashing:</strong> Why MD5 is dead and why \`password_hash()\` (Bcrypt/Argon2) is the standard.</li>
-        <li><strong>SQL Injection:</strong> Using prepared statements seems obvious now, but seeing how easy it is to inject SQL into raw queries was a wake-up call.</li>
-        <li><strong>Session Management:</strong> Handling session fixation and using secure, HTTP-only cookies.</li>
-      </ul>
+## The Challenge
+Building authentication seems simple until you start thinking about security. For HTU Martial Arts, I needed a system that wasn't just "functional" but actually secure.
 
-      <p>This project taught me that security is not a feature you add at the end, but a mindset you start with.</p>
+### Key Learnings
+- **Password Hashing:** Why MD5 is dead and why \`password_hash()\` (Bcrypt/Argon2) is the standard.
+- **SQL Injection:** Using prepared statements seems obvious now, but seeing how easy it is to inject SQL into raw queries was a wake-up call.
+- **Session Management:** Handling session fixation and using secure, HTTP-only cookies.
+
+This project taught me that security is not a feature you add at the end, but a mindset you start with.
     `
     },
     {
@@ -38,18 +36,16 @@ const blogData: Record<Locale, BlogPost[]> = {
       tag: "Database",
       date: "Jan 15, 2026",
       content: `
-      <h2>Normalization Matters</h2>
-      <p>My first draft of the schema was a mess. User data was duplicated in booking tables, and tracking membership status was a query nightmare.</p>
+## Normalization Matters
+My first draft of the schema was a mess. User data was duplicated in booking tables, and tracking membership status was a query nightmare.
 
-      <h3>The Solution</h3>
-      <p>I normalized the data into three core tables: <code>Users</code>, <code>Memberships</code>, and <code>Bookings</code>. This allowed for:</p>
-      <ul>
-        <li>Single source of truth for user details.</li>
-        <li>Flexible membership types without altering the user table.</li>
-        <li>Faster queries for admin reports.</li>
-      </ul>
+### The Solution
+I normalized the data into three core tables: \`Users\`, \`Memberships\`, and \`Bookings\`. This allowed for:
+- Single source of truth for user details.
+- Flexible membership types without altering the user table.
+- Faster queries for admin reports.
 
-      <p>Good data architecture makes the backend code 50% simpler.</p>
+Good data architecture makes the backend code 50% simpler.
     `
     },
     {
@@ -59,17 +55,15 @@ const blogData: Record<Locale, BlogPost[]> = {
       tag: "Performance",
       date: "Dec 28, 2025",
       content: `
-      <h2>Visuals vs. Speed</h2>
-      <p>Vynex Media needed to look "expensive." That usually means heavy assets. My challenge was to make it feel instant.</p>
+## Visuals vs. Speed
+Vynex Media needed to look "expensive." That usually means heavy assets. My challenge was to make it feel instant.
 
-      <h3>Optimization Techniques</h3>
-      <ul>
-        <li><strong>Image Optimization:</strong> Using <code>next/image</code> for automatic format selection (WebP/AVIF).</li>
-        <li><strong>Code Splitting:</strong> Next.js handles this well, but I had to be careful with heavy animation libraries.</li>
-        <li><strong>Framer Motion:</strong> Using <code>layout</code> animations sparsely and optimizing <code>whileInView</code> triggers.</li>
-      </ul>
+### Optimization Techniques
+- **Image Optimization:** Using \`next/image\` for automatic format selection (WebP/AVIF).
+- **Code Splitting:** Next.js handles this well, but I had to be careful with heavy animation libraries.
+- **Framer Motion:** Using \`layout\` animations sparsely and optimizing \`whileInView\` triggers.
 
-      <p>The result is a site that feels cinematic but loads like a static page.</p>
+The result is a site that feels cinematic but loads like a static page.
     `
     }
   ],
@@ -81,17 +75,15 @@ const blogData: Record<Locale, BlogPost[]> = {
       tag: "أمن المعلومات",
       date: "10 فبراير 2026",
       content: `
-      <h2>التحدي</h2>
-      <p>يبدو بناء المصادقة بسيطاً حتى تبدأ في التفكير بالأمان. لنادي فنون القتال في HTU، احتجت لنظام ليس مجرد "وظيفي" بل آمن فعلياً.</p>
-      
-      <h3>أهم الدروس المستفادة</h3>
-      <ul>
-        <li><strong>تشفير كلمات المرور:</strong> لماذا مات MD5 ولماذا \`password_hash()\` (Bcrypt/Argon2) هو المعيار.</li>
-        <li><strong>حقن SQL:</strong> استخدام البيانات المجهزة يبدو بديهياً الآن، لكن رؤية سهولة حقن SQL في الاستعلامات الخام كانت بمثابة جرس إنذار.</li>
-        <li><strong>إدارة الجلسات:</strong> التعامل مع تثبيت الجلسة واستخدام ملفات تعريف الارتباط الآمنة (HTTP-only).</li>
-      </ul>
+## التحدي
+يبدو بناء المصادقة بسيطاً حتى تبدأ في التفكير بالأمان. لنادي فنون القتال في HTU، احتجت لنظام ليس مجرد "وظيفي" بل آمن فعلياً.
 
-      <p>علمني هذا المشروع أن الأمان ليس ميزة تضيفها في النهاية، بل عقلية تبدأ بها.</p>
+### أهم الدروس المستفادة
+- **تشفير كلمات المرور:** لماذا مات MD5 ولماذا \`password_hash()\` (Bcrypt/Argon2) هو المعيار.
+- **حقن SQL:** استخدام البيانات المجهزة يبدو بديهياً الآن، لكن رؤية سهولة حقن SQL في الاستعلامات الخام كانت بمثابة جرس إنذار.
+- **إدارة الجلسات:** التعامل مع تثبيت الجلسة واستخدام ملفات تعريف الارتباط الآمنة (HTTP-only).
+
+علمني هذا المشروع أن الأمان ليس ميزة تضيفها في النهاية، بل عقلية تبدأ بها.
     `
     },
     {
@@ -101,18 +93,16 @@ const blogData: Record<Locale, BlogPost[]> = {
       tag: "قواعد البيانات",
       date: "15 يناير 2026",
       content: `
-      <h2>أهمية القواعد الطبيعية (Normalization)</h2>
-      <p>المسودة الأولى للمخطط كانت فوضوية. بيانات المستخدم كانت مكررة في جداول الحجز، وتتبع حالة العضوية كان كابوساً في الاستعلامات.</p>
+## أهمية القواعد الطبيعية (Normalization)
+المسودة الأولى للمخطط كانت فوضوية. بيانات المستخدم كانت مكررة في جداول الحجز، وتتبع حالة العضوية كان كابوساً في الاستعلامات.
 
-      <h3>الحل</h3>
-      <p>قمت بتنظيم البيانات في ثلاثة جداول أساسية: <code>المستخدمين</code>، <code>العضويات</code>، و <code>الحجوزات</code>. هذا سمح بـ:</p>
-      <ul>
-        <li>مصدر واحد للحقيقة لتفاصيل المستخدم.</li>
-        <li>أنواع عضوية مرنة دون تغيير جدول المستخدم.</li>
-        <li>استعلامات أسرع لتقارير المسؤول.</li>
-      </ul>
+### الحل
+قمت بتنظيم البيانات في ثلاثة جداول أساسية: \`المستخدمين\`، \`العضويات\`، و \`الحجوزات\`. هذا سمح بـ:
+- مصدر واحد للحقيقة لتفاصيل المستخدم.
+- أنواع عضوية مرنة دون تغيير جدول المستخدم.
+- استعلامات أسرع لتقارير المسؤول.
 
-      <p>هندسة البيانات الجيدة تجعل كود الواجهة الخلفية أبسط بنسبة 50%.</p>
+هندسة البيانات الجيدة تجعل كود الواجهة الخلفية أبسط بنسبة 50%.
     `
     },
     {
@@ -122,17 +112,15 @@ const blogData: Record<Locale, BlogPost[]> = {
       tag: "الأداء",
       date: "28 ديسمبر 2025",
       content: `
-      <h2>المرئيات مقابل السرعة</h2>
-      <p>احتاجت Vynex Media لتبدو "باهظة الثمن". وهذا يعني عادةً أصولاً ثقيلة. كان تحدي هو جعلها تبدو فورية.</p>
+## المرئيات مقابل السرعة
+احتاجت Vynex Media لتبدو "باهظة الثمن". وهذا يعني عادةً أصولاً ثقيلة. كان تحدي هو جعلها تبدو فورية.
 
-      <h3>تقنيات التحسين</h3>
-      <ul>
-        <li><strong>تحسين الصور:</strong> استخدام <code>next/image</code> للاختيار التلقائي للتنسيق (WebP/AVIF).</li>
-        <li><strong>تقسيم الكود:</strong> Next.js يتعامل مع هذا بشكل جيد، لكن كان علي الحذر مع مكتبات الرسوم المتحركة الثقيلة.</li>
-        <li><strong>Framer Motion:</strong> استخدام رسوم <code>layout</code> بشكل مقتصد وتحسين محفزات <code>whileInView</code>.</li>
-      </ul>
+### تقنيات التحسين
+- **تحسين الصور:** استخدام \`next/image\` للاختيار التلقائي للتنسيق (WebP/AVIF).
+- **تقسيم الكود:** Next.js يتعامل مع هذا بشكل جيد، لكن كان علي الحذر مع مكتبات الرسوم المتحركة الثقيلة.
+- **Framer Motion:** استخدام رسوم \`layout\` بشكل مقتصد وتحسين محفزات \`whileInView\`.
 
-      <p>النتيجة هي موقع يبدو سينمائياً لكنه يحمل مثل صفحة ثابتة.</p>
+النتيجة هي موقع يبدو سينمائياً لكنه يحمل مثل صفحة ثابتة.
     `
     }
   ]

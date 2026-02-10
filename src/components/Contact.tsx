@@ -126,7 +126,15 @@ export default function Contact() {
                                 setFormState('submitting');
 
                                 try {
-                                    const response = await fetch("https://formspree.io/f/xojnaqoo", {
+                                    const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+
+                                    if (!formId) {
+                                        console.error('Formspree ID is missing! Make sure to set NEXT_PUBLIC_FORMSPREE_ID in your .env.local file.');
+                                        setFormState('error');
+                                        return;
+                                    }
+
+                                    const response = await fetch(`https://formspree.io/f/${formId}`, {
                                         method: "POST",
                                         body: formData,
                                         headers: {

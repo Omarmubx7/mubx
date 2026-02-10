@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import Badge from '@/components/ui/Badge';
 import { siteConfig } from '@/config/seo';
 import { Download, Calendar, Mail, CheckCircle2 } from 'lucide-react';
+import JsonLd from '@/components/JsonLd';
 import { LanguageProvider } from '@/context/LanguageContext';
 
 export const metadata: Metadata = {
@@ -41,39 +42,34 @@ export default function AboutPage() {
                     <Navbar />
 
                     {/* Profile Section with Schema */}
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify({
-                                "@context": "https://schema.org",
-                                "@type": "ProfilePage",
-                                "mainEntity": {
-                                    "@type": "Person",
-                                    "name": "Omar Mubaidin",
-                                    "alternateName": "MUBX",
-                                    "jobTitle": "Full Stack Developer",
-                                    "worksFor": {
-                                        "@type": "Organization",
-                                        "name": "MUBX Development"
-                                    },
-                                    "address": {
-                                        "@type": "PostalAddress",
-                                        "addressLocality": "Amman",
-                                        "addressCountry": "Jordan"
-                                    },
-                                    "alumniOf": {
-                                        "@type": "CollegeOrUniversity",
-                                        "name": "Princess Sumaya University for Technology" // Assuming or generic placeholder
-                                    },
-                                    "sameAs": [
-                                        "https://github.com/Omarmubx7",
-                                        "https://www.linkedin.com/in/omarmubaidin",
-                                        "https://mubx.dev"
-                                    ]
-                                }
-                            })
-                        }}
-                    />
+                    <JsonLd data={{
+                        "@context": "https://schema.org",
+                        "@type": "ProfilePage",
+                        "mainEntity": {
+                            "@type": "Person",
+                            "name": "Omar Mubaidin | عمر مبيضين",
+                            "alternateName": "MUBX",
+                            "jobTitle": "Full Stack Developer",
+                            "worksFor": {
+                                "@type": "Organization",
+                                "name": "MUBX Development"
+                            },
+                            "address": {
+                                "@type": "PostalAddress",
+                                "addressLocality": "Amman",
+                                "addressCountry": "Jordan"
+                            },
+                            "alumniOf": {
+                                "@type": "CollegeOrUniversity",
+                                "name": "Princess Sumaya University for Technology"
+                            },
+                            "sameAs": [
+                                "https://github.com/Omarmubx7",
+                                "https://www.linkedin.com/in/omarmubaidin",
+                                "https://mubx.dev"
+                            ]
+                        }
+                    }} />
 
                     <div className="container mx-auto px-6 md:px-12 pt-32 pb-20">
                         <div className="max-w-4xl mx-auto">

@@ -8,6 +8,7 @@ import { ExternalLink, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { LanguageProvider } from '@/context/LanguageContext';
+import JsonLd from '@/components/JsonLd';
 
 // SSG: Generate params for all projects
 export function generateStaticParams() {
@@ -85,7 +86,7 @@ export default async function ProjectPage(props: {
         'description': project.description,
         'author': {
             '@type': 'Person',
-            'name': 'Omar Mubaidin'
+            'name': 'Omar Mubaidin | عمر مبيضين'
         },
         'programmingLanguage': project.tech,
         'datePublished': project.timeframe, // Assuming timeframe might contain year, simplified for now
@@ -97,10 +98,7 @@ export default async function ProjectPage(props: {
         <Suspense>
             <LanguageProvider initialLocale={lang}>
                 <main className="bg-black min-h-screen selection:bg-neon selection:text-black">
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-                    />
+                    <JsonLd data={jsonLd} />
                     <Navbar />
 
                     <article className="pt-32 pb-24">

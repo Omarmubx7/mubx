@@ -10,6 +10,7 @@ import ChatWidget from '@/components/ChatWidget';
 
 import SkipToContent from '@/components/SkipToContent';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import JsonLd from '@/components/JsonLd';
 
 
 const inter = Inter({
@@ -89,43 +90,38 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SkipToContent />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@graph": [
-                  {
-                    "@type": "Person",
-                    "name": "Omar Mubaidin",
-                    "url": "https://mubx.dev",
-                    "image": "https://mubx.dev/favicon-new.png",
-                    "jobTitle": "Web Developer",
-                    "sameAs": [
-                      "https://github.com/Omarmubx7",
-                      "https://www.linkedin.com/in/omarmubaidin"
-                    ]
-                  },
-                  {
-                    "@type": "ProfessionalService",
-                    "name": "MUBX",
-                    "image": "https://mubx.dev/favicon-new.png",
-                    "logo": "https://mubx.dev/favicon-new.png",
-                    "description": "High-performance web development for verified systems and startups.",
-                    "url": "https://mubx.dev",
-                    "address": {
-                      "@type": "PostalAddress",
-                      "addressLocality": "Amman",
-                      "addressCountry": "JO"
-                    },
-                    "areaServed": ["Jordan", "Remote"],
-                    "serviceType": ["Web Development", "E-commerce", "Dashboards"],
-                    "priceRange": "$$"
-                  }
+          <JsonLd data={{
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Person",
+                "name": "Omar Mubaidin | عمر مبيضين",
+                "url": "https://mubx.dev",
+                "image": "https://mubx.dev/favicon-new.png",
+                "jobTitle": "Web Developer",
+                "sameAs": [
+                  "https://github.com/Omarmubx7",
+                  "https://www.linkedin.com/in/omarmubaidin"
                 ]
-              })
-            }}
-          />
+              },
+              {
+                "@type": "ProfessionalService",
+                "name": "MUBX",
+                "image": "https://mubx.dev/favicon-new.png",
+                "logo": "https://mubx.dev/favicon-new.png",
+                "description": "High-performance web development for verified systems and startups.",
+                "url": "https://mubx.dev",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Amman",
+                  "addressCountry": "JO"
+                },
+                "areaServed": ["Jordan", "Remote"],
+                "serviceType": ["Web Development", "E-commerce", "Dashboards"],
+                "priceRange": "$$"
+              }
+            ]
+          }} />
           <SmoothScroll>{children}</SmoothScroll>
           <SpeedInsights />
           <Analytics />

@@ -4,7 +4,7 @@ export const siteConfig = {
     description: "Build fast, secure web systems in Amman with MUBX. Full Stack Dev & CS Student specializing in Next.js & E-commerce.",
     url: "https://mubx.dev",
     author: {
-        name: "Omar Mubaidin",
+        name: "Omar Mubaidin | عمر مبيضين",
         url: "https://mubx.dev",
         twitter: "@omarmubx",
     },

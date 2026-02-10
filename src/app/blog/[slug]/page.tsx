@@ -5,6 +5,8 @@ import { blogPosts } from '@/lib/blog-data';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import { notFound } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 export function generateStaticParams() {
     return blogPosts.map((post) => ({
@@ -61,10 +63,11 @@ export default async function BlogPost(props: {
                                 </h1>
                             </header>
 
-                            <div
-                                className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-p:text-muted prose-strong:text-white prose-li:text-muted hover:prose-a:text-neon prose-a:transition-colors"
-                                dangerouslySetInnerHTML={{ __html: post.content }}
-                            />
+                            <div className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-p:text-muted prose-strong:text-white prose-li:text-muted hover:prose-a:text-neon prose-a:transition-colors">
+                                <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                                    {post.content}
+                                </ReactMarkdown>
+                            </div>
                         </div>
                     </article>
 
