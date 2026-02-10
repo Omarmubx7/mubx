@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { fadeUp } from '@/lib/motion';
 import { useState, Suspense } from 'react';
 import { Menu, X } from 'lucide-react';
@@ -17,7 +17,7 @@ const NavbarContent = () => {
     const [hidden, setHidden] = useState(false);
     const { scrollY } = useScroll();
 
-    useMotionValueEvent(scrollY, "change", (latest) => {
+    useMotionValueEvent(scrollY, "change", (latest: number) => {
         const previous = scrollY.getPrevious() ?? 0;
         if (latest > previous && latest > 150) {
             setHidden(true);
