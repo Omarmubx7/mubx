@@ -52,8 +52,8 @@ export default function ContactView() {
             }).catch(err => console.error('Notification error:', err));
 
             router.push(language === 'en' ? '/success' : `/success?lang=${language}`);
-        } catch (error) {
-            console.error('Submission error:', error);
+        } catch (error: any) {
+            console.error('Submission error details:', error.message || error);
             setFormState('error');
             setTimeout(() => setFormState('idle'), 5000);
         }

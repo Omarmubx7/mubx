@@ -156,8 +156,8 @@ export default function Contact() {
                                     form.reset();
                                     setFormState('success');
                                     setTimeout(() => setFormState('idle'), 5000);
-                                } catch (error) {
-                                    console.error('Submission error:', error);
+                                } catch (error: any) {
+                                    console.error('Submission error details:', error.message || error);
                                     setFormState('error');
                                     setTimeout(() => setFormState('idle'), 5000);
                                 }
