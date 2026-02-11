@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+  /* Account for fixed navbar */
+}
+
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -8,6 +15,8 @@
   --color-card: var(--card);
   --color-border: var(--border);
   --font-sans: var(--font-inter);
+  --font-display: var(--font-space);
+  --font-mono: var(--font-jetbrains);
 }
 
 :root {
@@ -42,6 +51,23 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono), monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: -0.02em;
 }
 
 /* Texture Pattern (Optional: adjust opacity for light mode if needed) */

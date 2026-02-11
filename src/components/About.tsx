@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import { useLanguage } from '@/context/LanguageContext';
+import GradientText from './ui/GradientText';
 
 export default function About() {
     const { t } = useLanguage();
@@ -19,9 +20,12 @@ export default function About() {
                 >
                     {/* Left Column: Story & Vision */}
                     <div className="space-y-6">
-                        <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-foreground">
-                            {t.about.titleStart} <span className="text-neon">{t.about.titleHighlight}</span>
-                        </motion.h2>
+                        <motion.div variants={fadeUp}>
+                            <p className="text-neon font-mono text-sm mb-4 tracking-widest">01</p>
+                            <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase">
+                                {t.about.titleStart} <GradientText>{t.about.titleHighlight}</GradientText>
+                            </h2>
+                        </motion.div>
 
                         <motion.p variants={fadeUp} className="text-muted text-lg leading-relaxed">
                             {t.about.descriptionStart} <span className="text-foreground font-bold">{t.about.name}</span>{t.about.descriptionMiddle}

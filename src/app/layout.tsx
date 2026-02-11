@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { Suspense } from 'react';
 import './globals.css';
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -12,11 +12,24 @@ import SkipToContent from '@/components/SkipToContent';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import JsonLd from '@/components/JsonLd';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
+import SocialSidebar from '@/components/SocialSidebar';
 
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
   display: 'swap',
 });
 
@@ -83,7 +96,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-background text-foreground antialiased selection:bg-neon selection:text-black">
+      <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased selection:bg-neon selection:text-black font-sans`}>
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="dark"
@@ -124,6 +137,7 @@ export default function RootLayout({
             ]
           }} />
           <ScrollProgressBar />
+          <SocialSidebar />
           <SmoothScroll>{children}</SmoothScroll>
           <SpeedInsights />
           <Analytics />

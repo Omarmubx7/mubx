@@ -446,6 +446,37 @@ export const dictionary = {
                 backend: 'Backend & Database',
                 tools: 'Tools & Deployment'
             }
+        },
+        photography: {
+            title: 'CAPTURING',
+            titleHighlight: 'MOMENTS',
+            description: 'Beyond code, I explore the world through a lens. High-quality visuals that tell a story.',
+            viewGallery: 'View Gallery'
+        },
+        timeline: {
+            title: 'My',
+            titleHighlight: 'Journey',
+            subtitle: 'The path that led me here.',
+            items: [
+                {
+                    year: '2026 - Present',
+                    role: 'Full Stack Developer',
+                    company: 'Freelance',
+                    description: 'Building high-performance web systems for startups and local businesses. Specializing in Next.js and secure payment integrations.'
+                },
+                {
+                    year: '2024 - Present',
+                    role: 'Computer Science Student',
+                    company: 'Al-Hussein Technical University (HTU)',
+                    description: 'Focusing on software engineering, algorithms, and database architecture. Consistent Dean\'s List student.'
+                },
+                {
+                    year: '2023',
+                    role: 'Web Development Intern',
+                    company: 'Freelancer',
+                    description: 'Gained hands-on experience in frontend workflows, UI/UX best practices, and agile development cycles.'
+                }
+            ]
         }
     },
     ar: {
@@ -585,6 +616,12 @@ export const dictionary = {
                 location: 'مقيم في عمان',
                 design: 'تصميم حديث'
             }
+        },
+        photography: {
+            title: 'توثيق',
+            titleHighlight: 'اللحظات',
+            description: 'بعيداً عن الكود، أستكشف العالم عبر العدسة. صور عالية الجودة تحكي قصة.',
+            viewGallery: 'شاهد المعرض'
         },
         contact: {
             connect: "تواصل معي",
@@ -892,6 +929,31 @@ export const dictionary = {
                 backend: 'الأنظمة الخلفية وقواعد البيانات',
                 tools: 'الأدوات والبنية التحتية'
             }
+        },
+        timeline: {
+            title: 'رحلتي',
+            titleHighlight: 'المهنية',
+            subtitle: 'المسار الذي قادني إلى هنا.',
+            items: [
+                {
+                    year: '2024 - الحاضر',
+                    role: 'مطور ويب متكامل (Full Stack)',
+                    company: 'عمل حر',
+                    description: 'بناء أنظمة ويب عالية الأداء للشركات الناشئة والمحلية. متخصص في Next.js وتكامل بوابات الدفع الآمنة.'
+                },
+                {
+                    year: '2021 - 2025',
+                    role: 'طالب علوم حاسوب',
+                    company: 'جامعة الحسين التقنية (HTU)',
+                    description: 'التركيز على هندسة البرمجيات، الخوارزميات، وهيكلة قواعد البيانات. طالب متفوق على لائحة العميد.'
+                },
+                {
+                    year: '2023',
+                    role: 'متدرب تطوير ويب',
+                    company: 'شركات تقنية',
+                    description: 'اكتسبت خبرة عملية في تدفقات العمل للواجهات الأمامية، أفضل ممارسات تجربة المستخدم، ودورات التطوير الرشيقة.'
+                }
+            ]
         }
     }
 };

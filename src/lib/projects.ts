@@ -11,6 +11,7 @@ export interface Project {
     timeframe: string;
     verified_outcome?: string;
     screenshots?: string[];
+    category: { en: string; ar: string; icon: string; color: string }; // Added for badge
     caseStudy: {
         problem: string;
         role: string;
@@ -31,8 +32,9 @@ const projectsData: Record<Locale, Project[]> = {
             logo: '/images/vynex-logo.webp',
             metrics: '20% Lead Boost',
             verified_outcome: 'Verified via Google Analytics',
-            screenshots: ['/images/Vynex Media.webp'],
+
             timeframe: '2 Weeks',
+            category: { en: 'Digital Agency', ar: 'وكالة رقمية', icon: '🏢', color: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
             caseStudy: {
                 problem: 'Needed a modern website matching their high visual production quality.',
                 role: 'Full implementation: architecture, frontend, performance.',
@@ -49,8 +51,9 @@ const projectsData: Record<Locale, Project[]> = {
             logo: '/images/htu-logo.webp',
             metrics: '100+ Members',
             verified_outcome: 'Based on Club Registry Logs',
-            screenshots: ['/images/HTU Martial Arts.webp'],
+
             timeframe: '1 Month',
+            category: { en: 'Education System', ar: 'نظام تعليمي', icon: '🎓', color: 'bg-green-500/10 text-green-400 border-green-500/20' },
             caseStudy: {
                 problem: 'Manual management of members and bookings via messages/sheets.',
                 role: 'Database design, PHP backend, Admin dashboard.',
@@ -67,8 +70,9 @@ const projectsData: Record<Locale, Project[]> = {
             logo: '/images/blobjor-logo.webp',
             metrics: 'Full E-com Flow',
             verified_outcome: 'Operational since Jan 2025',
-            screenshots: ['/images/BloB.JO.webp'],
+
             timeframe: '3 Weeks',
+            category: { en: 'E-commerce', ar: 'تجارة إلكترونية', icon: '🛍️', color: 'bg-orange-500/10 text-orange-400 border-orange-500/20' },
             caseStudy: {
                 problem: 'Lack of local POD store with custom design tools.',
                 role: 'Product UX, E-commerce flow, Frontend.',
@@ -87,8 +91,9 @@ const projectsData: Record<Locale, Project[]> = {
             logo: '/images/vynex-logo.webp',
             metrics: 'زيادة 20% في العملاء',
             verified_outcome: 'تم التحقق عبر Google Analytics',
-            screenshots: ['/images/Vynex Media.webp'],
+
             timeframe: 'أسبوعين',
+            category: { en: 'Digital Agency', ar: 'وكالة رقمية', icon: '🏢', color: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
             caseStudy: {
                 problem: 'احتاجوا إلى موقع ويب حديث يطابق جودة إنتاجهم المرئي العالية.',
                 role: 'تنفيد كامل: الهيكلية، الواجهة الأمامية، الأداء.',
@@ -105,8 +110,9 @@ const projectsData: Record<Locale, Project[]> = {
             logo: '/images/htu-logo.webp',
             metrics: '100+ عضو',
             verified_outcome: 'بناءً على سجلات النادي',
-            screenshots: ['/images/HTU Martial Arts.webp'],
+
             timeframe: 'شهر واحد',
+            category: { en: 'Education System', ar: 'نظام تعليمي', icon: '🎓', color: 'bg-green-500/10 text-green-400 border-green-500/20' },
             caseStudy: {
                 problem: 'الإدارة اليدوية للأعضاء والحجوزات عبر الرسائل/الجداول.',
                 role: 'تصميم قاعدة البيانات، خلفية PHP، لوحة تحكم المسؤول.',
@@ -123,8 +129,9 @@ const projectsData: Record<Locale, Project[]> = {
             logo: '/images/blobjor-logo.webp',
             metrics: 'متجر الكتروني كامل',
             verified_outcome: 'يعمل منذ يناير 2025',
-            screenshots: ['/images/BloB.JO.webp'],
-            timeframe: '3 أسابيع',
+
+            timeframe: '3 الأسابيع',
+            category: { en: 'E-commerce', ar: 'تجارة إلكترونية', icon: '🛍️', color: 'bg-orange-500/10 text-orange-400 border-orange-500/20' },
             caseStudy: {
                 problem: 'عدم وجود متجر محلي للطباعة حسب الطلب مع أدوات تصميم مخصصة.',
                 role: 'تجربة المستخدم، تدفق التجارة الإلكترونية، الواجهة الأمامية.',

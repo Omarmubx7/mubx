@@ -1,27 +1,28 @@
 'use client';
 
-import { motion, useInView, useSpring, useTransform } from 'framer-motion';
+import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 
 const AnimatedValue = ({ value }: { value: string }) => {
-    // Check if value is numeric or mixed (e.g. "100" vs "Zain")
+    // Check if value is numeric
     const isNumeric = /^\d+$/.test(value);
 
     if (!isNumeric) return <span>{value}</span>;
 
-    const ref = useRef(null);
+    const ref = useRef<HTMLSpanElement>(null);
     const inView = useInView(ref, { once: true, margin: "-20px" });
-    const springValue = useSpring(0, { stiffness: 50, damping: 15 });
-    const displayValue = useTransform(springValue, (current) => Math.round(current));
+    const count = useMotionValue(0);
+    const rounded = useTransform(count, (latest) => Math.round(latest));
 
     useEffect(() => {
         if (inView) {
-            springValue.set(parseInt(value));
+            const controls = animate(count, parseInt(value), { duration: 2, ease: "easeOut" });
+            return controls.stop;
         }
-    }, [inView, value, springValue]);
+    }, [inView, value, count]);
 
-    return <motion.span ref={ref}>{displayValue}</motion.span>;
+    return <motion.span ref={ref}>{rounded}</motion.span>;
 };
 
 const MetricItem = ({ value, label, prefix = "", suffix = "" }: { value: string, label: string, prefix?: string, suffix?: string }) => {

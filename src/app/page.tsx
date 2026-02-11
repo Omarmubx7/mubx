@@ -9,6 +9,7 @@ import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import BlogPreview from '@/components/BlogPreview';
 import TechStack from '@/components/TechStack';
+import Timeline from '@/components/Timeline';
 import Footer from '@/components/Footer';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { Metadata } from 'next';
@@ -43,6 +44,12 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 }
 
 import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
+
+// Dynamic imports for heavy canvas components to reduce initial bundle
+const StarsCanvas = dynamic(() => import('@/components/canvas/Stars'));
+
+const CanvasCursor = dynamic(() => import('@/components/canvas/CanvasCursor'));
 
 export default function Home({ searchParams }: Props) {
   const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
@@ -51,6 +58,8 @@ export default function Home({ searchParams }: Props) {
     <Suspense>
       <LanguageProvider initialLocale={lang}>
         <main className="relative flex flex-col min-h-screen">
+          <CanvasCursor />
+          <StarsCanvas />
           <Navbar />
           <Hero />
           <MetricsStrip />
@@ -60,6 +69,7 @@ export default function Home({ searchParams }: Props) {
           <Testimonials />
           <About />
           <TechStack />
+          <Timeline />
           <BlogPreview />
           <Contact />
           <Footer />

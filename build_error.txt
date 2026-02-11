@@ -1,0 +1,47 @@
+
+> mubx-portfolio@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 2 errors:
+./src/app/page.tsx:50:21
+Ecmascript file had an error
+  48 |
+  49 | // Dynamic imports for heavy canvas components
+> 50 | const StarsCanvas = dynamic(() => import('@/components/canvas/Stars'), {
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 51 |   ssr: false,
+     | ^^^^^^^^^^^^^
+> 52 | });
+     | ^^^
+  53 |
+  54 | const CanvasCursor = dynamic(() => import('@/components/canvas/CanvasCursor'), {
+  55 |   ssr: false,
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+./src/app/page.tsx:54:22
+Ecmascript file had an error
+  52 | });
+  53 |
+> 54 | const CanvasCursor = dynamic(() => import('@/components/canvas/CanvasCursor'), {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 55 |   ssr: false,
+     | ^^^^^^^^^^^^^
+> 56 | });
+     | ^^^
+  57 |
+  58 | export default function Home({ searchParams }: Props) {
+  59 |   const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+    at <unknown> (./src/app/page.tsx:50:21)
+    at <unknown> (./src/app/page.tsx:54:22)

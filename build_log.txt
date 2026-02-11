@@ -3,24 +3,21 @@
 > next build
 
 Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
 
   Creating an optimized production build ...
-Γ£ô Compiled successfully in 3.1s
+Γ£ô Compiled successfully in 5.4s
   Running TypeScript ...
-  Collecting page data using 11 workers ...
-ΓÜá Using edge runtime on a page currently disables static generation for that page
-  Generating static pages using 11 workers (0/28) ...
-Γ¿» useSearchParams() should be wrapped in a suspense boundary at page "/about". Read more: https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
-    at Q (C:\Users\omara\mubx\.next\server\chunks\ssr\node_modules__pnpm_fd80061c._.js:2:2111)
-    at o (C:\Users\omara\mubx\.next\server\chunks\ssr\node_modules__pnpm_fd80061c._.js:4:5274)
-    at g (C:\Users\omara\mubx\.next\server\chunks\ssr\src_context_LanguageContext_tsx_c3f21350._.js:1:28038)
-    at an (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:84360)
-    at ai (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:86179)
-    at ai (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:104708)
-    at al (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:107953)
-    at as (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:105368)
-    at am (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:112882)
-    at au (C:\Users\omara\mubx\node_modules\.pnpm\next@16.1.6_@babel+core@7.2_9d8d1bf7a8807769963b5151bd760c41\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.prod.js:2:109985)
-Error occurred prerendering page "/about". Read more: https://nextjs.org/docs/messages/prerender-error
-Export encountered an error on /about/page: /about, exiting the build.
-Γ¿» Next.js build worker exited with code: 1 and signal: null
+Failed to compile.
+
+./src/components/canvas/Stars.tsx:8:17
+Type error: Expected 1 arguments, but got 0.
+
+   6 |
+   7 | const Stars = (props: any) => {
+>  8 |     const ref = useRef<any>();
+     |                 ^
+   9 |
+  10 |     const [sphere] = useState(() => {
+  11 |         const coords = new Float32Array(5000 * 3);
+Next.js build worker exited with code: 1 and signal: null

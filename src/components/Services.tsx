@@ -7,6 +7,7 @@ import { ArrowRight } from 'lucide-react';
 
 import { useState, useEffect } from 'react';
 import Badge from './ui/Badge';
+import GradientText from './ui/GradientText';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -71,14 +72,10 @@ export default function Services() {
                     variants={fadeUp}
                     className="text-center mb-16 max-w-3xl mx-auto"
                 >
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-bold mb-6 break-words text-foreground"
-                    >
-                        {t.services.title} <span className="text-neon">{t.services.titleHighlight}</span>
-                    </motion.h2>
+                    <p className="text-neon font-mono text-sm mb-4 tracking-widest">03</p>
+                    <h2 className="text-3xl md:text-5xl font-bold mb-6 break-words text-foreground uppercase">
+                        {t.services.title} <GradientText>{t.services.titleHighlight}</GradientText>
+                    </h2>
                     <p className="text-muted text-lg mb-8">
                         {t.services.subtitle}
                     </p>
@@ -106,9 +103,9 @@ export default function Services() {
                             <motion.div
                                 key={service.title}
                                 variants={fadeUp}
-                                className={`p-6 md:p-8 rounded-3xl border transition-all duration-300 group backdrop-blur-sm flex flex-col h-full shadow-lg relative ${index === 2
-                                    ? 'bg-card border-neon shadow-[0_0_30px_rgba(255,30,30,0.15)] scale-105 z-10'
-                                    : 'bg-card border-border hover:border-neon/50 hover:bg-muted/10 hover:shadow-neon/10'
+                                className={`p-6 md:p-8 rounded-3xl border transition-all duration-300 group backdrop-blur-md flex flex-col h-full shadow-lg relative ${index === 2
+                                    ? 'bg-white/10 border-neon shadow-[0_0_30px_rgba(255,30,30,0.15)] scale-105 z-10'
+                                    : 'bg-white/5 border-white/10 hover:border-neon/50 hover:bg-neon/5 hover:shadow-[0_0_20px_rgba(255,30,30,0.3)]'
                                     }`}
                             >
                                 {index === 2 && (

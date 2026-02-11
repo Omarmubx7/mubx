@@ -2,11 +2,23 @@
 
 import Image from 'next/image';
 import Badge from './ui/Badge';
+import AnimatedText from './ui/AnimatedText';
 import { MessageCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import { useLanguage } from '@/context/LanguageContext';
+import dynamic from 'next/dynamic';
+
+// Dynamic import for 3D component to reduce initial bundle size
+const Hero3D = dynamic(() => import('./canvas/Hero3D'), {
+    ssr: false,
+    loading: () => (
+        <div className="w-full h-full flex items-center justify-center">
+            <div className="animate-pulse text-muted">Loading 3D scene...</div>
+        </div>
+    ),
+});
 
 export default function Hero() {
     const { t, isRTL, language } = useLanguage();
@@ -37,19 +49,19 @@ export default function Hero() {
                             </Badge>
                         </motion.div>
 
-                        <motion.h1
-                            variants={fadeUp}
-                            className="text-5xl md:text-7xl font-black mb-6 leading-[1.1] tracking-tight text-foreground"
-                        >
-                            {t.hero.titleStart} <br />
-                            <span className="text-neon relative inline-block">
-                                {t.hero.titleHighlight}
+                        <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[1.1] tracking-tight text-foreground uppercase">
+                            <AnimatedText text={t.hero.titleStart} className="block" delay={0.1} />
+
+                            <span className="text-neon relative inline-block text-5xl md:text-7xl">
+                                <AnimatedText text={t.hero.titleHighlight} delay={0.4} />
                                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-neon opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none">
                                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
                                 </svg>
-                            </span> <br />
-                            {t.hero.titleEnd}
-                        </motion.h1>
+                            </span>
+
+                            <br />
+                            <AnimatedText text={t.hero.titleEnd} className="block" delay={0.8} />
+                        </h1>
 
                         <motion.p
                             variants={fadeUp}
@@ -90,16 +102,9 @@ export default function Hero() {
                     >
                         <div className="absolute inset-0 bg-gradient-to-tr from-neon/10 to-transparent rounded-full blur-[60px] animate-pulse-slow" />
 
-                        {/* Profile Image with Hover Effect */}
-                        <div className="relative w-full h-full max-w-[550px] max-h-[800px] transition-transform duration-500 ease-out group-hover:scale-[1.02]">
-                            <Image
-                                src="/omarmub.webp"
-                                alt={t.hero.imageAlt}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 500px"
-                                className="object-contain object-bottom scale-110 group-hover:scale-115 transition-transform duration-700 drop-shadow-2xl will-change-transform dark:grayscale-[0.1] grayscale-0"
-                                priority
-                            />
+                        {/* 3D Hero Scene */}
+                        <div className="relative w-full h-full min-h-[500px] flex items-center justify-center">
+                            <Hero3D />
                         </div>
                     </motion.div>
 

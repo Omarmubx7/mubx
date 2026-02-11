@@ -51,7 +51,15 @@ const NavbarContent = () => {
     };
 
     const pathname = usePathname();
-    const activeSection = useScrollSpy(['services', 'projects', 'testimonials', 'contact'], 100);
+    const activeSection = useScrollSpy([
+        'services',
+        'projects',
+        'testimonials',
+        'about',
+        'tech',
+        'timeline',
+        'contact'
+    ], 100);
 
     const isLinkActive = (href: string) => {
         if (pathname === '/' || pathname === '/ar') {
@@ -102,10 +110,14 @@ const NavbarContent = () => {
                     <Link
                         key={link.name}
                         href={link.href}
-                        className={`text-sm font-medium transition-colors relative ${isLinkActive(link.href) ? 'text-neon font-bold' : 'text-muted hover:text-neon'
+                        className={`text-sm font-medium transition-colors relative group ${isLinkActive(link.href) ? 'text-neon font-bold' : 'text-muted hover:text-neon'
                             }`}
                     >
                         {link.name}
+                        {/* Hover Underline */}
+                        <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-neon to-red-500 rounded-full w-0 group-hover:w-full transition-all duration-300 ease-out" />
+
+                        {/* Active Indicator (Keep existing but make it compatible) */}
                         {isLinkActive(link.href) && (
                             <motion.div
                                 layoutId="activeNav"

@@ -6,6 +6,7 @@ import { projectCard } from '@/lib/motion';
 import Badge from './ui/Badge';
 import Image from 'next/image';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import ProjectCard from './ProjectCard';
 import { useState, useEffect } from 'react';
 
 
@@ -33,14 +34,17 @@ export default function Projects() {
     return (
         <section id="projects" className="py-24 relative">
             <div className="container mx-auto px-6 md:px-12">
-                <motion.h2
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-3xl md:text-5xl font-bold mb-16 text-center"
+                    className="mb-16"
                 >
-                    {t.projects.titleStart} <span className="text-neon">{t.projects.titleHighlight}</span>
-                </motion.h2>
+                    <p className="text-neon font-mono text-sm mb-4 tracking-widest">02</p>
+                    <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase">
+                        {t.projects.titleStart} <span className="text-neon">{t.projects.titleHighlight}</span>
+                    </h2>
+                </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {isLoading
@@ -67,69 +71,14 @@ export default function Projects() {
                                 </div>
                             </SkeletonTheme>
                         ))
-                        : projectsData.map((project) => (
-                            <motion.div
+                        : projectsData.map((project, index) => (
+                            <ProjectCard
                                 key={project.title}
-                                variants={projectCard}
-                                whileHover={{ y: -5 }}
-                                className="group relative p-8 rounded-3xl bg-card border border-border hover:border-neon/50 transition-all duration-300 backdrop-blur-sm flex flex-col h-full hover:shadow-[0_0_30px_rgba(255,30,30,0.15)] hover:bg-muted/10  data-[theme=dark]:bg-white/5"
-                            >
-                                {/* Card Header: Logo & Title */}
-                                <div className="flex items-center gap-4 mb-6">
-                                    <div className="w-12 h-12 rounded-xl bg-background p-2 flex items-center justify-center border border-border">
-                                        <div className="relative w-full h-full">
-                                            <Image
-                                                src={project.logo}
-                                                alt={`${project.title} Logo`}
-                                                fill
-                                                className="object-contain"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-bold text-foreground group-hover:text-neon transition-colors">{project.title}</h3>
-                                        <span className="text-xs text-muted uppercase tracking-wider font-medium">{project.metrics}</span>
-                                    </div>
-                                </div>
-
-                                {/* Project Screenshot (if available) */}
-                                {project.screenshots && project.screenshots.length > 0 && (
-                                    <div className="relative w-full aspect-video mb-6 rounded-xl overflow-hidden border border-border group-hover:border-neon/30 transition-colors">
-                                        <Image
-                                            src={project.screenshots[0]}
-                                            alt={`${project.title} Screenshot`}
-                                            fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                        />
-                                    </div>
-                                )}
-
-                                {/* 1-Line Result (The Hook) */}
-                                <div className="mb-6">
-                                    <p className="text-foreground font-medium text-lg leading-snug">
-                                        {project.caseStudy.outcome}
-                                    </p>
-                                </div>
-
-                                {/* Stack Tags */}
-                                <div className="flex flex-wrap gap-2 mb-8 mt-auto">
-                                    {project.tech.map((t) => (
-                                        <Badge key={t} variant="outline" className="text-[10px] px-2 py-1 rounded-md border-border bg-muted/20 text-muted-foreground uppercase tracking-wider font-mono">
-                                            {t}
-                                        </Badge>
-                                    ))}
-                                </div>
-
-                                {/* Action */}
-                                <Link
-                                    href={getHref(project.caseStudy.caseStudyUrl || project.links.live)}
-                                    target={project.caseStudy.caseStudyUrl ? "_self" : "_blank"}
-                                    className="w-full py-3 flex items-center justify-center gap-2 rounded-xl bg-muted/10 border border-border text-foreground font-bold hover:bg-neon hover:text-black hover:border-neon transition-all group-hover:translate-y-1"
-                                >
-                                    {project.caseStudy.caseStudyUrl ? t.projects.readCaseStudy : t.projects.visitLive}
-                                    <ExternalLink className="w-4 h-4" />
-                                </Link>
-                            </motion.div>
+                                project={project}
+                                index={index}
+                                t={t}
+                                language={language}
+                            />
                         ))}
                 </div>
             </div>
