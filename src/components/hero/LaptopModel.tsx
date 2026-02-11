@@ -66,5 +66,4 @@ export default function LaptopModel({ scrollProgress }: LaptopModelProps) {
     );
 }
 
-// Preload the model
-useGLTF.preload('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf');
+
