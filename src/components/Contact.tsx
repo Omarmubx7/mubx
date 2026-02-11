@@ -164,7 +164,9 @@ export default function Contact() {
                                     setFormState('success');
                                     setTimeout(() => setFormState('idle'), 5000);
                                 } catch (error: any) {
-                                    console.error('Submission error details:', error.message || error);
+                                    console.error('🔥 MUBX Submission Error:', error.message || error);
+                                    if (error.details) console.error('Error Details:', error.details);
+                                    if (error.hint) console.error('Hint:', error.hint);
                                     setFormState('error');
                                     setTimeout(() => setFormState('idle'), 5000);
                                 }

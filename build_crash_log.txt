@@ -1,0 +1,22 @@
+
+> mubx-portfolio@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 15.5s
+  Running TypeScript ...
+Failed to compile.
+
+./src/scripts/check-db.ts:2:25
+Type error: Cannot find module 'dotenv' or its corresponding type declarations.
+
+  1 | import { createClient } from '@supabase/supabase-js';
+> 2 | import * as dotenv from 'dotenv';
+    |                         ^
+  3 | import path from 'path';
+  4 |
+  5 | // Load .env.local
+Next.js build worker exited with code: 1 and signal: null

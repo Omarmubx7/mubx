@@ -19,6 +19,7 @@ const techList = [
     { name: 'Git', icon: '/techstackicons/git-svgrepo-com.svg' },
     { name: 'Postman', icon: '/techstackicons/postman-icon-svgrepo-com.svg' },
     { name: 'Supabase', icon: '/techstackicons/supabase-logo-icon.svg' },
+    { name: 'Figma', icon: '/techstackicons/figma-icon.svg' },
 ];
 
 export default function TechStack() {
