@@ -12,7 +12,7 @@ export default function LaptopModel({ scrollProgress }: LaptopModelProps) {
     const group = useRef<THREE.Group>(null);
 
     // Load model - using a standard MacBook Pro model from pmnd.rs market
-    const { scene } = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf');
+    const { scene } = useGLTF('https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/macbook/model.gltf');
 
     // Use a ref to store the latest scroll value to avoid re-renders
     const progressRef = useRef(0);
