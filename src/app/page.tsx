@@ -1,20 +1,8 @@
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import MetricsStrip from '@/components/MetricsStrip';
-import SkillTicker from '@/components/SkillTicker';
-import About from '@/components/About';
-import Services from '@/components/Services';
-import Projects from '@/components/Projects';
-import Testimonials from '@/components/Testimonials';
-import Contact from '@/components/Contact';
-import BlogPreview from '@/components/BlogPreview';
-import TechStack from '@/components/TechStack';
-import Timeline from '@/components/Timeline';
-import Footer from '@/components/Footer';
-import { LanguageProvider } from '@/context/LanguageContext';
+import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { siteConfig } from '@/config/seo';
 import { Locale } from '@/lib/dictionaries';
+import HomeClient from '@/components/HomeClient';
 
 type Props = {
   searchParams: { lang?: string }
@@ -34,6 +22,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       title: meta.title,
       description: meta.description,
       locale: lang === 'ar' ? 'ar_QA' : 'en_US',
+      type: 'website',
     },
     twitter: {
       ...siteConfig.twitter,
@@ -43,38 +32,12 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   }
 }
 
-import { Suspense } from 'react';
-import dynamic from 'next/dynamic';
-
-// Dynamic imports for heavy canvas components to reduce initial bundle
-const StarsCanvas = dynamic(() => import('@/components/canvas/Stars'));
-
-const CanvasCursor = dynamic(() => import('@/components/canvas/CanvasCursor'));
-
 export default function Home({ searchParams }: Props) {
   const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
 
   return (
-    <Suspense>
-      <LanguageProvider initialLocale={lang}>
-        <main className="relative flex flex-col min-h-screen">
-          <CanvasCursor />
-          <StarsCanvas />
-          <Navbar />
-          <Hero />
-          <MetricsStrip />
-          <SkillTicker />
-          <Services />
-          <Projects />
-          <Testimonials />
-          <About />
-          <TechStack />
-          <Timeline />
-          <BlogPreview />
-          <Contact />
-          <Footer />
-        </main>
-      </LanguageProvider>
+    <Suspense fallback={null}>
+      <HomeClient lang={lang} />
     </Suspense>
   );
 }

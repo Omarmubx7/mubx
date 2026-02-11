@@ -6,17 +6,20 @@ interface AnimatedTextProps {
     text: string;
     className?: string;
     delay?: number;
+    by?: "word" | "character";
 }
 
-export default function AnimatedText({ text, className = "", delay = 0 }: AnimatedTextProps) {
-    // Split text into words
+export default function AnimatedText({ text, className = "", delay = 0, by = "word" }: AnimatedTextProps) {
     const words = text.split(" ");
 
     const container = {
         hidden: { opacity: 0 },
         visible: (i = 1) => ({
             opacity: 1,
-            transition: { staggerChildren: 0.05, delayChildren: delay * i },
+            transition: {
+                staggerChildren: by === "character" ? 0.05 : 0.1,
+                delayChildren: delay * i
+            },
         }),
     };
 
@@ -50,21 +53,32 @@ export default function AnimatedText({ text, className = "", delay = 0 }: Animat
             viewport={{ once: true }}
             custom={1}
         >
-            {words.map((word, index) => (
-                <span key={index} className="inline-block">
-                    {word.split("").map((character, index) => (
-                        <motion.span
-                            key={index}
-                            variants={child}
-                            className="inline-block"
-                        >
-                            {character}
-                        </motion.span>
-                    ))}
-                    {/* Add space after word unless it's the last one */}
-                    {index < words.length - 1 && <span className="inline-block">&nbsp;</span>}
-                </span>
-            ))}
+            {by === "character" ? (
+                words.map((word, index) => (
+                    <span key={index} className="inline-block">
+                        {word.split("").map((character, index) => (
+                            <motion.span
+                                key={index}
+                                variants={child}
+                                className="inline-block"
+                            >
+                                {character}
+                            </motion.span>
+                        ))}
+                        {index < words.length - 1 && <span className="inline-block">&nbsp;</span>}
+                    </span>
+                ))
+            ) : (
+                words.map((word, index) => (
+                    <motion.span
+                        key={index}
+                        variants={child}
+                        className="inline-block mr-[0.25em]"
+                    >
+                        {word}
+                    </motion.span>
+                ))
+            )}
         </motion.span>
     );
 }

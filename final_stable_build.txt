@@ -1,0 +1,7 @@
+
+> mubx-portfolio@0.1.0 build C:\Users\omara\mubx
+> next build
+
+Γ¿» Unable to acquire lock at C:\Users\omara\mubx\.next\lock, is another instance of next build running?
+  Suggestion: If you intended to restart next build, terminate the other process, and then try again.
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.

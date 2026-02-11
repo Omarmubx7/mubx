@@ -1,0 +1,23 @@
+{
+    "name": "mubx.dev | Full Stack Developer",
+    "short_name": "mubx",
+    "description": "Portfolio of Omar Mubaidin - Full Stack Developer & CS Student",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#030303",
+    "theme_color": "#FF1E1E",
+    "icons": [
+        {
+            "src": "/icon.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/mubxlogo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "orientation": "portrait"
+}

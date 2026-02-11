@@ -1,31 +1,63 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
+import { Send, Loader2 } from 'lucide-react';
+import { supabase } from '@/lib/supabase';
+import { useLanguage } from '@/context/LanguageContext';
+import { fadeUp } from '@/lib/motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { motion } from 'framer-motion';
-import { fadeUp } from '@/lib/motion';
-import { useForm, ValidationError } from '@formspree/react';
-import { Send, Loader2 } from 'lucide-react';
 import Badge from '@/components/ui/Badge';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-
-import { useLanguage } from '@/context/LanguageContext';
 
 export default function ContactView() {
-    // --------------------------------------------------------------------------
-    // Formspree Integration
-    // Endpoint: https://formspree.io/f/xojnaqoo
-    // --------------------------------------------------------------------------
     const router = useRouter();
     const { language, t } = useLanguage();
-    const [state, handleSubmit] = useForm("xojnaqoo");
+    const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-    useEffect(() => {
-        if (state.succeeded) {
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const form = e.target as HTMLFormElement;
+        const formData = new FormData(form);
+
+        setFormState('submitting');
+
+        try {
+            const { error } = await supabase
+                .from('contact_submissions')
+                .insert([{
+                    email: formData.get('email'),
+                    goal: formData.get('type'),
+                    budget: formData.get('budget'),
+                    deadline: formData.get('timeline'),
+                    message: formData.get('message') || formData.get('details'),
+                    language: language
+                }]);
+
+            if (error) throw error;
+
+            // Trigger email notification
+            fetch('/api/notify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: formData.get('email'),
+                    goal: formData.get('type'),
+                    budget: formData.get('budget'),
+                    deadline: formData.get('timeline'),
+                    message: formData.get('message') || formData.get('details'),
+                    language: language
+                }),
+            }).catch(err => console.error('Notification error:', err));
+
             router.push(language === 'en' ? '/success' : `/success?lang=${language}`);
+        } catch (error) {
+            console.error('Submission error:', error);
+            setFormState('error');
+            setTimeout(() => setFormState('idle'), 5000);
         }
-    }, [state.succeeded, router, language]);
+    };
 
     return (
         <main className="bg-black min-h-screen selection:bg-neon selection:text-black">
@@ -54,7 +86,7 @@ export default function ContactView() {
                         {/* Background Glow */}
                         <div className="absolute -top-20 -right-20 w-80 h-80 bg-neon/5 blur-[100px] rounded-full pointer-events-none" />
 
-                        <form onSubmit={handleSubmit} className="space-y-8 relative z-10" noValidate>
+                        <form onSubmit={handleFormSubmit} className="space-y-8 relative z-10" noValidate>
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.name}</label>
@@ -65,7 +97,6 @@ export default function ContactView() {
                                         placeholder={t.contact.form.namePlaceholder}
                                         className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors"
                                     />
-                                    <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-500 text-sm" />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.email}</label>
@@ -73,10 +104,10 @@ export default function ContactView() {
                                         name="email"
                                         id="email"
                                         type="email"
+                                        required
                                         placeholder={t.contact.form.emailPlaceholder}
                                         className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors"
                                     />
-                                    <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-sm" />
                                 </div>
                             </div>
 
@@ -94,7 +125,7 @@ export default function ContactView() {
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.goal}</label>
                                     <select name="type" id="type" className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none md:bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] md:bg-[length:20px_20px] md:bg-no-repeat md:bg-[right_1rem_center]">
-                                        {t.contact.form.goalOptions.map((opt) => (
+                                        {t.contact.form.goalOptions.map((opt: string) => (
                                             <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
                                         ))}
                                     </select>
@@ -105,7 +136,7 @@ export default function ContactView() {
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.budget}</label>
                                     <select name="budget" id="budget" className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none md:bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] md:bg-[length:20px_20px] md:bg-no-repeat md:bg-[right_1rem_center]">
-                                        {t.contact.form.budgetOptions.map((opt) => (
+                                        {t.contact.form.budgetOptions.map((opt: string) => (
                                             <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
                                         ))}
                                     </select>
@@ -113,7 +144,7 @@ export default function ContactView() {
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.deadline}</label>
                                     <select name="timeline" id="timeline" className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none md:bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] md:bg-[length:20px_20px] md:bg-no-repeat md:bg-[right_1rem_center]">
-                                        {t.contact.form.deadlineOptions.map((opt) => (
+                                        {t.contact.form.deadlineOptions.map((opt: string) => (
                                             <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
                                         ))}
                                     </select>
@@ -126,18 +157,18 @@ export default function ContactView() {
                                     name="details"
                                     id="details"
                                     rows={4}
+                                    required
                                     placeholder={t.contact.form.detailsPlaceholder}
                                     className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors resize-none"
                                 />
-                                <ValidationError prefix="Message" field="details" errors={state.errors} className="text-red-500 text-sm" />
                             </div>
 
                             <button
-                                disabled={state.submitting}
+                                disabled={formState === 'submitting'}
                                 type="submit"
                                 className="w-full py-5 bg-neon text-black font-black uppercase tracking-widest text-lg rounded-xl hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all transform hover:scale-[1.01] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
                             >
-                                {state.submitting ? (
+                                {formState === 'submitting' ? (
                                     <>
                                         <Loader2 className="w-5 h-5 animate-spin" />
                                         Sending...
@@ -149,6 +180,12 @@ export default function ContactView() {
                                     </>
                                 )}
                             </button>
+
+                            {formState === 'error' && (
+                                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 rounded-xl bg-red-500/20 border border-red-500/50 text-red-500 font-bold text-center text-sm">
+                                    {t.contact.form.error}
+                                </motion.div>
+                            )}
                         </form>
                     </div>
                 </motion.div>

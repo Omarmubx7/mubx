@@ -6,9 +6,10 @@ import { fadeUp } from '@/lib/motion';
 
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
+import { supabase } from '@/lib/supabase';
 
 export default function Contact() {
-    const { t, isRTL } = useLanguage();
+    const { t, isRTL, language } = useLanguage();
     const [mounted, setMounted] = useState(false);
     const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
@@ -121,36 +122,42 @@ export default function Contact() {
                                 e.preventDefault();
                                 const form = e.target as HTMLFormElement;
                                 const formData = new FormData(form);
-                                const submitBtn = form.querySelector('button[type="submit"]');
 
                                 setFormState('submitting');
 
                                 try {
-                                    const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+                                    const { error } = await supabase
+                                        .from('contact_submissions')
+                                        .insert([{
+                                            email: formData.get('email'),
+                                            goal: formData.get('goal'),
+                                            budget: formData.get('budget'),
+                                            deadline: formData.get('deadline'),
+                                            message: formData.get('message'),
+                                            language: language // Capturing the user's language preference
+                                        }]);
 
-                                    if (!formId) {
-                                        console.error('Formspree ID is missing! Make sure to set NEXT_PUBLIC_FORMSPREE_ID in your .env.local file.');
-                                        setFormState('error');
-                                        return;
-                                    }
+                                    if (error) throw error;
 
-                                    const response = await fetch(`https://formspree.io/f/${formId}`, {
-                                        method: "POST",
-                                        body: formData,
-                                        headers: {
-                                            'Accept': 'application/json'
-                                        }
-                                    });
+                                    // Trigger email notification
+                                    fetch('/api/notify', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({
+                                            email: formData.get('email'),
+                                            goal: formData.get('goal'),
+                                            budget: formData.get('budget'),
+                                            deadline: formData.get('deadline'),
+                                            message: formData.get('message'),
+                                            language: language
+                                        }),
+                                    }).catch(err => console.error('Notification error:', err));
 
-                                    if (response.ok) {
-                                        form.reset();
-                                        setFormState('success');
-                                        setTimeout(() => setFormState('idle'), 5000);
-                                    } else {
-                                        setFormState('error');
-                                        setTimeout(() => setFormState('idle'), 5000);
-                                    }
+                                    form.reset();
+                                    setFormState('success');
+                                    setTimeout(() => setFormState('idle'), 5000);
                                 } catch (error) {
+                                    console.error('Submission error:', error);
                                     setFormState('error');
                                     setTimeout(() => setFormState('idle'), 5000);
                                 }
