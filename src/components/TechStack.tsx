@@ -15,11 +15,24 @@ const techList = [
     { name: 'Prisma', icon: '/techstackicons/prisma-svgrepo-com.svg' },
     { name: 'Tailwind', icon: '/techstackicons/tailwindcss-icon-svgrepo-com.svg' },
     { name: 'Vercel', icon: '/techstackicons/vercel-logo-svgrepo-com.svg' },
+    { name: 'Figma', icon: '/techstackicons/figma-icon.svg' },
+    { name: 'HTML5', icon: '/techstackicons/HTML5.svg' },
+    { name: 'CSS3', icon: '/techstackicons/CSS3.svg' },
+    { name: 'Python', icon: '/techstackicons/python-svgrepo-com.svg' },
+    { name: 'FastAPI', icon: '/techstackicons/FastAPI.svg' },
+    { name: 'Laravel', icon: '/techstackicons/laravel-2.svg' },
+    { name: 'Bootstrap', icon: '/techstackicons/Bootstrap.svg' },
+    { name: 'Java', icon: '/techstackicons/java-svgrepo-com.svg' },
+    { name: 'C++', icon: '/techstackicons/c-1.svg' },
+    { name: 'Swift', icon: '/techstackicons/swift-svgrepo-com.svg' },
+    { name: 'GitHub', icon: '/techstackicons/github-svgrepo-com.svg' },
     { name: 'Docker', icon: '/techstackicons/docker-svgrepo-com.svg' },
     { name: 'Git', icon: '/techstackicons/git-svgrepo-com.svg' },
+    { name: 'NPM', icon: '/techstackicons/NPM.svg' },
+    { name: 'VS Code', icon: '/techstackicons/Visual Studio Code (VS Code).svg' },
     { name: 'Postman', icon: '/techstackicons/postman-icon-svgrepo-com.svg' },
     { name: 'Supabase', icon: '/techstackicons/supabase-logo-icon.svg' },
-    { name: 'Figma', icon: '/techstackicons/figma-icon.svg' },
+    { name: 'Terminal', icon: '/techstackicons/terminal-svgrepo-com.svg' },
 ];
 
 export default function TechStack() {
@@ -47,132 +60,29 @@ export default function TechStack() {
                         </motion.p>
                     </div>
 
-                    {/* Pyramid Layout */}
-                    <div className="flex flex-col items-center gap-6">
-                        {/* Row 1: 1 item */}
-                        <div className="flex gap-6 justify-center">
-                            {techList.slice(0, 1).map((item) => (
-                                <motion.div
-                                    key={item.name}
-                                    variants={fadeUp}
-                                    className="group p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-neon/40 hover:bg-neon/5 transition-all duration-300 flex flex-col items-center justify-center gap-4 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,30,30,0.1)] relative overflow-hidden w-32"
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    <div className="w-12 h-12 flex items-center justify-center relative z-10">
-                                        <Image
-                                            src={item.icon}
-                                            alt={item.name}
-                                            width={40}
-                                            height={40}
-                                            className="w-8 h-8 md:w-10 md:h-10 object-contain transition-all duration-300 grayscale group-hover:grayscale-0"
-                                        />
-                                    </div>
-                                    <span className="text-xs md:text-sm font-medium font-mono text-muted group-hover:text-foreground transition-colors relative z-10">
-                                        {item.name}
-                                    </span>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Row 2: 2 items */}
-                        <div className="flex gap-6 justify-center">
-                            {techList.slice(1, 3).map((item) => (
-                                <motion.div
-                                    key={item.name}
-                                    variants={fadeUp}
-                                    className="group p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-neon/40 hover:bg-neon/5 transition-all duration-300 flex flex-col items-center justify-center gap-4 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,30,30,0.1)] relative overflow-hidden w-32"
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    <div className="w-12 h-12 flex items-center justify-center relative z-10">
-                                        <Image
-                                            src={item.icon}
-                                            alt={item.name}
-                                            width={40}
-                                            height={40}
-                                            className="w-8 h-8 md:w-10 md:h-10 object-contain transition-all duration-300 grayscale group-hover:grayscale-0"
-                                        />
-                                    </div>
-                                    <span className="text-xs md:text-sm font-medium font-mono text-muted group-hover:text-foreground transition-colors relative z-10">
-                                        {item.name}
-                                    </span>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Row 3: 3 items */}
-                        <div className="flex gap-6 justify-center">
-                            {techList.slice(3, 6).map((item) => (
-                                <motion.div
-                                    key={item.name}
-                                    variants={fadeUp}
-                                    className="group p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-neon/40 hover:bg-neon/5 transition-all duration-300 flex flex-col items-center justify-center gap-4 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,30,30,0.1)] relative overflow-hidden w-32"
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    <div className="w-12 h-12 flex items-center justify-center relative z-10">
-                                        <Image
-                                            src={item.icon}
-                                            alt={item.name}
-                                            width={40}
-                                            height={40}
-                                            className="w-8 h-8 md:w-10 md:h-10 object-contain transition-all duration-300 grayscale group-hover:grayscale-0"
-                                        />
-                                    </div>
-                                    <span className="text-xs md:text-sm font-medium font-mono text-muted group-hover:text-foreground transition-colors relative z-10">
-                                        {item.name}
-                                    </span>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Row 4: 4 items */}
-                        <div className="flex gap-6 justify-center">
-                            {techList.slice(6, 10).map((item) => (
-                                <motion.div
-                                    key={item.name}
-                                    variants={fadeUp}
-                                    className="group p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-neon/40 hover:bg-neon/5 transition-all duration-300 flex flex-col items-center justify-center gap-4 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,30,30,0.1)] relative overflow-hidden w-32"
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    <div className="w-12 h-12 flex items-center justify-center relative z-10">
-                                        <Image
-                                            src={item.icon}
-                                            alt={item.name}
-                                            width={40}
-                                            height={40}
-                                            className="w-8 h-8 md:w-10 md:h-10 object-contain transition-all duration-300 grayscale group-hover:grayscale-0"
-                                        />
-                                    </div>
-                                    <span className="text-xs md:text-sm font-medium font-mono text-muted group-hover:text-foreground transition-colors relative z-10">
-                                        {item.name}
-                                    </span>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Row 5: Remaining items */}
-                        <div className="flex gap-6 justify-center">
-                            {techList.slice(10).map((item) => (
-                                <motion.div
-                                    key={item.name}
-                                    variants={fadeUp}
-                                    className="group p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-neon/40 hover:bg-neon/5 transition-all duration-300 flex flex-col items-center justify-center gap-4 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,30,30,0.1)] relative overflow-hidden w-32"
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    <div className="w-12 h-12 flex items-center justify-center relative z-10">
-                                        <Image
-                                            src={item.icon}
-                                            alt={item.name}
-                                            width={40}
-                                            height={40}
-                                            className="w-8 h-8 md:w-10 md:h-10 object-contain transition-all duration-300 grayscale group-hover:grayscale-0"
-                                        />
-                                    </div>
-                                    <span className="text-xs md:text-sm font-medium font-mono text-muted group-hover:text-foreground transition-colors relative z-10">
-                                        {item.name}
-                                    </span>
-                                </motion.div>
-                            ))}
-                        </div>
+                    {/* Center Grid Layout */}
+                    <div className="flex flex-wrap justify-center gap-4 md:gap-8 max-w-6xl mx-auto">
+                        {techList.map((item) => (
+                            <motion.div
+                                key={item.name}
+                                variants={fadeUp}
+                                className="group p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-neon/40 hover:bg-neon/5 transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,30,30,0.1)] relative overflow-hidden w-28 md:w-36 h-28 md:h-36"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-tr from-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center relative z-10 transition-transform duration-300 group-hover:scale-110">
+                                    <Image
+                                        src={item.icon}
+                                        alt={item.name}
+                                        width={48}
+                                        height={48}
+                                        className="w-full h-full object-contain transition-all duration-300 grayscale group-hover:grayscale-0"
+                                    />
+                                </div>
+                                <span className="text-[10px] md:text-xs font-bold font-mono text-muted group-hover:text-foreground tracking-tighter uppercase transition-colors relative z-10">
+                                    {item.name}
+                                </span>
+                            </motion.div>
+                        ))}
                     </div>
                 </motion.div>
             </div>
