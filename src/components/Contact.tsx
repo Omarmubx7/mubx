@@ -6,7 +6,7 @@ import { fadeUp } from '@/lib/motion';
 
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { supabase } from '@/lib/supabase';
+import { initializeSupabaseStore } from '@/lib/db-init';
 
 export default function Contact() {
     const { t, isRTL, language } = useLanguage();
@@ -124,6 +124,13 @@ export default function Contact() {
                                 const formData = new FormData(form);
 
                                 setFormState('submitting');
+                                const supabase = await initializeSupabaseStore();
+
+                                if (!supabase) {
+                                    setFormState('error');
+                                    console.error('Supabase client not initialized. Check your environment variables.');
+                                    return;
+                                }
 
                                 try {
                                     const { error } = await supabase

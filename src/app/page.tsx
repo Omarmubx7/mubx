@@ -5,11 +5,12 @@ import { Locale } from '@/lib/dictionaries';
 import HomeClient from '@/components/HomeClient';
 
 type Props = {
-  searchParams: { lang?: string }
+  searchParams: Promise<{ lang?: string }>
 }
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-  const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+  const resolvedSearchParams = await searchParams;
+  const lang = (resolvedSearchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
   const meta = siteConfig.metadata[lang];
 
   return {
@@ -32,8 +33,9 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   }
 }
 
-export default function Home({ searchParams }: Props) {
-  const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+export default async function Home({ searchParams }: Props) {
+  const resolvedSearchParams = await searchParams;
+  const lang = (resolvedSearchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
 
   return (
     <Suspense fallback={null}>

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Send, Loader2 } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
+import { initializeSupabaseStore } from '@/lib/db-init';
 import { useLanguage } from '@/context/LanguageContext';
 import { fadeUp } from '@/lib/motion';
 import Navbar from '@/components/Navbar';
@@ -22,6 +22,13 @@ export default function ContactView() {
         const formData = new FormData(form);
 
         setFormState('submitting');
+        const supabase = await initializeSupabaseStore();
+
+        if (!supabase) {
+            setFormState('error');
+            console.error('Supabase client not initialized. Check your environment variables.');
+            return;
+        }
 
         try {
             const { error } = await supabase
