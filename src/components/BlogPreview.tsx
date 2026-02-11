@@ -8,13 +8,22 @@ import { blogPosts } from '@/lib/blog-data';
 import Badge from './ui/Badge';
 import { useLanguage } from '@/context/LanguageContext';
 
+import { useState, useEffect } from 'react';
+import { BlogPostSkeleton } from './ui/LoadingSkeleton';
+
 export default function BlogPreview() {
+    const [isLoading, setIsLoading] = useState(true);
     const posts = blogPosts.slice(0, 3);
     const { language } = useLanguage();
 
     const getHref = (path: string) => {
         return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
     };
+
+    useEffect(() => {
+        const timer = setTimeout(() => setIsLoading(false), 600);
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <section className="py-24 relative border-t border-white/5">
@@ -43,41 +52,47 @@ export default function BlogPreview() {
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {posts.map((post, i) => (
-                        <motion.div
-                            key={i}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={fadeUp}
-                            className="group relative p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-neon/30 hover:bg-white/10 transition-all duration-300 flex flex-col items-start h-full"
-                        >
-                            <div className="flex justify-between w-full items-center mb-4">
-                                <span className="text-xs font-mono text-neon uppercase tracking-widest">{post.date}</span>
+                    {isLoading
+                        ? Array.from({ length: 3 }).map((_, i) => (
+                            <div key={i} className="p-8 rounded-2xl bg-white/5 border border-white/5">
+                                <BlogPostSkeleton />
                             </div>
+                        ))
+                        : posts.map((post, i) => (
+                            <motion.div
+                                key={i}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={fadeUp}
+                                className="group relative p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-neon/30 hover:bg-white/10 transition-all duration-300 flex flex-col items-start h-full"
+                            >
+                                <div className="flex justify-between w-full items-center mb-4">
+                                    <span className="text-xs font-mono text-neon uppercase tracking-widest">{post.date}</span>
+                                </div>
 
-                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-neon transition-colors">
-                                {post.title}
-                            </h3>
+                                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-neon transition-colors">
+                                    {post.title}
+                                </h3>
 
-                            <p className="text-muted leading-relaxed mb-6">
-                                {post.excerpt}
-                            </p>
+                                <p className="text-muted leading-relaxed mb-6">
+                                    {post.excerpt}
+                                </p>
 
-                            {/* Tags */}
-                            <div className="flex flex-wrap gap-2 mb-6 mt-auto relative z-20">
-                                <Link href={`/blog?tag=${post.tag}`} className="hover:opacity-80 transition-opacity">
-                                    <Badge variant="ghost" className="pl-0 text-neon/80 font-mono text-xs hover:text-neon">{post.tag}</Badge>
-                                </Link>
-                            </div>
+                                {/* Tags */}
+                                <div className="flex flex-wrap gap-2 mb-6 mt-auto relative z-20">
+                                    <Link href={`/blog?tag=${post.tag}`} className="hover:opacity-80 transition-opacity">
+                                        <Badge variant="ghost" className="pl-0 text-neon/80 font-mono text-xs hover:text-neon">{post.tag}</Badge>
+                                    </Link>
+                                </div>
 
-                            <div className="flex gap-4 items-center w-full pt-4 border-t border-white/5 mt-auto">
-                                <Link href={getHref(`/blog/${post.slug}`)} className="text-white text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                                    Read Article <ArrowRight className="w-4 h-4 text-neon" />
-                                </Link>
-                            </div>
-                        </motion.div>
-                    ))}
+                                <div className="flex gap-4 items-center w-full pt-4 border-t border-white/5 mt-auto">
+                                    <Link href={getHref(`/blog/${post.slug}`)} className="text-white text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                                        Read Article <ArrowRight className="w-4 h-4 text-neon" />
+                                    </Link>
+                                </div>
+                            </motion.div>
+                        ))}
                 </div>
             </div>
         </section >

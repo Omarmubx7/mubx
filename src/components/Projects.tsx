@@ -5,7 +5,7 @@ import { ExternalLink } from 'lucide-react';
 import { projectCard } from '@/lib/motion';
 import Badge from './ui/Badge';
 import Image from 'next/image';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+
 import ProjectCard from './ProjectCard';
 import { useState, useEffect } from 'react';
 
@@ -14,6 +14,8 @@ import Link from 'next/link';
 
 import { getProjects } from '@/lib/projects';
 import { useLanguage } from '@/context/LanguageContext';
+
+import { ProjectCardSkeleton } from './ui/LoadingSkeleton';
 
 export default function Projects() {
     const [isLoading, setIsLoading] = useState(true);
@@ -27,7 +29,7 @@ export default function Projects() {
     const projectsData = getProjects(language);
 
     useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 1200);
+        const timer = setTimeout(() => setIsLoading(false), 500);
         return () => clearTimeout(timer);
     }, []);
 
@@ -49,27 +51,7 @@ export default function Projects() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {isLoading
                         ? Array.from({ length: 3 }).map((_, i) => (
-                            <SkeletonTheme key={i} baseColor="#202020" highlightColor="#444">
-                                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm overflow-hidden flex flex-col h-full">
-                                    <div className="flex items-center justify-between mb-6">
-                                        <Skeleton width={64} height={64} className="rounded-2xl" />
-                                        <div className="flex gap-3">
-                                            <Skeleton circle width={40} height={40} />
-                                        </div>
-                                    </div>
-                                    <Skeleton width={180} height={32} className="mb-3" />
-                                    <Skeleton width={100} height={24} className="mb-4" />
-                                    <Skeleton count={3} className="mb-6" />
-                                    <div className="mt-auto space-y-5">
-                                        <Skeleton height={80} className="rounded-xl" />
-                                        <div className="flex gap-2">
-                                            <Skeleton width={60} height={20} className="rounded-full" />
-                                            <Skeleton width={60} height={20} className="rounded-full" />
-                                            <Skeleton width={60} height={20} className="rounded-full" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </SkeletonTheme>
+                            <ProjectCardSkeleton key={i} />
                         ))
                         : projectsData.map((project, index) => (
                             <ProjectCard

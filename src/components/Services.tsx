@@ -8,11 +8,20 @@ import { ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Badge from './ui/Badge';
 import GradientText from './ui/GradientText';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import LoadingSkeleton from './ui/LoadingSkeleton';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Services() {
     const { t } = useLanguage();
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setIsLoading(false), 600);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
 
     const services = [
         {
@@ -53,15 +62,6 @@ export default function Services() {
         },
     ];
 
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 1000);
-        return () => {
-            clearTimeout(timer);
-        };
-    }, []);
-
     return (
         <section id="services" className="py-24 relative bg-background">
             <div className="container mx-auto px-6 md:px-12">
@@ -84,20 +84,12 @@ export default function Services() {
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
                     {isLoading
                         ? Array.from({ length: 4 }).map((_, i) => (
-                            <SkeletonTheme key={i} baseColor="var(--card)" highlightColor="var(--border)">
-                                <div className="p-8 rounded-2xl bg-card border border-border backdrop-blur-sm flex flex-col h-full">
-                                    <div className="flex justify-between items-start mb-4">
-                                        <Skeleton width={80} height={20} />
-                                        <Skeleton width={40} height={40} />
-                                    </div>
-                                    <Skeleton width={150} height={24} className="mb-4" />
-                                    <Skeleton count={3} className="mb-2" />
-                                    <Skeleton width={120} height={16} className="mt-4 mb-6" />
-                                    <div className="border-t border-border pt-6 mt-auto">
-                                        <Skeleton count={2} />
-                                    </div>
-                                </div>
-                            </SkeletonTheme>
+                            <div key={i} className="p-8 rounded-2xl bg-card border border-border backdrop-blur-sm flex flex-col h-full space-y-4">
+                                <LoadingSkeleton width="100px" />
+                                <LoadingSkeleton height="32px" />
+                                <LoadingSkeleton count={3} />
+                                <LoadingSkeleton width="150px" />
+                            </div>
                         ))
                         : services.map((service, index) => (
                             <motion.div

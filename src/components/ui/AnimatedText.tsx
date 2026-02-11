@@ -51,7 +51,7 @@ export default function AnimatedText({ text, className = "", delay = 0 }: Animat
             custom={1}
         >
             {words.map((word, index) => (
-                <span key={index} className="inline-block whitespace-nowrap">
+                <span key={index} className="inline-block">
                     {word.split("").map((character, index) => (
                         <motion.span
                             key={index}

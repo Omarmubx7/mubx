@@ -6,8 +6,10 @@ import Lenis from "lenis";
 export function useLenis() {
     useEffect(() => {
         const lenis = new Lenis({
-            lerp: 0.08,       // smoothness
-            wheelMultiplier: 1.0, // scroll speed
+            lerp: 0.12,           // Increased from 0.08 for more responsiveness
+            wheelMultiplier: 1.1, // Slightly increased scroll velocity
+            duration: 1.0,        // Explicit duration for predictable behavior
+            smoothWheel: true,
         });
 
         function raf(time: number) {

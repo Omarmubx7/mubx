@@ -9,13 +9,18 @@ import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import { useLanguage } from '@/context/LanguageContext';
 import dynamic from 'next/dynamic';
+import { HeroSkeleton } from './ui/LoadingSkeleton';
 
 // Dynamic import for 3D component to reduce initial bundle size
 const Hero3D = dynamic(() => import('./canvas/Hero3D'), {
     ssr: false,
     loading: () => (
         <div className="w-full h-full flex items-center justify-center">
-            <div className="animate-pulse text-muted">Loading 3D scene...</div>
+            <div className="relative w-[400px] h-[400px]">
+                <div className="absolute inset-0 rounded-full bg-muted/10 animate-pulse" />
+                <div className="absolute inset-8 rounded-full bg-muted/5 animate-pulse delay-150" />
+                <div className="absolute inset-16 rounded-full bg-muted/5 animate-pulse delay-300" />
+            </div>
         </div>
     ),
 });

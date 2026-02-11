@@ -17,7 +17,7 @@ const AnimatedValue = ({ value }: { value: string }) => {
 
     useEffect(() => {
         if (inView) {
-            const controls = animate(count, parseInt(value), { duration: 2, ease: "easeOut" });
+            const controls = animate(count, parseInt(value), { duration: 0.8, ease: "easeOut" });
             return controls.stop;
         }
     }, [inView, value, count]);

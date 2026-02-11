@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { Suspense } from 'react';
 import './globals.css';
-import 'react-loading-skeleton/dist/skeleton.css';
+
 import SmoothScroll from '@/components/SmoothScroll';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
@@ -98,6 +98,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Resource hints for external domains */}
+        <link rel="preconnect" href="https://assets.calendly.com" />
+        <link rel="preconnect" href="https://calendly.com" />
+        <link rel="preconnect" href="https://formspree.io" />
         <link rel="dns-prefetch" href="https://vercel.live" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
       </head>
