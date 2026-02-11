@@ -125,7 +125,7 @@ export default function Services() {
                                 </p>
 
                                 <div className="mb-4">
-                                    <p className="text-sm text-neon font-bold mb-1">
+                                    <p className="text-sm text-white font-bold mb-1">
                                         {service.idealHeight}
                                     </p>
                                     <p className="text-xs text-muted">
@@ -155,7 +155,7 @@ export default function Services() {
                     </a>
                 </motion.div>
 
-                <p className="text-center text-muted/40 text-xs mt-8 font-mono">
+                <p className="text-center text-muted/60 text-xs mt-8 font-mono">
                     * All prices in JOD (Jordanian Dinar). 1 JOD ≈ $1.41 USD.
                 </p>
             </div>
