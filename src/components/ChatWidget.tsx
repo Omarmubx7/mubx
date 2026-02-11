@@ -208,6 +208,7 @@ export default function ChatWidget() {
                             <button
                                 onClick={() => setIsOpen(false)}
                                 className="text-muted hover:text-white transition-colors"
+                                aria-label="Close chat"
                             >
                                 <X className="w-4 h-4" />
                             </button>
@@ -268,10 +269,11 @@ export default function ChatWidget() {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-14 h-14 rounded-full bg-neon text-black flex items-center justify-center shadow-[0_0_20px_rgba(255,30,30,0.4)] hover:shadow-[0_0_30px_rgba(255,30,30,0.6)] transition-shadow relative"
+                aria-label={isOpen ? "Close chat" : "Open chat assistant"}
             >
                 {isOpen ? <ChevronRight className="w-6 h-6 rotate-90" /> : <MessageCircle className="w-6 h-6" />}
                 {!isOpen && (
-                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" aria-hidden="true" />
                 )}
             </motion.button>
         </div>

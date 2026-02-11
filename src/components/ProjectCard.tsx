@@ -52,6 +52,7 @@ export default function ProjectCard({ project, index, t, language }: ProjectCard
                                 alt={`${project.title} Logo`}
                                 fill
                                 className="object-contain"
+                                sizes="48px"
                             />
                         </div>
                     </div>

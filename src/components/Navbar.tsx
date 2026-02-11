@@ -92,15 +92,16 @@ const NavbarContent = () => {
             }}
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-background/80 backdrop-blur-sm border-b border-white/5"
         >
-            <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2">
+            <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2" aria-label="MUBX Home">
                 <div className="relative h-16 w-auto min-w-[140px] transition-transform group-hover:scale-105">
                     <Image
                         src="/icon.png"
                         alt="MUBX Logo"
-                        width={220}
-                        height={80}
+                        width={64}
+                        height={64}
                         className="h-full w-auto object-contain dark:invert-0 invert"
                         priority
+                        sizes="64px"
                     />
                 </div>
             </Link>
