@@ -4,14 +4,15 @@ import { NextResponse } from 'next/server';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
-    try {
-        const { email, goal, budget, deadline, message, language } = await req.json();
+  try {
+    const { email, goal, budget, deadline, message, language } = await req.json();
 
-        const { data, error } = await resend.emails.send({
-            from: 'MUBX Portfolio <onboarding@resend.dev>',
-            to: ['mubxdev@proton.me'],
-            subject: `New Lead from Portfolio (${language === 'ar' ? 'Arabic' : 'English'})`,
-            html: `
+    console.log('📧 Sending Resend notification to mubxdev@proton.me');
+    const { data, error } = await resend.emails.send({
+      from: 'MUBX Portfolio <onboarding@resend.dev>',
+      to: ['mubxdev@proton.me'],
+      subject: `New Lead from Portfolio (${language === 'ar' ? 'Arabic' : 'English'})`,
+      html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
           <h2 style="color: #FF1E1E;">New Project Inquiry</h2>
           <hr />
@@ -29,14 +30,16 @@ export async function POST(req: Request) {
           </footer>
         </div>
       `,
-        });
+    });
 
-        if (error) {
-            return NextResponse.json({ error }, { status: 400 });
-        }
-
-        return NextResponse.json({ data });
-    } catch (error) {
-        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    if (error) {
+      console.error('🔥 Resend API Error:', error);
+      return NextResponse.json({ error }, { status: 400 });
     }
+
+    console.log('✅ Resend success:', data);
+    return NextResponse.json({ data });
+  } catch (error) {
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
 }

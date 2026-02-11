@@ -147,7 +147,7 @@ export default function Contact() {
                                     if (error) throw error;
 
                                     // Trigger email notification
-                                    fetch('/api/notify', {
+                                    const notifyRes = await fetch('/api/notify', {
                                         method: 'POST',
                                         headers: { 'Content-Type': 'application/json' },
                                         body: JSON.stringify({
@@ -158,7 +158,14 @@ export default function Contact() {
                                             message: formData.get('message'),
                                             language: language
                                         }),
-                                    }).catch(err => console.error('Notification error:', err));
+                                    });
+
+                                    if (!notifyRes.ok) {
+                                        const errorData = await notifyRes.json();
+                                        console.error('📧 Resend Error:', errorData);
+                                        // We don't throw here to avoid showing "Error" to user if DB insertion worked
+                                        // but we log it for developer debugging
+                                    }
 
                                     form.reset();
                                     setFormState('success');
