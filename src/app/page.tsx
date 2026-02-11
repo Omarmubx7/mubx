@@ -1,5 +1,5 @@
 import Navbar from '@/components/Navbar';
-import Hero3DLaptop from '@/components/hero/Hero3DLaptop';
+import Hero from '@/components/Hero';
 import MetricsStrip from '@/components/MetricsStrip';
 import SkillTicker from '@/components/SkillTicker';
 import About from '@/components/About';
@@ -52,7 +52,7 @@ export default function Home({ searchParams }: Props) {
       <LanguageProvider initialLocale={lang}>
         <main className="relative flex flex-col min-h-screen">
           <Navbar />
-          <Hero3DLaptop />
+          <Hero />
           <MetricsStrip />
           <SkillTicker />
           <Services />
