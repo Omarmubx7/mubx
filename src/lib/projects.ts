@@ -24,6 +24,25 @@ export interface Project {
 const projectsData: Record<Locale, Project[]> = {
     en: [
         {
+            slug: 'the-glorious-page',
+            title: 'The Glorious Page',
+            description: 'Custom Link Tree. A branded, high-performance alternative to Linktree for a lifestyle brand. Includes Instagram integration.',
+            tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
+            links: { live: 'https://www.theglorious.page/' },
+            logo: '/images/thegloriousicon.webp',
+            metrics: 'Custom Design',
+            verified_outcome: 'Live & Active',
+            timeframe: '1 Week',
+            category: { en: 'Link Bio', ar: 'رابط بايو', icon: '🔗', color: 'bg-purple-500/10 text-purple-400 border-purple-500/20' },
+            caseStudy: {
+                problem: 'Generic link tools (Linktree) lacked the visual impact and custom branding required by the client.',
+                role: 'Full Stack Developer & Designer.',
+                solution: 'I developed a bespoke "Link in Bio" web app with custom animations, video backgrounds, and direct social media integrations.',
+                outcome: 'A stunning, high-conversion landing point for social media traffic that perfectly matches the brand identity.',
+            },
+            screenshots: ['/images/theglorious.webp']
+        },
+        {
             slug: 'vynex-media',
             title: 'Vynex Media',
             description: 'Digital Agency Platform. Increased lead generation by 20% through high-performance UX and SEO.',
@@ -82,6 +101,25 @@ const projectsData: Record<Locale, Project[]> = {
         }
     ],
     ar: [
+        {
+            slug: 'the-glorious-page',
+            title: 'The Glorious Page',
+            description: 'شجرة روابط مخصصة. بديل عالي الأداء ومخصص لـ Linktree لعلامة تجارية عصرية. يشمل دمج انستجرام.',
+            tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
+            links: { live: 'https://www.theglorious.page/' },
+            logo: '/images/thegloriousicon.webp',
+            metrics: 'تصميم مخصص',
+            verified_outcome: 'مباشر ونشط',
+            timeframe: 'أسبوع واحد',
+            category: { en: 'Link Bio', ar: 'رابط بايو', icon: '🔗', color: 'bg-purple-500/10 text-purple-400 border-purple-500/20' },
+            caseStudy: {
+                problem: 'أدوات الروابط العادية (مثل Linktree) كانت تفتقر إلى الجاذبية البصرية والهوية المخصصة المطلوبة.',
+                role: 'تطوير كامل وتصميم.',
+                solution: 'قمت بتطوير تطبيق ويب "رابط في البايو" مخصص مع رسوم متحركة، خلفيات فيديو، وتكامل مباشر مع وسائل التواصل.',
+                outcome: 'نقطة هبوط مذهلة وعالية التحويل لزيارات وسائل التواصل الاجتماعي تتطابق تماماً مع هوية العلامة التجارية.',
+            },
+            screenshots: ['/images/theglorious.webp']
+        },
         {
             slug: 'vynex-media',
             title: 'فاينكس ميديا',
