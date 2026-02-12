@@ -90,7 +90,7 @@ const NavbarContent = () => {
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
                 hiddenNav: { y: "-100%", transition: { duration: 0.35, ease: "easeInOut" } }
             }}
-            className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-background/80 backdrop-blur-sm border-b border-white/5"
+            className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-glass"
         >
             <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2" aria-label="MUBX Home">
                 <div className="relative h-16 w-auto min-w-[140px] transition-transform group-hover:scale-105">
@@ -171,7 +171,7 @@ const NavbarContent = () => {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="absolute top-0 left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border p-6 pt-24 md:hidden flex flex-col gap-6 shadow-2xl h-screen"
+                        className="absolute top-0 left-0 right-0 bg-glass/95 p-6 pt-24 md:hidden flex flex-col gap-6 shadow-2xl h-screen"
                     >
                         {links.map((link) => (
                             <motion.div key={link.name} variants={itemVariants}>

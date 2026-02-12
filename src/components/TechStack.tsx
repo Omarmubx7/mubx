@@ -32,6 +32,8 @@ const techList = [
     { name: 'VS Code', icon: '/techstackicons/Visual Studio Code (VS Code).svg' },
     { name: 'Postman', icon: '/techstackicons/postman-icon-svgrepo-com.svg' },
     { name: 'Supabase', icon: '/techstackicons/supabase-logo-icon.svg' },
+    { name: 'GoLand', icon: '/techstackicons/GoLand.svg' },
+    { name: 'Bash', icon: '/techstackicons/bash-icon-svgrepo-com.svg' },
     { name: 'Terminal', icon: '/techstackicons/terminal-svgrepo-com.svg' },
 ];
 
