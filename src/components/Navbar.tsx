@@ -19,12 +19,12 @@ const NavbarContent = () => {
 
     useMotionValueEvent(scrollY, "change", (latest: number) => {
         const previous = scrollY.getPrevious() ?? 0;
-        if (latest > previous && latest > 150) {
-            setHidden(true);
-        } else {
-            setHidden(false);
+        const shouldHide = latest > previous && latest > 150;
+        if (shouldHide !== hidden) {
+            setHidden(shouldHide);
         }
     });
+
 
     const { t, language } = useLanguage();
 

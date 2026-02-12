@@ -7,13 +7,15 @@ interface AnimatedTextProps {
     className?: string;
     delay?: number;
     by?: "word" | "character";
+    immediate?: boolean;
 }
 
-export default function AnimatedText({ text, className = "", delay = 0, by = "word" }: AnimatedTextProps) {
+export default function AnimatedText({ text, className = "", delay = 0, by = "word", immediate = false }: AnimatedTextProps) {
+
     const words = text.split(" ");
 
     const container = {
-        hidden: { opacity: 0 },
+        hidden: { opacity: immediate ? 1 : 0 },
         visible: (i = 1) => ({
             opacity: 1,
             transition: {
@@ -34,8 +36,8 @@ export default function AnimatedText({ text, className = "", delay = 0, by = "wo
             } as any,
         },
         hidden: {
-            opacity: 0,
-            y: 20,
+            opacity: immediate ? 1 : 0,
+            y: immediate ? 0 : 20,
             transition: {
                 type: "spring",
                 damping: 12,
@@ -43,6 +45,7 @@ export default function AnimatedText({ text, className = "", delay = 0, by = "wo
             } as any,
         },
     };
+
 
     return (
         <motion.span

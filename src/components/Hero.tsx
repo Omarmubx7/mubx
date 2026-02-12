@@ -55,18 +55,19 @@ export default function Hero() {
                         </motion.div>
 
                         <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[1.1] tracking-tight text-foreground uppercase">
-                            <AnimatedText text={t.hero.titleStart} className="block" delay={0.05} />
+                            <AnimatedText text={t.hero.titleStart} className="block" delay={0.05} immediate={true} />
 
                             <span className="text-neon relative inline-block text-5xl md:text-7xl">
-                                <AnimatedText text={t.hero.titleHighlight} delay={0.2} />
+                                <AnimatedText text={t.hero.titleHighlight} delay={0.2} immediate={true} />
                                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-neon opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none">
                                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
                                 </svg>
                             </span>
 
                             <br />
-                            <AnimatedText text={t.hero.titleEnd} className="block" delay={0.4} />
+                            <AnimatedText text={t.hero.titleEnd} className="block" delay={0.4} immediate={true} />
                         </h1>
+
 
 
                         <motion.p
