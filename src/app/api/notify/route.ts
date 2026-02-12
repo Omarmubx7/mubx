@@ -38,7 +38,6 @@ export async function POST(req: Request) {
         error: {
           message: error.message,
           name: error.name,
-          ...error
         }
       }, { status: 400 });
     }
