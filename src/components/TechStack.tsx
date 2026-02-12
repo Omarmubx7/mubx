@@ -34,7 +34,7 @@ const techList = [
     { name: 'Supabase', icon: '/techstackicons/supabase-logo-icon.svg' },
     { name: 'GoLand', icon: '/techstackicons/GoLand.svg' },
     { name: 'Bash', icon: '/techstackicons/bash-icon-svgrepo-com.svg' },
-    { name: 'Terminal', icon: '/techstackicons/terminal-svgrepo-com.svg' },
+
 ];
 
 export default function TechStack() {
