@@ -46,7 +46,7 @@ export default function ProjectCard({ project, index, t, language }: ProjectCard
 
                 {/* Card Header: Logo & Title */}
                 <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-background p-1 flex items-center justify-center border border-border">
+                    <div className="w-12 h-12 rounded-xl bg-white p-1 flex items-center justify-center border border-border">
                         <div className="relative w-full h-full">
                             <Image
                                 src={project.logo}
