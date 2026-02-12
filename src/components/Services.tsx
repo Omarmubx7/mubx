@@ -101,7 +101,7 @@ export default function Services() {
                                     }`}
                             >
                                 {index === 2 && (
-                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#FF1E1E] text-white text-[10px] font-black px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(255,30,30,0.5)] uppercase tracking-widest whitespace-nowrap">
+                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#FF1E1E] text-black text-[10px] font-black px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(255,30,30,0.5)] uppercase tracking-widest whitespace-nowrap">
                                         {t.services.popular}
                                     </div>
                                 )}

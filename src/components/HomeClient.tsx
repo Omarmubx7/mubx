@@ -4,10 +4,15 @@ import { Suspense, useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import MetricsStrip from '@/components/MetricsStrip';
-import SkillTicker from '@/components/SkillTicker';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { Locale } from '@/lib/dictionaries';
+
+const MetricsStrip = dynamic(() => import('@/components/MetricsStrip'), {
+    loading: () => <div className="h-32 w-full animate-pulse bg-muted/20" />,
+});
+const SkillTicker = dynamic(() => import('@/components/SkillTicker'), {
+    loading: () => <div className="h-40 w-full animate-pulse bg-muted/20" />,
+});
 
 // Performance optimized dynamic imports for below-the-fold content
 const Services = dynamic(() => import('@/components/Services'), {
@@ -38,8 +43,8 @@ const Footer = dynamic(() => import('@/components/Footer'), {
     loading: () => <div className="h-80 w-full animate-pulse bg-muted/20" />,
 });
 
-const StarsCanvas = dynamic(() => import('@/components/canvas/Stars'));
-const CanvasCursor = dynamic(() => import('@/components/canvas/CanvasCursor'));
+const StarsCanvas = dynamic(() => import('@/components/canvas/Stars'), { ssr: false });
+const CanvasCursor = dynamic(() => import('@/components/canvas/CanvasCursor'), { ssr: false });
 
 export default function HomeClient({ lang }: { lang: Locale }) {
     const [showCanvas, setShowCanvas] = useState(false);

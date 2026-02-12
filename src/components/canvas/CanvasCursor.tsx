@@ -13,7 +13,7 @@ const CanvasCursor = () => {
         setIsMobile(window.matchMedia("(max-width: 768px)").matches);
     }, []);
 
-    if (isMobile) return null;
+
 
     const springConfig = { stiffness: 150, damping: 15, mass: 0.1 };
     const springX = useSpring(mouseX, springConfig);
@@ -62,6 +62,8 @@ const CanvasCursor = () => {
     // but the effect hook prevents listeners. 
     // Let's add formatted return null based on state to be safe.
 
+
+    if (isMobile) return null;
 
     return (
         <>

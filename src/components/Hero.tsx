@@ -2,11 +2,8 @@
 
 import Image from 'next/image';
 import Badge from './ui/Badge';
-import AnimatedText from './ui/AnimatedText';
-import { MessageCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { fadeUp, staggerContainer } from '@/lib/motion';
+import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import dynamic from 'next/dynamic';
 import { HeroSkeleton } from './ui/LoadingSkeleton';
@@ -42,17 +39,15 @@ export default function Hero() {
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
                     {/* Left Column: Text Content */}
-                    <motion.div
-                        variants={staggerContainer}
-                        initial="hidden"
-                        animate="visible"
+                    {/* Left Column: Text Content */}
+                    <div
                         className="flex-1 text-center lg:text-left rtl:lg:text-right order-1 lg:order-none"
                     >
-                        <motion.div variants={fadeUp} className="flex justify-center lg:justify-start rtl:lg:justify-end mb-6">
+                        <div className="flex justify-center lg:justify-start rtl:lg:justify-end mb-6 animate-hero-fade-up">
                             <Badge variant="neon" className="animate-pulse-slow">
                                 {t.hero.badge}
                             </Badge>
-                        </motion.div>
+                        </div>
 
                         <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[1.1] tracking-tight text-foreground uppercase">
                             <span className="block animate-hero-fade-up delay-hero-1">
@@ -72,19 +67,14 @@ export default function Hero() {
                             </span>
                         </h1>
 
-
-
-
-                        <motion.p
-                            variants={fadeUp}
-                            className="text-lg md:text-xl text-muted mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed"
+                        <p
+                            className="text-lg md:text-xl text-muted mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed animate-hero-fade-up delay-hero-3"
                         >
                             {t.hero.description}
-                        </motion.p>
+                        </p>
 
-                        <motion.div
-                            variants={fadeUp}
-                            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start rtl:lg:justify-end"
+                        <div
+                            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start rtl:lg:justify-end animate-hero-fade-up delay-hero-4"
                         >
                             <a
                                 href="https://calendly.com/omarmubaidincs/30min"
@@ -102,15 +92,12 @@ export default function Hero() {
                                 {t.hero.ctaSecondary}
                                 <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
                             </Link>
-                        </motion.div>
-                    </motion.div>
+                        </div>
+                    </div>
 
                     {/* Right Column: Hero Image / Visual */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="flex-1 relative h-[600px] lg:h-[700px] w-full flex items-center justify-center group order-2 lg:order-none"
+                    <div
+                        className="flex-1 relative h-[600px] lg:h-[700px] w-full flex items-center justify-center group order-2 lg:order-none animate-hero-slide-in"
                     >
                         <div className="absolute inset-0 bg-gradient-to-tr from-neon/10 to-transparent rounded-full blur-[60px] animate-pulse-slow" />
 
@@ -118,7 +105,7 @@ export default function Hero() {
                         <div className="relative w-full h-full min-h-[500px] flex items-center justify-center">
                             <Hero3D />
                         </div>
-                    </motion.div>
+                    </div>
 
                 </div>
             </div>

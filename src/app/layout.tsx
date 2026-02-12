@@ -154,12 +154,11 @@ export default function RootLayout({
           }} />
           <ScrollProgressBar />
           <SocialSidebar />
-          <div className="hidden lg:block">
-            <SmoothScroll>{children}</SmoothScroll>
-          </div>
-          <div className="lg:hidden">
-            {children}
-          </div>
+          <SmoothScroll>
+            <main id="main-content">
+              {children}
+            </main>
+          </SmoothScroll>
           <SpeedInsights />
           <Analytics />
           <Suspense fallback={null}>
