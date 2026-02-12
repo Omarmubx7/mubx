@@ -3,7 +3,8 @@
 import Image from 'next/image';
 import Badge from './ui/Badge';
 import Link from 'next/link';
-import Link from 'next/link';
+import { MessageCircle, ArrowRight } from 'lucide-react';
+
 import { useLanguage } from '@/context/LanguageContext';
 import dynamic from 'next/dynamic';
 import { HeroSkeleton } from './ui/LoadingSkeleton';
