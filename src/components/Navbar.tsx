@@ -96,7 +96,8 @@ const NavbarContent = () => {
                 <div className="relative h-16 w-auto min-w-[140px] transition-transform group-hover:scale-105">
                     <Image
                         src="/icon.png"
-                        alt="MUBX Logo"
+                        alt="MUBX - High Performance Web Systems & E-commerce"
+
                         width={64}
                         height={64}
                         className="h-full w-auto object-contain dark:invert-0 invert"
@@ -112,9 +113,11 @@ const NavbarContent = () => {
                     <Link
                         key={link.name}
                         href={link.href}
+                        aria-current={isLinkActive(link.href) ? 'page' : undefined}
                         className={`text-sm font-medium transition-colors relative group ${isLinkActive(link.href) ? 'text-neon font-bold' : 'text-muted hover:text-neon'
                             }`}
                     >
+
                         {link.name}
                         {/* Hover Underline */}
                         <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-neon to-red-500 rounded-full w-0 group-hover:w-full transition-all duration-300 ease-out" />

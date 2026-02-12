@@ -150,6 +150,58 @@ body::before {
     animation-delay: 300ms;
   }
 
+  /* Deep Fix: CSS-First Entry Animations for LCP */
+  @keyframes heroFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-hero-fade-up {
+    animation: heroFadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    /* Hidden initially, made visible by animation */
+  }
+
+  .delay-hero-1 {
+    animation-delay: 0.1s;
+  }
+
+  .delay-hero-2 {
+    animation-delay: 0.25s;
+  }
+
+  .delay-hero-3 {
+    animation-delay: 0.4s;
+  }
+
+  /* Accessible Skip Link */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    padding: 1rem 1.5rem;
+    background: var(--neon);
+    color: #000;
+    font-weight: bold;
+    border-radius: 99px;
+    text-decoration: none;
+    transition: top 0.2s ease;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+    outline: 2px solid var(--neon);
+    outline-offset: 4px;
+  }
+
   /* Optimize animations on mobile */
   @media (max-width: 768px) {
     .animate-pulse {

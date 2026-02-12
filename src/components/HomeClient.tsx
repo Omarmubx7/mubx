@@ -45,11 +45,12 @@ export default function HomeClient({ lang }: { lang: Locale }) {
     const [showCanvas, setShowCanvas] = useState(false);
 
     useEffect(() => {
-        // Load heavy canvases quickly after initial paint to avoid blocking First Contentful Paint
-        // but not so late that it spikes TBT during PageSpeed measurement.
-        const timer = setTimeout(() => setShowCanvas(true), 100);
+        // Deep Defer heavy canvases far beyond the TTI window (Time to Interactive)
+        // This ensures the main thread is completely free during the critical loading window.
+        const timer = setTimeout(() => setShowCanvas(true), 3500);
         return () => clearTimeout(timer);
     }, []);
+
 
 
     return (
