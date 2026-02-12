@@ -37,9 +37,6 @@ export default async function Home({ searchParams }: Props) {
   const resolvedSearchParams = await searchParams;
   const lang = (resolvedSearchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
 
-  return (
-    <Suspense fallback={null}>
-      <HomeClient lang={lang} />
-    </Suspense>
-  );
+  return <HomeClient lang={lang} />;
 }
+

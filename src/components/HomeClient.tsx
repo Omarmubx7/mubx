@@ -54,10 +54,10 @@ export default function HomeClient({ lang }: { lang: Locale }) {
 
     return (
         <LanguageProvider initialLocale={lang}>
-            <main className="relative flex flex-col min-h-screen">
+            <Navbar />
+            <main id="main-content" className="relative flex flex-col min-h-screen focus:outline-none" tabIndex={-1}>
                 {showCanvas && <CanvasCursor />}
                 {showCanvas && <StarsCanvas />}
-                <Navbar />
                 <Hero />
                 <MetricsStrip />
                 <SkillTicker />
@@ -75,4 +75,5 @@ export default function HomeClient({ lang }: { lang: Locale }) {
             </main>
         </LanguageProvider>
     );
+
 }

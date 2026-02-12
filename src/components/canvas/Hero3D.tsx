@@ -43,16 +43,8 @@ const Hero3D = () => {
             >
 
                 <Suspense fallback={null}>
-                    <ambientLight intensity={0.5} />
-                    <pointLight position={[10, 10, 10]} intensity={1} />
-                    <spotLight
-                        position={[-20, 50, 10]}
-                        angle={0.12}
-                        penumbra={1}
-                        intensity={1}
-                        castShadow
-                        shadow-mapSize={1024}
-                    />
+                    <ambientLight intensity={0.8} />
+                    <pointLight position={[10, 10, 10]} intensity={1.5} />
                     <DigitalCore />
                     <OrbitControls
                         enableZoom={false}
@@ -62,6 +54,7 @@ const Hero3D = () => {
                         minPolarAngle={Math.PI / 2}
                     />
                 </Suspense>
+
                 <Preload all />
             </Canvas>
         </div>

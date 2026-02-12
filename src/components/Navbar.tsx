@@ -101,8 +101,9 @@ const NavbarContent = () => {
                         height={64}
                         className="h-full w-auto object-contain dark:invert-0 invert"
                         priority
-                        sizes="64px"
+                        sizes="(max-width: 768px) 48px, 64px"
                     />
+
                 </div>
             </Link>
 

@@ -63,7 +63,7 @@ export default function AnimatedText({ text, className = "", delay = 0, by = "wo
                             <motion.span
                                 key={index}
                                 variants={child}
-                                className="inline-block"
+                                className="inline-block will-change-[transform,opacity]"
                             >
                                 {character}
                             </motion.span>
@@ -76,12 +76,13 @@ export default function AnimatedText({ text, className = "", delay = 0, by = "wo
                     <motion.span
                         key={index}
                         variants={child}
-                        className="inline-block mr-[0.25em]"
+                        className="inline-block mr-[0.25em] will-change-[transform,opacity]"
                     >
                         {word}
                     </motion.span>
                 ))
             )}
+
         </motion.span>
     );
 }

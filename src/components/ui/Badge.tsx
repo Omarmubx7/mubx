@@ -12,9 +12,11 @@ export default function Badge({ children, variant = 'outline', className = '' }:
 
     const variants = {
         neon: "bg-neon/10 text-neon border border-neon/30 shadow-[0_0_10px_rgba(255,30,30,0.2)]",
-        outline: "bg-white/5 text-white/70 border border-white/10 hover:border-neon hover:text-white",
-        ghost: "bg-transparent text-muted hover:text-white"
+        outline: "bg-foreground/5 text-foreground/80 border border-foreground/10 hover:border-neon hover:text-neon",
+        ghost: "bg-transparent text-muted hover:text-foreground"
     };
+
+
 
     return (
         <span className={`${baseStyles} ${variants[variant]} ${className}`}>

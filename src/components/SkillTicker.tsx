@@ -28,11 +28,12 @@ const skillsRow2 = [
 ];
 
 const SkillPill = ({ name, Icon }: { name: string, Icon: any }) => (
-    <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-card/60 border border-border/50 backdrop-blur-md text-foreground hover:text-neon hover:border-neon/50 hover:bg-accent transition-all duration-300 cursor-default group shadow-lg shadow-black/5">
+    <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-card border border-border text-foreground hover:text-neon hover:border-neon transition-colors duration-300 cursor-default group">
         <Icon className="w-4 h-4 text-muted group-hover:text-neon transition-colors" />
         <span className="text-sm font-bold font-mono tracking-wide whitespace-nowrap">{name}</span>
     </div>
 );
+
 
 export default function SkillTicker() {
     const { t } = useLanguage();
