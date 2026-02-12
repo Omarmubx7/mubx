@@ -133,14 +133,15 @@ const NavbarContent = () => {
                     </Link>
                 ))}
                 {/* Resume Link */}
-                <Link
+                <a
                     href="/cv.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm font-medium text-muted hover:text-neon transition-colors flex items-center gap-1"
                 >
                     {t.nav.resume}
-                </Link>
+                </a>
+
 
                 <div className="h-6 w-[1px] bg-border mx-2" />
 

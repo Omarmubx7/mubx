@@ -155,8 +155,9 @@ export const dictionary = {
                 context: "Currently prioritizing e-commerce and SaaS projects.",
                 urgent: "Need a faster reply?",
                 whatsapp: "WhatsApp: Best for quick voice notes",
-                whatsappUrl: "https://wa.me/962791234567",
-                whatsappNumber: "+962 79 123 4567"
+                whatsappUrl: "https://wa.me/962780090453",
+                whatsappNumber: "+962 780090453"
+
             },
             email: "Email",
             location: "Location",
@@ -638,8 +639,9 @@ export const dictionary = {
                 context: "الأولوية حالياً لمشاريع المتاجر الالكترونية والأنظمة.",
                 urgent: "تحتاج رد أسرع؟",
                 whatsapp: "واتساب: الأفضل للملاحظات الصوتية",
-                whatsappUrl: "https://wa.me/962791234567",
-                whatsappNumber: "+962 79 123 4567"
+                whatsappUrl: "https://wa.me/962780090453",
+                whatsappNumber: "+962 780090453"
+
             },
             email: "البريد الالكتروني",
             location: "الموقع",

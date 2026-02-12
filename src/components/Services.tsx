@@ -101,10 +101,11 @@ export default function Services() {
                                     }`}
                             >
                                 {index === 2 && (
-                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-neon text-black text-xs font-bold px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(255,30,30,0.4)] uppercase tracking-wider whitespace-nowrap animate-pulse">
+                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#FF1E1E] text-white text-[10px] font-black px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(255,30,30,0.5)] uppercase tracking-widest whitespace-nowrap">
                                         {t.services.popular}
                                     </div>
                                 )}
+
                                 <div className="flex justify-between items-start mb-4">
                                     <Badge variant={index === 2 ? 'neon' : 'outline'} className="mb-2">{service.price}</Badge>
                                 </div>
@@ -147,9 +148,10 @@ export default function Services() {
                     </a>
                 </motion.div>
 
-                <p className="text-center text-muted/60 text-xs mt-8 font-mono">
+                <p className="text-center text-muted text-xs mt-8 font-mono">
                     * All prices in JOD (Jordanian Dinar). 1 JOD ≈ $1.41 USD.
                 </p>
+
             </div>
 
             {/* How It Works Section */}

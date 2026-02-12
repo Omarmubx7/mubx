@@ -170,6 +170,7 @@ export default function AboutPage() {
                                         <Download className="w-5 h-5" />
                                         Download Resume
                                     </a>
+
                                 </div>
                             </div>
                         </div>
