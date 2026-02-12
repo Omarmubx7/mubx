@@ -37,9 +37,11 @@ const Hero3D = () => {
     return (
         <div className='w-full h-full min-h-[500px] flex items-center justify-center cursor-grab active:cursor-grabbing'>
             <Canvas
+                dpr={[1, 1.5]}
+                gl={{ antialias: false, alpha: true }}
                 camera={{ position: [0, 0, 4], fov: 45 }}
-                gl={{ preserveDrawingBuffer: true, alpha: true }}
             >
+
                 <Suspense fallback={null}>
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} intensity={1} />

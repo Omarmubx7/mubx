@@ -100,7 +100,7 @@ export default function RootLayout({
         {/* Resource hints for external domains */}
         <link rel="preconnect" href="https://assets.calendly.com" />
         <link rel="preconnect" href="https://calendly.com" />
-        <link rel="preconnect" href="https://calendly.com" />
+
         <link rel="dns-prefetch" href="https://vercel.live" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
 

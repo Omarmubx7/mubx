@@ -5,12 +5,16 @@ import Lenis from "lenis";
 
 export function useLenis() {
     useEffect(() => {
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        if (isMobile) return;
+
         const lenis = new Lenis({
             lerp: 0.12,           // Increased from 0.08 for more responsiveness
             wheelMultiplier: 1.1, // Slightly increased scroll velocity
             duration: 1.0,        // Explicit duration for predictable behavior
             smoothWheel: true,
         });
+
 
         function raf(time: number) {
             lenis.raf(time);
