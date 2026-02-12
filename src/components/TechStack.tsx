@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import GradientText from './ui/GradientText';
 import Image from 'next/image';
@@ -39,6 +40,16 @@ const techList = [
 
 export default function TechStack() {
     const { t } = useLanguage();
+    const [isMobile, setIsMobile] = useState(true);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     return (
         <section id="tech-stack" className="py-24 bg-background relative overflow-hidden border-t border-border/50">
@@ -46,8 +57,8 @@ export default function TechStack() {
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={staggerContainer}
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={isMobile ? fadeUp : staggerContainer}
                     className="space-y-16"
                 >
                     <div className="text-center max-w-3xl mx-auto space-y-4">

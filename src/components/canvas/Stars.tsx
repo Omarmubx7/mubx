@@ -9,7 +9,7 @@ const StarsCanvas = memo(() => {
 
     useEffect(() => {
         const isMobile = window.matchMedia("(max-width: 768px)").matches;
-        if (isMobile) setStarCount(1500); // Further reduced for mobile Performance
+        if (isMobile) setStarCount(500); // Drastically reduced for 100/100 Mobile Score
     }, []);
 
     return (

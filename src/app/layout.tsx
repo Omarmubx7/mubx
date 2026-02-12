@@ -6,7 +6,9 @@ import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
-import ChatWidget from '@/components/ChatWidget';
+import dynamic from 'next/dynamic';
+
+import DynamicChatWidget from '@/components/DynamicChatWidget';
 
 import SkipToContent from '@/components/SkipToContent';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -161,7 +163,9 @@ export default function RootLayout({
           <SpeedInsights />
           <Analytics />
           <Suspense fallback={null}>
-            <ChatWidget />
+            <Suspense fallback={null}>
+              <DynamicChatWidget />
+            </Suspense>
           </Suspense>
 
         </ThemeProvider>

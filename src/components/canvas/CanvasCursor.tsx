@@ -7,6 +7,13 @@ const CanvasCursor = () => {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
     const [isHovering, setIsHovering] = useState(false);
+    const [isMobile, setIsMobile] = useState(true);
+
+    useEffect(() => {
+        setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    }, []);
+
+    if (isMobile) return null;
 
     const springConfig = { stiffness: 150, damping: 15, mass: 0.1 };
     const springX = useSpring(mouseX, springConfig);
@@ -17,6 +24,16 @@ const CanvasCursor = () => {
     const dotSpringY = useSpring(mouseY, dotSpringConfig);
 
     useEffect(() => {
+        // Mobile Check
+        const checkMobile = () => {
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                return true;
+            }
+            return false;
+        };
+
+        if (checkMobile()) return;
+
         const mouseMove = (e: MouseEvent) => {
             mouseX.set(e.clientX);
             mouseY.set(e.clientY);
@@ -39,6 +56,12 @@ const CanvasCursor = () => {
             window.removeEventListener("mouseover", handleMouseOver);
         };
     }, [mouseX, mouseY]);
+
+    // Don't render on server or mobile (checked via CSS/JS logic usually, but here checking window opacity/events)
+    // For pure mobile optimization, strict null return might flicker if not handled with state, 
+    // but the effect hook prevents listeners. 
+    // Let's add formatted return null based on state to be safe.
+
 
     return (
         <>

@@ -1,23 +1,31 @@
 
-> mubx-portfolio@0.1.0 build
+> mubx-portfolio@0.1.0 build C:\Users\omara\mubx
 > next build
 
 Γû▓ Next.js 16.1.6 (Turbopack)
 - Environments: .env.local
 
+ΓÜá The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
   Creating an optimized production build ...
-Γ£ô Compiled successfully in 5.4s
-  Running TypeScript ...
-Failed to compile.
 
-./src/components/canvas/Stars.tsx:8:17
-Type error: Expected 1 arguments, but got 0.
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./src/app/layout.tsx:11:20
+Ecmascript file had an error
+   9 | import dynamic from 'next/dynamic';
+  10 |
+> 11 | const ChatWidget = dynamic(() => import('@/components/ChatWidget'), {
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 12 |   ssr: false,
+     | ^^^^^^^^^^^^^
+> 13 | });
+     | ^^^
+  14 |
+  15 | import SkipToContent from '@/components/SkipToContent';
+  16 | import { ThemeProvider } from '@/components/ThemeProvider';
 
-   6 |
-   7 | const Stars = (props: any) => {
->  8 |     const ref = useRef<any>();
-     |                 ^
-   9 |
-  10 |     const [sphere] = useState(() => {
-  11 |         const coords = new Float32Array(5000 * 3);
-Next.js build worker exited with code: 1 and signal: null
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+    at <unknown> (./src/app/layout.tsx:11:20)
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.
