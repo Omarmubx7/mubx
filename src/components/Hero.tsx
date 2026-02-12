@@ -63,7 +63,7 @@ export default function Hero() {
                             </span>
 
                             <br />
-                            <span className="block animate-hero-fade-up delay-hero-3">
+                            <span className="block animate-hero-fade-up">
                                 {t.hero.titleEnd}
                             </span>
                         </h1>
