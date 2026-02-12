@@ -101,7 +101,7 @@ export default function Footer() {
 
                 <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-sm text-muted-foreground">
-                        &copy; {new Date().getFullYear()} MUBX. {t.footer.rights}
+                        &copy; {new Date().getFullYear()} MUBX (v2.5). {t.footer.rights}
                     </p>
                     <div className="flex gap-6">
                         <Link href={getHref('/legal/privacy')} className="text-xs text-muted-foreground hover:text-foreground transition-colors">{t.footer.legal.privacy}</Link>
