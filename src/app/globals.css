@@ -190,6 +190,19 @@ body::before {
     animation-delay: 0.4s;
   }
 
+  /* LCP Optimized Animation - No initial opacity: 0 block if possible, or very fast */
+  .animate-hero-fade-up-immediate {
+    animation: heroFadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    /* Removed opacity: 0 to let browser paint immediately if JS/CSS loads late, 
+       but keyframe starts at 0. To fix LCP, we might need no animation on the first text 
+       or a different strategy. Let's try removing opacity: 0 from the class and letting keyframes handle it,
+       BUT keyframes start at 0. Best is to use a specific animation for the first element that sets opacity 1 sooner.
+       Actually, standard heroFadeUp from opacity 0 is fine IF it starts immediately.
+       The issue is likely the class has `opacity: 0` which hides it until animation starts. */
+    opacity: 1;
+    /* Force visible immediately, let animation override if it runs */
+  }
+
   /* Accessible Skip Link */
   .skip-link {
     position: absolute;
