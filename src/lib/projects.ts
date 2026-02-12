@@ -39,8 +39,7 @@ const projectsData: Record<Locale, Project[]> = {
                 role: 'Full Stack Developer & Designer.',
                 solution: 'I developed a bespoke "Link in Bio" web app with custom animations, video backgrounds, and direct social media integrations.',
                 outcome: 'A stunning, high-conversion landing point for social media traffic that perfectly matches the brand identity.',
-            },
-            screenshots: ['/images/theglorious.webp']
+            }
         },
         {
             slug: 'vynex-media',
@@ -117,8 +116,7 @@ const projectsData: Record<Locale, Project[]> = {
                 role: 'تطوير كامل وتصميم.',
                 solution: 'قمت بتطوير تطبيق ويب "رابط في البايو" مخصص مع رسوم متحركة، خلفيات فيديو، وتكامل مباشر مع وسائل التواصل.',
                 outcome: 'نقطة هبوط مذهلة وعالية التحويل لزيارات وسائل التواصل الاجتماعي تتطابق تماماً مع هوية العلامة التجارية.',
-            },
-            screenshots: ['/images/theglorious.webp']
+            }
         },
         {
             slug: 'vynex-media',
