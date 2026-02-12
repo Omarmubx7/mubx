@@ -51,7 +51,7 @@ export default function Hero() {
                         </div>
 
                         <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[1.1] tracking-tight text-foreground uppercase">
-                            <span className="block animate-hero-fade-up delay-hero-1">
+                            <span className="block animate-hero-fade-up">
                                 {t.hero.titleStart}
                             </span>
 

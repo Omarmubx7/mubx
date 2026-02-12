@@ -39,7 +39,7 @@ export default function ProjectCard({ project, index, t, language }: ProjectCard
                 className="group relative p-8 rounded-3xl bg-glass transition-all duration-300 flex flex-col h-full hover:shadow-[0_0_30px_rgba(255,30,30,0.15)] hover:bg-neon/5 hover:border-neon/50"
             >
                 {/* Numbering 01, 02... */}
-                <div className="absolute top-6 right-6 text-4xl font-black text-muted/40 group-hover:text-neon transition-colors pointer-events-none select-none">
+                <div className="absolute top-6 right-6 text-4xl font-black text-muted/60 group-hover:text-neon transition-colors pointer-events-none select-none">
                     0{index + 1}
                 </div>
 
