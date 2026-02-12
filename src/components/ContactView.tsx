@@ -60,7 +60,7 @@ export default function ContactView() {
 
             if (!notifyRes.ok) {
                 const errorData = await notifyRes.json();
-                console.error('📧 Resend Error:', errorData);
+                console.error('📧 Resend Error Details:', JSON.stringify(errorData, null, 2));
             }
 
             router.push(language === 'en' ? '/success' : `/success?lang=${language}`);
