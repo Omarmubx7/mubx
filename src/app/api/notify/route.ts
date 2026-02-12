@@ -34,7 +34,13 @@ export async function POST(req: Request) {
 
     if (error) {
       console.error('🔥 Resend API Error:', error);
-      return NextResponse.json({ error }, { status: 400 });
+      return NextResponse.json({
+        error: {
+          message: error.message,
+          name: error.name,
+          ...error
+        }
+      }, { status: 400 });
     }
 
     console.log('✅ Resend success:', data);
