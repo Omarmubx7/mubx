@@ -7,10 +7,10 @@ export async function POST(req: Request) {
   try {
     const { email, goal, budget, deadline, message, language } = await req.json();
 
-    console.log('📧 Sending Resend notification to omarmubaidincs@gmail.com');
+    console.log('📧 Sending Resend notification to mubxdev@proton.me');
     const { data, error } = await resend.emails.send({
       from: 'MUBX Portfolio <onboarding@resend.dev>',
-      to: ['omarmubaidincs@gmail.com'],
+      to: ['mubxdev@proton.me'],
       subject: `New Lead from Portfolio (${language === 'ar' ? 'Arabic' : 'English'})`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
