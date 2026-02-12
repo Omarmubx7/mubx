@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/favicon.png', // Updated filename
-    apple: '/icon.png', // Keeping high-res for Apple if that's preferred, or switch to favicon.png if identical
+    apple: '/brand-icon.png', // Renamed to force cache bust and match file
   },
   openGraph: {
     title: siteConfig.title,

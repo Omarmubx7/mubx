@@ -95,7 +95,7 @@ const NavbarContent = () => {
             <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2" aria-label="MUBX Home">
                 <div className="relative h-16 w-auto min-w-[140px] transition-transform group-hover:scale-105">
                     <Image
-                        src="/icon.png"
+                        src="/brand-icon.png"
                         alt="MUBX - High Performance Web Systems & E-commerce"
 
                         width={64}
