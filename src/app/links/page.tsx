@@ -63,6 +63,7 @@ export default async function LinksPage(props: Props) {
             url: "https://github.com/Omarmubx7",
             icon: Github,
             sub: "Check my open source code",
+
         },
         {
             name: "GitHub Student Pack",
@@ -193,7 +194,7 @@ export default async function LinksPage(props: Props) {
                             {/* Footer Credit */}
                             <ScrollReveal direction="up" delay={1300} className="mt-20 text-center">
                                 <p className="text-sm font-bold tracking-widest uppercase opacity-20">
-                                    MUBX <span className="mx-2">/</span> EST 2024
+                                    MUBX <span className="mx-2">/</span> EST 2026
                                 </p>
                             </ScrollReveal>
                         </div>
