@@ -66,6 +66,12 @@ export default async function LinksPage(props: Props) {
             url: "https://github.com/Omarmubx7",
             icon: Github,
             sub: "Check my open source code",
+        },
+        {
+            name: "GitHub Student Pack",
+            url: "https://education.github.com/pack",
+            icon: Github,
+            sub: "Free access to the best developer tools",
         }
     ];
 
