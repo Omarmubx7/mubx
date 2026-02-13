@@ -9,10 +9,10 @@ export function useLenis() {
         if (isMobile) return;
 
         const lenis = new Lenis({
-            lerp: 0.12,           // Increased from 0.08 for more responsiveness
-            wheelMultiplier: 1.1, // Slightly increased scroll velocity
-            duration: 1.0,        // Explicit duration for predictable behavior
+            lerp: 0.05,           // Lower lerp = smoother deceleration (0.1 is default)
+            duration: 1.5,        // Longer duration for a more cinematic feel
             smoothWheel: true,
+            wheelMultiplier: 1.0, // Standard multiplier for predictability
         });
 
 

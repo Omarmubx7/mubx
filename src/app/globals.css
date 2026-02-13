@@ -37,18 +37,18 @@ html {
   --font-sans: var(--font-inter);
   --font-display: var(--font-space);
   --font-mono: var(--font-jetbrains);
+  --font-arabic: var(--font-cairo);
 }
 
 :root {
   /* Light Mode Defaults */
   --background: #ffffff;
-  --foreground: #18181b;
+  --foreground: #09090b;
   --neon: #D90429;
   /* Darker red for light mode visibility */
   --muted: #4b5563;
-  /* Darkened from #52525b for better contrast */
-  --card: #f4f4f5;
-  --border: #e4e4e7;
+  --card: #f9f9f9;
+  --border: #e2e2e2;
   --marquee-duration: 20s;
 }
 
@@ -71,6 +71,10 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html[lang='ar'] body {
+  font-family: var(--font-arabic), sans-serif;
 }
 
 code,
@@ -128,7 +132,7 @@ body::before {
     background-color: var(--card);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border);
   }
 
   @media (max-width: 768px) {

@@ -33,7 +33,7 @@ const projectsData: Record<Locale, Project[]> = {
             metrics: 'Custom Design',
             verified_outcome: 'Live & Active',
             timeframe: '1 Week',
-            category: { en: 'Link Bio', ar: 'رابط بايو', icon: '🔗', color: 'bg-purple-500/10 text-purple-400 border-purple-500/20' },
+            category: { en: 'Link Bio', ar: 'رابط بايو', icon: '🔗', color: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20' },
             caseStudy: {
                 problem: 'Generic link tools (Linktree) lacked the visual impact and custom branding required by the client.',
                 role: 'Full Stack Developer & Designer.',
@@ -52,7 +52,7 @@ const projectsData: Record<Locale, Project[]> = {
             verified_outcome: 'Verified via Google Analytics',
 
             timeframe: '2 Weeks',
-            category: { en: 'Digital Agency', ar: 'وكالة رقمية', icon: '🏢', color: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
+            category: { en: 'Digital Agency', ar: 'وكالة رقمية', icon: '🏢', color: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20' },
             caseStudy: {
                 problem: 'Needed a modern website matching their high visual production quality.',
                 role: 'Full implementation: architecture, frontend, performance.',
@@ -71,7 +71,7 @@ const projectsData: Record<Locale, Project[]> = {
             verified_outcome: 'Based on Club Registry Logs',
 
             timeframe: '1 Month',
-            category: { en: 'Education System', ar: 'نظام تعليمي', icon: '🎓', color: 'bg-green-500/10 text-green-400 border-green-500/20' },
+            category: { en: 'Education System', ar: 'نظام تعليمي', icon: '🎓', color: 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20' },
             caseStudy: {
                 problem: 'Manual management of members and bookings via messages/sheets.',
                 role: 'Database design, PHP backend, Admin dashboard.',
@@ -90,7 +90,7 @@ const projectsData: Record<Locale, Project[]> = {
             verified_outcome: 'Operational since Jan 2025',
 
             timeframe: '3 Weeks',
-            category: { en: 'E-commerce', ar: 'تجارة إلكترونية', icon: '🛍️', color: 'bg-orange-500/10 text-orange-400 border-orange-500/20' },
+            category: { en: 'E-commerce', ar: 'تجارة إلكترونية', icon: '🛍️', color: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20' },
             caseStudy: {
                 problem: 'Lack of local POD store with custom design tools.',
                 role: 'Product UX, E-commerce flow, Frontend.',
@@ -110,7 +110,7 @@ const projectsData: Record<Locale, Project[]> = {
             metrics: 'تصميم مخصص',
             verified_outcome: 'مباشر ونشط',
             timeframe: 'أسبوع واحد',
-            category: { en: 'Link Bio', ar: 'رابط بايو', icon: '🔗', color: 'bg-purple-500/10 text-purple-400 border-purple-500/20' },
+            category: { en: 'Link Bio', ar: 'رابط بايو', icon: '🔗', color: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20' },
             caseStudy: {
                 problem: 'أدوات الروابط العادية (مثل Linktree) كانت تفتقر إلى الجاذبية البصرية والهوية المخصصة المطلوبة.',
                 role: 'تطوير كامل وتصميم.',
@@ -129,7 +129,7 @@ const projectsData: Record<Locale, Project[]> = {
             verified_outcome: 'تم التحقق عبر Google Analytics',
 
             timeframe: 'أسبوعين',
-            category: { en: 'Digital Agency', ar: 'وكالة رقمية', icon: '🏢', color: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
+            category: { en: 'Digital Agency', ar: 'وكالة رقمية', icon: '🏢', color: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20' },
             caseStudy: {
                 problem: 'احتاجوا إلى موقع ويب حديث يطابق جودة إنتاجهم المرئي العالية.',
                 role: 'تنفيد كامل: الهيكلية، الواجهة الأمامية، الأداء.',
@@ -148,7 +148,7 @@ const projectsData: Record<Locale, Project[]> = {
             verified_outcome: 'بناءً على سجلات النادي',
 
             timeframe: 'شهر واحد',
-            category: { en: 'Education System', ar: 'نظام تعليمي', icon: '🎓', color: 'bg-green-500/10 text-green-400 border-green-500/20' },
+            category: { en: 'Education System', ar: 'نظام تعليمي', icon: '🎓', color: 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20' },
             caseStudy: {
                 problem: 'الإدارة اليدوية للأعضاء والحجوزات عبر الرسائل/الجداول.',
                 role: 'تصميم قاعدة البيانات، خلفية PHP، لوحة تحكم المسؤول.',
@@ -167,7 +167,7 @@ const projectsData: Record<Locale, Project[]> = {
             verified_outcome: 'يعمل منذ يناير 2025',
 
             timeframe: '3 الأسابيع',
-            category: { en: 'E-commerce', ar: 'تجارة إلكترونية', icon: '🛍️', color: 'bg-orange-500/10 text-orange-400 border-orange-500/20' },
+            category: { en: 'E-commerce', ar: 'تجارة إلكترونية', icon: '🛍️', color: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20' },
             caseStudy: {
                 problem: 'عدم وجود متجر محلي للطباعة حسب الطلب مع أدوات تصميم مخصصة.',
                 role: 'تجربة المستخدم، تدفق التجارة الإلكترونية، الواجهة الأمامية.',

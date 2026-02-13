@@ -95,13 +95,14 @@ export default function Services() {
                             <motion.div
                                 key={service.title}
                                 variants={fadeUp}
+                                whileHover={{ y: -8 }}
                                 className={`p-6 md:p-8 rounded-3xl border transition-all duration-300 group backdrop-blur-md flex flex-col h-full shadow-lg relative ${index === 2
                                     ? 'bg-white/10 border-neon shadow-[0_0_30px_rgba(255,30,30,0.15)] scale-105 z-10'
                                     : 'bg-white/5 border-white/10 hover:border-neon/50 hover:bg-neon/5 hover:shadow-[0_0_20px_rgba(255,30,30,0.3)]'
                                     }`}
                             >
                                 {index === 2 && (
-                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#FF1E1E] text-black text-[10px] font-black px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(255,30,30,0.5)] uppercase tracking-widest whitespace-nowrap">
+                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#FF1E1E] text-white text-xs font-black px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(255,30,30,0.5)] uppercase tracking-widest whitespace-nowrap">
                                         {t.services.popular}
                                     </div>
                                 )}

@@ -177,28 +177,28 @@ const NavbarContent = () => {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="absolute top-0 left-0 right-0 bg-glass/95 p-6 pt-24 md:hidden flex flex-col gap-6 shadow-2xl h-screen"
+                        className="fixed inset-0 z-[60] bg-background/80 backdrop-blur-2xl p-6 pt-16 md:hidden flex flex-col gap-4 shadow-2xl h-screen overflow-y-auto border-b border-white/10"
                     >
                         {links.map((link) => (
                             <motion.div key={link.name} variants={itemVariants}>
                                 <Link
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="text-2xl font-bold text-foreground hover:text-neon transition-colors uppercase tracking-wider"
+                                    className="text-xl font-bold text-foreground hover:text-neon transition-colors uppercase tracking-wider"
                                 >
                                     {link.name}
                                 </Link>
                             </motion.div>
                         ))}
-                        <div className="flex items-center justify-between py-4 border-t border-border mt-auto mb-20">
-                            <span className="text-muted">Language</span>
+                        <div className="flex items-center justify-between py-3 border-t border-border mt-8 mb-4">
+                            <span className="text-sm text-muted">Language</span>
                             <LanguageToggle />
                         </div>
                         <motion.div variants={itemVariants}>
                             <Link
                                 href={getHref('#contact')}
                                 onClick={() => setIsOpen(false)}
-                                className="text-2xl font-bold text-neon hover:text-foreground transition-colors uppercase tracking-wider mb-8 block"
+                                className="text-xl font-bold text-neon hover:text-foreground transition-colors uppercase tracking-wider mb-4 block"
                             >
                                 {t.nav.talk}
                             </Link>

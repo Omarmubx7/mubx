@@ -7,14 +7,13 @@ import { useLanguage } from '@/context/LanguageContext';
 import GradientText from './ui/GradientText';
 import { fadeUp } from '@/lib/motion';
 
-const photos = [
+const basePhotos = [
     '/images/BloB.JO.png',
     '/images/HTU Martial Arts.png',
     '/images/Vynex Media.png',
-    '/images/BloB.JO.png', // Repeat for loop effect
-    '/images/HTU Martial Arts.png',
-    '/images/Vynex Media.png',
 ];
+
+const photos = [...basePhotos, ...basePhotos]; // Double for seamless loop
 
 export default function Photography() {
     const { t } = useLanguage();
@@ -46,6 +45,7 @@ export default function Photography() {
                                 fill
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, 500px"
+                                priority={index < 2} // Preload first two for smoother initial render
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, MapPin, Check } from 'lucide-react';
+import { Mail, Github, Linkedin, MapPin, Check, X } from 'lucide-react';
 import { fadeUp } from '@/lib/motion';
 
 import { useState, useEffect } from 'react';
@@ -218,11 +218,11 @@ export default function Contact() {
                                     </div>
                                 </div>
                                 <div>
-                                    <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ml-1">{t.contact.form.email}</label>
+                                    <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ms-1">{t.contact.form.email}</label>
                                     <input type="email" name="email" id="email" required className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all placeholder:text-muted/50" placeholder={t.contact.form.emailPlaceholder} />
                                 </div>
                                 <div>
-                                    <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ml-1">{t.contact.form.details}</label>
+                                    <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ms-1">{t.contact.form.details}</label>
                                     <textarea name="message" id="message" rows={4} required className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all resize-none placeholder:text-muted/50" placeholder={t.contact.form.detailsPlaceholder}></textarea>
                                 </div>
                                 <button
@@ -234,13 +234,27 @@ export default function Contact() {
                                 </button>
 
                                 {formState === 'success' && (
-                                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 rounded-xl bg-green-500/20 border border-green-500/50 text-green-500 font-bold text-center text-sm">
-                                        {t.contact.form.success}
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        className="p-6 rounded-2xl bg-green-500/10 border border-green-500/50 text-green-500 flex flex-col items-center gap-2 text-center"
+                                    >
+                                        <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center mb-2">
+                                            <Check className="w-6 h-6" />
+                                        </div>
+                                        <p className="font-bold text-lg">{t.contact.form.success}</p>
                                     </motion.div>
                                 )}
                                 {formState === 'error' && (
-                                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 rounded-xl bg-red-500/20 border border-red-500/50 text-red-500 font-bold text-center text-sm">
-                                        {t.contact.form.error}
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        className="p-6 rounded-2xl bg-red-500/10 border border-red-500/50 text-red-500 flex flex-col items-center gap-2 text-center"
+                                    >
+                                        <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center mb-2">
+                                            <X className="w-6 h-6" />
+                                        </div>
+                                        <p className="font-bold text-lg">{t.contact.form.error}</p>
                                     </motion.div>
                                 )}
                             </form>

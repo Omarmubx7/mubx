@@ -11,13 +11,15 @@ export default function Testimonials() {
     const socialLinks = [
         'https://www.instagram.com/vynexmedia.jo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
         'https://htu.edu.jo',
-        'https://blobjor.me'
+        'https://blobjor.me',
+        'https://www.instagram.com/thegloriousinc'
     ];
 
     const bgColors = [
         'from-orange-500/10 to-orange-500/0',
         'from-red-600/10 to-red-600/0',
-        'from-blue-500/10 to-blue-500/0'
+        'from-blue-500/10 to-blue-500/0',
+        'from-purple-500/10 to-purple-500/0'
     ];
 
     return (

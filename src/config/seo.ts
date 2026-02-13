@@ -10,21 +10,20 @@ export const siteConfig = {
     },
     keywords: [
         'Omar Mubaidin',
+        'عمر مبيضين',
         'MUBX',
         'Web Developer Amman',
         'Web Developer Jordan',
         'Software Engineer Jordan',
-        'Next.js Developer',
-        'Full Stack Developer',
-        'Computer Science Student',
-        'Custom Web Development',
-        'E-commerce Jordan',
-        'Zain Cash Integration',
-        'Startups',
-        'Secure Web Systems',
-        'Fast Web Systems'
+        'Next.js Developer Jordan',
+        'Full Stack Developer Amman',
+        'Zain Cash Integration Jordan',
+        'Ecommerce Developer Amman',
+        'Custom Web Systems',
+        'Verified Web Systems',
+        'Startup Developer Jordan'
     ],
-    ogImage: "/icon.png", // Recommended size 1200x630
+    ogImage: "/og-image.png", // Recommended size 1200x630
     links: {
         github: "https://github.com/Omarmubx7",
         linkedin: "https://www.linkedin.com/in/omarmubaidin",
@@ -32,12 +31,12 @@ export const siteConfig = {
     locale: 'en_US',
     metadata: {
         en: {
-            title: "Omar Mubaidin — Web Developer & Computer Science Student",
-            description: "I help startups build fast, secure web systems. Computer Science student and Full Stack Developer based in Amman, Jordan.",
+            title: "Omar Mubaidin — Full Stack Web Developer in Amman",
+            description: "Expert Next.js developer building fast, secure web systems for startups and brands in Jordan. Specializing in E-commerce & Zain Cash integration.",
         },
         ar: {
-            title: "عمر مبيضين — مطور ويب شامل وطالب علوم حاسوب في عمان",
-            description: "مطور ويب شامل في عمان. أساعد الشركات الناشئة في بناء أنظمة ومتاجر إلكترونية سريعة وآمنة.",
+            title: "عمر مبيضين — مطور ويب في عمان | MUBX",
+            description: "مطور ويب متخصص في إنشاء أنظمة برمجية ومتاجر إلكترونية سريعة وآمنة في الأردن. خبير في ربط بوابات الدفع Zain Cash و CliQ.",
         }
     },
     openGraph: {

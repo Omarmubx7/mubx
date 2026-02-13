@@ -39,10 +39,10 @@ export const dictionary = {
                     label: 'Basic',
                     title: 'Link Tree',
                     desc: 'A custom, branded link page to aggregate your social media. Better than Linktree.',
-                    timeline: '2-3 Days',
+                    timeline: '1-2 Days',
                     deliverables: 'Hosting Included',
                     details: ['Custom Design', 'Social Icons', 'Contact Form', 'Fast Loading'],
-                    price: '70 JD'
+                    price: '50 JD'
                 },
                 landing: {
                     label: 'Starter',
@@ -69,7 +69,7 @@ export const dictionary = {
                     timeline: '3+ Weeks',
                     deliverables: 'Custom Scope',
                     details: ['Database Design', 'User Auth', 'Payment Integration', 'Admin Dashboard'],
-                    price: '1000+ JD'
+                    price: '600+JD'
                 }
             },
             howItWorks: {
@@ -237,6 +237,15 @@ export const dictionary = {
                     outcome: 'BloB Store — 200% online sales boost',
                     text: "Customers can now explore designs and track orders online, turning what used to be manual communication into a smoother digital flow. The print-on-demand store he built is a game changer.",
                     linkLabel: "Visit BloB.JO"
+                },
+                {
+                    client: "Majd",
+                    role: "Founder @ The Glorious",
+                    project: "Artistic Bio Link",
+                    year: "Feb 2025",
+                    outcome: "The Glorious — High-end brand integration",
+                    text: "Omar transformed our social presence with a custom bio link that perfectly captures our aesthetic. It's fast, beautiful, and much more professional than standard tools.",
+                    linkLabel: "Follow Majd"
                 }
             ]
         },
@@ -721,6 +730,15 @@ export const dictionary = {
                     outcome: 'متجر BloB — زيادة 200% في المبيعات',
                     text: "يمكن للعملاء الآن استعراض التصاميم وتتبع الطلبات عبر الإنترنت، مما حول التواصل اليدوي إلى تدفق رقمي سلس. المتجر الذي بناه غيّر قواعد اللعبة بالنسبة لنا.",
                     linkLabel: "زيارة المتجر"
+                },
+                {
+                    client: "مجد العمري",
+                    role: "مؤسس @ The Glorious",
+                    project: "صفحة روابط فنية",
+                    year: "فبراير 2025",
+                    outcome: "The Glorious — تكامل فني للعلامة التجارية",
+                    text: "حول عمر حضورنا الاجتماعي من خلال صفحة روابط مخصصة تعكس جماليتنا تماماً. إنها سريعة، جميلة، وأكثر احترافية بكثير من الأدوات التقليدية.",
+                    linkLabel: "تابع مجد"
                 }
             ]
         },

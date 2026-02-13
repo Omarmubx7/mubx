@@ -35,13 +35,21 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+import { Cairo } from 'next/font/google';
+
+const cairo = Cairo({
+  subsets: ['arabic'],
+  variable: '--font-cairo',
+  display: 'swap',
+});
+
 import { siteConfig } from '@/config/seo';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.title,
-    template: `%s | ${siteConfig.name} - ${siteConfig.author.name}`,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
@@ -112,7 +120,7 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased selection:bg-neon selection:text-black font-sans`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${cairo.variable} bg-background text-foreground antialiased selection:bg-neon selection:text-black font-sans`}>
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="dark"
@@ -127,7 +135,7 @@ export default function RootLayout({
                 "@type": "Person",
                 "name": "Omar Mubaidin | عمر مبيضين",
                 "url": "https://mubx.dev",
-                "image": "https://mubx.dev/favicon-new.png",
+                "image": "https://mubx.dev/icon.png",
                 "jobTitle": "Web Developer",
                 "sameAs": [
                   "https://github.com/Omarmubx7",
@@ -137,8 +145,8 @@ export default function RootLayout({
               {
                 "@type": "ProfessionalService",
                 "name": "MUBX",
-                "image": "https://mubx.dev/favicon-new.png",
-                "logo": "https://mubx.dev/favicon-new.png",
+                "image": "https://mubx.dev/icon.png",
+                "logo": "https://mubx.dev/icon.png",
                 "description": "High-performance web development for verified systems and startups.",
                 "url": "https://mubx.dev",
                 "address": {
@@ -162,9 +170,7 @@ export default function RootLayout({
           <SpeedInsights />
           <Analytics />
           <Suspense fallback={null}>
-            <Suspense fallback={null}>
-              <DynamicChatWidget />
-            </Suspense>
+            <DynamicChatWidget />
           </Suspense>
 
         </ThemeProvider>

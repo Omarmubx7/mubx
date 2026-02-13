@@ -9,19 +9,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import dynamic from 'next/dynamic';
 import { HeroSkeleton } from './ui/LoadingSkeleton';
 
-// Dynamic import for 3D component to reduce initial bundle size
-const Hero3D = dynamic(() => import('./canvas/Hero3D'), {
-    ssr: false,
-    loading: () => (
-        <div className="w-full h-full flex items-center justify-center">
-            <div className="relative w-[400px] h-[400px]">
-                <div className="absolute inset-0 rounded-full bg-muted/10 animate-pulse" />
-                <div className="absolute inset-8 rounded-full bg-muted/5 animate-pulse delay-150" />
-                <div className="absolute inset-16 rounded-full bg-muted/5 animate-pulse delay-300" />
-            </div>
-        </div>
-    ),
-});
+
 
 export default function Hero() {
     const { t, isRTL, language } = useLanguage();
@@ -98,14 +86,14 @@ export default function Hero() {
 
                     {/* Right Column: Hero Image / Visual */}
                     <div
-                        className="flex-1 relative h-[600px] lg:h-[700px] w-full flex items-center justify-center group order-2 lg:order-none animate-hero-slide-in"
+                        className="flex-1 relative h-[400px] lg:h-[600px] w-full flex items-center justify-center group order-2 lg:order-none animate-hero-slide-in"
                     >
                         <div className="absolute inset-0 bg-gradient-to-tr from-neon/10 to-transparent rounded-full blur-[60px] animate-pulse-slow" />
 
-                        {/* 3D Hero Scene */}
-                        <div className="relative w-full h-full min-h-[500px] flex items-center justify-center">
-                            <Hero3D />
-                        </div>
+                        {/* 
+                            3D Hero Scene Removed for Performance 
+                            The glow above maintains visual interest without the heavy canvas load.
+                        */}
                     </div>
 
                 </div>

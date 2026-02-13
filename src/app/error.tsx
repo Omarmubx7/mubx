@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { RefreshCcw } from 'lucide-react';
 
 export default function Error({
