@@ -487,6 +487,52 @@ export const dictionary = {
                     description: 'Gained hands-on experience in frontend workflows, UI/UX best practices, and agile development cycles.'
                 }
             ]
+        },
+        contractPage: {
+            title: 'Master Service Agreement',
+            provider: 'Provider',
+            client: 'Client',
+            location: 'Location',
+            effectiveDate: 'Effective Date',
+            sections: [
+                {
+                    title: '1. SCOPE OF SERVICES',
+                    content: 'The Provider agrees to perform web development and digital services as outlined in the attached Statement of Work (SOW) or project proposal. Any changes to the scope must be agreed upon in writing.'
+                },
+                {
+                    title: '2. COMPENSATION & PAYMENT',
+                    content: 'Total Project Fee: [Amount]. Deposit: A non-refundable deposit of 50% is required before work commences. Milestones: Payments will be due upon completion of defined project milestones. Late Fees: Payments delayed by more than 14 days will incur a 5% late fee.'
+                },
+                {
+                    title: '3. INTELLECTUAL PROPERTY',
+                    content: 'Upon receipt of full and final payment, the Provider transfers all rights, title, and interest in the final deliverables to the Client. The Provider retains the right to display the work in their professional portfolio.'
+                },
+                {
+                    title: '4. CLIENT OBLIGATIONS',
+                    content: 'The Client agrees to provide all necessary content, assets, and access (e.g., logos, copy, API keys) in a timely manner. Decisions or feedback must be provided within 3 business days.'
+                },
+                {
+                    title: '5. WARRANTIES & LIABILITY',
+                    content: 'The Provider warrants that the work will function as specified for 30 days after delivery. Total liability is limited to the amount paid for the services.'
+                },
+                {
+                    title: '6. CONFIDENTIALity',
+                    content: 'Both parties agree to keep all non-public information shared during the project confidential.'
+                },
+                {
+                    title: '7. TERMINATION',
+                    content: 'Either party may terminate the project with 10 days written notice. The Client will pay for all work completed up to the termination date.'
+                },
+                {
+                    title: '8. GOVERNING LAW',
+                    content: 'This Agreement shall be governed by and construed in accordance with the laws of the Hashemite Kingdom of Jordan.'
+                }
+            ],
+            footer: {
+                clientSignature: 'Client Signature',
+                providerSignature: 'Provider Signature',
+                date: 'Date'
+            }
         }
     },
     ar: {
@@ -974,6 +1020,52 @@ export const dictionary = {
                     description: 'اكتسبت خبرة عملية في تدفقات العمل للواجهات الأمامية، أفضل ممارسات تجربة المستخدم، ودورات التطوير الرشيقة.'
                 }
             ]
+        },
+        contractPage: {
+            title: 'اتفاقية تقديم خدمات برمجية',
+            provider: 'مقدم الخدمة',
+            client: 'العميل',
+            location: 'الموقع',
+            effectiveDate: 'تاريخ سريان الاتفاقية',
+            sections: [
+                {
+                    title: '1. نطاق الخدمات',
+                    content: 'يوافق مقدم الخدمة على أداء خدمات تطوير الويب والخدمات الرقمية كما هو موضح في بيان العمل (SOW) المرفق أو مقترح المشروع. يجب الاتفاق على أي تغييرات في النطاق كتابةً.'
+                },
+                {
+                    title: '2. التعويض والدفع',
+                    content: 'إجمالي رسوم المشروع: [المبلغ]. الدفعة المقدمة: مطلوب دفعة مقدمة غير قابلة للاسترداد بنسبة 50% قبل بدء العمل. المعالم: ستكون المدفوعات مستحقة عند الانتهاء من معالم المشروع المحددة. رسوم التأخير: المدفوعات المتأخرة لأكثر من 14 يوماً ستتحمل رسوم تأخير بنسبة 5%.'
+                },
+                {
+                    title: '3. الملكية الفكرية',
+                    content: 'عند استلام كامل الدفعة النهائية، ينقل مقدم الخدمة جميع الحقوق والملكية والمصالح في المخرجات النهائية إلى العميل. يحتفظ مقدم الخدمة بالحق في عرض العمل في محفظة أعماله المهنية.'
+                },
+                {
+                    title: '4. التزامات العميل',
+                    content: 'يوافق العميل على توفير جميع المحتويات والأصول والوصول الضروري (مثل الشعارات والنصوص ومفاتيح API) في الوقت المناسب. يجب تقديم القرارات أو الملاحظات في غضون 3 أيام عمل.'
+                },
+                {
+                    title: '5. الضمانات والمسؤولية',
+                    content: 'يضمن مقدم الخدمة أن العمل سيعمل كما هو محدد لمدة 30 يوماً بعد التسليم. تقتصر المسؤولية الإجمالية على المبلغ المدفوع مقابل الخدمات.'
+                },
+                {
+                    title: '6. السرية',
+                    content: 'يوافق الطرفان على الحفاظ على سرية جميع المعلومات غير العامة التي يتم مشاركتها أثناء المشروع.'
+                },
+                {
+                    title: '7. الإنهاء',
+                    content: 'يجوز لأي من الطرفين إنهاء المشروع بإشعار خطي مدته 10 أيام. سيدفع العميل مقابل جميع الأعمال المنجزة حتى تاريخ الإنهاء.'
+                },
+                {
+                    title: '8. القانون الحاكم',
+                    content: 'تخضع هذه الاتفاقية وتفسر وفقاً لقوانين المملكة الأردنية الهاشمية.'
+                }
+            ],
+            footer: {
+                clientSignature: 'توقيع العميل',
+                providerSignature: 'توقيع مقدم الخدمة',
+                date: 'التاريخ'
+            }
         }
     }
 };
