@@ -40,7 +40,7 @@ export const dictionary = {
                     title: 'Link Tree',
                     desc: 'A custom, branded link page to aggregate your social media. Better than Linktree.',
                     timeline: '1-2 Days',
-                    deliverables: 'Hosting Included',
+                    deliverables: 'Hosting and domain Included',
                     details: ['Custom Design', 'Social Icons', 'Contact Form', 'Fast Loading'],
                     price: '50 JD'
                 },
@@ -49,7 +49,7 @@ export const dictionary = {
                     title: 'Landing Page',
                     desc: 'High-conversion single page site. Perfect for ads, events, or product launches.',
                     timeline: '5-7 Days',
-                    deliverables: '1 Page',
+                    deliverables: '1-3 Page',
                     details: ['Copywriting', 'SEO Basics', 'Mobile Ready', 'Analytics'],
                     price: '300 JD'
                 },
@@ -574,16 +574,16 @@ export const dictionary = {
                     title: 'شجرة روابط',
                     desc: 'صفحة روابط مخصصة لجمع كل حساباتك. أفضل وأسرع من Linktree.',
                     timeline: '2-3 أيام',
-                    deliverables: 'شامل الاستضافة',
+                    deliverables: 'شامل الاستضافة والدومين',
                     details: ['تصميم مخصص', 'أيقونات التواصل', 'نموذج تواصل', 'تحميل سريع'],
-                    price: '70 دينار'
+                    price: '50 دينار'
                 },
                 landing: {
                     label: 'بداية',
                     title: 'صفحة هبوط',
                     desc: 'صفحة واحدة عالية التحويل. ممتازة للإعلانات، الفعاليات، أو إطلاق منتج.',
                     timeline: '5-7 أيام',
-                    deliverables: 'صفحة واحدة',
+                    deliverables: '1-3 صفحات',
                     details: ['كتابة محتوى', 'تحسين SEO', 'متجاوب للجوال', 'تحليلات زوار'],
                     price: '300 دينار'
                 },

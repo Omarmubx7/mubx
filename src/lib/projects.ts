@@ -24,6 +24,24 @@ export interface Project {
 const projectsData: Record<Locale, Project[]> = {
     en: [
         {
+            slug: 'men-only-show',
+            title: 'Men Only Show',
+            description: 'The first talk show for men in the Arab world. Discussing success, relationships, and personal growth.',
+            tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
+            links: { live: 'https://menonlyshow-gray.vercel.app/' },
+            logo: '/images/menonly-logo.webp',
+            metrics: "Arab World's First",
+            verified_outcome: 'Live Platform',
+            timeframe: 'Ongoing',
+            category: { en: 'Podcast Platform', ar: 'منصة بودكاست', icon: '🎙️', color: 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-500/20' },
+            caseStudy: {
+                problem: 'Lack of a dedicated digital platform for men\'s dialogue in the region.',
+                role: 'Frontend Developer.',
+                solution: 'Developed a high-performance web platform to host episodes, guest information, and community resources.',
+                outcome: 'Successfully established a digital presence for the show, reaching a wide audience.',
+            }
+        },
+        {
             slug: 'the-glorious-page',
             title: 'The Glorious Page',
             description: 'Custom Link Tree. A branded, high-performance alternative to Linktree for a lifestyle brand. Includes Instagram integration.',
@@ -100,6 +118,24 @@ const projectsData: Record<Locale, Project[]> = {
         }
     ],
     ar: [
+        {
+            slug: 'men-only-show',
+            title: 'للرجال فقط',
+            description: 'أكبر منصة حوارية للرجال في العالم العربي. نناقش النجاح، العلاقات، والنمو الشخصي.',
+            tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
+            links: { live: 'https://menonlyshow-gray.vercel.app/' },
+            logo: '/images/menonly-logo.webp',
+            metrics: 'الأول عربياً',
+            verified_outcome: 'منصة حية',
+            timeframe: 'مستمر',
+            category: { en: 'Podcast Platform', ar: 'منصة بودكاست', icon: '🎙️', color: 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-500/20' },
+            caseStudy: {
+                problem: 'نقص في المنصات الحوارية الرقمية المخصصة للرجال في المنطقة.',
+                role: 'مطور واجهات أمامية.',
+                solution: 'طورت منصة ويب عالية الأداء لاستعراض الحلقات، معلومات الضيوف، وموارد المجتمع.',
+                outcome: 'تأسيس حضور رقمي ناجح للبرنامج والوصول إلى جمهور واسع.',
+            }
+        },
         {
             slug: 'the-glorious-page',
             title: 'The Glorious Page',
