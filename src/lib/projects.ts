@@ -24,6 +24,24 @@ export interface Project {
 const projectsData: Record<Locale, Project[]> = {
     en: [
         {
+            slug: 'aqabwi',
+            title: 'Aqabwi',
+            description: 'A comprehensive digital guide for Aqaba city, featuring local businesses, tourism spots, and community events.',
+            tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
+            links: { live: 'https://aqabwi.vercel.app/' },
+            logo: '/images/aqabwi-logo.png',
+            metrics: 'City Portal',
+            verified_outcome: 'Community Adoption',
+            timeframe: 'Ongoing',
+            category: { en: 'City Portal', ar: 'بوابة المدينة', icon: '🌊', color: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20' },
+            caseStudy: {
+                problem: 'Lack of a centralized digital platform for Aqaba city services and tourism information.',
+                role: 'Full Stack Developer',
+                solution: 'Developed a comprehensive web application to showcase local businesses and tourist attractions with an intuitive interface.',
+                outcome: 'Increased visibility for local businesses and improved access to city information for residents and visitors.',
+            }
+        },
+        {
             slug: 'men-only-show',
             title: 'Men Only Show',
             description: 'The first talk show for men in the Arab world. Discussing success, relationships, and personal growth.',
@@ -118,6 +136,24 @@ const projectsData: Record<Locale, Project[]> = {
         }
     ],
     ar: [
+        {
+            slug: 'aqabwi',
+            title: 'عقباوي',
+            description: 'دليل رقمي شامل لمدينة العقبة، يضم الشركات المحلية، الأماكن السياحية، والفعاليات المجتمعية.',
+            tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
+            links: { live: 'https://aqabwi.vercel.app/' },
+            logo: '/images/aqabwi-logo.png',
+            metrics: 'بوابة المدينة',
+            verified_outcome: 'اعتماد مجتمعي',
+            timeframe: 'مستمر',
+            category: { en: 'City Portal', ar: 'بوابة المدينة', icon: '🌊', color: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20' },
+            caseStudy: {
+                problem: 'نقص في وجود منصة رقمية مركزية لخدمات مدينة العقبة والمعلومات السياحية.',
+                role: 'مطور واجهات كاملة',
+                solution: 'تطوير تطبيق ويب شامل لعرض الأعمال المحلية والمعالم السياحية بواجهة سهلة الاستخدام.',
+                outcome: 'زيادة الظهور للشركات المحلية وتحسين الوصول إلى معلومات المدينة للمقيمين والزوار.',
+            }
+        },
         {
             slug: 'men-only-show',
             title: 'للرجال فقط',
