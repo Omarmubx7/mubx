@@ -14,6 +14,7 @@ The Provider agrees to perform web development and digital services as outlined 
 *   **Total Project Fee:** [Amount] [Currency, e.g., JOD]
 *   **Deposit:** A non-refundable deposit of [Percentage, e.g., 50%] is required before work commences.
 *   **Milestones:** Payments will be due upon completion of defined project milestones.
+
 *   **Late Fees:** Payments delayed by more than 14 days will incur a [Percentage, e.g., 5%] late fee.
 
 ### 3. INTELLECTUAL PROPERTY
