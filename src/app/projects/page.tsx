@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { LanguageProvider } from '@/context/LanguageContext';
 import Projects from '@/components/Projects';
+import Testimonials from '@/components/Testimonials';
 import { siteConfig } from '@/config/seo';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -31,6 +32,7 @@ export default async function ProjectsPage(props: Props) {
                     <Navbar />
                     <div className="pt-24">
                         <Projects />
+                        <Testimonials />
                     </div>
 
                     <JsonLd data={{

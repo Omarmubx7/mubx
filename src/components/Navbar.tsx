@@ -54,7 +54,7 @@ const NavbarContent = () => {
     const activeSection = useScrollSpy([
 
 
-        'testimonials',
+
         'about',
         'tech',
         'timeline',
@@ -77,7 +77,7 @@ const NavbarContent = () => {
         { name: t.nav.services, href: getHref('/services') },
         { name: t.nav.projects, href: getHref('/projects') },
         { name: t.nav.lab, href: getHref('/blog') },
-        { name: t.nav.testimonials, href: getHref('/#testimonials') },
+        { name: t.nav.testimonials, href: getHref('/projects#testimonials') },
         { name: t.nav.contact, href: getHref('/#contact') },
     ];
 

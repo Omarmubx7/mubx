@@ -17,9 +17,7 @@ const SkillTicker = dynamic(() => import('@/components/SkillTicker'), {
 // Performance optimized dynamic imports for below-the-fold content
 
 
-const Testimonials = dynamic(() => import('@/components/Testimonials'), {
-    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
-});
+
 const About = dynamic(() => import('@/components/About'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
@@ -66,7 +64,7 @@ export default function HomeClient({ lang }: { lang: Locale }) {
                 <Suspense fallback={null}>
 
 
-                    <Testimonials />
+
                     <About />
                     <TechStack />
                     <Timeline />
