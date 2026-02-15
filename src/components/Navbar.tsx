@@ -77,7 +77,7 @@ const NavbarContent = () => {
         { name: t.nav.services, href: getHref('/services') },
         { name: t.nav.projects, href: getHref('/projects') },
 
-        { name: t.nav.testimonials, href: getHref('/projects#testimonials') },
+
         { name: t.nav.contact, href: getHref('/#contact') },
     ];
 
