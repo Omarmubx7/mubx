@@ -27,9 +27,7 @@ const TechStack = dynamic(() => import('@/components/TechStack'), {
 const Timeline = dynamic(() => import('@/components/Timeline'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
-const BlogPreview = dynamic(() => import('@/components/BlogPreview'), {
-    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
-});
+
 const Contact = dynamic(() => import('@/components/Contact'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
@@ -68,7 +66,7 @@ export default function HomeClient({ lang }: { lang: Locale }) {
                     <About />
                     <TechStack />
                     <Timeline />
-                    <BlogPreview />
+
                     <Contact />
                     <Footer />
                 </Suspense>
