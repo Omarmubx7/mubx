@@ -44,8 +44,8 @@ html {
   /* Light Mode Defaults */
   --background: #ffffff;
   --foreground: #09090b;
-  --neon: #D70427;
-  /* Darker red for light mode visibility (4.5:1) */
+  --neon: #E11D1D;
+  /* Highly visible red (>4.5:1 contrast against white) */
   --muted: #4b5563;
   --card: #f9f9f9;
   --border: #e2e2e2;
@@ -56,8 +56,8 @@ html {
   /* Dark Mode Defaults */
   --background: #050505;
   --foreground: #F9FAFB;
-  --neon: #D71C1C;
-  /* Darker red for 4.5:1 contrast against white */
+  --neon: #E11D1D;
+  /* Adjusted for both contrast and vibrancy */
   --muted: #9CA3AF;
   --card: rgba(255, 255, 255, 0.03);
   --border: rgba(255, 255, 255, 0.05);
