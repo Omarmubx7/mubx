@@ -95,15 +95,14 @@ const NavbarContent = () => {
             <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2" aria-label="MUBX Home">
                 <div className="relative h-16 w-auto min-w-[140px] transition-transform group-hover:scale-105">
                     <Image
-                        src="/brand-icon.png"
+                        src="/mubxlogo.png"
                         alt="MUBX - High Performance Web Systems & E-commerce"
 
-                        width={64}
-                        height={64}
+                        width={120}
+                        height={40}
                         className="h-full w-auto object-contain dark:invert-0 invert"
                         priority
-                        unoptimized
-                        sizes="(max-width: 768px) 48px, 64px"
+                        sizes="(max-width: 768px) 100px, 120px"
                     />
 
                 </div>
