@@ -46,7 +46,7 @@ export const siteConfig = {
         siteName: 'MUBX',
         images: [
             {
-                url: '/icon.png',
+                url: '/mubxlogo.png',
                 alt: 'MUBX Logo',
             },
         ],
@@ -54,7 +54,7 @@ export const siteConfig = {
     twitter: {
         card: 'summary_large_image',
         creator: '@omarmubx',
-        images: ['/icon.png'],
+        images: ['/mubxlogo.png'],
     },
 };
 

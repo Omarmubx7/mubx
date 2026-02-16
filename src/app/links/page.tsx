@@ -133,7 +133,7 @@ export default async function LinksPage(props: Props) {
                                                 src="/mubxlogo.png"
                                                 alt="MUBX Profile"
                                                 fill
-                                                className="object-cover rounded-full border-4 border-background shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                                                className="object-contain p-2 bg-black/50 rounded-full border-4 border-background shadow-2xl transition-transform duration-500 group-hover:scale-105"
                                                 priority
                                             />
                                         </div>
