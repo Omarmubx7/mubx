@@ -4,8 +4,8 @@
     "description": "Portfolio of Omar Mubaidin - Full Stack Developer & CS Student",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#030303",
-    "theme_color": "#FF1E1E",
+    "background_color": "#050505",
+    "theme_color": "#D71C1C",
     "icons": [
         {
             "src": "/icon.png",

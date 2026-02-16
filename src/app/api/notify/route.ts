@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       subject: `New Lead from Portfolio (${language === 'ar' ? 'Arabic' : 'English'})`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-          <h2 style="color: #FF1E1E;">New Project Inquiry</h2>
+          <h2 style="color: #D71C1C;">New Project Inquiry</h2>
           <hr />
           <p><strong>From:</strong> ${email}</p>
           <p><strong>Goal:</strong> ${goal || 'Not specified'}</p>

@@ -32,8 +32,8 @@ export default function Hero() {
                     <div
                         className="flex-1 text-center lg:text-left rtl:lg:text-right order-1 lg:order-none"
                     >
-                        <div className="flex justify-center lg:justify-start rtl:lg:justify-end mb-6 animate-hero-fade-up">
-                            <Badge variant="neon" className="animate-pulse-slow">
+                        <div className="flex justify-center lg:justify-start rtl:lg:justify-end mb-6">
+                            <Badge variant="neon">
                                 {t.hero.badge}
                             </Badge>
                         </div>
@@ -56,9 +56,7 @@ export default function Hero() {
                             </span>
                         </h1>
 
-                        <p
-                            className="text-lg md:text-xl text-muted mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed animate-hero-fade-up delay-hero-3"
-                        >
+                        <p className="text-lg md:text-xl text-muted mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
                             {t.hero.description}
                         </p>
 
@@ -98,6 +96,6 @@ export default function Hero() {
 
                 </div>
             </div>
-        </section>
+        </section >
     );
 }

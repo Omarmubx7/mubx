@@ -53,7 +53,7 @@ export default function LaptopScreenOverlay({ scrollProgress }: LaptopScreenOver
                     lines: [
                         "mubx@gemini:~$ gemini3 generate-landing --brand \"MUBX\" --stack \"Next.js\"",
                         "→ Headline: \"Building fast, secure web systems for ambitious teams\"",
-                        "→ Subheading: \"Full Stack Developer in Amman, Jordan.\"",
+                        "→ Subheading: \"Full Stack Developer & CS Student.\"",
                         "→ Primary CTA: \"Book a free call\"",
                         "✔ Landing page spec generated. Ready to build with MUBX."
                     ],
