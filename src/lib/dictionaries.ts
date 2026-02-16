@@ -246,6 +246,24 @@ export const dictionary = {
                     outcome: "The Glorious — High-end brand integration",
                     text: "Omar transformed our social presence with a custom bio link that perfectly captures our aesthetic. It's fast, beautiful, and much more professional than standard tools.",
                     linkLabel: "Follow Majd"
+                },
+                {
+                    client: "Abdallah Alfayoumi",
+                    role: "Founder @ Aqabwi",
+                    project: "Photography Portfolio",
+                    year: "Feb 2025",
+                    outcome: "Aqabwi — Cinematic portfolio launch",
+                    text: "Working with Omar was a game-changer for my photography business. He built a high-performance portfolio that truly showcases my work with stunning detail and speed.",
+                    linkLabel: "View Aqabwi"
+                },
+                {
+                    client: "Men Only Show Lead",
+                    role: "Founder @ Men Only Show",
+                    project: "Podcast Platform",
+                    year: "Feb 2025",
+                    outcome: "Men Only Show — Arab world's first platform",
+                    text: "Omar delivered a high-quality platform that perfectly matches the scale and vision of our show. The performance and design are top-notch.",
+                    linkLabel: "Visit Show"
                 }
             ]
         },
@@ -785,6 +803,24 @@ export const dictionary = {
                     outcome: "The Glorious — تكامل فني للعلامة التجارية",
                     text: "حول عمر حضورنا الاجتماعي من خلال صفحة روابط مخصصة تعكس جماليتنا تماماً. إنها سريعة، جميلة، وأكثر احترافية بكثير من الأدوات التقليدية.",
                     linkLabel: "تابع مجد"
+                },
+                {
+                    client: "عبدالله الفايومي",
+                    role: "مؤسس @ عقباوي",
+                    project: "معرض أعمال تصوير",
+                    year: "فبراير 2025",
+                    outcome: "عقباوي — إطلاق معرض سينمائي",
+                    text: "العمل مع عمر كان نقطة تحول لعملي في التصوير. لقد بنى معرض أعمال عالي الأداء يعرض عملي حقاً بتفاصيل وسرعة مذهلة.",
+                    linkLabel: "زيارة عقباوي"
+                },
+                {
+                    client: "مؤسس برنامج للرجال فقط",
+                    role: "مؤسس @ للرجال فقط",
+                    project: "منصة بودكاست",
+                    year: "فبراير 2025",
+                    outcome: "للرجال فقط — المنصة الأولى عربياً",
+                    text: "قدم عمر منصة عالية الجودة تتناسب تماماً مع نطاق ورؤية برنامجنا. الأداء والتصميم من الدرجة الأولى.",
+                    linkLabel: "زيارة البرنامج"
                 }
             ]
         },

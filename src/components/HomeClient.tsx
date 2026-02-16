@@ -14,20 +14,6 @@ const SkillTicker = dynamic(() => import('@/components/SkillTicker'), {
     loading: () => <div className="h-40 w-full animate-pulse bg-muted/20" />,
 });
 
-const Services = dynamic(() => import('@/components/Services'), {
-    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
-});
-const Projects = dynamic(() => import('@/components/Projects'), {
-    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
-});
-const Testimonials = dynamic(() => import('@/components/Testimonials'), {
-    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
-});
-
-// Performance optimized dynamic imports for below-the-fold content
-
-
-
 const About = dynamic(() => import('@/components/About'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
@@ -70,16 +56,9 @@ export default function HomeClient({ lang }: { lang: Locale }) {
                 <MetricsStrip />
                 <SkillTicker />
                 <Suspense fallback={null}>
-                    <Services />
-                    <Projects />
-                    <Testimonials />
-
-
-
                     <About />
                     <TechStack />
                     <Timeline />
-
                     <Contact />
                     <Footer />
                 </Suspense>

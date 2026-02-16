@@ -6,16 +6,15 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { Suspense } from 'react';
+import { Locale } from '@/lib/dictionaries';
 
 export const metadata: Metadata = {
-    title: 'Web Development Services in Amman | MUBX',
-    description: 'Expert web development in Amman: E-commerce, landing pages, and custom web apps. High-performance solutions by MUBX.',
+    title: 'Services & Pricing | MUBX',
+    description: 'Professional web development services in Jordan. From landing pages to custom web systems.',
     alternates: {
         canonical: `${siteConfig.url}/services`
     }
 };
-
-import { Locale } from '@/lib/dictionaries';
 
 type Props = {
     searchParams: Promise<{ lang?: string }>
@@ -37,42 +36,11 @@ export default async function ServicesPage(props: Props) {
                     <JsonLd data={{
                         "@context": "https://schema.org",
                         "@type": "Service",
-                        "serviceType": "Web Development",
+                        "name": "MUBX Web Development Services",
                         "provider": {
                             "@type": "Person",
                             "name": "Omar Mubaidin | عمر مبيضين",
                             "url": siteConfig.url
-                        },
-                        "areaServed": {
-                            "@type": "City",
-                            "name": "Amman"
-                        },
-                        "hasOfferCatalog": {
-                            "@type": "OfferCatalog",
-                            "name": "Web Design & Development Services",
-                            "itemListElement": [
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "E-commerce Development"
-                                    }
-                                },
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "Landing Page Design"
-                                    }
-                                },
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "Custom Web Applications"
-                                    }
-                                }
-                            ]
                         }
                     }} />
                     <Footer />

@@ -10,8 +10,8 @@ import { Suspense } from 'react';
 import { Locale } from '@/lib/dictionaries';
 
 export const metadata: Metadata = {
-    title: 'Portfolio & Case Studies | MUBX',
-    description: 'Explore our latest web development projects. From high-conversion e-commerce sites to custom web applications.',
+    title: 'Projects & Testimonials | MUBX',
+    description: 'Explore my selected web development projects and what clients say about working with me.',
     alternates: {
         canonical: `${siteConfig.url}/projects`
     }
@@ -38,7 +38,7 @@ export default async function ProjectsPage(props: Props) {
                     <JsonLd data={{
                         "@context": "https://schema.org",
                         "@type": "CollectionPage",
-                        "name": "MUBX Projects Portfolio",
+                        "name": "MUBX Selected Projects",
                         "provider": {
                             "@type": "Person",
                             "name": "Omar Mubaidin | عمر مبيضين",

@@ -74,11 +74,11 @@ const NavbarContent = () => {
     };
 
     const links = [
+        { name: t.nav.home, href: getHref('/') },
         { name: t.nav.services, href: getHref('/services') },
         { name: t.nav.projects, href: getHref('/projects') },
-
-
-        { name: t.nav.contact, href: getHref('/#contact') },
+        { name: t.nav.about, href: getHref('/#about') },
+        { name: t.nav.contact, href: getHref('/contact') },
     ];
 
     return (
