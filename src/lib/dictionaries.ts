@@ -505,10 +505,62 @@ export const dictionary = {
                     description: 'Gained hands-on experience in frontend workflows, UX best practices, and agile development cycles.'
                 }
             ]
+        },
+        contractPage: {
+            title: 'Software Development Services Agreement',
+            provider: 'Service Provider',
+            client: 'Client',
+            location: 'Location',
+            effectiveDate: 'Effective Date',
+            sections: [
+                {
+                    title: '1. Scope of Services',
+                    content: 'The Service Provider agrees to perform web development and digital services as outlined in the attached Statement of Work (SOW) or project proposal. Any changes to scope must be agreed upon in writing.'
+                },
+                {
+                    title: '2. Compensation and Payment',
+                    content: 'Total Project Fee: [Amount]. Deposit: A non-refundable 50% deposit is required before work begins. Milestones: Payments will be due upon completion of specified project milestones. Late Fees: Payments overdue by more than 14 days will incur a 5% late fee.'
+                },
+                {
+                    title: '3. Intellectual Property',
+                    content: 'Upon receipt of full final payment, Service Provider transfers all right, title, and interest in the final deliverables to Client. Service Provider retains the right to display work in professional portfolio.'
+                },
+                {
+                    title: '4. Client Obligations',
+                    content: 'Client agrees to provide all necessary content, assets, and access (e.g., logos, text, API keys) in a timely manner. Decisions or feedback must be provided within 3 business days.'
+                },
+                {
+                    title: '5. Warranties and Liability',
+                    content: 'Service Provider warrants that the work will function as specified for 30 days post-delivery. Total liability is limited to the amount paid for Services.'
+                },
+                {
+                    title: '6. Confidentiality',
+                    content: 'Both parties agree to keep confidential all non-public information shared during the project.'
+                },
+                {
+                    title: '7. Termination',
+                    content: 'Either party may terminate the project with 10 days written notice. Client will pay for all work completed up to date of termination.'
+                },
+                {
+                    title: '8. Governing Law',
+                    content: 'This Agreement shall be governed by and construed in accordance with the laws of The Hashemite Kingdom of Jordan.'
+                }
+            ],
+            footer: {
+                clientSignature: 'Client Signature',
+                providerSignature: 'Provider Signature',
+                date: 'Date'
+            }
         }
     },
     ar: {
         nav: {
+            services: 'الخدمات',
+            projects: 'المشاريع',
+            lab: 'من المختبر',
+            testimonials: 'آراء العملاء',
+            contact: 'تواصل معنا',
+            resume: 'تحميل السيرة الذاتية (PDF)',
             estimate: 'اطلب عرض سعر',
             talk: "لنتحدث",
             home: 'الرئيسية',
