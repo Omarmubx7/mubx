@@ -14,7 +14,7 @@
             "purpose": "any maskable"
         },
         {
-            "src": "/mubxlogo.svg",
+            "src": "/mubxlogoloader.svg",
             "sizes": "any",
             "type": "image/svg+xml"
         }

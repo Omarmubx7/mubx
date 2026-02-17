@@ -130,7 +130,7 @@ export default async function LinksPage(props: Props) {
                                         <div className="absolute -inset-1 bg-gradient-to-r from-neon to-[#FF8E8E] rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                                         <div className="relative w-28 h-28 md:w-36 md:h-36">
                                             <Image
-                                                src="/mubxlogo.png"
+                                                src="/mubxlogoloader.svg"
                                                 alt="MUBX Profile"
                                                 fill
                                                 className="object-contain p-2 bg-black/50 rounded-full border-4 border-background shadow-2xl transition-transform duration-500 group-hover:scale-105"
