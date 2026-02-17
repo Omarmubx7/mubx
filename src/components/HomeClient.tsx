@@ -49,20 +49,19 @@ export default function HomeClient({ lang }: { lang: Locale }) {
     return (
         <LanguageProvider initialLocale={lang}>
             <Navbar />
-            <main id="main-content" className="relative flex flex-col min-h-screen focus:outline-none" tabIndex={-1}>
-                {showCanvas && <CanvasCursor />}
-                {showCanvas && <StarsCanvas />}
-                <Hero />
-                <MetricsStrip />
-                <SkillTicker />
-                <Suspense fallback={null}>
-                    <About />
-                    <TechStack />
-                    <Timeline />
-                    <Contact />
-                    <Footer />
-                </Suspense>
-            </main>
+            {/* Removed duplicate <main> to avoid nested main elements */}
+            {showCanvas && <CanvasCursor />}
+            {showCanvas && <StarsCanvas />}
+            <Hero />
+            <MetricsStrip />
+            <SkillTicker />
+            <Suspense fallback={null}>
+                <About />
+                <TechStack />
+                <Timeline />
+                <Contact />
+                <Footer />
+            </Suspense>
         </LanguageProvider>
     );
 

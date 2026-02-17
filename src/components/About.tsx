@@ -93,8 +93,8 @@ export default function About() {
                     </div>
 
                     {/* Right Column: Stats / Visual (Abstract Representation) */}
-                    <motion.div variants={fadeUp} className="relative h-full min-h-[400px] flex items-center justify-center">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-neon/10 to-cyan/10 rounded-full blur-[100px]" />
+                    <motion.div variants={fadeUp} className="relative h-full min-h-100 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-linear-to-tr from-neon/10 to-cyan/10 rounded-full blur-[100px]" />
                         <div className="relative z-10 grid grid-cols-2 gap-4">
                             <div className="p-6 bg-card/40 border border-border rounded-2xl backdrop-blur-md">
                                 <div className="text-4xl font-bold text-neon mb-1">DEV</div>

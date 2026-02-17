@@ -25,8 +25,8 @@ export const dictionary = {
             titleHighlight: 'web systems',
             titleEnd: 'for ambitious startups.',
             description: 'Full Stack Developer and Computer Science student based in Amman, Jordan. Focused on performance, security, and clean architecture.',
-            ctaPrimary: 'Book a free call',
-            ctaSecondary: 'View my work',
+            ctaPrimary: 'GET IN TOUCH',
+            ctaSecondary: 'View Projects',
             imageAlt: 'Omar Mubaidin - Full Stack Developer',
         },
         services: {
@@ -466,8 +466,8 @@ export const dictionary = {
             api: 'API Development'
         },
         tech: {
-            title: 'Technical',
-            titleHighlight: 'Expertise',
+            title: 'TECHNICAL ',
+            titleHighlight: 'EXPERTISE',
             subtitle: 'Modern tools for high-performance systems.',
             categories: {
                 frontend: 'Frontend & UI',
@@ -482,8 +482,8 @@ export const dictionary = {
             viewGallery: 'View Gallery'
         },
         timeline: {
-            title: 'My',
-            titleHighlight: 'Journey',
+            title: 'MY ',
+            titleHighlight: 'JOURNEY',
             subtitle: 'The path that led me here.',
             items: [
                 {
@@ -501,66 +501,14 @@ export const dictionary = {
                 {
                     year: '2023',
                     role: 'Web Development Intern',
-                    company: 'Freelancer',
-                    description: 'Gained hands-on experience in frontend workflows, UI/UX best practices, and agile development cycles.'
+                    company: 'Tech Companies',
+                    description: 'Gained hands-on experience in frontend workflows, UX best practices, and agile development cycles.'
                 }
             ]
-        },
-        contractPage: {
-            title: 'Master Service Agreement',
-            provider: 'Provider',
-            client: 'Client',
-            location: 'Location',
-            effectiveDate: 'Effective Date',
-            sections: [
-                {
-                    title: '1. SCOPE OF SERVICES',
-                    content: 'The Provider agrees to perform web development and digital services as outlined in the attached Statement of Work (SOW) or project proposal. Any changes to the scope must be agreed upon in writing.'
-                },
-                {
-                    title: '2. COMPENSATION & PAYMENT',
-                    content: 'Total Project Fee: [Amount]. Deposit: A non-refundable deposit of 50% is required before work commences. Milestones: Payments will be due upon completion of defined project milestones. Late Fees: Payments delayed by more than 14 days will incur a 5% late fee.'
-                },
-                {
-                    title: '3. INTELLECTUAL PROPERTY',
-                    content: 'Upon receipt of full and final payment, the Provider transfers all rights, title, and interest in the final deliverables to the Client. The Provider retains the right to display the work in their professional portfolio.'
-                },
-                {
-                    title: '4. CLIENT OBLIGATIONS',
-                    content: 'The Client agrees to provide all necessary content, assets, and access (e.g., logos, copy, API keys) in a timely manner. Decisions or feedback must be provided within 3 business days.'
-                },
-                {
-                    title: '5. WARRANTIES & LIABILITY',
-                    content: 'The Provider warrants that the work will function as specified for 30 days after delivery. Total liability is limited to the amount paid for the services.'
-                },
-                {
-                    title: '6. CONFIDENTIALity',
-                    content: 'Both parties agree to keep all non-public information shared during the project confidential.'
-                },
-                {
-                    title: '7. TERMINATION',
-                    content: 'Either party may terminate the project with 10 days written notice. The Client will pay for all work completed up to the termination date.'
-                },
-                {
-                    title: '8. GOVERNING LAW',
-                    content: 'This Agreement shall be governed by and construed in accordance with the laws of the Hashemite Kingdom of Jordan.'
-                }
-            ],
-            footer: {
-                clientSignature: 'Client Signature',
-                providerSignature: 'Provider Signature',
-                date: 'Date'
-            }
         }
     },
     ar: {
         nav: {
-            services: 'الخدمات',
-            projects: 'المشاريع',
-            lab: 'المختبر',
-            testimonials: 'أراء العملاء',
-            contact: 'تواصل معي',
-            resume: 'تحميل السيرة الذاتية',
             estimate: 'اطلب عرض سعر',
             talk: "لنتحدث",
             home: 'الرئيسية',

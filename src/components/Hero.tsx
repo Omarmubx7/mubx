@@ -22,8 +22,8 @@ export default function Hero() {
     return (
         <section className="relative min-h-screen flex items-start lg:items-center pt-32 pb-20 overflow-hidden bg-background transition-colors duration-300">
             {/* Background Spotlights */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neon/5 blur-[80px] -z-10 rounded-full mix-blend-screen pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan/5 blur-[80px] -z-10 rounded-full mix-blend-screen pointer-events-none" />
+            <div className="absolute top-0 right-0 w-125 h-125 bg-neon/5 blur-[80px] -z-10 rounded-full mix-blend-screen pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-125 h-125 bg-cyan/5 blur-[80px] -z-10 rounded-full mix-blend-screen pointer-events-none" />
 
             <div className="container mx-auto px-6 md:px-12 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -31,7 +31,7 @@ export default function Hero() {
                     {/* Left Column: Text Content */}
                     {/* Left Column: Text Content */}
                     <div
-                        className="flex-1 text-center lg:text-left rtl:lg:text-right order-1 lg:order-none"
+                        className="flex-1 text-center lg:text-left rtl:lg:text-right order-1 lg:order-0"
                     >
                         <div className="flex justify-center lg:justify-start rtl:lg:justify-end mb-6">
                             <Badge variant="neon">
@@ -126,9 +126,9 @@ export default function Hero() {
 
                     {/* Right Column: Hero Image / Visual */}
                     <div
-                        className="flex-1 relative h-[400px] lg:h-[600px] w-full flex items-center justify-center group order-2 lg:order-none animate-hero-slide-in"
+                        className="flex-1 relative h-100 lg:h-150 w-full flex items-center justify-center group order-2 lg:order-0 animate-hero-slide-in"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-tr from-neon/10 to-transparent rounded-full blur-[60px] animate-pulse-slow" />
+                        <div className="absolute inset-0 bg-linear-to-tr from-neon/10 to-transparent rounded-full blur-[60px] animate-pulse-slow" />
 
                         {/* 
                             3D Hero Scene Removed for Performance 
