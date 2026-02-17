@@ -15,7 +15,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import JsonLd from '@/components/JsonLd';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SocialSidebar from '@/components/SocialSidebar';
-import { LogoPreloader } from '@/components/framer/FramerComponents';
+import LoadingScreen from '@/components/LoadingScreen';
 
 
 const inter = Inter({
@@ -128,11 +128,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LogoPreloader
-            logo={{ src: '/mubxlogoloader.svg', alt: 'MUBX' }}
-            backgroundColor="#0D0D0D"
-            duration={2}
-          />
+          <LoadingScreen />
           <SkipToContent />
           <JsonLd data={{
             "@context": "https://schema.org",
