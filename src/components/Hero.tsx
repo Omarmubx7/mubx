@@ -85,7 +85,7 @@ export default function Hero() {
                             />
                             <SwipeLettersButton
                                 label={t.hero.ctaSecondary}
-                                link={getHref('/#projects')}
+                                link={getHref('/projects')}
                                 defaultState={{ bgColor: '#1A1A1A', borderColor: '#333333', textColor: '#FFFFFF' }}
                                 hoverState={{ bgColor: '#2D2D2D', borderColor: '#515151', textColor: '#FFFFFF' }}
                                 font={{ fontSize: '18px', fontWeight: 'bold', letterSpacing: '0.4px' }}
