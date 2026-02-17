@@ -40,7 +40,7 @@ export default function Footer() {
                     <div className="space-y-6">
                         <h3 className="text-sm font-bold text-foreground uppercase tracking-widest">{t.footer.navigation}</h3>
                         <nav className="flex flex-col gap-4">
-                            <Link href={getHref('/#about')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all flex items-center gap-1 group-hover:gap-2"><span>{t.nav.home}</span></Link>
+                            <Link href={getHref('/')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all flex items-center gap-1 group-hover:gap-2"><span>{t.nav.home}</span></Link>
                             <Link href={getHref('/about')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all">{t.nav.about}</Link>
                             <Link href={getHref('/services')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all">{t.nav.services}</Link>
                             <Link href={getHref('/projects')} className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all">{t.nav.projects}</Link>

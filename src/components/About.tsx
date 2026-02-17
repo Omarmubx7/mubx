@@ -23,7 +23,7 @@ export default function About() {
                     <div className="space-y-6">
                         <motion.div variants={fadeUp}>
                             <p className="text-neon font-mono text-sm mb-4 tracking-widest">01</p>
-                            <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase flex flex-wrap items-center gap-x-3">
+                            <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase flex flex-nowrap items-center gap-x-3">
                                 {t.about.titleStart}
                                 <ProTextType
                                     text={t.about.titleHighlight}

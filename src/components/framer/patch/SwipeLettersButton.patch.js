@@ -41,6 +41,9 @@ export default function SwipeLettersButton(props) {
         onMouseEnter: () => setHovered(true),
         onMouseLeave: () => setHovered(false),
         onClick: handleClick,
+        "aria-label": label,
+        role: "button",
+        tabIndex: 0,
         style: {
             width: "100%", height: "100%", display: "flex", alignItems: "center",
             justifyContent: align === "center" ? "center" : align === "start" ? "flex-start" : "flex-end",
@@ -59,6 +62,7 @@ export default function SwipeLettersButton(props) {
                     style: { position: "relative", display: "inline-block", height: "1em", overflow: "hidden", fontFamily: font.fontFamily || "inherit", fontSize: font.fontSize, fontWeight: font.fontWeight, fontStyle: font.fontStyle, lineHeight: 1 },
                     children: _jsxs("span", {
                         style: { display: "grid", gridAutoRows: "1em", transform: `translateY(${hovered ? hoverY : initY})`, transitionProperty: "transform", transitionDuration: `${duration}ms`, transitionTimingFunction: easing, transitionDelay: delay, willChange: "transform" },
+                        "aria-hidden": "true",
                         children: [
                             _jsx("span", { style: { color: currentTextColor, transition: "color 0.2s ease" }, children: ch }),
                             _jsx("span", { style: { color: currentTextColor, transition: "color 0.2s ease" }, children: ch })

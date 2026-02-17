@@ -44,7 +44,7 @@ export default function Hero() {
                                 {t.hero.titleStart}
                             </span>
 
-                            <span className="text-neon relative inline-block text-5xl md:text-7xl animate-hero-fade-up delay-hero-2">
+                            <span className="text-neon relative inline-block text-5xl md:text-7xl animate-hero-fade-up delay-hero-2 min-w-max whitespace-nowrap">
                                 <TypewriterEffect
                                     words={[
                                         { word: t.hero.titleHighlight },
@@ -52,9 +52,9 @@ export default function Hero() {
                                         { word: language === 'en' ? 'SaaS MVPs' : 'أنظمة SaaS' },
                                         { word: language === 'en' ? 'portfolios' : 'معارض أعمال' }
                                     ]}
-                                    typingSpeed={100}
-                                    deletingSpeed={60}
-                                    pauseDuration={2000}
+                                    typingSpeed={80}
+                                    deletingSpeed={50}
+                                    pauseDuration={2500}
                                     cursorColor="#D71C1C"
                                     cursorHeight={40}
                                     textColor="#D71C1C"
