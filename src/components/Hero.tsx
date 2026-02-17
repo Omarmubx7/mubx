@@ -8,6 +8,7 @@ import { MessageCircle, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import dynamic from 'next/dynamic';
 import { HeroSkeleton } from './ui/LoadingSkeleton';
+import { TypewriterEffect, SwipeLettersButton } from './framer/FramerComponents';
 
 
 
@@ -44,7 +45,21 @@ export default function Hero() {
                             </span>
 
                             <span className="text-neon relative inline-block text-5xl md:text-7xl animate-hero-fade-up delay-hero-2">
-                                {t.hero.titleHighlight}
+                                <TypewriterEffect
+                                    words={[
+                                        { word: t.hero.titleHighlight },
+                                        { word: language === 'en' ? 'e-commerce' : 'متاجر إلكترونية' },
+                                        { word: language === 'en' ? 'SaaS MVPs' : 'أنظمة SaaS' },
+                                        { word: language === 'en' ? 'portfolios' : 'معارض أعمال' }
+                                    ]}
+                                    typingSpeed={100}
+                                    deletingSpeed={60}
+                                    pauseDuration={2000}
+                                    cursorColor="#D71C1C"
+                                    cursorHeight={40}
+                                    textColor="#D71C1C"
+                                    font={{ fontSize: 'inherit', fontWeight: '900' }}
+                                />
                                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-neon opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none">
                                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
                                 </svg>
@@ -61,23 +76,50 @@ export default function Hero() {
                         </p>
 
                         <div
-                            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start rtl:lg:justify-end animate-hero-fade-up delay-hero-4"
+                            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start rtl:lg:justify-end animate-hero-fade-up delay-hero-4 items-center"
                         >
                             <a
                                 href="https://calendly.com/omarmubaidincs/30min"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-8 py-4 bg-neon text-black font-bold text-lg rounded-full hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,30,30,0.3)] flex items-center gap-2 justify-center group"
+                                className="group"
                             >
-                                <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                                {t.hero.ctaPrimary}
+                                <SwipeLettersButton
+                                    text={t.hero.ctaPrimary}
+                                    style={{
+                                        backgroundColor: '#D71C1C',
+                                        color: 'black',
+                                        fontWeight: 'bold',
+                                        fontSize: '1.125rem',
+                                        padding: '1rem 2rem',
+                                        borderRadius: '9999px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.5rem',
+                                        border: '1px solid transparent',
+                                        boxShadow: '0 0 20px rgba(255,30,30,0.3)',
+                                    }}
+                                />
                             </a>
                             <Link
                                 href={getHref('/#projects')}
-                                className="px-8 py-4 bg-card border border-border text-foreground font-bold text-lg rounded-full hover:bg-muted/10 transition-all flex items-center gap-2 justify-center group"
+                                className="group"
                             >
-                                {t.hero.ctaSecondary}
-                                <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
+                                <SwipeLettersButton
+                                    text={t.hero.ctaSecondary}
+                                    style={{
+                                        backgroundColor: '#1A1A1A',
+                                        color: 'white',
+                                        fontWeight: 'bold',
+                                        fontSize: '1.125rem',
+                                        padding: '1rem 2rem',
+                                        borderRadius: '9999px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.5rem',
+                                        border: '1px solid #333',
+                                    }}
+                                />
                             </Link>
                         </div>
                     </div>

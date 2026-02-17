@@ -1,0 +1,8 @@
+/*
+ * LiquidMetal
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/FsukVhRzCWqc4SfmgmL9/NbxdDP6uG73LOOi54hYX/LiquidMetal.js"
+export { default } from "https://framerusercontent.com/modules/FsukVhRzCWqc4SfmgmL9/NbxdDP6uG73LOOi54hYX/LiquidMetal.js"

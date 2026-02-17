@@ -1,0 +1,8 @@
+/*
+ * SwipeLettersButton
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/ZRj1lWPbazXAVvteRVmW/rHT2txKD4ed0LGcRSBpo/SwipeLettersButton.js"
+export { default } from "https://framerusercontent.com/modules/ZRj1lWPbazXAVvteRVmW/rHT2txKD4ed0LGcRSBpo/SwipeLettersButton.js"

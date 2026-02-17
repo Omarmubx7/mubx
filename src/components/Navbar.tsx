@@ -11,6 +11,7 @@ import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { usePathname } from 'next/navigation';
+import { LiquidMetal } from './framer/FramerComponents';
 
 const NavbarContent = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -93,18 +94,16 @@ const NavbarContent = () => {
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-glass"
         >
             <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2" aria-label="MUBX Home">
-                <div className="relative h-16 w-auto min-w-[140px] transition-transform group-hover:scale-105">
-                    <Image
-                        src="/mubxlogo.png"
-                        alt="MUBX - High Performance Web Systems & E-commerce"
-
-                        width={120}
-                        height={40}
-                        className="h-full w-auto object-contain dark:invert-0 invert"
-                        priority
-                        sizes="(max-width: 768px) 100px, 120px"
+                <div className="relative h-16 w-32 transition-transform group-hover:scale-105">
+                    <LiquidMetal
+                        imageSource="/mubxlogo.png"
+                        speed={0.3}
+                        dispersion={0.015}
+                        edge={0.4}
+                        patternBlur={0.005}
+                        liquify={0.07}
+                        patternScale={2}
                     />
-
                 </div>
             </Link>
 

@@ -1,0 +1,8 @@
+/*
+ * ProTextType
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/fiKhsLPdrfWQKc4eQPoL/zQQ6Rh7yVYyuhKxBRwZJ/ProTextType.js"
+export { default } from "https://framerusercontent.com/modules/fiKhsLPdrfWQKc4eQPoL/zQQ6Rh7yVYyuhKxBRwZJ/ProTextType.js"

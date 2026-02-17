@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, MapPin, Check, X } from 'lucide-react';
 import { fadeUp } from '@/lib/motion';
+import { FAQs } from './framer/FramerComponents';
 
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
@@ -275,33 +276,23 @@ export default function Contact() {
                 </motion.div >
             </div >
 
-            {/* FAQ Section - Added for Trust */}
-            < motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }
-                }
-                variants={fadeUp}
-                className="mt-24 text-left rtl:text-right max-w-3xl mx-auto border-t border-border pt-16 relative z-10"
-            >
-                <div className="container mx-auto px-6 md:px-12">
-                    <h3 className="text-2xl font-bold text-foreground mb-8 text-center">{t.contact.faq.title}</h3>
-                    <div className="space-y-6">
-                        <div className="bg-card p-6 rounded-xl border border-border">
-                            <h4 className="text-foreground font-bold mb-2 text-sm uppercase tracking-wide">{t.contact.faq.q1.q}</h4>
-                            <p className="text-muted text-sm leading-relaxed">{t.contact.faq.q1.a}</p>
-                        </div>
-                        <div className="bg-card p-6 rounded-xl border border-border">
-                            <h4 className="text-foreground font-bold mb-2 text-sm uppercase tracking-wide">{t.contact.faq.q2.q}</h4>
-                            <p className="text-muted text-sm leading-relaxed">{t.contact.faq.q2.a}</p>
-                        </div>
-                        <div className="bg-card p-6 rounded-xl border border-border">
-                            <h4 className="text-foreground font-bold mb-2 text-sm uppercase tracking-wide">{t.contact.faq.q3.q}</h4>
-                            <p className="text-muted text-sm leading-relaxed">{t.contact.faq.q3.a}</p>
-                        </div>
-                    </div>
-                </div>
-            </motion.div >
+            {/* FAQ Section - Enhanced with Framer */}
+            <div className="mt-24 max-w-4xl mx-auto border-t border-border pt-16 relative z-10">
+                <h3 className="text-2xl font-bold text-foreground mb-12 text-center uppercase tracking-wider">{t.contact.faq.title}</h3>
+                <FAQs
+                    variant="default"
+                    question1={t.contact.faq.q1.q}
+                    answer1={t.contact.faq.q1.a}
+                    question2={t.contact.faq.q2.q}
+                    answer2={t.contact.faq.q2.a}
+                    question3={t.contact.faq.q3.q}
+                    answer3={t.contact.faq.q3.a}
+                    question4={language === 'en' ? "What is your typical turnaround?" : "ما هو الوقت المعتاد للتسليم؟"}
+                    answer4={language === 'en' ? "For landing pages, 5-7 days. For custom systems, typically 3+ weeks depending on complexity." : "بالنسبة لصفحات الهبوط، 5-7 أيام. للأنظمة المخصصة، عادة ما يكون 3 أسابيع أو أكثر حسب التعقيد."}
+                    question5={language === 'en' ? "How do you handle payments?" : "كيف يتم التعامل مع المدفوعات؟"}
+                    answer5={language === 'en' ? "I accept Bank Transfer, Zain Cash, and CliQ. Typically 50% upfront and 50% on completion." : "أقبل التحويل البنكي، زين كاش، وكليك. عادة 50% مقدماً و 50% عند الانتهاء."}
+                />
+            </div>
 
         </section >
     );

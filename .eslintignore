@@ -1,0 +1,5 @@
+next.lock/
+node_modules/
+.next/
+out/
+build/

@@ -1,0 +1,8 @@
+/*
+ * FAQs
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/Kn6arq1z5aOGdj4Fy9r1/dgC979yXQmB0o7ayW1eS/XypzAWksI.js"
+export { default } from "https://framerusercontent.com/modules/Kn6arq1z5aOGdj4Fy9r1/dgC979yXQmB0o7ayW1eS/XypzAWksI.js"

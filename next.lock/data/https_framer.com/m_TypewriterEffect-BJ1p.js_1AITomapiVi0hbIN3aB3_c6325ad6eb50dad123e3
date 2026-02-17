@@ -1,0 +1,8 @@
+/*
+ * TypewriterEffect
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/Fd1tlH9QCoFeIFvxah71/1AITomapiVi0hbIN3aB3/TypewriterEffect.js"
+export { default } from "https://framerusercontent.com/modules/Fd1tlH9QCoFeIFvxah71/1AITomapiVi0hbIN3aB3/TypewriterEffect.js"

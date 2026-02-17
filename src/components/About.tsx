@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import { useLanguage } from '@/context/LanguageContext';
 import GradientText from './ui/GradientText';
+import { ProTextType } from './framer/FramerComponents';
 
 export default function About() {
     const { t } = useLanguage();
@@ -22,20 +23,40 @@ export default function About() {
                     <div className="space-y-6">
                         <motion.div variants={fadeUp}>
                             <p className="text-neon font-mono text-sm mb-4 tracking-widest">01</p>
-                            <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase">
-                                {t.about.titleStart} <GradientText>{t.about.titleHighlight}</GradientText>
+                            <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase flex flex-wrap items-center gap-x-3">
+                                {t.about.titleStart}
+                                <ProTextType
+                                    text={t.about.titleHighlight}
+                                    typingSpeed={100}
+                                    loop={false}
+                                    showCursor={true}
+                                    cursorColorMode="custom"
+                                    cursorCustomColor="#D71C1C"
+                                    sizingMode="fluid"
+                                    minFont={24}
+                                    maxFont={48}
+                                    fluidVw={5}
+                                    className="text-neon"
+                                />
                             </h2>
                         </motion.div>
 
-                        <motion.p variants={fadeUp} className="text-muted text-lg leading-relaxed">
+                        <motion.div variants={fadeUp} className="text-muted text-lg leading-relaxed">
                             {t.about.descriptionStart} <span className="text-foreground font-bold">{t.about.name}</span>{t.about.descriptionMiddle}
                             <br /><br />
                             {t.about.descriptionEnd} <span className="text-neon">{t.about.performance}</span>{t.about.descriptionContext}
                             <br /><br />
-                            <span className="text-foreground font-medium border-l-2 border-neon pl-3 block italic">
-                                &quot;{t.about.quoteStart} <span className="text-neon">{t.about.quoteHighlight}</span>{t.about.quoteEnd}&quot;
-                            </span>
-                        </motion.p>
+                            <div className="text-foreground font-medium border-l-2 border-neon pl-3 block italic py-2">
+                                <ProTextType
+                                    text={`"${t.about.quoteStart} ${t.about.quoteHighlight} ${t.about.quoteEnd}"`}
+                                    typingSpeed={50}
+                                    loop={true}
+                                    pauseDuration={5000}
+                                    showCursor={true}
+                                    className="text-muted"
+                                />
+                            </div>
+                        </motion.div>
 
                         <div className="pt-6">
                             <h3 className="text-foreground font-bold mb-4 uppercase tracking-wider text-sm">{t.about.whyChoose.title}</h3>

@@ -3,6 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   trailingSlash: false,
   compress: true, // Enable Gzip/Brotli
+  webpack: (config, { isServer }) => {
+    console.log(`[MUBX] Configuring Webpack for framer (isServer: ${isServer})`);
+
+    return config;
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
@@ -46,7 +51,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; connect-src 'self' https://*.supabase.co https://raw.githack.com https://raw.githubusercontent.com https://market-assets.fra1.cdn.digitaloceanspaces.com; script-src 'self' 'unsafe-inline' https://assets.calendly.com; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://assets.calendly.com; font-src 'self' data: https://r2cdn.perplexity.ai; object-src 'none'; base-uri 'self'; form-action 'self' https://*.supabase.co; frame-ancestors 'none'; frame-src https://calendly.com; upgrade-insecure-requests"
+            value: "default-src 'self'; connect-src 'self' https://*.supabase.co https://raw.githack.com https://raw.githubusercontent.com https://market-assets.fra1.cdn.digitaloceanspaces.com https://*.framer.com https://*.framerusercontent.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com https://*.framer.com https://*.framerusercontent.com; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://assets.calendly.com https://*.framer.com https://*.framerusercontent.com; font-src 'self' data: https://r2cdn.perplexity.ai; object-src 'none'; base-uri 'self'; form-action 'self' https://*.supabase.co; frame-ancestors 'none'; frame-src https://calendly.com; upgrade-insecure-requests"
           }
         ]
       },
@@ -82,6 +87,10 @@ const nextConfig: NextConfig = {
   },
   // Optimize production builds
   poweredByHeader: false,
+  experimental: {
+    urlImports: ['https://framer.com/m/', 'https://framerusercontent.com/'],
+  },
+  turbopack: {},
 };
 
 export default nextConfig;
