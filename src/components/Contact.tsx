@@ -1,13 +1,48 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, MapPin, Check, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Github, Linkedin, MapPin, Check, X, ChevronDown } from 'lucide-react';
 import { fadeUp } from '@/lib/motion';
-import { FAQs } from './framer/FramerComponents';
 
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { initializeSupabaseStore } from '@/lib/db-init';
+
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+    const [open, setOpen] = useState(false);
+    return (
+        <div className="border border-border rounded-2xl overflow-hidden bg-card/50 backdrop-blur-sm">
+            <button
+                onClick={() => setOpen(!open)}
+                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left rtl:text-right cursor-pointer"
+            >
+                <span className="text-foreground font-medium text-sm md:text-base">{question}</span>
+                <motion.div
+                    animate={{ rotate: open ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="shrink-0"
+                >
+                    <ChevronDown className="w-5 h-5 text-muted" />
+                </motion.div>
+            </button>
+            <AnimatePresence initial={false}>
+                {open && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                    >
+                        <div className="px-6 pb-5 text-muted text-sm leading-relaxed">
+                            {answer}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+}
 
 export default function Contact() {
     const { t, isRTL, language } = useLanguage();
@@ -99,7 +134,7 @@ export default function Contact() {
                         </div>
 
                         {/* Simple Lead Form */}
-                        <div className="bg-card p-8 rounded-3xl border border-border relative overflow-hidden">
+                        <div className="bg-card p-8 rounded-3xl border border-border relative">
                             {/* Budget Filter Badge */}
                             <div className={`absolute top-0 ${isRTL ? 'left-0 rounded-br-xl' : 'right-0 rounded-bl-xl'} bg-muted/10 px-3 py-1 text-[10px] text-muted font-medium uppercase tracking-wider backdrop-blur-md`}>
                                 {t.contact.form.badge}
@@ -297,24 +332,17 @@ export default function Contact() {
                 </motion.div >
             </div >
 
-            {/* FAQ Section - Enhanced with Framer */}
-            <div className="mt-24 max-w-4xl mx-auto border-t border-border pt-16 relative z-10">
+            {/* FAQ Section */}
+            <div className="mt-24 max-w-3xl mx-auto border-t border-border pt-16 relative z-10 px-6 md:px-0">
                 <h3 className="text-2xl font-bold text-foreground mb-12 text-center uppercase tracking-wider">{t.contact.faq.title}</h3>
-                <FAQs
-                    variant="default"
-                    question1={t.contact.faq.q1.q}
-                    answer1={t.contact.faq.q1.a}
-                    question2={t.contact.faq.q2.q}
-                    answer2={t.contact.faq.q2.a}
-                    question3={t.contact.faq.q3.q}
-                    answer3={t.contact.faq.q3.a}
-                    question4={t.contact.faq.q4.q}
-                    answer4={t.contact.faq.q4.a}
-                    question5={t.contact.faq.q5.q}
-                    answer5={t.contact.faq.q5.a}
-                    question6={t.contact.faq.q6.q}
-                    answer6={t.contact.faq.q6.a}
-                />
+                <div className="space-y-3">
+                    <FAQItem question={t.contact.faq.q1.q} answer={t.contact.faq.q1.a} />
+                    <FAQItem question={t.contact.faq.q2.q} answer={t.contact.faq.q2.a} />
+                    <FAQItem question={t.contact.faq.q3.q} answer={t.contact.faq.q3.a} />
+                    <FAQItem question={t.contact.faq.q4.q} answer={t.contact.faq.q4.a} />
+                    <FAQItem question={t.contact.faq.q5.q} answer={t.contact.faq.q5.a} />
+                    <FAQItem question={t.contact.faq.q6.q} answer={t.contact.faq.q6.a} />
+                </div>
             </div>
 
         </section >

@@ -1,4 +1,4 @@
-==============================================================================
+    ==============================================================================
 SERVICE PROTOCOL: CUSTOM WEB SYSTEM (SCALE - SAAS/E-COMM)
 ==============================================================================
 
@@ -10,75 +10,831 @@ DELIVERABLES: Custom DB, Secure Auth, Payment Gateway (Zain Cash/CliQ), Admin Da
 ------------------------------------------------------------------------------
 1. COMPLETE KICKOFF PROMPT (COPY & PASTE)
 ------------------------------------------------------------------------------
-"Act as a Principal Software Engineer. I need to architect a scalable web application (SaaS/E-commerce) with secure authentication, database management, and payments.
+"Act as a Principal Software Engineer & E-Commerce Architect. I need you to build a production-grade, world-class e-commerce platform that rivals the UX of Amazon, Shopify, and Noon — fully localized for the Jordanian/MENA market with Arabic RTL support.
 
-# Project Specs
-- **Framework**: Next.js 15 (App Router)
-- **Database**: Supabase (PostgreSQL) + Drizzle ORM.
-- **Auth**: Clerk (recommended for speed) or Supabase Auth.
-- **UI Library**: Shadcn/ui (complete set: Tables, Dialogs, dropdowns).
-- **State Management**: TanStack Query (React Query) for client-side data.
+Build this step-by-step. Do NOT skip any feature. Every file must be complete, production-ready code — no placeholders, no 'TODO' comments, no shortcuts.
 
-# Architecture Layers
-1. **Public Layer**: Marketing pages (Home, Pricing).
-2. **Auth Layer**: Login/Signup/Forgot Password.
-3. **App Layer** (Protected): 
-   - layout: Sidebar + Top Navigation.
-   - dashboard: Overview metrics (Charts via Recharts).
-   - settings: Profile, Billing.
-4. **Admin Layer** (Role-based): User management, Transaction logs.
+═══════════════════════════════════════════════════════════════════
+SECTION 1: TECH STACK & PROJECT ARCHITECTURE
+═══════════════════════════════════════════════════════════════════
 
-# Specific integrations (Jordan Context)
-- **Payments**: 
-  - Zain Cash (Webhook handler required).
-  - CliQ (Manual flow: User uploads screenshot -> Admin approves).
-- **Notifications**: Transaction emails via Resend.
+# Core Stack
+- **Framework**: Next.js 15 (App Router, Server Components, Server Actions)
+- **Language**: TypeScript (strict mode, no `any` types)
+- **Database**: Supabase (PostgreSQL) + Drizzle ORM (type-safe schema)
+- **Auth**: Clerk (Social login + Email/Password + Phone OTP)
+- **UI Library**: Shadcn/ui (complete component set) + Tailwind CSS v4
+- **State**: TanStack Query v5 (server state) + Zustand (client state: cart, UI)
+- **Forms**: React Hook Form + Zod (every form validated)
+- **Email**: Resend (transactional) + React Email (templates)
+- **File Storage**: Supabase Storage (product images, user avatars)
+- **Search**: Meilisearch or Algolia (instant full-text product search)
+- **Analytics**: PostHog (self-hosted) or Vercel Analytics
+- **Monitoring**: Sentry (error tracking) + Uptime Robot
 
-# Security Requirements
-- **RLS**: Row Level Security enabled on Supabase.
-- **Middleware**: Protect `/app` and `/admin` routes.
-- **Zod**: Strict validation on all Server Actions.
+# Project Structure (App Router)
+```
+src/
+├── app/
+│   ├── (storefront)/           # Public shopping experience
+│   │   ├── page.tsx            # Homepage
+│   │   ├── products/
+│   │   │   ├── page.tsx        # Product listing (grid + filters)
+│   │   │   └── [slug]/
+│   │   │       └── page.tsx    # Product detail page (PDP)
+│   │   ├── categories/
+│   │   │   └── [slug]/page.tsx # Category pages
+│   │   ├── search/page.tsx     # Search results
+│   │   ├── cart/page.tsx       # Shopping cart
+│   │   ├── checkout/page.tsx   # Checkout flow
+│   │   ├── order-confirmation/[id]/page.tsx
+│   │   ├── brands/page.tsx     # Brands directory
+│   │   └── deals/page.tsx      # Deals / Flash sales
+│   ├── (account)/              # Authenticated user area
+│   │   ├── account/page.tsx    # Account overview
+│   │   ├── orders/page.tsx     # Order history
+│   │   ├── orders/[id]/page.tsx # Order detail + tracking
+│   │   ├── wishlist/page.tsx   # Saved items
+│   │   ├── addresses/page.tsx  # Address book
+│   │   ├── returns/page.tsx    # Return requests
+│   │   ├── wallet/page.tsx     # Store credit / wallet balance
+│   │   └── settings/page.tsx   # Profile, password, notifications
+│   ├── (auth)/                 # Authentication flows
+│   │   ├── sign-in/page.tsx
+│   │   ├── sign-up/page.tsx
+│   │   └── forgot-password/page.tsx
+│   ├── (admin)/                # Admin dashboard (role-gated)
+│   │   ├── dashboard/page.tsx  # Revenue, orders, users overview
+│   │   ├── products/           # Product CRUD + bulk actions
+│   │   ├── orders/             # Order management + fulfillment
+│   │   ├── customers/          # Customer management + segments
+│   │   ├── analytics/          # Sales reports + charts
+│   │   ├── marketing/          # Coupons, campaigns, banners
+│   │   ├── inventory/          # Stock levels + alerts
+│   │   ├── shipping/           # Shipping zones + rates
+│   │   ├── settings/           # Store config, payments, taxes
+│   │   └── reviews/            # Review moderation
+│   ├── api/
+│   │   ├── webhooks/
+│   │   │   ├── zaincash/route.ts
+│   │   │   ├── clerk/route.ts
+│   │   │   └── shipping/route.ts
+│   │   ├── search/route.ts
+│   │   ├── upload/route.ts
+│   │   └── cron/
+│   │       ├── abandoned-cart/route.ts
+│   │       └── inventory-alerts/route.ts
+│   └── layout.tsx
+├── components/
+│   ├── storefront/             # Shopping UI components
+│   ├── account/                # Account area components
+│   ├── admin/                  # Admin dashboard components
+│   ├── checkout/               # Checkout flow components
+│   └── ui/                     # Shadcn/ui base components
+├── lib/
+│   ├── db/
+│   │   ├── schema.ts           # Drizzle schema (all tables)
+│   │   ├── queries/            # Type-safe query functions
+│   │   └── migrations/
+│   ├── actions/                # Server Actions (all mutations)
+│   ├── validators/             # Zod schemas
+│   ├── utils/
+│   ├── constants/
+│   └── hooks/
+├── stores/                     # Zustand stores (cart, UI)
+└── types/                      # Global TypeScript types
+```
 
-Please start by designing the Database Schema (Drizzle schema) for Users, Orders, and Products."
+═══════════════════════════════════════════════════════════════════
+SECTION 2: DATABASE SCHEMA (DRIZZLE ORM)
+═══════════════════════════════════════════════════════════════════
+
+Design the complete Drizzle schema with these tables and ALL relationships:
+
+## Users & Auth
+- `users` — id, clerk_id, email, full_name, phone, avatar_url, role (customer|admin|super_admin), email_verified, phone_verified, created_at, updated_at
+- `addresses` — id, user_id (FK), label (home/work/other), full_name, phone, street_address, city, district, country (default 'JO'), postal_code, is_default, lat, lng, delivery_instructions, created_at
+- `user_preferences` — id, user_id (FK), language (ar|en), currency (JOD|USD), notification_email, notification_sms, notification_push
+
+## Products & Catalog
+- `categories` — id, name_en, name_ar, slug, description_en, description_ar, image_url, parent_id (self-FK for nesting), sort_order, is_active, seo_title, seo_description, created_at
+- `brands` — id, name, slug, logo_url, description_en, description_ar, is_active, created_at
+- `products` — id, sku, name_en, name_ar, slug, description_en, description_ar, short_description_en, short_description_ar, brand_id (FK), category_id (FK), base_price, compare_at_price, cost_price, currency (default 'JOD'), weight_grams, dimensions_json, is_active, is_featured, is_digital, requires_shipping, tax_class, seo_title, seo_description, meta_keywords, avg_rating, review_count, total_sold, created_at, updated_at
+- `product_images` — id, product_id (FK), url, alt_text, sort_order, is_primary
+- `product_variants` — id, product_id (FK), sku, name_en, name_ar, price_override, compare_at_price, stock_quantity, low_stock_threshold, weight_grams, is_active, created_at
+- `variant_options` — id, variant_id (FK), option_name (e.g. 'Size', 'Color'), option_value (e.g. 'XL', 'Red'), color_hex (for color swatches)
+- `product_tags` — id, product_id (FK), tag (e.g. 'new-arrival', 'best-seller', 'ramadan-special')
+
+## Inventory
+- `inventory` — id, product_id (FK), variant_id (FK nullable), warehouse_id (FK), quantity, reserved_quantity, available_quantity (computed), low_stock_threshold, track_inventory (boolean), allow_backorder, updated_at
+- `warehouses` — id, name, address, city, is_active
+- `inventory_movements` — id, inventory_id (FK), type (restock|sale|return|adjustment|transfer), quantity_change, reference_type, reference_id, notes, created_by, created_at
+
+## Cart & Checkout
+- `carts` — id, user_id (FK nullable for guest), session_id, currency, coupon_id (FK nullable), expires_at, created_at, updated_at
+- `cart_items` — id, cart_id (FK), product_id (FK), variant_id (FK nullable), quantity, unit_price, created_at
+
+## Orders & Payments
+- `orders` — id, order_number (unique, human-readable e.g. 'ORD-240001'), user_id (FK), status (pending|confirmed|processing|shipped|out_for_delivery|delivered|cancelled|refunded), payment_status (unpaid|paid|partially_refunded|refunded), fulfillment_status (unfulfilled|partial|fulfilled), subtotal, discount_amount, shipping_cost, tax_amount, total, currency, coupon_id (FK nullable), notes, cancel_reason, shipping_address_json, billing_address_json, created_at, updated_at
+- `order_items` — id, order_id (FK), product_id (FK), variant_id (FK nullable), product_name, variant_name, sku, quantity, unit_price, total_price, image_url
+- `order_status_history` — id, order_id (FK), status, note, created_by, created_at
+- `payments` — id, order_id (FK), method (zaincash|cliq|cod|wallet|card), provider_transaction_id, amount, currency, status (pending|completed|failed|refunded), provider_response_json, paid_at, created_at
+- `payment_verifications` — id, payment_id (FK), screenshot_url (for CliQ), verified_by (admin user_id), verified_at, status (pending|approved|rejected), rejection_reason
+
+## Reviews & Ratings
+- `reviews` — id, product_id (FK), user_id (FK), order_id (FK), rating (1-5), title, body, is_verified_purchase, is_approved, admin_response, helpful_count, reported_count, created_at, updated_at
+- `review_images` — id, review_id (FK), url, created_at
+- `review_votes` — id, review_id (FK), user_id (FK), is_helpful (boolean), created_at
+
+## Marketing & Promotions
+- `coupons` — id, code (unique), type (percentage|fixed|free_shipping|buy_x_get_y), value, min_order_amount, max_discount_amount, usage_limit, used_count, per_user_limit, applicable_products (JSONB), applicable_categories (JSONB), starts_at, expires_at, is_active, created_at
+- `banners` — id, title, image_url, image_url_mobile, link_url, position (hero|sidebar|popup|category_top), sort_order, starts_at, expires_at, is_active, created_at
+- `flash_sales` — id, name, starts_at, ends_at, is_active
+- `flash_sale_items` — id, flash_sale_id (FK), product_id (FK), sale_price, stock_limit, sold_count
+- `abandoned_carts` — id, cart_id (FK), user_id (FK), email_sent_count, last_email_sent_at, recovered, created_at
+
+## Wishlists
+- `wishlists` — id, user_id (FK), product_id (FK), variant_id (FK nullable), created_at
+- UNIQUE constraint on (user_id, product_id, variant_id)
+
+## Shipping
+- `shipping_zones` — id, name, countries (JSONB), cities (JSONB), is_active
+- `shipping_rates` — id, zone_id (FK), name_en, name_ar, type (flat|weight_based|free_above), price, free_above_amount, min_weight, max_weight, estimated_days_min, estimated_days_max
+- `shipments` — id, order_id (FK), tracking_number, carrier, status, shipped_at, delivered_at, created_at
+- `returns` — id, order_id (FK), user_id (FK), reason, status (requested|approved|rejected|received|refunded), refund_amount, admin_notes, created_at, resolved_at
+
+## Notifications
+- `notifications` — id, user_id (FK), type (order_update|promotion|price_drop|back_in_stock|review_reply), title_en, title_ar, body_en, body_ar, data_json, is_read, channel (email|sms|push|in_app), sent_at, read_at, created_at
+- `price_alerts` — id, user_id (FK), product_id (FK), target_price, is_active, notified_at, created_at
+
+## Store Configuration
+- `store_settings` — key (unique), value (JSONB), updated_at
+  Keys: store_name, store_logo, store_favicon, default_currency, tax_rate, tax_inclusive, maintenance_mode, free_shipping_threshold, max_cart_quantity, cod_enabled, cod_fee, return_window_days
+
+## Audit & Analytics
+- `audit_logs` — id, user_id (FK), action, entity_type, entity_id, old_values (JSONB), new_values (JSONB), ip_address, user_agent, created_at
+- `page_views` — id, session_id, user_id (FK nullable), path, referrer, device_type, country, created_at
+- `search_logs` — id, query, results_count, user_id (FK nullable), created_at
+
+ALL tables must have:
+- UUID primary keys (crypto.randomUUID)
+- created_at (timestamp, default now)
+- Proper indexes on foreign keys and frequently queried columns
+- RLS policies for every table
+
+═══════════════════════════════════════════════════════════════════
+SECTION 3: STOREFRONT FEATURES (CUSTOMER-FACING)
+═══════════════════════════════════════════════════════════════════
+
+## 3.1 Homepage
+- Hero carousel/banner (admin-managed, auto-rotate, mobile-optimized)
+- Category grid with icons (2 rows, scrollable on mobile)
+- Flash deals countdown timer section
+- Featured products carousel (Server Component, streamed)
+- New arrivals section
+- Best sellers section (based on total_sold)
+- Brand showcase strip
+- Recently viewed products (client-side, localStorage)
+- Newsletter signup with Zod validation
+- Trust badges strip (Free Shipping, Secure Payment, Easy Returns, 24/7 Support)
+
+## 3.2 Product Listing Page (PLP)
+- Grid layout (2-col mobile, 3-col tablet, 4-col desktop) with toggle to list view
+- Infinite scroll OR pagination (user preference)
+- Faceted filters sidebar:
+  - Category (nested tree)
+  - Price range (dual-handle slider)
+  - Brand (multi-select with search)
+  - Rating (star filter: 4+, 3+, etc.)
+  - Size, Color (dynamic based on category)
+  - Availability (In Stock / All)
+  - Discount (On Sale)
+- Sort options: Relevance, Price Low→High, Price High→Low, Newest, Best Selling, Rating
+- Active filters chips with clear-all
+- Product count display ("Showing 1-24 of 156 products")
+- Quick-view modal on hover (desktop)
+- Add to cart directly from listing
+- Wishlist heart toggle on each card
+- Skeleton loading states
+
+## 3.3 Product Detail Page (PDP)
+- Image gallery: Zoom on hover (desktop), swipe carousel (mobile), thumbnail strip, fullscreen lightbox
+- Product info: Name, brand, rating stars + review count, price (with compare-at strikethrough), stock status badge
+- Variant selector: Color swatches (visual circles), Size buttons, dynamic price update on selection
+- Quantity selector with +/- buttons (respect max stock)
+- "Add to Cart" button (animated, loading state, success feedback)
+- "Buy Now" button (skip cart, go to checkout)
+- "Add to Wishlist" toggle
+- Share buttons (WhatsApp, Copy Link, Facebook, Twitter)
+- Delivery estimate based on user location
+- Tabbed content:
+  - Description (rich HTML from admin)
+  - Specifications (key-value table)
+  - Reviews & Ratings (with filters: rating, verified, with photos)
+  - Shipping & Returns info
+- "Write a Review" form (rating stars, title, body, photo upload — only for verified purchasers)
+- Related products carousel ("Customers also bought")
+- Recently viewed products strip
+- Structured data (JSON-LD: Product, BreadcrumbList, Review, AggregateRating, FAQPage)
+- Breadcrumb navigation
+
+## 3.4 Search
+- Instant search-as-you-type (debounced 300ms)
+- Search suggestions dropdown:
+  - Product matches (thumbnail + name + price)
+  - Category matches
+  - Brand matches
+  - Recent searches (per user, localStorage)
+  - Trending searches
+- Full search results page with same filters as PLP
+- "No results" page with suggestions + popular products
+- Typo tolerance / fuzzy matching
+- Arabic + English search support
+
+## 3.5 Shopping Cart
+- Slide-over cart drawer (opens on add) + dedicated cart page
+- Line items: Image, name, variant, unit price, quantity adjuster, line total, remove button
+- Stock validation (real-time: "Only 3 left!")
+- "Save for Later" / "Move to Wishlist" per item
+- Coupon code input with apply/remove
+- Order summary: Subtotal, Discount, Shipping estimate, Tax, Total
+- "You might also like" recommendations
+- Empty cart state with CTA to continue shopping
+- Persistent cart (synced to DB for logged-in users, localStorage for guests, merge on login)
+- Cart item count badge on header icon (animated on add)
+
+## 3.6 Checkout Flow
+- Guest checkout supported (email required)
+- Multi-step OR accordion layout:
+  1. **Contact Info** — Email, Phone (pre-filled if logged in)
+  2. **Shipping Address** — Saved addresses dropdown + "Add New" form (city/district dropdowns for Jordan), Google Maps pin optional
+  3. **Shipping Method** — Options with price + estimated delivery date
+  4. **Payment Method**:
+     - Zain Cash (redirect flow with webhook confirmation)
+     - CliQ (display IBAN + alias, user uploads transfer screenshot, pending admin approval)
+     - Cash on Delivery (COD fee displayed, order limit, phone verification)
+     - Credit/Debit Card (Stripe or local gateway)
+     - Wallet / Store Credit (if balance available)
+  5. **Order Review** — Full summary before placing
+- Apply coupon (if not already applied in cart)
+- Order notes / special instructions textarea
+- Terms & Conditions checkbox (required)
+- "Place Order" button with loading state + double-click prevention
+- Redirect to order confirmation page on success
+- Decrement inventory on order placement (with race condition handling via DB transactions)
+
+## 3.7 Order Confirmation & Tracking
+- Order confirmation page: Order number, items summary, payment status, estimated delivery
+- Confirmation email (branded React Email template)
+- WhatsApp order confirmation (optional)
+- Order tracking page: Visual timeline (Ordered → Confirmed → Shipped → Out for Delivery → Delivered)
+- Tracking number with carrier link
+- SMS/Email notifications on each status change
+
+## 3.8 User Account
+- Account overview: Recent orders, wishlist count, wallet balance, saved addresses count
+- Order history: Filterable by status, date range. Each order expandable for details.
+- Re-order button (add all items from a past order to cart)
+- Return/Refund request flow: Select items → reason → optional photo → submit
+- Wishlist: Grid view, "Add to Cart" per item, "Share Wishlist" link
+- Address book: CRUD, set default, max 10 addresses
+- Wallet: Balance display, transaction history (credits, refunds, deductions)
+- Notification preferences: Toggle email, SMS, push per notification type
+- Change password, update profile, delete account
+
+═══════════════════════════════════════════════════════════════════
+SECTION 4: ADMIN DASHBOARD
+═══════════════════════════════════════════════════════════════════
+
+## 4.1 Dashboard Home
+- KPI cards: Today's Revenue, Orders, New Customers, Conversion Rate
+- Revenue chart (line/bar, filterable: 7d/30d/90d/12mo)
+- Orders by status (pie chart)
+- Top 5 selling products (with revenue)
+- Low stock alerts (products below threshold)
+- Recent orders list (quick actions: view, fulfill)
+- Pending CliQ verifications count (with badge)
+
+## 4.2 Product Management
+- Products table (TanStack Table): Image, Name, SKU, Price, Stock, Status, Actions
+- Bulk actions: Activate, Deactivate, Delete, Export CSV
+- Product create/edit form:
+  - Basic info (name EN/AR, slug auto-generate, description rich editor)
+  - Pricing (base, compare-at, cost)
+  - Media (drag-drop multi-upload, reorder, set primary)
+  - Variants (generate combinations from options: Size × Color)
+  - Inventory per variant (track stock, low threshold, allow backorder)
+  - SEO (title, description, preview)
+  - Category + Brand assignment
+  - Tags (multi-select / create new)
+  - Scheduling (publish date)
+- Duplicate product
+- Import/Export products via CSV
+
+## 4.3 Order Management
+- Orders table: Order #, Customer, Date, Status, Payment, Total, Actions
+- Filters: Status, Payment Status, Date Range, Amount Range
+- Order detail view:
+  - Customer info + order history link
+  - Items list with images
+  - Payment info (method, transaction ID, screenshot for CliQ)
+  - Shipping address on map
+  - Status update dropdown (with email notification trigger)
+  - Add internal notes
+  - Refund (full/partial) with reason
+  - Print packing slip / invoice (PDF generation)
+- CliQ verification queue: Screenshot review → Approve/Reject with reason
+
+## 4.4 Customer Management
+- Customers table: Name, Email, Phone, Orders Count, Total Spent, Joined Date
+- Customer detail: Profile, order history, addresses, reviews, notes
+- Customer segments: VIP (>X orders), New, Inactive, High Spenders
+- Export customer list (CSV)
+- Send targeted notification to segment
+
+## 4.5 Marketing & Promotions
+- Coupon management: Create, edit, deactivate. Analytics (usage, revenue generated).
+- Banner management: Upload, position, schedule, A/B test
+- Flash sales: Create sale → select products → set sale prices → schedule
+- Abandoned cart dashboard: List, email recovery trigger, recovery rate stats
+- Newsletter subscribers list + export
+
+## 4.6 Inventory Management
+- Stock levels overview (all products, sortable by "lowest stock first")
+- Low stock alerts page (configurable threshold)
+- Stock adjustment: Manual add/remove with reason logging
+- Inventory history / movement log per product
+- Bulk stock update via CSV
+
+## 4.7 Analytics & Reports
+- Sales report: Revenue, orders, AOV (average order value) by day/week/month
+- Product performance: Views, add-to-cart rate, conversion rate, revenue per product
+- Category performance: Revenue + orders by category
+- Customer analytics: New vs returning, lifetime value, geographic distribution
+- Search analytics: Top queries, zero-result queries (stock gaps)
+- Traffic sources: Referrer breakdown
+- Export any report to CSV/PDF
+
+## 4.8 Store Settings (Admin)
+- General: Store name, logo, favicon, contact info, social links
+- Localization: Default language, available languages, currency settings
+- Payments: Enable/disable methods, Zain Cash merchant config, CliQ details, COD settings
+- Shipping: Zones, rates, free shipping threshold
+- Tax: Rate, inclusive/exclusive toggle
+- Notifications: Email templates (preview + edit), SMS toggle
+- Legal: Terms of Service, Privacy Policy, Refund Policy (rich text editor)
+- Maintenance mode toggle
+
+═══════════════════════════════════════════════════════════════════
+SECTION 5: PAYMENTS — JORDAN SPECIALIZED
+═══════════════════════════════════════════════════════════════════
+
+## Zain Cash Integration
+- Merchant wallet connection (API key, merchant ID, MSISDN)
+- Checkout redirect flow: Create transaction → redirect to Zain Cash → webhook callback
+- Webhook handler: Verify signature (HMAC), update order payment status, send confirmation email
+- Refund via Zain Cash API (admin-triggered)
+- Transaction log with provider response
+
+## CliQ Integration
+- Display CliQ payment details: Bank name, IBAN, Alias, Beneficiary name
+- User uploads screenshot of bank transfer
+- Admin CliQ verification queue:
+  - View screenshot (zoomable)
+  - Cross-reference amount + sender info
+  - Approve (triggers order confirmation) or Reject (with reason, user notified)
+- Auto-expire unverified CliQ payments after 24 hours (cron job)
+
+## Cash on Delivery (COD)
+- Configurable COD fee (flat amount)
+- Maximum order amount for COD
+- Phone verification required before placing COD order (OTP via SMS)
+- COD orders auto-cancel after X failed delivery attempts
+
+## Wallet / Store Credit
+- Admin can add credit (refunds, promotions)
+- Customer can use wallet balance at checkout (partial or full)
+- Transaction history visible to customer
+
+═══════════════════════════════════════════════════════════════════
+SECTION 6: LOCALIZATION (AR/EN + RTL)
+═══════════════════════════════════════════════════════════════════
+
+- Full Arabic translation for all UI strings (use next-intl or custom dictionary)
+- RTL layout support (Tailwind CSS `rtl:` variant)
+- Language toggle in header (persisted in cookie + user_preferences)
+- All product content bilingual (name_en/name_ar, description_en/description_ar)
+- Currency display: "15.000 د.أ" (Arabic) / "15.000 JOD" (English)
+- Arabic numerals option (٠١٢٣٤٥٦٧٨٩)
+- Date formatting per locale
+- Right-aligned text, mirrored layouts, correct icon directions
+
+═══════════════════════════════════════════════════════════════════
+SECTION 7: SEO & PERFORMANCE
+═══════════════════════════════════════════════════════════════════
+
+## SEO
+- Dynamic metadata per page (generateMetadata in every route)
+- Structured data (JSON-LD): Organization, WebSite, Product, BreadcrumbList, AggregateRating, Review, FAQPage, LocalBusiness
+- Dynamic sitemap.xml (all products, categories, brands, blog posts)
+- robots.txt (allow crawling, block admin routes)
+- Canonical URLs on every page
+- Open Graph + Twitter Card meta tags with product images
+- Hreflang tags (en/ar alternate)
+- Breadcrumb navigation on all pages
+
+## Performance
+- Server Components by default (client components only where interactive)
+- Image optimization: next/image with WebP/AVIF, responsive srcSet, blur placeholder
+- Lazy load below-fold sections
+- Route prefetching (next/link)
+- API response caching (Redis or Vercel KV)
+- Database query optimization (proper indexes, avoid N+1)
+- Bundle analysis (next-bundle-analyzer)
+- Target: Lighthouse 95+ on all metrics
+- CDN for static assets
+
+═══════════════════════════════════════════════════════════════════
+SECTION 8: SECURITY
+═══════════════════════════════════════════════════════════════════
+
+- Row Level Security (RLS) on every Supabase table — users can only access their own data
+- Middleware: Protect /account/*, /admin/* routes (Clerk auth check + role check)
+- Zod validation on EVERY Server Action and API route (no unvalidated input ever)
+- CSRF protection on all mutation endpoints
+- Rate limiting: Auth endpoints (5/min), API (100/min), Search (30/min)
+- Webhook signature verification (HMAC-SHA256) for Zain Cash + Clerk
+- SQL injection prevention (Drizzle ORM parameterized queries — never raw SQL with user input)
+- XSS prevention (React auto-escaping + DOMPurify for admin rich text)
+- Secure headers: CSP, HSTS, X-Frame-Options, X-Content-Type-Options
+- Input sanitization on all user-generated content (reviews, notes, addresses)
+- File upload validation: Type whitelist (jpg/png/webp only), max size (5MB), malware-safe naming
+- Admin action audit logging (who did what, when, from where)
+- PCI-DSS compliance approach: Never store card details, use tokenized payment providers
+- Environment variables: All secrets in .env.local, NEVER exposed to client bundle
+
+═══════════════════════════════════════════════════════════════════
+SECTION 9: EMAIL & NOTIFICATIONS
+═══════════════════════════════════════════════════════════════════
+
+Build branded React Email templates for each:
+- Welcome email (on signup)
+- Order confirmation (items, total, payment method, estimated delivery)
+- Payment received / verified (for CliQ)
+- Order shipped (tracking number + carrier link)
+- Order delivered
+- Order cancelled / refunded
+- Abandoned cart reminder (sent after 1hr, 24hr, 72hr — 3-email sequence)
+- Password reset
+- Price drop alert (for wishlisted items)
+- Back in stock notification
+- Review request (7 days after delivery)
+- Coupon / promotion (admin-triggered)
+
+All emails must:
+- Be bilingual (AR/EN based on user preference)
+- Be mobile-responsive
+- Include unsubscribe link
+- Have plain-text fallback
+- Pass DKIM/SPF/DMARC checks
+
+═══════════════════════════════════════════════════════════════════
+SECTION 10: MOBILE & PWA
+═══════════════════════════════════════════════════════════════════
+
+- Fully responsive (mobile-first design, breakpoints: sm/md/lg/xl)
+- Bottom navigation bar on mobile (Home, Categories, Cart, Account)
+- Swipe gestures on product image gallery
+- Pull-to-refresh on listing pages
+- PWA manifest (installable on home screen)
+- Offline fallback page
+- Push notifications (order updates, flash sales)
+- Touch-optimized: 44px minimum tap targets, no hover-only interactions
+- Reduced motion support (prefers-reduced-motion media query)
+- Fast: Sub-3s FCP on 3G
+
+═══════════════════════════════════════════════════════════════════
+
+# Execution Order
+Start by building in this exact order:
+1. Database schema (Drizzle) + migrations + RLS policies + seed data
+2. Auth (Clerk setup, middleware, role-based access)
+3. Admin dashboard (product CRUD first — we need products to test storefront)
+4. Storefront: Homepage → PLP → PDP → Cart → Checkout → Order Confirmation
+5. User account area (orders, wishlist, addresses)
+6. Payment integrations (Zain Cash, CliQ, COD)
+7. Search (Meilisearch indexing + instant search UI)
+8. Marketing features (coupons, banners, flash sales, abandoned cart)
+9. Reviews & ratings system
+10. Email templates + notification system
+11. Analytics & reporting
+12. SEO optimization pass
+13. Performance audit + optimization
+14. Security audit + penetration testing
+15. Arabic localization + RTL pass
+16. PWA + mobile optimization
+17. Testing (unit + integration + E2E with Playwright)
+18. Deployment (Vercel + Supabase production)
+
+Begin with Step 1: Design and output the complete Drizzle schema file."
 
 ------------------------------------------------------------------------------
 2. CHECKLIST SPECIFICS
 ------------------------------------------------------------------------------
-[ ] ARCHITECTURE & DB
-    - [ ] Database Schema Design (ER Diagram approved).
-    - [ ] Supabase Project setup.
-    - [ ] Row Level Security (RLS) policies written and tested.
-    - [ ] Migrations pipeline set up (Drizzle/Prisma).
+[ ] ARCHITECTURE & DATABASE
+    - [ ] Database Schema Design (ER Diagram approved by client).
+    - [ ] Supabase Project setup (production + staging).
+    - [ ] Row Level Security (RLS) policies written AND tested for every table.
+    - [ ] Drizzle migrations pipeline configured and tested.
+    - [ ] Seed data script (test products, categories, users).
+    - [ ] Database indexes on all FK columns + frequently queried fields.
+    - [ ] Backup strategy: PITR (Point-in-time recovery) enabled.
 
-[ ] AUTHENTICATION
-    - [ ] Sign Up / Sign In flows (Email, Google, etc.).
-    - [ ] Protected Routes Middleware configured.
-    - [ ] User Roles (Admin vs User) implemented in public.users table or metadata.
+[ ] AUTHENTICATION & AUTHORIZATION
+    - [ ] Sign Up (Email + Google + Apple + Phone OTP).
+    - [ ] Sign In + Forgot Password flow.
+    - [ ] Clerk webhook syncs user data to Supabase users table.
+    - [ ] Middleware: Protect /account/* and /admin/* routes.
+    - [ ] Role-based access: customer vs admin vs super_admin.
+    - [ ] Guest checkout flow (no account required).
+    - [ ] Merge guest cart with user cart on login.
+
+[ ] STOREFRONT — HOMEPAGE
+    - [ ] Hero banner carousel (admin-managed).
+    - [ ] Category grid with icons.
+    - [ ] Flash deals section with countdown timer.
+    - [ ] Featured / New Arrival / Best Seller product carousels.
+    - [ ] Brand showcase strip.
+    - [ ] Recently viewed products (localStorage).
+    - [ ] Newsletter signup with validation.
+    - [ ] Trust badges section.
+
+[ ] STOREFRONT — PRODUCT LISTING (PLP)
+    - [ ] Grid/List view toggle.
+    - [ ] Faceted filters: Category, Price, Brand, Rating, Size, Color, Availability.
+    - [ ] Sort: Relevance, Price, Newest, Best Selling, Rating.
+    - [ ] Infinite scroll or pagination.
+    - [ ] Active filter chips + clear all.
+    - [ ] Quick-view modal (desktop).
+    - [ ] Add to cart + wishlist toggle from listing.
+    - [ ] Skeleton loading states.
+
+[ ] STOREFRONT — PRODUCT DETAIL (PDP)
+    - [ ] Image gallery: Zoom, swipe, thumbnails, fullscreen lightbox.
+    - [ ] Variant selector: Color swatches, size buttons, dynamic price.
+    - [ ] Quantity selector respecting stock.
+    - [ ] Add to Cart (animated feedback) + Buy Now button.
+    - [ ] Wishlist toggle + Share buttons (WhatsApp, Copy Link).
+    - [ ] Delivery estimate based on location.
+    - [ ] Tabs: Description, Specs, Reviews, Shipping & Returns.
+    - [ ] Write a Review form (verified purchase only, photo upload).
+    - [ ] Related products carousel.
+    - [ ] Structured data (JSON-LD: Product, Review, BreadcrumbList).
+    - [ ] Breadcrumb navigation.
+
+[ ] STOREFRONT — SEARCH
+    - [ ] Instant search-as-you-type with debounce.
+    - [ ] Suggestions: Products, Categories, Brands, Recent, Trending.
+    - [ ] Full results page with filters.
+    - [ ] Fuzzy matching + Arabic support.
+    - [ ] Zero-results fallback with suggestions.
+
+[ ] CART
+    - [ ] Slide-over cart drawer + dedicated cart page.
+    - [ ] Quantity adjustment + remove + save for later.
+    - [ ] Real-time stock validation.
+    - [ ] Coupon apply/remove.
+    - [ ] Order summary (subtotal, discount, shipping, tax, total).
+    - [ ] Persistent cart (DB for users, localStorage for guests, merge on login).
+    - [ ] Animated cart badge in header.
+
+[ ] CHECKOUT
+    - [ ] Guest checkout with email.
+    - [ ] Multi-step: Contact → Address → Shipping → Payment → Review.
+    - [ ] Saved addresses dropdown + add new.
+    - [ ] Shipping method selection with price + ETA.
+    - [ ] Payment methods: Zain Cash, CliQ, COD, Card, Wallet.
+    - [ ] Order notes textarea.
+    - [ ] Terms checkbox (required).
+    - [ ] Place Order with loading + double-click prevention.
+    - [ ] Inventory decrement in DB transaction (race-safe).
+    - [ ] Redirect to order confirmation.
+
+[ ] ORDER MANAGEMENT (CUSTOMER SIDE)
+    - [ ] Order confirmation page + email.
+    - [ ] Order history with status filter.
+    - [ ] Order detail + visual tracking timeline.
+    - [ ] Re-order button.
+    - [ ] Return/Refund request form.
+    - [ ] SMS + Email on each status change.
+
+[ ] USER ACCOUNT
+    - [ ] Account overview dashboard.
+    - [ ] Wishlist (grid, add to cart, share).
+    - [ ] Address book CRUD (max 10, set default).
+    - [ ] Wallet balance + transaction history.
+    - [ ] Notification preferences toggles.
+    - [ ] Profile edit, change password, delete account.
 
 [ ] PAYMENTS (JORDAN SPECIALIZED)
-    - [ ] Zain Cash API: Merchant Wallet connected, Webhook handler secure.
-    - [ ] CliQ: 'Pay via CliQ' instruction modal + Admin manual approval flow.
-    - [ ] Receipt generation (PDF) on success.
+    - [ ] Zain Cash: Redirect flow + webhook handler + signature verification.
+    - [ ] CliQ: Payment details display + screenshot upload + admin approval queue.
+    - [ ] COD: Fee display + phone OTP verification + order limit.
+    - [ ] Wallet/Store Credit: Balance at checkout, admin can add credit.
+    - [ ] Auto-expire unverified CliQ payments (24hr cron).
+    - [ ] Receipt/Invoice PDF generation.
+    - [ ] Refund flow (full/partial) per payment method.
 
 [ ] ADMIN DASHBOARD
-    - [ ] Overview Stats (Revenue, Users).
-    - [ ] Data Tables (Tanstack Table) with sorting/filtering.
-    - [ ] CRUD operations for core resources.
+    - [ ] KPI overview (Revenue, Orders, Customers, Conversion Rate).
+    - [ ] Revenue chart (line/bar, date range filter).
+    - [ ] Top products + low stock alerts.
+    - [ ] Recent orders quick-view.
+    - [ ] Pending CliQ verifications badge.
+
+[ ] ADMIN — PRODUCT MANAGEMENT
+    - [ ] Products table with search, filter, bulk actions.
+    - [ ] Product create/edit: Bilingual name/description, pricing, media upload, variants, inventory, SEO, category, brand, tags.
+    - [ ] Duplicate product.
+    - [ ] Import/Export CSV.
+
+[ ] ADMIN — ORDER MANAGEMENT
+    - [ ] Orders table with filters.
+    - [ ] Order detail: Items, payment, shipping, status update, notes, refund.
+    - [ ] CliQ verification queue (view screenshot → approve/reject).
+    - [ ] Print packing slip / invoice PDF.
+
+[ ] ADMIN — CUSTOMERS
+    - [ ] Customers table + detail view.
+    - [ ] Customer segments (VIP, New, Inactive).
+    - [ ] Export CSV.
+
+[ ] ADMIN — MARKETING
+    - [ ] Coupon CRUD + usage analytics.
+    - [ ] Banner management (upload, position, schedule).
+    - [ ] Flash sale management.
+    - [ ] Abandoned cart dashboard + recovery emails.
+
+[ ] ADMIN — INVENTORY
+    - [ ] Stock levels overview (sort by lowest).
+    - [ ] Low stock alerts.
+    - [ ] Manual stock adjustment with reason.
+    - [ ] Movement history per product.
+    - [ ] Bulk update via CSV.
+
+[ ] ADMIN — ANALYTICS & REPORTS
+    - [ ] Sales report (revenue, orders, AOV by period).
+    - [ ] Product performance (views, cart rate, conversion).
+    - [ ] Customer analytics (new vs returning, LTV, geo).
+    - [ ] Search analytics (top queries, zero results).
+    - [ ] Export reports CSV/PDF.
+
+[ ] ADMIN — SETTINGS
+    - [ ] Store info (name, logo, contact).
+    - [ ] Payment method configs.
+    - [ ] Shipping zones + rates.
+    - [ ] Tax settings.
+    - [ ] Email template management.
+    - [ ] Legal pages (Terms, Privacy, Refund — rich text editor).
+    - [ ] Maintenance mode toggle.
+
+[ ] REVIEWS & RATINGS
+    - [ ] Write review (stars, title, body, photos — verified purchase only).
+    - [ ] Display reviews with filters (rating, verified, photos).
+    - [ ] Helpful vote system.
+    - [ ] Admin moderation queue.
+    - [ ] Admin reply to reviews.
+    - [ ] Average rating + count on product cards and PDP.
+
+[ ] EMAIL NOTIFICATIONS
+    - [ ] Welcome email.
+    - [ ] Order confirmation.
+    - [ ] Payment verified (CliQ).
+    - [ ] Order shipped (tracking link).
+    - [ ] Order delivered.
+    - [ ] Order cancelled / refunded.
+    - [ ] Abandoned cart sequence (1hr, 24hr, 72hr).
+    - [ ] Password reset.
+    - [ ] Price drop alert.
+    - [ ] Back in stock alert.
+    - [ ] Review request (7 days post-delivery).
+    - [ ] All emails bilingual + mobile responsive + unsubscribe link.
+    - [ ] DKIM/SPF/DMARC records configured.
+
+[ ] SEO
+    - [ ] generateMetadata on every route.
+    - [ ] JSON-LD structured data: Product, Review, BreadcrumbList, Organization, WebSite, LocalBusiness, FAQPage.
+    - [ ] Dynamic sitemap.xml (products, categories, brands).
+    - [ ] robots.txt (block admin routes).
+    - [ ] Open Graph + Twitter Card meta.
+    - [ ] Hreflang (en/ar).
+    - [ ] Canonical URLs.
+    - [ ] Breadcrumbs on all pages.
+
+[ ] LOCALIZATION (AR/EN)
+    - [ ] Full Arabic translation all UI strings.
+    - [ ] RTL layout support (Tailwind rtl: variant).
+    - [ ] Language toggle (cookie + DB persisted).
+    - [ ] Bilingual product content.
+    - [ ] Currency format per locale.
+    - [ ] Date format per locale.
+    - [ ] Arabic numeral option.
+
+[ ] PERFORMANCE
+    - [ ] Server Components by default.
+    - [ ] next/image: WebP/AVIF, blur placeholder, responsive.
+    - [ ] Lazy load below-fold.
+    - [ ] Route prefetching.
+    - [ ] Database indexes + query optimization.
+    - [ ] Lighthouse 95+ all categories.
+    - [ ] Sub-3s FCP on 3G.
 
 [ ] SECURITY AUDIT
-    - [ ] SQL Injection prevention (via ORM).
-    - [ ] XSS protection (React default + sanitization).
-    - [ ] API Rate Limiting strict rules.
+    - [ ] RLS on every table tested.
+    - [ ] Middleware route protection verified.
+    - [ ] Zod on every Server Action + API route.
+    - [ ] CSRF protection on mutations.
+    - [ ] Rate limiting (auth, API, search).
+    - [ ] Webhook signature verification (HMAC).
+    - [ ] Secure headers (CSP, HSTS, X-Frame-Options).
+    - [ ] File upload validation (type, size, safe naming).
+    - [ ] Input sanitization (reviews, notes, addresses).
+    - [ ] Admin audit logging.
+    - [ ] Never expose secrets to client bundle.
+    - [ ] No raw SQL with user input.
+
+[ ] MOBILE & PWA
+    - [ ] Mobile-first responsive design.
+    - [ ] Bottom nav bar on mobile.
+    - [ ] Touch-optimized (44px tap targets).
+    - [ ] Swipe gestures (image gallery, cart).
+    - [ ] PWA manifest (installable).
+    - [ ] Offline fallback page.
+    - [ ] Push notifications.
+    - [ ] prefers-reduced-motion respected.
+
+[ ] TESTING
+    - [ ] Unit tests: Utility functions, validators, price calculations.
+    - [ ] Integration tests: Server Actions, API routes.
+    - [ ] E2E tests (Playwright): Full purchase flow, admin CRUD, auth flows.
+    - [ ] Payment flow testing (sandbox/test mode).
+    - [ ] Mobile responsive testing (real devices).
+    - [ ] Cross-browser testing (Chrome, Safari, Firefox).
+    - [ ] Arabic RTL layout testing.
+    - [ ] Accessibility testing (WCAG 2.1 AA).
+
+[ ] DEPLOYMENT
+    - [ ] Vercel production deployment.
+    - [ ] Supabase production project.
+    - [ ] Environment variables configured.
+    - [ ] Custom domain + SSL.
+    - [ ] CDN configured.
+    - [ ] Sentry error tracking connected.
+    - [ ] Uptime monitoring (5-min interval).
+    - [ ] Database PITR backups verified.
 
 ------------------------------------------------------------------------------
 3. OFTEN FORGOTTEN & ESSENTIALS
 ------------------------------------------------------------------------------
 [ ] CRITICAL INFRASTRUCTURE
-    - [ ] Uptime Monitoring: Ping service every 5 mins.
-    - [ ] Database Backups: PITR (Point-in-time recovery) enabled in Supabase.
-    - [ ] Error Logging: Sentry connected to catch production crashes.
+    - [ ] Uptime Monitoring: Ping every 5 mins, alert on downtime.
+    - [ ] Database Backups: PITR enabled, tested restore procedure.
+    - [ ] Error Logging: Sentry connected, alert on errors.
+    - [ ] Rate Limiting: All endpoints protected.
+    - [ ] DDoS Protection: Vercel/Cloudflare configured.
 
 [ ] LEGAL & COMPLIANCE
-    - [ ] Terms of Service: Explicitly defined for SaaS users.
-    - [ ] Refund Policy: Clear rules for disputes.
-    - [ ] Transaction Emails: "Receipt" email delivery verified (DKIM/SPF records).
+    - [ ] Terms of Service.
+    - [ ] Privacy Policy (GDPR-aware).
+    - [ ] Refund & Return Policy (clear timelines, conditions).
+    - [ ] Cookie consent banner.
+    - [ ] Transaction receipt emails verified.
+    - [ ] DKIM/SPF/DMARC email authentication.
+    - [ ] Data retention policy.
+
+[ ] ACCESSIBILITY (WCAG 2.1 AA)
+    - [ ] Semantic HTML (headings, landmarks, labels).
+    - [ ] Keyboard navigation (all interactive elements).
+    - [ ] Screen reader support (aria-labels, live regions).
+    - [ ] Color contrast 4.5:1 ratio minimum.
+    - [ ] Focus indicators visible.
+    - [ ] Alt text on all images.
+    - [ ] Skip-to-content link.
+
+[ ] EDGE CASES
+    - [ ] Cart item goes out of stock during checkout → handle gracefully.
+    - [ ] Price changes between cart add and checkout → notify user.
+    - [ ] Concurrent cart updates (multiple tabs) → last-write-wins with notification.
+    - [ ] Payment timeout/failure → order stays pending, user can retry.
+    - [ ] Coupon max usage reached mid-checkout → clear gracefully.
+    - [ ] Large order (100+ items) → performance test.
+    - [ ] Image upload fails → retry + fallback placeholder.
+    - [ ] Network offline during checkout → queue and retry.
+
+[ ] POST-LAUNCH
+    - [ ] Google Search Console submitted.
+    - [ ] Google Analytics / PostHog configured.
+    - [ ] Social media pixels (Facebook, TikTok if needed).
+    - [ ] Performance baseline recorded.
+    - [ ] Runbook for common admin tasks documented.
+    - [ ] Customer support flow defined (WhatsApp / email).
