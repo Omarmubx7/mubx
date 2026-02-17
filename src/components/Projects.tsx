@@ -9,7 +9,7 @@ import Image from 'next/image';
 import ProjectCard from './ProjectCard';
 import { useState, useEffect } from 'react';
 
-
+import { LetterGlitch } from './framer/FramerComponents';
 import Link from 'next/link';
 
 import { getProjects } from '@/lib/projects';
@@ -35,7 +35,20 @@ export default function Projects() {
 
     return (
         <section id="projects" className="py-24 relative">
-            <div className="container mx-auto px-6 md:px-12">
+            {/* LetterGlitch background behind header */}
+            <div className="absolute inset-x-0 top-0 h-72 overflow-hidden pointer-events-none">
+                <LetterGlitch
+                    glitchColors={["#4a0d0d", "#E11D1D", "#dc6161"]}
+                    glitchSpeed={50}
+                    smooth={true}
+                    centerVignette={false}
+                    outerVignette={true}
+                    backgroundColor="#050505"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background" />
+            </div>
+
+            <div className="container mx-auto px-6 md:px-12 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

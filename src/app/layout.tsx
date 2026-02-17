@@ -61,8 +61,8 @@ export const metadata: Metadata = {
     canonical: siteConfig.url,
   },
   icons: {
-    icon: '/favicon.png', // Updated filename
-    apple: '/mubxlogo.png', // Renamed to force cache bust and match file
+    icon: '/favicon.ico',
+    apple: '/mubxlogo.svg',
   },
   openGraph: {
     title: siteConfig.title,
@@ -141,7 +141,7 @@ export default function RootLayout({
                 "@type": "Person",
                 "name": "Omar Mubaidin | عمر مبيضين",
                 "url": "https://mubx.dev",
-                "image": "https://mubx.dev/mubxlogo.png",
+                "image": "https://mubx.dev/mubxlogo.svg",
                 "jobTitle": "Web Developer",
                 "sameAs": [
                   "https://github.com/Omarmubx7",
@@ -151,8 +151,8 @@ export default function RootLayout({
               {
                 "@type": "ProfessionalService",
                 "name": "MUBX",
-                "image": "https://mubx.dev/mubxlogo.png",
-                "logo": "https://mubx.dev/mubxlogo.png",
+                "image": "https://mubx.dev/mubxlogo.svg",
+                "logo": "https://mubx.dev/mubxlogo.svg",
                 "description": "High-performance web development for verified systems and startups.",
                 "url": "https://mubx.dev",
                 "address": {

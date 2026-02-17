@@ -23,7 +23,7 @@ export default function Footer() {
                         <Link href={getHref('/')} className="flex items-center gap-2 group">
                             <span className="relative h-20 w-auto min-w-[160px] transition-transform group-hover:scale-105">
                                 <Image
-                                    src="/mubxlogo.png"
+                                    src="/mubxlogo.svg"
                                     alt="MUBX Logo"
                                     width={140}
                                     height={50}

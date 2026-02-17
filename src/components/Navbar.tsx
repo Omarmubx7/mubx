@@ -96,7 +96,7 @@ const NavbarContent = () => {
             <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2" aria-label="MUBX Home">
                 <div className="relative h-16 w-32 transition-transform group-hover:scale-105">
                     <LiquidMetal
-                        imageSource="/mubxlogo.png"
+                        imageSource="/mubxlogo.svg"
                         speed={0.3}
                         dispersion={0.015}
                         edge={0.4}

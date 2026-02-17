@@ -47,3 +47,11 @@ export const ProTextType = dynamic(() => import('./patch/ProTextType.patch.js'),
     ssr: false,
     loading: () => <div className="w-full h-24 bg-white/5 animate-pulse rounded-xl" />
 });
+
+// -- CANVAS EFFECTS --
+
+// [Letter Glitch]
+export const LetterGlitch = dynamic(() => import('./patch/LetterGlitch.patch.js'), {
+    ssr: false,
+    loading: () => <div className="w-full h-full bg-black" />
+});

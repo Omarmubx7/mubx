@@ -38,12 +38,8 @@ export const RichText = ({ children }: { children: React.ReactNode }) => childre
 
 // Hooks
 export const useActiveVariantCallback = (variant: string) => {
-    console.log("[framer-mock] useActiveVariantCallback called with:", variant);
     return {
-        activeVariantCallback: (callback: any) => {
-            console.log("[framer-mock] activeVariantCallback executed");
-            return callback;
-        },
+        activeVariantCallback: (callback: any) => callback,
         delay: 0
     };
 };
@@ -65,8 +61,7 @@ export const useVariantState = ({ defaultVariant }: any) => {
     };
 };
 
-export const withCSS = (component: any) => {
-    console.log("[framer-mock] withCSS wrapping:", component.displayName || component.name);
+export const withCSS = (component: any, ..._args: any[]) => {
     const Enhanced = (props: any) => React.createElement(component, props);
     Enhanced.displayName = `withCSS(${component.displayName || component.name})`;
     return Enhanced;

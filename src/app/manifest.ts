@@ -11,14 +11,9 @@ export default function manifest(): MetadataRoute.Manifest {
         theme_color: '#000000',
         icons: [
             {
-                src: '/mubxlogo.png',
-                sizes: '192x192',
-                type: 'image/png',
-            },
-            {
-                src: '/mubxlogo.png',
-                sizes: '512x512',
-                type: 'image/png',
+                src: '/mubxlogo.svg',
+                sizes: 'any',
+                type: 'image/svg+xml',
             },
         ],
     };
