@@ -14,7 +14,7 @@ export default function ProTextTypeEffect(props) {
     const [currentTextIndex, setCurrentTextIndex] = React.useState(0);
     const [isVisible, setIsVisible] = React.useState(!startOnVisible);
 
-    const firstColor = textColors && textColors[0] || "#000000";
+    const firstColor = textColors && textColors[0] || "currentColor";
     const resolvedCursorColor = cursorColorMode === "custom" && cursorCustomColor ? cursorCustomColor : firstColor;
     const containerRef = React.useRef(null);
     const As = asTag || "div";
@@ -28,7 +28,7 @@ export default function ProTextTypeEffect(props) {
     }, [variableSpeed, typingSpeed]);
 
     const getCurrentTextColor = React.useCallback(() => {
-        if (!textColors || textColors.length === 0) return "#000000";
+        if (!textColors || textColors.length === 0) return "currentColor";
         return textColors[currentTextIndex % textColors.length];
     }, [textColors, currentTextIndex]);
 
