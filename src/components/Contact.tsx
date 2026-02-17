@@ -287,10 +287,12 @@ export default function Contact() {
                     answer2={t.contact.faq.q2.a}
                     question3={t.contact.faq.q3.q}
                     answer3={t.contact.faq.q3.a}
-                    question4={language === 'en' ? "What is your typical turnaround?" : "ما هو الوقت المعتاد للتسليم؟"}
-                    answer4={language === 'en' ? "For landing pages, 5-7 days. For custom systems, typically 3+ weeks depending on complexity." : "بالنسبة لصفحات الهبوط، 5-7 أيام. للأنظمة المخصصة، عادة ما يكون 3 أسابيع أو أكثر حسب التعقيد."}
-                    question5={language === 'en' ? "How do you handle payments?" : "كيف يتم التعامل مع المدفوعات؟"}
-                    answer5={language === 'en' ? "I accept Bank Transfer, Zain Cash, and CliQ. Typically 50% upfront and 50% on completion." : "أقبل التحويل البنكي، زين كاش، وكليك. عادة 50% مقدماً و 50% عند الانتهاء."}
+                    question4={t.contact.faq.q4.q}
+                    answer4={t.contact.faq.q4.a}
+                    question5={t.contact.faq.q5.q}
+                    answer5={t.contact.faq.q5.a}
+                    question6={t.contact.faq.q6.q}
+                    answer6={t.contact.faq.q6.a}
                 />
             </div>
 

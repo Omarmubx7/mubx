@@ -47,10 +47,12 @@ export default function Hero() {
                             <span className="text-neon relative inline-block text-5xl md:text-7xl animate-hero-fade-up delay-hero-2 min-w-max whitespace-nowrap">
                                 <TypewriterEffect
                                     words={[
-                                        { word: t.hero.titleHighlight },
-                                        { word: language === 'en' ? 'e-commerce' : 'متاجر إلكترونية' },
-                                        { word: language === 'en' ? 'SaaS MVPs' : 'أنظمة SaaS' },
-                                        { word: language === 'en' ? 'portfolios' : 'معارض أعمال' }
+                                        { word: language === 'en' ? 'PORTFOLIOS' : 'معارض أعمال' },
+                                        { word: language === 'en' ? 'PLATFORMS' : 'منصات' },
+                                        { word: language === 'en' ? 'PRODUCTS' : 'منتجات' },
+                                        { word: language === 'en' ? 'E-COMMERCE' : 'متاجر إلكترونية' },
+                                        { word: language === 'en' ? 'WEB APPS' : 'تطبيقات ويب' },
+                                        { word: language === 'en' ? 'SAAS MVPS' : 'أنظمة SaaS' }
                                     ]}
                                     typingSpeed={80}
                                     deletingSpeed={50}

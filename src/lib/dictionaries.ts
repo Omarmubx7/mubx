@@ -194,16 +194,28 @@ export const dictionary = {
             faq: {
                 title: "Common Questions",
                 q1: {
-                    q: "Do you work with non-tech founders?",
-                    a: "Yes! I explain everything in plain English. No jargon. I handle the hosting, domains, and tech setup so you can focus on business."
+                    q: "What technologies do you use?",
+                    a: "I build with modern, production-grade tools: Next.js for frontend, React for UI components, TypeScript for type safety, PostgreSQL for databases, and Prisma for data management. This stack ensures fast, secure, and scalable applications."
                 },
                 q2: {
-                    q: "Do you sign contracts?",
-                    a: "Absolutely. Every project starts with a clear contract outlining dates, deliverables, and costs. No surprises."
+                    q: "How long does a typical project take?",
+                    a: "Most projects take 2-6 weeks depending on scope. A simple landing page can be done in 1-2 weeks, while a full e-commerce system with custom features may need 4-6 weeks. I'll give you a detailed timeline in our first call."
                 },
                 q3: {
-                    q: "Do you support after launch?",
-                    a: "Yes. I offer a 1-month support period for bugs, and can discuss retainer packages for ongoing updates."
+                    q: "Do you work with clients outside Jordan?",
+                    a: "Yes! I work remotely with clients worldwide. As long as we can communicate effectively via video calls and messaging, location isn't a barrier. Most of my workflow is async-friendly."
+                },
+                q4: {
+                    q: "What payment methods do you accept?",
+                    a: "I accept Zain Cash, CliQ (for Jordan-based clients), and international bank transfers. A 50% deposit is required to start, with the remaining 50% due upon project completion."
+                },
+                q5: {
+                    q: "Do you offer maintenance after launch?",
+                    a: "Yes. Every project includes a 30-day bug-fix warranty. After that, I offer ongoing support packages for updates, content changes, and technical maintenance. We can discuss retainer options based on your needs."
+                },
+                q6: {
+                    q: "What's included in your projects?",
+                    a: "Every project includes: custom design tailored to your brand, full development and deployment, mobile-responsive layout, SEO optimization, performance tuning, and training on how to manage your site. You own all the code and assets."
                 }
             }
         },
@@ -751,16 +763,28 @@ export const dictionary = {
             faq: {
                 title: "أسئلة شائعة",
                 q1: {
-                    q: "هل تعمل مع مؤسسين غير تقنيين؟",
-                    a: "نعم! أشرح كل شيء بلغة بسيطة. أتولى الاستضافة والنطاق والإعداد التقني لتركز أنت على عملك."
+                    q: "ما هي التقنيات التي تستخدمها؟",
+                    a: "أبني بأدوات حديثة وموثوقة: Next.js للواجهة الأمامية، React لمكونات UI، TypeScript لضمان الأمان، PostgreSQL لقواعد البيانات، وPrisma لإدارة البيانات. هذه التقنيات تضمن تطبيقات سريعة وآمنة وقابلة للتوسع."
                 },
                 q2: {
-                    q: "هل توقع عقود؟",
-                    a: "بالتأكيد. يبدأ كل مشروع بعقد واضح يحدد التواريخ والمخرجات والتكاليف. لا مفاجآت."
+                    q: "كم يستغرق المشروع العادي؟",
+                    a: "معظم المشاريع تستغرق 2-6 أسابيع حسب النطاق. صفحة هبوط بسيطة يمكن إنجازها في 1-2 أسبوع، بينما نظام متجر إلكتروني كامل قد يحتاج 4-6 أسابيع. سأعطيك جدول زمني مفصل في مكالمتنا الأولى."
                 },
                 q3: {
-                    q: "هل توفر دعم بعد الإطلاق؟",
-                    a: "نعم. أقدم فترة دعم لمدة شهر للأخطاء البرمجية، ويمكن مناقشة باقات صيانة للتحديثات المستمرة."
+                    q: "هل تعمل مع عملاء خارج الأردن؟",
+                    a: "نعم! أعمل عن بعد مع عملاء حول العالم. طالما يمكننا التواصل بفعالية عبر مكالمات الفيديو والرسائل، الموقع الجغرافي ليس عائقاً. معظم سير العمل متوافق مع العمل غير المتزامن."
+                },
+                q4: {
+                    q: "ما هي طرق الدفع المتاحة؟",
+                    a: "أقبل زين كاش، كليك (للعملاء في الأردن)، والتحويلات البنكية الدولية. يتطلب دفع 50% مقدم للبدء، والـ 50% المتبقية عند إكمال المشروع."
+                },
+                q5: {
+                    q: "هل توفر صيانة بعد الإطلاق؟",
+                    a: "نعم. كل مشروع يتضمن ضمان إصلاح الأخطاء لمدة 30 يوماً. بعد ذلك، أقدم باقات دعم مستمر للتحديثات، تغييرات المحتوى، والصيانة التقنية. يمكننا مناقشة خيارات الاشتراك حسب احتياجاتك."
+                },
+                q6: {
+                    q: "ما الذي يتضمنه مشروعك؟",
+                    a: "كل مشروع يتضمن: تصميم مخصص يناسب علامتك التجارية، تطوير كامل ونشر، تخطيط متجاوب مع الأجهزة المحمولة، تحسين SEO، ضبط الأداء، وتدريب على كيفية إدارة موقعك. أنت تملك كل الكود والملفات."
                 }
             }
         },
