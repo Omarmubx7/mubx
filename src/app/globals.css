@@ -13,17 +13,17 @@ html {
     scroll-behavior: auto;
     /* Disable smooth scroll on mobile for better performance */
   }
+}
 
-  /* Reduce motion for users who prefer it */
-  @media (prefers-reduced-motion: reduce) {
+/* Reduce motion for users who prefer it (all devices) */
+@media (prefers-reduced-motion: reduce) {
 
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

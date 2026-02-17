@@ -179,7 +179,7 @@ export const dictionary = {
                 business: "Business Name",
                 businessPlaceholder: "Company Ltd.",
                 email: "Email Address",
-                emailPlaceholder: "your.email@example.com",
+                emailPlaceholder: "name@company.com",
                 details: "Project Details",
                 detailsPlaceholder: "Tell me about your project requirements, goals, and any specific features you need...",
                 submit: "Send Inquiry",
@@ -513,7 +513,7 @@ export const dictionary = {
                 {
                     year: '2023',
                     role: 'Web Development Intern',
-                    company: 'Tech Companies',
+                    company: 'Local Tech Startups',
                     description: 'Gained hands-on experience in frontend workflows, UX best practices, and agile development cycles.'
                 }
             ]
@@ -748,7 +748,7 @@ export const dictionary = {
                 business: "اسم الشركة / المشروع",
                 businessPlaceholder: "اسم الشركة",
                 email: "بريدك الالكتروني",
-                emailPlaceholder: "your.email@example.com",
+                emailPlaceholder: "name@company.com",
                 details: "تفاصيل المشروع",
                 detailsPlaceholder: "أخبرني عن متطلبات مشروعك، أهدافك، وأي ميزات محددة تحتاجها...",
                 submit: "إرسال الاستفسار",
@@ -1076,7 +1076,7 @@ export const dictionary = {
                 {
                     year: '2023',
                     role: 'متدرب تطوير ويب',
-                    company: 'شركات تقنية',
+                    company: 'شركات ناشئة محلية',
                     description: 'اكتسبت خبرة عملية في تدفقات العمل للواجهات الأمامية، أفضل ممارسات تجربة المستخدم، ودورات التطوير الرشيقة.'
                 }
             ]

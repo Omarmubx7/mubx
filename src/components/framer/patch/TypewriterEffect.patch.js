@@ -21,12 +21,31 @@ export default function TypewriterEffect(props) {
     const [wordIndex, setWordIndex] = useState(0);
     const [charIndex, setCharIndex] = useState(0);
     const [showCursor, setShowCursor] = useState(true);
+    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
     const timeoutRef = useRef(null);
     const blinkRef = useRef(null);
     const currentWord = words.length > 0 ? words[wordIndex % words.length].word : "";
 
+    // Check for reduced motion preference
     useEffect(() => {
+        if (typeof window === "undefined") return;
+        const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+        setPrefersReducedMotion(mq.matches);
+        const handler = (e) => setPrefersReducedMotion(e.matches);
+        mq.addEventListener("change", handler);
+        return () => mq.removeEventListener("change", handler);
+    }, []);
+
+    // If reduced motion, show first word statically
+    useEffect(() => {
+        if (prefersReducedMotion && words.length > 0) {
+            setDisplayed(words[0].word);
+        }
+    }, [prefersReducedMotion, words]);
+
+    useEffect(() => {
+        if (prefersReducedMotion) return;
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
         let delay = typingSpeed;
@@ -59,15 +78,17 @@ export default function TypewriterEffect(props) {
             }, pauseDuration);
         }
         return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
-    }, [charIndex, isDeleting, wordIndex, currentWord, typingSpeed, deletingSpeed, pauseDuration, words.length]);
+    }, [charIndex, isDeleting, wordIndex, currentWord, typingSpeed, deletingSpeed, pauseDuration, words.length, prefersReducedMotion]);
 
     useEffect(() => {
+        if (prefersReducedMotion) return;
         if (!isDeleting) {
             startTransition(() => setCharIndex(0));
         }
-    }, [wordIndex, isDeleting]);
+    }, [wordIndex, isDeleting, prefersReducedMotion]);
 
     useEffect(() => {
+        if (prefersReducedMotion) return;
         blinkRef.current = window.setInterval(() => {
             startTransition(() => setShowCursor(v => !v));
         }, 500);

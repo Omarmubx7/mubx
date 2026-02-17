@@ -13,6 +13,7 @@ export default function Contact() {
     const { t, isRTL, language } = useLanguage();
     const [mounted, setMounted] = useState(false);
     const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+    const [fieldErrors, setFieldErrors] = useState<{ email?: string; message?: string }>({});
 
     useEffect(() => {
         setMounted(true);
@@ -124,6 +125,24 @@ export default function Contact() {
                                 const form = e.target as HTMLFormElement;
                                 const formData = new FormData(form);
 
+                                // Client-side validation
+                                const errors: { email?: string; message?: string } = {};
+                                const emailVal = (formData.get('email') as string || '').trim();
+                                const messageVal = (formData.get('message') as string || '').trim();
+
+                                if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+                                    errors.email = language === 'ar' ? 'يرجى إدخال بريد إلكتروني صالح' : 'Please enter a valid email address';
+                                }
+                                if (!messageVal || messageVal.length < 10) {
+                                    errors.message = language === 'ar' ? 'يرجى كتابة 10 أحرف على الأقل' : 'Please enter at least 10 characters';
+                                }
+
+                                if (Object.keys(errors).length > 0) {
+                                    setFieldErrors(errors);
+                                    return;
+                                }
+                                setFieldErrors({});
+
                                 setFormState('submitting');
                                 const supabase = await initializeSupabaseStore();
 
@@ -220,11 +239,13 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ms-1">{t.contact.form.email}</label>
-                                    <input type="email" name="email" id="email" required className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all placeholder:text-muted/50" placeholder={t.contact.form.emailPlaceholder} />
+                                    <input type="email" name="email" id="email" required className={`w-full bg-background border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all placeholder:text-muted/50 ${fieldErrors.email ? 'border-red-500' : 'border-border'}`} placeholder={t.contact.form.emailPlaceholder} onChange={() => setFieldErrors(prev => ({ ...prev, email: undefined }))} />
+                                    {fieldErrors.email && <p className="text-red-500 text-xs mt-1 ms-1">{fieldErrors.email}</p>}
                                 </div>
                                 <div>
                                     <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted mb-2 font-bold ms-1">{t.contact.form.details}</label>
-                                    <textarea name="message" id="message" rows={4} required className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all resize-none placeholder:text-muted/50" placeholder={t.contact.form.detailsPlaceholder}></textarea>
+                                    <textarea name="message" id="message" rows={4} required className={`w-full bg-background border rounded-xl px-5 py-4 text-foreground focus:border-neon focus:ring-1 focus:ring-neon/20 focus:outline-none transition-all resize-none placeholder:text-muted/50 ${fieldErrors.message ? 'border-red-500' : 'border-border'}`} placeholder={t.contact.form.detailsPlaceholder} onChange={() => setFieldErrors(prev => ({ ...prev, message: undefined }))}></textarea>
+                                    {fieldErrors.message && <p className="text-red-500 text-xs mt-1 ms-1">{fieldErrors.message}</p>}
                                 </div>
                                 <button
                                     type="submit"

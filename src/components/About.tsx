@@ -46,9 +46,9 @@ export default function About() {
                             <br /><br />
                             {t.about.descriptionEnd} <span className="text-neon">{t.about.performance}</span>{t.about.descriptionContext}
                             <br /><br />
-                            <div className="text-foreground font-medium border-l-2 border-neon pl-3 block italic py-2">
+                            <div className="text-foreground font-medium border-l-2 border-neon pl-3 block py-2">
                                 <ProTextType
-                                    text={`"${t.about.quoteStart} ${t.about.quoteHighlight} ${t.about.quoteEnd}"`}
+                                    text={`${t.about.quoteStart} ${t.about.quoteHighlight} ${t.about.quoteEnd}`}
                                     typingSpeed={50}
                                     loop={true}
                                     pauseDuration={5000}

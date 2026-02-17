@@ -48,7 +48,7 @@ export default function MetricsStrip() {
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border bg-card/30">
                     <MetricItem value="100" suffix="+" label={t.statsStrip.members} />
-                    <MetricItem value="20" prefix="+" suffix="%" label={t.statsStrip.leads} />
+                    <MetricItem value="20" suffix="%" label={t.statsStrip.leads} />
                     <MetricItem value="200" suffix="%" label={t.statsStrip.sales} />
                 </div>
             </div>

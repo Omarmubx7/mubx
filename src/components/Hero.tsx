@@ -1,19 +1,13 @@
 'use client';
 
-import Image from 'next/image';
 import Badge from './ui/Badge';
-import Link from 'next/link';
-import { MessageCircle, ArrowRight } from 'lucide-react';
-
 import { useLanguage } from '@/context/LanguageContext';
-import dynamic from 'next/dynamic';
-import { HeroSkeleton } from './ui/LoadingSkeleton';
 import { TypewriterEffect, SwipeLettersButton } from './framer/FramerComponents';
 
 
 
 export default function Hero() {
-    const { t, isRTL, language } = useLanguage();
+    const { t, language } = useLanguage();
 
     const getHref = (path: string) => {
         return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
@@ -80,49 +74,24 @@ export default function Hero() {
                         <div
                             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start rtl:lg:justify-end animate-hero-fade-up delay-hero-4 items-center"
                         >
-                            <a
-                                href="https://calendly.com/omarmubaidincs/30min"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group"
-                            >
-                                <SwipeLettersButton
-                                    text={t.hero.ctaPrimary}
-                                    style={{
-                                        backgroundColor: '#D71C1C',
-                                        color: 'black',
-                                        fontWeight: 'bold',
-                                        fontSize: '1.125rem',
-                                        padding: '1rem 2rem',
-                                        borderRadius: '9999px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '0.5rem',
-                                        border: '1px solid transparent',
-                                        boxShadow: '0 0 20px rgba(255,30,30,0.3)',
-                                    }}
-                                />
-                            </a>
-                            <Link
-                                href={getHref('/#projects')}
-                                className="group"
-                            >
-                                <SwipeLettersButton
-                                    text={t.hero.ctaSecondary}
-                                    style={{
-                                        backgroundColor: '#1A1A1A',
-                                        color: 'white',
-                                        fontWeight: 'bold',
-                                        fontSize: '1.125rem',
-                                        padding: '1rem 2rem',
-                                        borderRadius: '9999px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '0.5rem',
-                                        border: '1px solid #333',
-                                    }}
-                                />
-                            </Link>
+                            <SwipeLettersButton
+                                label={t.hero.ctaPrimary}
+                                link="https://calendly.com/omarmubaidincs/30min"
+                                defaultState={{ bgColor: '#D71C1C', borderColor: 'transparent', textColor: '#000000' }}
+                                hoverState={{ bgColor: '#B91616', borderColor: '#D71C1C', textColor: '#FFFFFF' }}
+                                font={{ fontSize: '18px', fontWeight: 'bold', letterSpacing: '0.4px' }}
+                                paddingX={32}
+                                paddingY={16}
+                            />
+                            <SwipeLettersButton
+                                label={t.hero.ctaSecondary}
+                                link={getHref('/#projects')}
+                                defaultState={{ bgColor: '#1A1A1A', borderColor: '#333333', textColor: '#FFFFFF' }}
+                                hoverState={{ bgColor: '#2D2D2D', borderColor: '#515151', textColor: '#FFFFFF' }}
+                                font={{ fontSize: '18px', fontWeight: 'bold', letterSpacing: '0.4px' }}
+                                paddingX={32}
+                                paddingY={16}
+                            />
                         </div>
                     </div>
 
