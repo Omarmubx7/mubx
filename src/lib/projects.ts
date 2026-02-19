@@ -24,6 +24,24 @@ export interface Project {
 const projectsData: Record<Locale, Project[]> = {
     en: [
         {
+            slug: 'htu-course-tracker',
+            title: 'HTU Course Tracker',
+            description: 'A real-time GPA calculator and course tracking tool designed specifically for HTU students with local data persistence.',
+            tech: ['Next.js', 'React', 'Tailwind', 'LocalStorage'],
+            links: { live: '/tools/course-tracker' },
+            logo: '/images/htu-logo.webp',
+            metrics: 'Real-time GPA',
+            verified_outcome: 'Integrated Tool',
+            timeframe: '2 Days',
+            category: { en: 'Academic Tool', ar: 'أداة أكاديمية', icon: '🎓', color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20' },
+            caseStudy: {
+                problem: 'Students needed a quick, private way to calculate their GPA and track their academic progress without logging into slow portals.',
+                role: 'Full Stack Developer',
+                solution: 'Built a client-side calculator with a premium UI that persists data locally, ensuring privacy and instant access.',
+                outcome: 'A seamless integration into the student portal ecosystem, providing instant academic insights.',
+            }
+        },
+        {
             slug: 'aqabwi',
             title: 'Aqabwi',
             description: 'A professional photography portfolio showcasing stunning visual storytelling and high-quality imagery.',
@@ -136,6 +154,24 @@ const projectsData: Record<Locale, Project[]> = {
         }
     ],
     ar: [
+        {
+            slug: 'htu-course-tracker',
+            title: 'متتبع مساقات HTU',
+            description: 'أداة لحساب المعدل التراكمي وتتبع المساقات مصممة خصيصاً لطلاب جامعة الحسين التقنية مع حفظ البيانات محلياً.',
+            tech: ['Next.js', 'React', 'Tailwind', 'LocalStorage'],
+            links: { live: '/tools/course-tracker' },
+            logo: '/images/htu-logo.webp',
+            metrics: 'معدل تراكمي فوري',
+            verified_outcome: 'أداة مدمجة',
+            timeframe: 'يومين',
+            category: { en: 'Academic Tool', ar: 'أداة أكاديمية', icon: '🎓', color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20' },
+            caseStudy: {
+                problem: 'احتاج الطلاب إلى طريقة سريعة وخاصة لحساب معدلاتهم وتتبع تقدمهم الأكاديمي دون الحاجة لتسجيل الدخول في بوابات بطيئة.',
+                role: 'مطور واجهات كاملة',
+                solution: 'بناء آلة حاسبة من جانب العميل بواجهة متميزة تحفظ البيانات محلياً، مما يضمن الخصوصية والوصول الفوري.',
+                outcome: 'تكامل سلس في النظام البيئي للطلاب، مما يوفر رؤى أكاديمية فورية.',
+            }
+        },
         {
             slug: 'aqabwi',
             title: 'عقباوي',
