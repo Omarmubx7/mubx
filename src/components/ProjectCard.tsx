@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,24 +15,13 @@ type ProjectCardProps = {
 }
 
 export default function ProjectCard({ project, index, t, language }: ProjectCardProps) {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"]
-    });
-
-    const isEven = index % 2 === 0;
-    const y = useTransform(scrollYProgress, [0, 1], isEven ? [0, -50] : [0, 50]);
-
     const getHref = (path: string) => {
         if (path.startsWith('http')) return path;
         return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
     };
 
     return (
-        <motion.div
-            ref={ref}
-            style={{ y }}
+        <div
             className="h-full"
         >
             <div
@@ -102,12 +91,12 @@ export default function ProjectCard({ project, index, t, language }: ProjectCard
                 <Link
                     href={getHref(project.caseStudy.caseStudyUrl || project.links.live)}
                     target={project.caseStudy.caseStudyUrl ? "_self" : "_blank"}
-                    className="w-full py-3 flex items-center justify-center gap-2 rounded-xl bg-muted/10 border border-border text-foreground font-bold hover:bg-neon hover:text-black hover:border-neon transition-all group-hover:translate-y-1"
+                    className="w-full py-3 flex items-center justify-center gap-2 rounded-xl bg-muted/10 border border-border text-foreground font-bold hover:bg-neon hover:text-black hover:border-neon transition-all"
                 >
-                    {project.caseStudy.caseStudyUrl ? t.projects.readCaseStudy : t.projects.visitLive}
+                    {project.caseStudy.readCaseStudy || t.projects.readCaseStudy}
                     <ExternalLink className="w-4 h-4" />
                 </Link>
             </div>
-        </motion.div>
+        </div>
     );
 }

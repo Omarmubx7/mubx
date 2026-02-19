@@ -15,52 +15,55 @@ export default function Services() {
     const { t } = useLanguage();
 
     const [isLoading, setIsLoading] = useState(true);
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const timer = setTimeout(() => setIsLoading(false), 600);
         return () => {
             clearTimeout(timer);
         };
     }, []);
 
-    const services = [
+    // Defensive check to prevent crash if dictionary keys are missing unexpectedly
+    const services = mounted ? [
         {
-            label: t.services.packages.linkBio.label,
-            title: t.services.packages.linkBio.title,
-            description: t.services.packages.linkBio.desc,
-            idealHeight: t.services.packages.linkBio.timeline,
-            deliverables: t.services.packages.linkBio.deliverables,
-            details: t.services.packages.linkBio.details,
-            price: t.services.packages.linkBio.price
+            label: t.services?.packages?.linkBio?.label || 'Basic',
+            title: t.services?.packages?.linkBio?.title || 'Link Tree',
+            description: t.services?.packages?.linkBio?.desc || '',
+            idealHeight: t.services?.packages?.linkBio?.timeline || '',
+            deliverables: t.services?.packages?.linkBio?.deliverables || '',
+            details: t.services?.packages?.linkBio?.details || [],
+            price: t.services?.packages?.linkBio?.price || '50 JD'
         },
         {
-            label: t.services.packages.landing.label,
-            title: t.services.packages.landing.title,
-            description: t.services.packages.landing.desc,
-            idealHeight: t.services.packages.landing.timeline,
-            deliverables: t.services.packages.landing.deliverables,
-            details: t.services.packages.landing.details,
-            price: t.services.packages.landing.price
+            label: t.services?.packages?.landing?.label || 'Starter',
+            title: t.services?.packages?.landing?.title || 'Landing Page',
+            description: t.services?.packages?.landing?.desc || '',
+            idealHeight: t.services?.packages?.landing?.timeline || '',
+            deliverables: t.services?.packages?.landing?.deliverables || '',
+            details: t.services?.packages?.landing?.details || [],
+            price: t.services?.packages?.landing?.price || '300 JD'
         },
         {
-            label: t.services.packages.business.label,
-            title: t.services.packages.business.title,
-            description: t.services.packages.business.desc,
-            idealHeight: t.services.packages.business.timeline,
-            deliverables: t.services.packages.business.deliverables,
-            details: t.services.packages.business.details,
-            price: t.services.packages.business.price
+            label: t.services?.packages?.business?.label || 'Growth',
+            title: t.services?.packages?.business?.title || 'Business Website',
+            description: t.services?.packages?.business?.desc || '',
+            idealHeight: t.services?.packages?.business?.timeline || '',
+            deliverables: t.services?.packages?.business?.deliverables || '',
+            details: t.services?.packages?.business?.details || [],
+            price: t.services?.packages?.business?.price || '500 JD'
         },
         {
-            label: t.services.packages.system.label,
-            title: t.services.packages.system.title,
-            description: t.services.packages.system.desc,
-            idealHeight: t.services.packages.system.timeline,
-            deliverables: t.services.packages.system.deliverables,
-            details: t.services.packages.system.details,
-            price: t.services.packages.system.price
+            label: t.services?.packages?.system?.label || 'Pro',
+            title: t.services?.packages?.system?.title || 'Web System',
+            description: t.services?.packages?.system?.desc || '',
+            idealHeight: t.services?.packages?.system?.timeline || '',
+            deliverables: t.services?.packages?.system?.deliverables || '',
+            details: t.services?.packages?.system?.details || [],
+            price: t.services?.packages?.system?.price || '700+ JD'
         },
-    ];
+    ] : [];
 
     return (
         <section id="services" className="py-24 relative bg-background">
@@ -81,7 +84,7 @@ export default function Services() {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16">
                     {isLoading
                         ? Array.from({ length: 4 }).map((_, i) => (
                             <div key={i} className="p-8 rounded-2xl bg-card border border-border backdrop-blur-sm flex flex-col h-full space-y-4">
@@ -155,39 +158,6 @@ export default function Services() {
 
             </div>
 
-            {/* How It Works Section */}
-            <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="mt-24 max-w-5xl mx-auto px-6 md:px-12"
-            >
-                <div className="text-center mb-12">
-                    <h3 className="text-2xl font-bold text-foreground mb-4">{t.services.howItWorks.title}</h3>
-                    <div className="h-1 w-20 bg-neon mx-auto rounded-full" />
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-8 text-center">
-                    <motion.div variants={fadeUp} className="bg-card p-8 rounded-xl border border-border relative">
-                        <div className="absolute -top-4 -left-4 w-10 h-10 bg-neon text-black font-bold flex items-center justify-center rounded-full text-xl shadow-[0_0_15px_rgba(255,30,30,0.5)]">1</div>
-                        <h4 className="font-bold text-foreground text-lg mb-2">{t.services.howItWorks.step1.title}</h4>
-                        <p className="text-muted text-sm">{t.services.howItWorks.step1.desc}</p>
-                    </motion.div>
-
-                    <motion.div variants={fadeUp} className="bg-card p-8 rounded-xl border border-border relative">
-                        <div className="absolute -top-4 -left-4 w-10 h-10 bg-neon text-black font-bold flex items-center justify-center rounded-full text-xl shadow-[0_0_15px_rgba(255,30,30,0.5)]">2</div>
-                        <h4 className="font-bold text-foreground text-lg mb-2">{t.services.howItWorks.step2.title}</h4>
-                        <p className="text-muted text-sm">{t.services.howItWorks.step2.desc}</p>
-                    </motion.div>
-
-                    <motion.div variants={fadeUp} className="bg-card p-8 rounded-xl border border-border relative">
-                        <div className="absolute -top-4 -left-4 w-10 h-10 bg-neon text-black font-bold flex items-center justify-center rounded-full text-xl shadow-[0_0_15px_rgba(255,30,30,0.5)]">3</div>
-                        <h4 className="font-bold text-foreground text-lg mb-2">{t.services.howItWorks.step3.title}</h4>
-                        <p className="text-muted text-sm">{t.services.howItWorks.step3.desc}</p>
-                    </motion.div>
-                </div>
-            </motion.div>
         </section >
     );
 }

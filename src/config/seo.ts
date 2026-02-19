@@ -1,7 +1,7 @@
 export const siteConfig = {
     name: "MUBX",
-    title: "Omar Mubaidin | Web Developer in Amman, Jordan",
-    description: "Build fast, secure web systems in Amman with MUBX. Full Stack Dev & CS Student specializing in Next.js & E-commerce.",
+    title: "Omar Mubaidin | Technical Consultant for Jordanian Startups",
+    description: "Revenue-focused technical consultancy for high-growth startups in Amman. Expert in Next.js, E-commerce, and Zain Cash payments.",
     url: "https://mubx.dev",
     author: {
         name: "Omar Mubaidin | عمر مبيضين",
@@ -12,16 +12,15 @@ export const siteConfig = {
         'Omar Mubaidin',
         'عمر مبيضين',
         'MUBX',
-        'Web Developer Amman',
-        'Web Developer Jordan',
-        'Software Engineer Jordan',
-        'Next.js Developer Jordan',
-        'Full Stack Developer Amman',
+        'Technical Consultant Jordan',
+        'Startup Advisor Amman',
+        'Web Consultant Jordan',
         'Zain Cash Integration Jordan',
-        'Ecommerce Developer Amman',
-        'Custom Web Systems',
-        'Verified Web Systems',
-        'Startup Developer Jordan'
+        'CliQ Payment Integration',
+        'Revenue Focused Web Design',
+        'Next.js Developer Amman',
+        'Software Consultant Jordan',
+        'MUBX Portfolio'
     ],
     ogImage: "/og-image.png", // Recommended size 1200x630
     links: {
@@ -31,12 +30,12 @@ export const siteConfig = {
     locale: 'en_US',
     metadata: {
         en: {
-            title: "Omar Mubaidin — Full Stack Web Developer in Amman",
-            description: "Expert Next.js developer building fast, secure web systems for startups and brands in Jordan. Specializing in E-commerce & Zain Cash integration.",
+            title: "Omar Mubaidin | Technical Consultant for Jordanian Startups",
+            description: "Scale your startup with revenue-focused technical solutions. Expert in custom web systems, local payments, and high-performance SEO for Jordanian brands.",
         },
         ar: {
-            title: "عمر مبيضين — مطور ويب في عمان | MUBX",
-            description: "مطور ويب متخصص في إنشاء أنظمة برمجية ومتاجر إلكترونية سريعة وآمنة في الأردن. خبير في ربط بوابات الدفع Zain Cash و CliQ.",
+            title: "عمر مبيضين | مستشار تقني للشركات الناشئة في الأردن",
+            description: "توسّع بشركتك الناشئة من خلال حلول تقنية تركز على العائد. خبير في الأنظمة المخصصة ودفع الزين كاش وتحسين محركات البحث للعلامات التجارية الأردنية.",
         }
     },
     openGraph: {

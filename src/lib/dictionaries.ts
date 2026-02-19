@@ -8,7 +8,7 @@ export const dictionary = {
             lab: 'From the Lab',
             testimonials: 'Testimonials',
             contact: 'Contact',
-            resume: 'Download CV (PDF)',
+            resume: 'Resume',
             estimate: 'Get Estimate',
             talk: "Let's Talk",
             home: 'Home',
@@ -18,16 +18,21 @@ export const dictionary = {
             costCalc: 'Cost Calculator',
             freeTools: 'Free Tools (Open Source)',
             arabicVer: 'Arabic Version (عربي)', // Kept for legacy if needed, but toggle replaces this
+            bookCall: 'Book a Call',
+            links: 'Link Tree',
         },
         hero: {
-            badge: 'Full Stack Developer & CS Student',
-            titleStart: 'Building fast, secure',
-            titleHighlight: 'web systems',
-            titleEnd: 'for ambitious startups.',
-            description: 'Full Stack Developer and Computer Science student based in Amman, Jordan. Focused on performance, security, and clean architecture.',
-            ctaPrimary: 'GET IN TOUCH',
-            ctaSecondary: 'View Projects',
-            imageAlt: 'Omar Mubaidin - Full Stack Developer',
+            badge: 'Revenue-Focused Web Consultant',
+            titleStart: 'Scale your startup with',
+            titleHighlight: 'revenue-focused',
+            titleEnd: 'technical solutions.',
+            description: 'I help Jordanian founders build fast, secure web systems with local payment integrations and high-conversion SEO.',
+            ctaPrimary: 'Book a 15-min call',
+            ctaSecondary: 'See client results',
+            imageAlt: 'Omar Mubaidin - Web Consultant',
+        },
+        trustedBy: {
+            line: 'Helping ambitious Jordanian brands scale through technical excellence',
         },
         services: {
             title: 'SERVICES &',
@@ -40,7 +45,7 @@ export const dictionary = {
                     title: 'Link Tree',
                     desc: 'A custom, branded link page to aggregate your social media. Better than Linktree.',
                     timeline: '1-2 Days',
-                    deliverables: 'Hosting and domain Included',
+                    deliverables: 'Hosting Included',
                     details: ['Custom Design', 'Social Icons', 'Contact Form', 'Fast Loading'],
                     price: '50 JD'
                 },
@@ -49,7 +54,7 @@ export const dictionary = {
                     title: 'Landing Page',
                     desc: 'High-conversion single page site. Perfect for ads, events, or product launches.',
                     timeline: '5-7 Days',
-                    deliverables: '1-3 Page',
+                    deliverables: '1-3 Sections',
                     details: ['Copywriting', 'SEO Basics', 'Mobile Ready', 'Analytics'],
                     price: '300 JD'
                 },
@@ -69,7 +74,7 @@ export const dictionary = {
                     timeline: '3+ Weeks',
                     deliverables: 'Custom Scope',
                     details: ['Database Design', 'User Auth', 'Payment Integration', 'Admin Dashboard'],
-                    price: '600+JD'
+                    price: '700+ JD'
                 }
             },
             howItWorks: {
@@ -118,18 +123,22 @@ export const dictionary = {
             quoteHighlight: "1.5s on 4G",
             quoteEnd: "networks in Jordan.",
             whyChoose: {
-                title: 'Why clients choose me',
+                title: 'Why entrepreneurs choose me',
                 reason1: {
-                    title: 'Performance & Speed',
-                    desc: 'Pages load in under 1.5s, improving search engine ranking.'
+                    title: 'Revenue-Driven Design',
+                    desc: 'We focus on conversion rates and business outcomes, not just aesthetics.'
                 },
                 reason2: {
-                    title: 'Local Payment Expert',
-                    desc: 'Official integration experience with Zain Cash & CliQ.'
+                    title: 'Local Payment Expertise',
+                    desc: 'Seamless integration with Zain Cash, CliQ, and Jordanian gateway providers.'
                 },
                 reason3: {
-                    title: 'Reliability',
-                    desc: "100% project completion rate. I don't ghost."
+                    title: 'Speed & Performance',
+                    desc: 'Optimized for local 4G networks to ensure zero customer drop-offs.'
+                },
+                reason4: {
+                    title: 'Security & Reliability',
+                    desc: 'Database-driven systems built with modern security standards to protect your data.'
                 }
             },
             techStack: 'Tech Stack',
@@ -139,6 +148,81 @@ export const dictionary = {
                 location: 'Based in Amman',
                 design: 'Modern Design'
             }
+        },
+        process: {
+            badge: 'Workflow',
+            title: 'How I Work',
+            step1: {
+                title: 'Discovery',
+                desc: 'We start with a strategy call to audit your current system and define ROI-focused goals.'
+            },
+            step2: {
+                title: 'Architecture',
+                desc: 'I design the technical blueprint, focusing on scalability, security, and performance.'
+            },
+            step3: {
+                title: 'Development',
+                desc: 'Clean, high-performance code written with rapid deployment cycles and transparent updates.'
+            },
+            step4: {
+                title: 'Launch & Growth',
+                desc: 'Testing, deployment, and post-launch optimization to ensure long-term stability and speed.'
+            }
+        },
+        pricing: {
+            badge: 'Investment',
+            title: 'Transparent Pricing',
+            desc: 'High-performance engineering for every stage of your business.',
+            cta: 'Start Project',
+            popular: 'Most Popular',
+            tiers: {
+                launch: {
+                    name: 'Launch',
+                    price: '400',
+                    currency: 'JD',
+                    period: 'Start',
+                    desc: 'Perfect for landing pages and simple MVPs.',
+                    features: ['Custom Design', 'Performance Audit', 'SEO Setup', 'Mobile Responsive']
+                },
+                growth: {
+                    name: 'Growth',
+                    price: '850',
+                    currency: 'JD',
+                    period: 'Start',
+                    desc: 'Full business systems and complex web apps.',
+                    features: ['Database Integration', 'Auth Systems', 'Dashboard Build', 'Payment Gateways']
+                },
+                enterprise: {
+                    name: 'Enterprise',
+                    price: 'Custom',
+                    currency: '',
+                    period: '',
+                    desc: 'High-authority audits and scaling infrastructure.',
+                    features: ['Infrastructure Audit', 'Cloud Migration', 'Consultancy Pack', 'Dedicated Support']
+                }
+            }
+        },
+        faq: {
+            badge: 'Questions',
+            title: 'Frequently Asked',
+            questions: [
+                {
+                    q: 'How long does a typical project take?',
+                    a: 'Landing pages usually take 7-10 days. Full-scale business systems and complex web apps range from 3-6 weeks depending on scope.'
+                },
+                {
+                    q: 'What is your primary technical stack?',
+                    a: 'I specialize in Next.js, React, and TypeScript with Supabase/PostgreSQL for backends and Framer Motion for premium animations.'
+                },
+                {
+                    q: 'Do you offer maintenance after launch?',
+                    a: 'Yes, I provide monthly maintenance packages that include security updates, performance monitoring, and minor feature additions.'
+                },
+                {
+                    q: 'How do payments work in Jordan?',
+                    a: 'I accept local bank transfers (CliQ), PayPal, and crypto. Projects are usually split into 50/50 milestones.'
+                }
+            ]
         },
         contact: {
             connect: "Let's Connect",
@@ -163,30 +247,32 @@ export const dictionary = {
             location: "Location",
             locationVal: "Amman, Jordan (Remote Available)",
             form: {
-                badge: "Projects from 200 JD",
-                title: "Tell me about your project",
-                fastReplies: "Fast Replies",
-                security: "Security First",
-                arabicSupport: "Arabic Support",
-                goal: "Goal",
-                goalOptions: ['New Website', 'Redesign', 'E-commerce', 'Custom App'],
-                budget: "Budget",
-                budgetOptions: ['200 - 500 JD', '500 - 1000 JD', '1000 - 2500 JD', '2500+ JD'],
-                deadline: "Deadline",
+                badge: 'Premium Systems From 400 JD',
+                title: 'Start your project brief',
+                fastReplies: '24h Response',
+                security: 'Secure Systems',
+                arabicSupport: 'Arabic Support',
+                goal: 'Primary Goal',
+                goalOptions: ['New Website', 'Redesign', 'E-commerce', 'Custom Web App', 'Technical Audit'],
+                budget: 'Budget Range',
+                budgetOptions: ['400 - 850 JD (Launch)', '850 - 2000 JD (Growth)', '2000+ JD (Enterprise)'],
+                deadline: 'Timeline',
                 deadlineOptions: ['ASAP', '1 Month', 'Flexible'],
-                name: "Your Name",
-                namePlaceholder: "John Doe",
-                business: "Business Name",
-                businessPlaceholder: "Company Ltd.",
-                email: "Email Address",
-                emailPlaceholder: "name@company.com",
-                details: "Project Details",
-                detailsPlaceholder: "Tell me about your project requirements, goals, and any specific features you need...",
-                submit: "Send Inquiry",
-                sending: "Sending...",
-                footer: "If we're not a fit, I'll still reply with suggestions or a direction within 24 hours.",
-                success: "Thanks for your message! I'll get back to you within 24 hours.",
-                error: "Oops! There was a problem submitting your form. Please try again or message me on WhatsApp."
+                name: 'Contact Person',
+                namePlaceholder: 'Full Name',
+                business: 'Company / Brand Name',
+                businessPlaceholder: 'e.g. Acme Startup',
+                website: 'Existing Website (optional)',
+                websitePlaceholder: 'https://example.com',
+                email: 'Business Email',
+                emailPlaceholder: 'name@company.com',
+                details: 'Project Objectives',
+                detailsPlaceholder: 'Briefly describe your business goals and the problem you need to solve (e.g., "We need to automate our member registrations to save 5 hours/week")...',
+                submit: 'Submit Inquiry',
+                sending: 'Sending Brief...',
+                footer: 'I will review your brief and reply with a strategic direction within 24 hours.',
+                success: 'Brief received! I\'ll be in touch within 24 hours to discuss the next steps.',
+                error: 'There was a problem submitting your brief. Please try again or reach out on WhatsApp.'
             },
             typical: "Typical projects:",
             typicalList: "landing pages, e-commerce MVPs, and web systems",
@@ -311,7 +397,7 @@ export const dictionary = {
                     items: [
                         {
                             q: 'How much does an e-commerce website cost in Jordan?',
-                            a: 'A custom, high-performance e-commerce store typically starts at 700 JOD depending on complexity. This is a one-time investment compared to paying monthly fees forever on other platforms.'
+                            a: 'A custom, high-performance e-commerce store typically starts at 850 JOD depending on complexity. This is a one-time investment compared to paying monthly fees forever on other platforms.'
                         },
                         {
                             q: 'Can I accept Zain Cash and CliQ?',
@@ -358,9 +444,9 @@ export const dictionary = {
                         id: 'pages',
                         title: 'Number of Pages',
                         choices: [
-                            { label: 'One Page (Landing)', price: 300, desc: 'High conversion single page.' },
-                            { label: 'Standard (5 Pages)', price: 500, desc: 'Home, About, Services, Contact, etc.' },
-                            { label: 'Large (10+ Pages)', price: 800, desc: 'Complex content structure.' },
+                            { label: 'One Page (Landing)', price: 400, desc: 'High conversion single page.' },
+                            { label: 'Standard (5 Pages)', price: 850, desc: 'Home, About, Services, Contact, etc.' },
+                            { label: 'Large (10+ Pages)', price: 1250, desc: 'Complex content structure.' },
                         ]
                     },
                     {
@@ -458,9 +544,9 @@ export const dictionary = {
             }
         },
         statsStrip: {
-            members: 'Members Managed – HTU Club Portal',
-            leads: 'Leads – Vynex Media Landing Page',
-            sales: 'Sales Boost – BloB POD Store'
+            members: 'Active Members Managed',
+            leads: 'Avg. Conversion Increase',
+            speed: 'Avg. Page Speed (Local)'
         },
         skills: {
             fullStack: 'Full Stack Architecture',
@@ -572,7 +658,7 @@ export const dictionary = {
             lab: 'من المختبر',
             testimonials: 'آراء العملاء',
             contact: 'تواصل معنا',
-            resume: 'تحميل السيرة الذاتية (PDF)',
+            resume: 'السيرة الذاتية',
             estimate: 'اطلب عرض سعر',
             talk: "لنتحدث",
             home: 'الرئيسية',
@@ -582,16 +668,21 @@ export const dictionary = {
             costCalc: 'حاسبة التكلفة',
             freeTools: 'أدوات مجانية',
             arabicVer: 'English Version',
+            bookCall: 'احجز مكالمة',
+            links: 'شجرة الروابط',
         },
         hero: {
-            badge: 'مطور ويب متكامل وطالب علوم حاسوب',
-            titleStart: 'بناء أنظمة ويب',
-            titleHighlight: 'سريعة وآمنة',
-            titleEnd: 'للشركات الطموحة.',
-            description: 'مطور ويب متكامل وطالب علوم حاسوب في عمان، الأردن. أركز على الأداء العالي، الأمان، وهندسة البرمجيات النظيفة.',
-            ctaPrimary: 'احجز مكالمة مجانية',
-            ctaSecondary: 'شاهد أعمالي',
-            imageAlt: 'عمر مبيضين - مطور ويب متكامل',
+            badge: 'مستشار تقني لتطوير الأعمال',
+            titleStart: 'ضاعف نمو شركتك عبر',
+            titleHighlight: 'أنظمة برمجية',
+            titleEnd: 'تركز على الأرباح.',
+            description: 'أساعد رواد الأعمال في الأردن على بناء أنظمة ويب سريعة وآمنة، مع ربط وسائل الدفع المحلية وتحسين ظهورك في محركات البحث.',
+            ctaPrimary: 'احجز مكالمة 15 دقيقة',
+            ctaSecondary: 'شاهد نتائج العملاء',
+            imageAlt: 'عمر مبيضين - مستشار تطوير ويب',
+        },
+        trustedBy: {
+            line: 'أساعد الشركات الأردنية الطموحة على التوسع من خلال التميز التقني',
         },
         services: {
             title: 'الخدمات و',
@@ -614,7 +705,7 @@ export const dictionary = {
                     desc: 'صفحة واحدة عالية التحويل. ممتازة للإعلانات، الفعاليات، أو إطلاق منتج.',
                     timeline: '5-7 أيام',
                     deliverables: '1-3 صفحات',
-                    details: ['كتابة محتوى', 'تحسين SEO', 'متجاوب للجوال', 'تحليلات زوار'],
+                    details: ['كتابة محتوى بيعي', 'تحسين SEO', 'متجاوب للجوال', 'تحليلات زوار'],
                     price: '300 دينار'
                 },
                 business: {
@@ -629,11 +720,11 @@ export const dictionary = {
                 system: {
                     label: 'احترافي',
                     title: 'نظام مخصص',
-                    desc: 'وظائف مخصصة. متجر إلكتروني، نظام حجز، أو تطبيق ويب،',
+                    desc: 'وظائف مخصصة. متجر إلكتروني، نظام حجز، أو تطبيق ويب.',
                     timeline: '3+ أسابيع',
                     deliverables: 'حسب الطلب',
-                    details: ['تصميم قواعد بيانات', 'تسجيل دخول', 'دفع إلكتروني', 'لوحة تحكم'],
-                    price: '1000+ دينار'
+                    details: ['تصميم قواعد بيانات', 'أنظمة توثيق', 'دفع إلكتروني', 'لوحة تحكم'],
+                    price: '700+ دينار'
                 }
             },
             howItWorks: {
@@ -681,18 +772,22 @@ export const dictionary = {
             quoteHighlight: "1.5 ثانية على 4G",
             quoteEnd: "في شبكات الأردن.",
             whyChoose: {
-                title: 'لماذا يختارني العملاء',
+                title: 'لماذا يختارني رواد الأعمال',
                 reason1: {
-                    title: 'السرعة والأداء',
-                    desc: 'صفحات سريعة جداً، مما يحسن ترتيبك في محركات البحث.'
+                    title: 'تصميم موجه للنتائج',
+                    desc: 'نركز على معدلات التحويل وأهداف العمل، وليس فقط المظهر.'
                 },
                 reason2: {
                     title: 'خبرة الدفع المحلي',
-                    desc: 'خبرة رسمية في ربط بوابات الدفع مثل زين كاش و كليك.'
+                    desc: 'تكامل سلس مع زين كاش، كليك، ومزودي خدمات الدفع في الأردن.'
                 },
                 reason3: {
-                    title: 'الموثوقية',
-                    desc: "نسبة إنجاز مشاريع 100%. التزام كامل بالمواعيد."
+                    title: 'السرعة والأداء',
+                    desc: 'محسن للعمل على شبكات الـ 4G المحلية لضمان عدم فقدان أي عميل.'
+                },
+                reason4: {
+                    title: 'الأمان والموثوقية',
+                    desc: 'أنظمة تعتمد على قواعد البيانات ومبنية بمعايير أمنية حديثة لحماية بياناتك.'
                 }
             },
             techStack: 'التقنيات المستخدمة',
@@ -708,6 +803,26 @@ export const dictionary = {
             titleHighlight: 'اللحظات',
             description: 'بعيداً عن الكود، أستكشف العالم عبر العدسة. صور عالية الجودة تحكي قصة.',
             viewGallery: 'شاهد المعرض'
+        },
+        process: {
+            badge: 'سير العمل',
+            title: 'كيف أعمل',
+            step1: {
+                title: 'الاستكشاف',
+                desc: 'نبدأ بجلسة استراتيجية لتدقيق نظامك الحالي وتحديد الأهداف التي تركز على العائد الاستثماري.'
+            },
+            step2: {
+                title: 'الهندسة',
+                desc: 'أقوم بتصميم المخطط التقني، مع التركيز على القابلية للتوسع والأمن والأداء.'
+            },
+            step3: {
+                title: 'التطوير',
+                desc: 'كود نظيف وعالي الأداء مكتوب بدورات نشر سريعة وتحديثات شفافة.'
+            },
+            step4: {
+                title: 'الإطلاق والنمو',
+                desc: 'الاختبار والنشر والتحسين بعد الإطلاق لضمان الاستقرار والسرعة على المدى الطويل.'
+            }
         },
         contact: {
             connect: "تواصل معي",
@@ -732,30 +847,32 @@ export const dictionary = {
             location: "الموقع",
             locationVal: "عمان، الأردن (متاح للعمل عن بعد)",
             form: {
-                badge: "مشاريع تبدأ من 200 دينار",
-                title: "أخبرني عن مشروعك",
-                fastReplies: "ردود سريعة",
-                security: "أمان أولاً",
-                arabicSupport: "دعم مخصص",
-                goal: "الهدف",
-                goalOptions: ['موقع جديد', 'إعادة تصميم', 'متجر إلكتروني', 'تطبيق مخصص'],
-                budget: "الميزانية",
-                budgetOptions: ['200 - 500 دينار', '500 - 1000 دينار', '1000 - 2500 دينار', '2500+ دينار'],
-                deadline: "الموعد النهائي",
+                badge: 'أنظمة متطورة تبدأ من 400 دينار',
+                title: 'ابدأ ملخص مشروعك',
+                fastReplies: 'رد خلال 24 ساعة',
+                security: 'أنظمة آمنة',
+                arabicSupport: 'دعم عربي كامل',
+                goal: 'الهدف الأساسي',
+                goalOptions: ['موقع جديد', 'إعادة تصميم', 'متجر إلكتروني', 'تطبيق ويب مخصص', 'تدقيق تقني'],
+                budget: 'نطاق الميزانية',
+                budgetOptions: ['400 - 850 دينار (انطلاق)', '850 - 2000 دينار (نمو)', 'أكثر من 2000 دينار (نخبة)'],
+                deadline: 'الجدول الزمني',
                 deadlineOptions: ['بأسرع وقت', 'شهر واحد', 'مرن'],
-                name: "الاسم الكامل",
-                namePlaceholder: "الاسم...",
-                business: "اسم الشركة / المشروع",
-                businessPlaceholder: "اسم الشركة",
-                email: "بريدك الالكتروني",
-                emailPlaceholder: "name@company.com",
-                details: "تفاصيل المشروع",
-                detailsPlaceholder: "أخبرني عن متطلبات مشروعك، أهدافك، وأي ميزات محددة تحتاجها...",
-                submit: "إرسال الاستفسار",
-                sending: "جاري الإرسال...",
-                footer: "إذا لم نكن مناسبين لبعضنا، سأرد عليك باقتراحات أو توجيه خلال 24 ساعة.",
-                success: "شكراً لرسالتك! سأعود إليك خلال 24 ساعة.",
-                error: "عذراً! حدثت مشكلة في التقديم. يرجى المحاولة مرة أخرى أو مراسلتي عبر واتساب."
+                name: 'شخص التواصل',
+                namePlaceholder: 'الاسم الكامل',
+                business: 'اسم الشركة / العلامة التجارية',
+                businessPlaceholder: 'مثال: شركة ناشئة',
+                website: 'الموقع الحالي (إن وجد)',
+                websitePlaceholder: 'https://example.com',
+                email: 'البريد الإلكتروني للعمل',
+                emailPlaceholder: 'name@company.com',
+                details: 'أهداف المشروع',
+                detailsPlaceholder: 'صف أهداف مشروعك والمشكلة التي تريد حلها (مثال: "نحتاج لرقمنة تسجيل المشتركين لتوفير 5 ساعات عمل أسبوعياً")...',
+                submit: 'إرسال الملخص',
+                sending: 'جاري الإرسال...',
+                footer: 'سأقوم بمراجعة ملخص مشروعك والرد بتوجه استراتيجي خلال 24 ساعة.',
+                success: 'تم استلام الملخص! سأتواصل معك خلال 24 ساعة لمناقشة الخطوات القادمة.',
+                error: 'حدثت مشكلة في إرسال الملخص. يرجى المحاولة مرة أخرى أو التواصل عبر واتساب.'
             },
             typical: "مشاريع نموذجية:",
             typicalList: "صفحات هبوط، متاجر الكترونية، وأنظمة ويب",
@@ -880,7 +997,7 @@ export const dictionary = {
                     items: [
                         {
                             q: 'كم تكلفة إنشاء متجر إلكتروني في الأردن؟',
-                            a: 'يبدأ المتجر الإلكتروني المخصص عالي الأداء عادةً من 700 دينار أردني حسب التعقيد. هذا استثمار لمرة واحدة مقارنة بدفع رسوم شهرية للأبد على منصات أخرى.'
+                            a: 'يبدأ المتجر الإلكتروني المخصص عالي الأداء عادةً من 850 دينار أردني حسب التعقيد. هذا استثمار لمرة واحدة مقارنة بدفع رسوم شهرية للأبد على منصات أخرى.'
                         },
                         {
                             q: 'هل يمكنني قبول زين كاش وكليك؟',
@@ -927,9 +1044,9 @@ export const dictionary = {
                         id: 'pages',
                         title: 'عدد الصفحات',
                         choices: [
-                            { label: 'صفحة واحدة (هبوط)', price: 300, desc: 'تحويل عالي لصفحة واحدة.' },
-                            { label: 'موقع قياسي (5 صفحات)', price: 500, desc: 'الرئيسية، من نحن، الخدمات، اتصل بنا، إلخ.' },
-                            { label: 'موقع كبير (10+ صفحات)', price: 800, desc: 'هيكل محتوى معقد.' },
+                            { label: 'صفحة واحدة (هبوط)', price: 400, desc: 'تحويل عالي لصفحة واحدة.' },
+                            { label: 'موقع قياسي (5 صفحات)', price: 850, desc: 'الرئيسية، من نحن، الخدمات، اتصل بنا، إلخ.' },
+                            { label: 'موقع كبير (10+ صفحات)', price: 1250, desc: 'هيكل محتوى معقد.' },
                         ]
                     },
                     {
@@ -1027,9 +1144,9 @@ export const dictionary = {
             }
         },
         statsStrip: {
-            members: 'أعضاء تم إدارتهم – بوابة نادي HTU',
-            leads: 'عملاء محتملين – صفحة هبوط Vynex Media',
-            sales: 'زيادة المبيعات – متجر BloB'
+            members: 'مشترك تم إدارته',
+            leads: 'متوسط زيادة التحويل',
+            speed: 'سرعة التحميل (محلياً)'
         },
         skills: {
             fullStack: 'هندسة الويب المتكاملة',
@@ -1126,6 +1243,61 @@ export const dictionary = {
                 providerSignature: 'توقيع مقدم الخدمة',
                 date: 'التاريخ'
             }
-        }
+        },
+        pricing: {
+            badge: 'الاستثمار',
+            title: 'تسعير شفاف',
+            desc: 'هندسة عالية الأداء لكل مرحلة من مراحل عملك.',
+            cta: 'ابدأ مشروعك',
+            popular: 'الأكثر طلباً',
+            tiers: {
+                launch: {
+                    name: 'الإنطلاق',
+                    price: '400',
+                    currency: 'د.أ',
+                    period: 'إبتداءً من',
+                    desc: 'مثالي لصفحات الهبوط والمنتجات التجريبية البسيطة (MVP).',
+                    features: ['تصميم مخصص', 'تدقيق الأداء', 'إعداد SEO', 'متوافق مع الهواتف']
+                },
+                growth: {
+                    name: 'النمو',
+                    price: '850',
+                    currency: 'د.أ',
+                    period: 'إبتداءً من',
+                    desc: 'أنظمة أعمال كاملة وتطبيقات ويب معقدة.',
+                    features: ['تكامل قواعد البيانات', 'أنظمة التوثيق', 'بناء لوحات التحكم', 'بوابات الدفع']
+                },
+                enterprise: {
+                    name: 'المؤسسات',
+                    price: 'حسب الطلب',
+                    currency: '',
+                    period: '',
+                    desc: 'تدقيق عالي السلطة وبنية تحتية للتوسع.',
+                    features: ['تدقيق البنية التحتية', 'النقل للسحابة', 'حزمة استشارية', 'دعم مخصص']
+                }
+            }
+        },
+        faq: {
+            badge: 'الأسئلة',
+            title: 'الأسئلة الشائعة',
+            questions: [
+                {
+                    q: 'كم يستغرق المشروع عادةً؟',
+                    a: 'تستغرق صفحات الهبوط عادةً من 7 إلى 10 أيام. أما أنظمة الأعمال والمنصات المعقدة فتتراوح بين 3 إلى 6 أسابيع حسب النطاق.'
+                },
+                {
+                    q: 'ما هي التقنيات الأساسية التي تستخدمها؟',
+                    a: 'أتخصص في Next.js، React، و TypeScript مع Supabase/PostgreSQL للخلفية و Framer Motion للتحريك عالي الجودة.'
+                },
+                {
+                    q: 'هل تقدم خدمات الصيانة بعد الإطلاق؟',
+                    a: 'نعم، أقدم حزم صيانة شهرية تشمل تحديثات الأمان، مراقبة الأداء، وإضافة ميزات بسيطة.'
+                },
+                {
+                    q: 'كيف تتم آلية الدفع في الأردن؟',
+                    a: 'أقبل التحويلات البنكية المحلية (CliQ)، PayPal، والعملات الرقمية. عادةً ما يتم تقسيم المشاريع إلى دفعتين (50/50).'
+                }
+            ]
+        },
     }
 };

@@ -2,7 +2,7 @@
 
 import Badge from './ui/Badge';
 import { useLanguage } from '@/context/LanguageContext';
-import { TypewriterEffect, SwipeLettersButton } from './framer/FramerComponents';
+import { ProTextType, SwipeLettersButton } from './framer/FramerComponents';
 
 
 
@@ -38,28 +38,24 @@ export default function Hero() {
                                 {t.hero.titleStart}
                             </span>
 
-                            <span className="text-neon relative inline-block text-5xl md:text-7xl animate-hero-fade-up delay-hero-2 min-w-max whitespace-nowrap">
-                                <TypewriterEffect
-                                    words={[
-                                        { word: language === 'en' ? 'PORTFOLIOS' : 'معارض أعمال' },
-                                        { word: language === 'en' ? 'PLATFORMS' : 'منصات' },
-                                        { word: language === 'en' ? 'PRODUCTS' : 'منتجات' },
-                                        { word: language === 'en' ? 'E-COMMERCE' : 'متاجر إلكترونية' },
-                                        { word: language === 'en' ? 'WEB APPS' : 'تطبيقات ويب' },
-                                        { word: language === 'en' ? 'SAAS MVPS' : 'أنظمة SaaS' }
-                                    ]}
-                                    typingSpeed={80}
-                                    deletingSpeed={50}
+                            <div className="text-neon relative inline-block text-5xl md:text-7xl animate-hero-fade-up delay-hero-2 min-h-[1.1em]">
+                                <ProTextType
+                                    text={language === 'en'
+                                        ? ['SCALABLE SYSTEMS', 'REVENUE FOCUSED', 'HIGH PERFORMANCE']
+                                        : ['أنظمة قابلة للتوسع', 'تركز على العائدات', 'أداء عالي']}
+                                    typingSpeed={70}
+                                    deletingSpeed={30}
                                     pauseDuration={2500}
-                                    cursorColor="#D71C1C"
-                                    cursorHeight={40}
-                                    textColor="#D71C1C"
-                                    font={{ fontSize: 'inherit', fontWeight: '900' }}
+                                    loop={true}
+                                    cursorCharacterPreset="|"
+                                    cursorBlinkDuration={0.8}
+                                    startOnVisible={true}
+                                    className="text-neon font-black"
                                 />
                                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-neon opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none">
                                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
                                 </svg>
-                            </span>
+                            </div>
 
                             <br />
                             <span className="block animate-hero-fade-up">
@@ -85,7 +81,7 @@ export default function Hero() {
                             />
                             <SwipeLettersButton
                                 label={t.hero.ctaSecondary}
-                                link={getHref('/projects')}
+                                link={getHref('#projects')}
                                 defaultState={{ bgColor: '#1A1A1A', borderColor: '#333333', textColor: '#FFFFFF' }}
                                 hoverState={{ bgColor: '#2D2D2D', borderColor: '#515151', textColor: '#FFFFFF' }}
                                 font={{ fontSize: '18px', fontWeight: 'bold', letterSpacing: '0.4px' }}

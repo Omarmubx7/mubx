@@ -2,8 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, ChevronRight, Calculator, Calendar, Globe, Rocket, Code, DollarSign, Briefcase } from 'lucide-react';
-import Link from 'next/link';
+import { MessageCircle, X, ChevronRight, Calculator, Calendar, Globe, Rocket, Code, Briefcase, ArrowUp, Phone } from 'lucide-react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 type Message = {
@@ -22,20 +21,33 @@ type Option = {
 
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
+    const [showScrollTop, setShowScrollTop] = useState(false);
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    // Fallback to 'en' if searchParams is null (during build or initial load)
     const language = searchParams?.get('lang') === 'ar' ? 'ar' : 'en';
-
-    // Initial greeting based on current language
     const [messages, setMessages] = useState<Message[]>([]);
-
     const messagesEndRef = useRef<HTMLDivElement>(null);
-    const isFirstRun = useRef(true);
 
-    // Initialize or reset chat when language changes
+    // Scroll Logic
+    useEffect(() => {
+        const toggleVisibility = () => {
+            if (window.scrollY > 500) {
+                setShowScrollTop(true);
+            } else {
+                setShowScrollTop(false);
+            }
+        };
+        window.addEventListener('scroll', toggleVisibility);
+        return () => window.removeEventListener('scroll', toggleVisibility);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Chat Logic
     useEffect(() => {
         const greetingText = language === 'ar'
             ? "مرحباً! أنا المساعد الذكي لـ MUBX. كيف يمكنني مساعدتك اليوم؟ 🤖"
@@ -53,7 +65,6 @@ export default function ChatWidget() {
             { label: "التحويل للعربية", action: () => handleOption('arabic'), icon: <Globe className="w-3 h-3" /> },
         ];
 
-        // Reset conversation on language switch if it's open, or just ensure first message is correct
         setMessages([{
             id: 'init',
             text: greetingText,
@@ -64,7 +75,6 @@ export default function ChatWidget() {
 
     }, [language]);
 
-    // Auto-scroll to bottom
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages, isOpen]);
@@ -83,12 +93,10 @@ export default function ChatWidget() {
     const handleSwitchLanguage = (newLang: 'en' | 'ar') => {
         const params = new URLSearchParams(searchParams?.toString() || '');
         params.set('lang', newLang);
-        // Force full reload to ensure Server Components (LanguageProvider) pick up the change
         window.location.href = `${pathname}?${params.toString()}`;
     };
 
     const handleOption = (key: string) => {
-        // Knowledge Base for responses
         const responses = {
             en: {
                 website: "Awesome. What kind of project are you building?",
@@ -112,7 +120,6 @@ export default function ChatWidget() {
 
         const t = language === 'ar' ? responses.ar : responses.en;
 
-        // User Inputs (Echo back what they clicked)
         const userLabels: Record<string, string> = language === 'ar' ? {
             'website': "أريد موقعاً إلكترونياً",
             'cost': "حساب التكلفة التقريبية",
@@ -133,10 +140,8 @@ export default function ChatWidget() {
             'custom': "Custom Web App"
         };
 
-        // Add user message
         addMessage(userLabels[key] || key, 'user');
 
-        // Bot Logic
         setTimeout(() => {
             if (key === 'website') {
                 const options: Option[] = language === 'ar' ? [
@@ -164,12 +169,8 @@ export default function ChatWidget() {
                     icon: <Calendar className="w-3 h-3" />
                 }]);
             }
-            else if (key === 'arabic') {
-                handleSwitchLanguage('ar');
-            }
-            else if (key === 'english') {
-                handleSwitchLanguage('en');
-            }
+            else if (key === 'arabic') handleSwitchLanguage('ar');
+            else if (key === 'english') handleSwitchLanguage('en');
             else if (key === 'ecommerce') {
                 addMessage(t.ecommerce, 'bot', [
                     { label: language === 'ar' ? "تفاصيل الخدمة" : "View Service", action: () => window.location.href = `/services/ecommerce?lang=${language}` },
@@ -190,14 +191,50 @@ export default function ChatWidget() {
     };
 
     return (
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 pointer-events-none">
+            {/* Scroll To Top */}
+            <AnimatePresence>
+                {showScrollTop && (
+                    <motion.button
+                        initial={{ opacity: 0, scale: 0.5, y: 10 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.5, y: 10 }}
+                        onClick={scrollToTop}
+                        className="p-3 rounded-full bg-card border border-border text-muted hover:text-neon hover:border-neon transition-all shadow-xl pointer-events-auto"
+                        aria-label="Scroll to top"
+                    >
+                        <ArrowUp className="w-6 h-6" />
+                    </motion.button>
+                )}
+            </AnimatePresence>
+
+            {/* WhatsApp - Only visible when chat is closed to avoid clutter */}
+            <AnimatePresence>
+                {!isOpen && (
+                    <motion.a
+                        key="whatsapp"
+                        href="https://wa.me/962779188052"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        initial={{ opacity: 0, scale: 0.5, y: 10 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.5, y: 10 }}
+                        className="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] transition-all pointer-events-auto"
+                        aria-label="Contact on WhatsApp"
+                    >
+                        <MessageCircle className="w-7 h-7" />
+                    </motion.a>
+                )}
+            </AnimatePresence>
+
+            {/* Chat Window */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                        initial={{ opacity: 0, scale: 0.8, y: 20, transformOrigin: "bottom right" }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8, y: 20 }}
-                        className="mb-4 w-80 md:w-96 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[500px]"
+                        className="mb-2 w-80 md:w-96 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[500px] pointer-events-auto"
                     >
                         {/* Header */}
                         <div className="p-4 border-b border-white/10 bg-white/5 flex justify-between items-center">
@@ -208,7 +245,6 @@ export default function ChatWidget() {
                             <button
                                 onClick={() => setIsOpen(false)}
                                 className="text-muted hover:text-white transition-colors"
-                                aria-label="Close chat"
                             >
                                 <X className="w-4 h-4" />
                             </button>
@@ -232,7 +268,6 @@ export default function ChatWidget() {
                                         {msg.text}
                                     </div>
 
-                                    {/* Options (Only show for bot messages that have them) */}
                                     {msg.options && (
                                         <div className="mt-3 flex flex-wrap gap-2">
                                             {msg.options.map((option, idx) => (
@@ -268,7 +303,7 @@ export default function ChatWidget() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-14 h-14 rounded-full bg-neon text-black flex items-center justify-center shadow-[0_0_20px_rgba(255,30,30,0.4)] hover:shadow-[0_0_30px_rgba(255,30,30,0.6)] transition-shadow relative"
+                className="w-14 h-14 rounded-full bg-neon text-black flex items-center justify-center shadow-[0_0_20px_rgba(255,30,30,0.4)] hover:shadow-[0_0_30px_rgba(255,30,30,0.6)] transition-shadow relative pointer-events-auto"
                 aria-label={isOpen ? "Close chat" : "Open chat assistant"}
             >
                 {isOpen ? <ChevronRight className="w-6 h-6 rotate-90" /> : <MessageCircle className="w-6 h-6" />}
@@ -279,3 +314,4 @@ export default function ChatWidget() {
         </div>
     );
 }
+

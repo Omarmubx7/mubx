@@ -8,15 +8,15 @@
     "theme_color": "#D71C1C",
     "icons": [
         {
-            "src": "/brand-icon.png",
-            "sizes": "128x128",
-            "type": "image/png",
+            "src": "/mubxlogoloader.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
             "purpose": "any maskable"
         },
         {
-            "src": "/mubxlogoloader.svg",
-            "sizes": "any",
-            "type": "image/svg+xml"
+            "src": "/brand-icon.png",
+            "sizes": "128x128",
+            "type": "image/png"
         }
     ],
     "orientation": "portrait"

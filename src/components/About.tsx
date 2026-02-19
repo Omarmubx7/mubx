@@ -24,20 +24,7 @@ export default function About() {
                         <motion.div variants={fadeUp}>
                             <p className="text-neon font-mono text-sm mb-4 tracking-widest">01</p>
                             <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase flex flex-nowrap items-center gap-x-3">
-                                {t.about.titleStart}
-                                <ProTextType
-                                    text={t.about.titleHighlight}
-                                    typingSpeed={100}
-                                    loop={false}
-                                    showCursor={true}
-                                    cursorColorMode="custom"
-                                    cursorCustomColor="#D71C1C"
-                                    sizingMode="fluid"
-                                    minFont={24}
-                                    maxFont={48}
-                                    fluidVw={5}
-                                    className="text-neon"
-                                />
+                                {t.about.titleStart} <span className="text-neon">{t.about.titleHighlight}</span>
                             </h2>
                         </motion.div>
 
@@ -46,15 +33,8 @@ export default function About() {
                             <br /><br />
                             {t.about.descriptionEnd} <span className="text-neon">{t.about.performance}</span>{t.about.descriptionContext}
                             <br /><br />
-                            <div className="text-foreground font-medium border-l-2 border-neon pl-3 block py-2">
-                                <ProTextType
-                                    text={`${t.about.quoteStart} ${t.about.quoteHighlight} ${t.about.quoteEnd}`}
-                                    typingSpeed={50}
-                                    loop={true}
-                                    pauseDuration={5000}
-                                    showCursor={true}
-                                    className="text-muted"
-                                />
+                            <div className="text-foreground font-medium border-l-2 border-neon pl-3 block py-2 italic text-muted">
+                                {t.about.quoteStart} {t.about.quoteHighlight} {t.about.quoteEnd}
                             </div>
                         </motion.div>
 
@@ -86,6 +66,15 @@ export default function About() {
                                     <div>
                                         <strong className="text-foreground block mb-1">{t.about.whyChoose.reason3.title}</strong>
                                         <p className="text-sm text-muted">{t.about.whyChoose.reason3.desc}</p>
+                                    </div>
+                                </li>
+                                <li className="flex gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center border border-border shrink-0">
+                                        <span className="text-neon font-bold">04</span>
+                                    </div>
+                                    <div>
+                                        <strong className="text-foreground block mb-1">{t.about.whyChoose.reason4.title}</strong>
+                                        <p className="text-sm text-muted">{t.about.whyChoose.reason4.desc}</p>
                                     </div>
                                 </li>
                             </ul>

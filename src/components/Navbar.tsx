@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { fadeUp } from '@/lib/motion';
-import { useState, Suspense } from 'react';
+import { useState, Suspense, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
@@ -16,7 +16,12 @@ import { LiquidMetal } from './framer/FramerComponents';
 const NavbarContent = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [hidden, setHidden] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const { scrollY } = useScroll();
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useMotionValueEvent(scrollY, "change", (latest: number) => {
         const previous = scrollY.getPrevious() ?? 0;
@@ -91,18 +96,16 @@ const NavbarContent = () => {
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
                 hiddenNav: { y: "-100%", transition: { duration: 0.35, ease: "easeInOut" } }
             }}
-            className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-glass"
+            className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 py-4 md:px-12 bg-glass"
         >
             <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2" aria-label="MUBX Home">
-                <div className="relative h-16 w-32 transition-transform group-hover:scale-105">
-                    <LiquidMetal
-                        imageSource="/mubxlogoloader.svg"
-                        speed={0.3}
-                        dispersion={0.015}
-                        edge={0.4}
-                        patternBlur={0.005}
-                        liquify={0.07}
-                        patternScale={2}
+                <div className="relative h-12 w-24 md:h-14 md:w-28 transition-transform group-hover:scale-105 active:scale-95">
+                    <Image
+                        src="/mubxlogoloader.svg"
+                        alt="MUBX Logo"
+                        fill
+                        className="object-contain"
+                        priority
                     />
                 </div>
             </Link>
@@ -147,12 +150,25 @@ const NavbarContent = () => {
                 <ThemeToggle />
                 <LanguageToggle />
 
-                <Link
-                    href={getHref('#contact')}
-                    className="px-5 py-2.5 text-sm font-bold text-black bg-neon rounded-full hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all shadow-[0_0_15px_rgba(255,30,30,0.3)] hover:shadow-[0_0_25px_rgba(255,30,30,0.4)] ml-2"
-                >
-                    {t.nav.estimate}
-                </Link>
+                {mounted && (
+                    <>
+                        <Link
+                            href={getHref('/tools/website-cost-calculator-jordan')}
+                            className="hidden md:flex px-4 py-2.5 text-xs font-bold text-foreground border border-border rounded-full hover:border-neon transition-all z-[101]"
+                        >
+                            {t.nav.estimate}
+                        </Link>
+
+                        <a
+                            href="https://calendly.com/omarmubaidincs/30min"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-5 py-2.5 text-sm font-bold text-black bg-neon rounded-full hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all shadow-[0_0_15px_rgba(255,30,30,0.3)] hover:shadow-[0_0_25px_rgba(255,30,30,0.4)] ml-2 z-[101] cursor-pointer"
+                        >
+                            {t.nav.bookCall}
+                        </a>
+                    </>
+                )}
             </div>
 
             {/* Mobile Menu Toggle */}
@@ -188,19 +204,31 @@ const NavbarContent = () => {
                                 </Link>
                             </motion.div>
                         ))}
-                        <div className="flex items-center justify-between py-3 border-t border-border mt-8 mb-4">
-                            <span className="text-sm text-muted">Language</span>
-                            <LanguageToggle />
+                        <div className="flex flex-col gap-3 mt-8">
+                            {mounted && (
+                                <>
+                                    <motion.div variants={itemVariants}>
+                                        <Link
+                                            href={getHref('/tools/website-cost-calculator-jordan')}
+                                            onClick={() => setIsOpen(false)}
+                                            className="w-full flex items-center justify-center gap-2 py-4 bg-card border border-border text-foreground font-bold rounded-2xl"
+                                        >
+                                            {t.nav.estimate}
+                                        </Link>
+                                    </motion.div>
+                                    <motion.div variants={itemVariants}>
+                                        <a
+                                            href="https://wa.me/962780090453"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-full flex items-center justify-center gap-2 py-4 bg-neon text-black font-bold rounded-2xl shadow-[0_0_20px_rgba(255,30,30,0.3)]"
+                                        >
+                                            {t.nav.bookCall}
+                                        </a>
+                                    </motion.div>
+                                </>
+                            )}
                         </div>
-                        <motion.div variants={itemVariants}>
-                            <Link
-                                href={getHref('#contact')}
-                                onClick={() => setIsOpen(false)}
-                                className="text-xl font-bold text-neon hover:text-foreground transition-colors uppercase tracking-wider mb-4 block"
-                            >
-                                {t.nav.talk}
-                            </Link>
-                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>

@@ -34,19 +34,8 @@ export default function Projects() {
     }, []);
 
     return (
-        <section id="projects" className="py-24 relative">
-            {/* LetterGlitch background behind header */}
-            <div className="absolute inset-x-0 top-0 h-72 overflow-hidden pointer-events-none">
-                <LetterGlitch
-                    glitchColors={["#4a0d0d", "#E11D1D", "#dc6161"]}
-                    glitchSpeed={50}
-                    smooth={true}
-                    centerVignette={false}
-                    outerVignette={true}
-                    backgroundColor="#050505"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background" />
-            </div>
+        <section id="projects" className="py-24 relative bg-background">
+            <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
 
             <div className="container mx-auto px-6 md:px-12 relative z-10">
                 <motion.div

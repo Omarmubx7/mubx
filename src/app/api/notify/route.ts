@@ -5,18 +5,20 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
-    const { email, goal, budget, deadline, message, language } = await req.json();
+    const { email, name, business, website, goal, budget, deadline, message, language } = await req.json();
 
     console.log('📧 Sending Resend notification to mubxdev@proton.me');
     const { data, error } = await resend.emails.send({
       from: 'MUBX Portfolio <onboarding@resend.dev>',
       to: ['mubxdev@proton.me'],
-      subject: `New Lead from Portfolio (${language === 'ar' ? 'Arabic' : 'English'})`,
+      subject: `New Lead: ${business || name || email} (${language === 'ar' ? 'Arabic' : 'English'})`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
           <h2 style="color: #D71C1C;">New Project Inquiry</h2>
           <hr />
-          <p><strong>From:</strong> ${email}</p>
+          <p><strong>From:</strong> ${name} (${email})</p>
+          <p><strong>Company:</strong> ${business || 'Not specified'}</p>
+          <p><strong>Website:</strong> ${website || 'Not specified'}</p>
           <p><strong>Goal:</strong> ${goal || 'Not specified'}</p>
           <p><strong>Budget:</strong> ${budget || 'Not specified'}</p>
           <p><strong>Deadline:</strong> ${deadline || 'Not specified'}</p>

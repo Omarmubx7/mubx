@@ -61,7 +61,10 @@ export const metadata: Metadata = {
     canonical: siteConfig.url,
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/mubxlogoloader.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' }
+    ],
     apple: '/mubxlogoloader.svg',
   },
   openGraph: {

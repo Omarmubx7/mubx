@@ -13,10 +13,22 @@ const MetricsStrip = dynamic(() => import('@/components/MetricsStrip'), {
 const SkillTicker = dynamic(() => import('@/components/SkillTicker'), {
     loading: () => <div className="h-40 w-full animate-pulse bg-muted/20" />,
 });
+const TrustedBy = dynamic(() => import('@/components/TrustedBy'), {
+    loading: () => <div className="h-24 w-full animate-pulse bg-muted/20" />,
+});
 
-const About = dynamic(() => import('@/components/About'), {
+const Projects = dynamic(() => import('@/components/Projects'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
+const Process = dynamic(() => import('@/components/Process'));
+// Output: "const Pricing = dynamic(() => import('@/components/Pricing'));"
+// Commented out per user request to remove pricing section
+// const Pricing = dynamic(() => import('@/components/Pricing'));
+const FAQ = dynamic(() => import('@/components/FAQ'));
+// FloatingCTA merged into ChatWidget
+// const FloatingCTA = dynamic(() => import('@/components/FloatingCTA'), { ssr: false });
+const StickyCTA = dynamic(() => import('@/components/StickyCTA'), { ssr: false });
+const About = dynamic(() => import('@/components/About'));
 const TechStack = dynamic(() => import('@/components/TechStack'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
@@ -25,6 +37,9 @@ const Timeline = dynamic(() => import('@/components/Timeline'), {
 });
 
 const Contact = dynamic(() => import('@/components/Contact'), {
+    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
+});
+const Services = dynamic(() => import('@/components/Services'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
 const Footer = dynamic(() => import('@/components/Footer'), {
@@ -54,12 +69,20 @@ export default function HomeClient({ lang }: { lang: Locale }) {
             {showCanvas && <StarsCanvas />}
             <Hero />
             <MetricsStrip />
+            <TrustedBy />
             <SkillTicker />
             <Suspense fallback={null}>
+                <Projects />
+                <Process />
+                <Services />
+                {/* <Pricing /> Removed per user request */}
                 <About />
-                <TechStack />
-                <Timeline />
+                <FAQ />
                 <Contact />
+                <div>
+                    {/* <FloatingCTA /> Merged into ChatWidget */}
+                    <StickyCTA />
+                </div>
                 <Footer />
             </Suspense>
         </LanguageProvider>
