@@ -77,6 +77,8 @@ export default function HomeClient({ lang }: { lang: Locale }) {
                 <Services />
                 {/* <Pricing /> Removed per user request */}
                 <About />
+                <TechStack />
+                <Timeline />
                 <FAQ />
                 <Contact />
                 <div>
