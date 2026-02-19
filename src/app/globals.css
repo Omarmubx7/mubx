@@ -262,3 +262,31 @@ body::before {
     animation-delay: 0.2s;
   }
 }
+
+/* Calendly Popup Override — force centered modal */
+.calendly-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+.calendly-overlay .calendly-popup {
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  max-height: 90vh !important;
+  max-width: 600px !important;
+  width: 100% !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+.calendly-overlay .calendly-popup-close {
+  z-index: 100000 !important;
+}
