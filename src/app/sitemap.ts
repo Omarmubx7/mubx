@@ -2,6 +2,7 @@
 import { MetadataRoute } from 'next';
 import { projects } from '@/lib/projects';
 import { siteConfig } from '@/config/seo';
+import { blogPosts } from '@/lib/blog-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = siteConfig.url;
@@ -37,8 +38,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Dynamic Blog Routes
     // Using import from blog-data
-    const { blogPosts } = require('@/lib/blog-data');
-    const blogRoutes = blogPosts.map((post: any) => ({
+    // const { blogPosts } = require('@/lib/blog-data');
+    const blogRoutes = blogPosts.map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,

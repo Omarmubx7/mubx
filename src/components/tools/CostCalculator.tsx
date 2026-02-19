@@ -1,6 +1,7 @@
 
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, RefreshCw } from 'lucide-react';
@@ -26,7 +27,7 @@ interface Props {
 }
 
 export default function CostCalculator({ ui, options }: Props) {
-    const [selections, setSelections] = useState<any>({
+    const [selections, setSelections] = useState<any>({ // eslint-disable-line @typescript-eslint/no-explicit-any
         pages: 300,
         design: 0,
         features: []
@@ -48,7 +49,7 @@ export default function CostCalculator({ ui, options }: Props) {
         if (!featuresOption) return base;
 
         const featureTotal = selections.features.reduce((acc: number, id: string) => {
-            const feature = featuresOption.choices.find(c => (c as any).id === id);
+            const feature = featuresOption.choices.find(c => (c as any).id === id); // eslint-disable-line @typescript-eslint/no-explicit-any
             return acc + (feature ? feature.price : 0);
         }, 0);
         return base + featureTotal;
@@ -71,7 +72,7 @@ export default function CostCalculator({ ui, options }: Props) {
                                 <div className="space-y-3 pl-11">
                                     {opt.choices.map((choice) => {
                                         const isMulti = opt.multi;
-                                        const choiceId = (choice as any).id;
+                                        const choiceId = (choice as any).id; // eslint-disable-line @typescript-eslint/no-explicit-any
 
                                         const isSelected = isMulti
                                             ? selections.features.includes(choiceId)
@@ -91,6 +92,7 @@ export default function CostCalculator({ ui, options }: Props) {
                                             >
                                                 <div>
                                                     <div className={`font-bold ${isSelected ? 'text-neon' : 'text-white'}`}>{choice.label}</div>
+                                                    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                                                     {(choice as any).desc && <div className="text-xs text-muted/60 mt-1">{(choice as any).desc}</div>}
                                                 </div>
                                                 {isSelected && <Check className="w-5 h-5 text-neon" />}
@@ -116,12 +118,12 @@ export default function CostCalculator({ ui, options }: Props) {
                                 {ui.disclaimer}
                             </div>
 
-                            <a
+                            <Link
                                 href="/#contact"
                                 className="block w-full py-4 bg-neon text-black font-bold text-lg rounded-xl hover:bg-white transition-all hover:scale-[1.02]"
                             >
                                 {ui.getQuote}
-                            </a>
+                            </Link>
 
                             <button
                                 onClick={() => setSelections({ pages: 300, design: 0, features: [] })}

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { addPropertyControls, ControlType } from "@/lib/framer-mock";
 import * as React from "react";

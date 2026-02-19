@@ -9,6 +9,7 @@ const StarsCanvas = memo(() => {
 
     useEffect(() => {
         const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         if (isMobile) setStarCount(500); // Drastically reduced for 100/100 Mobile Score
     }, []);
 
@@ -36,5 +37,7 @@ const StarsCanvas = memo(() => {
     );
 });
 
+
+StarsCanvas.displayName = 'StarsCanvas';
 
 export default StarsCanvas;

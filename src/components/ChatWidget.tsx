@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, ChevronRight, Calculator, Calendar, Globe, Rocket, Code, Briefcase, ArrowUp, Phone } from 'lucide-react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
@@ -48,38 +48,13 @@ export default function ChatWidget() {
     };
 
     // Chat Logic
-    useEffect(() => {
-        const greetingText = language === 'ar'
-            ? "مرحباً! أنا المساعد الذكي لـ MUBX. كيف يمكنني مساعدتك اليوم؟ 🤖"
-            : "Hi! I'm the MUBX Navigator. How can I help you today? 🤖";
 
-        const initialOptions: Option[] = language === 'ar' ? [
-            { label: "أريد موقعاً إلكترونياً", action: () => handleOption('website'), icon: <Rocket className="w-3 h-3" /> },
-            { label: "حساب التكلفة", action: () => handleOption('cost'), icon: <Calculator className="w-3 h-3" /> },
-            { label: "حجز استشارة", action: () => handleOption('book'), icon: <Calendar className="w-3 h-3" /> },
-            { label: "Switch to English", action: () => handleOption('english'), icon: <Globe className="w-3 h-3" /> },
-        ] : [
-            { label: "I need a website", action: () => handleOption('website'), icon: <Rocket className="w-3 h-3" /> },
-            { label: "Estimate Cost", action: () => handleOption('cost'), icon: <Calculator className="w-3 h-3" /> },
-            { label: "Book a Call", action: () => handleOption('book'), icon: <Calendar className="w-3 h-3" /> },
-            { label: "التحويل للعربية", action: () => handleOption('arabic'), icon: <Globe className="w-3 h-3" /> },
-        ];
-
-        setMessages([{
-            id: 'init',
-            text: greetingText,
-            sender: 'bot',
-            options: initialOptions,
-            timestamp: Date.now()
-        }]);
-
-    }, [language]);
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages, isOpen]);
 
-    const addMessage = (text: string, sender: 'bot' | 'user', options?: Option[]) => {
+    const addMessage = useCallback((text: string, sender: 'bot' | 'user', options?: Option[]) => {
         const newMessage: Message = {
             id: Date.now().toString(),
             text,
@@ -88,15 +63,15 @@ export default function ChatWidget() {
             timestamp: Date.now()
         };
         setMessages(prev => [...prev, newMessage]);
-    };
+    }, []);
 
-    const handleSwitchLanguage = (newLang: 'en' | 'ar') => {
+    const handleSwitchLanguage = useCallback((newLang: 'en' | 'ar') => {
         const params = new URLSearchParams(searchParams?.toString() || '');
         params.set('lang', newLang);
         window.location.href = `${pathname}?${params.toString()}`;
-    };
+    }, [pathname, searchParams]);
 
-    const handleOption = (key: string) => {
+    const handleOption = useCallback(function _handleOption(key: string) {
         const responses = {
             en: {
                 website: "Awesome. What kind of project are you building?",
@@ -145,13 +120,13 @@ export default function ChatWidget() {
         setTimeout(() => {
             if (key === 'website') {
                 const options: Option[] = language === 'ar' ? [
-                    { label: "متجر إلكتروني", action: () => handleOption('ecommerce'), icon: <Briefcase className="w-3 h-3" /> },
-                    { label: "موقع شركة", action: () => handleOption('landing'), icon: <Rocket className="w-3 h-3" /> },
-                    { label: "تطبيق مخصص", action: () => handleOption('custom'), icon: <Code className="w-3 h-3" /> },
+                    { label: "متجر إلكتروني", action: () => _handleOption('ecommerce'), icon: <Briefcase className="w-3 h-3" /> },
+                    { label: "موقع شركة", action: () => _handleOption('landing'), icon: <Rocket className="w-3 h-3" /> },
+                    { label: "تطبيق مخصص", action: () => _handleOption('custom'), icon: <Code className="w-3 h-3" /> },
                 ] : [
-                    { label: "E-commerce Store", action: () => handleOption('ecommerce'), icon: <Briefcase className="w-3 h-3" /> },
-                    { label: "Business Site", action: () => handleOption('landing'), icon: <Rocket className="w-3 h-3" /> },
-                    { label: "Custom App", action: () => handleOption('custom'), icon: <Code className="w-3 h-3" /> },
+                    { label: "E-commerce Store", action: () => _handleOption('ecommerce'), icon: <Briefcase className="w-3 h-3" /> },
+                    { label: "Business Site", action: () => _handleOption('landing'), icon: <Rocket className="w-3 h-3" /> },
+                    { label: "Custom App", action: () => _handleOption('custom'), icon: <Code className="w-3 h-3" /> },
                 ];
                 addMessage(t.website, 'bot', options);
             }
@@ -188,7 +163,35 @@ export default function ChatWidget() {
                 ]);
             }
         }, 600);
-    };
+    }, [language, addMessage, handleSwitchLanguage]);
+
+    // Chat Logic
+    useEffect(() => {
+        const greetingText = language === 'ar'
+            ? "مرحباً! أنا المساعد الذكي لـ MUBX. كيف يمكنني مساعدتك اليوم؟ 🤖"
+            : "Hi! I'm the MUBX Navigator. How can I help you today? 🤖";
+
+        const initialOptions: Option[] = language === 'ar' ? [
+            { label: "أريد موقعاً إلكترونياً", action: () => handleOption('website'), icon: <Rocket className="w-3 h-3" /> },
+            { label: "حساب التكلفة", action: () => handleOption('cost'), icon: <Calculator className="w-3 h-3" /> },
+            { label: "حجز استشارة", action: () => handleOption('book'), icon: <Calendar className="w-3 h-3" /> },
+            { label: "Switch to English", action: () => handleOption('english'), icon: <Globe className="w-3 h-3" /> },
+        ] : [
+            { label: "I need a website", action: () => handleOption('website'), icon: <Rocket className="w-3 h-3" /> },
+            { label: "Estimate Cost", action: () => handleOption('cost'), icon: <Calculator className="w-3 h-3" /> },
+            { label: "Book a Call", action: () => handleOption('book'), icon: <Calendar className="w-3 h-3" /> },
+            { label: "التحويل للعربية", action: () => handleOption('arabic'), icon: <Globe className="w-3 h-3" /> },
+        ];
+
+        setMessages([{
+            id: 'init',
+            text: greetingText,
+            sender: 'bot',
+            options: initialOptions,
+            timestamp: Date.now()
+        }]);
+
+    }, [language, handleOption]);
 
     return (
         <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 pointer-events-none">

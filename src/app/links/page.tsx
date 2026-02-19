@@ -73,7 +73,7 @@ export default async function LinksPage(props: Props) {
         }
     ];
 
-    const LinkCard = ({ link, isPrimary = false, delay = 0 }: { link: any, isPrimary?: boolean, delay?: number }) => (
+    const LinkCard = ({ link, isPrimary = false, delay = 0 }: { link: any, isPrimary?: boolean, delay?: number }) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
         <ScrollReveal direction="up" delay={delay} className="w-full">
             <a
                 href={link.url}

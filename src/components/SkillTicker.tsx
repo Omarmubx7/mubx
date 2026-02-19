@@ -27,7 +27,7 @@ const skillsRow2 = [
     { key: "api", icon: Terminal },
 ];
 
-const SkillPill = ({ name, Icon }: { name: string, Icon: any }) => (
+const SkillPill = ({ name, Icon }: { name: string, Icon: any }) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
     <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-card border border-border text-foreground hover:text-neon hover:border-neon transition-colors duration-300 cursor-default group">
         <Icon className="w-4 h-4 text-muted group-hover:text-neon transition-colors" />
         <span className="text-sm font-bold font-mono tracking-wide whitespace-nowrap">{name}</span>

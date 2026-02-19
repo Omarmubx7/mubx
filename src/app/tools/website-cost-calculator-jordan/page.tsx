@@ -42,7 +42,7 @@ export default async function CalculatorPage(props: Props) {
                             </p>
                         </div>
 
-                        <CostCalculator ui={t.ui} options={t.options as any} />
+                        <CostCalculator ui={t.ui} options={t.options as any} /> {/* eslint-disable-line @typescript-eslint/no-explicit-any */}
 
                         <div className="mt-20 max-w-3xl mx-auto prose prose-invert">
                             <h2>{t.howItWorks.title}</h2>

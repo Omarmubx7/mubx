@@ -70,7 +70,7 @@ export default async function NeonCardPage(props: Props) {
                                                 </div>
                                                 <h3 className="text-2xl font-bold text-white">Hover Me</h3>
                                                 <p className="text-muted">
-                                                    This card uses a negative inset glow effect to prevent layout shifts. It's GPU optimized.
+                                                    This card uses a negative inset glow effect to prevent layout shifts. It&apos;s GPU optimized.
                                                 </p>
                                             </div>
                                             <div className="pt-4">

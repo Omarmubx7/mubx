@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Badge from '@/components/ui/Badge';
 import { siteConfig } from '@/config/seo';
+import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 
 export const metadata: Metadata = {
@@ -58,13 +59,13 @@ export default async function BlogPost(props: Props) {
                             <h2>2. Shopify vs Custom Development</h2>
                             <p>
                                 Shopify is great, but the monthly fees add up ($29/mo + 2% transaction fees).
-                                For Jordanian businesses, a custom Next.js store often pays for itself in 6 months because you own the code. You pay $0 in "platform fees", just your $5/mo hosting.
+                                For Jordanian businesses, a custom Next.js store often pays for itself in 6 months because you own the code. You pay $0 in &quot;platform fees&quot;, just your $5/mo hosting.
                             </p>
 
                             <div className="my-12 p-8 bg-white/5 rounded-2xl border border-white/10">
                                 <h3 className="text-xl font-bold text-white mb-4">Need a store?</h3>
                                 <p className="mb-4">Check our interactive calculator to see how much a custom store costs.</p>
-                                <a href="/tools/website-cost-calculator-jordan" className="text-neon font-bold hover:underline">Launch Calculator →</a>
+                                <Link href="/tools/website-cost-calculator-jordan" className="text-neon font-bold hover:underline">Launch Calculator →</Link>
                             </div>
                         </div>
                     </article>

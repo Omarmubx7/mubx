@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState, useEffect, useRef, useMemo, startTransition, Fragment } from "react";
 import { addPropertyControls, ControlType } from "@/lib/framer-mock";

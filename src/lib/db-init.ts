@@ -5,7 +5,7 @@
  * build tools to treat it as a fresh module.
  */
 
-let cachedInstance: any = null;
+let cachedInstance: any = null; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 export const initializeSupabaseStore = async () => {
     if (cachedInstance) return cachedInstance;

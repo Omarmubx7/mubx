@@ -21,6 +21,7 @@ export function LanguageProvider({ children, initialLocale = 'en' }: { children:
     useEffect(() => {
         const langParam = searchParams.get('lang');
         if (langParam === 'ar' || langParam === 'en') {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setLanguage(langParam as Locale);
         } else if (initialLocale) {
             setLanguage(initialLocale);

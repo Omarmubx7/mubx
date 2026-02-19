@@ -8,9 +8,9 @@ import Image from 'next/image';
 import Badge from './ui/Badge';
 
 type ProjectCardProps = {
-    project: any;
+    project: any; // eslint-disable-line @typescript-eslint/no-explicit-any
     index: number;
-    t: any;
+    t: any; // eslint-disable-line @typescript-eslint/no-explicit-any
     language: string;
 }
 

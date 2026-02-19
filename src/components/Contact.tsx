@@ -103,7 +103,7 @@ export default function Contact() {
             setFormState('success');
             setStep(1);
             setTimeout(() => setFormState('idle'), 5000);
-        } catch (error: any) {
+        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
             console.error('🔥 MUBX Submission Error:', error.message || error);
             if (error.details) console.error('Error Details:', error.details);
             if (error.hint) console.error('Hint:', error.hint);

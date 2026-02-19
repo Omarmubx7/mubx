@@ -20,7 +20,7 @@ export default function Error({
             <h1 className="text-neon text-6xl font-black mb-4">500</h1>
             <h2 className="text-2xl md:text-3xl font-bold mb-6">Something went wrong!</h2>
             <p className="text-muted text-lg max-w-md mb-8">
-                An unexpected error has occurred. We've been notified and are looking into it.
+                An unexpected error has occurred. We&apos;ve been notified and are looking into it.
             </p>
             <button
                 onClick={

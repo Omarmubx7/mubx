@@ -33,7 +33,7 @@ export default function AnimatedText({ text, className = "", delay = 0, by = "wo
                 type: "spring",
                 damping: 12,
                 stiffness: 100,
-            } as any,
+            } as any, // eslint-disable-line @typescript-eslint/no-explicit-any
         },
         hidden: {
             opacity: immediate ? 1 : 0,
@@ -42,7 +42,7 @@ export default function AnimatedText({ text, className = "", delay = 0, by = "wo
                 type: "spring",
                 damping: 12,
                 stiffness: 100,
-            } as any,
+            } as any, // eslint-disable-line @typescript-eslint/no-explicit-any
         },
     };
 

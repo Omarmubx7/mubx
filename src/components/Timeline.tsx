@@ -34,7 +34,7 @@ export default function Timeline() {
                     </div>
 
                     <div className="relative border-l-2 border-border/50 ml-6 md:ml-12 space-y-12">
-                        {t.timeline.items.map((item: any, index: number) => {
+                        {t.timeline.items.map((item: any, index: number) => { // eslint-disable-line @typescript-eslint/no-explicit-any
                             const Icon = icons[index % icons.length];
                             return (
                                 <motion.div

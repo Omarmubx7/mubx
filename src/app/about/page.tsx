@@ -81,7 +81,7 @@ export default function AboutPage() {
                                     <span className="text-neon">Code.</span>
                                 </h1>
                                 <p className="text-xl text-muted leading-relaxed">
-                                    I don't just write functions; I engineer digital assets.
+                                    I don&apos;t just write functions; I engineer digital assets.
                                     As a Computer Science student in Amman, I noticed a gap:
                                     Businesses need <strong className="text-white">speed</strong> and <strong className="text-white">local payment integration</strong>, not just pretty templates.
                                 </p>
@@ -119,7 +119,7 @@ export default function AboutPage() {
                                 <ul className="space-y-4 mb-8 list-none pl-0">
                                     <li className="flex items-start gap-3">
                                         <CheckCircle2 className="w-6 h-6 text-neon flex-shrink-0 mt-1" />
-                                        <span><strong>Performance First:</strong> If a site takes 3 seconds to load, you've lost the customer. I aim for sub-second loads.</span>
+                                        <span><strong>Performance First:</strong> If a site takes 3 seconds to load, you&apos;ve lost the customer. I aim for sub-second loads.</span>
                                     </li>
                                     <li className="flex items-start gap-3">
                                         <CheckCircle2 className="w-6 h-6 text-neon flex-shrink-0 mt-1" />
@@ -146,10 +146,10 @@ export default function AboutPage() {
 
                             {/* CTA Section */}
                             <div className="p-10 rounded-3xl bg-neon/10 border border-neon/20 text-center">
-                                <h2 className="text-3xl font-bold text-white mb-4">Let's Work Together</h2>
+                                <h2 className="text-3xl font-bold text-white mb-4">Let&apos;s Work Together</h2>
                                 <p className="text-muted mb-8 max-w-lg mx-auto">
-                                    I am currently accepting new projects. Whether it's a simple landing page or a complex SaaS,
-                                    I'm ready to engineer it.
+                                    I am currently accepting new projects. Whether it&apos;s a simple landing page or a complex SaaS,
+                                    I&apos;m ready to engineer it.
                                 </p>
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                     <a

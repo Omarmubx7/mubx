@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Badge from '@/components/ui/Badge';
 import { siteConfig } from '@/config/seo';
+import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 
 export const metadata: Metadata = {
@@ -57,7 +58,7 @@ export default async function BlogPost(props: Props) {
                             <div className="my-12 p-8 bg-white/5 rounded-2xl border border-white/10">
                                 <h3 className="text-xl font-bold text-white mb-4">Is your WordPress site slow?</h3>
                                 <p className="mb-4">I allow businesses to migrate to Next.js without losing their SEO rankings.</p>
-                                <a href="/#contact" className="text-neon font-bold hover:underline">Get a Migration Audit →</a>
+                                <Link href="/#contact" className="text-neon font-bold hover:underline">Get a Migration Audit →</Link>
                             </div>
                         </div>
                     </article>

@@ -54,10 +54,9 @@ export default function StickyCTA() {
                         <div className="flex items-center gap-2 relative z-10">
                             <button
                                 onClick={(e) => {
-                                    // @ts-ignore
-                                    if (window.Calendly) {
-                                        // @ts-ignore
-                                        window.Calendly.initPopupWidget({ url: 'https://calendly.com/omarmubaidincs/30min' });
+                                    const w = window as unknown as { Calendly?: { initPopupWidget: (args: { url: string }) => void } };
+                                    if (w.Calendly) {
+                                        w.Calendly.initPopupWidget({ url: 'https://calendly.com/omarmubaidincs/30min' });
                                         e.preventDefault();
                                     } else {
                                         window.open('https://calendly.com/omarmubaidincs/30min', '_blank');

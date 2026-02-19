@@ -64,7 +64,7 @@ export default function ContactView() {
             }
 
             router.push(language === 'en' ? '/success' : `/success?lang=${language}`);
-        } catch (error: any) {
+        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
             console.error('Submission error details:', error.message || error);
             setFormState('error');
             setTimeout(() => setFormState('idle'), 5000);

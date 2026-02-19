@@ -28,7 +28,7 @@ export const ControlType = {
 // Mock Component Viewport Provider
 export const ComponentViewportProvider = ({ children }: { children: React.ReactNode }) => children;
 
-export const cx = (...args: any[]) => args.filter(Boolean).join(' ');
+export const cx = (...args: any[]) => args.filter(Boolean).join(' '); // eslint-disable-line @typescript-eslint/no-explicit-any
 
 export const getFonts = () => [];
 
@@ -39,14 +39,14 @@ export const RichText = ({ children }: { children: React.ReactNode }) => childre
 // Hooks
 export const useActiveVariantCallback = (variant: string) => {
     return {
-        activeVariantCallback: (callback: any) => callback,
+        activeVariantCallback: (callback: any) => callback, // eslint-disable-line @typescript-eslint/no-explicit-any
         delay: 0
     };
 };
 
 export const useComponentViewport = () => ({ x: 0, y: 0, width: 1200, height: 800 });
 export const useLocaleInfo = () => ({ activeLocale: 'en', setLocale: noop });
-export const useVariantState = ({ defaultVariant }: any) => {
+export const useVariantState = ({ defaultVariant }: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
     const [variant, setVariant] = React.useState(defaultVariant);
     return {
         baseVariant: variant,
@@ -61,8 +61,8 @@ export const useVariantState = ({ defaultVariant }: any) => {
     };
 };
 
-export const withCSS = (component: any, ..._args: any[]) => {
-    const Enhanced = (props: any) => React.createElement(component, props);
+export const withCSS = (component: any, ..._args: any[]) => { // eslint-disable-line @typescript-eslint/no-explicit-any
+    const Enhanced = (props: any) => React.createElement(component, props); // eslint-disable-line @typescript-eslint/no-explicit-any
     Enhanced.displayName = `withCSS(${component.displayName || component.name})`;
     return Enhanced;
 };

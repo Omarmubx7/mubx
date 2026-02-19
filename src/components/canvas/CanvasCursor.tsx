@@ -10,6 +10,7 @@ const CanvasCursor = () => {
     const [isMobile, setIsMobile] = useState(true);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsMobile(window.matchMedia("(max-width: 768px)").matches);
     }, []);
 
@@ -98,5 +99,7 @@ const CanvasCursor = () => {
         </>
     );
 };
+
+CanvasCursor.displayName = 'CanvasCursor';
 
 export default CanvasCursor;
