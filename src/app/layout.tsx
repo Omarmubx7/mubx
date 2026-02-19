@@ -114,6 +114,10 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://vercel.live" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
 
+        {/* Calendly Widget */}
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+        <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
 
         {/* PWA Meta Tags */}
         <link rel="manifest" href="/manifest.json" />

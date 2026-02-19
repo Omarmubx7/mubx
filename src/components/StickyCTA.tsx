@@ -53,11 +53,14 @@ export default function StickyCTA() {
 
                         <div className="flex items-center gap-2 relative z-10">
                             <button
-                                onClick={() => {
+                                onClick={(e) => {
                                     // @ts-ignore
                                     if (window.Calendly) {
                                         // @ts-ignore
-                                        window.Calendly.initPopupWidget({ url: 'https://calendly.com/mubx/30min' });
+                                        window.Calendly.initPopupWidget({ url: 'https://calendly.com/omarmubaidincs/30min' });
+                                        e.preventDefault();
+                                    } else {
+                                        window.open('https://calendly.com/omarmubaidincs/30min', '_blank');
                                     }
                                 }}
                                 className="bg-neon text-black font-black text-xs px-6 py-2.5 rounded-xl flex items-center gap-2 hover:bg-white transition-colors uppercase tracking-widest whitespace-nowrap"
