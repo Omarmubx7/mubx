@@ -272,9 +272,11 @@ body::before {
   align-items: center !important;
   justify-content: center !important;
   background: rgba(0, 0, 0, 0.7) !important;
+  cursor: pointer !important;
 }
 
 .calendly-overlay .calendly-popup {
+  cursor: default !important;
   position: relative !important;
   top: auto !important;
   bottom: auto !important;

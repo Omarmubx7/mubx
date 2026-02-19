@@ -58,6 +58,18 @@ export default function StickyCTA() {
                                     if (w.Calendly) {
                                         w.Calendly.initPopupWidget({ url: 'https://calendly.com/omarmubaidincs/30min' });
                                         e.preventDefault();
+                                        // Close popup when clicking the dark overlay
+                                        setTimeout(() => {
+                                            const overlay = document.querySelector('.calendly-overlay') as HTMLElement;
+                                            if (overlay) {
+                                                overlay.addEventListener('click', (evt) => {
+                                                    const popup = overlay.querySelector('.calendly-popup');
+                                                    if (popup && !popup.contains(evt.target as Node)) {
+                                                        overlay.remove();
+                                                    }
+                                                });
+                                            }
+                                        }, 500);
                                     } else {
                                         window.open('https://calendly.com/omarmubaidincs/30min', '_blank');
                                     }
