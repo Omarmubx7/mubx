@@ -24,11 +24,11 @@ export interface Project {
 const projectsData: Record<Locale, Project[]> = {
     en: [
         {
-            slug: 'htu-course-tracker',
-            title: 'HTU Course Tracker',
+            slug: 'htuai',
+            title: 'HTUAI',
             description: 'A real-time GPA calculator and course tracking tool designed specifically for HTU students with local data persistence.',
             tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
-            links: { live: 'https://htuai.vercel.app/' },
+            links: { live: 'https://htuai.mubx.dev/' },
             logo: '/images/htu-logo.webp',
             metrics: 'Real-time GPA',
             verified_outcome: 'Integrated Tool',
@@ -155,11 +155,11 @@ const projectsData: Record<Locale, Project[]> = {
     ],
     ar: [
         {
-            slug: 'htu-course-tracker',
-            title: 'متتبع مساقات HTU',
+            slug: 'htuai',
+            title: 'HTUAI',
             description: 'أداة لحساب المعدل التراكمي وتتبع المساقات مصممة خصيصاً لطلاب جامعة الحسين التقنية مع حفظ البيانات محلياً.',
             tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
-            links: { live: 'https://htuai.vercel.app/' },
+            links: { live: 'https://htuai.mubx.dev/' },
             logo: '/images/htu-logo.webp',
             metrics: 'معدل تراكمي فوري',
             verified_outcome: 'أداة مدمجة',

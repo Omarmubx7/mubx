@@ -25,11 +25,17 @@ export default async function LinksPage(props: Props) {
 
     const workLinks = [
         {
+            name: "HTUAI",
+            url: "https://htuai.mubx.dev/",
+            icon: Globe,
+            sub: "HTU Course Tracker & GPA Calculator",
+            primary: true
+        },
+        {
             name: "Portfolio Website",
             url: "https://www.mubx.dev/",
             icon: Globe,
             sub: "View my latest work & case studies",
-            primary: true
         },
         {
             name: "Email Me",
