@@ -104,7 +104,7 @@ export default function Hero() {
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-                            className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] rounded-3xl overflow-hidden border-2 border-neon/30 shadow-[0_0_50px_rgba(215,28,28,0.2)] group-hover:shadow-[0_0_80px_rgba(215,28,28,0.4)] transition-all duration-500"
+                            className="relative w-64 md:w-80 lg:w-[400px] aspect-[10/14] rounded-3xl overflow-hidden border-2 border-neon/30 shadow-[0_0_50px_rgba(215,28,28,0.2)] group-hover:shadow-[0_0_80px_rgba(215,28,28,0.4)] transition-all duration-500"
                         >
                             <Image
                                 src="/omarmubpic.webp"
@@ -112,7 +112,7 @@ export default function Hero() {
                                 fill
                                 priority
                                 className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110"
-                                sizes="(max-width: 768px) 288px, (max-width: 1024px) 384px, 450px"
+                                sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 400px"
                             />
 
                             {/* Decorative Neon Border Overlay */}
