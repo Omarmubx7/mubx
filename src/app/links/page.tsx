@@ -5,7 +5,7 @@ import { LanguageProvider } from '@/context/LanguageContext';
 
 import Badge from '@/components/ui/Badge';
 import ScrollReveal from '@/components/ui/ScrollReveal';
-import { Github, Linkedin, Globe, Phone, Instagram, ArrowRight, Mail } from 'lucide-react';
+import { Github, Linkedin, Globe, Phone, Instagram, ArrowRight, Mail, Mic } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Links | Omar Mubaidin',
@@ -30,6 +30,12 @@ export default async function LinksPage(props: Props) {
             icon: Globe,
             sub: "HTU Course Tracker & GPA Calculator",
             primary: true
+        },
+        {
+            name: "Men Only Show",
+            url: "https://menonlyshow-gray.vercel.app/",
+            icon: Mic,
+            sub: "Arab World's First Men's Talk Show",
         },
         {
             name: "Portfolio Website",
