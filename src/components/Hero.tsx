@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Badge from './ui/Badge';
 import { useLanguage } from '@/context/LanguageContext';
 import { ProTextType, SwipeLettersButton } from './framer/FramerComponents';
@@ -22,7 +24,6 @@ export default function Hero() {
             <div className="container mx-auto px-6 md:px-12 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
-                    {/* Left Column: Text Content */}
                     {/* Left Column: Text Content */}
                     <div
                         className="flex-1 text-center lg:text-left rtl:lg:text-right order-1 lg:order-0"
@@ -93,14 +94,34 @@ export default function Hero() {
 
                     {/* Right Column: Hero Image / Visual */}
                     <div
-                        className="flex-1 relative h-100 lg:h-150 w-full flex items-center justify-center group order-2 lg:order-0 animate-hero-slide-in"
+                        className="flex-1 relative h-[400px] lg:h-[600px] w-full flex items-center justify-center group order-2 lg:order-0"
                     >
-                        <div className="absolute inset-0 bg-linear-to-tr from-neon/10 to-transparent rounded-full blur-[60px] animate-pulse-slow" />
+                        {/* 3D-like Background Glow */}
+                        <div className="absolute inset-0 bg-linear-to-tr from-neon/20 to-cyan/20 rounded-full blur-[80px] animate-pulse-slow opacity-50" />
 
-                        {/* 
-                            3D Hero Scene Removed for Performance 
-                            The glow above maintains visual interest without the heavy canvas load.
-                        */}
+                        {/* Image Container with Glow Effect */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+                            className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] rounded-3xl overflow-hidden border-2 border-neon/30 shadow-[0_0_50px_rgba(215,28,28,0.2)] group-hover:shadow-[0_0_80px_rgba(215,28,28,0.4)] transition-all duration-500"
+                        >
+                            <Image
+                                src="/omarmubpic.webp"
+                                alt="Omar Mubaidin"
+                                fill
+                                priority
+                                className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110"
+                                sizes="(max-width: 768px) 288px, (max-width: 1024px) 384px, 450px"
+                            />
+
+                            {/* Decorative Neon Border Overlay */}
+                            <div className="absolute inset-0 border-[8px] border-neon/10 pointer-events-none" />
+                        </motion.div>
+
+                        {/* Floating Tech Elements (Optional visual interest) */}
+                        <div className="absolute -top-4 -right-4 w-24 h-24 bg-neon/10 blur-xl rounded-full animate-bounce-slow" />
+                        <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-cyan/10 blur-xl rounded-full animate-bounce-slow delay-1000" />
                     </div>
 
                 </div>
@@ -108,3 +129,4 @@ export default function Hero() {
         </section >
     );
 }
+
