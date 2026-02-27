@@ -1,0 +1,18 @@
+Testing Supabase...
+
+Supabase Error: {
+Testing Resend...
+  message: 'TypeError: fetch failed',
+  details: 'TypeError: fetch failed\n' +
+    '\n' +
+    'Caused by: Error: getaddrinfo ENOTFOUND uolwakngldkxiawrfavs.supabase.co (ENOTFOUND)\n' +
+    'Error: getaddrinfo ENOTFOUND uolwakngldkxiawrfavs.supabase.co\n' +
+    '    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)',
+  hint: '',
+  code: ''
+}
+Resend Error: {
+  statusCode: 403,
+  name: 'validation_error',
+  message: 'You can only send testing emails to your own email address (omarmubaidincs@gmail.com). To send emails to other recipients, please verify a domain at resend.com/domains, and change the `from` address to an email using this domain.'
+}

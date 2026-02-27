@@ -60,6 +60,13 @@ export default function Contact() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        // If not on final step, just advance to the next step when pushing Enter
+        if (step !== 3) {
+            nextStep();
+            return;
+        }
+
         if (!validateStep(3)) return;
 
         setFormState('submitting');
