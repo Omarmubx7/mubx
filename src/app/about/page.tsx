@@ -10,21 +10,30 @@ import JsonLd from '@/components/JsonLd';
 import { LanguageProvider } from '@/context/LanguageContext';
 
 export const metadata: Metadata = {
-    title: 'About Omar Mubaidin | MUBX - Web Developer & CS Student',
-    description: 'Meet MUBX: A Computer Science student & Full Stack Developer in Amman, obsessed with web performance & local e-commerce.',
+    title: 'About Omar Mubaidin | MUBX — Full Stack Developer & Tech Consultant in Amman',
+    description: 'Meet Omar Mubaidin (عمر مبيضين): Computer Science student at PSUT, full-stack developer, and founder of MUBX. Building revenue-focused web systems for startups in Amman, Jordan.',
     keywords: [
-        'Omar Mubaidin',
-        'Omar Mubaidin Bio',
-        'CS Student Amman',
-        'MUBX Founder',
-        'Web Developer Story'
+        'Omar Mubaidin', 'عمر مبيضين', 'Omar Mubaidin bio',
+        'MUBX founder', 'web developer Amman', 'CS student PSUT',
+        'full stack developer Jordan', 'Omar Mubaidin about'
     ],
+    authors: [{ name: 'Omar Mubaidin', url: siteConfig.url }],
     openGraph: {
         type: 'profile',
         username: 'omarmubaidin',
         firstName: 'Omar',
         lastName: 'Mubaidin',
         url: `${siteConfig.url}/about`,
+        title: 'About Omar Mubaidin | MUBX',
+        description: 'Full Stack Developer & Technical Consultant in Amman, Jordan. Founder of MUBX.',
+        images: [siteConfig.ogImage],
+        siteName: 'MUBX',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'About Omar Mubaidin | MUBX',
+        description: 'Full Stack Developer & Technical Consultant in Amman, Jordan.',
+        creator: '@omarmubx',
         images: [siteConfig.ogImage],
     },
     alternates: {
@@ -41,33 +50,66 @@ export default function AboutPage() {
                 <main className="min-h-screen bg-black text-white selection:bg-neon selection:text-black">
                     <Navbar />
 
-                    {/* Profile Section with Schema */}
+                    {/* Enhanced Person Schema for Knowledge Panel + AEO */}
                     <JsonLd data={{
                         "@context": "https://schema.org",
                         "@type": "ProfilePage",
                         "mainEntity": {
                             "@type": "Person",
-                            "name": "Omar Mubaidin | عمر مبيضين",
-                            "alternateName": "MUBX",
-                            "jobTitle": "Full Stack Developer",
-                            "worksFor": {
-                                "@type": "Organization",
-                                "name": "MUBX Development"
+                            "@id": "https://mubx.dev/#person",
+                            "name": "Omar Mubaidin",
+                            "alternateName": ["عمر مبيضين", "MUBX", "Omar Mubx"],
+                            "givenName": "Omar",
+                            "familyName": "Mubaidin",
+                            "jobTitle": "Full Stack Developer & Technical Consultant",
+                            "description": "Omar Mubaidin is a Computer Science student at Princess Sumaya University for Technology (PSUT) and the founder of MUBX — a revenue-focused web consultancy in Amman, Jordan. He specializes in Next.js, e-commerce with Zain Cash & CliQ, and performance-optimized web systems for startups.",
+                            "image": "https://mubx.dev/omarmubpic.webp",
+                            "url": "https://mubx.dev",
+                            "nationality": {
+                                "@type": "Country",
+                                "name": "Jordan"
                             },
                             "address": {
                                 "@type": "PostalAddress",
                                 "addressLocality": "Amman",
                                 "addressCountry": "Jordan"
                             },
+                            "worksFor": {
+                                "@type": "Organization",
+                                "@id": "https://mubx.dev/#organization",
+                                "name": "MUBX"
+                            },
                             "alumniOf": {
                                 "@type": "CollegeOrUniversity",
-                                "name": "Princess Sumaya University for Technology"
+                                "name": "Princess Sumaya University for Technology",
+                                "url": "https://www.psut.edu.jo"
                             },
+                            "hasOccupation": {
+                                "@type": "Occupation",
+                                "name": "Full Stack Web Developer",
+                                "skills": "Next.js, React, TypeScript, Node.js, PostgreSQL, Tailwind CSS, Docker, E-commerce, Zain Cash, CliQ, SEO"
+                            },
+                            "knowsAbout": [
+                                "Next.js 15", "React", "TypeScript", "Node.js",
+                                "PostgreSQL", "Tailwind CSS", "Framer Motion",
+                                "Docker", "Git", "Web Performance",
+                                "Core Web Vitals", "SEO", "E-commerce",
+                                "Zain Cash Integration", "CliQ Payment Integration",
+                                "Technical Consulting", "Startup Advisory"
+                            ],
+                            "knowsLanguage": ["English", "Arabic"],
                             "sameAs": [
                                 "https://github.com/Omarmubx7",
                                 "https://www.linkedin.com/in/omarmubaidin",
-                                "https://mubx.dev"
+                                "https://www.instagram.com/mubx.dev",
+                                "https://wa.me/962780090453",
+                                "https://mubx.dev",
+                                "https://mubx.dev/links"
                             ]
+                        },
+                        "speakable": {
+                            "@type": "SpeakableSpecification",
+                            "cssSelector": [".prose"]
                         }
                     }} />
 

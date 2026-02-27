@@ -8,8 +8,27 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import { Github, Linkedin, Globe, Phone, Instagram, ArrowRight, Mail, Mic } from 'lucide-react';
 
 export const metadata: Metadata = {
-    title: 'Links | Omar Mubaidin',
-    description: 'Connect with Omar Mubaidin - Full Stack Web Developer. Social links, portfolio, and contact info.',
+    title: 'Links | Omar Mubaidin — MUBX',
+    description: 'Connect with Omar Mubaidin (MUBX) — Full Stack Web Developer in Amman, Jordan. Social links, portfolio, projects, and contact info.',
+    keywords: ['Omar Mubaidin links', 'MUBX links', 'Omar Mubaidin social media', 'Omar Mubaidin contact'],
+    alternates: {
+        canonical: 'https://mubx.dev/links',
+    },
+    openGraph: {
+        title: 'Links | Omar Mubaidin — MUBX',
+        description: 'Connect with Omar Mubaidin — Full Stack Web Developer. Social links, portfolio, and contact info.',
+        url: 'https://mubx.dev/links',
+        siteName: 'MUBX',
+        type: 'profile',
+        images: ['/og-image.png'],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Links | Omar Mubaidin',
+        description: 'Connect with Omar Mubaidin — social links, portfolio, and contact.',
+        creator: '@omarmubx',
+        images: ['/og-image.png'],
+    },
 };
 
 import { Locale } from '@/lib/dictionaries';

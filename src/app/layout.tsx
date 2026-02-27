@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Inter, Space_Grotesk, JetBrains_Mono, Cairo } from 'next/font/google';
 import { Suspense } from 'react';
 import './globals.css';
 
 import SmoothScroll from '@/components/SmoothScroll';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
-import dynamic from 'next/dynamic';
+
 
 import DynamicChatWidget from '@/components/DynamicChatWidget';
 
@@ -36,7 +36,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-import { Cairo } from 'next/font/google';
+
 
 const cairo = Cairo({
   subsets: ['arabic'],
@@ -114,10 +114,14 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://vercel.live" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
 
+        {/* Hreflang — Language Alternates for SEO */}
+        <link rel="alternate" hrefLang="en" href="https://mubx.dev" />
+        <link rel="alternate" hrefLang="ar" href="https://mubx.dev?lang=ar" />
+        <link rel="alternate" hrefLang="x-default" href="https://mubx.dev" />
+
         {/* Calendly Widget */}
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
         <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-
 
         {/* PWA Meta Tags */}
         <link rel="manifest" href="/manifest.json" />
@@ -142,30 +146,105 @@ export default function RootLayout({
             "@graph": [
               {
                 "@type": "Person",
-                "name": "Omar Mubaidin | عمر مبيضين",
+                "@id": "https://mubx.dev/#person",
+                "name": "Omar Mubaidin",
+                "alternateName": ["عمر مبيضين", "MUBX", "Omar Mubx"],
                 "url": "https://mubx.dev",
-                "image": "https://mubx.dev/mubxlogoloader.svg",
-                "jobTitle": "Web Developer",
-                "sameAs": [
-                  "https://github.com/Omarmubx7",
-                  "https://www.linkedin.com/in/omarmubaidin"
-                ]
-              },
-              {
-                "@type": "ProfessionalService",
-                "name": "MUBX",
-                "image": "https://mubx.dev/mubxlogoloader.svg",
-                "logo": "https://mubx.dev/mubxlogoloader.svg",
-                "description": "High-performance web development for verified systems and startups.",
-                "url": "https://mubx.dev",
+                "image": "https://mubx.dev/omarmubpic.webp",
+                "description": "Omar Mubaidin is a full-stack web developer and technical consultant based in Amman, Jordan. Founder of MUBX, he specializes in Next.js, e-commerce, and local payment integration for Jordanian startups.",
+                "jobTitle": "Full Stack Developer & Technical Consultant",
+                "nationality": {
+                  "@type": "Country",
+                  "name": "Jordan"
+                },
                 "address": {
                   "@type": "PostalAddress",
                   "addressLocality": "Amman",
                   "addressCountry": "JO"
                 },
-                "areaServed": ["Jordan", "Remote"],
-                "serviceType": ["Web Development", "E-commerce", "Dashboards"],
+                "alumniOf": {
+                  "@type": "CollegeOrUniversity",
+                  "name": "Princess Sumaya University for Technology",
+                  "url": "https://www.psut.edu.jo"
+                },
+                "hasOccupation": {
+                  "@type": "Occupation",
+                  "name": "Full Stack Web Developer",
+                  "occupationLocation": {
+                    "@type": "Country",
+                    "name": "Jordan"
+                  },
+                  "skills": "Next.js, React, TypeScript, Node.js, PostgreSQL, Tailwind CSS, E-commerce, Zain Cash Integration, CliQ Payments, SEO"
+                },
+                "knowsAbout": [
+                  "Next.js", "React", "TypeScript", "Node.js", "PostgreSQL",
+                  "Tailwind CSS", "Web Performance", "Core Web Vitals",
+                  "E-commerce", "Zain Cash", "CliQ Payments",
+                  "SEO", "Technical Consulting", "Startup Advisory",
+                  "Framer Motion", "Docker", "Git"
+                ],
+                "sameAs": [
+                  "https://github.com/Omarmubx7",
+                  "https://www.linkedin.com/in/omarmubaidin",
+                  "https://www.instagram.com/mubx.dev",
+                  "https://wa.me/962780090453",
+                  "https://mubx.dev/links"
+                ]
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://mubx.dev/#organization",
+                "name": "MUBX",
+                "alternateName": "MUBX Development",
+                "url": "https://mubx.dev",
+                "logo": "https://mubx.dev/mubxlogoloader.svg",
+                "image": "https://mubx.dev/mubxlogoloader.svg",
+                "description": "MUBX is a revenue-focused web consultancy in Amman, Jordan, founded by Omar Mubaidin. Specializing in high-performance websites, e-commerce, local payment integration (Zain Cash, CliQ), and technical SEO for startups.",
+                "founder": { "@id": "https://mubx.dev/#person" },
+                "foundingDate": "2024",
+                "foundingLocation": {
+                  "@type": "Place",
+                  "name": "Amman, Jordan"
+                },
+                "areaServed": ["Jordan", "Middle East", "Remote"],
+                "serviceType": [
+                  "Web Development",
+                  "E-commerce Development",
+                  "Technical Consulting",
+                  "SEO Optimization",
+                  "Dashboard Development",
+                  "Zain Cash Integration",
+                  "CliQ Payment Integration"
+                ],
+                "knowsAbout": [
+                  "Next.js", "React", "TypeScript", "E-commerce",
+                  "Zain Cash", "CliQ", "Web Performance", "SEO"
+                ],
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "email": "mubxdev@proton.me",
+                  "contactType": "customer service",
+                  "availableLanguage": ["English", "Arabic"]
+                },
                 "priceRange": "$$"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://mubx.dev/#website",
+                "name": "MUBX",
+                "url": "https://mubx.dev",
+                "description": "Omar Mubaidin's portfolio and web consultancy — MUBX. High-performance web development for startups in Jordan.",
+                "publisher": { "@id": "https://mubx.dev/#organization" },
+                "creator": { "@id": "https://mubx.dev/#person" },
+                "inLanguage": ["en", "ar"],
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://mubx.dev/blog?q={search_term_string}"
+                  },
+                  "query-input": "required name=search_term_string"
+                }
               }
             ]
           }} />

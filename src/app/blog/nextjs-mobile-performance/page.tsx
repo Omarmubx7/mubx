@@ -6,13 +6,33 @@ import { siteConfig } from '@/config/seo';
 import Image from 'next/image';
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-    title: 'Next.js Mobile Performance Guide: Fixing LCP & CLS | MUBX',
-    description: 'A deep dive into optimizing Next.js 15 for mobile devices. How I improved LCP from 2.5s to 0.8s on 4G networks.',
+    title: 'Next.js Mobile Performance Guide: Fixing LCP & CLS | Omar Mubaidin — MUBX',
+    description: 'A deep dive by Omar Mubaidin into optimizing Next.js 15 for mobile devices. How I improved LCP from 2.5s to 0.8s on 4G networks.',
+    authors: [{ name: 'Omar Mubaidin', url: siteConfig.url }],
+    keywords: ['Next.js performance', 'LCP optimization', 'CLS fix', 'Core Web Vitals', 'Omar Mubaidin', 'MUBX', 'mobile performance'],
     alternates: {
         canonical: `${siteConfig.url}/blog/nextjs-mobile-performance`
-    }
+    },
+    openGraph: {
+        type: 'article',
+        title: 'Next.js Mobile Performance Guide: Fixing LCP & CLS',
+        description: 'A deep dive into optimizing Next.js 15 for mobile devices. How I improved LCP from 2.5s to 0.8s on 4G networks.',
+        url: `${siteConfig.url}/blog/nextjs-mobile-performance`,
+        siteName: 'MUBX',
+        authors: ['Omar Mubaidin'],
+        publishedTime: '2026-02-06',
+        images: [siteConfig.ogImage],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Next.js Mobile Performance Guide | MUBX',
+        description: 'How I improved LCP from 2.5s to 0.8s on 4G networks.',
+        creator: '@omarmubx',
+        images: [siteConfig.ogImage],
+    },
 };
 
 import { Locale } from '@/lib/dictionaries';
@@ -32,6 +52,48 @@ export default async function BlogPost(props: Props) {
             <LanguageProvider initialLocale={lang}>
                 <main className="min-h-screen bg-black selection:bg-neon selection:text-black">
                     <Navbar />
+
+                    <JsonLd data={{
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        "headline": "Next.js Mobile Performance Guide: Fixing LCP & CLS",
+                        "description": "A deep dive into optimizing Next.js 15 for mobile devices. How I improved LCP from 2.5s to 0.8s on 4G networks.",
+                        "datePublished": "2026-02-06",
+                        "dateModified": "2026-02-06",
+                        "url": `${siteConfig.url}/blog/nextjs-mobile-performance`,
+                        "author": {
+                            "@type": "Person",
+                            "@id": "https://mubx.dev/#person",
+                            "name": "Omar Mubaidin",
+                            "url": siteConfig.url,
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "@id": "https://mubx.dev/#organization",
+                            "name": "MUBX",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": `${siteConfig.url}/mubxlogoloader.svg`
+                            }
+                        },
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": `${siteConfig.url}/blog/nextjs-mobile-performance`
+                        },
+                        "articleSection": "Performance",
+                        "inLanguage": "en",
+                    }} />
+
+                    <JsonLd data={{
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            { "@type": "ListItem", "position": 1, "name": "Home", "item": siteConfig.url },
+                            { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteConfig.url}/blog` },
+                            { "@type": "ListItem", "position": 3, "name": "Next.js Mobile Performance Guide", "item": `${siteConfig.url}/blog/nextjs-mobile-performance` }
+                        ]
+                    }} />
+
                     <article className="pt-32 pb-24 container mx-auto px-6 md:px-12 max-w-4xl">
                         <Badge variant="outline" className="mb-6">Technical Deep Dive</Badge>
                         <h1 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">

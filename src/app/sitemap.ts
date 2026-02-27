@@ -7,25 +7,38 @@ import { blogPosts } from '@/lib/blog-data';
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = siteConfig.url;
 
-    // Static Routes
+    // Static Routes with differentiated priorities
     const routes = [
-        '',
-        '/about',
-        '/contact',
-        '/services',
-        '/services/ecommerce',
-        '/blog',
-        '/tools/website-cost-calculator-jordan',
-        '/client/demo',
-        '/tools/neon-gradient-card',
-        '/links',
-        '/legal/privacy',
-        '/legal/terms',
+        { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
+        { path: '/about', priority: 0.9, changeFrequency: 'monthly' as const },
+        { path: '/services', priority: 0.9, changeFrequency: 'monthly' as const },
+        { path: '/contact', priority: 0.8, changeFrequency: 'monthly' as const },
+        { path: '/blog', priority: 0.8, changeFrequency: 'weekly' as const },
+        { path: '/links', priority: 0.7, changeFrequency: 'monthly' as const },
+        { path: '/services/ecommerce', priority: 0.8, changeFrequency: 'monthly' as const },
+        { path: '/tools/website-cost-calculator-jordan', priority: 0.7, changeFrequency: 'monthly' as const },
+        { path: '/tools/neon-gradient-card', priority: 0.5, changeFrequency: 'monthly' as const },
+        { path: '/client/demo', priority: 0.4, changeFrequency: 'monthly' as const },
+        { path: '/notes', priority: 0.6, changeFrequency: 'weekly' as const },
+        { path: '/legal/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
+        { path: '/legal/terms', priority: 0.3, changeFrequency: 'yearly' as const },
     ].map((route) => ({
-        url: `${baseUrl}${route}`,
+        url: `${baseUrl}${route.path}`,
+        lastModified: new Date(),
+        changeFrequency: route.changeFrequency,
+        priority: route.priority,
+    }));
+
+    // Static Blog Posts (hard-coded pages)
+    const staticBlogRoutes = [
+        '/blog/nextjs-mobile-performance',
+        '/blog/ecommerce-in-jordan-guide',
+        '/blog/nextjs-vs-wordpress',
+    ].map((path) => ({
+        url: `${baseUrl}${path}`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
-        priority: route === '' ? 1 : 0.8,
+        priority: 0.8,
     }));
 
     // Dynamic Project Routes
@@ -37,8 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
 
     // Dynamic Blog Routes
-    // Using import from blog-data
-    // const { blogPosts } = require('@/lib/blog-data');
     const blogRoutes = blogPosts.map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
         lastModified: new Date(),
@@ -46,5 +57,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.8,
     }));
 
-    return [...routes, ...projectRoutes, ...blogRoutes];
+    return [...routes, ...staticBlogRoutes, ...projectRoutes, ...blogRoutes];
 }
