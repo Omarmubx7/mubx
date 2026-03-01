@@ -6,6 +6,12 @@ const nextConfig: NextConfig = {
   webpack: (config, { isServer }) => {
     console.log(`[MUBX] Configuring Webpack for framer (isServer: ${isServer})`);
 
+    // Fix for Framer imports in Next.js
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'framer': require.resolve('./src/lib/framer-mock.ts'),
+    };
+
     return config;
   },
   images: {

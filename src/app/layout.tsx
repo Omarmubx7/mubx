@@ -45,6 +45,15 @@ const cairo = Cairo({
 });
 
 import { siteConfig } from '@/config/seo';
+import type { Viewport } from 'next';
+
+export const viewport: Viewport = {
+  themeColor: '#D71C1C',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
