@@ -1,11 +1,9 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Badge from '@/components/ui/Badge';
 import { siteConfig } from '@/config/seo';
-import { Download, Calendar, Mail, CheckCircle2 } from 'lucide-react';
+import { Download, Calendar, CheckCircle2 } from 'lucide-react';
 import JsonLd from '@/components/JsonLd';
 import { LanguageProvider } from '@/context/LanguageContext';
 

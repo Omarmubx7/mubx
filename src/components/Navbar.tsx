@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
-import { fadeUp } from '@/lib/motion';
 import { useState, Suspense, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
@@ -11,7 +10,7 @@ import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { usePathname } from 'next/navigation';
-import { LiquidMetal } from './framer/FramerComponents';
+
 
 const NavbarContent = () => {
     const [isOpen, setIsOpen] = useState(false);

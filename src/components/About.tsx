@@ -3,8 +3,6 @@
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import { useLanguage } from '@/context/LanguageContext';
-import GradientText from './ui/GradientText';
-import { ProTextType } from './framer/FramerComponents';
 
 export default function About() {
     const { t } = useLanguage();

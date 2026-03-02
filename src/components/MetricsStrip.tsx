@@ -1,7 +1,5 @@
 'use client';
 
-import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 
 const MetricItem = ({ value, label, prefix = "", suffix = "" }: { value: string, label: string, prefix?: string, suffix?: string }) => {

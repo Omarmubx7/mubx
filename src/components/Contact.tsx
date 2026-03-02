@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Github, Linkedin, MapPin, Check, X, User, Target, MessageSquare, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Mail, MapPin, Check, X, User, Target, MessageSquare, ChevronRight, ChevronLeft } from 'lucide-react';
 import { fadeUp } from '@/lib/motion';
 
 import { useState, useEffect } from 'react';

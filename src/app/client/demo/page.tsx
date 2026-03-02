@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, Clock, FileText, Globe, LayoutDashboard, Settings, User } from 'lucide-react';
 import Badge from '@/components/ui/Badge';

@@ -3,7 +3,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Badge from '@/components/ui/Badge';
 import { siteConfig } from '@/config/seo';
-import Image from 'next/image';
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 import JsonLd from '@/components/JsonLd';

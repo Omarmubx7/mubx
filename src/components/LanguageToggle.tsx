@@ -2,7 +2,6 @@
 
 import { useLanguage } from '@/context/LanguageContext';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
 
 export function LanguageToggle() {
     const { language } = useLanguage();

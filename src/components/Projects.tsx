@@ -1,16 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
-import { projectCard } from '@/lib/motion';
-import Badge from './ui/Badge';
-import Image from 'next/image';
-
 import ProjectCard from './ProjectCard';
 import { useState, useEffect } from 'react';
-
-import { LetterGlitch } from './framer/FramerComponents';
-import Link from 'next/link';
 
 import { getProjects } from '@/lib/projects';
 import { useLanguage } from '@/context/LanguageContext';

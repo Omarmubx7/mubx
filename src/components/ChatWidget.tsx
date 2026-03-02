@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, ChevronRight, Calculator, Calendar, Globe, Rocket, Code, Briefcase, ArrowUp, Phone } from 'lucide-react';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { MessageCircle, X, ChevronRight, Calculator, Calendar, Globe, Rocket, Code, Briefcase, ArrowUp } from 'lucide-react';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 type Message = {
     id: string;
@@ -22,7 +22,6 @@ type Option = {
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
     const [showScrollTop, setShowScrollTop] = useState(false);
-    const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
@@ -216,7 +215,7 @@ export default function ChatWidget() {
                 {!isOpen && (
                     <motion.a
                         key="whatsapp"
-                        href="https://wa.me/962779188052"
+                        href="https://wa.me/962780090453"
                         target="_blank"
                         rel="noopener noreferrer"
                         initial={{ opacity: 0, scale: 0.5, y: 10 }}

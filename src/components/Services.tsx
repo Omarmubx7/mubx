@@ -2,7 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { fadeUp, staggerContainer } from '@/lib/motion';
+import { fadeUp } from '@/lib/motion';
 import { ArrowRight } from 'lucide-react';
 
 import { useState, useEffect } from 'react';
