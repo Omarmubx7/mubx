@@ -4,13 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, MapPin, Check, X, User, Target, MessageSquare, ChevronRight, ChevronLeft } from 'lucide-react';
 import { fadeUp } from '@/lib/motion';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { initializeSupabaseStore } from '@/lib/db-init';
 
 export default function Contact() {
-    const { t, isRTL, language } = useLanguage();
-    const [mounted, setMounted] = useState(false);
+    const { t, language } = useLanguage();
     const [step, setStep] = useState(1);
     const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
     const [fieldErrors, setFieldErrors] = useState<{ name?: string; email?: string; business?: string; message?: string }>({});
@@ -26,7 +25,6 @@ export default function Contact() {
     });
 
     useEffect(() => {
-        setMounted(true);
     }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
