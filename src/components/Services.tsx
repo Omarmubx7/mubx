@@ -35,7 +35,7 @@ export default function Services() {
             idealHeight: t.services?.packages?.linkBio?.timeline || '',
             deliverables: t.services?.packages?.linkBio?.deliverables || '',
             details: t.services?.packages?.linkBio?.details || [],
-            price: t.services?.packages?.linkBio?.price || '50 JD'
+            price: t.services?.packages?.linkBio?.price || 'JD'
         },
         {
             label: t.services?.packages?.landing?.label || 'Starter',
@@ -44,7 +44,7 @@ export default function Services() {
             idealHeight: t.services?.packages?.landing?.timeline || '',
             deliverables: t.services?.packages?.landing?.deliverables || '',
             details: t.services?.packages?.landing?.details || [],
-            price: t.services?.packages?.landing?.price || '300 JD'
+            price: t.services?.packages?.landing?.price || ' JD'
         },
         {
             label: t.services?.packages?.business?.label || 'Growth',
@@ -53,7 +53,7 @@ export default function Services() {
             idealHeight: t.services?.packages?.business?.timeline || '',
             deliverables: t.services?.packages?.business?.deliverables || '',
             details: t.services?.packages?.business?.details || [],
-            price: t.services?.packages?.business?.price || '500 JD'
+            price: t.services?.packages?.business?.price || 'JD'
         },
         {
             label: t.services?.packages?.system?.label || 'Pro',
@@ -62,7 +62,7 @@ export default function Services() {
             idealHeight: t.services?.packages?.system?.timeline || '',
             deliverables: t.services?.packages?.system?.deliverables || '',
             details: t.services?.packages?.system?.details || [],
-            price: t.services?.packages?.system?.price || '700+ JD'
+            price: t.services?.packages?.system?.price || ' JD'
         },
     ] : [];
 
