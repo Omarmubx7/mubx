@@ -26,39 +26,7 @@ MUBX is a modern, high-performance portfolio website built to showcase web devel
 -   **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
 -   **Animations:** [Framer Motion](https://www.framer.com/motion/)
 
-## Environment Setup
 
-Create a `.env.local` file with the following keys:
-
-```env
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-
-# Email (Resend)
-RESEND_API_KEY=re_your-key
-```
-
-## Getting Started
-
-```bash
-pnpm install
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser.
-
-## Database Schema
-
-Run this in your Supabase SQL Editor:
-
-```sql
-create table contact_submissions (
-  id uuid default uuid_generate_v4() primary key,
-  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  email text not null, goal text, budget text, deadline text, message text not null, language text default 'en'
-);
-```
 
 ## License
 
