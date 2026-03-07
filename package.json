@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node --max-old-space-size=8192 node_modules/next/dist/bin/next dev --webpack",
-    "build": "node --max-old-space-size=8192 node_modules/next/dist/bin/next build --webpack",
+    "dev": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" next dev --webpack",
+    "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" next build --webpack",
     "start": "next start",
     "lint": "eslint"
   },
@@ -40,6 +40,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.27",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "lighthouse": "^13.0.3",

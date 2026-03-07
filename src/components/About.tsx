@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import { useLanguage } from '@/context/LanguageContext';
+import TextReveal from '@/components/ui/TextReveal';
 
 export default function About() {
     const { t } = useLanguage();
@@ -21,8 +22,11 @@ export default function About() {
                     <div className="space-y-6">
                         <motion.div variants={fadeUp}>
                             <p className="text-neon font-mono text-sm mb-4 tracking-widest">01</p>
-                            <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase flex flex-nowrap items-center gap-x-3">
-                                {t.about.titleStart} <span className="text-neon">{t.about.titleHighlight}</span>
+                            <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase flex flex-wrap items-center gap-x-3">
+                                <TextReveal text={t.about.titleStart} splitType="letter" /> 
+                                <span className="text-neon">
+                                    <TextReveal text={t.about.titleHighlight} splitType="letter" delay={0.4} />
+                                </span>
                             </h2>
                         </motion.div>
 
