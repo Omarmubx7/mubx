@@ -15,10 +15,10 @@ export default function Hero() {
     // Track scroll progress for this specific section.
     // Container is 200vh. Viewport is 100vh.
     // "start start" -> top of container at top of viewport (0vh scrolled)
-    // "end bottom" -> bottom of container at bottom of viewport (100vh scrolled)
+    // "end end" -> bottom of container at bottom of viewport (100vh scrolled)
     const { scrollYProgress } = useScroll({
         target: containerRef,
-        offset: ["start start", "end bottom"],
+        offset: ["start start", "end end"],
     });
 
     const getHref = (path: string) => {
