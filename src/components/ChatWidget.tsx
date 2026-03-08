@@ -193,7 +193,7 @@ export default function ChatWidget() {
     }, [language, handleOption]);
 
     return (
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 pointer-events-none">
+        <div className="fixed bottom-6 right-6 z-[90] flex flex-col items-end gap-3 pointer-events-none">
             {/* Scroll To Top */}
             <AnimatePresence>
                 {showScrollTop && (
@@ -236,7 +236,7 @@ export default function ChatWidget() {
                         initial={{ opacity: 0, scale: 0.8, y: 20, transformOrigin: "bottom right" }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8, y: 20 }}
-                        className="mb-2 w-80 md:w-96 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[500px] pointer-events-auto"
+                        className="mb-2 w-80 md:w-96 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-125 pointer-events-auto"
                     >
                         {/* Header */}
                         <div className="p-4 border-b border-white/10 bg-white/5 flex justify-between items-center">

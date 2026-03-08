@@ -22,7 +22,11 @@ export default function Hero() {
     });
 
     const getHref = (path: string) => {
-        return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
+        if (language === 'en') {
+            return path;
+        }
+        const separator = path.includes('?') ? '&' : '?';
+        return `${path}${separator}lang=${language}`;
     };
 
     // Parallax Layering exactly as requested:
@@ -44,8 +48,8 @@ export default function Hero() {
                 
                 {/* Parallax Layer 1: 0.2x Speed (Deepest) */}
                 <motion.div style={{ y: yBg0_2x }} className="absolute inset-0 z-0 pointer-events-none will-change-transform flex items-center justify-center">
-                    <div className="absolute top-0 right-[-10%] w-[800px] h-[800px] bg-neon/5 blur-[120px] rounded-full mix-blend-screen" />
-                    <div className="absolute bottom-[-20%] left-[-10%] w-[800px] h-[800px] bg-cyan/5 blur-[120px] rounded-full mix-blend-screen" />
+                    <div className="absolute top-0 right-[-10%] w-200 h-200 bg-neon/5 blur-[120px] rounded-full mix-blend-screen" />
+                    <div className="absolute bottom-[-20%] left-[-10%] w-200 h-200 bg-cyan/5 blur-[120px] rounded-full mix-blend-screen" />
                 </motion.div>
 
                 {/* Parallax Layer 2: 0.5x Speed (Midground) */}
@@ -86,7 +90,7 @@ export default function Hero() {
                                     <TextReveal text={t.hero.titleStart} splitType="letter" delay={0.2} />
                                 </span>
 
-                                <div className="text-neon relative inline-block text-5xl md:text-7xl min-h-[1.1em] mt-2 mb-2">
+                                <div className="text-neon relative inline-block text-5xl md:text-7xl min-h-[1.2em] w-full mt-2 mb-2 overflow-hidden">
                                     <ProTextType
                                         text={language === 'en'
                                             ? ['SCALABLE SYSTEMS', 'REVENUE FOCUSED', 'HIGH PERFORMANCE']
@@ -112,7 +116,7 @@ export default function Hero() {
                             </h1>
 
                             <div className="text-lg md:text-xl text-muted mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
-                                <TextReveal text={t.hero.description} splitType="word" delay={1.0} />
+                                <TextReveal text={t.hero.description} splitType="word" delay={1} />
                             </div>
 
                             <motion.div
@@ -143,20 +147,20 @@ export default function Hero() {
                         </div>
 
                         {/* Right Column: Hero Visual with Staggered Reveal */}
-                        <div className="flex-1 relative h-[400px] lg:h-[600px] w-full flex items-center justify-center group order-2 lg:order-0">
+                        <div className="flex-1 relative h-100 lg:h-150 w-full flex items-center justify-center group order-2 lg:order-0">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.8, rotateY: 15 }}
                                 animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
                                 style={{ transformStyle: 'preserve-3d' }}
-                                className="relative w-64 md:w-80 lg:w-[400px] aspect-[10/14] rounded-3xl overflow-hidden border-2 border-neon/30 shadow-[0_0_50px_rgba(215,28,28,0.2)] will-change-transform"
+                                className="relative w-64 md:w-80 lg:w-100 aspect-10/14 rounded-3xl overflow-hidden border-2 border-neon/30 shadow-[0_0_50px_rgba(215,28,28,0.2)] will-change-transform"
                             >
                                 <Image
-                                    src="/omarmubpic.webp"
-                                    alt="Omar Mubaidin"
+                                    src="/mubxlogoloader.svg"
+                                    alt="MUBX brand logo"
                                     fill
                                     priority
-                                    className="object-cover object-top transition-all duration-700 scale-105 group-hover:scale-110"
+                                    className="object-contain p-10 transition-all duration-700 scale-105 group-hover:scale-110"
                                     sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 400px"
                                 />
                             </motion.div>

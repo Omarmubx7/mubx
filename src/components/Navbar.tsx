@@ -53,7 +53,11 @@ const NavbarContent = () => {
     };
 
     const getHref = (path: string) => {
-        return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
+        if (language === 'en') {
+            return path;
+        }
+        const separator = path.includes('?') ? '&' : '?';
+        return `${path}${separator}lang=${language}`;
     };
 
     const pathname = usePathname();
@@ -110,7 +114,8 @@ const NavbarContent = () => {
                 </div>
             </Link>
 
-            <div className="hidden md:flex items-center gap-6">
+            {/* Desktop Navigation - Shows at lg breakpoint (1024px+) */}
+            <div className="hidden lg:flex items-center gap-6">
                 {links.map((link) => (
                     <Link
                         key={link.name}
@@ -172,7 +177,7 @@ const NavbarContent = () => {
             </div>
 
             {/* Mobile Menu Toggle */}
-            <div className="flex items-center gap-4 md:hidden">
+            <div className="flex items-center gap-4 lg:hidden">
                 <ThemeToggle />
                 <button
                     onClick={() => setIsOpen(!isOpen)}
@@ -191,7 +196,7 @@ const NavbarContent = () => {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="fixed inset-0 z-[60] bg-background/80 backdrop-blur-2xl p-6 pt-16 md:hidden flex flex-col gap-4 shadow-2xl h-screen overflow-y-auto border-b border-white/10"
+                        className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-2xl p-6 pt-20 lg:hidden flex flex-col gap-4 shadow-2xl h-screen overflow-y-auto border-b border-white/10"
                     >
                         {links.map((link) => (
                             <motion.div key={link.name} variants={itemVariants}>

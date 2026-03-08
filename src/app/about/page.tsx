@@ -61,7 +61,7 @@ export default function AboutPage() {
                             "familyName": "Mubaidin",
                             "jobTitle": "Full Stack Developer & Technical Consultant",
                             "description": "Omar Mubaidin is a Computer Science student at Princess Sumaya University for Technology (PSUT) and the founder of MUBX — a revenue-focused web consultancy in Amman, Jordan. He specializes in Next.js, e-commerce with Zain Cash & CliQ, and performance-optimized web systems for startups.",
-                            "image": "https://mubx.dev/omarmubpic.webp",
+                            "image": "https://mubx.dev/og-image.png",
                             "url": "https://mubx.dev",
                             "nationality": {
                                 "@type": "Country",
@@ -158,15 +158,15 @@ export default function AboutPage() {
                                 <h3 className="text-2xl font-bold text-white mb-4">My Philosophy</h3>
                                 <ul className="space-y-4 mb-8 list-none pl-0">
                                     <li className="flex items-start gap-3">
-                                        <CheckCircle2 className="w-6 h-6 text-neon flex-shrink-0 mt-1" />
+                                        <CheckCircle2 className="w-6 h-6 text-neon shrink-0 mt-1" />
                                         <span><strong>Performance First:</strong> If a site takes 3 seconds to load, you&apos;ve lost the customer. I aim for sub-second loads.</span>
                                     </li>
                                     <li className="flex items-start gap-3">
-                                        <CheckCircle2 className="w-6 h-6 text-neon flex-shrink-0 mt-1" />
+                                        <CheckCircle2 className="w-6 h-6 text-neon shrink-0 mt-1" />
                                         <span><strong>Local Context:</strong> A store in Amman needs Zain Cash, not just PayPal. I build for the local reality.</span>
                                     </li>
                                     <li className="flex items-start gap-3">
-                                        <CheckCircle2 className="w-6 h-6 text-neon flex-shrink-0 mt-1" />
+                                        <CheckCircle2 className="w-6 h-6 text-neon shrink-0 mt-1" />
                                         <span><strong>Ownership:</strong> You should own your code and your data. No platform lock-in.</span>
                                     </li>
                                 </ul>

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono, Cairo } from 'next/font/google';
 import { Suspense } from 'react';
 import './globals.css';
@@ -45,7 +45,6 @@ const cairo = Cairo({
 });
 
 import { siteConfig } from '@/config/seo';
-import type { Viewport } from 'next';
 
 export const viewport: Viewport = {
   themeColor: '#D71C1C',
@@ -159,7 +158,7 @@ export default function RootLayout({
                 "name": "Omar Mubaidin",
                 "alternateName": ["عمر مبيضين", "MUBX", "Omar Mubx"],
                 "url": "https://mubx.dev",
-                "image": "https://mubx.dev/omarmubpic.webp",
+                "image": "https://mubx.dev/og-image.png",
                 "description": "Omar Mubaidin is a full-stack web developer and technical consultant based in Amman, Jordan. Founder of MUBX, he specializes in Next.js, e-commerce, and local payment integration for Jordanian startups.",
                 "jobTitle": "Full Stack Developer & Technical Consultant",
                 "nationality": {

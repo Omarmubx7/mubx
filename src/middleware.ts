@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+// Renamed from middleware to avoid deprecation warning
+// This handles subdomain routing for contact.mubx.dev
 export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     const hostname = request.headers.get('host');
@@ -14,14 +16,7 @@ export function middleware(request: NextRequest) {
             return NextResponse.next();
         }
 
-        // Determine language (default to en)
-        // You can also check for cookies if you have a language cookie
-        const lang = url.searchParams.get('lang') || 'en';
-
         // Internal rewrite to /contact
-        // If using localized paths like /ar/contact, use:
-        // url.pathname = lang === 'ar' ? '/ar/contact' : '/contact';
-
         url.pathname = '/contact';
         return NextResponse.rewrite(url);
     }
