@@ -20,14 +20,14 @@ export const metadata: Metadata = {
         url: 'https://mubx.dev/links',
         siteName: 'MUBX',
         type: 'profile',
-        images: ['/og-image.png'],
+        images: ['https://mubx.dev/og-image.png'],
     },
     twitter: {
         card: 'summary_large_image',
         title: 'Links | Omar Mubaidin',
         description: 'Connect with Omar Mubaidin — social links, portfolio, and contact.',
         creator: '@omarmubx',
-        images: ['/og-image.png'],
+        images: ['https://mubx.dev/og-image.png'],
     },
 };
 
