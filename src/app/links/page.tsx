@@ -48,12 +48,14 @@ export default async function LinksPage(props: Props) {
             url: "mailto:mubxdev@proton.me",
             icon: Mail,
             sub: "mubxdev@proton.me",
+            primary: false
         },
         {
             name: "WhatsApp",
             url: "https://wa.me/962780090453",
             icon: Phone,
             sub: "Chat directly for project inquiries",
+            primary: false
         }
     ];
 
