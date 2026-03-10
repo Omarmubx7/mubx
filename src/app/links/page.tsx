@@ -5,7 +5,7 @@ import { LanguageProvider } from '@/context/LanguageContext';
 
 import Badge from '@/components/ui/Badge';
 import ScrollReveal from '@/components/ui/ScrollReveal';
-import { Github, Linkedin, Globe, Phone, Instagram, ArrowRight, Mail, Mic } from 'lucide-react';
+import { Github, Linkedin, Globe, Phone, Instagram, ArrowRight, Mail, Mic, Bot } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Links | Omar Mubaidin — MUBX',
@@ -44,11 +44,32 @@ export default async function LinksPage(props: Props) {
 
     const workLinks = [
         {
+            name: "Email Me",
+            url: "mailto:mubxdev@proton.me",
+            icon: Mail,
+            sub: "mubxdev@proton.me",
+        },
+        {
+            name: "WhatsApp",
+            url: "https://wa.me/962780090453",
+            icon: Phone,
+            sub: "Chat directly for project inquiries",
+        }
+    ];
+
+    const latestProjectsLinks = [
+        {
             name: "HTUAI",
             url: "https://htuai.mubx.dev/",
             icon: Globe,
             sub: "HTU Course Tracker & GPA Calculator",
             primary: true
+        },
+        {
+            name: "MUBXbot",
+            url: "https://bot.mubx.dev/",
+            icon: Bot,
+            sub: "AI assistant by MUBX",
         },
         {
             name: "Men Only Show",
@@ -61,18 +82,6 @@ export default async function LinksPage(props: Props) {
             url: "https://www.mubx.dev/",
             icon: Globe,
             sub: "View my latest work & case studies",
-        },
-        {
-            name: "Email Me",
-            url: "mailto:mubxdev@proton.me",
-            icon: Mail,
-            sub: "mubxdev@proton.me",
-        },
-        {
-            name: "WhatsApp",
-            url: "https://wa.me/962780090453",
-            icon: Phone,
-            sub: "Chat directly for project inquiries",
         }
     ];
 
@@ -207,15 +216,28 @@ export default async function LinksPage(props: Props) {
                                     </div>
                                 </section>
 
+                                {/* Latest Projects Section */}
+                                <section className="flex flex-col gap-4">
+                                    <ScrollReveal direction="up" delay={900} className="flex items-center gap-3 mb-2 px-2">
+                                        <div className="h-[1px] bg-neon w-8" />
+                                        <h2 className="text-xs font-bold text-neon uppercase tracking-widest">My Latest Projects</h2>
+                                    </ScrollReveal>
+                                    <div className="flex flex-col gap-3">
+                                        {latestProjectsLinks.map((link, i) => (
+                                            <LinkCard key={link.name} link={link} delay={1000 + (i * 100)} />
+                                        ))}
+                                    </div>
+                                </section>
+
                                 {/* Social Section */}
                                 <section className="flex flex-col gap-4">
-                                    <ScrollReveal direction="up" delay={800} className="flex items-center gap-3 mb-2 px-2">
+                                    <ScrollReveal direction="up" delay={1300} className="flex items-center gap-3 mb-2 px-2">
                                         <div className="h-[1px] bg-foreground/20 w-8" />
                                         <h2 className="text-xs font-bold text-foreground/40 uppercase tracking-widest">Social & Code</h2>
                                     </ScrollReveal>
                                     <div className="flex flex-col gap-3">
                                         {socialLinks.map((link, i) => (
-                                            <LinkCard key={link.name} link={link} delay={900 + (i * 100)} />
+                                            <LinkCard key={link.name} link={link} delay={1400 + (i * 100)} />
                                         ))}
                                     </div>
                                 </section>

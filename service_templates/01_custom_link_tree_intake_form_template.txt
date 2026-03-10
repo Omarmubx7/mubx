@@ -1,0 +1,172 @@
+==============================================================================
+CUSTOM LINK TREE - CLIENT INTAKE TEMPLATE
+==============================================================================
+
+Instructions:
+- Duplicate this file for each client.
+- Replace all [PLACEHOLDER] values.
+- Keep checkboxes to track progress.
+
+==============================================================================
+1) CLIENT INFO
+==============================================================================
+
+Client Name: [CLIENT_NAME]
+Business/Brand Name: [BRAND_NAME]
+Email: [EMAIL]
+Phone/WhatsApp: [PHONE]
+Preferred Contact Method: [WHATSAPP/EMAIL/CALL]
+Timezone: [TIMEZONE]
+Project Deadline: [DATE]
+
+==============================================================================
+2) PROJECT GOALS
+==============================================================================
+
+Main Goal of Link Tree:
+[GOAL]
+
+Target Audience:
+[TARGET_AUDIENCE]
+
+Primary CTA (main action you want visitors to take):
+[PRIMARY_CTA]
+
+Secondary CTA (optional):
+[SECONDARY_CTA]
+
+==============================================================================
+3) BRANDING
+==============================================================================
+
+Brand Style: [MINIMAL/LUXURY/BOLD/CLEAN/OTHER]
+Primary Color (HEX): [#000000]
+Secondary Color (HEX): [#FFFFFF]
+Accent Color (HEX): [#00FFAA]
+Font Preference (if any): [FONT]
+
+Inspiration Links:
+1. [URL]
+2. [URL]
+3. [URL]
+
+Do we have full creative freedom?
+[YES/NO]
+
+==============================================================================
+4)                  
+==============================================================================
+
+Display Name: [DISPLAY_NAME]
+Username/Handle (optional): [@HANDLE]
+Short Bio (max ~160 chars):
+[BIO]
+
+Profile Photo Provided: [YES/NO]
+Profile Photo File Name/Link: [FILE_OR_URL]
+Verified Badge Needed: [YES/NO]
+
+==============================================================================
+5) LINKS SETUP (CORE)
+==============================================================================
+
+Link Groups to include:
+[WORK/SOCIAL/CONTACT/SHOP/BOOKING/OTHER]
+
+Total Number of Links: [NUMBER]
+
+Link Order Priority Notes:
+[NOTES]
+
+Use this table (duplicate rows as needed):
+
+| # | Link Title | URL | Category | Icon | Highlight? | Active? |
+|---|------------|-----|----------|------|------------|---------|
+| 0 | MUBXbot | https://bot.mubx.dev | CONTACT | Bot | YES | YES |
+| 1 | [TITLE] | [URL] | [CATEGORY] | [ICON] | [YES/NO] | [YES/NO] |
+| 2 | [TITLE] | [URL] | [CATEGORY] | [ICON] | [YES/NO] | [YES/NO] |
+| 3 | [TITLE] | [URL] | [CATEGORY] | [ICON] | [YES/NO] | [YES/NO] |
+
+==============================================================================
+6) SOCIAL ICONS
+==============================================================================
+
+Platforms to show as icons:
+[INSTAGRAM] [TIKTOK] [YOUTUBE] [LINKEDIN] [X] [GITHUB] [SNAPCHAT] [OTHER]
+
+Social URLs:
+- Instagram: [URL]
+- TikTok: [URL]
+- YouTube: [URL]
+- LinkedIn: [URL]
+- X: [URL]
+- GitHub: [URL]
+- Snapchat: [URL]
+- Other: [URL]
+
+==============================================================================
+7) OPTIONAL FEATURES
+==============================================================================
+
+QR Code: [YES/NO]
+Save Contact (vCard): [YES/NO]
+Booking Button (Calendly/etc.): [YES/NO]
+Email Subscribe Button: [YES/NO]
+WhatsApp Direct Button: [YES/NO]
+Multi-language Needed: [YES/NO]
+Languages: [AR/EN/OTHER]
+
+==============================================================================
+8) DOMAIN + DEPLOYMENT
+==============================================================================
+
+Need custom domain setup? [YES/NO]
+Preferred Domain/Subdomain: [DOMAIN]
+Domain already owned? [YES/NO]
+DNS access available? [YES/NO]
+Registrar: [NAME]
+
+==============================================================================
+9) SEO + ANALYTICS
+==============================================================================
+
+Page Title: [TITLE]
+Meta Description:
+[DESCRIPTION]
+
+Google Analytics required? [YES/NO]
+GA4 Measurement ID (if available): [G-XXXXXXXXXX]
+Meta Pixel required? [YES/NO]
+UTM parameters needed on links? [YES/NO]
+
+==============================================================================
+10) LEGAL + APPROVAL
+==============================================================================
+
+Client confirms all content rights: [YES/NO]
+Client confirms final links are approved: [YES/NO]
+Legal/Disclaimer text required: [YES/NO]
+If yes, provide text:
+[DISCLAIMER_TEXT]
+
+Final Approver Name: [NAME]
+Approval Date: [DATE]
+
+==============================================================================
+11) INTERNAL DELIVERY CHECKLIST (FOR YOU)
+==============================================================================
+
+[ ] All required fields completed
+[ ] Profile image received and optimized
+[ ] All links tested
+[ ] Mobile layout checked
+[ ] Analytics configured (if requested)
+[ ] Domain configured (if requested)
+[ ] SEO metadata added
+[ ] Final review done
+[ ] Client approval received
+[ ] Project delivered
+
+==============================================================================
+END OF TEMPLATE
+==============================================================================

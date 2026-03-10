@@ -42,6 +42,24 @@ const projectsData: Record<Locale, Project[]> = {
             }
         },
         {
+            slug: 'mubxbot',
+            title: 'MUBXbot',
+            description: 'An AI chat assistant for fast answers, lead support, and guided conversations on the MUBX ecosystem.',
+            tech: ['Next.js', 'TypeScript', 'Tailwind', 'AI Integration'],
+            links: { live: 'https://bot.mubx.dev/' },
+            logo: '/images/mubxbot-logo.png',
+            metrics: 'AI Assistant',
+            verified_outcome: 'Live Product',
+            timeframe: 'Ongoing',
+            category: { en: 'AI Assistant', ar: 'مساعد ذكاء اصطناعي', icon: '🤖', color: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20' },
+            caseStudy: {
+                problem: 'Visitors needed instant answers and clearer guidance without waiting for manual support responses.',
+                role: 'AI Product Developer',
+                solution: 'Built and deployed a branded AI assistant with a guided conversation flow and production-ready UI.',
+                outcome: 'Improved response speed and made support interactions available 24/7 for users.',
+            }
+        },
+        {
             slug: 'aqabwi',
             title: 'Aqabwi',
             description: 'A professional photography portfolio showcasing stunning visual storytelling and high-quality imagery.',
@@ -170,6 +188,24 @@ const projectsData: Record<Locale, Project[]> = {
                 role: 'مطور واجهات كاملة',
                 solution: 'بناء آلة حاسبة من جانب العميل بواجهة متميزة تحفظ البيانات محلياً، مما يضمن الخصوصية والوصول الفوري.',
                 outcome: 'تكامل سلس في النظام البيئي للطلاب، مما يوفر رؤى أكاديمية فورية.',
+            }
+        },
+        {
+            slug: 'mubxbot',
+            title: 'MUBXbot',
+            description: 'مساعد ذكاء اصطناعي للدردشة يقدّم إجابات فورية ودعم تفاعلي داخل منظومة MUBX.',
+            tech: ['Next.js', 'TypeScript', 'Tailwind', 'AI Integration'],
+            links: { live: 'https://bot.mubx.dev/' },
+            logo: '/images/mubxbot-logo.png',
+            metrics: 'مساعد ذكي',
+            verified_outcome: 'منتج مباشر',
+            timeframe: 'مستمر',
+            category: { en: 'AI Assistant', ar: 'مساعد ذكاء اصطناعي', icon: '🤖', color: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20' },
+            caseStudy: {
+                problem: 'الزوار كانوا بحاجة لإجابات أسرع وتوجيه أوضح بدون انتظار الرد اليدوي.',
+                role: 'مطوّر منتج ذكاء اصطناعي',
+                solution: 'تطوير ونشر مساعد ذكي بهوية MUBX مع تجربة محادثة موجّهة وواجهة جاهزة للإنتاج.',
+                outcome: 'تسريع الاستجابة وتوفير دعم متاح على مدار الساعة للمستخدمين.',
             }
         },
         {
