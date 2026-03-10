@@ -2,28 +2,14 @@
 
 import { motion } from 'framer-motion';
 import ProjectCard from './ProjectCard';
-import { useState, useEffect } from 'react';
 
 import { getProjects } from '@/lib/projects';
 import { useLanguage } from '@/context/LanguageContext';
 
-import { ProjectCardSkeleton } from './ui/LoadingSkeleton';
-
 export default function Projects() {
-    const [isLoading, setIsLoading] = useState(true);
     const { language, t } = useLanguage();
 
-    const getHref = (path: string) => {
-        if (path.startsWith('http')) return path; // Don't modify external links
-        return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
-    };
-
     const projectsData = getProjects(language);
-
-    useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 500);
-        return () => clearTimeout(timer);
-    }, []);
 
     return (
         <section id="projects" className="py-24 relative bg-background">
@@ -43,19 +29,15 @@ export default function Projects() {
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {isLoading
-                        ? Array.from({ length: 4 }).map((_, i) => (
-                            <ProjectCardSkeleton key={i} />
-                        ))
-                        : projectsData.map((project, index) => (
-                            <ProjectCard
-                                key={project.title}
-                                project={project}
-                                index={index}
-                                t={t}
-                                language={language}
-                            />
-                        ))}
+                    {projectsData.map((project, index) => (
+                        <ProjectCard
+                            key={project.title}
+                            project={project}
+                            index={index}
+                            t={t}
+                            language={language}
+                        />
+                    ))}
                 </div>
             </div>
         </section>
