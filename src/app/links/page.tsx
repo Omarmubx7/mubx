@@ -5,7 +5,8 @@ import { LanguageProvider } from '@/context/LanguageContext';
 
 import Badge from '@/components/ui/Badge';
 import ScrollReveal from '@/components/ui/ScrollReveal';
-import { Github, Linkedin, Globe, Phone, Instagram, ArrowRight, Mail, Mic, Bot } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, Globe, Phone, InstagramIcon, ArrowRight, Mail, Mic, Bot } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Links | Omar Mubaidin — MUBX',
@@ -38,84 +39,22 @@ type Props = {
     searchParams: Promise<{ lang?: string }>
 }
 
-export default async function LinksPage(props: Props) {
-    const searchParams = await props.searchParams;
-    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+type LinkItem = {
+    name: string;
+    url: string;
+    icon: LucideIcon;
+    sub: string;
+    primary?: boolean;
+}
 
-    const workLinks = [
-        {
-            name: "Email Me",
-            url: "mailto:mubxdev@proton.me",
-            icon: Mail,
-            sub: "mubxdev@proton.me",
-            primary: false
-        },
-        {
-            name: "WhatsApp",
-            url: "https://wa.me/962780090453",
-            icon: Phone,
-            sub: "Chat directly for project inquiries",
-            primary: false
-        }
-    ];
+type LinkCardProps = {
+    link: LinkItem;
+    isPrimary?: boolean;
+    delay?: number;
+}
 
-    const latestProjectsLinks = [
-        {
-            name: "HTUAI",
-            url: "https://htuai.mubx.dev/",
-            icon: Globe,
-            sub: "HTU Course Tracker & GPA Calculator",
-            primary: true
-        },
-        {
-            name: "MUBXbot",
-            url: "https://bot.mubx.dev/",
-            icon: Bot,
-            sub: "AI assistant by MUBX",
-        },
-        {
-            name: "Men Only Show",
-            url: "https://menonlyshow-gray.vercel.app/",
-            icon: Mic,
-            sub: "Arab World's First Men's Talk Show",
-        },
-        {
-            name: "Portfolio Website",
-            url: "https://www.mubx.dev/",
-            icon: Globe,
-            sub: "View my latest work & case studies",
-        }
-    ];
-
-    const socialLinks = [
-        {
-            name: "Instagram",
-            url: "https://www.instagram.com/mubx.dev?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-            icon: Instagram,
-            sub: "Behind the scenes & design tips",
-        },
-        {
-            name: "LinkedIn",
-            url: "https://www.linkedin.com/in/omarmubaidin",
-            icon: Linkedin,
-            sub: "Professional network",
-        },
-        {
-            name: "GitHub",
-            url: "https://github.com/Omarmubx7",
-            icon: Github,
-            sub: "Check my open source code",
-
-        },
-        {
-            name: "GitHub Student Pack",
-            url: "https://education.github.com/pack",
-            icon: Github,
-            sub: "Free access to the best developer tools",
-        }
-    ];
-
-    const LinkCard = ({ link, isPrimary = false, delay = 0 }: { link: any, isPrimary?: boolean, delay?: number }) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
+function LinkCard({ link, isPrimary = false, delay = 0 }: Readonly<LinkCardProps>) {
+    return (
         <ScrollReveal direction="up" delay={delay} className="w-full">
             <a
                 href={link.url}
@@ -123,7 +62,7 @@ export default async function LinksPage(props: Props) {
                 rel="noopener noreferrer"
                 className={`group relative flex items-center justify-between p-5 md:p-6 rounded-2xl md:rounded-3xl transition-all duration-500 border backdrop-blur-md ${isPrimary
                     ? "bg-foreground text-background border-foreground hover:opacity-90 shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_30px_rgba(255,255,255,0.05)]"
-                    : "bg-foreground/[0.03] border-foreground/10 hover:border-neon/50 hover:bg-foreground/[0.06] text-foreground"
+                    : "bg-foreground/3 border-foreground/10 hover:border-neon/50 hover:bg-foreground/6 text-foreground"
                     }`}
             >
                 <div className="flex items-center gap-4 md:gap-5">
@@ -154,22 +93,100 @@ export default async function LinksPage(props: Props) {
             </a>
         </ScrollReveal>
     );
+}
+
+export default async function LinksPage(props: Readonly<Props>) {
+    const searchParams = await props.searchParams;
+    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+
+    const workLinks: LinkItem[] = [
+        {
+            name: "Email Me",
+            url: "mailto:mubxdev@proton.me",
+            icon: Mail,
+            sub: "mubxdev@proton.me",
+            primary: false
+        },
+        {
+            name: "WhatsApp",
+            url: "https://wa.me/962780090453",
+            icon: Phone,
+            sub: "Chat directly for project inquiries",
+            primary: false
+        }
+    ];
+
+    const latestProjectsLinks: LinkItem[] = [
+        {
+            name: "HTUAI",
+            url: "https://htuai.mubx.dev/",
+            icon: Globe,
+            sub: "HTU Course Tracker & GPA Calculator",
+            primary: true
+        },
+        {
+            name: "MUBXbot",
+            url: "https://bot.mubx.dev/",
+            icon: Bot,
+            sub: "AI assistant by MUBX",
+        },
+        {
+            name: "Men Only Show",
+            url: "https://menonlyshow-gray.vercel.app/",
+            icon: Mic,
+            sub: "Arab World's First Men's Talk Show",
+        },
+        {
+            name: "Portfolio Website",
+            url: "https://www.mubx.dev/",
+            icon: Globe,
+            sub: "View my latest work & case studies",
+        }
+    ];
+
+    const socialLinks: LinkItem[] = [
+        {
+            name: "Instagram",
+            url: "https://www.instagram.com/mubx.dev?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+            icon: InstagramIcon,
+            sub: "Behind the scenes & design tips",
+        },
+        {
+            name: "LinkedIn",
+            url: "https://www.linkedin.com/in/omarmubaidin",
+            icon: LinkedinIcon,
+            sub: "Professional network",
+        },
+        {
+            name: "GitHub",
+            url: "https://github.com/Omarmubx7",
+            icon: GithubIcon,
+            sub: "Check my open source code",
+
+        },
+        {
+            name: "GitHub Student Pack",
+            url: "https://education.github.com/pack",
+            icon: GithubIcon,
+            sub: "Free access to the best developer tools",
+        }
+    ];
 
     return (
         <Suspense>
             <LanguageProvider initialLocale={lang}>
                 <main className="relative flex flex-col min-h-screen">
                     {/* Background Texture - Theme Aware */}
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10 opacity-[0.05] dark:opacity-[0.1]" />
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10 opacity-[0.05] dark:opacity-[0.1]" />
 
-                    <div className="flex-grow pt-24 pb-20 md:pt-32">
+                    <div className="grow pt-24 pb-20 md:pt-32">
                         <div className="container mx-auto px-6 max-w-2xl">
 
                             {/* Hero Section */}
                             <header className="text-center flex flex-col items-center mb-16">
                                 <ScrollReveal direction="up" delay={100} className="mb-8">
                                     <div className="relative group">
-                                        <div className="absolute -inset-1 bg-gradient-to-r from-neon to-[#FF8E8E] rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                                        <div className="absolute -inset-1 bg-linear-to-r from-neon to-[#FF8E8E] rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                                         <div className="relative w-28 h-28 md:w-36 md:h-36">
                                             <Image
                                                 src="/mubxlogoloader.svg"
@@ -208,7 +225,7 @@ export default async function LinksPage(props: Props) {
                                 {/* Work Section */}
                                 <section className="flex flex-col gap-4">
                                     <ScrollReveal direction="up" delay={500} className="flex items-center gap-3 mb-2 px-2">
-                                        <div className="h-[1px] bg-neon w-8" />
+                                        <div className="h-px bg-neon w-8" />
                                         <h2 className="text-xs font-bold text-neon uppercase tracking-widest">Work & Contact</h2>
                                     </ScrollReveal>
                                     <div className="flex flex-col gap-3">
@@ -221,7 +238,7 @@ export default async function LinksPage(props: Props) {
                                 {/* Latest Projects Section */}
                                 <section className="flex flex-col gap-4">
                                     <ScrollReveal direction="up" delay={900} className="flex items-center gap-3 mb-2 px-2">
-                                        <div className="h-[1px] bg-neon w-8" />
+                                        <div className="h-px bg-neon w-8" />
                                         <h2 className="text-xs font-bold text-neon uppercase tracking-widest">My Latest Projects</h2>
                                     </ScrollReveal>
                                     <div className="flex flex-col gap-3">
@@ -234,7 +251,7 @@ export default async function LinksPage(props: Props) {
                                 {/* Social Section */}
                                 <section className="flex flex-col gap-4">
                                     <ScrollReveal direction="up" delay={1300} className="flex items-center gap-3 mb-2 px-2">
-                                        <div className="h-[1px] bg-foreground/20 w-8" />
+                                        <div className="h-px bg-foreground/20 w-8" />
                                         <h2 className="text-xs font-bold text-foreground/40 uppercase tracking-widest">Social & Code</h2>
                                     </ScrollReveal>
                                     <div className="flex flex-col gap-3">

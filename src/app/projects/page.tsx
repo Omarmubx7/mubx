@@ -21,7 +21,7 @@ type Props = {
     searchParams: Promise<{ lang?: string }>
 }
 
-export default async function ProjectsPage(props: Props) {
+export default async function ProjectsPage(props: Readonly<Props>) {
     const searchParams = await props.searchParams;
     const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
 

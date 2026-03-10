@@ -1,4 +1,4 @@
-import { Locale } from './dictionaries';
+    import { Locale } from './dictionaries';
 
 export interface Project {
     slug: string;

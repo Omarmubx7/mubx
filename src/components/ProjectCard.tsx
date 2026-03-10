@@ -1,8 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Badge from './ui/Badge';
@@ -14,18 +12,24 @@ type ProjectCardProps = {
     language: string;
 }
 
-export default function ProjectCard({ project, index, t, language }: ProjectCardProps) {
+export default function ProjectCard({ project, index, t, language }: Readonly<ProjectCardProps>) {
     const getHref = (path: string) => {
         if (path.startsWith('http')) return path;
-        return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
+        if (language === 'en') return path;
+        const separator = path.includes('?') ? '&' : '?';
+        return `${path}${separator}lang=${language}`;
     };
 
+    const projectHref = getHref(`/projects/${project.slug}`);
+
     return (
-        <div
-            className="h-full"
+        <Link
+            href={projectHref}
+            className="block h-full"
+            aria-label={`Open ${project.title} project details`}
         >
             <div
-                className="group relative p-8 rounded-3xl bg-glass transition-all duration-500 flex flex-col h-full hover:shadow-[0_0_30px_rgba(255,30,30,0.15)] hover:bg-neon/5 hover:border-neon/50"
+                className="group relative p-8 rounded-3xl bg-glass transition-all duration-500 flex flex-col h-full hover:shadow-[0_0_30px_rgba(255,30,30,0.15)] hover:bg-neon/5 hover:border-neon/50 cursor-pointer"
             >
                 {/* Numbering 01, 02... */}
                 <div className="absolute top-6 right-6 rtl:left-6 rtl:right-auto text-4xl font-black text-muted/30 group-hover:text-neon group-hover:scale-110 transition-all duration-500 pointer-events-none select-none">
@@ -88,15 +92,11 @@ export default function ProjectCard({ project, index, t, language }: ProjectCard
                 </div>
 
                 {/* Action */}
-                <Link
-                    href={getHref(project.caseStudy.caseStudyUrl || project.links.live)}
-                    target={project.caseStudy.caseStudyUrl ? "_self" : "_blank"}
-                    className="w-full py-3 flex items-center justify-center gap-2 rounded-xl bg-muted/10 border border-border text-foreground font-bold hover:bg-neon hover:text-black hover:border-neon transition-all"
-                >
+                <div className="w-full py-3 flex items-center justify-center gap-2 rounded-xl bg-muted/10 border border-border text-foreground font-bold hover:bg-neon hover:text-black hover:border-neon transition-all">
                     {project.caseStudy.readCaseStudy || t.projects.readCaseStudy}
-                    <ExternalLink className="w-4 h-4" />
-                </Link>
+                    <ArrowRight className="w-4 h-4" />
+                </div>
             </div>
-        </div>
+        </Link>
     );
 }

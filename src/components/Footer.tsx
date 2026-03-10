@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Github, Linkedin, Instagram, Mail, ArrowRight } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, InstagramIcon, Mail, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -73,13 +73,13 @@ export default function Footer() {
                         </div>
                         <div className="flex gap-4 pt-2">
                             <a href="https://github.com/Omarmubx7" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-card hover:bg-muted/10 text-muted-foreground hover:text-foreground transition-all border border-border hover:border-neon/30" aria-label="Visit GitHub Profile">
-                                <Github className="w-5 h-5" />
+                                <GithubIcon className="w-5 h-5" />
                             </a>
                             <a href="https://www.linkedin.com/in/omarmubaidin" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-card hover:bg-muted/10 text-muted-foreground hover:text-foreground transition-all border border-border hover:border-neon/30" aria-label="LinkedIn">
-                                <Linkedin className="w-5 h-5" />
+                                <LinkedinIcon className="w-5 h-5" />
                             </a>
                             <a href="https://www.instagram.com/mubx.dev?igsh=MTg4bDVqMGdwbGdpbQ==" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-card hover:bg-muted/10 text-muted-foreground hover:text-foreground transition-all border border-border hover:border-neon/30" aria-label="Instagram">
-                                <Instagram className="w-5 h-5" />
+                                <InstagramIcon className="w-5 h-5" />
                             </a>
                         </div>
 
