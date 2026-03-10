@@ -72,7 +72,7 @@ export const siteConfig = {
         'تجارة إلكترونية الأردن',
         'مبرمج أردني',
     ],
-    ogImage: "https://mubx.dev/og-image.png",
+    ogImage: "https://mubx.dev/og-images.png",
     links: {
         github: "https://github.com/Omarmubx7",
         linkedin: "https://www.linkedin.com/in/omarmubaidin",
@@ -98,7 +98,7 @@ export const siteConfig = {
         siteName: 'MUBX — Omar Mubaidin',
         images: [
             {
-                url: 'https://mubx.dev/og-image.png',
+                url: 'https://mubx.dev/og-images.png',
                 width: 1200,
                 height: 630,
                 alt: 'MUBX — Omar Mubaidin | Web Developer & Technical Consultant in Jordan',
@@ -109,7 +109,7 @@ export const siteConfig = {
         card: 'summary_large_image',
         creator: '@omarmubx',
         site: '@omarmubx',
-        images: ['https://mubx.dev/og-image.png'],
+        images: ['https://mubx.dev/og-images.png'],
     },
 };
 
