@@ -32,7 +32,7 @@ const projectsData: Record<Locale, Project[]> = {
             logo: '/images/htuai-light-logo.svg',
             metrics: 'Real-time GPA',
             verified_outcome: 'Integrated Tool',
-            timeframe: '2 Days',
+            timeframe: '2 weeks',
             category: { en: 'Academic Tool', ar: 'أداة أكاديمية', icon: '🎓', color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20' },
             caseStudy: {
                 problem: 'Students needed a quick, private way to calculate their GPA and track their academic progress without logging into slow portals.',
@@ -50,7 +50,7 @@ const projectsData: Record<Locale, Project[]> = {
             logo: '/images/mubxbot-logo.png',
             metrics: 'AI Assistant',
             verified_outcome: 'Live Product',
-            timeframe: 'Ongoing',
+            timeframe: '5 days',
             category: { en: 'AI Assistant', ar: 'مساعد ذكاء اصطناعي', icon: '🤖', color: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20' },
             caseStudy: {
                 problem: 'Visitors needed instant answers and clearer guidance without waiting for manual support responses.',
@@ -86,7 +86,7 @@ const projectsData: Record<Locale, Project[]> = {
             logo: '/images/menonlyshow.webp',
             metrics: "Arab World's First",
             verified_outcome: 'Live Platform',
-            timeframe: 'Ongoing',
+            timeframe: '1 Week',
             category: { en: 'Podcast Platform', ar: 'منصة بودكاست', icon: '🎙️', color: 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-500/20' },
             caseStudy: {
                 problem: 'Lack of a dedicated, high-performance digital platform for men\'s dialogue and personal growth in the Arab region.',
@@ -104,7 +104,7 @@ const projectsData: Record<Locale, Project[]> = {
             logo: '/images/thegloriousicon.webp',
             metrics: 'Custom Design',
             verified_outcome: 'Live & Active',
-            timeframe: '1 Week',
+            timeframe: '3 days',
             category: { en: 'Link Bio', ar: 'رابط بايو', icon: '🔗', color: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20' },
             caseStudy: {
                 problem: 'Generic link-in-bio tools lacked the visual impact and high-end brand integration required for a luxury lifestyle presence.',
@@ -142,7 +142,7 @@ const projectsData: Record<Locale, Project[]> = {
             metrics: '100+ Members',
             verified_outcome: 'Based on Club Registry Logs',
 
-            timeframe: '1 Month',
+            timeframe: '3 weeks',
             category: { en: 'Education System', ar: 'نظام تعليمي', icon: '🎓', color: 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20' },
             caseStudy: {
                 problem: 'Manual paper-based registration and WhatsApp bookings were causing administrative chaos for 100+ members.',
