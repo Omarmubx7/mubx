@@ -111,13 +111,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+import { headers } from 'next/headers';
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const reqHeaders = await headers();
+  const locale = reqHeaders.get('x-next-locale') || 'en';
+  const dir = locale === 'ar' ? 'rtl' : 'ltr';
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} dir={dir} suppressHydrationWarning>
       <head>
         <link rel="dns-prefetch" href="https://vercel.live" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
@@ -235,6 +241,74 @@ export default function RootLayout({
                   "availableLanguage": ["English", "Arabic"]
                 },
                 "priceRange": "$$"
+              },
+              {
+                "@type": "LocalBusiness",
+                "@id": "https://mubx.dev/#localbusiness",
+                "name": "MUBX Development",
+                "image": "https://mubx.dev/mubxlogoloader.svg",
+                "url": "https://mubx.dev",
+                "telephone": "+962780090453",
+                "priceRange": "$$",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "Amman",
+                  "addressLocality": "Amman",
+                  "addressRegion": "Amman",
+                  "postalCode": "11181",
+                  "addressCountry": "JO"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "31.9454",
+                  "longitude": "35.9284"
+                },
+                "openingHoursSpecification": {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Sunday"
+                  ],
+                  "opens": "09:00",
+                  "closes": "18:00"
+                },
+                "sameAs": [
+                  "https://www.linkedin.com/in/omarmubaidin",
+                  "https://www.instagram.com/mubx.dev"
+                ]
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://mubx.dev/#breadcrumb",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://mubx.dev"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "About",
+                    "item": "https://mubx.dev/about"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Services",
+                    "item": "https://mubx.dev/services"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": "Blog",
+                    "item": "https://mubx.dev/blog"
+                  }
+                ]
               },
               {
                 "@type": "WebSite",

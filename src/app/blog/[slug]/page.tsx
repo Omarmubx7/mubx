@@ -34,18 +34,20 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     const post = getBlogPost(params.slug, lang);
 
     if (!post) return {};
+    
+    const baseTitle = `${post.title} | ${lang === 'ar' ? 'مدونة MUBX' : 'MUBX Blog'}`;
 
     return {
-        title: `${post.title} | MUBX Blog`,
+        title: baseTitle,
         description: post.excerpt,
         authors: [{ name: 'Omar Mubaidin', url: siteConfig.url }],
-        keywords: [post.tag, 'Omar Mubaidin', 'MUBX', 'web development', 'Jordan'],
+        keywords: [post.tag, 'Omar Mubaidin', 'MUBX', 'web development', 'Jordan', lang === 'ar' ? 'تطوير ويب' : 'frontend', lang === 'ar' ? 'عمر مبيضين' : 'CS student'],
         alternates: {
             canonical: `${siteConfig.url}/blog/${post.slug}`,
         },
         openGraph: {
             type: 'article',
-            title: post.title,
+            title: baseTitle,
             description: post.excerpt,
             url: `${siteConfig.url}/blog/${post.slug}`,
             siteName: 'MUBX',
@@ -57,7 +59,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         },
         twitter: {
             card: 'summary_large_image',
-            title: post.title,
+            title: baseTitle,
             description: post.excerpt,
             creator: '@omarmubx',
             images: [siteConfig.ogImage],
@@ -94,7 +96,7 @@ export default async function BlogPost(props: Props) {
                         "author": {
                             "@type": "Person",
                             "@id": "https://mubx.dev/#person",
-                            "name": "Omar Mubaidin",
+                            "name": lang === 'ar' ? "عمر مبيضين" : "Omar Mubaidin",
                             "url": siteConfig.url,
                         },
                         "publisher": {
@@ -121,13 +123,13 @@ export default async function BlogPost(props: Props) {
                             {
                                 "@type": "ListItem",
                                 "position": 1,
-                                "name": "Home",
+                                "name": lang === 'ar' ? "الرئيسية" : "Home",
                                 "item": siteConfig.url
                             },
                             {
                                 "@type": "ListItem",
                                 "position": 2,
-                                "name": "Blog",
+                                "name": lang === 'ar' ? "المدونة" : "Blog",
                                 "item": `${siteConfig.url}/blog`
                             },
                             {

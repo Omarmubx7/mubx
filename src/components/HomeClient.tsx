@@ -29,6 +29,7 @@ const FAQ = dynamic(() => import('@/components/FAQ'));
 // const FloatingCTA = dynamic(() => import('@/components/FloatingCTA'), { ssr: false });
 const StickyCTA = dynamic(() => import('@/components/StickyCTA'), { ssr: false });
 const About = dynamic(() => import('@/components/About'));
+const BrandStory = dynamic(() => import('@/components/BrandStory'));
 const TechStack = dynamic(() => import('@/components/TechStack'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
@@ -49,7 +50,7 @@ const Footer = dynamic(() => import('@/components/Footer'), {
 const StarsCanvas = dynamic(() => import('@/components/canvas/Stars'), { ssr: false });
 const CanvasCursor = dynamic(() => import('@/components/canvas/CanvasCursor'), { ssr: false });
 
-export default function HomeClient({ lang }: { lang: Locale }) {
+export default function HomeClient({ lang }: Readonly<{ lang: Locale }>) {
     const [showCanvas, setShowCanvas] = useState(false);
 
     useEffect(() => {
@@ -77,6 +78,7 @@ export default function HomeClient({ lang }: { lang: Locale }) {
                 <Services />
                 {/* <Pricing /> Removed per user request */}
                 <About />
+                <BrandStory />
                 <TechStack />
                 <Timeline />
                 <FAQ />

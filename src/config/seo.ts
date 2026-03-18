@@ -23,6 +23,9 @@ export const siteConfig = {
         'MUBX developer',
         'MUBX web development',
         'MUBX consultancy',
+        'MUBX Jordan',
+        'MUBX development Amman',
+        'MUBX revenue focused',
 
         // — Core Services —
         'web developer Jordan',
@@ -35,6 +38,7 @@ export const siteConfig = {
         'React developer Jordan',
         'TypeScript developer Amman',
         'frontend developer Amman',
+        'web engineering Jordan',
 
         // — Consultancy & Authority —
         'technical consultant Jordan',
@@ -46,6 +50,7 @@ export const siteConfig = {
         'best web developer Amman',
         'top freelancer Jordan',
         'top web developer Jordan',
+        'technical leadership Jordan',
 
         // — E-commerce & Payments —
         'e-commerce developer Jordan',
@@ -54,6 +59,7 @@ export const siteConfig = {
         'CliQ payment integration',
         'online store Jordan',
         'e-commerce Jordan',
+        'Jordanian payment gateway integration',
 
         // — SEO & Performance —
         'SEO expert Jordan',
@@ -61,6 +67,7 @@ export const siteConfig = {
         'Core Web Vitals optimization',
         'high-performance websites Jordan',
         'revenue focused web design',
+        'technical SEO Jordan',
 
         // — Arabic SEO —
         'مطور ويب الأردن',
@@ -71,6 +78,13 @@ export const siteConfig = {
         'تصميم مواقع عمان',
         'تجارة إلكترونية الأردن',
         'مبرمج أردني',
+        'أفضل مطور ويب في الأردن',
+        'أفضل مبرمج في عمان',
+        'أفضل شركة تصميم مواقع في الأردن',
+        'تطوير تطبيقات الأردن',
+        'عمر مبيضين مطور ويب',
+        'MUBX لتطوير المواقع',
+        'برمجة متاجر الكترونية الأردن',
     ],
     ogImage: "https://mubx.dev/og-images.png",
     links: {

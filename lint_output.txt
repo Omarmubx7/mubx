@@ -1,0 +1,83 @@
+
+> mubx-portfolio@0.1.0 lint C:\Users\omara\projectx\mubx
+> eslint
+
+
+C:\Users\omara\projectx\mubx\scripts\capture_screenshots.js
+  10:14  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\app\api\notify\route.ts
+  49:12  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\app\legal\privacy\page.tsx
+  1:10  warning  'siteConfig' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\app\legal\terms\page.tsx
+  1:10  warning  'siteConfig' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\app\page.tsx
+  1:10  warning  'Suspense' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\components\AboutView.tsx
+  15:34  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\omara\projectx\mubx\src\components\BrandStory.tsx
+  10:33  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\omara\projectx\mubx\src\components\ContactView.tsx
+  3:20  warning  'useEffect' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\components\Photography.tsx
+   7:8   warning  'GradientText' is defined but never used  @typescript-eslint/no-unused-vars
+   8:10  warning  'fadeUp' is defined but never used        @typescript-eslint/no-unused-vars
+  19:13  warning  't' is assigned a value but never used    @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\components\Pricing.tsx
+  5:17  warning  'ArrowRight' is defined but never used         @typescript-eslint/no-unused-vars
+  9:16  warning  'language' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\components\SkillTicker.tsx
+  5:11  warning  'Layout' is defined but never used    @typescript-eslint/no-unused-vars
+  5:19  warning  'Workflow' is defined but never used  @typescript-eslint/no-unused-vars
+  7:22  warning  'Box' is defined but never used       @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\components\StickyCTA.tsx
+  9:13  warning  't' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\components\Testimonials.tsx
+  9:16  warning  'isRTL' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\components\hero\Hero3DLaptop.tsx
+  6:18  warning  'useScroll' is defined but never used     @typescript-eslint/no-unused-vars
+  6:29  warning  'useTransform' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\components\hero\LaptopModel.tsx
+  25:15  warning  'state' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\components\hero\LaptopScreenOverlay.tsx
+  2:18  warning  'useMotionValue' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\components\tools\CostCalculator.tsx
+  6:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\components\ui\ErrorBoundary.tsx
+   1:8   warning  'React' is defined but never used  @typescript-eslint/no-unused-vars
+  17:44  warning  '_' is defined but never used      @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\hooks\useScrollProgress.ts
+  1:21  warning  'useTransform' is defined but never used  @typescript-eslint/no-unused-vars
+  1:35  warning  'MotionValue' is defined but never used   @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\hooks\useTypingEffect.ts
+  1:31  warning  'useCallback' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\src\lib\framer-mock.ts
+  40:42  warning  'variant' is defined but never used  @typescript-eslint/no-unused-vars
+  64:44  warning  '_args' is defined but never used    @typescript-eslint/no-unused-vars
+
+C:\Users\omara\projectx\mubx\test-integrations.mjs
+  11:17  warning  'supaData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 31 problems (2 errors, 29 warnings)
+
+ ELIFECYCLE  Command failed with exit code 1.

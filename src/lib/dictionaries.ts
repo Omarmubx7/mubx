@@ -645,9 +645,60 @@ export const dictionary = {
                 }
             ],
             footer: {
-                clientSignature: 'Client Signature',
+                clientSignature: 'Provider Signature',
                 providerSignature: 'Provider Signature',
                 date: 'Date'
+            }
+        },
+        brandStory: {
+            title: 'THE MUBX MISSION',
+            highlight: 'ENGINEERING GROWTH',
+            desc1: 'MUBX was founded by Omar Mubaidin with a singular vision: to bridge the gap between technical complexity and business outcomes in Jordan.',
+            desc2: 'The name MUBX originates from "Mubaidin Expertise" — a promise to deliver precision-engineered web systems that are not just beautiful, but are functional tools for revenue generation.',
+            desc3: 'Based in Amman, we specialize in high-performance stacks that allow local startups to compete on a global scale.',
+            stats: {
+                performance: '99+ Lighthouse Score',
+                integrity: 'Bilingual (AR/EN)',
+                security: 'CS Engineered'
+            }
+        },
+        breadcrumbs: {
+            home: 'Home',
+            about: 'About Omar Mubaidin',
+            services: 'Creative Services',
+            blog: 'Web Dev Lab',
+            projects: 'Selected Works',
+            contact: 'Project Estimate',
+            legal: 'Legal'
+        },
+        seo: {
+            home: {
+                title: 'Omar Mubaidin | Technical Consultant & Web Developer in Jordan — MUBX',
+                description: 'Omar Mubaidin (عمر مبيضين) is the founder of MUBX — a revenue-focused web consultancy in Amman, Jordan. Expert in Next.js, E-commerce, Zain Cash & CliQ payments, and high-performance SEO for startups.',
+            },
+            about: {
+                title: 'About Omar Mubaidin | MUBX — Full Stack Developer & Tech Consultant',
+                description: 'Meet Omar Mubaidin: Computer Science student, full-stack developer, and founder of MUBX. Building revenue-focused web systems for startups in Amman, Jordan.',
+            },
+            services: {
+                title: 'Web Development Services & Pricing in Jordan | MUBX',
+                description: 'Professional web development services in Amman, Jordan. Landing pages, e-commerce stores with local payments, and custom web systems by MUBX.',
+            },
+            projects: {
+                title: 'Selected Projects | MUBX — Case Studies & Solutions',
+                description: 'Explore our latest web development projects. From high-conversion landing pages to complex web systems and payment integrations in Jordan.',
+            },
+            blog: {
+                title: 'MUBX Blog — Web Development Thoughts & Experiments',
+                description: 'Technical articles, startup insights, and behind-the-scenes of building high-performance web systems in Jordan by Omar Mubaidin.',
+            },
+            contact: {
+                title: 'Get a Project Estimate | MUBX — Start Your Project',
+                description: 'Ready to scale your business? Contact MUBX for a custom web development estimate. Expert solutions for startups in Jordan.',
+            },
+            links: {
+                title: 'Links | Omar Mubaidin — MUBX Social & Connect',
+                description: 'Connect with Omar Mubaidin (MUBX) across social platforms. View portfolio, book a call, and explore latest projects.',
             }
         }
     },
@@ -1299,5 +1350,56 @@ export const dictionary = {
                 }
             ]
         },
+        brandStory: {
+            title: 'مهمة MUBX',
+            highlight: 'هندسة النمو',
+            desc1: 'تأسست MUBX من قبل عمر مبيضين برؤية واحدة: سد الفجوة بين التعقيد التقني ونتائج الأعمال في الأردن.',
+            desc2: 'اسم MUBX مشتق من "خبرة مبيضين" (Mubaidin Expertise) — وهو وعد بتقديم أنظمة ويب دقيقة الهندسة ليست جميلة فحسب، بل هي أدوات وظيفية لتوليد الأرباح.',
+            desc3: 'مقرنا في عمان، ونتخصص في التقنيات عالية الأداء التي تسمح للشركات الناشئة المحلية بالمنافسة على نطاق عالمي.',
+            stats: {
+                performance: '99+ نتيجة Lighthouse',
+                integrity: 'ثنائي اللغة (عربي/إنجليزي)',
+                security: 'هندسة علوم حاسوب'
+            }
+        },
+        breadcrumbs: {
+            home: 'الرئيسية',
+            about: 'عن عمر مبيضين',
+            services: 'الخدمات الإبداعية',
+            blog: 'مختبر الويب',
+            projects: 'المشاريع المختارة',
+            contact: 'تقدير مشروع',
+            legal: 'قانوني'
+        },
+        seo: {
+            home: {
+                title: 'عمر مبيضين | مستشار تقني ومطور ويب في الأردن — MUBX',
+                description: 'عمر مبيضين مؤسس MUBX - استشارات ويب تركز على الأرباح في عمان، الأردن. خبير في Next.js، التجارة الإلكترونية، بوابات الدفع (زين كاش وكليك)، وSEO عالي الأداء.',
+            },
+            about: {
+                title: 'عن عمر مبيضين | MUBX — مطور ويب متكامل ومستشار تقني',
+                description: 'تعرف على عمر مبيضين: طالب علوم حاسوب، مطور ويب، ومؤسس MUBX. بناء أنظمة ويب تركز على النمو للشركات الناشئة في عمان، الأردن.',
+            },
+            services: {
+                title: 'خدمات تطوير الويب والأسعار في الأردن | MUBX',
+                description: 'خدمات تطوير ويب احترافية في عمان، الأردن. صفحات هبوط، متاجر إلكترونية مع دفع محلي، وأنظمة ويب مخصصة من MUBX.',
+            },
+            projects: {
+                title: 'مشاريع مختارة | MUBX — دراسات حالة وحلول برمجية',
+                description: 'استكشف أحدث مشاريعنا في تطوير الويب. من صفحات الهبوط عالية التحويل إلى أنظمة الويب المعقدة وتكامل المدفوعات في الأردن.',
+            },
+            blog: {
+                title: 'مدونة MUBX — أفكار وتجارب في تطوير الويب',
+                description: 'مقالات تقنية، رؤى للشركات الناشئة، وخلف الكواليس لبناء أنظمة ويب عالية الأداء في الأردن بواسطة عمر مبيضين.',
+            },
+            contact: {
+                title: 'اطلب تقدير للمشروع | MUBX — ابدأ مشروعك الآن',
+                description: 'جاهز لتوسيع عملك؟ تواصل مع MUBX للحصول على تقدير مخصص لتطوير الويب. حلول خبراء للشركات الناشئة في الأردن.',
+            },
+            links: {
+                title: 'روابط التواصل | عمر مبيضين — MUBX',
+                description: 'تواصل مع عمر مبيضين (MUBX) عبر منصات التواصل الاجتماعي. شاهد معرض الأعمال، احجز مكالمة، واستكشف أحدث المشاريع.',
+            }
+        }
     }
 };

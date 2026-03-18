@@ -1,6 +1,5 @@
 
 import { notFound } from 'next/navigation';
-import { projects } from '@/lib/projects';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Badge from '@/components/ui/Badge';
@@ -9,6 +8,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { LanguageProvider } from '@/context/LanguageContext';
 import JsonLd from '@/components/JsonLd';
+import { getProjects, projects } from '@/lib/projects';
+import { Locale } from '@/lib/dictionaries';
+import { siteConfig } from '@/config/seo';
+import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 // SSG: Generate params for all projects
 export function generateStaticParams() {
@@ -19,30 +23,41 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
-import { Metadata } from 'next';
+type Props = {
+    params: Promise<{ slug: string }>;
+    searchParams: Promise<{ lang?: string }>;
+};
 
 // SEO Metadata
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
     const { slug } = await params;
-    const project = projects.find((p) => p.slug === slug);
+    const resolvedSearchParams = await searchParams;
+    const lang = (resolvedSearchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+    
+    const projectList = getProjects(lang);
+    const project = projectList.find((p) => p.slug === slug);
 
     if (!project) {
         return {
-            title: 'Project Not Found | MUBX',
+            title: lang === 'ar' ? 'المشروع غير موجود | MUBX' : 'Project Not Found | MUBX',
         };
     }
 
+    const baseTitle = `${project.title} | ${lang === 'ar' ? 'مشاريع MUBX' : 'MUBX Projects'}`;
+
     return {
-        title: `${project.title} | MUBX Projects`,
+        title: baseTitle,
         description: project.description,
         alternates: {
-            canonical: `https://mubx.dev/projects/${slug}`,
+            canonical: `${siteConfig.url}/projects/${slug}`,
         },
         openGraph: {
-            title: `${project.title} | MUBX Portfolio`,
+            title: baseTitle,
             description: project.description,
-            url: `https://mubx.dev/projects/${slug}`,
+            url: `${siteConfig.url}/projects/${slug}`,
             type: 'article',
+            siteName: 'MUBX',
+            locale: lang === 'ar' ? 'ar_QA' : 'en_US',
             images: [
                 {
                     url: project.logo,
@@ -54,28 +69,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${project.title} | MUBX Projects`,
+            title: baseTitle,
             description: project.description,
             images: [project.logo],
         },
     };
 }
 
-import { Locale } from '@/lib/dictionaries';
-import { getProjects } from '@/lib/projects';
-
-import { Suspense } from 'react';
-
-export default async function ProjectPage(props: {
-    params: Promise<{ slug: string }>,
-    searchParams: Promise<{ lang?: string }>
-}) {
+export default async function ProjectPage(props: Readonly<Props>) {
     const { slug } = await props.params;
     const searchParams = await props.searchParams;
     const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
 
-    const projects = getProjects(lang);
-    const project = projects.find((p) => p.slug === slug);
+    const projectList = getProjects(lang);
+    const project = projectList.find((p) => p.slug === slug);
 
     if (!project) return notFound();
 
@@ -86,12 +93,13 @@ export default async function ProjectPage(props: {
         'description': project.description,
         'author': {
             '@type': 'Person',
-            'name': 'Omar Mubaidin | عمر مبيضين'
+            'name': lang === 'ar' ? 'عمر مبيضين' : 'Omar Mubaidin',
+            'url': siteConfig.url
         },
         'programmingLanguage': project.tech,
         'datePublished': project.timeframe, // Assuming timeframe might contain year, simplified for now
-        'license': 'https://opensource.org/licenses/MIT', // Placeholder if open source, or remove
-        'image': project.logo
+        'image': project.logo,
+        'url': `${siteConfig.url}/projects/${slug}`
     };
 
     return (

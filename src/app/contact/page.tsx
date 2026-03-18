@@ -2,38 +2,49 @@ import { Metadata } from 'next';
 import { siteConfig } from '@/config/seo';
 import { LanguageProvider } from '@/context/LanguageContext';
 import ContactView from '@/components/ContactView';
-import { Locale } from '@/lib/dictionaries';
+import { dictionary, Locale } from '@/lib/dictionaries';
 import { Suspense } from 'react';
 import JsonLd from '@/components/JsonLd';
 
-export const metadata: Metadata = {
-    title: 'Get a Project Estimate | Omar Mubaidin — MUBX',
-    description: 'Start your next web project with Omar Mubaidin (MUBX). Get a custom estimate for website development, e-commerce, or technical consulting in Jordan.',
-    keywords: ['hire web developer Jordan', 'MUBX contact', 'Omar Mubaidin contact', 'web development estimate Jordan'],
-    alternates: {
-        canonical: `${siteConfig.url}/contact`
-    },
-    openGraph: {
-        title: 'Get a Project Estimate | MUBX',
-        description: 'Start your next web project with MUBX. Custom estimates for website, e-commerce, and app development.',
-        url: `${siteConfig.url}/contact`,
-        siteName: 'MUBX',
-        images: [siteConfig.ogImage],
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Get a Project Estimate | MUBX',
-        description: 'Start your next web project with MUBX.',
-        creator: '@omarmubx',
-        images: [siteConfig.ogImage],
-    },
-};
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+    const resolvedSearchParams = await searchParams;
+    const lang = (resolvedSearchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+    const dictMeta = dictionary[lang].seo.contact;
+
+    return {
+        title: dictMeta.title,
+        description: dictMeta.description,
+        keywords: [
+            'hire web developer Jordan', 'عمان', 'مطور ويب الأردن',
+            'MUBX contact', 'Omar Mubaidin contact', 'web development estimate Jordan',
+            'startup tech consultant Jordan'
+        ],
+        alternates: {
+            canonical: `${siteConfig.url}/contact`
+        },
+        openGraph: {
+            title: dictMeta.title,
+            description: dictMeta.description,
+            url: `${siteConfig.url}/contact`,
+            siteName: 'MUBX',
+            images: [siteConfig.ogImage],
+            locale: lang === 'ar' ? 'ar_QA' : 'en_US',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: dictMeta.title,
+            description: dictMeta.description,
+            creator: '@omarmubx',
+            images: [siteConfig.ogImage],
+        },
+    };
+}
 
 type Props = {
     searchParams: Promise<{ lang?: string }>
 }
 
-export default async function ContactPage(props: Props) {
+export default async function ContactPage(props: Readonly<Props>) {
     const searchParams = await props.searchParams;
     const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
 
@@ -43,8 +54,8 @@ export default async function ContactPage(props: Props) {
                 <JsonLd data={{
                     "@context": "https://schema.org",
                     "@type": "ContactPage",
-                    "name": "Contact MUBX — Omar Mubaidin",
-                    "description": "Get in touch with Omar Mubaidin for web development projects, technical consulting, and custom estimates.",
+                    "name": lang === 'ar' ? "تواصل مع MUBX — عمر مبيضين" : "Contact MUBX — Omar Mubaidin",
+                    "description": dictionary[lang].contact.desc2,
                     "url": `${siteConfig.url}/contact`,
                     "mainEntity": {
                         "@type": "ContactPoint",

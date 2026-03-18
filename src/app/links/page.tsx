@@ -8,36 +8,48 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import { GithubIcon, LinkedinIcon, Globe, Phone, InstagramIcon, ArrowRight, Mail, Mic, Bot } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
-export const metadata: Metadata = {
-    title: 'Links | Omar Mubaidin — MUBX',
-    description: 'Connect with Omar Mubaidin (MUBX) — Full Stack Web Developer in Amman, Jordan. Social links, portfolio, projects, and contact info.',
-    keywords: ['Omar Mubaidin links', 'MUBX links', 'Omar Mubaidin social media', 'Omar Mubaidin contact'],
-    alternates: {
-        canonical: 'https://mubx.dev/links',
-    },
-    openGraph: {
-        title: 'Links | Omar Mubaidin — MUBX',
-        description: 'Connect with Omar Mubaidin — Full Stack Web Developer. Social links, portfolio, and contact info.',
-        url: 'https://mubx.dev/links',
-        siteName: 'MUBX',
-        type: 'profile',
-        images: ['https://mubx.dev/og-images.png'],
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Links | Omar Mubaidin',
-        description: 'Connect with Omar Mubaidin — social links, portfolio, and contact.',
-        creator: '@omarmubx',
-        images: ['https://mubx.dev/og-images.png'],
-    },
-};
-
-import { Locale } from '@/lib/dictionaries';
-import { Suspense } from 'react';
+import { dictionary, Locale } from '@/lib/dictionaries';
+import { siteConfig } from '@/config/seo';
 
 type Props = {
     searchParams: Promise<{ lang?: string }>
 }
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+    const resolvedSearchParams = await searchParams;
+    const lang = (resolvedSearchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+    const dictMeta = dictionary[lang].seo.links;
+
+    return {
+        title: dictMeta.title,
+        description: dictMeta.description,
+        keywords: [
+            'Omar Mubaidin links', 'MUBX links', 'عمر مبيضين روابط',
+            'Omar Mubaidin social media', 'Omar Mubaidin contact', 'Amman', 'Jordan'
+        ],
+        alternates: {
+            canonical: `${siteConfig.url}/links`,
+        },
+        openGraph: {
+            title: dictMeta.title,
+            description: dictMeta.description,
+            url: `${siteConfig.url}/links`,
+            siteName: 'MUBX',
+            type: 'profile',
+            images: [siteConfig.ogImage],
+            locale: lang === 'ar' ? 'ar_QA' : 'en_US',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: dictMeta.title,
+            description: dictMeta.description,
+            creator: '@omarmubx',
+            images: [siteConfig.ogImage],
+        },
+    };
+}
+
+import { Suspense } from 'react';
 
 type LinkItem = {
     name: string;
