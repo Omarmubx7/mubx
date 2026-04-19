@@ -142,7 +142,7 @@ const projectsData: Record<Locale, Project[]> = {
             metrics: '100+ Members',
             verified_outcome: 'Based on Club Registry Logs',
 
-            timeframe: '3 weeks',
+            timeframe: '3 weeks ',
             category: { en: 'Education System', ar: 'نظام تعليمي', icon: '🎓', color: 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20' },
             caseStudy: {
                 problem: 'Manual paper-based registration and WhatsApp bookings were causing administrative chaos for 100+ members.',

@@ -47,7 +47,7 @@ export const dictionary = {
                     timeline: '1-2 Days',
                     deliverables: 'Hosting Included',
                     details: ['Custom Design', 'Social Icons', 'Contact Form', 'Fast Loading'],
-                    price: '50 JD'
+                    price: 'start at 50 JD'
                 },
                 landing: {
                     label: 'Starter',
@@ -56,7 +56,7 @@ export const dictionary = {
                     timeline: '5-7 Days',
                     deliverables: '1-3 Sections',
                     details: ['Copywriting', 'SEO Basics', 'Mobile Ready', 'Analytics'],
-                    price: '300 JD'
+                    price: 'start at 150 JD'
                 },
                 business: {
                     label: 'Growth',
@@ -65,7 +65,7 @@ export const dictionary = {
                     timeline: '2 Weeks',
                     deliverables: '5 Pages',
                     details: ['CMS (Manage Content)', 'Bilingual (Ar/En)', 'SEO Advanced', 'Blog Setup'],
-                    price: '500 JD'
+                    price: 'start at 300 JD'
                 },
                 system: {
                     label: 'Pro',
@@ -74,7 +74,7 @@ export const dictionary = {
                     timeline: '3+ Weeks',
                     deliverables: 'Custom Scope',
                     details: ['Database Design', 'User Auth', 'Payment Integration', 'Admin Dashboard'],
-                    price: '700+ JD'
+                    price: 'start at 500 JD'
                 }
             },
             howItWorks: {
