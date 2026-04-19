@@ -13,8 +13,28 @@ type ContactPayload = {
     language?: string;
 };
 
+async function ensureContactSubmissionsTable() {
+    await query(`
+        CREATE TABLE IF NOT EXISTS public.contact_submissions (
+            id BIGSERIAL PRIMARY KEY,
+            name TEXT,
+            email TEXT NOT NULL,
+            brand_name TEXT,
+            website TEXT,
+            goal TEXT,
+            budget TEXT,
+            deadline TEXT,
+            message TEXT NOT NULL,
+            language TEXT DEFAULT 'en',
+            created_at TIMESTAMPTZ DEFAULT NOW()
+        )
+    `);
+}
+
 export async function POST(req: Request) {
     try {
+        await ensureContactSubmissionsTable();
+
         const body = (await req.json()) as ContactPayload;
         const email = body.email?.trim();
         const message = body.message?.trim();
@@ -35,7 +55,7 @@ export async function POST(req: Request) {
                 website,
                 goal,
                 budget,
-                deadline,
+                "deadline",
                 message,
                 language
             ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
@@ -54,8 +74,17 @@ export async function POST(req: Request) {
         );
 
         return NextResponse.json({ ok: true });
-    } catch (error) {
+    } catch (error: unknown) {
         console.error('POST /api/contact failed:', error);
-        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+
+        const message = error instanceof Error ? error.message : 'Internal Server Error';
+
+        return NextResponse.json(
+            {
+                error: 'Internal Server Error',
+                details: process.env.NODE_ENV === 'production' ? undefined : message,
+            },
+            { status: 500 },
+        );
     }
 }

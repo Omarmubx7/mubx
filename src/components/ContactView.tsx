@@ -41,7 +41,8 @@ export default function ContactView() {
             });
 
             if (!dbRes.ok) {
-                throw new Error('Failed to save contact submission');
+                const errorPayload = await dbRes.json().catch(() => ({}));
+                throw new Error(errorPayload?.details || errorPayload?.error || 'Failed to save contact submission');
             }
 
             // Trigger email notification

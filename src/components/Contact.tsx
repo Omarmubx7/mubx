@@ -83,7 +83,8 @@ export default function Contact() {
             });
 
             if (!dbRes.ok) {
-                throw new Error('Failed to save contact submission');
+                const payload = await dbRes.json().catch(() => ({}));
+                throw new Error(payload?.details || payload?.error || 'Failed to save contact submission');
             }
 
             const notifyRes = await fetch('/api/notify', {
