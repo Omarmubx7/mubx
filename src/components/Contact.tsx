@@ -4,9 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, MapPin, Check, X, User, Target, MessageSquare, ChevronRight, ChevronLeft } from 'lucide-react';
 import { fadeUp } from '@/lib/motion';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { initializeSupabaseStore } from '@/lib/db-init';
 
 export default function Contact() {
     const { t, language } = useLanguage();
@@ -23,9 +22,6 @@ export default function Contact() {
         deadline: '',
         message: '',
     });
-
-    useEffect(() => {
-    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -68,30 +64,27 @@ export default function Contact() {
         if (!validateStep(3)) return;
 
         setFormState('submitting');
-        const supabase = await initializeSupabaseStore();
-
-        if (!supabase) {
-            setFormState('error');
-            console.error('Supabase client not initialized. Check your environment variables.');
-            return;
-        }
 
         try {
-            const { error } = await supabase
-                .from('contact_submissions')
-                .insert([{
+            const dbRes = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
                     name: formData.name,
                     email: formData.email,
-                    brand_name: formData.business,
+                    business: formData.business,
                     website: formData.website,
                     goal: formData.goal || 'General Inquiry',
                     budget: formData.budget || 'Not Specified',
                     deadline: formData.deadline || 'Flexible',
                     message: formData.message,
                     language: language
-                }]);
+                }),
+            });
 
-            if (error) throw error;
+            if (!dbRes.ok) {
+                throw new Error('Failed to save contact submission');
+            }
 
             const notifyRes = await fetch('/api/notify', {
                 method: 'POST',
@@ -108,10 +101,8 @@ export default function Contact() {
             setFormState('success');
             setStep(1);
             setTimeout(() => setFormState('idle'), 5000);
-        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
-            console.error('🔥 MUBX Submission Error:', error.message || error);
-            if (error.details) console.error('Error Details:', error.details);
-            if (error.hint) console.error('Hint:', error.hint);
+        } catch (error: unknown) {
+            console.error('🔥 MUBX Submission Error:', error);
             setFormState('error');
             setTimeout(() => setFormState('idle'), 5000);
         }

@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Send, Loader2 } from 'lucide-react';
-import { initializeSupabaseStore } from '@/lib/db-init';
 import { useLanguage } from '@/context/LanguageContext';
 import { fadeUp } from '@/lib/motion';
 import Navbar from '@/components/Navbar';
@@ -22,40 +21,34 @@ export default function ContactView() {
         const formData = new FormData(form);
 
         setFormState('submitting');
-        const supabase = await initializeSupabaseStore();
-
-        if (!supabase) {
-            setFormState('error');
-            console.error('Supabase client not initialized. Check your environment variables.');
-            return;
-        }
 
         try {
-            const { error } = await supabase
-                .from('contact_submissions')
-                .insert([{
-                    email: formData.get('email'),
-                    goal: formData.get('type'),
-                    budget: formData.get('budget'),
-                    deadline: formData.get('timeline'),
-                    message: formData.get('message') || formData.get('details'),
-                    language: language
-                }]);
+            const payload = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                business: formData.get('business'),
+                goal: formData.get('type'),
+                budget: formData.get('budget'),
+                deadline: formData.get('timeline'),
+                message: formData.get('message') || formData.get('details'),
+                language,
+            };
 
-            if (error) throw error;
+            const dbRes = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+
+            if (!dbRes.ok) {
+                throw new Error('Failed to save contact submission');
+            }
 
             // Trigger email notification
             const notifyRes = await fetch('/api/notify', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    email: formData.get('email'),
-                    goal: formData.get('type'),
-                    budget: formData.get('budget'),
-                    deadline: formData.get('timeline'),
-                    message: formData.get('message') || formData.get('details'),
-                    language: language
-                }),
+                body: JSON.stringify(payload),
             });
 
             if (!notifyRes.ok) {
@@ -64,8 +57,8 @@ export default function ContactView() {
             }
 
             router.push(language === 'en' ? '/success' : `/success?lang=${language}`);
-        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
-            console.error('Submission error details:', error.message || error);
+        } catch (error: unknown) {
+            console.error('Submission error details:', error);
             setFormState('error');
             setTimeout(() => setFormState('idle'), 5000);
         }
