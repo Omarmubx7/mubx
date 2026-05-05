@@ -51,7 +51,7 @@ This document contains the complete content of the MUBX Portfolio, including sit
 
 ## 🚀 Projects
 
-### HTUAI
+### MUBXAI
 - **Category:** Academic Tool | أداة أكاديمية
 - **Description (EN):** A real-time GPA calculator and course tracking tool for HTU students.
 - **Description (AR):** أداة لحساب المعدل التراكمي وتتبع المساقات مصممة خصيصاً لطلاب جامعة الحسين التقنية.

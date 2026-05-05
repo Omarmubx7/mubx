@@ -130,8 +130,8 @@ export default async function LinksPage(props: Readonly<Props>) {
 
     const latestProjectsLinks: LinkItem[] = [
         {
-            name: "HTUAI",
-            url: "https://htuai.mubx.dev/",
+            name: "MUBXAI",
+            url: "https://ai.mubx.dev/",
             icon: Globe,
             sub: "HTU Course Tracker & GPA Calculator",
             primary: true

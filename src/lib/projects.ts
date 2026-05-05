@@ -24,12 +24,12 @@ export interface Project {
 const projectsData: Record<Locale, Project[]> = {
     en: [
         {
-            slug: 'htuai',
-            title: 'HTUAI',
+            slug: 'mubxai',
+            title: 'MUBXAI',
             description: 'A real-time GPA calculator and course tracking tool designed specifically for HTU students with local data persistence.',
             tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
-            links: { live: 'https://htuai.mubx.dev/' },
-            logo: '/images/htuai-light-logo.svg',
+            links: { live: 'https://ai.mubx.dev/' },
+            logo: '/images/mubxai-light-logo.svg',
             metrics: 'Real-time GPA',
             verified_outcome: 'Integrated Tool',
             timeframe: '2 weeks',
@@ -173,12 +173,12 @@ const projectsData: Record<Locale, Project[]> = {
     ],
     ar: [
         {
-            slug: 'htuai',
-            title: 'HTUAI',
+            slug: 'mubxai',
+            title: 'MUBXAI',
             description: 'أداة لحساب المعدل التراكمي وتتبع المساقات مصممة خصيصاً لطلاب جامعة الحسين التقنية مع حفظ البيانات محلياً.',
             tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
-            links: { live: 'https://htuai.mubx.dev/' },
-            logo: '/images/htuai-light-logo.svg',
+            links: { live: 'https://ai.mubx.dev/' },
+            logo: '/images/mubxai-light-logo.svg',
             metrics: 'معدل تراكمي فوري',
             verified_outcome: 'أداة مدمجة',
             timeframe: 'يومين',

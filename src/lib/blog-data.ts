@@ -67,8 +67,8 @@ The result is a site that feels cinematic but loads like a static page.
     `
     },
     {
-      slug: 'building-htuai-gpa-tracker',
-      title: "Building HTUAI: A Real-Time GPA Tracker for Students",
+      slug: 'building-mubxai-gpa-tracker',
+      title: "Building MUBXAI: A Real-Time GPA Tracker for Students",
       excerpt: "How I built a client-side calculator with a premium UI that persists data locally, ensuring privacy and instant access for university students.",
       tag: "Engineering",
       date: "Mar 10, 2026",
@@ -77,7 +77,7 @@ The result is a site that feels cinematic but loads like a static page.
 Students needed a quick, private way to calculate their GPA and track their academic progress without logging into slow, clunky university portals.
 
 ### The Solution
-I engineered HTUAI as a client-side calculator using Next.js and React. By leveraging local storage for data persistence, the tool guarantees 100% privacy—no backend required.
+I engineered MUBXAI as a client-side calculator using Next.js and React. By leveraging local storage for data persistence, the tool guarantees 100% privacy—no backend required.
 
 ### The Outcome
 The result is a seamless, lightning-fast application with a premium UI driven by Framer Motion. It instantly provides academic insights to students, acting as the perfect integrated tool for their daily workflow.
@@ -226,8 +226,8 @@ BloB.JO launched as Jordan’s first fully operational POD platform, empowering 
     `
     },
     {
-      slug: 'building-htuai-gpa-tracker',
-      title: "بناء HTUAI: متتبع المعدل التراكمي الفوري للطلاب",
+      slug: 'building-mubxai-gpa-tracker',
+      title: "بناء MUBXAI: متتبع المعدل التراكمي الفوري للطلاب",
       excerpt: "كيف بنيت آلة حاسبة من جانب العميل بواجهة متميزة تحفظ البيانات محلياً، مما يضمن الخصوصية للطلاب.",
       tag: "هندسة برمجيات",
       date: "10 مارس 2026",
@@ -236,7 +236,7 @@ BloB.JO launched as Jordan’s first fully operational POD platform, empowering 
 احتاج الطلاب إلى طريقة سريعة وخاصة لحساب معدلاتهم وتتبع تقدمهم الأكاديمي دون الحاجة لتسجيل الدخول في بوابات الجامعة البطيئة والمعقدة.
 
 ### الحل
-قمت بهندسة HTUAI كآلة حاسبة تعمل بالكامل من جانب العميل باستخدام Next.js و React. من خلال الاعتماد على التخزين المحلي (Local Storage) لحفظ البيانات، تضمن الأداة الخصوصية بنسبة 100٪ بدون الحاجة لقاعدة بيانات خلفية.
+قمت بهندسة MUBXAI كآلة حاسبة تعمل بالكامل من جانب العميل باستخدام Next.js و React. من خلال الاعتماد على التخزين المحلي (Local Storage) لحفظ البيانات، تضمن الأداة الخصوصية بنسبة 100٪ بدون الحاجة لقاعدة بيانات خلفية.
 
 ### النتيجة
 النتيجة هي تطبيق سلس وسريع جداً بواجهة متميزة عبر Framer Motion. يوفر رؤى أكاديمية فورية للطلاب، ويعمل كأداة متكاملة ومثالية لروتينهم اليومي.
