@@ -47,7 +47,7 @@ export const dictionary = {
                     timeline: '1-2 Days',
                     deliverables: 'Hosting Included',
                     details: ['Custom Design', 'Social Icons', 'Contact Form', 'Fast Loading'],
-                    price: 'start at 50 JD'
+                    price: 'start at 49.99 JD'
                 },
                 landing: {
                     label: 'Starter',
@@ -56,7 +56,7 @@ export const dictionary = {
                     timeline: '5-7 Days',
                     deliverables: '1-3 Sections',
                     details: ['Copywriting', 'SEO Basics', 'Mobile Ready', 'Analytics'],
-                    price: 'start at 150 JD'
+                    price: 'start at 149.99 JD'
                 },
                 business: {
                     label: 'Growth',
@@ -65,7 +65,7 @@ export const dictionary = {
                     timeline: '2 Weeks',
                     deliverables: '5 Pages',
                     details: ['CMS (Manage Content)', 'Bilingual (Ar/En)', 'SEO Advanced', 'Blog Setup'],
-                    price: 'start at 300 JD'
+                    price: 'start at 299.99 JD'
                 },
                 system: {
                     label: 'Pro',
@@ -74,7 +74,7 @@ export const dictionary = {
                     timeline: '3+ Weeks',
                     deliverables: 'Custom Scope',
                     details: ['Database Design', 'User Auth', 'Payment Integration', 'Admin Dashboard'],
-                    price: 'start at 500 JD'
+                    price: 'start at 499.99 JD'
                 }
             },
             howItWorks: {
@@ -178,7 +178,7 @@ export const dictionary = {
             tiers: {
                 launch: {
                     name: 'Launch',
-                    price: '400',
+                    price: '499.99',
                     currency: 'JD',
                     period: 'Start',
                     desc: 'Perfect for landing pages and simple MVPs.',
@@ -186,7 +186,7 @@ export const dictionary = {
                 },
                 growth: {
                     name: 'Growth',
-                    price: '850',
+                    price: '899.99',
                     currency: 'JD',
                     period: 'Start',
                     desc: 'Full business systems and complex web apps.',
@@ -195,8 +195,8 @@ export const dictionary = {
                 enterprise: {
                     name: 'Enterprise',
                     price: 'Custom',
-                    currency: '',
-                    period: '',
+                    currency: 'JD',
+                    period: 'Start',
                     desc: 'High-authority audits and scaling infrastructure.',
                     features: ['Infrastructure Audit', 'Cloud Migration', 'Consultancy Pack', 'Dedicated Support']
                 }
@@ -247,7 +247,7 @@ export const dictionary = {
             location: "Location",
             locationVal: "Amman, Jordan (Remote Available)",
             form: {
-                badge: 'Premium Systems From 400 JD',
+                badge: 'Premium Systems From 499.99 JD',
                 title: 'Start your project brief',
                 fastReplies: '24h Response',
                 security: 'Secure Systems',
@@ -255,7 +255,7 @@ export const dictionary = {
                 goal: 'Primary Goal',
                 goalOptions: ['New Website', 'Redesign', 'E-commerce', 'Custom Web App', 'Technical Audit'],
                 budget: 'Budget Range',
-                budgetOptions: ['400 - 850 JD (Launch)', '850 - 2000 JD (Growth)', '2000+ JD (Enterprise)'],
+                budgetOptions: ['499.99 - 899.99 JD (Launch)', '899.99 - 1,999.99 JD (Growth)', '1,999.99+ JD (Enterprise)'],
                 deadline: 'Timeline',
                 deadlineOptions: ['ASAP', '1 Month', 'Flexible'],
                 name: 'Contact Person',
