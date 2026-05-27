@@ -164,7 +164,7 @@ export default async function RootLayout({
                 "name": "Omar Mubaidin",
                 "alternateName": ["عمر مبيضين", "MUBX", "Omar Mubx"],
                 "url": "https://mubx.dev",
-                "image": "https://mubx.dev/og-image.png",
+                "image": "https://mubx.dev/og-images.png",
                 "description": "Omar Mubaidin is a full-stack web developer and technical consultant based in Amman, Jordan. Founder of MUBX, he specializes in Next.js, e-commerce, and local payment integration for Jordanian startups.",
                 "jobTitle": "Full Stack Developer & Technical Consultant",
                 "nationality": {

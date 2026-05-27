@@ -7,38 +7,26 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: '*',
                 allow: '/',
-                disallow: '/private/',
+                disallow: ['/private/', '/contract', '/client', '/api/'],
             },
-            // Explicitly allow AI crawlers for AEO/GEO
-            {
-                userAgent: 'GPTBot',
-                allow: '/',
-            },
-            {
-                userAgent: 'Google-Extended',
-                allow: '/',
-            },
-            {
-                userAgent: 'CCBot',
-                allow: '/',
-            },
-            {
-                userAgent: 'anthropic-ai',
-                allow: '/',
-            },
-            {
-                userAgent: 'PerplexityBot',
-                allow: '/',
-            },
-            {
-                userAgent: 'Bytespider',
-                allow: '/',
-            },
-            {
-                userAgent: 'ClaudeBot',
-                allow: '/',
-            },
+            // AI crawlers — explicitly allow for AEO/GEO discoverability
+            { userAgent: 'GPTBot', allow: '/' },
+            { userAgent: 'Google-Extended', allow: '/' },
+            { userAgent: 'CCBot', allow: '/' },
+            { userAgent: 'anthropic-ai', allow: '/' },
+            { userAgent: 'ClaudeBot', allow: '/' },
+            { userAgent: 'PerplexityBot', allow: '/' },
+            { userAgent: 'Bytespider', allow: '/' },
+            // Newer AI bots (2024-2025)
+            { userAgent: 'Applebot-Extended', allow: '/' },
+            { userAgent: 'Meta-ExternalAgent', allow: '/' },
+            { userAgent: 'FacebookBot', allow: '/' },
+            { userAgent: 'YouBot', allow: '/' },
+            { userAgent: 'Diffbot', allow: '/' },
+            { userAgent: 'Amazonbot', allow: '/' },
+            { userAgent: 'OAI-SearchBot', allow: '/' },
         ],
         sitemap: `${siteConfig.url}/sitemap.xml`,
+        host: siteConfig.url,
     };
 }

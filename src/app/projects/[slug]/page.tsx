@@ -44,12 +44,20 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     }
 
     const baseTitle = `${project.title} | ${lang === 'ar' ? 'مشاريع MUBX' : 'MUBX Projects'}`;
+    // For mubxai, point canonical to the live subdomain app (cross-domain canonical)
+    const canonicalUrl = slug === 'mubxai'
+        ? 'https://ai.mubx.dev'
+        : `${siteConfig.url}/projects/${slug}`;
 
     return {
         title: baseTitle,
         description: project.description,
         alternates: {
-            canonical: `${siteConfig.url}/projects/${slug}`,
+            canonical: canonicalUrl,
+            languages: {
+                'en': `${siteConfig.url}/projects/${slug}`,
+                'ar': `${siteConfig.url}/projects/${slug}?lang=ar`,
+            },
         },
         openGraph: {
             title: baseTitle,
@@ -60,7 +68,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
             locale: lang === 'ar' ? 'ar_QA' : 'en_US',
             images: [
                 {
-                    url: project.logo,
+                    url: `${siteConfig.url}/projects/${slug}/opengraph-image`,
                     width: 1200,
                     height: 630,
                     alt: `${project.title} Project Preview`,
@@ -71,7 +79,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
             card: 'summary_large_image',
             title: baseTitle,
             description: project.description,
-            images: [project.logo],
+            images: [`${siteConfig.url}/projects/${slug}/opengraph-image`],
         },
     };
 }

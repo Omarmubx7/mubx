@@ -7,18 +7,45 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { Suspense } from 'react';
-import { Locale } from '@/lib/dictionaries';
-
-export const metadata: Metadata = {
-    title: 'Projects & Testimonials | MUBX',
-    description: 'Explore my selected web development projects and what clients say about working with me.',
-    alternates: {
-        canonical: `${siteConfig.url}/projects`
-    }
-};
+import { dictionary, Locale } from '@/lib/dictionaries';
 
 type Props = {
     searchParams: Promise<{ lang?: string }>
+}
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+    const resolvedSearchParams = await searchParams;
+    const lang = (resolvedSearchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+    const dictMeta = dictionary[lang].seo.projects;
+
+    return {
+        title: dictMeta.title,
+        description: dictMeta.description,
+        alternates: {
+            canonical: `${siteConfig.url}/projects`,
+            languages: {
+                'en': `${siteConfig.url}/projects`,
+                'ar': `${siteConfig.url}/projects?lang=ar`,
+            },
+        },
+        openGraph: {
+            title: dictMeta.title,
+            description: dictMeta.description,
+            url: `${siteConfig.url}/projects`,
+            siteName: 'MUBX',
+            images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: 'MUBX Projects — Omar Mubaidin' }],
+            locale: lang === 'ar' ? 'ar_QA' : 'en_US',
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: dictMeta.title,
+            description: dictMeta.description,
+            creator: '@omarmubx',
+            images: [siteConfig.ogImage],
+        },
+        robots: { index: true, follow: true },
+    };
 }
 
 export default async function ProjectsPage(props: Readonly<Props>) {

@@ -18,6 +18,13 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       absolute: meta.title,
     },
     description: meta.description,
+    alternates: {
+      canonical: siteConfig.url,
+      languages: {
+        'en': siteConfig.url,
+        'ar': `${siteConfig.url}?lang=ar`,
+      },
+    },
     openGraph: {
       ...siteConfig.openGraph,
       title: meta.title,

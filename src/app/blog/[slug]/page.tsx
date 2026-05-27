@@ -55,14 +55,19 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
             authors: ['Omar Mubaidin'],
             publishedTime: post.date,
             tags: [post.tag],
-            images: [siteConfig.ogImage],
+            images: [{
+                url: `${siteConfig.url}/blog/${post.slug}/opengraph-image`,
+                width: 1200,
+                height: 630,
+                alt: post.title,
+            }],
         },
         twitter: {
             card: 'summary_large_image',
             title: baseTitle,
             description: post.excerpt,
             creator: '@omarmubx',
-            images: [siteConfig.ogImage],
+            images: [`${siteConfig.url}/blog/${post.slug}/opengraph-image`],
         },
     };
 }

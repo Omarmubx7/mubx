@@ -70,7 +70,7 @@ export default async function AboutPage(props: Readonly<Props>) {
                         "familyName": lang === 'ar' ? "مبيضين" : "Mubaidin",
                         "jobTitle": lang === 'ar' ? "مطور ويب متكامل ومستشار تقني" : "Full Stack Developer & Technical Consultant",
                         "description": dictionary[lang].seo.about.description,
-                        "image": "https://mubx.dev/og-image.png",
+                        "image": "https://mubx.dev/og-images.png",
                         "url": "https://mubx.dev",
                         "nationality": {
                             "@type": "Country",

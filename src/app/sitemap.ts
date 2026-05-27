@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { path: '/contact', priority: 0.8, changeFrequency: 'monthly' as const },
         { path: '/blog', priority: 0.8, changeFrequency: 'weekly' as const },
         { path: '/links', priority: 0.7, changeFrequency: 'monthly' as const },
+        { path: '/projects', priority: 0.9, changeFrequency: 'monthly' as const },
         { path: '/services/ecommerce', priority: 0.8, changeFrequency: 'monthly' as const },
         { path: '/tools/website-cost-calculator-jordan', priority: 0.7, changeFrequency: 'monthly' as const },
         { path: '/tools/neon-gradient-card', priority: 0.5, changeFrequency: 'monthly' as const },
@@ -29,8 +30,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: route.priority,
     }));
 
-    // Static Blog Posts (hard-coded pages)
-    const staticBlogRoutes = [
+    // Static blog page directories confirmed in the app router
+    const staticBlogPageRoutes = [
         '/blog/nextjs-mobile-performance',
         '/blog/ecommerce-in-jordan-guide',
         '/blog/nextjs-vs-wordpress',
@@ -49,7 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
     }));
 
-    // Dynamic Blog Routes
+    // Dynamic Blog Routes — use real post dates for accurate crawl signals
     const blogRoutes = blogPosts.map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
         lastModified: new Date(post.date),
@@ -57,5 +58,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.8,
     }));
 
-    return [...routes, ...staticBlogRoutes, ...projectRoutes, ...blogRoutes];
+    return [...routes, ...staticBlogPageRoutes, ...projectRoutes, ...blogRoutes];
 }
