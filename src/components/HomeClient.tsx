@@ -29,7 +29,7 @@ const FAQ = dynamic(() => import('@/components/FAQ'));
 // const FloatingCTA = dynamic(() => import('@/components/FloatingCTA'), { ssr: false });
 const StickyCTA = dynamic(() => import('@/components/StickyCTA'), { ssr: false });
 const About = dynamic(() => import('@/components/About'));
-const BrandStory = dynamic(() => import('@/components/BrandStory'));
+// const BrandStory = dynamic(() => import('@/components/BrandStory'));
 const TechStack = dynamic(() => import('@/components/TechStack'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
@@ -38,9 +38,6 @@ const Timeline = dynamic(() => import('@/components/Timeline'), {
 });
 
 const Contact = dynamic(() => import('@/components/Contact'), {
-    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
-});
-const Services = dynamic(() => import('@/components/Services'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
 const Footer = dynamic(() => import('@/components/Footer'), {
@@ -73,12 +70,11 @@ export default function HomeClient({ lang }: Readonly<{ lang: Locale }>) {
             <TrustedBy />
             <SkillTicker />
             <Suspense fallback={null}>
-                <Projects />
                 <Process />
-                <Services />
+                <Projects />
                 {/* <Pricing /> Removed per user request */}
                 <About />
-                <BrandStory />
+                {/* <BrandStory /> Removed per user request */}
                 <TechStack />
                 <Timeline />
                 <FAQ />

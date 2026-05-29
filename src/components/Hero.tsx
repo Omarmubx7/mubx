@@ -153,14 +153,15 @@ export default function Hero() {
                                 animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
                                 style={{ transformStyle: 'preserve-3d' }}
-                                className="relative w-64 md:w-80 lg:w-100 aspect-10/14 rounded-3xl overflow-hidden border-2 border-neon/30 shadow-[0_0_50px_rgba(215,28,28,0.2)] will-change-transform"
+                                className="relative w-64 md:w-80 lg:w-100 aspect-10/14 will-change-transform"
+                                whileHover={{ rotateY: 5, rotateX: -5, scale: 1.05 }}
                             >
                                 <Image
-                                    src="/mubxlogoloader.svg"
-                                    alt="MUBX brand logo"
+                                    src="/omarmub.webp"
+                                    alt="Omar Mubaidin"
                                     fill
                                     priority
-                                    className="object-contain p-10 transition-all duration-700 scale-105 group-hover:scale-110"
+                                    className="object-contain transition-all duration-700 pointer-events-none"
                                     sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 400px"
                                 />
                             </motion.div>
