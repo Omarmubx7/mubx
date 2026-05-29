@@ -135,7 +135,8 @@ export async function POST(req: Request) {
             {
                 error: 'Internal Server Error',
                 errorCode: 'CONTACT_INSERT_FAILED',
-                details: process.env.NODE_ENV === 'production' ? undefined : message,
+                details: message,
+                fullError: String(error) + ' | ' + JSON.stringify(error, Object.getOwnPropertyNames(error))
             },
             { status: 500 },
         );

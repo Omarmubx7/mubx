@@ -14,7 +14,7 @@ function getPool(): Pool {
 
     pool = new Pool({
         connectionString,
-        ssl: connectionString.includes('sslmode=require') ? { rejectUnauthorized: false } : undefined,
+        ssl: { rejectUnauthorized: false },
     });
 
     return pool;
