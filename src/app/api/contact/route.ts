@@ -71,7 +71,9 @@ async function insertSubmission(body: ContactPayload, email: string, message: st
 
 export async function POST(req: Request) {
     try {
-        if (!process.env.DATABASE_URL) {
+        const dbUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+
+        if (!dbUrl) {
             return NextResponse.json(
                 {
                     error: 'Database is not configured',
