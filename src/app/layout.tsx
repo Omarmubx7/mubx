@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono, Cairo } from 'next/font/google';
-import { Suspense } from 'react';
 import './globals.css';
 
 import SmoothScroll from '@/components/SmoothScroll';
@@ -8,14 +7,13 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 
 
-import DynamicChatWidget from '@/components/DynamicChatWidget';
-
 import SkipToContent from '@/components/SkipToContent';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import JsonLd from '@/components/JsonLd';
-import ScrollProgressBar from '@/components/ScrollProgressBar';
-import SocialSidebar from '@/components/SocialSidebar';
+import ScrollProgress from '@/components/ui/ScrollProgress';
 import LoadingScreen from '@/components/LoadingScreen';
+
+
 
 
 const inter = Inter({
@@ -153,6 +151,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <div className="noise-overlay" />
           <LoadingScreen />
           <SkipToContent />
           <JsonLd data={{
@@ -301,12 +300,6 @@ export default async function RootLayout({
                     "position": 3,
                     "name": "Services",
                     "item": "https://mubx.dev/services"
-                  },
-                  {
-                    "@type": "ListItem",
-                    "position": 4,
-                    "name": "Blog",
-                    "item": "https://mubx.dev/blog"
                   }
                 ]
               },
@@ -318,30 +311,18 @@ export default async function RootLayout({
                 "description": "Omar Mubaidin's portfolio and web consultancy — MUBX. High-performance web development for startups in Jordan.",
                 "publisher": { "@id": "https://mubx.dev/#organization" },
                 "creator": { "@id": "https://mubx.dev/#person" },
-                "inLanguage": ["en", "ar"],
-                "potentialAction": {
-                  "@type": "SearchAction",
-                  "target": {
-                    "@type": "EntryPoint",
-                    "urlTemplate": "https://mubx.dev/blog?q={search_term_string}"
-                  },
-                  "query-input": "required name=search_term_string"
-                }
+                "inLanguage": ["en"]
               }
             ]
           }} />
-          <ScrollProgressBar />
-          <SocialSidebar />
+          <ScrollProgress />
           <SmoothScroll>
-            <main id="main-content">
+            <main id="main-content" tabIndex={-1} className="outline-none">
               {children}
             </main>
           </SmoothScroll>
           <SpeedInsights />
           <Analytics />
-          <Suspense fallback={null}>
-            <DynamicChatWidget />
-          </Suspense>
 
         </ThemeProvider>
       </body>

@@ -4,7 +4,6 @@ import Projects from '@/components/Projects';
 import Testimonials from '@/components/Testimonials';
 import { siteConfig } from '@/config/seo';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { Suspense } from 'react';
 import { dictionary, Locale } from '@/lib/dictionaries';
@@ -72,7 +71,7 @@ export default async function ProjectsPage(props: Readonly<Props>) {
                             "url": siteConfig.url
                         }
                     }} />
-                    <Footer />
+
                 </main>
             </LanguageProvider>
         </Suspense>

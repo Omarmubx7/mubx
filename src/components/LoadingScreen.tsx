@@ -3,20 +3,36 @@
 import { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const TOTAL_DURATION = 1800; // ms before exit starts
-const PROGRESS_DURATION = 1500; // ms for the progress bar fill
+const TOTAL_DURATION = 300; // ms before exit starts
+const PROGRESS_DURATION = 250; // ms for the progress bar fill
 
 export default function LoadingScreen() {
+  const [mounted, setMounted] = useState(false);
   const [phase, setPhase] = useState<'loading' | 'exit' | 'done'>('loading');
   const [progress, setProgress] = useState(0);
 
   const startExit = useCallback(() => {
     setPhase('exit');
-    setTimeout(() => setPhase('done'), 800);
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('mubx-loaded', 'true');
+    }
+    setTimeout(() => setPhase('done'), 150);
+  }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+    if (typeof window !== 'undefined') {
+      const isLoaded = sessionStorage.getItem('mubx-loaded');
+      if (isLoaded) {
+        setPhase('done');
+      }
+    }
   }, []);
 
   // Progress bar animation
   useEffect(() => {
+    if (!mounted || phase === 'done') return;
     const start = performance.now();
     let raf: number;
 
@@ -31,15 +47,16 @@ export default function LoadingScreen() {
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [phase, mounted]);
 
   // Phase timer
   useEffect(() => {
+    if (!mounted || phase === 'done') return;
     const timer = setTimeout(startExit, TOTAL_DURATION);
     return () => clearTimeout(timer);
-  }, [startExit]);
+  }, [startExit, phase, mounted]);
 
-  if (phase === 'done') return null;
+  if (!mounted || phase === 'done') return null;
 
   return (
     <AnimatePresence>
@@ -47,7 +64,7 @@ export default function LoadingScreen() {
         key="loading-screen"
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.6, ease: [0.7, 0, 0.2, 1] }}
+        transition={{ duration: 0.15, ease: [0.7, 0, 0.2, 1] }}
         style={{
           position: 'fixed',
           inset: 0,

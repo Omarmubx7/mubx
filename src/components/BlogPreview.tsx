@@ -1,100 +1,90 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { fadeUp, staggerContainer } from '@/lib/motion';
-import { blogPosts } from '@/lib/blog-data';
-import Badge from './ui/Badge';
+import { getBlogPosts } from '@/lib/blog-data';
 import { useLanguage } from '@/context/LanguageContext';
-
-import { useState, useEffect } from 'react';
-import { BlogPostSkeleton } from './ui/LoadingSkeleton';
+import TextReveal from './ui/TextReveal';
 
 export default function BlogPreview() {
-    const [isLoading, setIsLoading] = useState(true);
-    const posts = blogPosts.slice(0, 3);
-    const { language } = useLanguage();
+    const { language, t, isRTL } = useLanguage();
+    const posts = getBlogPosts(language).slice(0, 3);
 
     const getHref = (path: string) => {
         return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
     };
 
-    useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 600);
-        return () => clearTimeout(timer);
-    }, []);
-
     return (
-        <section className="py-24 relative border-t border-white/5">
-            <div className="container mx-auto px-6 md:px-12">
+        <section id="blog-preview" className="py-24 relative bg-background border-b border-border/30">
+            <div className="w-full px-6 md:px-12 lg:px-16 xl:px-24 relative z-10">
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={staggerContainer}
-                    className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+                    className="mb-16"
                 >
-                    <div>
-                        <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold mb-4">
-                            ARTICLES & <span className="text-neon">INSIGHTS</span>
-                        </motion.h2>
-                        <motion.p variants={fadeUp} className="text-muted text-lg max-w-xl">
-                            Technical deep dives and thoughts on performance, security, and the future of web development.
-                        </motion.p>
-                    </div>
-                    <motion.div variants={fadeUp}>
-                        <Link href={getHref('/blog')} className="flex items-center gap-2 text-white hover:text-neon transition-colors font-bold group">
-                            Read all articles
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                    </motion.div>
+                    <p className="text-neon font-mono text-sm mb-4 tracking-widest">05</p>
+                    <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase flex flex-wrap gap-x-3">
+                        <TextReveal text={t.blog.badge} splitType="letter" /> 
+                        <span className="text-neon">
+                            <TextReveal text={t.blog.titleHighlight} splitType="letter" delay={0.4} />
+                        </span>
+                    </h2>
+                    <p className="text-xs text-muted-foreground font-mono mt-4 max-w-xl">
+                        {"// "}{t.blog.description}
+                    </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {isLoading
-                        ? Array.from({ length: 3 }).map((_, i) => (
-                            <div key={i} className="p-8 rounded-2xl bg-white/5 border border-white/5">
-                                <BlogPostSkeleton />
-                            </div>
-                        ))
-                        : posts.map((post, i) => (
-                            <motion.div
-                                key={i}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                variants={fadeUp}
-                                className="group relative p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-neon/30 hover:bg-white/10 transition-all duration-300 flex flex-col items-start h-full"
-                            >
-                                <div className="flex justify-between w-full items-center mb-4">
-                                    <span className="text-xs font-mono text-neon uppercase tracking-widest">{post.date}</span>
+                <div className="grid grid-cols-1 md:grid-cols-3 border border-border/30 divide-y md:divide-y-0 md:divide-x rtl:md:divide-x-reverse divide-border/30 bg-background/50">
+                    {posts.map((post) => (
+                        <motion.div
+                            key={post.slug}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeUp}
+                            className="group relative p-6 md:p-8 hover:bg-white/[0.015] transition-all duration-300 flex flex-col justify-between min-h-[300px] rounded-none"
+                        >
+                            <div className="space-y-4">
+                                <div className="flex justify-between w-full items-center text-[10px] font-mono">
+                                    <span className="text-muted-foreground uppercase">{post.date}</span>
+                                    <span className="text-neon font-bold">{"// "}{post.tag}</span>
                                 </div>
 
-                                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-neon transition-colors">
-                                    {post.title}
+                                <h3 className="text-lg font-bold text-foreground group-hover:text-neon transition-colors line-clamp-2">
+                                    <Link href={getHref(`/blog/${post.slug}`)}>
+                                        {post.title}
+                                    </Link>
                                 </h3>
 
-                                <p className="text-muted leading-relaxed mb-6">
+                                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-4 font-mono">
                                     {post.excerpt}
                                 </p>
+                            </div>
 
-                                {/* Tags */}
-                                <div className="flex flex-wrap gap-2 mb-6 mt-auto relative z-20">
-                                    <Link href={`/blog?tag=${post.tag}`} className="hover:opacity-80 transition-opacity">
-                                        <Badge variant="ghost" className="pl-0 text-neon/80 font-mono text-xs hover:text-neon">{post.tag}</Badge>
-                                    </Link>
-                                </div>
+                            <div className="flex gap-4 items-center w-full pt-4 border-t border-border/10 mt-8">
+                                <Link 
+                                    href={getHref(`/blog/${post.slug}`)} 
+                                    className="text-foreground hover:text-neon text-xs font-bold flex items-center gap-2 transition-all font-mono uppercase tracking-wider"
+                                >
+                                    {t.blog.readMore} {isRTL ? '←' : '→'}
+                                </Link>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
 
-                                <div className="flex gap-4 items-center w-full pt-4 border-t border-white/5 mt-auto">
-                                    <Link href={getHref(`/blog/${post.slug}`)} className="text-white text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                                        Read Article <ArrowRight className="w-4 h-4 text-neon" />
-                                    </Link>
-                                </div>
-                            </motion.div>
-                        ))}
+                <div className="mt-12 flex justify-end">
+                    <Link
+                        href={getHref('/blog')}
+                        className="px-6 py-3 text-xs font-mono font-bold text-foreground border border-border/30 hover:border-neon hover:text-neon transition-all bg-card/5 rounded-none"
+                    >
+                        {language === 'en' ? 'VIEW ALL ARTICLES' : 'عرض كافة المقالات'}
+                    </Link>
                 </div>
             </div>
-        </section >
+        </section>
     );
 }

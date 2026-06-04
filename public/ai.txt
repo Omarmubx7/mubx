@@ -58,7 +58,7 @@ Projects:
 - MUBXbot (https://bot.mubx.dev): AI-powered chat assistant for 24/7 lead support and guided service discovery.
 - BloB.JO (https://www.blobjor.me): Jordan's first custom Print-on-Demand e-commerce store with real-time product visualization and Zain Cash/CliQ payment integration.
 - Vynex Media (https://vynexmedia.vercel.app): Digital agency platform. Delivered 20% lead increase in first 30 days (verified via Google Analytics).
-- HTU Martial Arts (https://htumartialarts.42web.io): University club management system digitalizing 100+ student memberships.
+- HTU Martial Arts (https://htu-martial-arts-man.vercel.app): University club management system digitalizing 100+ student memberships.
 - The Glorious Page (https://www.theglorious.page): Custom link-in-bio brand hub with Instagram integration and premium animations.
 
 # ─────────────────────────────────────────────

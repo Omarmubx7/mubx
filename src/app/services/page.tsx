@@ -3,9 +3,11 @@ import { LanguageProvider } from '@/context/LanguageContext';
 import Services from '@/components/Services';
 import { siteConfig } from '@/config/seo';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 import JsonLd from '@/components/JsonLd';
 import { Suspense } from 'react';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 
 import { dictionary, Locale } from '@/lib/dictionaries';
 
@@ -49,13 +51,38 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 export default async function ServicesPage(props: Readonly<Props>) {
     const searchParams = await props.searchParams;
     const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+    const t = dictionary[lang];
+    const getHref = (path: string) => {
+        if (lang === 'ar') {
+            return path === '/' ? '/?lang=ar' : `${path}?lang=ar`;
+        }
+        return path;
+    };
 
     return (
         <Suspense>
             <LanguageProvider initialLocale={lang}>
                 <main className="min-h-screen bg-background selection:bg-neon selection:text-black">
                     <Navbar />
-                    <div className="pt-24">
+                    
+                    {/* Standalone Page Hero / Header consistent with project detail pages */}
+                    <div className="pt-32 pb-4">
+                        <div className="container mx-auto px-6 md:px-12 max-w-6xl">
+                            <Link href={getHref('/')} className="inline-flex items-center gap-2 text-muted hover:text-white mb-8 transition-colors group">
+                                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform rtl:rotate-180 rtl:group-hover:translate-x-1" />
+                                {t.nav.backToHome}
+                            </Link>
+
+                            <h1 className="text-4xl md:text-6xl font-black text-white uppercase leading-[0.9] mb-4">
+                                {t.services.title} <span className="text-neon">{t.services.titleHighlight}</span>
+                            </h1>
+                            <p className="text-muted text-lg max-w-2xl leading-relaxed">
+                                {t.services.subtitle}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="pt-0">
                         <Services />
                     </div>
 
@@ -141,7 +168,7 @@ export default async function ServicesPage(props: Readonly<Props>) {
                         ]
                     }} />
 
-                    <Footer />
+
                 </main>
             </LanguageProvider>
         </Suspense>

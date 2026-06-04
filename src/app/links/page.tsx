@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { LanguageProvider } from '@/context/LanguageContext';
 
 import Badge from '@/components/ui/Badge';
-import ScrollReveal from '@/components/ui/ScrollReveal';
 import { GithubIcon, LinkedinIcon, Globe, Phone, InstagramIcon, ArrowRight, Mail, Mic, Bot } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -62,12 +61,11 @@ type LinkItem = {
 type LinkCardProps = {
     link: LinkItem;
     isPrimary?: boolean;
-    delay?: number;
 }
 
-function LinkCard({ link, isPrimary = false, delay = 0 }: Readonly<LinkCardProps>) {
+function LinkCard({ link, isPrimary = false }: Readonly<LinkCardProps>) {
     return (
-        <ScrollReveal direction="up" delay={delay} className="w-full">
+        <div className="w-full">
             <a
                 href={link.url}
                 target="_blank"
@@ -103,7 +101,7 @@ function LinkCard({ link, isPrimary = false, delay = 0 }: Readonly<LinkCardProps
                     <ArrowRight className={`w-4 h-4 md:w-5 md:h-5 ${isPrimary ? "text-background" : "text-neon"}`} />
                 </div>
             </a>
-        </ScrollReveal>
+        </div>
     );
 }
 
@@ -196,7 +194,7 @@ export default async function LinksPage(props: Readonly<Props>) {
 
                             {/* Hero Section */}
                             <header className="text-center flex flex-col items-center mb-16">
-                                <ScrollReveal direction="up" delay={100} className="mb-8">
+                                <div className="mb-8 w-full flex justify-center">
                                     <div className="relative group">
                                         <div className="absolute -inset-1 bg-linear-to-r from-neon to-[#FF8E8E] rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                                         <div className="relative w-28 h-28 md:w-36 md:h-36">
@@ -209,26 +207,26 @@ export default async function LinksPage(props: Readonly<Props>) {
                                             />
                                         </div>
                                     </div>
-                                </ScrollReveal>
+                                </div>
 
-                                <ScrollReveal direction="up" delay={200}>
+                                <div className="w-full">
                                     <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase leading-none">
                                         Omar <span className="text-foreground/30">/</span> Mubaidin
                                     </h1>
-                                </ScrollReveal>
+                                </div>
 
-                                <ScrollReveal direction="up" delay={300}>
+                                <div className="w-full">
                                     <p className="text-lg md:text-xl text-muted font-medium max-w-md mx-auto leading-relaxed mb-8">
                                         Building the modern web. <span className="text-foreground">Web systems for brands that want to scale.</span>
                                     </p>
-                                </ScrollReveal>
+                                </div>
 
-                                <ScrollReveal direction="up" delay={400} className="flex flex-wrap justify-center gap-2">
+                                <div className="flex flex-wrap justify-center gap-2 w-full">
                                     <Badge variant="outline">⚡ NEXT.JS</Badge>
                                     <Badge variant="outline">TS TYPESCRIPT</Badge>
                                     <Badge variant="outline">TAILWIND</Badge>
                                     <Badge variant="neon">FREELANCE</Badge>
-                                </ScrollReveal>
+                                </div>
                             </header>
 
                             {/* Links List - Single Column */}
@@ -236,51 +234,45 @@ export default async function LinksPage(props: Readonly<Props>) {
 
                                 {/* Work Section */}
                                 <section className="flex flex-col gap-4">
-                                    <ScrollReveal direction="up" delay={500} className="flex items-center gap-3 mb-2 px-2">
+                                    <div className="flex items-center gap-3 mb-2 px-2 w-full">
                                         <div className="h-px bg-neon w-8" />
                                         <h2 className="text-xs font-bold text-neon uppercase tracking-widest">Work & Contact</h2>
-                                    </ScrollReveal>
+                                    </div>
                                     <div className="flex flex-col gap-3">
-                                        {workLinks.map((link, i) => (
-                                            <LinkCard key={link.name} link={link} isPrimary={link.primary} delay={600 + (i * 100)} />
+                                        {workLinks.map((link) => (
+                                            <LinkCard key={link.name} link={link} isPrimary={link.primary} />
                                         ))}
                                     </div>
                                 </section>
 
                                 {/* Latest Projects Section */}
                                 <section className="flex flex-col gap-4">
-                                    <ScrollReveal direction="up" delay={900} className="flex items-center gap-3 mb-2 px-2">
+                                    <div className="flex items-center gap-3 mb-2 px-2 w-full">
                                         <div className="h-px bg-neon w-8" />
                                         <h2 className="text-xs font-bold text-neon uppercase tracking-widest">My Latest Projects</h2>
-                                    </ScrollReveal>
+                                    </div>
                                     <div className="flex flex-col gap-3">
-                                        {latestProjectsLinks.map((link, i) => (
-                                            <LinkCard key={link.name} link={link} delay={1000 + (i * 100)} />
+                                        {latestProjectsLinks.map((link) => (
+                                            <LinkCard key={link.name} link={link} />
                                         ))}
                                     </div>
                                 </section>
 
                                 {/* Social Section */}
                                 <section className="flex flex-col gap-4">
-                                    <ScrollReveal direction="up" delay={1300} className="flex items-center gap-3 mb-2 px-2">
+                                    <div className="flex items-center gap-3 mb-2 px-2 w-full">
                                         <div className="h-px bg-foreground/20 w-8" />
                                         <h2 className="text-xs font-bold text-foreground/40 uppercase tracking-widest">Social & Code</h2>
-                                    </ScrollReveal>
+                                    </div>
                                     <div className="flex flex-col gap-3">
-                                        {socialLinks.map((link, i) => (
-                                            <LinkCard key={link.name} link={link} delay={1400 + (i * 100)} />
+                                        {socialLinks.map((link) => (
+                                            <LinkCard key={link.name} link={link} />
                                         ))}
                                     </div>
                                 </section>
 
                             </div>
 
-                            {/* Footer Credit */}
-                            <ScrollReveal direction="up" delay={1300} className="mt-20 text-center">
-                                <p className="text-sm font-bold tracking-widest uppercase opacity-20">
-                                    MUBX <span className="mx-2">/</span> EST 2026
-                                </p>
-                            </ScrollReveal>
                         </div>
                     </div>
 

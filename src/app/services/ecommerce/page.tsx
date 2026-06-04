@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { siteConfig } from '@/config/seo';
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
@@ -83,7 +82,7 @@ export default async function EcommercePage(props: Props) {
                         </div>
                     </section>
 
-                    <Footer />
+
                 </main>
             </LanguageProvider>
         </Suspense>

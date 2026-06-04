@@ -32,7 +32,7 @@ export default function StickyCTA() {
                     initial={{ y: 100, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: 100, opacity: 0 }}
-                    className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-2xl px-4 pointer-events-none"
+                    className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-2xl px-4 pointer-events-none hidden md:block"
                 >
                     <div className="bg-black/80 backdrop-blur-xl border border-white/10 p-2 rounded-2xl flex items-center justify-between gap-4 pointer-events-auto shadow-2xl overflow-hidden relative group">
                         {/* Glow effect */}

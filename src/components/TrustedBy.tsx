@@ -14,58 +14,99 @@ const logos = [
 ];
 
 export default function TrustedBy() {
-    const { t } = useLanguage();
-
-    // Duplicate logos for seamless loop
-    const doubledLogos = [...logos, ...logos, ...logos];
+    const { t, isRTL } = useLanguage();
 
     return (
-        <section className="py-12 bg-background border-b border-border/50 overflow-hidden relative">
-            <div className="container mx-auto px-6 relative z-10">
-                <p className="text-center text-[10px] font-bold text-muted uppercase tracking-[0.3em] mb-12 opacity-80">
-                    {t.trustedBy.line}
-                </p>
-            </div>
+        <section className="w-full bg-background border-b border-border/30 overflow-hidden relative">
+            <div className="grid grid-cols-1 lg:grid-cols-12 w-full border-collapse">
+                {/* Info Column (Left in LTR, Right in RTL) */}
+                <div className="lg:col-span-3 p-6 md:p-8 flex flex-col justify-center border-b lg:border-b-0 lg:border-r rtl:lg:border-r-0 rtl:lg:border-l border-border/30 bg-card/5 select-none">
+                    <span className="text-[10px] font-bold text-neon uppercase tracking-[0.2em] font-mono mb-2">
+                        {isRTL ? '// شركاء موثوقون' : '// TRUSTED BY'}
+                    </span>
+                    <p className="text-xs text-muted leading-relaxed font-mono">
+                        {t.trustedBy.line}
+                    </p>
+                </div>
 
-            <div className="relative flex overflow-hidden group">
-                {/* Gradient Masks */}
-                <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-                <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+                {/* Slider Column */}
+                <div className="lg:col-span-9 py-8 overflow-hidden relative flex items-center min-h-[110px] bg-background">
+                    {/* Fade Gradient Masks */}
+                    <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-                <motion.div
-                    className="flex gap-8 md:gap-12 items-center whitespace-nowrap px-12"
-                    animate={{
-                        x: [0, -100 * logos.length - (logos.length * 32)], // Adjust for gaps
-                    }}
-                    transition={{
-                        x: {
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            duration: 35,
-                            ease: "linear",
-                        },
-                    }}
-                >
-                    {doubledLogos.map((logo, idx) => (
-                        <div
-                            key={`${logo.name}-${idx}`}
-                            className="relative h-20 md:h-28 w-40 md:w-56 flex items-center justify-center bg-card/30 backdrop-blur-md rounded-2xl border border-border/50 hover:border-neon/50 hover:bg-neon/5 transition-all duration-500 shadow-xl group/logo shrink-0"
+                    <div className="flex w-max select-none" dir="ltr">
+                        {/* First sliding track */}
+                        <motion.div
+                            className="flex gap-6 md:gap-8 items-center shrink-0 pr-6 md:pr-8"
+                            animate={{
+                                x: [0, "-100%"],
+                            }}
+                            transition={{
+                                x: {
+                                    repeat: Infinity,
+                                    repeatType: "loop",
+                                    duration: 25,
+                                    ease: "linear",
+                                },
+                            }}
                         >
-                            {/* Inner Glow */}
-                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/logo:opacity-100 transition-opacity" />
+                            {logos.map((logo, idx) => (
+                                <div
+                                    key={`${logo.name}-track1-${idx}`}
+                                    className="relative h-16 md:h-20 w-36 md:w-44 flex items-center justify-center bg-card/10 border border-border/30 hover:border-neon/40 hover:bg-white/[0.015] transition-all duration-300 rounded-none group/logo shrink-0"
+                                >
+                                    <div className="absolute inset-0 rounded-none bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/logo:opacity-100 transition-opacity" />
 
-                            <div className="relative h-10 md:h-14 w-28 md:w-40 grayscale opacity-50 group-hover/logo:opacity-100 group-hover/logo:grayscale-0 transition-all duration-500">
-                                <Image
-                                    src={logo.src}
-                                    alt={`${logo.name} Logo`}
-                                    fill
-                                    className="object-contain"
-                                    sizes="(max-width: 768px) 120px, 160px"
-                                />
-                            </div>
-                        </div>
-                    ))}
-                </motion.div>
+                                    <div className="relative h-8 md:h-10 w-24 md:w-32 grayscale opacity-50 group-hover/logo:opacity-100 group-hover/logo:grayscale-0 transition-all duration-500">
+                                        <Image
+                                            src={logo.src}
+                                            alt={`${logo.name} Logo`}
+                                            fill
+                                            className="object-contain"
+                                            sizes="(max-width: 768px) 100px, 140px"
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+                        </motion.div>
+
+                        {/* Second sliding track (identical copy for seamless looping) */}
+                        <motion.div
+                            className="flex gap-6 md:gap-8 items-center shrink-0 pr-6 md:pr-8"
+                            animate={{
+                                x: [0, "-100%"],
+                            }}
+                            transition={{
+                                x: {
+                                    repeat: Infinity,
+                                    repeatType: "loop",
+                                    duration: 25,
+                                    ease: "linear",
+                                },
+                            }}
+                        >
+                            {logos.map((logo, idx) => (
+                                <div
+                                    key={`${logo.name}-track2-${idx}`}
+                                    className="relative h-16 md:h-20 w-36 md:w-44 flex items-center justify-center bg-card/10 border border-border/30 hover:border-neon/40 hover:bg-white/[0.015] transition-all duration-300 rounded-none group/logo shrink-0"
+                                >
+                                    <div className="absolute inset-0 rounded-none bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/logo:opacity-100 transition-opacity" />
+
+                                    <div className="relative h-8 md:h-10 w-24 md:w-32 grayscale opacity-50 group-hover/logo:opacity-100 group-hover/logo:grayscale-0 transition-all duration-500">
+                                        <Image
+                                            src={logo.src}
+                                            alt={`${logo.name} Logo`}
+                                            fill
+                                            className="object-contain"
+                                            sizes="(max-width: 768px) 100px, 140px"
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </div>
             </div>
         </section>
     );

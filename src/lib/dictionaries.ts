@@ -15,18 +15,19 @@ export const dictionary = {
             about: 'About',
             work: 'Work',
             articles: 'Articles',
-            costCalc: 'Cost Calculator',
+
             freeTools: 'Free Tools (Open Source)',
             arabicVer: 'Arabic Version (عربي)', // Kept for legacy if needed, but toggle replaces this
             bookCall: 'Book a Call',
             links: 'Link Tree',
+            backToHome: 'Back to Home',
         },
         hero: {
             badge: 'Revenue-Focused Web Consultant',
             titleStart: 'Scale your startup with',
             titleHighlight: 'revenue-focused',
             titleEnd: 'technical solutions.',
-            description: 'I help Jordanian founders build fast, secure web systems with local payment integrations and high-conversion SEO.',
+            description: 'Most web developers build slow websites that look like templates, ignore local payment systems (Zain Cash/CliQ), and fail to convert visitors. I engineer custom web applications that load in milliseconds, integrate seamless payments, and turn traffic into actual revenue.',
             ctaPrimary: 'Book a 15-min call',
             ctaSecondary: 'See client results',
             imageAlt: 'Omar Mubaidin - Web Consultant',
@@ -103,6 +104,7 @@ export const dictionary = {
             rights: 'All rights reserved.',
             designed: 'Designed with precision in Amman.',
             bookCall: 'Book a Call',
+            builtWith: 'Loosely designed in Figma, coded in VS Code. Built with Next.js, React 19, and Tailwind CSS. Deployed on Vercel.',
             legal: {
                 privacy: 'Privacy Policy',
                 terms: 'Terms of Service'
@@ -114,11 +116,11 @@ export const dictionary = {
             titleStart: 'WEB DEVELOPER IN',
             titleHighlight: 'AMMAN',
             name: 'Omar Mubaidin',
-            descriptionStart: "I’m",
-            descriptionMiddle: ", a Computer Science student and web developer based in Jordan.",
-            descriptionEnd: "Unlike typical template-users, I engineer",
-            performance: "performance",
-            descriptionContext: ". My academic background in CS allows me to build secure, database-driven systems that safeguard your customer data.",
+            descriptionStart: "I’m ",
+            descriptionMiddle: ", a Computer Science student at HTU and a web developer based in Amman, Jordan. I'm obsessed with late-night coding sessions, building apps that solve real-world problems in Jordan, and aiming for financial independence through tech.",
+            descriptionEnd: "Unlike typical template-users, I engineer ",
+            performance: "performance-focused",
+            descriptionContext: " systems. My academic background in CS allows me to build secure, database-driven software that safeguards customer data.",
             quoteStart: "Most of my pages load in under",
             quoteHighlight: "1.5s on 4G",
             quoteEnd: "networks in Jordan.",
@@ -144,7 +146,7 @@ export const dictionary = {
             techStack: 'Tech Stack',
             stats: {
                 dev: 'Web Developer',
-                secure: 'Secure & Fast',
+                secure: 'Lighthouse Score',
                 location: 'Based in Amman',
                 design: 'Modern Design'
             }
@@ -228,12 +230,12 @@ export const dictionary = {
             connect: "Let's Connect",
             titleStart: "Ready to build with",
             titleHighlight: "MUBX",
-            desc1: "Ready to scale? I'm currently accepting new projects for Q1.",
+            desc1: "Ready to scale? I'm currently accepting new projects for Q3 2026.",
             desc2: "Let's discuss how we can engineer your growth.",
             desc3: "Whether you need a full-stack audit, a database redesign, or a complete product build, I'm ready to architect the solution.",
             availability: {
                 title: "Availability & Response",
-                status: "Accepting 2 New Projects (Q1)",
+                status: "Accepting 2 New Projects (Q3 2026)",
                 response: "I read every message myself and reply within",
                 responseTime: "24 hours",
                 context: "Currently prioritizing e-commerce and SaaS projects.",
@@ -247,7 +249,10 @@ export const dictionary = {
             location: "Location",
             locationVal: "Amman, Jordan (Remote Available)",
             form: {
-                badge: 'Premium Systems From 499.99 JD',
+                step1Label: 'Details',
+                step2Label: 'Scope',
+                step3Label: 'Brief',
+                badge: 'Premium Systems From 49.99 JD',
                 title: 'Start your project brief',
                 fastReplies: '24h Response',
                 security: 'Secure Systems',
@@ -255,7 +260,7 @@ export const dictionary = {
                 goal: 'Primary Goal',
                 goalOptions: ['New Website', 'Redesign', 'E-commerce', 'Custom Web App', 'Technical Audit'],
                 budget: 'Budget Range',
-                budgetOptions: ['499.99 - 899.99 JD (Launch)', '899.99 - 1,999.99 JD (Growth)', '1,999.99+ JD (Enterprise)'],
+                budgetOptions: ['49.99 JD (Link Tree)', '149.99 - 299.99 JD (Landing Page)', '499.99 - 899.99 JD (Launch)', '899.99 - 1,999.99 JD (Growth)', '1,999.99+ JD (Enterprise)'],
                 deadline: 'Timeline',
                 deadlineOptions: ['ASAP', '1 Month', 'Flexible'],
                 name: 'Contact Person',
@@ -419,58 +424,7 @@ export const dictionary = {
             readMore: 'Read Article',
             backToNotes: 'Back to Notes'
         },
-        tools: {
-            calculator: {
-                title: 'Website Cost',
-                titleHighlight: 'Calculator',
-                description: 'Get an instant ballpark estimate for your next web project in Jordan. No email required to see the price.',
-                howItWorks: {
-                    title: 'How is this calculated?',
-                    desc: 'Web development pricing in Jordan varies wildly. This calculator is based on high-quality, custom development using modern tech stacks (Next.js, React) rather than cheap WordPress templates.',
-                    list: [
-                        'Standard Design: Clean, professional, mobile-responsive.',
-                        'Premium Design: Custom animations, unique layouts, and award-winning aesthetics.',
-                        'Bilingual: Full RTL (Arabic) support and content management.'
-                    ]
-                },
-                ui: {
-                    estimatedInvestment: 'Estimated Investment',
-                    disclaimer: '*This is a rough estimate based on standard requirements. Final project scope may vary.',
-                    getQuote: 'Get Exact Quote',
-                    reset: 'Reset Calculator'
-                },
-                options: [
-                    {
-                        id: 'pages',
-                        title: 'Number of Pages',
-                        choices: [
-                            { label: 'One Page (Landing)', price: 400, desc: 'High conversion single page.' },
-                            { label: 'Standard (5 Pages)', price: 850, desc: 'Home, About, Services, Contact, etc.' },
-                            { label: 'Large (10+ Pages)', price: 1250, desc: 'Complex content structure.' },
-                        ]
-                    },
-                    {
-                        id: 'design',
-                        title: 'Design Style',
-                        choices: [
-                            { label: 'Clean & Standard', price: 0, desc: 'Professional, functional design.' },
-                            { label: 'Premium & Animated', price: 250, desc: 'Award-winning visuals & logic.' },
-                        ]
-                    },
-                    {
-                        id: 'features',
-                        title: 'Functionality',
-                        multi: true,
-                        choices: [
-                            { id: 'cms', label: 'CMS (Manage Content)', price: 150 },
-                            { id: 'bilingual', label: 'Bilingual (Ar/En)', price: 200 },
-                            { id: 'ecommerce', label: 'E-commerce System', price: 400 },
-                            { id: 'seo', label: 'Advanced SEO Setup', price: 100 },
-                        ]
-                    }
-                ]
-            }
-        },
+        tools: {},
         legalPage: {
             privacy: {
                 title: 'Privacy Policy',
@@ -716,18 +670,19 @@ export const dictionary = {
             about: 'من نحن',
             work: 'أعمالي',
             articles: 'المقالات',
-            costCalc: 'حاسبة التكلفة',
+
             freeTools: 'أدوات مجانية',
             arabicVer: 'English Version',
             bookCall: 'احجز مكالمة',
             links: 'شجرة الروابط',
+            backToHome: 'العودة للرئيسية',
         },
         hero: {
             badge: 'مستشار تقني لتطوير الأعمال',
             titleStart: 'ضاعف نمو شركتك عبر',
             titleHighlight: 'أنظمة برمجية',
             titleEnd: 'تركز على الأرباح.',
-            description: 'أساعد رواد الأعمال في الأردن على بناء أنظمة ويب سريعة وآمنة، مع ربط وسائل الدفع المحلية وتحسين ظهورك في محركات البحث.',
+            description: 'يبني معظم مطوري الويب مواقع بطيئة تبدو كالقوالب الجاهزة، ويتجاهلون أنظمة الدفع المحلية (زين كاش/كليك)، ويفشلون في تحويل الزوار إلى عملاء. أنا أقوم بهندسة تطبيقات ويب مخصصة تعمل في أجزاء من الثانية، وتتكامل بسلاسة مع بوابات الدفع، وتحول الزيارات إلى إيرادات فعلية.',
             ctaPrimary: 'احجز مكالمة 15 دقيقة',
             ctaSecondary: 'شاهد نتائج العملاء',
             imageAlt: 'عمر مبيضين - مستشار تطوير ويب',
@@ -804,6 +759,7 @@ export const dictionary = {
             rights: 'جميع الحقوق محفوظة.',
             designed: 'صُمم بدقة في عمان.',
             bookCall: 'احجز مكالمة',
+            builtWith: 'صُمم تقريباً في Figma، كُتب الكود في VS Code. تم البناء باستخدام Next.js و React 19 و Tailwind CSS. تم النشر على Vercel.',
             legal: {
                 privacy: 'سياسة الخصوصية',
                 terms: 'شروط الخدمة'
@@ -814,11 +770,11 @@ export const dictionary = {
             titleStart: 'مطور ويب في',
             titleHighlight: 'عمان',
             name: 'عمر مبيضين',
-            descriptionStart: "أنا",
-            descriptionMiddle: "، طالب علوم حاسوب ومطور ويب مقيم في الأردن.",
-            descriptionEnd: "على عكس مستخدمي القوالب الجاهزة، أنا أهندس",
-            performance: "الأداء",
-            descriptionContext: ". خلفيتي الأكاديمية تسمح لي ببناء أنظمة آمنة وقواعد بيانات تحمي بيانات عملائك.",
+            descriptionStart: "أنا ",
+            descriptionMiddle: "، طالب علوم حاسوب في جامعة الحسين التقنية ومطور ويب مقيم في عمان، الأردن. أنا شغوف بجلسات البرمجة الليلية المتأخرة، وبناء التطبيقات التي تحل مشكلات حقيقية في الأردن، والسعي نحو الاستقلال المالي من خلال التكنولوجيا.",
+            descriptionEnd: "على عكس مستخدمي القوالب الجاهزة، أنا أهندس أنظمة تركز على ",
+            performance: "الأداء العالي",
+            descriptionContext: " والأمان. خلفيتي الأكاديمية تسمح لي ببناء برمجيات آمنة وقواعد بيانات متينة تحمي بيانات عملائك.",
             quoteStart: "معظم صفحاتي تفتح في أقل من",
             quoteHighlight: "1.5 ثانية على 4G",
             quoteEnd: "في شبكات الأردن.",
@@ -844,7 +800,7 @@ export const dictionary = {
             techStack: 'التقنيات المستخدمة',
             stats: {
                 dev: 'مطور ويب',
-                secure: 'آمن وسريع',
+                secure: 'نقاط لايت هاوس',
                 location: 'مقيم في عمان',
                 design: 'تصميم حديث'
             }
@@ -879,12 +835,12 @@ export const dictionary = {
             connect: "تواصل معي",
             titleStart: "جاهز للبناء مع",
             titleHighlight: "MUBX",
-            desc1: "جاهز للتوسع؟ استقبل حالياً مشاريع جديدة للربع الأول.",
+            desc1: "جاهز للتوسع؟ استقبل حالياً مشاريع جديدة للربع الثالث 2026.",
             desc2: "دعنا نناقش كيف يمكننا هندسة نمو مشروعك.",
             desc3: "سواء كنت بحاجة لتدقيق شامل، إعادة تصميم قاعدة بيانات، أو بناء منتج كامل، أنا جاهز.",
             availability: {
                 title: "التوافر والرد",
-                status: "متاح لمشروعين جديدين (Q1)",
+                status: "متاح لمشروعين جديدين (الربع الثالث 2026)",
                 response: "أقرأ كل رسالة بنفسي وأرد خلال",
                 responseTime: "24 ساعة",
                 context: "الأولوية حالياً لمشاريع المتاجر الالكترونية والأنظمة.",
@@ -898,7 +854,10 @@ export const dictionary = {
             location: "الموقع",
             locationVal: "عمان، الأردن (متاح للعمل عن بعد)",
             form: {
-                badge: 'أنظمة متطورة تبدأ من 400 دينار',
+                step1Label: 'التفاصيل',
+                step2Label: 'المشروع',
+                step3Label: 'الملخص',
+                badge: 'أنظمة متطورة تبدأ من 50 دينار',
                 title: 'ابدأ ملخص مشروعك',
                 fastReplies: 'رد خلال 24 ساعة',
                 security: 'أنظمة آمنة',
@@ -906,7 +865,7 @@ export const dictionary = {
                 goal: 'الهدف الأساسي',
                 goalOptions: ['موقع جديد', 'إعادة تصميم', 'متجر إلكتروني', 'تطبيق ويب مخصص', 'تدقيق تقني'],
                 budget: 'نطاق الميزانية',
-                budgetOptions: ['400 - 850 دينار (انطلاق)', '850 - 2000 دينار (نمو)', 'أكثر من 2000 دينار (نخبة)'],
+                budgetOptions: ['49.99 دينار (صفحة روابط)', '149.99 - 299.99 دينار (صفحة هبوط)', '499.99 - 899.99 دينار (إطلاق)', '899.99 - 1,999.99 دينار (نمو)', 'أكثر من 1,999.99 دينار (مؤسسات)'],
                 deadline: 'الجدول الزمني',
                 deadlineOptions: ['بأسرع وقت', 'شهر واحد', 'مرن'],
                 name: 'شخص التواصل',
@@ -1070,58 +1029,7 @@ export const dictionary = {
             readMore: 'اقرأ المقال',
             backToNotes: 'عودة للمقالات'
         },
-        tools: {
-            calculator: {
-                title: 'حاسبة تكلفة',
-                titleHighlight: 'الموقع',
-                description: 'احصل على تقدير فوري لمشروع الويب القادم في الأردن. لا يلزم بريد إلكتروني لرؤية السعر.',
-                howItWorks: {
-                    title: 'كيف يتم الحساب؟',
-                    desc: 'أسعار تطوير الويب في الأردن تتفاوت بشكل كبير. تعتمد هذه الحاسبة على تطوير مخصص عالي الجودة باستخدام تقنيات حديثة (Next.js, React) بدلاً من قوالب ووردبريس الرخيصة.',
-                    list: [
-                        'تصميم قياسي: نظيف، احترافي، ومتجاوب مع الجوال.',
-                        'تصميم متميز: رسوم متحركة مخصصة، تخطيطات فريدة، وجماليات حائزة على جوائز.',
-                        'ثنائي اللغة: دعم كامل للغة العربية (RTL) وإدارة المحتوى.'
-                    ]
-                },
-                ui: {
-                    estimatedInvestment: 'الاستثمار المقدر',
-                    disclaimer: '*هذا تقدير تقريبي بناءً على المتطلبات القياسية. قد يختلف نطاق المشروع النهائي.',
-                    getQuote: 'احصل على عرض دقيق',
-                    reset: 'تصفير الحاسبة'
-                },
-                options: [
-                    {
-                        id: 'pages',
-                        title: 'عدد الصفحات',
-                        choices: [
-                            { label: 'صفحة واحدة (هبوط)', price: 400, desc: 'تحويل عالي لصفحة واحدة.' },
-                            { label: 'موقع قياسي (5 صفحات)', price: 850, desc: 'الرئيسية، من نحن، الخدمات، اتصل بنا، إلخ.' },
-                            { label: 'موقع كبير (10+ صفحات)', price: 1250, desc: 'هيكل محتوى معقد.' },
-                        ]
-                    },
-                    {
-                        id: 'design',
-                        title: 'أسلوب التصميم',
-                        choices: [
-                            { label: 'نظيف وقياسي', price: 0, desc: 'تصميم احترافي وعملي.' },
-                            { label: 'متميز ومتحرك', price: 250, desc: 'مرئيات ومنطق حائز على جوائز.' },
-                        ]
-                    },
-                    {
-                        id: 'features',
-                        title: 'الوظائف والميزات',
-                        multi: true,
-                        choices: [
-                            { id: 'cms', label: 'نظام إدارة محتوى (CMS)', price: 150 },
-                            { id: 'bilingual', label: 'ثنائي اللغة (عربي/إنجليزي)', price: 200 },
-                            { id: 'ecommerce', label: 'نظام تجارة إلكترونية', price: 400 },
-                            { id: 'seo', label: 'إعداد SEO متقدم', price: 100 },
-                        ]
-                    }
-                ]
-            }
-        },
+        tools: {},
         legalPage: {
             privacy: {
                 title: 'سياسة الخصوصية',

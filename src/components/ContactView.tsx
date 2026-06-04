@@ -7,7 +7,7 @@ import { Send, Loader2 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { fadeUp } from '@/lib/motion';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 import Badge from '@/components/ui/Badge';
 
 export default function ContactView() {
@@ -34,28 +34,48 @@ export default function ContactView() {
                 language,
             };
 
-            const dbRes = await fetch('/api/contact', {
+            const fetchWithTimeout = (url: string, options: RequestInit, timeout = 8000) => {
+                return new Promise<Response>((resolve, reject) => {
+                    const timer = setTimeout(() => reject(new Error('Submission request timed out')), timeout);
+                    fetch(url, options)
+                        .then(res => {
+                            clearTimeout(timer);
+                            resolve(res);
+                        })
+                        .catch(err => {
+                            clearTimeout(timer);
+                            reject(err);
+                        });
+                });
+            };
+
+            const dbPromise = fetchWithTimeout('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
+            }).then(async (res) => {
+                if (!res.ok) {
+                    const errorPayload = await res.json().catch(() => ({}));
+                    throw new Error(errorPayload?.details || errorPayload?.error || 'Failed to save contact submission');
+                }
+                return res;
             });
 
-            if (!dbRes.ok) {
-                const errorPayload = await dbRes.json().catch(() => ({}));
-                throw new Error(errorPayload?.details || errorPayload?.error || 'Failed to save contact submission');
-            }
-
-            // Trigger email notification
-            const notifyRes = await fetch('/api/notify', {
+            const notifyPromise = fetchWithTimeout('/api/notify', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
+            }).then(async (res) => {
+                if (!res.ok) {
+                    const errorData = await res.json().catch(() => ({}));
+                    console.error('📧 Resend Error Details:', JSON.stringify(errorData, null, 2));
+                }
+                return res;
+            }).catch((err) => {
+                console.error('📧 Resend Fetch Error:', err);
             });
 
-            if (!notifyRes.ok) {
-                const errorData = await notifyRes.json();
-                console.error('📧 Resend Error Details:', JSON.stringify(errorData, null, 2));
-            }
+            await Promise.all([dbPromise, notifyPromise]);
 
             router.push(language === 'en' ? '/success' : `/success?lang=${language}`);
         } catch (error: unknown) {
@@ -130,7 +150,7 @@ export default function ContactView() {
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.goal}</label>
-                                    <select name="type" id="type" className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none md:bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] md:bg-[length:20px_20px] md:bg-no-repeat md:bg-[right_1rem_center]">
+                                    <select name="type" id="type" className="w-full bg-card/40 border border-border rounded-xl ps-4 pe-10 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
                                         {t.contact.form.goalOptions.map((opt: string) => (
                                             <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
                                         ))}
@@ -141,7 +161,7 @@ export default function ContactView() {
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.budget}</label>
-                                    <select name="budget" id="budget" className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none md:bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] md:bg-[length:20px_20px] md:bg-no-repeat md:bg-[right_1rem_center]">
+                                    <select name="budget" id="budget" className="w-full bg-card/40 border border-border rounded-xl ps-4 pe-10 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
                                         {t.contact.form.budgetOptions.map((opt: string) => (
                                             <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
                                         ))}
@@ -149,7 +169,7 @@ export default function ContactView() {
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.deadline}</label>
-                                    <select name="timeline" id="timeline" className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none md:bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] md:bg-[length:20px_20px] md:bg-no-repeat md:bg-[right_1rem_center]">
+                                    <select name="timeline" id="timeline" className="w-full bg-card/40 border border-border rounded-xl ps-4 pe-10 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202%201z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
                                         {t.contact.form.deadlineOptions.map((opt: string) => (
                                             <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
                                         ))}
@@ -169,23 +189,32 @@ export default function ContactView() {
                                 />
                             </div>
 
-                            <button
-                                disabled={formState === 'submitting'}
-                                type="submit"
-                                className="w-full py-5 bg-neon text-black font-black uppercase tracking-widest text-lg rounded-xl hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all transform hover:scale-[1.01] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
-                            >
-                                {formState === 'submitting' ? (
-                                    <>
-                                        <Loader2 className="w-5 h-5 animate-spin" />
-                                        Sending...
-                                    </>
-                                ) : (
-                                    <>
-                                        {t.contact.form.submit}
-                                        <Send className="w-5 h-5" />
-                                    </>
+                            <div className="flex flex-col gap-3 w-full">
+                                <button
+                                    disabled={formState === 'submitting'}
+                                    type="submit"
+                                    className="w-full py-5 bg-neon text-black font-black uppercase tracking-widest text-lg rounded-xl hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all transform hover:scale-[1.01] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                                >
+                                    {formState === 'submitting' ? (
+                                        <>
+                                            <Loader2 className="w-5 h-5 animate-spin" />
+                                            Sending...
+                                        </>
+                                    ) : (
+                                        <>
+                                            {t.contact.form.submit}
+                                            <Send className="w-5 h-5" />
+                                        </>
+                                    )}
+                                </button>
+                                {formState === 'submitting' && (
+                                    <div className="flex gap-1.5 items-center justify-center mt-1">
+                                        <span className="w-2 h-2 rounded-full bg-neon animate-bounce" style={{ animationDelay: '0ms' }} />
+                                        <span className="w-2 h-2 rounded-full bg-neon animate-bounce" style={{ animationDelay: '150ms' }} />
+                                        <span className="w-2 h-2 rounded-full bg-neon animate-bounce" style={{ animationDelay: '300ms' }} />
+                                    </div>
                                 )}
-                            </button>
+                            </div>
 
                             {formState === 'error' && (
                                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 rounded-xl bg-red-500/20 border border-red-500/50 text-red-500 font-bold text-center text-sm">
@@ -196,7 +225,7 @@ export default function ContactView() {
                     </div>
                 </motion.div>
             </div>
-            <Footer />
+
         </main>
     );
 }

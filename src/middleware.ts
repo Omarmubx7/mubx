@@ -8,14 +8,8 @@ export function middleware(request: NextRequest) {
     const hostname = request.headers.get('host');
     const requestHeaders = new Headers(request.headers);
 
-    // Determine language from search param or cookie, default to 'en'
-    const langParam = url.searchParams.get('lang');
-    let locale: string;
-    if (langParam === 'ar' || langParam === 'en') {
-        locale = langParam;
-    } else {
-        locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
-    }
+    // Determine language - always 'en'
+    const locale = 'en';
 
     // Pass the locale to the server components via headers
     requestHeaders.set('x-next-locale', locale);

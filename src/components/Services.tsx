@@ -4,18 +4,39 @@
 import { motion } from 'framer-motion';
 import { fadeUp } from '@/lib/motion';
 import { ArrowRight } from 'lucide-react';
-
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Badge from './ui/Badge';
-import GradientText from './ui/GradientText';
 import LoadingSkeleton from './ui/LoadingSkeleton';
 import { useLanguage } from '@/context/LanguageContext';
+import TextReveal from '@/components/ui/TextReveal';
 
 export default function Services() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
+    const pathname = usePathname();
+    const isStandalone = pathname === '/services' || pathname === '/ar/services';
+
+    const getHref = (path: string) => {
+        if (language === 'ar') {
+            if (path.startsWith('/#')) {
+                return `/?lang=ar${path.substring(1)}`;
+            }
+            return path === '/' ? '/?lang=ar' : `${path}?lang=ar`;
+        }
+        return path;
+    };
 
     const [isLoading, setIsLoading] = useState(true);
     const [mounted, setMounted] = useState(false);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+        e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+    };
 
     useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -69,21 +90,26 @@ export default function Services() {
     return (
         <section id="services" className="py-24 relative bg-background">
             <div className="container mx-auto px-6 md:px-12">
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
-                    className="text-center mb-16 max-w-3xl mx-auto"
-                >
-                    <p className="text-neon font-mono text-sm mb-4 tracking-widest">03</p>
-                    <h2 className="text-3xl md:text-5xl font-bold mb-6 break-words text-foreground uppercase">
-                        {t.services.title} <GradientText>{t.services.titleHighlight}</GradientText>
-                    </h2>
-                    <p className="text-muted text-lg mb-8">
-                        {t.services.subtitle}
-                    </p>
-                </motion.div>
+                {!isStandalone && (
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={fadeUp}
+                        className="text-center mb-16 max-w-3xl mx-auto"
+                    >
+                        <p className="text-neon font-mono text-sm mb-4 tracking-widest">03</p>
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6 break-words text-foreground uppercase flex flex-wrap justify-center gap-x-3">
+                            <TextReveal text={t.services.title} splitType="letter" /> 
+                            <span className="text-neon">
+                                <TextReveal text={t.services.titleHighlight} splitType="letter" delay={0.4} />
+                            </span>
+                        </h2>
+                        <p className="text-muted text-lg mb-8">
+                            {t.services.subtitle}
+                        </p>
+                    </motion.div>
+                )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16">
                     {isLoading
@@ -100,7 +126,8 @@ export default function Services() {
                                 key={service.title}
                                 variants={fadeUp}
                                 whileHover={{ y: -8 }}
-                                className={`p-6 md:p-8 rounded-3xl border transition-all duration-300 group backdrop-blur-md flex flex-col h-full shadow-lg relative ${index === 2
+                                onMouseMove={handleMouseMove}
+                                className={`p-6 md:p-8 rounded-3xl border transition-all duration-300 group backdrop-blur-md flex flex-col h-full shadow-lg relative card-glow-effect ${index === 2
                                     ? 'bg-white/10 border-neon shadow-[0_0_30px_rgba(255,30,30,0.15)] scale-105 z-10'
                                     : 'bg-white/5 border-white/10 hover:border-neon/50 hover:bg-neon/5 hover:shadow-[0_0_20px_rgba(255,30,30,0.3)]'
                                     }`}
@@ -144,13 +171,13 @@ export default function Services() {
                 </div>
 
                 <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex justify-center">
-                    <a
-                        href="#contact"
+                    <Link
+                        href={getHref('/contact')}
                         className="px-8 py-4 bg-neon text-black font-bold text-lg rounded-full hover:bg-background hover:text-foreground transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,30,30,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] flex items-center gap-2 border border-transparent hover:border-neon"
                     >
                         {t.services.cta}
                         <ArrowRight className="w-5 h-5" />
-                    </a>
+                    </Link>
                 </motion.div>
 
                 <p className="text-center text-muted text-xs mt-8 font-mono">

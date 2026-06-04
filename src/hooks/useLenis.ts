@@ -9,10 +9,10 @@ export function useLenis() {
         if (isMobile) return;
 
         const lenis = new Lenis({
-            lerp: 0.05,           // Lower lerp = smoother deceleration (0.1 is default)
-            duration: 1.5,        // Longer duration for a more cinematic feel
+            lerp: 0.03,           // Butter-smooth deceleration (0.1 is default)
             smoothWheel: true,
-            wheelMultiplier: 1.0, // Standard multiplier for predictability
+            wheelMultiplier: 0.75, // Slightly dampens wheel inputs for smoother control
+            touchMultiplier: 1.5,
         });
 
 

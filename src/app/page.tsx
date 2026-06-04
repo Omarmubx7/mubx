@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { siteConfig } from '@/config/seo';
 import { Locale } from '@/lib/dictionaries';

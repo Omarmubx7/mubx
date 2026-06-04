@@ -1,8 +1,7 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, ReactNode } from 'react';
 import { dictionary, Locale } from '@/lib/dictionaries';
-import { useSearchParams } from 'next/navigation';
 
 type LanguageContextType = {
     language: Locale;
@@ -13,33 +12,19 @@ type LanguageContextType = {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children, initialLocale = 'en' }: { children: ReactNode, initialLocale?: Locale }) {
-    const [language, setLanguage] = useState<Locale>(initialLocale);
-    const searchParams = useSearchParams();
-
-    // Sync with initialLocale if it changes (e.g., client navigation)
+export function LanguageProvider({ children }: { children: ReactNode, initialLocale?: Locale }) {
+    // Update document dir and lang attributes to always be English / LTR
     useEffect(() => {
-        const langParam = searchParams.get('lang');
-        if (langParam === 'ar' || langParam === 'en') {
-            // eslint-disable-next-line react-hooks/set-state-in-effect
-            setLanguage(langParam as Locale);
-        } else if (initialLocale) {
-            setLanguage(initialLocale);
-        }
-    }, [initialLocale, searchParams]);
-
-    // Update document dir and lang attributes
-    useEffect(() => {
-        document.documentElement.lang = language;
-        document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-        localStorage.setItem('language', language);
-    }, [language]);
+        document.documentElement.lang = 'en';
+        document.documentElement.dir = 'ltr';
+        localStorage.setItem('language', 'en');
+    }, []);
 
     const value = {
-        language,
-        setLanguage,
-        t: dictionary[language],
-        isRTL: language === 'ar',
+        language: 'en' as Locale,
+        setLanguage: () => {}, // No-op to prevent state-changing issues in legacy code
+        t: dictionary['en'],
+        isRTL: false,
     };
 
     return (
@@ -56,3 +41,4 @@ export function useLanguage() {
     }
     return context;
 }
+

@@ -91,17 +91,21 @@ const NavbarContent = () => {
         { name: t.nav.contact, href: getHref('/contact') },
     ];
 
-    return (
-        <motion.nav
-            initial="hidden"
-            animate={hidden ? "hiddenNav" : "visible"}
-            variants={{
-                hidden: { opacity: 0, y: -20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-                hiddenNav: { y: "-100%", transition: { duration: 0.35, ease: "easeInOut" } }
-            }}
-            className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 py-4 md:px-12 bg-glass"
-        >
+        const isHomepage = pathname === '/' || pathname === '/ar';
+
+        return (
+            <motion.nav
+                initial="hidden"
+                animate={hidden ? "hiddenNav" : "visible"}
+                variants={{
+                    hidden: { opacity: 0, y: -20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+                    hiddenNav: { y: "-100%", transition: { duration: 0.35, ease: "easeInOut" } }
+                }}
+                className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 py-4 md:px-12 bg-glass ${
+                    isHomepage ? 'lg:hidden' : ''
+                }`}
+            >
             <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2" aria-label="MUBX Home">
                 <div className="relative h-12 w-24 md:h-14 md:w-28 transition-transform group-hover:scale-105 active:scale-95">
                     <Image

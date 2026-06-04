@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function NotFoundView() {
@@ -26,7 +26,7 @@ export default function NotFoundView() {
                     Return Home
                 </Link>
             </div>
-            <Footer />
+
         </div>
     );
 }

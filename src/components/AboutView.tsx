@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 import Badge from '@/components/ui/Badge';
 import { Download, Calendar, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
@@ -133,7 +133,7 @@ export default function AboutView() {
                 </div>
             </div>
 
-            <Footer />
+
         </main>
     );
 }

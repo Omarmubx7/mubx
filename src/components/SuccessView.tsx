@@ -1,7 +1,7 @@
 'use client';
 
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 import { motion } from 'framer-motion';
 import { fadeUp } from '@/lib/motion';
 import { CheckCircle } from 'lucide-react';
@@ -48,7 +48,7 @@ export default function SuccessView() {
                     </div>
                 </motion.div>
             </div>
-            <Footer />
+
         </main>
     );
 }

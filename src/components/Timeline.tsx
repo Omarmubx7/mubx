@@ -3,27 +3,28 @@
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import { useLanguage } from '@/context/LanguageContext';
-import { Briefcase, GraduationCap, Code } from 'lucide-react';
 import GradientText from './ui/GradientText';
 
 export default function Timeline() {
     const { t } = useLanguage();
 
-    const icons = [Briefcase, GraduationCap, Code];
-
     return (
-        <section id="timeline" className="py-24 bg-background relative overflow-hidden">
-            <div className="container mx-auto px-6 md:px-12 relative z-10">
+        <section id="timeline" className="py-24 bg-background relative overflow-hidden border-b border-border/30">
+            {/* Background subtle neon details */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-neon/3 blur-[100px] rounded-full pointer-events-none" />
+
+            <div className="w-full px-6 md:px-12 lg:px-16 xl:px-24 relative z-10">
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={staggerContainer}
-                    className="max-w-4xl mx-auto"
+                    className="max-w-5xl mx-auto"
                 >
+                    {/* Header */}
                     <div className="text-center mb-16 space-y-4">
                         <motion.div variants={fadeUp}>
-                            <p className="text-neon font-mono text-sm mb-4 tracking-widest">05</p>
+                            <p className="text-neon font-mono text-sm mb-4 tracking-widest">04</p>
                             <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase">
                                 {t.timeline.title} <GradientText>{t.timeline.titleHighlight}</GradientText>
                             </h2>
@@ -33,38 +34,38 @@ export default function Timeline() {
                         </motion.p>
                     </div>
 
-                    <div className="relative border-l-2 border-border/50 ml-6 md:ml-12 space-y-12">
-                        {t.timeline.items.map((item: any, index: number) => { // eslint-disable-line @typescript-eslint/no-explicit-any
-                            const Icon = icons[index % icons.length];
-                            return (
-                                <motion.div
-                                    key={index}
-                                    variants={fadeUp}
-                                    className="relative pl-8 md:pl-12"
-                                >
-                                    {/* Dot & Icon */}
-                                    <div className="absolute -left-[11px] top-0 w-6 h-6 rounded-full bg-background border-2 border-neon flex items-center justify-center group z-10">
-                                        <div className="w-2 h-2 bg-neon rounded-full group-hover:scale-150 transition-transform" />
-                                    </div>
+                    {/* Table-Like Experience List (Sawad Style) */}
+                    <div className="border-t border-border/30 w-full">
+                        {t.timeline.items.map((item: any, index: number) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
+                            <motion.div
+                                key={index}
+                                variants={fadeUp}
+                                className="group relative py-8 border-b border-border/30 transition-all duration-300 hover:bg-white/[0.015] flex flex-col md:grid md:grid-cols-12 gap-4 md:gap-8 items-start md:items-center cursor-default"
+                            >
+                                {/* Year Column */}
+                                <div className="md:col-span-2 text-neon font-mono text-sm font-bold">
+                                    {item.year}
+                                </div>
 
-                                    <div className="bg-card/40 border border-border/50 backdrop-blur-sm p-6 rounded-2xl hover:border-neon/30 hover:bg-muted/5 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,30,30,0.1)] group">
-                                        <span className="inline-block px-3 py-1 rounded-full bg-neon/10 text-neon text-xs font-bold mb-3 border border-neon/20">
-                                            {item.year}
-                                        </span>
-                                        <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-neon transition-colors">
-                                            {item.role}
-                                        </h3>
-                                        <div className="flex items-center gap-2 text-sm text-muted mb-4">
-                                            <Icon className="w-4 h-4" />
-                                            <span>{item.company}</span>
-                                        </div>
-                                        <p className="text-muted/80 text-sm leading-relaxed">
-                                            {item.description}
-                                        </p>
-                                    </div>
-                                </motion.div>
-                            );
-                        })}
+                                {/* Role & Company Column */}
+                                <div className="md:col-span-3 flex flex-col text-left rtl:text-right">
+                                    <h3 className="text-base md:text-lg font-bold text-foreground group-hover:text-neon transition-colors duration-300">
+                                        {item.role}
+                                    </h3>
+                                    <span className="text-xs text-muted-foreground font-mono mt-1">
+                                        {item.company}
+                                    </span>
+                                </div>
+
+                                {/* Description Column (Spans 7 columns on desktop) */}
+                                <div className="md:col-span-7 text-muted text-sm leading-relaxed text-left rtl:text-right">
+                                    {item.description}
+                                </div>
+
+                                {/* Active bottom border highlight on hover */}
+                                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-neon scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rtl:origin-right shadow-[0_0_8px_#E11D1D]" />
+                            </motion.div>
+                        ))}
                     </div>
                 </motion.div>
             </div>

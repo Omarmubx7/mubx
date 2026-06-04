@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Badge from '@/components/ui/Badge';
 import { siteConfig } from '@/config/seo';
 
@@ -116,7 +115,7 @@ export default async function NeonCardPage(props: Props) {
                             </div>
                         </div>
                     </div>
-                    <Footer />
+
                 </main>
             </LanguageProvider>
         </Suspense>
