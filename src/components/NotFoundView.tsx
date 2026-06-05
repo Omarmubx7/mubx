@@ -20,7 +20,7 @@ export default function NotFoundView() {
                 </p>
                 <Link
                     href={language === 'en' ? '/' : `/?lang=${language}`}
-                    className="flex items-center gap-2 px-8 py-3 bg-neon text-black font-bold rounded-full hover:bg-white transition-all"
+                    className="flex items-center gap-2 px-8 py-3 bg-neon text-white font-bold rounded-full hover:bg-white transition-all"
                 >
                     <ArrowLeft className="w-5 h-5" />
                     Return Home

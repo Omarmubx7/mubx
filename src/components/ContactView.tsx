@@ -7,6 +7,7 @@ import { Send, Loader2 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { fadeUp } from '@/lib/motion';
 import Navbar from '@/components/Navbar';
+import { getBookingQuarter } from '@/utils/date';
 
 import Badge from '@/components/ui/Badge';
 
@@ -14,6 +15,11 @@ export default function ContactView() {
     const router = useRouter();
     const { language, t } = useLanguage();
     const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+    const bookingQuarter = getBookingQuarter(language);
+    const descText = language === 'ar'
+        ? `جاهز للتوسع؟ استقبل حالياً مشاريع جديدة (${bookingQuarter}).`
+        : `Ready to scale? I'm currently accepting new projects for ${bookingQuarter}.`;
 
     const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -102,7 +108,7 @@ export default function ContactView() {
                             {t.contact.titleStart} <span className="text-neon">{t.contact.titleHighlight}</span>
                         </h1>
                         <p className="text-muted text-lg max-w-2xl mx-auto">
-                            {t.contact.desc1}
+                            {descText}
                             <br />
                             <span className="text-foreground/80 font-medium">{t.contact.availability.response} {t.contact.availability.responseTime}.</span>
                         </p>
@@ -193,7 +199,7 @@ export default function ContactView() {
                                 <button
                                     disabled={formState === 'submitting'}
                                     type="submit"
-                                    className="w-full py-5 bg-neon text-black font-black uppercase tracking-widest text-lg rounded-xl hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all transform hover:scale-[1.01] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                                    className="w-full py-5 bg-neon text-white font-black uppercase tracking-widest text-lg rounded-xl hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all transform hover:scale-[1.01] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
                                 >
                                     {formState === 'submitting' ? (
                                         <>

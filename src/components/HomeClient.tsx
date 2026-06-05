@@ -4,15 +4,22 @@ import { Suspense, useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Download } from 'lucide-react';
+import { Download, Calendar } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import GithubStatus from '@/components/GithubStatus';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { LanguageProvider, useLanguage } from '@/context/LanguageContext';
 import { Locale } from '@/lib/dictionaries';
+import { ScrollSpyProvider, useActiveSectionContext } from '@/context/ScrollSpyContext';
 
 const Projects = dynamic(() => import('@/components/Projects'), {
+    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
+});
+const Services = dynamic(() => import('@/components/Services'), {
+    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
+});
+const Process = dynamic(() => import('@/components/Process'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
 const StickyCTA = dynamic(() => import('@/components/StickyCTA'), { ssr: false });
@@ -37,10 +44,11 @@ const StarsCanvas = dynamic(() => import('@/components/canvas/Stars'), { ssr: fa
 function HomeMain() {
     const { t, language } = useLanguage();
     const [showCanvas, setShowCanvas] = useState(false);
-    const [activeSection, setActiveSection] = useState('hero');
+
+    const { activeSection } = useActiveSectionContext();
 
     const getHref = (path: string) => {
-        return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
+        return path;
     };
 
     useEffect(() => {
@@ -48,39 +56,12 @@ function HomeMain() {
         return () => clearTimeout(timer);
     }, []);
 
-    useEffect(() => {
-        const sections = ['hero', 'projects', 'about', 'tech-stack', 'journey', 'contact'];
-        const observers = sections.map(id => {
-            const el = document.getElementById(id);
-            if (!el) return null;
-
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        setActiveSection(id);
-                    }
-                },
-                {
-                    rootMargin: '-20% 0px -60% 0px'
-                }
-            );
-            observer.observe(el);
-            return { observer, el };
-        });
-
-        return () => {
-            observers.forEach(obs => {
-                if (obs) obs.observer.unobserve(obs.el);
-            });
-        };
-    }, []);
-
     const navLinks = [
-        { id: 'hero', name: language === 'en' ? 'Welcome' : 'الرئيسية' },
+        { id: 'hero', name: t.nav.home },
         { id: 'projects', name: t.nav.projects },
-        { id: 'about', name: t.nav.about },
-        { id: 'tech-stack', name: t.about.techStack },
-        { id: 'journey', name: language === 'en' ? 'Journey' : 'مسيرتي' },
+        { id: 'services', name: t.nav.services },
+        { id: 'process', name: 'Process' },
+        { id: 'about', name: 'About & Journey' },
         { id: 'contact', name: t.nav.contact }
     ];
 
@@ -91,7 +72,7 @@ function HomeMain() {
 
             <div className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-12 border-collapse relative">
                 {/* Sticky Left Sidebar (Desktop only) */}
-                <aside className="hidden lg:flex lg:col-span-4 lg:h-screen lg:sticky lg:top-0 border-b lg:border-b-0 lg:border-r rtl:lg:border-r-0 rtl:lg:border-l border-border/30 bg-background flex-col justify-between p-8 lg:p-12 xl:p-16 select-none overflow-y-auto z-40">
+                <aside className="hidden lg:flex lg:col-span-4 lg:h-screen lg:sticky lg:top-0 border-b lg:border-b-0 lg:border-r border-border/30 bg-background flex-col justify-between p-8 lg:p-12 xl:p-16 select-none overflow-y-auto z-40">
                     <div className="space-y-8 xl:space-y-12">
                         {/* Profile/Logo Block */}
                         <div className="space-y-4">
@@ -117,8 +98,8 @@ function HomeMain() {
                         {/* Personality-Driven Bio (short summary) */}
                         <p className="text-xs text-muted-foreground leading-relaxed font-mono">
                             {language === 'en' 
-                              ? 'Most web developers build slow websites that look like templates, ignore local payment systems (Zain Cash/CliQ), and fail to convert visitors. I engineer custom web applications that load in milliseconds, integrate seamless payments, and turn traffic into actual revenue.'
-                              : 'يبني معظم مطوري الويب مواقع بطيئة تبدو كالقوالب الجاهزة، ويتجاهلون أنظمة الدفع المحلية (زين كاش/كليك)، ويفشلون في تحويل الزوار إلى عملاء. أنا أقوم بهندسة تطبيقات ويب مخصصة تعمل في أيجاد من الثانية، وتتكامل بسلاسة مع بوابات الدفع، وتحول الزيارات إلى إيرادات فعلية.'
+                              ? 'Computer Science student at HTU and Full-Stack Developer specializing in high-performance web systems, custom e-commerce engines, and secure local integrations. Dedicated to building digital solutions that drive business growth.'
+                              : 'طالب علوم حاسوب في جامعة الحسين التقنية ومطور ويب متخصص في هندسة الأنظمة البرمجية عالية الأداء، والمتاجر الإلكترونية المخصصة، وحلول الدفع المحلية الآمنة. أركز على بناء حلول رقمية تدفع نمو الأعمال.'
                             }
                         </p>
 
@@ -128,13 +109,13 @@ function HomeMain() {
                         {/* Sticky Sidebar Navigation Shortcuts */}
                         <nav className="flex flex-col gap-3.5 font-mono text-[10px] tracking-wider uppercase">
                             {navLinks.map((link) => {
-                                const isActive = activeSection === link.id;
+                                const isActive = activeSection === link.id || (link.id === 'about' && (activeSection === 'tech-stack' || activeSection === 'journey'));
                                 return (
                                     <a
                                         key={link.id}
                                         href={`#${link.id}`}
                                         className={`flex items-center gap-3 transition-all duration-300 ${
-                                            isActive ? 'text-neon font-black translate-x-1 rtl:-translate-x-1' : 'text-muted-foreground hover:text-foreground'
+                                            isActive ? 'text-neon font-black translate-x-1' : 'text-muted-foreground hover:text-foreground'
                                         }`}
                                     >
                                         <span className={`w-1.5 h-1.5 rounded-full transition-all duration-300 shrink-0 ${
@@ -148,13 +129,24 @@ function HomeMain() {
                     </div>
 
                     {/* Bottom Controls & Socials */}
-                    <div className="space-y-6 pt-6 border-t border-border/20">
+                    <div className="space-y-4 pt-6 border-t border-border/20">
+                        {/* Primary Book Call CTA Button */}
+                        <a
+                            href="https://calendly.com/omarmubaidincs/30min"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full py-3 bg-neon text-white text-xs font-bold rounded-none flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(255,30,30,0.25)] hover:shadow-[0_0_25px_rgba(255,30,30,0.4)] hover:bg-[#B91616] uppercase tracking-wider font-mono cursor-pointer"
+                        >
+                            <Calendar className="w-3.5 h-3.5" />
+                            {t.nav.bookCall}
+                        </a>
+
                         {/* View Resume Prominent CTA Button */}
                         <a
                             href="/cv.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full py-3 border border-border/30 hover:border-neon/50 text-foreground hover:text-neon text-xs font-bold rounded-none flex items-center justify-center gap-2 bg-card/10 transition-colors uppercase tracking-wider font-mono"
+                            className="w-full py-3 border border-border/30 hover:border-neon/50 text-muted-foreground hover:text-neon text-xs font-bold rounded-none flex items-center justify-center gap-2 bg-card/5 hover:bg-white/[0.02] transition-colors uppercase tracking-wider font-mono"
                         >
                             <Download className="w-3.5 h-3.5" />
                             {t.nav.resume}
@@ -181,7 +173,7 @@ function HomeMain() {
                 </aside>
 
                 {/* Scrollable Right Panel */}
-                <main className="lg:col-span-8 bg-background flex flex-col min-h-screen">
+                <div className="lg:col-span-8 bg-background flex flex-col min-h-screen">
                     <Suspense fallback={null}>
                         <div id="hero">
                             <Hero />
@@ -189,6 +181,12 @@ function HomeMain() {
                         <TrustedBy />
                         <div id="projects">
                             <Projects />
+                        </div>
+                        <div id="services">
+                            <Services />
+                        </div>
+                        <div id="process">
+                            <Process />
                         </div>
                         <div id="about">
                             <About />
@@ -207,7 +205,7 @@ function HomeMain() {
                             <StickyCTA />
                         </div>
                     </Suspense>
-                </main>
+                </div>
             </div>
         </>
     );
@@ -215,8 +213,10 @@ function HomeMain() {
 
 export default function HomeClient({ lang }: Readonly<{ lang: Locale }>) {
     return (
-        <LanguageProvider initialLocale={lang}>
-            <HomeMain />
+        <LanguageProvider initialLocale="en">
+            <ScrollSpyProvider>
+                <HomeMain />
+            </ScrollSpyProvider>
         </LanguageProvider>
     );
 }

@@ -41,7 +41,7 @@ export default async function EcommercePage(props: Props) {
                         <p className="text-xl text-muted max-w-2xl mx-auto mb-10">
                             {t.subtitleStart} <strong>{t.subtitleHighlight}</strong> {t.subtitleEnd}
                         </p>
-                        <Link href="/#contact" className="inline-block px-8 py-4 bg-neon text-black font-bold text-lg rounded-full hover:scale-105 transition-transform">
+                        <Link href="/#contact" className="inline-block px-8 py-4 bg-neon text-white font-bold text-lg rounded-full hover:scale-105 transition-transform">
                             {t.cta}
                         </Link>
                     </section>

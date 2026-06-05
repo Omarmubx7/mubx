@@ -4,19 +4,20 @@ import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import { useLanguage } from '@/context/LanguageContext';
 import TextReveal from '@/components/ui/TextReveal';
+import { DollarSign, Wallet, Zap, ShieldCheck } from 'lucide-react';
 
 export default function About() {
     const { t } = useLanguage();
 
     const stats = [
-        { title: 'DEV', desc: t.about.stats.dev, accent: 'text-neon' },
+        { title: '30+', desc: t.about.stats.dev, accent: 'text-neon' },
         { title: '100%', desc: t.about.stats.secure, accent: 'text-neon' },
-        { title: 'JO', desc: t.about.stats.location, accent: 'text-foreground' },
-        { title: 'UI/UX', desc: t.about.stats.design, accent: 'text-foreground' }
+        { title: '24h', desc: t.about.stats.location, accent: 'text-foreground' },
+        { title: '0.6s', desc: t.about.stats.design, accent: 'text-foreground' }
     ];
 
     return (
-        <section id="about" className="py-24 relative bg-background border-b border-border/30">
+        <section className="py-24 relative bg-background border-b border-border/30">
             <div className="w-full px-6 md:px-12 lg:px-16 xl:px-24">
                 <motion.div
                     initial="hidden"
@@ -28,8 +29,8 @@ export default function About() {
                     {/* Left Column: Story & Vision (Spans 7 cols) */}
                     <div className="lg:col-span-7 space-y-8 flex flex-col justify-center">
                         <motion.div variants={fadeUp}>
-                            <p className="text-neon font-mono text-sm mb-4 tracking-widest">02</p>
-                            <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase flex flex-wrap items-center gap-x-3">
+                            <p className="text-neon font-mono text-sm mb-4 tracking-widest">04</p>
+                            <h2 className="text-3xl md:text-5xl font-bold text-foreground flex flex-wrap items-center gap-x-3">
                                 <TextReveal text={t.about.titleStart} splitType="letter" /> 
                                 <span className="text-neon">
                                     <TextReveal text={t.about.titleHighlight} splitType="letter" delay={0.4} />
@@ -44,29 +45,49 @@ export default function About() {
                             <p>
                                 {t.about.descriptionEnd} <span className="text-neon">{t.about.performance}</span>{t.about.descriptionContext}
                             </p>
-                            <div className="text-foreground font-medium border-l-2 border-neon pl-4 block py-2 italic text-muted-foreground bg-white/1 rounded-r-xl">
-                                {t.about.quoteStart} {t.about.quoteHighlight} {t.about.quoteEnd}
+                            <div className="text-foreground font-medium border-l-2 border-neon pl-4 block py-2 italic text-muted-foreground bg-white/1 rounded-r-xl leading-relaxed">
+                                {t.about.quoteStart} <span className="text-neon whitespace-nowrap">{t.about.quoteHighlight}</span> {t.about.quoteEnd}
                             </div>
                         </motion.div>
 
                         <div className="pt-4">
                             <h3 className="text-foreground font-bold mb-6 uppercase tracking-wider text-xs font-mono text-muted-foreground">{t.about.whyChoose.title}</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <strong className="text-foreground text-sm font-bold block uppercase font-display tracking-wide">{t.about.whyChoose.reason1.title}</strong>
-                                    <p className="text-xs text-muted leading-relaxed">{t.about.whyChoose.reason1.desc}</p>
+                                <div className="p-5 bg-white/3 backdrop-blur-md border border-white/5 rounded-2xl flex flex-col space-y-3 hover:border-neon/30 transition-all duration-300">
+                                    <div className="w-10 h-10 rounded-xl bg-neon/10 flex items-center justify-center text-neon border border-neon/20">
+                                        <DollarSign className="w-5 h-5" />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <strong className="text-foreground text-sm font-bold block uppercase font-display tracking-wide">{t.about.whyChoose.reason1.title}</strong>
+                                        <p className="text-xs text-muted leading-relaxed">{t.about.whyChoose.reason1.desc}</p>
+                                    </div>
                                 </div>
-                                <div className="space-y-2">
-                                    <strong className="text-foreground text-sm font-bold block uppercase font-display tracking-wide">{t.about.whyChoose.reason2.title}</strong>
-                                    <p className="text-xs text-muted leading-relaxed">{t.about.whyChoose.reason2.desc}</p>
+                                <div className="p-5 bg-white/3 backdrop-blur-md border border-white/5 rounded-2xl flex flex-col space-y-3 hover:border-neon/30 transition-all duration-300">
+                                    <div className="w-10 h-10 rounded-xl bg-neon/10 flex items-center justify-center text-neon border border-neon/20">
+                                        <Wallet className="w-5 h-5" />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <strong className="text-foreground text-sm font-bold block uppercase font-display tracking-wide">{t.about.whyChoose.reason2.title}</strong>
+                                        <p className="text-xs text-muted leading-relaxed">{t.about.whyChoose.reason2.desc}</p>
+                                    </div>
                                 </div>
-                                <div className="space-y-2">
-                                    <strong className="text-foreground text-sm font-bold block uppercase font-display tracking-wide">{t.about.whyChoose.reason3.title}</strong>
-                                    <p className="text-xs text-muted leading-relaxed">{t.about.whyChoose.reason3.desc}</p>
+                                <div className="p-5 bg-white/3 backdrop-blur-md border border-white/5 rounded-2xl flex flex-col space-y-3 hover:border-neon/30 transition-all duration-300">
+                                    <div className="w-10 h-10 rounded-xl bg-neon/10 flex items-center justify-center text-neon border border-neon/20">
+                                        <Zap className="w-5 h-5" />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <strong className="text-foreground text-sm font-bold block uppercase font-display tracking-wide">{t.about.whyChoose.reason3.title}</strong>
+                                        <p className="text-xs text-muted leading-relaxed">{t.about.whyChoose.reason3.desc}</p>
+                                    </div>
                                 </div>
-                                <div className="space-y-2">
-                                    <strong className="text-foreground text-sm font-bold block uppercase font-display tracking-wide">{t.about.whyChoose.reason4.title}</strong>
-                                    <p className="text-xs text-muted leading-relaxed">{t.about.whyChoose.reason4.desc}</p>
+                                <div className="p-5 bg-white/3 backdrop-blur-md border border-white/5 rounded-2xl flex flex-col space-y-3 hover:border-neon/30 transition-all duration-300">
+                                    <div className="w-10 h-10 rounded-xl bg-neon/10 flex items-center justify-center text-neon border border-neon/20">
+                                        <ShieldCheck className="w-5 h-5" />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <strong className="text-foreground text-sm font-bold block uppercase font-display tracking-wide">{t.about.whyChoose.reason4.title}</strong>
+                                        <p className="text-xs text-muted leading-relaxed">{t.about.whyChoose.reason4.desc}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +99,11 @@ export default function About() {
                         <div className="absolute inset-0 bg-neon/3 blur-[100px] rounded-full pointer-events-none" />
 
                         {/* Flat Editorial 2x2 grid container */}
-                        <div className="grid grid-cols-2 w-full border border-border/30 bg-card/10 backdrop-blur-md rounded-none overflow-hidden relative z-10">
+                        <div className="w-full space-y-2 relative z-10">
+                            <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-widest block font-bold">
+                                {"// TECHNICAL STATS"}
+                            </span>
+                            <div className="grid grid-cols-2 w-full border border-border/30 bg-card/10 backdrop-blur-md rounded-none overflow-hidden">
                             {stats.map((stat, index) => {
                                 const borderClass = index === 0
                                     ? 'border-b border-r border-border/30 rtl:border-r-0 rtl:border-l'
@@ -101,6 +126,7 @@ export default function About() {
                                     </div>
                                 );
                             })}
+                            </div>
                         </div>
                     </motion.div>
                 </motion.div>

@@ -24,8 +24,8 @@ export default function Timeline() {
                     {/* Header */}
                     <div className="text-center mb-16 space-y-4">
                         <motion.div variants={fadeUp}>
-                            <p className="text-neon font-mono text-sm mb-4 tracking-widest">04</p>
-                            <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase">
+                            <p className="text-neon font-mono text-sm mb-4 tracking-widest">06</p>
+                            <h2 className="text-3xl md:text-5xl font-bold text-foreground">
                                 {t.timeline.title} <GradientText>{t.timeline.titleHighlight}</GradientText>
                             </h2>
                         </motion.div>

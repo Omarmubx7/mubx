@@ -27,7 +27,7 @@ export default function Error({
                     // Attempt to recover by trying to re-render the segment
                     () => reset()
                 }
-                className="flex items-center gap-2 px-8 py-3 bg-neon text-black font-bold rounded-full hover:bg-white transition-all transform hover:scale-105"
+                className="flex items-center gap-2 px-8 py-3 bg-neon text-white font-bold rounded-full hover:bg-white transition-all transform hover:scale-105"
             >
                 <RefreshCcw className="w-5 h-5" />
                 Try Again

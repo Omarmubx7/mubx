@@ -114,7 +114,7 @@ export default function AboutView() {
                                 href="https://calendly.com/omarmubaidincs/30min"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-8 py-4 bg-neon text-black font-bold text-lg rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,30,30,0.3)] flex items-center justify-center gap-2"
+                                className="px-8 py-4 bg-neon text-white font-bold text-lg rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,30,30,0.3)] flex items-center justify-center gap-2"
                             >
                                 <Calendar className="w-5 h-5" />
                                 Book a Call

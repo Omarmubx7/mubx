@@ -7,8 +7,7 @@ import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { ThemeToggle } from './ThemeToggle';
-import { LanguageToggle } from './LanguageToggle';
-import { useScrollSpy } from '@/hooks/useScrollSpy';
+import { useActiveSectionContext } from '@/context/ScrollSpyContext';
 import { usePathname } from 'next/navigation';
 
 
@@ -53,40 +52,31 @@ const NavbarContent = () => {
     };
 
     const getHref = (path: string) => {
-        if (language === 'en') {
-            return path;
-        }
-        const separator = path.includes('?') ? '&' : '?';
-        return `${path}${separator}lang=${language}`;
+        return path;
     };
 
     const pathname = usePathname();
-    const activeSection = useScrollSpy([
-
-
-
-        'about',
-        'tech',
-        'timeline',
-        'contact'
-    ], 100);
+    const { activeSection } = useActiveSectionContext();
 
     const isLinkActive = (href: string) => {
-        if (pathname === '/' || pathname === '/ar') {
-            // Extract hash
-            const hash = href.split('#')[1];
-            if (hash) {
+        const cleanPathname = pathname.split('?')[0];
+        if (cleanPathname === '/' || cleanPathname === '/ar') {
+            const hashPart = href.split('#')[1];
+            if (hashPart) {
+                const hash = hashPart.split('?')[0];
                 return activeSection === hash;
             }
+            // Home link (no hash) → active when on hero section or page top
+            return activeSection === 'hero' || activeSection === '';
         }
-        // Handle normal pages like /blog
-        return pathname === href || (pathname.startsWith(href) && href !== '/');
+        const cleanHref = href.split('?')[0];
+        return cleanPathname === cleanHref || (cleanPathname.startsWith(cleanHref) && cleanHref !== '/');
     };
 
     const links = [
         { name: t.nav.home, href: getHref('/') },
-        { name: t.nav.services, href: getHref('/services') },
-        { name: t.nav.projects, href: getHref('/projects') },
+        { name: t.nav.services, href: getHref('/#services') },
+        { name: t.nav.projects, href: getHref('/#projects') },
         { name: t.nav.about, href: getHref('/#about') },
         { name: t.nav.contact, href: getHref('/contact') },
     ];
@@ -157,7 +147,6 @@ const NavbarContent = () => {
                 <div className="h-6 w-[1px] bg-border mx-2" />
 
                 <ThemeToggle />
-                <LanguageToggle />
 
                 {mounted && (
                     <>
@@ -172,7 +161,7 @@ const NavbarContent = () => {
                             href="https://calendly.com/omarmubaidincs/30min"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-5 py-2.5 text-sm font-bold text-black bg-neon rounded-full hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all shadow-[0_0_15px_rgba(255,30,30,0.3)] hover:shadow-[0_0_25px_rgba(255,30,30,0.4)] ml-2 z-[101] cursor-pointer"
+                            className="px-5 py-2.5 text-sm font-bold text-white bg-neon rounded-full hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all shadow-[0_0_15px_rgba(255,30,30,0.3)] hover:shadow-[0_0_25px_rgba(255,30,30,0.4)] ml-2 z-[101] cursor-pointer"
                         >
                             {t.nav.bookCall}
                         </a>
@@ -230,7 +219,7 @@ const NavbarContent = () => {
                                             href="https://wa.me/962780090453"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="w-full flex items-center justify-center gap-2 py-4 bg-neon text-black font-bold rounded-2xl shadow-[0_0_20px_rgba(255,30,30,0.3)]"
+                                            className="w-full flex items-center justify-center gap-2 py-4 bg-neon text-white font-bold rounded-2xl shadow-[0_0_20px_rgba(255,30,30,0.3)]"
                                         >
                                             {t.nav.bookCall}
                                         </a>

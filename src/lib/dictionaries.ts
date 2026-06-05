@@ -24,12 +24,12 @@ export const dictionary = {
         },
         hero: {
             badge: 'Revenue-Focused Web Consultant',
-            titleStart: 'Scale your startup with',
+            titleStart: 'Scale your Jordanian startup with',
             titleHighlight: 'revenue-focused',
-            titleEnd: 'technical solutions.',
-            description: 'Most web developers build slow websites that look like templates, ignore local payment systems (Zain Cash/CliQ), and fail to convert visitors. I engineer custom web applications that load in milliseconds, integrate seamless payments, and turn traffic into actual revenue.',
+            titleEnd: 'ultra-fast, payment-ready web systems.',
+            description: 'I build custom web systems that load in milliseconds, integrate local payment systems (Zain Cash/CliQ), and turn traffic into revenue. No slow templates. Just high-performance engineering.',
             ctaPrimary: 'Book a 15-min call',
-            ctaSecondary: 'See client results',
+            ctaSecondary: 'View selected work',
             imageAlt: 'Omar Mubaidin - Web Consultant',
         },
         trustedBy: {
@@ -48,7 +48,8 @@ export const dictionary = {
                     timeline: '1-2 Days',
                     deliverables: 'Hosting Included',
                     details: ['Custom Design', 'Social Icons', 'Contact Form', 'Fast Loading'],
-                    price: 'start at 49.99 JD'
+                    price: 'start at 49.99 JD',
+                    cta: 'Start Link Tree Project'
                 },
                 landing: {
                     label: 'Starter',
@@ -57,7 +58,8 @@ export const dictionary = {
                     timeline: '5-7 Days',
                     deliverables: '1-3 Sections',
                     details: ['Copywriting', 'SEO Basics', 'Mobile Ready', 'Analytics'],
-                    price: 'start at 149.99 JD'
+                    price: 'start at 149.99 JD',
+                    cta: 'Plan My Landing Page'
                 },
                 business: {
                     label: 'Growth',
@@ -66,7 +68,8 @@ export const dictionary = {
                     timeline: '2 Weeks',
                     deliverables: '5 Pages',
                     details: ['CMS (Manage Content)', 'Bilingual (Ar/En)', 'SEO Advanced', 'Blog Setup'],
-                    price: 'start at 299.99 JD'
+                    price: 'start at 299.99 JD',
+                    cta: 'Build My Business Website'
                 },
                 system: {
                     label: 'Pro',
@@ -75,11 +78,12 @@ export const dictionary = {
                     timeline: '3+ Weeks',
                     deliverables: 'Custom Scope',
                     details: ['Database Design', 'User Auth', 'Payment Integration', 'Admin Dashboard'],
-                    price: 'start at 499.99 JD'
+                    price: 'start at 499.99 JD',
+                    cta: 'Architect My Custom System'
                 }
             },
             howItWorks: {
-                title: 'HOW IT WORKS',
+                title: 'How It Works',
                 step1: {
                     title: 'Free Discovery Call',
                     desc: 'We chat for 20 mins to understand your goals. No sales pressure, just clarity.'
@@ -113,8 +117,8 @@ export const dictionary = {
 
         // Add other sections like About, Projects, etc. as needed
         about: {
-            titleStart: 'WEB DEVELOPER IN',
-            titleHighlight: 'AMMAN',
+            titleStart: 'Web Developer in',
+            titleHighlight: 'Amman',
             name: 'Omar Mubaidin',
             descriptionStart: "I’m ",
             descriptionMiddle: ", a Computer Science student at HTU and a web developer based in Amman, Jordan. I'm obsessed with late-night coding sessions, building apps that solve real-world problems in Jordan, and aiming for financial independence through tech.",
@@ -128,27 +132,27 @@ export const dictionary = {
                 title: 'Why entrepreneurs choose me',
                 reason1: {
                     title: 'Revenue-Driven Design',
-                    desc: 'We focus on conversion rates and business outcomes, not just aesthetics.'
+                    desc: 'We align design directly with your business goals, optimizing conversions, customer flows, and landing page layouts to turn passive visitors into paying customers.'
                 },
                 reason2: {
                     title: 'Local Payment Expertise',
-                    desc: 'Seamless integration with Zain Cash, CliQ, and Jordanian gateway providers.'
+                    desc: 'I have deep expertise integrating local payment systems like Zain Cash, CliQ, and regional merchant gateways, removing transaction bottlenecks for Jordanian users.'
                 },
                 reason3: {
                     title: 'Speed & Performance',
-                    desc: 'Optimized for local 4G networks to ensure zero customer drop-offs.'
+                    desc: 'Websites are custom-built and optimized for fast load times on local 4G and mobile networks, eliminating latency and reducing bounce rates.'
                 },
                 reason4: {
                     title: 'Security & Reliability',
-                    desc: 'Database-driven systems built with modern security standards to protect your data.'
+                    desc: 'Engineered with production-grade security, secure database design, encrypted user authentication, and data integrity safeguards to protect your intellectual property.'
                 }
             },
             techStack: 'Tech Stack',
             stats: {
-                dev: 'Web Developer',
+                dev: 'Projects Delivered',
                 secure: 'Lighthouse Score',
-                location: 'Based in Amman',
-                design: 'Modern Design'
+                location: 'Response Guarantee',
+                design: 'Average Load Time'
             }
         },
         process: {
@@ -311,8 +315,8 @@ export const dictionary = {
             }
         },
         reviews: {
-            title: 'WHAT CLIENTS',
-            titleHighlight: 'SAY',
+            title: 'What Clients',
+            titleHighlight: 'Say',
             list: [
                 {
                     client: 'Mahmoud Hussam',
@@ -371,8 +375,8 @@ export const dictionary = {
             ]
         },
         projects: {
-            titleStart: 'SELECTED',
-            titleHighlight: 'PROJECTS',
+            titleStart: 'Selected',
+            titleHighlight: 'Projects',
             readCaseStudy: 'Read Case Study',
             visitLive: 'Visit Live Website'
         },
@@ -418,8 +422,8 @@ export const dictionary = {
         },
         blog: {
             badge: 'The Lab',
-            titleStart: 'WRITING &',
-            titleHighlight: 'THOUGHTS',
+            titleStart: 'Writing &',
+            titleHighlight: 'Thoughts',
             description: 'Behind the scenes of my projects and technical experiments.',
             readMore: 'Read Article',
             backToNotes: 'Back to Notes'
@@ -518,8 +522,8 @@ export const dictionary = {
             api: 'API Development'
         },
         tech: {
-            title: 'TECHNICAL ',
-            titleHighlight: 'EXPERTISE',
+            title: 'Technical ',
+            titleHighlight: 'Expertise',
             subtitle: 'Modern tools for high-performance systems.',
             categories: {
                 frontend: 'Frontend & UI',
@@ -528,14 +532,14 @@ export const dictionary = {
             }
         },
         photography: {
-            title: 'CAPTURING',
-            titleHighlight: 'MOMENTS',
+            title: 'Capturing',
+            titleHighlight: 'Moments',
             description: 'Beyond code, I explore the world through a lens. High-quality visuals that tell a story.',
             viewGallery: 'View Gallery'
         },
         timeline: {
-            title: 'MY ',
-            titleHighlight: 'JOURNEY',
+            title: 'My ',
+            titleHighlight: 'Journey',
             subtitle: 'The path that led me here.',
             items: [
                 {
@@ -605,8 +609,8 @@ export const dictionary = {
             }
         },
         brandStory: {
-            title: 'THE MUBX MISSION',
-            highlight: 'ENGINEERING GROWTH',
+            title: 'The MUBX Mission',
+            highlight: 'Engineering Growth',
             desc1: 'MUBX was founded by Omar Mubaidin with a singular vision: to bridge the gap between technical complexity and business outcomes in Jordan.',
             desc2: 'The name MUBX originates from "Mubaidin Expertise" — a promise to deliver precision-engineered web systems that are not just beautiful, but are functional tools for revenue generation.',
             desc3: 'Based in Amman, we specialize in high-performance stacks that allow local startups to compete on a global scale.',
@@ -684,7 +688,7 @@ export const dictionary = {
             titleEnd: 'تركز على الأرباح.',
             description: 'يبني معظم مطوري الويب مواقع بطيئة تبدو كالقوالب الجاهزة، ويتجاهلون أنظمة الدفع المحلية (زين كاش/كليك)، ويفشلون في تحويل الزوار إلى عملاء. أنا أقوم بهندسة تطبيقات ويب مخصصة تعمل في أجزاء من الثانية، وتتكامل بسلاسة مع بوابات الدفع، وتحول الزيارات إلى إيرادات فعلية.',
             ctaPrimary: 'احجز مكالمة 15 دقيقة',
-            ctaSecondary: 'شاهد نتائج العملاء',
+            ctaSecondary: 'شاهد أعمالي المختارة',
             imageAlt: 'عمر مبيضين - مستشار تطوير ويب',
         },
         trustedBy: {
@@ -782,19 +786,19 @@ export const dictionary = {
                 title: 'لماذا يختارني رواد الأعمال',
                 reason1: {
                     title: 'تصميم موجه للنتائج',
-                    desc: 'نركز على معدلات التحويل وأهداف العمل، وليس فقط المظهر.'
+                    desc: 'نقوم بربط التصميم مباشرة بأهداف عملك، مع تحسين معدلات التحويل وتسهيل تجربة المستخدم لتحويل الزوار العاديين إلى عملاء دائمين.'
                 },
                 reason2: {
                     title: 'خبرة الدفع المحلي',
-                    desc: 'تكامل سلس مع زين كاش، كليك، ومزودي خدمات الدفع في الأردن.'
+                    desc: 'خبرة عميقة في دمج وسائل الدفع المحلية مثل زين كاش، كليك، وبوابات الدفع الإقليمية، مما يسهل عمليات الدفع ويقلل من تعقيد المعاملات المالية للأردنيين.'
                 },
                 reason3: {
                     title: 'السرعة والأداء',
-                    desc: 'محسن للعمل على شبكات الـ 4G المحلية لضمان عدم فقدان أي عميل.'
+                    desc: 'مواقع محسنة ومبرمجة للتحميل الفوري على شبكات الـ 4G وشبكات الجوال المحلية، للتخلص من التأخير وضمان تجربة تصفح سريعة وخالية من الانقطاع.'
                 },
                 reason4: {
                     title: 'الأمان والموثوقية',
-                    desc: 'أنظمة تعتمد على قواعد البيانات ومبنية بمعايير أمنية حديثة لحماية بياناتك.'
+                    desc: 'أنظمة برمجية آمنة مبنية بمعايير حماية حديثة، وتصميم قواعد بيانات متين، وأنظمة توثيق مشفرة تضمن خصوصية بياناتك وبيانات عملائك.'
                 }
             },
             techStack: 'التقنيات المستخدمة',

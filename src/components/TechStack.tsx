@@ -96,7 +96,7 @@ export default function TechStack() {
     }, []);
 
     return (
-        <section id="tech-stack" className="py-24 bg-background relative overflow-hidden border-t border-border/50">
+        <section className="py-24 bg-background relative overflow-hidden border-t border-border/50">
             {/* Inject pulse styles */}
             <style dangerouslySetInnerHTML={{ __html: `
                 @keyframes techPulseFlow {
@@ -129,8 +129,8 @@ export default function TechStack() {
                     {/* Header */}
                     <div className="text-center max-w-3xl mx-auto space-y-4">
                         <motion.div variants={fadeUp}>
-                            <p className="text-neon font-mono text-sm mb-4 tracking-widest">03</p>
-                            <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase">
+                            <p className="text-neon font-mono text-sm mb-4 tracking-widest">05</p>
+                            <h2 className="text-3xl md:text-5xl font-bold text-foreground">
                                 {t.tech.title} <GradientText>{t.tech.titleHighlight}</GradientText>
                             </h2>
                         </motion.div>

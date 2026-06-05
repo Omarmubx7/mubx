@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import Badge from './ui/Badge';
@@ -42,26 +42,40 @@ export default function Hero() {
     const scaleContent = useTransform(smoothProgress, [0, 1], [1, 0.95]);
     const opacityContent = useTransform(smoothProgress, [0, 0.8, 1], [1, 1, 0]);
 
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
-        <section ref={containerRef} className="relative h-[200vh] bg-background border-b border-border/30">
+        <section ref={containerRef} className="relative h-auto lg:h-[200vh] bg-background border-b border-border/30">
             {/* Sticky Pinning Container */}
-            <div className="sticky top-0 h-screen w-full overflow-hidden flex items-start lg:items-center pt-32 pb-20 z-10">
+            <div className="relative lg:sticky lg:top-0 h-auto lg:h-screen w-full overflow-visible lg:overflow-hidden flex items-center pt-24 pb-16 lg:pt-32 lg:pb-20 z-10">
                 {/* Background Tech Dot Grid */}
                 <div className="absolute inset-0 bg-[radial-gradient(rgba(225,29,29,0.015)_1px,transparent_1px)] dark:bg-[radial-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] [background-size:20px_20px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)] pointer-events-none z-0" />
                 
                 {/* Parallax Layer 1: 0.2x Speed (Deepest) */}
-                <motion.div style={{ y: yBg0_2x }} className="absolute inset-0 z-0 pointer-events-none will-change-transform flex items-center justify-center">
+                <motion.div style={isMobile ? undefined : { y: yBg0_2x }} className="absolute inset-0 z-0 pointer-events-none will-change-transform hidden lg:flex items-center justify-center">
                     <div className="absolute top-0 right-[-10%] w-200 h-200 bg-neon/5 blur-[120px] rounded-full mix-blend-screen" />
                     <div className="absolute bottom-[-20%] left-[-10%] w-200 h-200 bg-cyan/5 blur-[120px] rounded-full mix-blend-screen" />
                 </motion.div>
 
+                {/* Static Background Glows for Mobile */}
+                <div className="absolute inset-0 z-0 pointer-events-none flex lg:hidden items-center justify-center">
+                    <div className="absolute top-0 right-[-10%] w-96 h-96 bg-neon/[0.03] blur-[80px] rounded-full mix-blend-screen" />
+                    <div className="absolute bottom-[-10%] left-[-10%] w-96 h-96 bg-cyan/[0.03] blur-[80px] rounded-full mix-blend-screen" />
+                </div>
+
                 {/* Parallax Layer 2: 0.5x Speed (Midground) */}
-                <motion.div style={{ y: yBg0_5x }} className="absolute inset-0 z-0 pointer-events-none flex justify-center items-center will-change-transform opacity-30">
+                <motion.div style={isMobile ? undefined : { y: yBg0_5x }} className="absolute inset-0 z-0 pointer-events-none hidden lg:flex justify-center items-center will-change-transform opacity-30">
                     <div className="w-[120vw] h-[120vh] border border-white/3 rounded-full border-dashed animate-spin-slow" />
                 </motion.div>
 
                 {/* Parallax Layer 3: 0.8x Speed (Foreground Background) */}
-                <motion.div style={{ y: yBg0_8x }} className="absolute inset-0 z-0 pointer-events-none flex justify-center items-center will-change-transform opacity-40">
+                <motion.div style={isMobile ? undefined : { y: yBg0_8x }} className="absolute inset-0 z-0 pointer-events-none hidden lg:flex justify-center items-center will-change-transform opacity-40">
                     <div className="absolute w-[80vw] h-[80vw] border border-neon/5 rounded-full border-dashed animate-spin-slow reverse" />
                     <div className="absolute top-[20%] left-[20%] w-2 h-2 bg-neon rounded-full blur-[2px]" />
                     <div className="absolute bottom-[30%] right-[25%] w-3 h-3 bg-cyan rounded-full blur-[2px]" />
@@ -69,7 +83,7 @@ export default function Hero() {
 
                 {/* Foreground Main Content */}
                 <motion.div 
-                    style={{ scale: scaleContent, opacity: opacityContent }} 
+                    style={isMobile ? undefined : { scale: scaleContent, opacity: opacityContent }} 
                     className="w-full px-6 md:px-12 lg:px-16 xl:px-24 relative z-10 will-change-transform"
                 >
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 relative items-center">
@@ -84,12 +98,12 @@ export default function Hero() {
                                 </Badge>
                             </div>
 
-                            <h1 className="text-4xl md:text-6xl font-black mb-6 leading-[1.1] tracking-tight text-foreground uppercase">
+                            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black mb-6 leading-[1.1] tracking-tight text-foreground">
                                 <span className="block mb-2 text-3xl md:text-5xl">
                                     <TextReveal text={t.hero.titleStart} splitType="letter" delay={0.2} />
                                 </span>
 
-                                <div className="text-neon relative inline-block text-4xl md:text-6xl min-h-[1.2em] w-full mt-2 mb-2 overflow-hidden font-display">
+                                <div className="text-neon relative inline-block text-3xl sm:text-5xl md:text-6xl min-h-[2.4em] sm:min-h-[1.2em] w-full mt-2 mb-2 overflow-visible font-display">
                                     <ProTextType
                                         text={language === 'en'
                                             ? ['SCALABLE SYSTEMS', 'REVENUE FOCUSED', 'HIGH PERFORMANCE']
@@ -124,8 +138,8 @@ export default function Hero() {
                                 <SwipeLettersButton
                                     label={t.hero.ctaPrimary}
                                     link="https://calendly.com/omarmubaidincs/30min"
-                                    defaultState={{ bgColor: '#D71C1C', borderColor: 'transparent', textColor: '#000000' }}
-                                    hoverState={{ bgColor: '#B91616', borderColor: '#D71C1C', textColor: '#FFFFFF' }}
+                                    defaultState={{ bgColor: '#E11D1D', borderColor: 'transparent', textColor: '#FFFFFF' }}
+                                    hoverState={{ bgColor: '#B91616', borderColor: '#E11D1D', textColor: '#FFFFFF' }}
                                     font={{ fontSize: '16px', fontWeight: 'bold', letterSpacing: '0.4px' }}
                                     paddingX={28}
                                     paddingY={14}
@@ -133,12 +147,12 @@ export default function Hero() {
                                 <SwipeLettersButton
                                     label={t.hero.ctaSecondary}
                                     link={getHref('#projects')}
-                                    defaultState={{ bgColor: '#1A1A1A', borderColor: '#333333', textColor: '#FFFFFF' }}
-                                    hoverState={{ bgColor: '#2D2D2D', borderColor: '#515151', textColor: '#FFFFFF' }}
+                                    defaultState={{ bgColor: 'transparent', borderColor: 'rgba(255,255,255,0.15)', textColor: '#FFFFFF' }}
+                                    hoverState={{ bgColor: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.3)', textColor: '#FFFFFF' }}
                                     font={{ fontSize: '16px', fontWeight: 'bold', letterSpacing: '0.4px' }}
                                     paddingX={28}
                                     paddingY={14}
-                                    marginClass="ml-0 sm:ml-4 rtl:ml-0 rtl:sm:mr-4"
+                                    marginClass="ml-0 sm:ml-4"
                                 />
                             </motion.div>
                         </div>

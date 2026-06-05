@@ -102,7 +102,7 @@ export default function ProjectCard({ project, index, t, language }: Readonly<Pr
                 </div>
 
                 {/* Action */}
-                <div className="w-full py-3 flex items-center justify-center gap-2 rounded-none bg-muted/5 border border-border/30 text-foreground font-bold hover:bg-neon hover:text-black hover:border-neon transition-all">
+                <div className="w-full py-3 flex items-center justify-center gap-2 rounded-none bg-muted/5 border border-border/30 text-foreground font-bold hover:bg-neon hover:text-white hover:border-neon transition-all">
                     {project.caseStudy.readCaseStudy || t.projects.readCaseStudy}
                     <ArrowRight className="w-4 h-4" />
                 </div>

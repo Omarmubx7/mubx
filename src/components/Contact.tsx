@@ -6,9 +6,15 @@ import { fadeUp } from '@/lib/motion';
 
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
+import { getBookingQuarter } from '@/utils/date';
 
 export default function Contact() {
     const { t, language } = useLanguage();
+    const bookingQuarter = getBookingQuarter(language);
+    const availabilityStatus = language === 'ar'
+        ? `متاح لمشروعين جديدين (${bookingQuarter})`
+        : `Accepting 2 New Projects (${bookingQuarter})`;
+
     const [step, setStep] = useState(1);
     const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
     const [fieldErrors, setFieldErrors] = useState<{ name?: string; email?: string; business?: string; message?: string }>({});
@@ -43,13 +49,31 @@ export default function Contact() {
         setFieldErrors(errors);
         return Object.keys(errors).length === 0;
     };
-
+    
     const nextStep = () => {
-        if (validateStep(step)) setStep(prev => prev + 1);
+        if (validateStep(step)) {
+            setStep(prev => Math.min(prev + 1, 3));
+        }
     };
 
     const prevStep = () => {
-        setStep(prev => prev - 1);
+        setStep(prev => Math.max(prev - 1, 1));
+    };
+
+    const handleStepClick = (s: number) => {
+        if (s < step) {
+            setStep(s);
+        } else if (s > step) {
+            // Validate steps sequentially
+            let canGo = true;
+            for (let checkStep = step; checkStep < s; checkStep++) {
+                if (!validateStep(checkStep)) {
+                    canGo = false;
+                    break;
+                }
+            }
+            if (canGo) setStep(s);
+        }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -131,14 +155,14 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="min-h-screen flex items-center py-24 relative z-10 overflow-hidden bg-background">
+        <section className="min-h-screen flex items-center py-24 relative z-10 overflow-hidden bg-background">
             {/* Background Glow */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-96 bg-neon/5 blur-[100px] rounded-full -z-10" />
 
             <div className="w-full px-6 md:px-12 lg:px-16 xl:px-24">
                 <div className="max-w-4xl mx-auto text-center mb-16">
                     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-                        <p className="text-neon font-mono text-sm mb-4 tracking-widest">06</p>
+                        <p className="text-neon font-mono text-sm mb-4 tracking-widest">07</p>
                         <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
                             {t.contact.titleStart} <span className="text-neon">{t.contact.titleHighlight}</span>?
                         </h2>
@@ -155,7 +179,7 @@ export default function Contact() {
                             <h3 className="text-xl font-bold text-foreground mb-6 uppercase tracking-wider">{t.contact.availability.title}</h3>
                             <div className="flex items-center gap-3 mb-4">
                                 <div className="w-3 h-3 bg-green-500 rounded-none animate-pulse" />
-                                <span className="text-foreground font-bold">{t.contact.availability.status}</span>
+                                <span className="text-foreground font-bold">{availabilityStatus}</span>
                             </div>
                             <p className="text-sm text-muted leading-relaxed mb-6">
                                 {t.contact.availability.response} <span className="text-neon font-bold">{t.contact.availability.responseTime}</span>.
@@ -211,36 +235,27 @@ export default function Contact() {
                                     }
 
                                     return (
-                                        <div key={s} className="flex flex-col items-center gap-2 relative z-10">
+                                        <div key={s} className="flex flex-col items-center gap-2 relative z-10 group">
                                             <button
                                                 type="button"
-                                                onClick={() => {
-                                                    if (s < step) {
-                                                        setStep(s);
-                                                    } else if (s > step) {
-                                                        // Validate steps sequentially
-                                                        let canGo = true;
-                                                        for (let checkStep = step; checkStep < s; checkStep++) {
-                                                            if (!validateStep(checkStep)) {
-                                                                canGo = false;
-                                                                break;
-                                                            }
-                                                        }
-                                                        if (canGo) setStep(s);
-                                                    }
-                                                }}
-                                                className={`w-10 h-10 rounded-none border flex items-center justify-center transition-all duration-500 ${
+                                                onClick={() => handleStepClick(s)}
+                                                className={`w-10 h-10 rounded-none border flex items-center justify-center transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer ${
                                                     isActive || isCompleted 
-                                                        ? 'border-neon bg-background text-neon shadow-[0_0_15px_rgba(225,29,29,0.2)]' 
-                                                        : 'border-border/30 bg-card text-muted hover:border-neon/40 hover:text-neon'
+                                                        ? 'border-neon bg-background text-neon shadow-[0_0_15px_rgba(225,29,29,0.25)] hover:shadow-[0_0_25px_rgba(225,29,29,0.4)]' 
+                                                        : 'border-border/30 bg-card text-muted-foreground/60 hover:border-neon/50 hover:text-neon hover:shadow-[0_0_10px_rgba(225,29,29,0.1)]'
                                                 }`}
                                                 aria-label={label}
                                             >
                                                 {icon}
                                             </button>
-                                            <span className={`text-[10px] font-mono uppercase tracking-wider transition-colors duration-300 font-bold ${
-                                                isActive ? 'text-neon font-black' : 'text-muted-foreground'
-                                            }`}>
+                                            <span 
+                                                onClick={() => handleStepClick(s)}
+                                                className={`text-[10px] font-mono uppercase tracking-wider transition-colors duration-300 font-bold cursor-pointer select-none ${
+                                                    isActive 
+                                                        ? 'text-neon font-black' 
+                                                        : 'text-muted-foreground hover:text-neon group-hover:text-neon'
+                                                }`}
+                                            >
                                                 {label}
                                             </span>
                                         </div>
@@ -261,25 +276,25 @@ export default function Contact() {
                                             <h3 className="text-2xl font-bold text-foreground mb-8">Business Details</h3>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                 <div className="space-y-2">
-                                                    <label className="text-xs font-bold text-muted uppercase tracking-wider">{t.contact.form.name}</label>
-                                                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder={t.contact.form.namePlaceholder} className={`w-full bg-background border rounded-none px-5 py-4 focus:border-neon transition-all outline-none ${fieldErrors.name ? 'border-red-500' : 'border-border/30'}`} />
+                                                    <label htmlFor="contact-name" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.name}</label>
+                                                    <input id="contact-name" type="text" name="name" value={formData.name} onChange={handleChange} placeholder={t.contact.form.namePlaceholder} className={`w-full bg-background border rounded-none px-5 py-4 focus:border-neon transition-all outline-none ${fieldErrors.name ? 'border-red-500' : 'border-border/30'}`} />
                                                     {fieldErrors.name && <p className="text-red-500 text-[10px] mt-1">{fieldErrors.name}</p>}
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label className="text-xs font-bold text-muted uppercase tracking-wider">{t.contact.form.email}</label>
-                                                    <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder={t.contact.form.emailPlaceholder} className={`w-full bg-background border rounded-none px-5 py-4 focus:border-neon transition-all outline-none ${fieldErrors.email ? 'border-red-500' : 'border-border/30'}`} />
+                                                    <label htmlFor="contact-email" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.email}</label>
+                                                    <input id="contact-email" type="email" name="email" value={formData.email} onChange={handleChange} placeholder={t.contact.form.emailPlaceholder} className={`w-full bg-background border rounded-none px-5 py-4 focus:border-neon transition-all outline-none ${fieldErrors.email ? 'border-red-500' : 'border-border/30'}`} />
                                                     {fieldErrors.email && <p className="text-red-500 text-[10px] mt-1">{fieldErrors.email}</p>}
                                                 </div>
                                             </div>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                 <div className="space-y-2">
-                                                    <label className="text-xs font-bold text-muted uppercase tracking-wider">{t.contact.form.business}</label>
-                                                    <input type="text" name="business" value={formData.business} onChange={handleChange} placeholder={t.contact.form.businessPlaceholder} className={`w-full bg-background border rounded-none px-5 py-4 focus:border-neon transition-all outline-none ${fieldErrors.business ? 'border-red-500' : 'border-border/30'}`} />
+                                                    <label htmlFor="contact-business" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.business}</label>
+                                                    <input id="contact-business" type="text" name="business" value={formData.business} onChange={handleChange} placeholder={t.contact.form.businessPlaceholder} className={`w-full bg-background border rounded-none px-5 py-4 focus:border-neon transition-all outline-none ${fieldErrors.business ? 'border-red-500' : 'border-border/30'}`} />
                                                     {fieldErrors.business && <p className="text-red-500 text-[10px] mt-1">{fieldErrors.business}</p>}
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label className="text-xs font-bold text-muted uppercase tracking-wider">{t.contact.form.website}</label>
-                                                    <input type="url" name="website" value={formData.website} onChange={handleChange} placeholder={t.contact.form.websitePlaceholder} className="w-full bg-background border border-border/30 rounded-none px-5 py-4 focus:border-neon transition-all outline-none" />
+                                                    <label htmlFor="contact-website" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.website}</label>
+                                                    <input id="contact-website" type="url" name="website" value={formData.website} onChange={handleChange} placeholder={t.contact.form.websitePlaceholder} className="w-full bg-background border border-border/30 rounded-none px-5 py-4 focus:border-neon transition-all outline-none" />
                                                 </div>
                                             </div>
                                         </motion.div>
@@ -296,21 +311,21 @@ export default function Contact() {
                                             <h3 className="text-2xl font-bold text-foreground mb-8">Project Scope</h3>
                                             <div className="grid grid-cols-1 gap-6">
                                                 <div className="space-y-2">
-                                                    <label className="text-xs font-bold text-muted uppercase tracking-wider">{t.contact.form.goal}</label>
-                                                    <select name="goal" value={formData.goal} onChange={handleChange} className="w-full bg-background border border-border/30 rounded-none ps-4 pe-10 py-4 focus:border-neon transition-all outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
+                                                    <label htmlFor="contact-goal" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.goal}</label>
+                                                    <select id="contact-goal" name="goal" value={formData.goal} onChange={handleChange} className="w-full bg-background border border-border/30 rounded-none ps-4 pe-10 py-4 focus:border-neon transition-all outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202%201z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
                                                         {t.contact.form.goalOptions.map((opt: string) => <option key={opt} className="bg-background text-foreground">{opt}</option>)}
                                                     </select>
                                                 </div>
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                     <div className="space-y-2">
-                                                        <label className="text-xs font-bold text-muted uppercase tracking-wider">{t.contact.form.budget}</label>
-                                                        <select name="budget" value={formData.budget} onChange={handleChange} className="w-full bg-background border border-border/30 rounded-none ps-4 pe-10 py-4 focus:border-neon transition-all outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
+                                                        <label htmlFor="contact-budget" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.budget}</label>
+                                                        <select id="contact-budget" name="budget" value={formData.budget} onChange={handleChange} className="w-full bg-background border border-border/30 rounded-none ps-4 pe-10 py-4 focus:border-neon transition-all outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202%201z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
                                                             {t.contact.form.budgetOptions.map((opt: string) => <option key={opt} className="bg-background text-foreground">{opt}</option>)}
                                                         </select>
                                                     </div>
                                                     <div className="space-y-2">
-                                                        <label className="text-xs font-bold text-muted uppercase tracking-wider">{t.contact.form.deadline}</label>
-                                                        <select name="deadline" value={formData.deadline} onChange={handleChange} className="w-full bg-background border border-border/30 rounded-none ps-4 pe-10 py-4 focus:border-neon transition-all outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
+                                                        <label htmlFor="contact-deadline" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.deadline}</label>
+                                                        <select id="contact-deadline" name="deadline" value={formData.deadline} onChange={handleChange} className="w-full bg-background border border-border/30 rounded-none ps-4 pe-10 py-4 focus:border-neon transition-all outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202%201z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
                                                             {t.contact.form.deadlineOptions.map((opt: string) => <option key={opt} className="bg-background text-foreground">{opt}</option>)}
                                                         </select>
                                                     </div>
@@ -329,8 +344,8 @@ export default function Contact() {
                                         >
                                             <h3 className="text-2xl font-bold text-foreground mb-8">Final Details</h3>
                                             <div className="space-y-2">
-                                                <label className="text-xs font-bold text-muted uppercase tracking-wider">{t.contact.form.details}</label>
-                                                <textarea name="message" rows={5} value={formData.message} onChange={handleChange} placeholder={t.contact.form.detailsPlaceholder} className={`w-full bg-background border rounded-none px-5 py-4 focus:border-neon transition-all outline-none resize-none ${fieldErrors.message ? 'border-red-500' : 'border-border/30'}`} />
+                                                <label htmlFor="contact-message" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.details}</label>
+                                                <textarea id="contact-message" name="message" rows={5} value={formData.message} onChange={handleChange} placeholder={t.contact.form.detailsPlaceholder} className={`w-full bg-background border rounded-none px-5 py-4 focus:border-neon transition-all outline-none resize-none ${fieldErrors.message ? 'border-red-500' : 'border-border/30'}`} />
                                                 {fieldErrors.message && <p className="text-red-500 text-[10px] mt-1">{fieldErrors.message}</p>}
                                             </div>
                                         </motion.div>
@@ -345,7 +360,7 @@ export default function Contact() {
                                     ) : <div />}
 
                                     {step < 3 ? (
-                                        <button type="button" onClick={nextStep} className="inline-flex items-center gap-2 px-8 py-3 bg-neon text-black font-bold rounded-none hover:bg-neon/90 transition-all">
+                                        <button type="button" onClick={nextStep} className="inline-flex items-center gap-2 px-8 py-3 bg-neon text-white font-bold rounded-none hover:bg-neon/90 transition-all">
                                             Next <ChevronRight className="w-5 h-5" />
                                         </button>
                                     ) : (
@@ -353,7 +368,7 @@ export default function Contact() {
                                             <button
                                                 type="submit"
                                                 disabled={formState === 'submitting'}
-                                                className="inline-flex items-center gap-2 px-8 py-3 bg-neon text-black font-bold rounded-none hover:bg-neon/90 transition-all disabled:opacity-50"
+                                                className="inline-flex items-center gap-2 px-8 py-3 bg-neon text-white font-bold rounded-none hover:bg-neon/90 transition-all disabled:opacity-50"
                                             >
                                                 {formState === 'submitting' ? t.contact.form.sending : t.contact.form.submit}
                                             </button>

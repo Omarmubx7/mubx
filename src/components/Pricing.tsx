@@ -42,7 +42,7 @@ export default function Pricing() {
                                 className={`relative p-8 rounded-3xl bg-card border ${tier.color} flex flex-col h-full hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]`}
                             >
                                 {tier.recommended && (
-                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-neon text-black text-xs font-black uppercase rounded-full tracking-wider">
+                                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-neon text-white text-xs font-black uppercase rounded-full tracking-wider">
                                         {t.pricing.popular}
                                     </div>
                                 )}
@@ -75,8 +75,8 @@ export default function Pricing() {
                                 <SwipeLettersButton
                                     label={t.pricing.cta}
                                     link="#contact"
-                                    defaultState={{ bgColor: tier.recommended ? '#D71C1C' : '#1A1A1A', borderColor: tier.recommended ? 'transparent' : '#333333', textColor: tier.recommended ? '#000000' : '#FFFFFF' }}
-                                    hoverState={{ bgColor: '#D71C1C', borderColor: '#D71C1C', textColor: '#000000' }}
+                                     defaultState={{ bgColor: tier.recommended ? '#D71C1C' : '#1A1A1A', borderColor: tier.recommended ? 'transparent' : '#333333', textColor: '#FFFFFF' }}
+                                     hoverState={{ bgColor: '#D71C1C', borderColor: '#D71C1C', textColor: '#FFFFFF' }}
                                     font={{ fontSize: '16px', fontWeight: 'bold' }}
                                     className="w-full"
                                     paddingY={14}
