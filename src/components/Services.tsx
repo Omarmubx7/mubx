@@ -273,7 +273,7 @@ export default function Services() {
 
                                         {/* Card Bottom / Footer pricing & CTA */}
                                         <div className="mt-8 space-y-6 pt-6 border-t border-white/5">
-                                            <div className="flex justify-between items-baseline gap-2 flex-wrap">
+                                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-3 flex-wrap">
                                                 <div>
                                                     <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest block mb-0.5">
                                                         {language === 'en' ? 'Investment' : 'الاستثمار'}
@@ -294,11 +294,11 @@ export default function Services() {
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <div className="text-right">
+                                                <div className="sm:text-right">
                                                     <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest block mb-0.5">
                                                         {language === 'en' ? 'Ideal For' : 'مثالي لـ'}
                                                     </span>
-                                                    <span className="text-xs text-muted-foreground/80 font-medium block max-w-[200px] truncate">
+                                                    <span className="text-xs text-muted-foreground/80 font-medium block sm:max-w-[200px]">
                                                         {service.idealFor}
                                                     </span>
                                                 </div>

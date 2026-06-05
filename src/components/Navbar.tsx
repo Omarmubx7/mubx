@@ -202,6 +202,18 @@ const NavbarContent = () => {
                                 </Link>
                             </motion.div>
                         ))}
+                        {/* Resume Link - Mobile */}
+                        <motion.div variants={itemVariants}>
+                            <a
+                                href="/cv.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setIsOpen(false)}
+                                className="text-xl font-bold text-foreground hover:text-neon transition-colors uppercase tracking-wider"
+                            >
+                                {t.nav.resume}
+                            </a>
+                        </motion.div>
                         <div className="flex flex-col gap-3 mt-8">
                             {mounted && (
                                 <>

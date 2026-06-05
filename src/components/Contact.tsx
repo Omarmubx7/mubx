@@ -163,7 +163,7 @@ export default function Contact() {
                 <div className="max-w-4xl mx-auto text-center mb-16">
                     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
                         <p className="text-neon font-mono text-sm mb-4 tracking-widest">07</p>
-                        <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+                        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 text-foreground">
                             {t.contact.titleStart} <span className="text-neon">{t.contact.titleHighlight}</span>?
                         </h2>
                         <p className="text-muted text-lg max-w-2xl mx-auto mb-12">

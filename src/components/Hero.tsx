@@ -86,7 +86,7 @@ export default function Hero() {
                     style={isMobile ? undefined : { scale: scaleContent, opacity: opacityContent }} 
                     className="w-full px-6 md:px-12 lg:px-16 xl:px-24 relative z-10 will-change-transform"
                 >
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 relative items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 relative items-center">
                         {/* Vertical Grid Line Separator */}
                         <div className="hidden absolute left-1/2 top-[-20%] bottom-[-20%] w-[1px] bg-border/20 -translate-x-1/2 pointer-events-none z-0" />
 
@@ -103,7 +103,7 @@ export default function Hero() {
                                     <TextReveal text={t.hero.titleStart} splitType="letter" delay={0.2} />
                                 </span>
 
-                                <div className="text-neon relative inline-block text-3xl sm:text-5xl md:text-6xl min-h-[2.4em] sm:min-h-[1.2em] w-full mt-2 mb-2 overflow-visible font-display">
+                                <div className="text-neon relative inline-block text-3xl sm:text-5xl md:text-6xl min-h-[1.4em] w-full mt-2 mb-2 overflow-visible font-display">
                                     <ProTextType
                                         text={language === 'en'
                                             ? ['SCALABLE SYSTEMS', 'REVENUE FOCUSED', 'HIGH PERFORMANCE']
