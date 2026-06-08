@@ -11,7 +11,7 @@ export interface Project {
     timeframe: string;
     verified_outcome?: string;
     screenshots?: string[];
-    category: { en: string; ar: string; icon: string; color: string }; // Added for badge
+    category: { en: string; icon: string; color: string }; // Removed ar badge
     caseStudy: {
         problem: string;
         role: string;
@@ -32,7 +32,7 @@ const projectsList: Project[] = [
         metrics: 'Real-time GPA',
         verified_outcome: 'Integrated Tool',
         timeframe: '2 weeks',
-        category: { en: 'Academic Tool', ar: 'أداة أكاديمية', icon: '🎓', color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20' },
+        category: { en: 'Academic Tool', icon: '🎓', color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20' },
         caseStudy: {
             problem: 'Students needed a quick, private way to calculate their GPA and track their academic progress without logging into slow portals.',
             role: 'Full Stack Developer',
@@ -50,7 +50,7 @@ const projectsList: Project[] = [
         metrics: 'AI Assistant',
         verified_outcome: 'Live Product',
         timeframe: '5 days',
-        category: { en: 'AI Assistant', ar: 'مساعد ذكاء اصطناعي', icon: '🤖', color: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20' },
+        category: { en: 'AI Assistant', icon: '🤖', color: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20' },
         caseStudy: {
             problem: 'Visitors needed instant answers and clearer guidance without waiting for manual support responses.',
             role: 'AI Product Developer',
@@ -68,7 +68,7 @@ const projectsList: Project[] = [
         metrics: '1.2s Load Time',
         verified_outcome: 'Portfolio Live',
         timeframe: 'Ongoing',
-        category: { en: 'Photography Portfolio', ar: 'معرض صور', icon: '📸', color: 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-500/20' },
+        category: { en: 'Photography Portfolio', icon: '📸', color: 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-500/20' },
         caseStudy: {
             problem: 'Lack of a professional platform to showcase high-end photography without sacrificing page speed.',
             role: 'Technical Consultant & Lead Developer',
@@ -86,7 +86,7 @@ const projectsList: Project[] = [
         metrics: "Arab World's First",
         verified_outcome: 'Live Platform',
         timeframe: '1 Week',
-        category: { en: 'Podcast Platform', ar: 'منصة بودكاست', icon: '🎙️', color: 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-500/20' },
+        category: { en: 'Podcast Platform', icon: '🎙️', color: 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-500/20' },
         caseStudy: {
             problem: 'Lack of a dedicated, high-performance digital platform for men\'s dialogue and personal growth in the Arab region.',
             role: 'Technical Consultant',
@@ -104,7 +104,7 @@ const projectsList: Project[] = [
         metrics: '3 Days Delivery',
         verified_outcome: 'Live & Active',
         timeframe: '3 days',
-        category: { en: 'Link Bio', ar: 'رابط بايو', icon: '🔗', color: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20' },
+        category: { en: 'Link Bio', icon: '🔗', color: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20' },
         caseStudy: {
             problem: 'Generic link-in-bio tools lacked the visual impact and high-end brand integration required for a luxury lifestyle presence.',
             role: 'Full Stack Architect',
@@ -122,7 +122,7 @@ const projectsList: Project[] = [
         metrics: '20% Lead Boost',
         verified_outcome: 'Verified via Google Analytics',
         timeframe: '2 Weeks',
-        category: { en: 'Digital Agency', ar: 'وكالة رقمية', icon: '🏢', color: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20' },
+        category: { en: 'Digital Agency', icon: '🏢', color: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20' },
         caseStudy: {
             problem: 'Standard website performance was bottlenecking lead generation and digital authority for the media agency.',
             role: 'Lead Architect',
@@ -140,7 +140,7 @@ const projectsList: Project[] = [
         metrics: '100+ Members',
         verified_outcome: 'Based on Club Registry Logs',
         timeframe: '3 weeks ',
-        category: { en: 'Education System', ar: 'نظام تعليمي', icon: '🎓', color: 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20' },
+        category: { en: 'Education System', icon: '🎓', color: 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20' },
         caseStudy: {
             problem: 'Manual paper-based registration and WhatsApp bookings were causing administrative chaos for 100+ members.',
             role: 'System Architect',
@@ -158,7 +158,7 @@ const projectsList: Project[] = [
         metrics: 'Zain Cash / CliQ',
         verified_outcome: 'Operational since Jan 2025',
         timeframe: '3 Weeks',
-        category: { en: 'E-commerce', ar: 'تجارة إلكترونية', icon: '🛍️', color: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20' },
+        category: { en: 'E-commerce', icon: '🛍️', color: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20' },
         caseStudy: {
             problem: 'Lack of local Print-on-Demand infrastructure with custom design tools for the Jordanian creative market.',
             role: 'E-commerce Consultant',
@@ -169,9 +169,8 @@ const projectsList: Project[] = [
 ];
 
 const projectsData: Record<Locale, Project[]> = {
-    en: projectsList,
-    ar: projectsList
+    en: projectsList
 };
 
-export const getProjects = (lang: Locale) => projectsData.en;
+export const getProjects = (lang?: Locale) => projectsData.en;
 export const projects = projectsData.en; // Fallback for legacy imports

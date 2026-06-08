@@ -10,20 +10,15 @@ import type { LucideIcon } from 'lucide-react';
 import { dictionary, Locale } from '@/lib/dictionaries';
 import { siteConfig } from '@/config/seo';
 
-type Props = {
-    searchParams: Promise<{ lang?: string }>
-}
-
-export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-    const resolvedSearchParams = await searchParams;
-    const lang = (resolvedSearchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+export async function generateMetadata(): Promise<Metadata> {
+    const lang: Locale = 'en';
     const dictMeta = dictionary[lang].seo.links;
 
     return {
         title: dictMeta.title,
         description: dictMeta.description,
         keywords: [
-            'Omar Mubaidin links', 'MUBX links', 'عمر مبيضين روابط',
+            'Omar Mubaidin links', 'MUBX links',
             'Omar Mubaidin social media', 'Omar Mubaidin contact', 'Amman', 'Jordan'
         ],
         alternates: {
@@ -36,7 +31,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
             siteName: 'MUBX',
             type: 'profile',
             images: [siteConfig.ogImage],
-            locale: lang === 'ar' ? 'ar_QA' : 'en_US',
+            locale: 'en_US',
         },
         twitter: {
             card: 'summary_large_image',
@@ -105,9 +100,8 @@ function LinkCard({ link, isPrimary = false }: Readonly<LinkCardProps>) {
     );
 }
 
-export default async function LinksPage(props: Readonly<Props>) {
-    const searchParams = await props.searchParams;
-    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+export default async function LinksPage() {
+    const lang: Locale = 'en';
 
     const workLinks: LinkItem[] = [
         {

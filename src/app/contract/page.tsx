@@ -1,24 +1,21 @@
+"use client";
+
 import { LanguageProvider } from "@/context/LanguageContext";
 import { Locale, dictionary } from '@/lib/dictionaries';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
-type Props = {
-    searchParams: Promise<{ lang?: string }>
-}
-
-export const metadata = {
-    title: 'Service Agreement | MUBX',
-    description: 'Professional Service Agreement for MUBX clients.',
-};
-
-export default async function ContractPage(props: Props) {
-    const searchParams = await props.searchParams;
-    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+export default function ContractPage() {
+    const lang: Locale = 'en';
     const t = dictionary[lang].contractPage;
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     return (
         <Suspense>
-            <LanguageProvider initialLocale={lang}>
+            <LanguageProvider initialLocale="en">
                 <div className="min-h-screen bg-white text-black py-20 px-6 md:px-0">
                     <div className="max-w-3xl mx-auto border p-8 md:p-12 shadow-sm bg-white" id="contract-content">
                         {/* Header */}
@@ -92,7 +89,7 @@ export default async function ContractPage(props: Props) {
                                 </div>
                                 <div>
                                     <p className="font-bold uppercase text-xs text-gray-500 mb-1">{t.footer.date}</p>
-                                    <p className="pb-1 h-6">{new Date().toLocaleDateString(lang === 'ar' ? 'ar-JO' : 'en-US')}</p>
+                                    <p className="pb-1 h-6">{mounted ? new Date().toLocaleDateString('en-US') : ''}</p>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +101,7 @@ export default async function ContractPage(props: Props) {
                             onClick={() => window.print()}
                             className="bg-black text-white px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform cursor-pointer"
                         >
-                            {lang === 'ar' ? 'طباعة كـ PDF' : 'Print to PDF'}
+                            Print to PDF
                         </button>
                     </div>
                 </div>

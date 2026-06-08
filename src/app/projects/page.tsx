@@ -8,24 +8,15 @@ import JsonLd from '@/components/JsonLd';
 import { Suspense } from 'react';
 import { dictionary, Locale } from '@/lib/dictionaries';
 
-type Props = {
-    searchParams: Promise<{ lang?: string }>
-}
-
-export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-    const resolvedSearchParams = await searchParams;
-    const lang = (resolvedSearchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+export async function generateMetadata(): Promise<Metadata> {
+    const lang: Locale = 'en';
     const dictMeta = dictionary[lang].seo.projects;
 
     return {
         title: dictMeta.title,
         description: dictMeta.description,
         alternates: {
-            canonical: `${siteConfig.url}/projects`,
-            languages: {
-                'en': `${siteConfig.url}/projects`,
-                'ar': `${siteConfig.url}/projects?lang=ar`,
-            },
+            canonical: `${siteConfig.url}/projects`
         },
         openGraph: {
             title: dictMeta.title,
@@ -33,7 +24,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
             url: `${siteConfig.url}/projects`,
             siteName: 'MUBX',
             images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: 'MUBX Projects — Omar Mubaidin' }],
-            locale: lang === 'ar' ? 'ar_QA' : 'en_US',
+            locale: 'en_US',
             type: 'website',
         },
         twitter: {
@@ -47,9 +38,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     };
 }
 
-export default async function ProjectsPage(props: Readonly<Props>) {
-    const searchParams = await props.searchParams;
-    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+export default async function ProjectsPage() {
+    const lang: Locale = 'en';
 
     return (
         <Suspense>
@@ -67,7 +57,7 @@ export default async function ProjectsPage(props: Readonly<Props>) {
                         "name": "MUBX Selected Projects",
                         "provider": {
                             "@type": "Person",
-                            "name": "Omar Mubaidin | عمر مبيضين",
+                            "name": "Omar Mubaidin",
                             "url": siteConfig.url
                         }
                     }} />

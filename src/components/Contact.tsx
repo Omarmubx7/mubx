@@ -9,11 +9,9 @@ import { useLanguage } from '@/context/LanguageContext';
 import { getBookingQuarter } from '@/utils/date';
 
 export default function Contact() {
-    const { t, language } = useLanguage();
-    const bookingQuarter = getBookingQuarter(language);
-    const availabilityStatus = language === 'ar'
-        ? `متاح لمشروعين جديدين (${bookingQuarter})`
-        : `Accepting 2 New Projects (${bookingQuarter})`;
+    const { t } = useLanguage();
+    const bookingQuarter = getBookingQuarter();
+    const availabilityStatus = `Accepting 2 New Projects (${bookingQuarter})`;
 
     const [step, setStep] = useState(1);
     const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -40,11 +38,11 @@ export default function Contact() {
     const validateStep = (s: number) => {
         const errors: { name?: string; email?: string; business?: string; message?: string } = {};
         if (s === 1) {
-            if (!formData.name.trim()) errors.name = language === 'ar' ? 'الرجاء إدخال اسمك' : 'Please enter your name';
-            if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) errors.email = language === 'ar' ? 'يرجى إدخال بريد إلكتروني صالح' : 'Please enter a valid email address';
-            if (!formData.business.trim()) errors.business = language === 'ar' ? 'الرجاء إدخال اسم عملك' : 'Please enter your business name';
+            if (!formData.name.trim()) errors.name = 'Please enter your name';
+            if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) errors.email = 'Please enter a valid email address';
+            if (!formData.business.trim()) errors.business = 'Please enter your business name';
         } else if (s === 3) {
-            if (!formData.message.trim() || formData.message.length < 10) errors.message = language === 'ar' ? 'يرجى كتابة 10 أحرف على الأقل' : 'Please enter at least 10 characters';
+            if (!formData.message.trim() || formData.message.length < 10) errors.message = 'Please enter at least 10 characters';
         }
         setFieldErrors(errors);
         return Object.keys(errors).length === 0;
@@ -117,7 +115,7 @@ export default function Contact() {
                     budget: formData.budget || 'Not Specified',
                     deadline: formData.deadline || 'Flexible',
                     message: formData.message,
-                    language: language
+                    language: 'en'
                 }),
             }).then(async (res) => {
                 if (!res.ok) {
@@ -130,7 +128,7 @@ export default function Contact() {
             const notifyPromise = fetchWithTimeout('/api/notify', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...formData, language }),
+                body: JSON.stringify({ ...formData, language: 'en' }),
             }).then(async (res) => {
                 if (!res.ok) {
                     const errorData = await res.json().catch(() => ({}));

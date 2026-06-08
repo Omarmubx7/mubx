@@ -10,10 +10,9 @@ type ProjectCardProps = {
     project: any; // eslint-disable-line @typescript-eslint/no-explicit-any
     index: number;
     t: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-    language: string;
 }
 
-export default function ProjectCard({ project, index, t, language }: Readonly<ProjectCardProps>) {
+export default function ProjectCard({ project, index, t }: Readonly<ProjectCardProps>) {
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -22,14 +21,7 @@ export default function ProjectCard({ project, index, t, language }: Readonly<Pr
         e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
     };
 
-    const getHref = (path: string) => {
-        if (path.startsWith('http')) return path;
-        if (language === 'en') return path;
-        const separator = path.includes('?') ? '&' : '?';
-        return `${path}${separator}lang=${language}`;
-    };
-
-    const projectHref = getHref(`/projects/${project.slug}`);
+    const projectHref = project.slug.startsWith('http') ? project.slug : `/projects/${project.slug}`;
 
     return (
         <Link
@@ -68,7 +60,7 @@ export default function ProjectCard({ project, index, t, language }: Readonly<Pr
                         {/* Inline Category Badge */}
                         <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-none text-[10px] font-medium border ${project.category.color}`}>
                             <span>{project.category.icon}</span>
-                            <span>{language === 'ar' ? project.category.ar : project.category.en}</span>
+                            <span>{project.category.en}</span>
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,6 @@
+'use client';
+
+import React from 'react';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 import { useState, useEffect } from 'react';
@@ -11,8 +14,7 @@ interface TechItem {
     name: string;
     icon: string;
     isCore: boolean;
-    roleEn?: string;
-    roleAr?: string;
+    role?: string;
 }
 
 interface TechCategory {
@@ -26,9 +28,9 @@ const techCategories: TechCategory[] = [
         id: 'frontend',
         icon: Code,
         items: [
-            { name: 'Next.js', icon: '/techstackicons/next-dot-js-svgrepo-com.svg', isCore: true, roleEn: 'Primary Framework', roleAr: 'إطار العمل الرئيسي' },
-            { name: 'React', icon: '/techstackicons/react-svgrepo-com.svg', isCore: true, roleEn: 'UI Library', roleAr: 'مكتبة الواجهات' },
-            { name: 'TypeScript', icon: '/techstackicons/typescript-icon-svgrepo-com.svg', isCore: true, roleEn: 'Type Safety', roleAr: 'أمان الأنماط' },
+            { name: 'Next.js', icon: '/techstackicons/next-dot-js-svgrepo-com.svg', isCore: true, role: 'Primary Framework' },
+            { name: 'React', icon: '/techstackicons/react-svgrepo-com.svg', isCore: true, role: 'UI Library' },
+            { name: 'TypeScript', icon: '/techstackicons/typescript-icon-svgrepo-com.svg', isCore: true, role: 'Type Safety' },
             { name: 'Tailwind CSS', icon: '/techstackicons/tailwindcss-icon-svgrepo-com.svg', isCore: false },
             { name: 'Figma', icon: '/techstackicons/figma-icon.svg', isCore: false },
             { name: 'HTML5', icon: '/techstackicons/HTML5.svg', isCore: false },
@@ -40,8 +42,8 @@ const techCategories: TechCategory[] = [
         id: 'backend',
         icon: Database,
         items: [
-            { name: 'Node.js', icon: '/techstackicons/nodejs-icon-svgrepo-com.svg', isCore: true, roleEn: 'Backend Runtime', roleAr: 'بيئة التشغيل الخلفية' },
-            { name: 'PostgreSQL', icon: '/techstackicons/postgresql-svgrepo-com.svg', isCore: true, roleEn: 'Primary Database', roleAr: 'قاعدة البيانات الأساسية' },
+            { name: 'Node.js', icon: '/techstackicons/nodejs-icon-svgrepo-com.svg', isCore: true, role: 'Backend Runtime' },
+            { name: 'PostgreSQL', icon: '/techstackicons/postgresql-svgrepo-com.svg', isCore: true, role: 'Primary Database' },
             { name: 'Supabase', icon: '/techstackicons/supabase-logo-icon.svg', isCore: false },
             { name: 'Prisma', icon: '/techstackicons/prisma-svgrepo-com.svg', isCore: false },
             { name: 'Python', icon: '/techstackicons/python-svgrepo-com.svg', isCore: false },
@@ -56,7 +58,7 @@ const techCategories: TechCategory[] = [
         id: 'tools',
         icon: Terminal,
         items: [
-            { name: 'Vercel', icon: '/techstackicons/vercel-logo-svgrepo-com.svg', isCore: true, roleEn: 'Hosting & Edge', roleAr: 'منصة الاستضافة' },
+            { name: 'Vercel', icon: '/techstackicons/vercel-logo-svgrepo-com.svg', isCore: true, role: 'Hosting & Edge' },
             { name: 'Git', icon: '/techstackicons/git-svgrepo-com.svg', isCore: false },
             { name: 'GitHub', icon: '/techstackicons/github-svgrepo-com.svg', isCore: false },
             { name: 'Docker', icon: '/techstackicons/docker-svgrepo-com.svg', isCore: false },
@@ -70,20 +72,13 @@ const techCategories: TechCategory[] = [
 ];
 
 const categoryDescriptions = {
-    en: {
-        frontend: 'Building responsive, modern, and interactive user experiences.',
-        backend: 'Architecting secure, scalable, and database-driven solutions.',
-        tools: 'Leveraging automation, version control, and CI/CD workflows.'
-    },
-    ar: {
-        frontend: 'بناء واجهات مستخدم متجاوبة، حديثة وتفاعلية.',
-        backend: 'هندسة بنى تحتية آمنة، قابلة للتوسع وتعتمد على البيانات.',
-        tools: 'الاستفادة من الأتمتة، إدارة النسخ، وسير عمل النشر المستمر.'
-    }
+    frontend: 'Building responsive, modern, and interactive user experiences.',
+    backend: 'Architecting secure, scalable, and database-driven solutions.',
+    tools: 'Leveraging automation, version control, and CI/CD workflows.'
 };
 
 export default function TechStack() {
-    const { t, language } = useLanguage();
+    const { t } = useLanguage();
     const [isMobile, setIsMobile] = useState(true);
 
     useEffect(() => {
@@ -144,7 +139,7 @@ export default function TechStack() {
                         <div className="w-full py-10 flex flex-col items-center">
                             {techCategories.map((category) => {
                                 const categoryName = t.tech.categories[category.id] || category.id;
-                                const categoryDesc = categoryDescriptions[language === 'ar' ? 'ar' : 'en'][category.id];
+                                const categoryDesc = categoryDescriptions[category.id];
                                 const CategoryIcon = category.icon;
 
                                 return (
@@ -183,7 +178,7 @@ export default function TechStack() {
                                         {/* Grid of Skill Cards (4 columns wrapped in CardTilt) */}
                                         <div className="grid grid-cols-4 gap-x-8 gap-y-12 w-full max-w-5xl mx-auto relative z-10">
                                             {category.items.map((item, index) => {
-                                                const coreLabel = language === 'ar' ? 'أساسي' : 'Core';
+                                                const coreLabel = 'Core';
                                                 
                                                 // If item is in the second or third row (index >= 4), render a top connector vertical line linking to the row above
                                                 const hasTopConnector = index >= 4;
@@ -195,7 +190,7 @@ export default function TechStack() {
                                                         )}
                                                         
                                                         <CardTilt className="w-full h-full">
-                                                            <div className="w-full relative p-4 rounded-none bg-card/10 border border-border/30 hover:border-neon/40 hover:bg-white/[0.015] transition-all duration-300 flex items-center justify-between group/tech cursor-default text-left rtl:text-right shadow-none">
+                                                            <div className="w-full relative p-4 rounded-none bg-card/10 border border-border/30 hover:border-neon/40 hover:bg-white/[0.015] transition-all duration-300 flex items-center justify-between group/tech cursor-default text-left shadow-none">
                                                                 <div className="flex items-center gap-3 w-full justify-between">
                                                                     <div className="flex items-center gap-3">
                                                                         <div className="w-8 h-8 flex items-center justify-center relative shrink-0">
@@ -211,9 +206,9 @@ export default function TechStack() {
                                                                             <span className="text-xs md:text-sm font-bold font-mono text-foreground tracking-tight">
                                                                                 {item.name}
                                                                             </span>
-                                                                            {item.isCore && (
+                                                                            {item.isCore && item.role && (
                                                                                 <span className="text-[9px] text-muted-foreground font-mono">
-                                                                                    {language === 'ar' ? item.roleAr : item.roleEn}
+                                                                                    {item.role}
                                                                                 </span>
                                                                             )}
                                                                         </div>
@@ -241,7 +236,7 @@ export default function TechStack() {
                         <div className="relative w-full py-4">
                             {techCategories.map((category) => {
                                 const categoryName = t.tech.categories[category.id] || category.id;
-                                const categoryDesc = categoryDescriptions[language === 'ar' ? 'ar' : 'en'][category.id];
+                                const categoryDesc = categoryDescriptions[category.id];
                                 const CategoryIcon = category.icon;
 
                                 return (
@@ -264,18 +259,18 @@ export default function TechStack() {
                                         </div>
 
                                         {/* Mobile Cards stack with Blueprint schematic connectors */}
-                                        <div className="p-4 pl-8 pr-4 rtl:pl-4 rtl:pr-8 relative space-y-3">
+                                        <div className="p-4 pl-8 pr-4 relative space-y-3">
                                             {/* Vertical Trunk Line inside the category stack */}
-                                            <div className="absolute left-[16px] rtl:left-auto rtl:right-[16px] top-0 bottom-6 w-[1px] bg-border/30" />
+                                            <div className="absolute left-[16px] top-0 bottom-6 w-[1px] bg-border/30" />
 
                                             {category.items.map((item) => {
-                                                const coreLabel = language === 'ar' ? 'أساسي' : 'Core';
+                                                const coreLabel = 'Core';
                                                 return (
-                                                    <div key={item.name} className="relative pl-4 rtl:pl-0 rtl:pr-4 group">
+                                                    <div key={item.name} className="relative pl-4 group">
                                                         {/* Right-angled L-connector in CSS */}
-                                                        <div className="absolute left-[-16px] rtl:left-auto rtl:right-[-16px] top-[22px] w-4 h-[1px] bg-border/30" />
+                                                        <div className="absolute left-[-16px] top-[22px] w-4 h-[1px] bg-border/30" />
 
-                                                        <div className="w-full relative p-3 rounded-none bg-background/40 border border-border/20 hover:border-neon/30 transition-all duration-300 flex items-center justify-between group cursor-default text-left rtl:text-right">
+                                                        <div className="w-full relative p-3 rounded-none bg-background/40 border border-border/20 hover:border-neon/30 transition-all duration-300 flex items-center justify-between group cursor-default text-left">
                                                             <div className="flex items-center justify-between w-full relative z-10">
                                                                 <div className="flex items-center gap-3">
                                                                     <div className="w-7 h-7 flex items-center justify-center relative shrink-0">
@@ -291,9 +286,9 @@ export default function TechStack() {
                                                                         <span className="text-xs font-bold font-mono text-foreground tracking-tight">
                                                                             {item.name}
                                                                         </span>
-                                                                        {item.isCore && (
+                                                                        {item.isCore && item.role && (
                                                                             <span className="text-[9px] text-muted-foreground font-mono">
-                                                                                {language === 'ar' ? item.roleAr : item.roleEn}
+                                                                                {item.role}
                                                                             </span>
                                                                         )}
                                                                     </div>

@@ -11,16 +11,15 @@ type Props = {
     searchParams: Promise<{ lang?: string }>
 }
 
-export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-    const resolvedSearchParams = await searchParams;
-    const lang = (resolvedSearchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+export async function generateMetadata(): Promise<Metadata> {
+    const lang: Locale = 'en';
     const dictMeta = dictionary[lang].seo.about;
 
     return {
         title: dictMeta.title,
         description: dictMeta.description,
         keywords: [
-            'Omar Mubaidin', 'عمر مبيضين', 'MUBX founder',
+            'Omar Mubaidin', 'MUBX founder',
             'web developer Amman', 'CS student PSUT',
             'full stack developer Jordan', 'Omar Mubaidin about'
         ],
@@ -35,7 +34,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
             description: dictMeta.description,
             images: [siteConfig.ogImage],
             siteName: 'MUBX',
-            locale: lang === 'ar' ? 'ar_QA' : 'en_US',
+            locale: 'en_US',
         },
         twitter: {
             card: 'summary_large_image',
@@ -50,9 +49,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     };
 }
 
-export default async function AboutPage(props: Readonly<Props>) {
-    const searchParams = await props.searchParams;
-    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+export default async function AboutPage() {
+    const lang: Locale = 'en';
 
     return (
         <Suspense>
@@ -64,22 +62,22 @@ export default async function AboutPage(props: Readonly<Props>) {
                     "mainEntity": {
                         "@type": "Person",
                         "@id": "https://mubx.dev/#person",
-                        "name": lang === 'ar' ? "عمر مبيضين" : "Omar Mubaidin",
-                        "alternateName": ["عمر مبيضين", "MUBX", "Omar Mubx", "عمر المبيضين"],
-                        "givenName": lang === 'ar' ? "عمر" : "Omar",
-                        "familyName": lang === 'ar' ? "مبيضين" : "Mubaidin",
-                        "jobTitle": lang === 'ar' ? "مطور ويب متكامل ومستشار تقني" : "Full Stack Developer & Technical Consultant",
+                        "name": "Omar Mubaidin",
+                        "alternateName": ["MUBX", "Omar Mubx"],
+                        "givenName": "Omar",
+                        "familyName": "Mubaidin",
+                        "jobTitle": "Full Stack Developer & Technical Consultant",
                         "description": dictionary[lang].seo.about.description,
                         "image": "https://mubx.dev/og-images.png",
                         "url": "https://mubx.dev",
                         "nationality": {
                             "@type": "Country",
-                            "name": lang === 'ar' ? "الأردن" : "Jordan"
+                            "name": "Jordan"
                         },
                         "address": {
                             "@type": "PostalAddress",
-                            "addressLocality": lang === 'ar' ? "عمان" : "Amman",
-                            "addressCountry": lang === 'ar' ? "الأردن" : "Jordan"
+                            "addressLocality": "Amman",
+                            "addressCountry": "Jordan"
                         },
                         "worksFor": {
                             "@type": "Organization",

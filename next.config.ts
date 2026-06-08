@@ -93,6 +93,7 @@ const nextConfig: NextConfig = {
   },
   // Optimize production builds
   poweredByHeader: false,
+  outputFileTracingRoot: process.cwd(),
   experimental: {
     urlImports: ['https://framer.com/m/', 'https://framerusercontent.com/'],
   },

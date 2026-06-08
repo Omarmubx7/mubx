@@ -4,9 +4,12 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { Search, PenTool, Code, Rocket, ChevronDown } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 export default function Process() {
     const { t } = useLanguage();
+    const pathname = usePathname();
+    const isStandalone = pathname === '/services';
     const [isMobile, setIsMobile] = useState(false);
     const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
@@ -25,7 +28,7 @@ export default function Process() {
     ];
 
     return (
-        <section id="process" className="py-24 bg-background/50 relative overflow-hidden border-b border-border/30">
+        <section id="process" className={`py-24 ${isStandalone ? 'bg-transparent' : 'bg-background/50'} relative overflow-hidden border-b border-border/30`}>
             <div className="container mx-auto px-6 md:px-12">
                 <div className="text-center mb-16">
                     <span className="text-neon font-mono text-sm mb-4 tracking-widest block">

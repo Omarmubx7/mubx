@@ -18,9 +18,7 @@ export default function Breadcrumbs({ items }: Readonly<BreadcrumbsProps>) {
     const { isRTL, language } = useLanguage();
 
     const getHref = (path: string) => {
-        const hasQuery = path.includes('?');
-        const separator = hasQuery ? '&' : '?';
-        return language === 'en' ? path : `${path}${separator}lang=${language}`;
+        return path;
     };
 
     return (
@@ -40,7 +38,7 @@ export default function Breadcrumbs({ items }: Readonly<BreadcrumbsProps>) {
                     <li key={item.href} className="flex items-center gap-2">
                         <ChevronRight 
                             size={14} 
-                            className={`text-muted/30 ${isRTL ? 'rotate-180' : ''}`} 
+                            className="text-muted/30" 
                         />
                         {index === items.length - 1 ? (
                             <span className="text-foreground font-medium truncate max-w-[200px]" aria-current="page">

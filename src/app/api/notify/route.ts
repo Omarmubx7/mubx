@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     const { data, error } = await resend.emails.send({
       from: 'MUBX Portfolio <onboarding@resend.dev>',
       to: ['omarmubaidincs@gmail.com'],
-      subject: `New Lead: ${business || name || email} (${language === 'ar' ? 'Arabic' : 'English'})`,
+      subject: `New Lead: ${business || name || email}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
           <h2 style="color: #D71C1C;">New Project Inquiry</h2>

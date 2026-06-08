@@ -17,10 +17,10 @@ export default function Projects() {
     const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
     const categories = [
-        { id: 'all', en: 'All', ar: 'الكل' },
-        { id: 'systems', en: 'Systems & AI', ar: 'الأنظمة والذكاء الاصطناعي' },
-        { id: 'ecommerce', en: 'E-commerce', ar: 'التجارة الإلكترونية' },
-        { id: 'creative', en: 'Creative/Landing', ar: 'الصفحات الإبداعية' }
+        { id: 'all', label: 'All' },
+        { id: 'systems', label: 'Systems & AI' },
+        { id: 'ecommerce', label: 'E-commerce' },
+        { id: 'creative', label: 'Creative/Landing' }
     ];
 
     const getFilterCategory = (slug: string): string => {
@@ -85,11 +85,10 @@ export default function Projects() {
                     </h2>
                 </motion.div>
 
-                {/* Category Filter Tabs */}
                 <div className="flex flex-wrap gap-3 mb-12 select-none">
                     {categories.map((cat) => {
                         const isActive = selectedCategory === cat.id;
-                        const label = cat.en;
+                        const label = cat.label;
                         return (
                             <button
                                 key={cat.id}
@@ -182,7 +181,7 @@ export default function Projects() {
                             })}
                             {filteredProjects.length === 0 && (
                                 <div className="text-center py-12 border border-dashed border-border/30 text-muted">
-                                    {language === 'ar' ? 'لا توجد مشاريع في هذه الفئة حالياً.' : 'No projects in this category currently.'}
+                                    No projects in this category currently.
                                 </div>
                             )}
                         </div>

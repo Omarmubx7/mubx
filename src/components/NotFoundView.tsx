@@ -19,7 +19,7 @@ export default function NotFoundView() {
                     The system couldn&apos;t find the page you&apos;re looking for. It might have been moved or deleted.
                 </p>
                 <Link
-                    href={language === 'en' ? '/' : `/?lang=${language}`}
+                    href="/"
                     className="flex items-center gap-2 px-8 py-3 bg-neon text-white font-bold rounded-full hover:bg-white transition-all"
                 >
                     <ArrowLeft className="w-5 h-5" />

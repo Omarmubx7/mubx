@@ -116,9 +116,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const reqHeaders = await headers();
-  const locale = reqHeaders.get('x-next-locale') || 'en';
-  const dir = locale === 'ar' ? 'rtl' : 'ltr';
+  const locale = 'en';
+  const dir = 'ltr';
 
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
@@ -128,7 +127,6 @@ export default async function RootLayout({
 
         {/* Hreflang — Language Alternates for SEO */}
         <link rel="alternate" hrefLang="en" href="https://mubx.dev" />
-        <link rel="alternate" hrefLang="ar" href="https://mubx.dev?lang=ar" />
         <link rel="alternate" hrefLang="x-default" href="https://mubx.dev" />
 
         {/* Calendly Widget */}
@@ -161,7 +159,7 @@ export default async function RootLayout({
                 "@type": "Person",
                 "@id": "https://mubx.dev/#person",
                 "name": "Omar Mubaidin",
-                "alternateName": ["عمر مبيضين", "MUBX", "Omar Mubx"],
+                "alternateName": ["MUBX", "Omar Mubx"],
                 "url": "https://mubx.dev",
                 "image": "https://mubx.dev/og-images.png",
                 "description": "Omar Mubaidin is a full-stack web developer and technical consultant based in Amman, Jordan. Founder of MUBX, he specializes in Next.js, e-commerce, and local payment integration for Jordanian startups.",

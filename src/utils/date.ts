@@ -1,4 +1,4 @@
-export function getBookingQuarter(lang: 'en' | 'ar' = 'en') {
+export function getBookingQuarter() {
     const now = new Date();
     const month = now.getMonth(); // 0-11
     const year = now.getFullYear();
@@ -20,16 +20,6 @@ export function getBookingQuarter(lang: 'en' | 'ar' = 'en') {
     } else {
         quarter = 1;
         targetYear = year + 1;
-    }
-
-    if (lang === 'ar') {
-        const quartersAr = {
-            1: 'الربع الأول',
-            2: 'الربع الثاني',
-            3: 'الربع الثالث',
-            4: 'الربع الرابع'
-        };
-        return `${quartersAr[quarter as 1 | 2 | 3 | 4]} ${targetYear}`;
     }
 
     return `Q${quarter} ${targetYear}`;

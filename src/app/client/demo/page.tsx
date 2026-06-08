@@ -17,20 +17,12 @@ export const metadata: Metadata = {
     }
 };
 
-import { Locale } from '@/lib/dictionaries';
-
-type Props = {
-    searchParams: Promise<{ lang?: string }>
-}
-
 import { Suspense } from 'react';
 
-export default async function ClientPortalDemo(props: Props) {
-    const searchParams = await props.searchParams;
-    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+export default async function ClientPortalDemo() {
     return (
         <Suspense>
-            <LanguageProvider initialLocale={lang}>
+            <LanguageProvider initialLocale="en">
                 <div className="flex h-screen bg-black text-white selection:bg-neon selection:text-black overflow-hidden font-sans">
                     {/* Sidebar */}
                     <aside className="w-64 border-r border-white/10 p-6 hidden md:flex flex-col bg-zinc-950">

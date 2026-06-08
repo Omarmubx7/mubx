@@ -12,7 +12,7 @@ export default function BlogPreview() {
     const posts = getBlogPosts(language).slice(0, 3);
 
     const getHref = (path: string) => {
-        return language === 'en' ? path : `${path}${path.includes('?') ? '&' : '?'}lang=${language}`;
+        return path;
     };
 
     return (
@@ -29,7 +29,7 @@ export default function BlogPreview() {
                     <h2 className="text-3xl md:text-5xl font-bold text-foreground uppercase flex flex-wrap gap-x-3">
                         <TextReveal text={t.blog.badge} splitType="letter" /> 
                         <span className="text-neon">
-                            <TextReveal text={t.blog.titleHighlight} splitType="letter" delay={0.4} />
+                             <TextReveal text={t.blog.titleHighlight} splitType="letter" delay={0.4} />
                         </span>
                     </h2>
                     <p className="text-xs text-muted-foreground font-mono mt-4 max-w-xl">
@@ -81,7 +81,7 @@ export default function BlogPreview() {
                         href={getHref('/blog')}
                         className="px-6 py-3 text-xs font-mono font-bold text-foreground border border-border/30 hover:border-neon hover:text-neon transition-all bg-card/5 rounded-none"
                     >
-                        {language === 'en' ? 'VIEW ALL ARTICLES' : 'عرض كافة المقالات'}
+                        VIEW ALL ARTICLES
                     </Link>
                 </div>
             </div>

@@ -60,7 +60,7 @@ const NavbarContent = () => {
 
     const isLinkActive = (href: string) => {
         const cleanPathname = pathname.split('?')[0];
-        if (cleanPathname === '/' || cleanPathname === '/ar') {
+        if (cleanPathname === '/') {
             const hashPart = href.split('#')[1];
             if (hashPart) {
                 const hash = hashPart.split('?')[0];
@@ -75,13 +75,13 @@ const NavbarContent = () => {
 
     const links = [
         { name: t.nav.home, href: getHref('/') },
-        { name: t.nav.services, href: getHref('/#services') },
+        { name: t.nav.services, href: getHref('/services') },
         { name: t.nav.projects, href: getHref('/#projects') },
         { name: t.nav.about, href: getHref('/#about') },
         { name: t.nav.contact, href: getHref('/contact') },
     ];
 
-        const isHomepage = pathname === '/' || pathname === '/ar';
+        const isHomepage = pathname === '/';
 
         return (
             <motion.nav

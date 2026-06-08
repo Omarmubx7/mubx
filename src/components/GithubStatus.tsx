@@ -73,18 +73,18 @@ export default function GithubStatus() {
         const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
         
         if (seconds < 60) {
-            return isRTL ? 'الآن' : 'just now';
+            return 'just now';
         }
         const minutes = Math.floor(seconds / 60);
         if (minutes < 60) {
-            return isRTL ? `منذ ${minutes} د` : `${minutes}m ago`;
+            return `${minutes}m ago`;
         }
         const hours = Math.floor(minutes / 60);
         if (hours < 24) {
-            return isRTL ? `منذ ${hours} س` : `${hours}h ago`;
+            return `${hours}h ago`;
         }
         const days = Math.floor(hours / 24);
-        return isRTL ? `منذ ${days} ي` : `${days}d ago`;
+        return `${days}d ago`;
     };
 
     if (loading) {
@@ -106,11 +106,11 @@ export default function GithubStatus() {
                 <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-neon/80" />
                     <span className="text-muted uppercase tracking-wider">
-                        {isRTL ? 'الحالة: تطوير أنظمة ويب' : 'STATUS: DEVELOPING WEB SYSTEMS'}
+                        STATUS: DEVELOPING WEB SYSTEMS
                     </span>
                 </div>
                 <span className="text-neon/80 uppercase font-bold tracking-widest animate-pulse">
-                    {isRTL ? 'نشط' : 'ACTIVE'}
+                    ACTIVE
                 </span>
             </div>
         );
@@ -130,10 +130,10 @@ export default function GithubStatus() {
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-neon"></span>
                     </span>
                     <span className="text-neon font-bold uppercase tracking-wider">
-                        {isRTL ? 'آخر تحديث على GitHub' : 'LATEST GIT COMMIT'}
+                        LATEST GIT COMMIT
                     </span>
                 </div>
-                <span className="text-muted-foreground group-hover/widget:text-neon transition-colors flex items-center gap-0.5">
+                <span className="text-muted-foreground group-hover/widget:text-neon transition-colors flex items-center gap-0.5 font-mono">
                     {getRelativeTime(latestCommit.time)}
                     <ExternalLink className="w-2.5 h-2.5 ml-0.5 group-hover/widget:translate-x-0.5 group-hover/widget:-translate-y-0.5 transition-transform" />
                 </span>

@@ -9,30 +9,18 @@ import { usePathname } from 'next/navigation';
 import Badge from './ui/Badge';
 import { useLanguage } from '@/context/LanguageContext';
 import TextReveal from '@/components/ui/TextReveal';
+import CardTilt from '@/components/ui/CardTilt';
 
 export default function Services() {
-    const { t, language } = useLanguage();
+    const { t } = useLanguage();
     const pathname = usePathname();
-    const isStandalone = pathname === '/services' || pathname === '/ar/services';
+    const isStandalone = pathname === '/services';
 
     const getHref = (path: string) => {
-        if (language === 'ar') {
-            if (path.startsWith('/#')) {
-                return `/?lang=ar${path.substring(1)}`;
-            }
-            return path === '/' ? '/?lang=ar' : `${path}?lang=ar`;
-        }
         return path;
     };
 
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setMounted(true);
-    }, []);
-
-    const services = mounted ? [
+    const services = [
         {
             key: 'linkBio',
             label: t.services?.packages?.linkBio?.label || 'Basic',
@@ -81,10 +69,10 @@ export default function Services() {
             cta: t.services?.packages?.system?.cta || 'Architect My Custom System',
             idealFor: 'Custom e-commerce, custom SaaS, and databases.'
         },
-    ] : [];
+    ];
 
     return (
-        <section className="py-24 relative bg-background border-b border-border/30 overflow-hidden">
+        <section className={`py-24 relative ${isStandalone ? 'bg-transparent' : 'bg-background'} border-b border-border/30 overflow-hidden`}>
             {/* Ambient Background Glows */}
             <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-neon/[0.015] blur-[120px] rounded-full pointer-events-none" />
 
@@ -113,8 +101,7 @@ export default function Services() {
                     </motion.div>
                 )}
 
-                {mounted && (
-                    <div className="max-w-6xl mx-auto space-y-12">
+                <div className="max-w-6xl mx-auto space-y-12">
                         {/* Bento Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-stretch">
                             {services.map((service, index) => {
@@ -134,12 +121,15 @@ export default function Services() {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true, margin: "-100px" }}
                                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                                        className={`group relative rounded-3xl border p-8 md:p-10 backdrop-blur-md flex flex-col justify-between overflow-hidden transition-all duration-500 ${
-                                            isPopular 
-                                                ? 'border-neon/50 bg-white/5 shadow-[0_0_30px_rgba(225,29,29,0.15)] hover:border-neon' 
-                                                : 'border-white/5 bg-white/3 hover:bg-white/[0.04] hover:border-white/20'
-                                        } ${colSpan}`}
+                                        className={colSpan}
                                     >
+                                        <CardTilt
+                                            className={`group relative rounded-3xl border p-8 md:p-10 backdrop-blur-md flex flex-col justify-between overflow-hidden transition-all duration-500 h-full w-full ${
+                                                isPopular 
+                                                    ? 'border-neon/50 bg-white/5 shadow-[0_0_30px_rgba(225,29,29,0.15)] hover:border-neon' 
+                                                    : 'border-white/5 bg-white/3 hover:bg-white/[0.04] hover:border-white/20'
+                                            }`}
+                                        >
                                         {/* Accent Top Banner for Popular Tier */}
                                         {isPopular && (
                                             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-neon to-red-500 z-10" />
@@ -222,10 +212,10 @@ export default function Services() {
                                                         <div className="absolute w-40 h-16 rounded-xl border border-white/10 bg-white/5 transform rotate-3 -translate-y-1 shadow-2xl flex items-center justify-between px-4 group-hover:border-neon/30 group cursor-help">
                                                             <div className="flex items-center gap-2">
                                                                 <Globe className="w-4 h-4 text-neon" />
-                                                                <span className="text-[10px] font-mono font-bold tracking-widest text-foreground">EN / AR</span>
+                                                                <span className="text-[10px] font-mono font-bold tracking-widest text-foreground">EN ONLY</span>
                                                             </div>
                                                             <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-200 bg-black/90 border border-white/10 text-[9px] font-mono text-white px-2 py-1 rounded-none shadow-lg pointer-events-none whitespace-nowrap z-50">
-                                                                Bilingual support (English & Arabic) built-in natively
+                                                                Clean typography and premium layout built natively in English
                                                             </span>
                                                             <div className="flex flex-col gap-1 items-end">
                                                                 <div className="w-12 h-1.5 rounded bg-white/15" />
@@ -253,7 +243,7 @@ export default function Services() {
                                             {/* Features list */}
                                             <div className="space-y-3 pt-4 border-t border-white/5">
                                                 <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest block">
-                                                    {language === 'en' ? "What's Included" : 'ما الذي يتضمنه'}
+                                                    What's Included
                                                 </span>
                                                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                                                     {service.details.map((detail: string) => (
@@ -276,7 +266,7 @@ export default function Services() {
                                             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-3 flex-wrap">
                                                 <div>
                                                     <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest block mb-0.5">
-                                                        {language === 'en' ? 'Investment' : 'الاستثمار'}
+                                                        Investment
                                                     </span>
                                                     <div className="flex items-center gap-1.5 relative group">
                                                         <span className="text-2xl font-black text-white tracking-tight">
@@ -296,7 +286,7 @@ export default function Services() {
                                                 </div>
                                                 <div className="sm:text-right">
                                                     <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest block mb-0.5">
-                                                        {language === 'en' ? 'Ideal For' : 'مثالي لـ'}
+                                                        Ideal For
                                                     </span>
                                                     <span className="text-xs text-muted-foreground/80 font-medium block sm:max-w-[200px]">
                                                         {service.idealFor}
@@ -316,7 +306,8 @@ export default function Services() {
                                                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
                                             </Link>
                                         </div>
-                                    </motion.div>
+                                    </CardTilt>
+                                </motion.div>
                                 );
                             })}
                         </div>
@@ -325,7 +316,6 @@ export default function Services() {
                             * All prices in JOD (Jordanian Dinar). 1 JOD ≈ $1.41 USD.
                         </p>
                     </div>
-                )}
             </div>
         </section>
     );

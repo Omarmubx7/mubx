@@ -10,8 +10,7 @@ export interface BlogPost {
 }
 
 const blogData: Record<Locale, BlogPost[]> = {
-  en: [],
-  ar: []
+  en: []
 };
 
 export const getBlogPosts = (lang: Locale): BlogPost[] => [];

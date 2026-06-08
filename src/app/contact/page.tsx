@@ -6,17 +6,15 @@ import { dictionary, Locale } from '@/lib/dictionaries';
 import { Suspense } from 'react';
 import JsonLd from '@/components/JsonLd';
 
-export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-    const resolvedSearchParams = await searchParams;
-    const lang = (resolvedSearchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+export async function generateMetadata(): Promise<Metadata> {
+    const lang: Locale = 'en';
     const dictMeta = dictionary[lang].seo.contact;
 
     return {
         title: dictMeta.title,
         description: dictMeta.description,
         keywords: [
-            'hire web developer Jordan', 'عمان', 'مطور ويب الأردن',
-            'MUBX contact', 'Omar Mubaidin contact', 'web development estimate Jordan',
+            'hire web developer Jordan', 'MUBX contact', 'Omar Mubaidin contact', 'web development estimate Jordan',
             'startup tech consultant Jordan'
         ],
         alternates: {
@@ -28,7 +26,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
             url: `${siteConfig.url}/contact`,
             siteName: 'MUBX',
             images: [siteConfig.ogImage],
-            locale: lang === 'ar' ? 'ar_QA' : 'en_US',
+            locale: 'en_US',
         },
         twitter: {
             card: 'summary_large_image',
@@ -40,13 +38,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     };
 }
 
-type Props = {
-    searchParams: Promise<{ lang?: string }>
-}
-
-export default async function ContactPage(props: Readonly<Props>) {
-    const searchParams = await props.searchParams;
-    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
+export default async function ContactPage() {
+    const lang: Locale = 'en';
 
     return (
         <Suspense>
@@ -54,7 +47,7 @@ export default async function ContactPage(props: Readonly<Props>) {
                 <JsonLd data={{
                     "@context": "https://schema.org",
                     "@type": "ContactPage",
-                    "name": lang === 'ar' ? "تواصل مع MUBX — عمر مبيضين" : "Contact MUBX — Omar Mubaidin",
+                    "name": "Contact MUBX — Omar Mubaidin",
                     "description": dictionary[lang].contact.desc2,
                     "url": `${siteConfig.url}/contact`,
                     "mainEntity": {
@@ -62,7 +55,7 @@ export default async function ContactPage(props: Readonly<Props>) {
                         "contactType": "customer service",
                         "email": "mubxdev@proton.me",
                         "telephone": "+962780090453",
-                        "availableLanguage": ["English", "Arabic"],
+                        "availableLanguage": ["English"],
                         "areaServed": ["Jordan", "Middle East", "Remote"],
                         "url": "https://calendly.com/omarmubaidincs/30min"
                     }

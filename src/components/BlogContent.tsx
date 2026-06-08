@@ -8,7 +8,7 @@ import { getBlogPosts } from '@/lib/blog-data';
 
 export default function BlogContent() {
     const searchParams = useSearchParams();
-    const lang = (searchParams.get('lang') === 'ar' ? 'ar' : 'en') as Locale;
+    const lang: Locale = 'en';
     const tagFilter = searchParams.get('tag');
 
     const posts = getBlogPosts(lang).filter(post =>
@@ -42,7 +42,7 @@ export default function BlogContent() {
                                         onClick={(e) => {
                                             e.preventDefault();
                                             e.stopPropagation();
-                                            window.location.href = `/blog?tag=${post.tag}&lang=${lang === 'ar' ? 'ar' : 'en'}`;
+                                            window.location.href = `/blog?tag=${post.tag}`;
                                         }}
                                         className="hover:opacity-80 transition-opacity"
                                     >

@@ -16,10 +16,8 @@ export default function ContactView() {
     const { language, t } = useLanguage();
     const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-    const bookingQuarter = getBookingQuarter(language);
-    const descText = language === 'ar'
-        ? `جاهز للتوسع؟ استقبل حالياً مشاريع جديدة (${bookingQuarter}).`
-        : `Ready to scale? I'm currently accepting new projects for ${bookingQuarter}.`;
+    const bookingQuarter = getBookingQuarter();
+    const descText = `Ready to scale? I'm currently accepting new projects for ${bookingQuarter}.`;
 
     const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -37,7 +35,7 @@ export default function ContactView() {
                 budget: formData.get('budget'),
                 deadline: formData.get('timeline'),
                 message: formData.get('message') || formData.get('details'),
-                language,
+                language: 'en',
             };
 
             const fetchWithTimeout = (url: string, options: RequestInit, timeout = 8000) => {
@@ -83,7 +81,7 @@ export default function ContactView() {
 
             await Promise.all([dbPromise, notifyPromise]);
 
-            router.push(language === 'en' ? '/success' : `/success?lang=${language}`);
+            router.push('/success');
         } catch (error: unknown) {
             console.error('Submission error details:', error);
             setFormState('error');

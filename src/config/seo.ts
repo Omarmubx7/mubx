@@ -68,23 +68,6 @@ export const siteConfig = {
         'high-performance websites Jordan',
         'revenue focused web design',
         'technical SEO Jordan',
-
-        // — Arabic SEO —
-        'مطور ويب الأردن',
-        'مطور ويب عمان',
-        'مستشار تقني الأردن',
-        'تطوير مواقع الأردن',
-        'مطور Next.js الأردن',
-        'تصميم مواقع عمان',
-        'تجارة إلكترونية الأردن',
-        'مبرمج أردني',
-        'أفضل مطور ويب في الأردن',
-        'أفضل مبرمج في عمان',
-        'أفضل شركة تصميم مواقع في الأردن',
-        'تطوير تطبيقات الأردن',
-        'عمر مبيضين مطور ويب',
-        'MUBX لتطوير المواقع',
-        'برمجة متاجر الكترونية الأردن',
     ],
     ogImage: "https://mubx.dev/og-images.png",
     links: {
@@ -99,10 +82,6 @@ export const siteConfig = {
         en: {
             title: "Omar Mubaidin | Technical Consultant & Web Developer in Jordan — MUBX",
             description: "Scale your startup with revenue-focused technical solutions. Omar Mubaidin (MUBX) is an expert in custom web systems, Zain Cash & CliQ payments, and high-performance SEO for Jordanian brands.",
-        },
-        ar: {
-            title: "عمر مبيضين | مستشار تقني ومطور ويب في الأردن — MUBX",
-            description: "توسّع بشركتك الناشئة من خلال حلول تقنية تركز على العائد. عمر مبيضين (MUBX) خبير في الأنظمة المخصصة ودفع الزين كاش وتحسين محركات البحث للعلامات التجارية الأردنية.",
         }
     },
     openGraph: {

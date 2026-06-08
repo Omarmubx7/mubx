@@ -16,12 +16,7 @@ import { ScrollSpyProvider, useActiveSectionContext } from '@/context/ScrollSpyC
 const Projects = dynamic(() => import('@/components/Projects'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
-const Services = dynamic(() => import('@/components/Services'), {
-    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
-});
-const Process = dynamic(() => import('@/components/Process'), {
-    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
-});
+
 const StickyCTA = dynamic(() => import('@/components/StickyCTA'), { ssr: false });
 const About = dynamic(() => import('@/components/About'));
 const TechStack = dynamic(() => import('@/components/TechStack'), {
@@ -59,8 +54,6 @@ function HomeMain() {
     const navLinks = [
         { id: 'hero', name: t.nav.home },
         { id: 'projects', name: t.nav.projects },
-        { id: 'services', name: t.nav.services },
-        { id: 'process', name: 'Process' },
         { id: 'about', name: 'About & Journey' },
         { id: 'contact', name: t.nav.contact }
     ];
@@ -95,12 +88,8 @@ function HomeMain() {
                             </div>
                         </div>
 
-                        {/* Personality-Driven Bio (short summary) */}
                         <p className="text-xs text-muted-foreground leading-relaxed font-mono">
-                            {language === 'en' 
-                              ? 'Computer Science student at HTU and Full-Stack Developer specializing in high-performance web systems, custom e-commerce engines, and secure local integrations. Dedicated to building digital solutions that drive business growth.'
-                              : 'طالب علوم حاسوب في جامعة الحسين التقنية ومطور ويب متخصص في هندسة الأنظمة البرمجية عالية الأداء، والمتاجر الإلكترونية المخصصة، وحلول الدفع المحلية الآمنة. أركز على بناء حلول رقمية تدفع نمو الأعمال.'
-                            }
+                            Computer Science student at HTU and Full-Stack Developer specializing in high-performance web systems, custom e-commerce engines, and secure local integrations. Dedicated to building digital solutions that drive business growth.
                         </p>
 
                         {/* Live Activity Widget */}
@@ -130,6 +119,18 @@ function HomeMain() {
 
                     {/* Bottom Controls & Socials */}
                     <div className="space-y-4 pt-6 border-t border-border/20">
+                        {/* My Services Button */}
+                        <Link
+                            href={getHref('/services')}
+                            className="w-full py-3 border border-neon/50 hover:bg-neon hover:text-white text-neon hover:border-transparent text-xs font-bold rounded-none flex items-center justify-center gap-2 bg-neon/5 transition-all shadow-[0_0_10px_rgba(225,29,29,0.1)] hover:shadow-[0_0_20px_rgba(225,29,29,0.3)] uppercase tracking-wider font-mono cursor-pointer"
+                        >
+                            <svg className="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                            {t.nav.myServices}
+                        </Link>
+
                         {/* Primary Book Call CTA Button */}
                         <a
                             href="https://calendly.com/omarmubaidincs/30min"
@@ -182,12 +183,7 @@ function HomeMain() {
                         <div id="projects">
                             <Projects />
                         </div>
-                        <div id="services">
-                            <Services />
-                        </div>
-                        <div id="process">
-                            <Process />
-                        </div>
+
                         <div id="about">
                             <About />
                         </div>
@@ -211,7 +207,7 @@ function HomeMain() {
     );
 }
 
-export default function HomeClient({ lang }: Readonly<{ lang: Locale }>) {
+export default function HomeClient() {
     return (
         <LanguageProvider initialLocale="en">
             <ScrollSpyProvider>

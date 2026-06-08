@@ -4,6 +4,7 @@ import { LanguageProvider } from '@/context/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Badge from '@/components/ui/Badge';
 import { siteConfig } from '@/config/seo';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
     title: 'Free Next.js Neon Gradient Card Component | MUBX Tools',
@@ -13,18 +14,7 @@ export const metadata: Metadata = {
     }
 };
 
-import { Locale } from '@/lib/dictionaries';
-
-type Props = {
-    searchParams: Promise<{ lang?: string }>
-}
-
-import { Suspense } from 'react';
-
-export default async function NeonCardPage(props: Props) {
-    const searchParams = await props.searchParams;
-    const lang = (searchParams.lang === 'ar' ? 'ar' : 'en') as Locale;
-
+export default async function NeonCardPage() {
     const codeString = `export default function NeonCard({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative group w-full max-w-sm">
@@ -41,7 +31,7 @@ export default async function NeonCardPage(props: Props) {
 
     return (
         <Suspense>
-            <LanguageProvider initialLocale={lang}>
+            <LanguageProvider initialLocale="en">
                 <main className="min-h-screen bg-black selection:bg-neon selection:text-black">
                     <Navbar />
                     <div className="pt-32 pb-24 container mx-auto px-6 md:px-12">
