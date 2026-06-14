@@ -165,6 +165,24 @@ const projectsList: Project[] = [
             solution: 'Developed a custom e-commerce engine with real-time product visualization and integrated local payment gateways (Zain Cash/CliQ).',
             outcome: 'Launched Jordan\'s first fully operational POD platform, enabling local artists to sell at scale without technical barriers.',
         }
+    },
+    {
+        slug: 'qadumyweb',
+        title: 'QadumyWeb',
+        description: 'A dynamic portfolio website for Ahmad Al-Qaddomy, a Jordan-based marketer and content creator, featuring animated UI and seamless brand storytelling.',
+        tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
+        links: { live: 'https://qadumyweb.vercel.app/' },
+        logo: '/images/qadumyweb-logo.png',
+        metrics: '80+ Lighthouse',
+        verified_outcome: 'Live & Active',
+        timeframe: '1 Week',
+        category: { en: 'Portfolio Website', icon: '🌐', color: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20' },
+        caseStudy: {
+            problem: 'Lack of a professional, high-performance digital portfolio to showcase content creation, marketing campaigns, and event management work.',
+            role: 'Full Stack Developer & Designer',
+            solution: 'Built a modern portfolio with Next.js, featuring a hero section with stats, brand sliders, services, reel showcases, and a contact form.',
+            outcome: 'A visually compelling digital presence that effectively communicates the brand identity and drives collaboration inquiries.',
+        }
     }
 ];
 

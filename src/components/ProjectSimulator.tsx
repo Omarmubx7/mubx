@@ -15,7 +15,8 @@ const projectScreenshots: Record<string, string> = {
     'the-glorious-page': '/images/projects/the-glorious-page.png',
     'vynex-media': '/images/projects/vynex-media.png',
     'htu-martial-arts': '/images/projects/htu-martial-arts.png',
-    'blob-jo': '/images/projects/blob-jo.png'
+    'blob-jo': '/images/projects/blob-jo.png',
+    'qadumyweb': '/images/projects/qadumyweb.png'
 };
 
 export default function ProjectSimulator({ slug }: Readonly<SimulatorProps>) {
