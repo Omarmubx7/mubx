@@ -183,6 +183,24 @@ const projectsList: Project[] = [
             solution: 'Built a modern portfolio with Next.js, featuring a hero section with stats, brand sliders, services, reel showcases, and a contact form.',
             outcome: 'A visually compelling digital presence that effectively communicates the brand identity and drives collaboration inquiries.',
         }
+    },
+    {
+        slug: 'blob-jo',
+        title: 'BloB.JO',
+        description: 'E-commerce Brand. Built Jordan\'s first custom Print-on-Demand store with real-time design tools.',
+        tech: ['React', 'Node.js', 'E-commerce', 'UX Design'],
+        links: { live: 'https://www.blobjor.me/', code: 'https://github.com/Omarmubx7/blobjor' },
+        logo: '/images/blobjor-logo.webp',
+        metrics: 'Zain Cash / CliQ',
+        verified_outcome: 'Operational since Jan 2025',
+        timeframe: '3 Weeks',
+        category: { en: 'E-commerce', icon: '🛍️', color: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20' },
+        caseStudy: {
+            problem: 'Lack of local Print-on-Demand infrastructure with custom design tools for the Jordanian creative market.',
+            role: 'E-commerce Consultant',
+            solution: 'Developed a custom e-commerce engine with real-time product visualization and integrated local payment gateways (Zain Cash/CliQ).',
+            outcome: 'Launched Jordan\'s first fully operational POD platform, enabling local artists to sell at scale without technical barriers.',
+        }
     }
 ];
 

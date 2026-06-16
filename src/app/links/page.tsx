@@ -122,11 +122,17 @@ export default async function LinksPage() {
 
     const latestProjectsLinks: LinkItem[] = [
         {
+            name: "QadumyWeb",
+            url: "https://qadumyweb.vercel.app/",
+            icon: Globe,
+            sub: "Ahmad Al-Qaddomy — Marketer & Content Creator",
+            primary: true
+        },
+        {
             name: "MUBXAI",
             url: "https://ai.mubx.dev/",
             icon: Globe,
             sub: "HTU Course Tracker & GPA Calculator",
-            primary: true
         },
         {
             name: "MUBXbot",
