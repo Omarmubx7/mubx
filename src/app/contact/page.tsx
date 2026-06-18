@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
         description: dictMeta.description,
         keywords: [
             'hire web developer Jordan', 'MUBX contact', 'Omar Mubaidin contact', 'web development estimate Jordan',
-            'startup tech consultant Jordan'
+            'freelance web developer Jordan'
         ],
         alternates: {
             canonical: `${siteConfig.url}/contact`

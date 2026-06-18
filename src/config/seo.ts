@@ -1,7 +1,7 @@
 export const siteConfig = {
     name: "MUBX",
-    title: "Omar Mubaidin | Technical Consultant & Web Developer in Jordan — MUBX",
-    description: "Omar Mubaidin (عمر مبيضين) is the founder of MUBX — a revenue-focused web consultancy in Amman, Jordan. Expert in Next.js, E-commerce, Zain Cash & CliQ payments, and high-performance SEO for startups.",
+    title: "Omar Mubaidin | Freelance Web Developer & Engineer in Jordan — MUBX",
+    description: "Omar Mubaidin (عمر مبيضين) is a freelance web developer and founder of MUBX in Amman, Jordan. Expert in Next.js, E-commerce, Zain Cash & CliQ payments, and high-performance SEO for startups.",
     url: "https://mubx.dev",
     author: {
         name: "Omar Mubaidin | عمر مبيضين",
@@ -22,7 +22,7 @@ export const siteConfig = {
         'Omar Mubaidin web developer',
         'MUBX developer',
         'MUBX web development',
-        'MUBX consultancy',
+        'MUBX freelance web developer',
         'MUBX Jordan',
         'MUBX development Amman',
         'MUBX revenue focused',
@@ -41,16 +41,14 @@ export const siteConfig = {
         'web engineering Jordan',
 
         // — Consultancy & Authority —
-        'technical consultant Jordan',
-        'startup advisor Amman',
-        'startup tech consultant Jordan',
-        'startup tech consultant Middle East',
-        'web consultant Jordan',
-        'software consultant Jordan',
+        'freelance web developer Jordan',
+        'startup web developer Amman',
+        'hire freelance developer Jordan',
+        'remote web developer Middle East',
         'best web developer Amman',
         'top freelancer Jordan',
         'top web developer Jordan',
-        'technical leadership Jordan',
+
 
         // — E-commerce & Payments —
         'e-commerce developer Jordan',
@@ -80,8 +78,8 @@ export const siteConfig = {
     locale: 'en_US',
     metadata: {
         en: {
-            title: "Omar Mubaidin | Technical Consultant & Web Developer in Jordan — MUBX",
-            description: "Scale your startup with revenue-focused technical solutions. Omar Mubaidin (MUBX) is an expert in custom web systems, Zain Cash & CliQ payments, and high-performance SEO for Jordanian brands.",
+            title: "Omar Mubaidin | Freelance Web Developer & Engineer in Jordan — MUBX",
+            description: "Scale your startup with revenue-focused technical solutions. I'm Omar Mubaidin (MUBX), a freelance web developer specializing in custom web systems, Zain Cash & CliQ payments, and high-performance SEO for Jordanian brands.",
         }
     },
     openGraph: {
@@ -94,7 +92,7 @@ export const siteConfig = {
                 url: 'https://mubx.dev/og-images.png',
                 width: 1200,
                 height: 630,
-                alt: 'MUBX — Omar Mubaidin | Web Developer & Technical Consultant in Jordan',
+                alt: 'MUBX — Omar Mubaidin | Freelance Web Developer in Jordan',
             },
         ],
     },

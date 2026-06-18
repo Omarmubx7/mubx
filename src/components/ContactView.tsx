@@ -60,7 +60,11 @@ export default function ContactView() {
             }).then(async (res) => {
                 if (!res.ok) {
                     const errorPayload = await res.json().catch(() => ({}));
-                    throw new Error(errorPayload?.details || errorPayload?.error || 'Failed to save contact submission');
+                    console.error('❌ Contact API error:', errorPayload);
+                    const isServerError = res.status >= 500;
+                    throw new Error(isServerError
+                        ? 'Server error. Please try again later.'
+                        : (errorPayload?.error || 'Failed to save contact submission'));
                 }
                 return res;
             });
@@ -90,7 +94,7 @@ export default function ContactView() {
     };
 
     return (
-        <main className="bg-black min-h-screen selection:bg-neon selection:text-black">
+        <main className="bg-background min-h-screen selection:bg-neon selection:text-black">
             <Navbar />
             <div className="pt-32 pb-24 container mx-auto px-6 md:px-12">
 
@@ -112,7 +116,7 @@ export default function ContactView() {
                         </p>
                     </div>
 
-                    <div className="bg-white/5 border border-white/10 p-8 md:p-12 rounded-3xl backdrop-blur-sm relative overflow-hidden">
+                    <div className="bg-card/30 border border-border/20 p-8 md:p-12 rounded-3xl backdrop-blur-sm relative overflow-hidden">
                         {/* Background Glow */}
                         <div className="absolute -top-20 -right-20 w-80 h-80 bg-neon/5 blur-[100px] rounded-full pointer-events-none" />
 
@@ -125,7 +129,7 @@ export default function ContactView() {
                                         id="name"
                                         type="text"
                                         placeholder={t.contact.form.namePlaceholder}
-                                        className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors"
+                                        className="w-full bg-card/40 border border-border text-foreground placeholder:text-muted/50 rounded-xl px-4 py-4 focus:outline-none focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-colors"
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -136,7 +140,7 @@ export default function ContactView() {
                                         type="email"
                                         required
                                         placeholder={t.contact.form.emailPlaceholder}
-                                        className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors"
+                                        className="w-full bg-card/40 border border-border text-foreground placeholder:text-muted/50 rounded-xl px-4 py-4 focus:outline-none focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-colors"
                                     />
                                 </div>
                             </div>
@@ -149,12 +153,12 @@ export default function ContactView() {
                                         id="business"
                                         type="text"
                                         placeholder={t.contact.form.businessPlaceholder}
-                                        className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors"
+                                        className="w-full bg-card/40 border border-border text-foreground placeholder:text-muted/50 rounded-xl px-4 py-4 focus:outline-none focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-colors"
                                     />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.goal}</label>
-                                    <select name="type" id="type" className="w-full bg-card/40 border border-border rounded-xl ps-4 pe-10 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
+                                    <select name="type" id="type" className="w-full bg-card/40 border border-border text-foreground rounded-xl ps-4 pe-10 py-4 focus:outline-none focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-colors appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%239CA3AF%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
                                         {t.contact.form.goalOptions.map((opt: string) => (
                                             <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
                                         ))}
@@ -165,7 +169,7 @@ export default function ContactView() {
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.budget}</label>
-                                    <select name="budget" id="budget" className="w-full bg-card/40 border border-border rounded-xl ps-4 pe-10 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
+                                    <select name="budget" id="budget" className="w-full bg-card/40 border border-border text-foreground rounded-xl ps-4 pe-10 py-4 focus:outline-none focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-colors appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%239CA3AF%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
                                         {t.contact.form.budgetOptions.map((opt: string) => (
                                             <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
                                         ))}
@@ -173,7 +177,7 @@ export default function ContactView() {
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-foreground uppercase tracking-wider">{t.contact.form.deadline}</label>
-                                    <select name="timeline" id="timeline" className="w-full bg-card/40 border border-border rounded-xl ps-4 pe-10 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202%201z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
+                                    <select name="timeline" id="timeline" className="w-full bg-card/40 border border-border text-foreground rounded-xl ps-4 pe-10 py-4 focus:outline-none focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-colors appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202%201z%22%20fill%3D%22%239CA3AF%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
                                         {t.contact.form.deadlineOptions.map((opt: string) => (
                                             <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
                                         ))}
@@ -189,7 +193,7 @@ export default function ContactView() {
                                     rows={4}
                                     required
                                     placeholder={t.contact.form.detailsPlaceholder}
-                                    className="w-full bg-card/40 border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-neon/50 transition-colors resize-none"
+                                    className="w-full bg-card/40 border border-border text-foreground placeholder:text-muted/50 rounded-xl px-4 py-4 focus:outline-none focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-colors resize-none"
                                 />
                             </div>
 

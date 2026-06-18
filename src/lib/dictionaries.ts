@@ -87,7 +87,7 @@ export const dictionary = {
                 title: 'How It Works',
                 step1: {
                     title: 'Free Discovery Call',
-                    desc: 'We chat for 20 mins to understand your goals. No sales pressure, just clarity.'
+                    desc: 'I\'ll chat with you for 20 mins to understand your goals. No sales pressure, just clarity.'
                 },
                 step2: {
                     title: 'Proposal in 24 Hours',
@@ -133,7 +133,7 @@ export const dictionary = {
                 title: 'Why entrepreneurs choose me',
                 reason1: {
                     title: 'Revenue-Driven Design',
-                    desc: 'We align design directly with your business goals, optimizing conversions, customer flows, and landing page layouts to turn passive visitors into paying customers.'
+                    desc: 'I align design directly with your business goals, optimizing conversions, customer flows, and landing page layouts to turn passive visitors into paying customers.'
                 },
                 reason2: {
                     title: 'Local Payment Expertise',
@@ -161,7 +161,7 @@ export const dictionary = {
             title: 'How I Work',
             step1: {
                 title: 'Discovery',
-                desc: 'We start with a strategy call to audit your current system and define ROI-focused goals.'
+                desc: 'I start with a strategy call to audit your current system and define ROI-focused goals.'
             },
             step2: {
                 title: 'Architecture',
@@ -236,7 +236,7 @@ export const dictionary = {
             titleStart: "Ready to build with",
             titleHighlight: "MUBX",
             desc1: "Ready to scale? I'm currently accepting new projects for Q3 2026.",
-            desc2: "Let's discuss how we can engineer your growth.",
+            desc2: "Let's discuss how I can engineer your growth.",
             desc3: "Whether you need a full-stack audit, a database redesign, or a complete product build, I'm ready to architect the solution.",
             availability: {
                 title: "Availability & Response",
@@ -399,7 +399,7 @@ export const dictionary = {
                 ],
                 caseStudy: {
                     title: 'Case Study: BloB.JO',
-                    desc: "We helped BloB.JO launch a custom Print-on-Demand store in Amman. Users can design products specifically on the site—something Shopify couldn't do easily.",
+                    desc: "I helped BloB.JO launch a custom Print-on-Demand store in Amman. Users can design products specifically on the site—something Shopify couldn't do easily.",
                     outcome: 'Outcome: Full operational flow in 3 weeks.'
                 },
                 faq: {
@@ -411,11 +411,11 @@ export const dictionary = {
                         },
                         {
                             q: 'Can I accept Zain Cash and CliQ?',
-                            a: 'Yes. We integrate local Jordanian payment methodologies so you can get paid instantly and securely without international settlement delays.'
+                            a: 'Yes. I integrate local Jordanian payment methodologies so you can get paid instantly and securely without international settlement delays.'
                         },
                         {
                             q: 'Do you provide Arabic language support?',
-                            a: 'Absolutely. All our e-commerce solutions are built with RTL (Right-to-Left) support from day one, ensuring a perfect experience for your Arab customers.'
+                            a: 'Absolutely. All my e-commerce solutions are built with RTL (Right-to-Left) support from day one, ensuring a perfect experience for your Arab customers.'
                         }
                     ]
                 }
@@ -614,7 +614,7 @@ export const dictionary = {
             highlight: 'Engineering Growth',
             desc1: 'MUBX was founded by Omar Mubaidin with a singular vision: to bridge the gap between technical complexity and business outcomes in Jordan.',
             desc2: 'The name MUBX originates from "Mubaidin Expertise" — a promise to deliver precision-engineered web systems that are not just beautiful, but are functional tools for revenue generation.',
-            desc3: 'Based in Amman, we specialize in high-performance stacks that allow local startups to compete on a global scale.',
+            desc3: 'Based in Amman, I specialize in high-performance stacks that allow local startups to compete on a global scale.',
             stats: {
                 performance: '99+ Lighthouse Score',
                 integrity: 'Bilingual (AR/EN)',
@@ -632,20 +632,20 @@ export const dictionary = {
         },
         seo: {
             home: {
-                title: 'Omar Mubaidin | Technical Consultant & Web Developer in Jordan — MUBX',
-                description: 'Omar Mubaidin (عمر مبيضين) is the founder of MUBX — a revenue-focused web consultancy in Amman, Jordan. Expert in Next.js, E-commerce, Zain Cash & CliQ payments, and high-performance SEO for startups.',
+                title: 'Omar Mubaidin | Freelance Web Developer & Engineer in Jordan — MUBX',
+                description: 'Omar Mubaidin (عمر مبيضين) is a freelance web developer and founder of MUBX in Amman, Jordan. Expert in Next.js, E-commerce, Zain Cash & CliQ payments, and high-performance SEO for startups.',
             },
             about: {
-                title: 'About Omar Mubaidin | MUBX — Full Stack Developer & Tech Consultant',
-                description: 'Meet Omar Mubaidin: Computer Science student, full-stack developer, and founder of MUBX. Building revenue-focused web systems for startups in Amman, Jordan.',
+                title: 'About Omar Mubaidin | MUBX — Freelance Full Stack Developer',
+                description: 'Meet Omar Mubaidin: Computer Science student, freelance full-stack developer, and founder of MUBX. Building revenue-focused web systems for startups in Amman, Jordan.',
             },
             services: {
                 title: 'Web Development Services & Pricing in Jordan | MUBX',
-                description: 'Professional web development services in Amman, Jordan. Landing pages, e-commerce stores with local payments, and custom web systems by MUBX.',
+                description: 'Professional web development services in Amman, Jordan. Landing pages, e-commerce stores with local payments, and custom web systems by Omar Mubaidin.',
             },
             projects: {
                 title: 'Selected Projects | MUBX — Case Studies & Solutions',
-                description: 'Explore our latest web development projects. From high-conversion landing pages to complex web systems and payment integrations in Jordan.',
+                description: 'Explore my latest web development projects. From high-conversion landing pages to complex web systems and payment integrations in Jordan.',
             },
             blog: {
                 title: 'MUBX Blog — Web Development Thoughts & Experiments',
@@ -653,7 +653,7 @@ export const dictionary = {
             },
             contact: {
                 title: 'Get a Project Estimate | MUBX — Start Your Project',
-                description: 'Ready to scale your business? Contact MUBX for a custom web development estimate. Expert solutions for startups in Jordan.',
+                description: 'Ready to scale your business? Contact Omar Mubaidin for a custom web development estimate. Expert freelance solutions for startups in Jordan.',
             },
             links: {
                 title: 'Links | Omar Mubaidin — MUBX Social & Connect',

@@ -153,7 +153,7 @@ export default async function ServicesPage() {
                                 "name": "Who is Omar Mubaidin and what is MUBX?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "Omar Mubaidin is a full-stack web developer and technical consultant based in Amman, Jordan. He is the founder of MUBX, a revenue-focused web consultancy specializing in Next.js, e-commerce, local payment integration (Zain Cash, CliQ), and high-performance SEO for startups in Jordan and the Middle East."
+                                    "text": "Omar Mubaidin is a freelance full-stack web developer based in Amman, Jordan. He runs MUBX, specializing in Next.js, e-commerce, local payment integration (Zain Cash, CliQ), and high-performance SEO for startups in Jordan and the Middle East."
                                 }
                             },
                             {
@@ -161,7 +161,7 @@ export default async function ServicesPage() {
                                 "name": "What web development services does MUBX offer in Jordan?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "MUBX offers landing pages, full e-commerce stores with Zain Cash and CliQ payment integration, custom web systems with admin dashboards, performance optimization (Core Web Vitals), technical SEO, and ongoing technical consulting for startups in Amman and across the Middle East."
+                                    "text": "I build landing pages, full e-commerce stores with Zain Cash and CliQ payment integration, custom web systems with admin dashboards, performance optimization (Core Web Vitals), technical SEO, and more for startups in Amman and across the Middle East."
                                 }
                             },
                             {
@@ -169,7 +169,7 @@ export default async function ServicesPage() {
                                 "name": "Does MUBX integrate Zain Cash and CliQ payments?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "Yes. MUBX specializes in integrating Jordanian payment gateways including Zain Cash and CliQ into custom e-commerce platforms, ensuring local customers can pay seamlessly using methods they trust."
+                                    "text": "Yes. I specialize in integrating Jordanian payment gateways including Zain Cash and CliQ into custom e-commerce platforms, ensuring local customers can pay seamlessly using methods they trust."
                                 }
                             }
                         ]

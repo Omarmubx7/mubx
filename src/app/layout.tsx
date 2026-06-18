@@ -162,8 +162,8 @@ export default async function RootLayout({
                 "alternateName": ["MUBX", "Omar Mubx"],
                 "url": "https://mubx.dev",
                 "image": "https://mubx.dev/og-images.png",
-                "description": "Omar Mubaidin is a full-stack web developer and technical consultant based in Amman, Jordan. Founder of MUBX, he specializes in Next.js, e-commerce, and local payment integration for Jordanian startups.",
-                "jobTitle": "Full Stack Developer & Technical Consultant",
+                "description": "Omar Mubaidin is a freelance full-stack web developer based in Amman, Jordan. He specializes in Next.js, e-commerce, and local payment integration for Jordanian startups.",
+                "jobTitle": "Freelance Full Stack Web Developer",
                 "nationality": {
                   "@type": "Country",
                   "name": "Jordan"
@@ -202,81 +202,7 @@ export default async function RootLayout({
                   "https://mubx.dev/links"
                 ]
               },
-              {
-                "@type": "Organization",
-                "@id": "https://mubx.dev/#organization",
-                "name": "MUBX",
-                "alternateName": "MUBX Development",
-                "url": "https://mubx.dev",
-                "logo": "https://mubx.dev/mubxlogoloader.svg",
-                "image": "https://mubx.dev/mubxlogoloader.svg",
-                "description": "MUBX is a revenue-focused web consultancy in Amman, Jordan, founded by Omar Mubaidin. Specializing in high-performance websites, e-commerce, local payment integration (Zain Cash, CliQ), and technical SEO for startups.",
-                "founder": { "@id": "https://mubx.dev/#person" },
-                "foundingDate": "2024",
-                "foundingLocation": {
-                  "@type": "Place",
-                  "name": "Amman, Jordan"
-                },
-                "areaServed": ["Jordan", "Middle East", "Remote"],
-                "serviceType": [
-                  "Web Development",
-                  "E-commerce Development",
-                  "Technical Consulting",
-                  "SEO Optimization",
-                  "Dashboard Development",
-                  "Zain Cash Integration",
-                  "CliQ Payment Integration"
-                ],
-                "knowsAbout": [
-                  "Next.js", "React", "TypeScript", "E-commerce",
-                  "Zain Cash", "CliQ", "Web Performance", "SEO"
-                ],
-                "contactPoint": {
-                  "@type": "ContactPoint",
-                  "email": "mubxdev@proton.me",
-                  "contactType": "customer service",
-                  "availableLanguage": ["English", "Arabic"]
-                },
-                "priceRange": "$$"
-              },
-              {
-                "@type": "LocalBusiness",
-                "@id": "https://mubx.dev/#localbusiness",
-                "name": "MUBX Development",
-                "image": "https://mubx.dev/mubxlogoloader.svg",
-                "url": "https://mubx.dev",
-                "telephone": "+962780090453",
-                "priceRange": "$$",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "Amman",
-                  "addressLocality": "Amman",
-                  "addressRegion": "Amman",
-                  "postalCode": "11181",
-                  "addressCountry": "JO"
-                },
-                "geo": {
-                  "@type": "GeoCoordinates",
-                  "latitude": "31.9454",
-                  "longitude": "35.9284"
-                },
-                "openingHoursSpecification": {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Sunday"
-                  ],
-                  "opens": "09:00",
-                  "closes": "18:00"
-                },
-                "sameAs": [
-                  "https://www.linkedin.com/in/omarmubaidin",
-                  "https://www.instagram.com/mubx.dev"
-                ]
-              },
+
               {
                 "@type": "BreadcrumbList",
                 "@id": "https://mubx.dev/#breadcrumb",
@@ -306,8 +232,8 @@ export default async function RootLayout({
                 "@id": "https://mubx.dev/#website",
                 "name": "MUBX",
                 "url": "https://mubx.dev",
-                "description": "Omar Mubaidin's portfolio and web consultancy — MUBX. High-performance web development for startups in Jordan.",
-                "publisher": { "@id": "https://mubx.dev/#organization" },
+                "description": "Omar Mubaidin's portfolio — freelance web development for startups in Jordan.",
+                "publisher": { "@id": "https://mubx.dev/#person" },
                 "creator": { "@id": "https://mubx.dev/#person" },
                 "inLanguage": ["en"]
               }

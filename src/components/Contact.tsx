@@ -120,7 +120,11 @@ export default function Contact() {
             }).then(async (res) => {
                 if (!res.ok) {
                     const payload = await res.json().catch(() => ({}));
-                    throw new Error(payload?.details || payload?.error || 'Failed to save contact submission');
+                    console.error('❌ Contact API error:', payload);
+                    const isServerError = res.status >= 500;
+                    throw new Error(isServerError
+                        ? 'Server error. Please try again later.'
+                        : (payload?.error || 'Failed to save contact submission'));
                 }
                 return res;
             });
@@ -211,7 +215,7 @@ export default function Contact() {
 
                     {/* Main: Multi-step Form */}
                     <div className="lg:col-span-8">
-                        <div className="bg-card/10 p-8 md:p-12 rounded-none border border-border/30 relative overflow-hidden shadow-none">
+                        <div className="bg-card/40 p-8 md:p-12 rounded-none border border-border/20 relative overflow-hidden shadow-none">
                             {/* Progress Header */}
                             <div className="flex items-center justify-between mb-16 relative">
                                 <div className="absolute top-5 left-0 w-full h-[2px] bg-border/30 -translate-y-1/2 -z-10" />
@@ -275,24 +279,24 @@ export default function Contact() {
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                 <div className="space-y-2">
                                                     <label htmlFor="contact-name" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.name}</label>
-                                                    <input id="contact-name" type="text" name="name" value={formData.name} onChange={handleChange} placeholder={t.contact.form.namePlaceholder} className={`w-full bg-background border rounded-none px-5 py-4 focus:border-neon transition-all outline-none ${fieldErrors.name ? 'border-red-500' : 'border-border/30'}`} />
+                                                    <input id="contact-name" type="text" name="name" value={formData.name} onChange={handleChange} placeholder={t.contact.form.namePlaceholder} className={`w-full bg-card/40 text-foreground placeholder:text-muted/50 border rounded-none px-5 py-4 focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-all outline-none ${fieldErrors.name ? 'border-red-500' : 'border-border'}`} />
                                                     {fieldErrors.name && <p className="text-red-500 text-[10px] mt-1">{fieldErrors.name}</p>}
                                                 </div>
                                                 <div className="space-y-2">
                                                     <label htmlFor="contact-email" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.email}</label>
-                                                    <input id="contact-email" type="email" name="email" value={formData.email} onChange={handleChange} placeholder={t.contact.form.emailPlaceholder} className={`w-full bg-background border rounded-none px-5 py-4 focus:border-neon transition-all outline-none ${fieldErrors.email ? 'border-red-500' : 'border-border/30'}`} />
+                                                    <input id="contact-email" type="email" name="email" value={formData.email} onChange={handleChange} placeholder={t.contact.form.emailPlaceholder} className={`w-full bg-card/40 text-foreground placeholder:text-muted/50 border rounded-none px-5 py-4 focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-all outline-none ${fieldErrors.email ? 'border-red-500' : 'border-border'}`} />
                                                     {fieldErrors.email && <p className="text-red-500 text-[10px] mt-1">{fieldErrors.email}</p>}
                                                 </div>
                                             </div>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                 <div className="space-y-2">
                                                     <label htmlFor="contact-business" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.business}</label>
-                                                    <input id="contact-business" type="text" name="business" value={formData.business} onChange={handleChange} placeholder={t.contact.form.businessPlaceholder} className={`w-full bg-background border rounded-none px-5 py-4 focus:border-neon transition-all outline-none ${fieldErrors.business ? 'border-red-500' : 'border-border/30'}`} />
+                                                    <input id="contact-business" type="text" name="business" value={formData.business} onChange={handleChange} placeholder={t.contact.form.businessPlaceholder} className={`w-full bg-card/40 text-foreground placeholder:text-muted/50 border rounded-none px-5 py-4 focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-all outline-none ${fieldErrors.business ? 'border-red-500' : 'border-border'}`} />
                                                     {fieldErrors.business && <p className="text-red-500 text-[10px] mt-1">{fieldErrors.business}</p>}
                                                 </div>
                                                 <div className="space-y-2">
                                                     <label htmlFor="contact-website" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.website}</label>
-                                                    <input id="contact-website" type="url" name="website" value={formData.website} onChange={handleChange} placeholder={t.contact.form.websitePlaceholder} className="w-full bg-background border border-border/30 rounded-none px-5 py-4 focus:border-neon transition-all outline-none" />
+                                                    <input id="contact-website" type="url" name="website" value={formData.website} onChange={handleChange} placeholder={t.contact.form.websitePlaceholder} className="w-full bg-card/40 text-foreground placeholder:text-muted/50 border border-border rounded-none px-5 py-4 focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-all outline-none" />
                                                 </div>
                                             </div>
                                         </motion.div>
@@ -310,21 +314,21 @@ export default function Contact() {
                                             <div className="grid grid-cols-1 gap-6">
                                                 <div className="space-y-2">
                                                     <label htmlFor="contact-goal" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.goal}</label>
-                                                    <select id="contact-goal" name="goal" value={formData.goal} onChange={handleChange} className="w-full bg-background border border-border/30 rounded-none ps-4 pe-10 py-4 focus:border-neon transition-all outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202%201z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
-                                                        {t.contact.form.goalOptions.map((opt: string) => <option key={opt} className="bg-background text-foreground">{opt}</option>)}
+                                                    <select id="contact-goal" name="goal" value={formData.goal} onChange={handleChange} className="w-full bg-card/40 text-foreground border border-border rounded-none ps-4 pe-10 py-4 focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-all outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202%201z%22%20fill%3D%22%239CA3AF%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
+                                                        {t.contact.form.goalOptions.map((opt: string) => <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>)}
                                                     </select>
                                                 </div>
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                     <div className="space-y-2">
                                                         <label htmlFor="contact-budget" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.budget}</label>
-                                                        <select id="contact-budget" name="budget" value={formData.budget} onChange={handleChange} className="w-full bg-background border border-border/30 rounded-none ps-4 pe-10 py-4 focus:border-neon transition-all outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202%201z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
-                                                            {t.contact.form.budgetOptions.map((opt: string) => <option key={opt} className="bg-background text-foreground">{opt}</option>)}
+                                                        <select id="contact-budget" name="budget" value={formData.budget} onChange={handleChange} className="w-full bg-card/40 text-foreground border border-border rounded-none ps-4 pe-10 py-4 focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-all outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202%201z%22%20fill%3D%22%239CA3AF%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
+                                                            {t.contact.form.budgetOptions.map((opt: string) => <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>)}
                                                         </select>
                                                     </div>
                                                     <div className="space-y-2">
                                                         <label htmlFor="contact-deadline" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.deadline}</label>
-                                                        <select id="contact-deadline" name="deadline" value={formData.deadline} onChange={handleChange} className="w-full bg-background border border-border/30 rounded-none ps-4 pe-10 py-4 focus:border-neon transition-all outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202%201z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
-                                                            {t.contact.form.deadlineOptions.map((opt: string) => <option key={opt} className="bg-background text-foreground">{opt}</option>)}
+                                                        <select id="contact-deadline" name="deadline" value={formData.deadline} onChange={handleChange} className="w-full bg-card/40 text-foreground border border-border rounded-none ps-4 pe-10 py-4 focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-all outline-none appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202%201z%22%20fill%3D%22%239CA3AF%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px_20px] bg-no-repeat bg-[right_1rem_center] rtl:bg-[left_1rem_center]">
+                                                            {t.contact.form.deadlineOptions.map((opt: string) => <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>)}
                                                         </select>
                                                     </div>
                                                 </div>
@@ -343,14 +347,14 @@ export default function Contact() {
                                             <h3 className="text-2xl font-bold text-foreground mb-8">Final Details</h3>
                                             <div className="space-y-2">
                                                 <label htmlFor="contact-message" className="text-xs font-bold text-foreground/80 uppercase tracking-wider block mb-2">{t.contact.form.details}</label>
-                                                <textarea id="contact-message" name="message" rows={5} value={formData.message} onChange={handleChange} placeholder={t.contact.form.detailsPlaceholder} className={`w-full bg-background border rounded-none px-5 py-4 focus:border-neon transition-all outline-none resize-none ${fieldErrors.message ? 'border-red-500' : 'border-border/30'}`} />
+                                                <textarea id="contact-message" name="message" rows={5} value={formData.message} onChange={handleChange} placeholder={t.contact.form.detailsPlaceholder} className={`w-full bg-card/40 text-foreground placeholder:text-muted/50 border rounded-none px-5 py-4 focus:border-neon focus-visible:ring-2 focus-visible:ring-neon/20 transition-all outline-none resize-none ${fieldErrors.message ? 'border-red-500' : 'border-border'}`} />
                                                 {fieldErrors.message && <p className="text-red-500 text-[10px] mt-1">{fieldErrors.message}</p>}
                                             </div>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
 
-                                <div className="flex items-center justify-between pt-8 border-t border-border/30">
+                                <div className="flex items-center justify-between pt-8 border-t border-border/20">
                                     {step > 1 ? (
                                         <button type="button" onClick={prevStep} className="flex items-center gap-2 text-muted hover:text-foreground font-bold transition-colors">
                                             <ChevronLeft className="w-5 h-5" /> Back
