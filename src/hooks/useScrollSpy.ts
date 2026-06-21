@@ -22,6 +22,15 @@ export function useScrollSpy(
     const getActive = useCallback(() => {
         if (typeof window === 'undefined') return ids[0] ?? '';
         const idsArray = idsKey.split(',').filter(Boolean);
+
+        // Check if scrolled near the bottom of the page to activate the last section (e.g. Contact)
+        const scrolledToBottom =
+            window.innerHeight + window.scrollY >=
+            document.documentElement.scrollHeight - 120;
+        if (scrolledToBottom && idsArray.length > 0) {
+            return idsArray[idsArray.length - 1];
+        }
+
         const trigger = window.innerHeight * triggerRatio;
 
         let current = idsArray[0] ?? '';

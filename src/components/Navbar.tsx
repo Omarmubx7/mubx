@@ -74,8 +74,8 @@ const NavbarContent = () => {
     };
 
     const sectionLinks = [
-        { name: t.nav.projects, href: '#projects' },
         { name: 'About & Journey', href: '#about' },
+        { name: t.nav.projects, href: '#projects' },
         { name: t.nav.tools, href: '#tech-stack' },
         { name: t.nav.contact, href: '#contact' },
     ];
@@ -89,8 +89,8 @@ const NavbarContent = () => {
                 paddingTop: (mounted && scrolled) ? 14 : 22,
                 paddingBottom: (mounted && scrolled) ? 14 : 22,
                 backgroundColor: (mounted && scrolled) ? 'rgba(10,10,10,0.85)' : 'rgba(13,13,13,0.7)',
-                borderBottomColor: (mounted && scrolled) ? 'rgba(230,57,70,0.18)' : 'rgba(255,255,255,0.05)',
-                boxShadow: (mounted && scrolled) ? '0 8px 32px rgba(0,0,0,0.5), 0 0 12px rgba(230,57,70,0.05)' : '0 1px 0px rgba(255,255,255,0.03)'
+                borderBottomColor: (mounted && scrolled) ? 'rgba(225,29,29,0.12)' : 'rgba(255,255,255,0.05)',
+                boxShadow: (mounted && scrolled) ? '0 8px 32px rgba(0,0,0,0.5)' : '0 1px 0px rgba(255,255,255,0.03)'
             }}
             transition={{ duration: 0.35, ease: "easeOut" }}
             className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-12"
@@ -119,25 +119,14 @@ const NavbarContent = () => {
                     aria-current={isLinkActive('/') ? 'page' : undefined}
                     className="relative px-6 py-3 text-base font-medium tracking-wide transition-colors"
                     style={{
-                        color: isLinkActive('/') ? '#E63946' : 'rgba(237,232,228,0.8)',
-                        textShadow: isLinkActive('/') ? '0 0 8px rgba(230,57,70,0.45)' : 'none'
+                        color: isLinkActive('/') ? '#E11D1D' : 'rgba(237,232,228,0.8)',
                     }}
-                    onMouseEnter={(e) => { e.currentTarget.style.color = '#E63946' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = '#E11D1D' }}
                     onMouseLeave={(e) => {
-                        e.currentTarget.style.color = isLinkActive('/') ? '#E63946' : 'rgba(237,232,228,0.8)'
+                        e.currentTarget.style.color = isLinkActive('/') ? '#E11D1D' : 'rgba(237,232,228,0.8)'
                     }}
                 >
                     {t.nav.home}
-                    {mounted && isLinkActive('/') && (
-                        <motion.div
-                            layoutId="activeNavIndicator"
-                            className="absolute inset-0 z-[-1] rounded-full border border-[#E63946]/30 bg-[#E63946]/5"
-                            style={{
-                                boxShadow: '0 0 14px rgba(230,57,70,0.12)',
-                            }}
-                            transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                        />
-                    )}
                 </Link>
                 {sectionLinks.map((link) => (
                     <a
@@ -146,25 +135,14 @@ const NavbarContent = () => {
                         aria-current={isLinkActive(link.href) ? 'page' : undefined}
                         className="relative px-6 py-3 text-base font-medium tracking-wide transition-colors"
                         style={{
-                            color: isLinkActive(link.href) ? '#E63946' : 'rgba(237,232,228,0.8)',
-                            textShadow: isLinkActive(link.href) ? '0 0 8px rgba(230,57,70,0.45)' : 'none'
+                            color: isLinkActive(link.href) ? '#E11D1D' : 'rgba(237,232,228,0.8)',
                         }}
-                        onMouseEnter={(e) => { e.currentTarget.style.color = '#E63946' }}
+                        onMouseEnter={(e) => { e.currentTarget.style.color = '#E11D1D' }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.style.color = isLinkActive(link.href) ? '#E63946' : 'rgba(237,232,228,0.8)'
+                            e.currentTarget.style.color = isLinkActive(link.href) ? '#E11D1D' : 'rgba(237,232,228,0.8)'
                         }}
                     >
                         {link.name}
-                        {mounted && isLinkActive(link.href) && (
-                            <motion.div
-                                layoutId="activeNavIndicator"
-                                className="absolute inset-0 z-[-1] rounded-full border border-[#E63946]/30 bg-[#E63946]/5"
-                                style={{
-                                    boxShadow: '0 0 14px rgba(230,57,70,0.12)',
-                                }}
-                                transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                            />
-                        )}
                     </a>
                 ))}
 
@@ -176,7 +154,7 @@ const NavbarContent = () => {
                     rel="noopener noreferrer"
                     className="px-6 py-3 text-base font-medium tracking-wide transition-colors"
                     style={{ color: 'rgba(237,232,228,0.8)' }}
-                    onMouseEnter={(e) => { e.currentTarget.style.color = '#E63946' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = '#E11D1D' }}
                     onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(237,232,228,0.8)' }}
                 >
                     {t.nav.resume}
@@ -189,10 +167,10 @@ const NavbarContent = () => {
                         rel="noopener noreferrer"
                         className="ml-4 px-7 py-3 text-base font-bold text-white transition-all"
                         style={{
-                            backgroundColor: '#E63946',
+                            backgroundColor: '#E11D1D',
                         }}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.boxShadow = '0 0 24px rgba(230,57,70,0.35)'
+                            e.currentTarget.style.boxShadow = '0 0 24px rgba(225,29,29,0.35)'
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.boxShadow = 'none'
@@ -207,7 +185,7 @@ const NavbarContent = () => {
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="relative z-50 p-2 transition-colors"
-                    style={{ color: '#E63946' }}
+                    style={{ color: '#E11D1D' }}
                     aria-label="Toggle Menu"
                 >
                     {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
@@ -234,7 +212,7 @@ const NavbarContent = () => {
                                 onClick={() => setIsOpen(false)}
                                 className="text-2xl font-bold uppercase tracking-wider transition-colors"
                                 style={{ color: '#EDE8E4' }}
-                                onMouseEnter={(e) => { e.currentTarget.style.color = '#E63946' }}
+                                onMouseEnter={(e) => { e.currentTarget.style.color = '#E11D1D' }}
                                 onMouseLeave={(e) => { e.currentTarget.style.color = '#EDE8E4' }}
                             >
                                 {t.nav.home}
@@ -247,7 +225,7 @@ const NavbarContent = () => {
                                     onClick={() => setIsOpen(false)}
                                     className="text-2xl font-bold uppercase tracking-wider transition-colors"
                                     style={{ color: '#EDE8E4' }}
-                                    onMouseEnter={(e) => { e.currentTarget.style.color = '#E63946' }}
+                                    onMouseEnter={(e) => { e.currentTarget.style.color = '#E11D1D' }}
                                     onMouseLeave={(e) => { e.currentTarget.style.color = '#EDE8E4' }}
                                 >
                                     {link.name}
@@ -262,7 +240,7 @@ const NavbarContent = () => {
                                 onClick={() => setIsOpen(false)}
                                 className="text-2xl font-bold uppercase tracking-wider transition-colors"
                                 style={{ color: '#EDE8E4' }}
-                                onMouseEnter={(e) => { e.currentTarget.style.color = '#E63946' }}
+                                onMouseEnter={(e) => { e.currentTarget.style.color = '#E11D1D' }}
                                 onMouseLeave={(e) => { e.currentTarget.style.color = '#EDE8E4' }}
                             >
                                 {t.nav.resume}
@@ -276,7 +254,7 @@ const NavbarContent = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="w-full flex items-center justify-center gap-2 py-4 font-bold text-white rounded-2xl text-lg"
-                                        style={{ backgroundColor: '#E63946' }}
+                                        style={{ backgroundColor: '#E11D1D' }}
                                     >
                                         {t.nav.bookCall}
                                     </a>

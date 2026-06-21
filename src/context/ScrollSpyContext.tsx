@@ -5,9 +5,9 @@ import { useScrollSpy } from '@/hooks/useScrollSpy';
 
 const SECTION_IDS = [
     'hero',
-    'projects',
     'about',
     'journey',
+    'projects',
     'tech-stack',
     'contact',
 ] as const;

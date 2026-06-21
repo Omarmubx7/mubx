@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 export default function FloatingLogo() {
+  const pathname = usePathname()
   const [mounted, setMounted] = useState(false)
   const [docHeight, setDocHeight] = useState(1)
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -12,6 +14,8 @@ export default function FloatingLogo() {
 
   const { scrollY } = useScroll()
   const smoothScrollY = useSpring(scrollY, { stiffness: 120, damping: 30 })
+
+  if (pathname?.startsWith('/links')) return null
 
   useEffect(() => {
     setMounted(true)

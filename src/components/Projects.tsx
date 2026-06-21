@@ -187,7 +187,7 @@ export default function Projects() {
                         </div>
 
                         {/* Right Column: Sticky Simulator Preview */}
-                        <div className="col-span-7 sticky top-28 h-[400px]">
+                        <div className="col-span-7 sticky top-28 h-[480px]">
                             <AnimatePresence mode="wait">
                                 {activeSlug && (
                                     <motion.div

@@ -2,10 +2,14 @@
 
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function MobileGate() {
+  const pathname = usePathname()
   const [mounted, setMounted] = useState(false)
   const [dismissed, setDismissed] = useState(false)
+
+  const isLinksPage = pathname?.includes('/links')
 
   useEffect(() => {
     setMounted(true)
@@ -24,7 +28,7 @@ export default function MobileGate() {
     setDismissed(true)
   }
 
-  if (!mounted || dismissed) return null
+  if (isLinksPage || !mounted || dismissed) return null
 
   return (
     <div className="lg:hidden fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#0D0D0D] px-8 text-center">

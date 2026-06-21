@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { usePathname } from 'next/navigation';
+
 
 // ── Exact Framer LoaderCounter easing ────────────────────────────────────────
 function loaderEase(t: number): number {
@@ -72,6 +74,7 @@ function WordReveal({
 }
 
 export default function LoadingScreen() {
+  const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const [phase, setPhase] = useState<Phase>('loading');
   const [count, setCount] = useState(0);
@@ -79,8 +82,11 @@ export default function LoadingScreen() {
   const rafRef = useRef<number>(0);
   const pausesRef = useRef(generatePauses());
 
+  const isLinksPage = pathname?.includes('/links');
+
   // Lock scroll until done
   useEffect(() => {
+    if (isLinksPage) return;
     if (phase !== 'done') {
       document.body.style.overflow = 'hidden';
     } else {
@@ -89,11 +95,11 @@ export default function LoadingScreen() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [phase]);
+  }, [phase, isLinksPage]);
 
   // Prevent scroll during loading & greeting phases
   useEffect(() => {
-    if (phase === 'done' || phase === 'scroll-hint') return;
+    if (isLinksPage || phase === 'done' || phase === 'scroll-hint') return;
     const prevent = (e: Event) => {
       e.preventDefault();
     };
@@ -103,7 +109,7 @@ export default function LoadingScreen() {
       window.removeEventListener('wheel', prevent);
       window.removeEventListener('touchmove', prevent);
     };
-  }, [phase]);
+  }, [phase, isLinksPage]);
 
   // Enter handler
   const handleEnter = useCallback(() => {
@@ -136,6 +142,7 @@ export default function LoadingScreen() {
 
   // Loader RAF animation
   useEffect(() => {
+    if (isLinksPage) return;
     setMounted(true);
     if (typeof window !== 'undefined') {
       // 1. Skip loader immediately for bots / crawlers / Lighthouse / PageSpeed Insights
@@ -185,9 +192,9 @@ export default function LoadingScreen() {
     };
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
-  }, []);
+  }, [isLinksPage]);
 
-  if (!mounted || phase === 'done') return null;
+  if (isLinksPage || !mounted || phase === 'done') return null;
 
   const counterColor =
     count > 50
@@ -283,7 +290,7 @@ export default function LoadingScreen() {
           height: 2,
           zIndex: 4,
           background:
-            'linear-gradient(90deg, transparent, #E63946 40%, #E63946 60%, transparent)',
+            'linear-gradient(90deg, transparent, #E11D1D 40%, #E11D1D 60%, transparent)',
           transformOrigin: 'center',
         }}
       />
@@ -403,8 +410,8 @@ export default function LoadingScreen() {
                     style={{
                       height: '100%',
                       width: `${bar * 100}%`,
-                      background: 'linear-gradient(90deg,#B91616,#E63946)',
-                      boxShadow: '0 0 8px rgba(230,57,70,0.6)',
+                      background: 'linear-gradient(90deg,#991212,#E11D1D)',
+                      boxShadow: '0 0 8px rgba(225,29,29,0.6)',
                       borderRadius: 1,
                       transition: 'width 0.05s linear',
                     }}
@@ -450,7 +457,7 @@ export default function LoadingScreen() {
                   }}
                   style={{
                     fontFamily: 'var(--font-mono)',
-                    fontSize: 'clamp(15px, 2.2vw, 20px)',
+                    fontSize: 'clamp(18px, 2.5vw, 24px)',
                     fontWeight: 300,
                     color: '#9E9490',
                     letterSpacing: '0.08em',
@@ -464,17 +471,17 @@ export default function LoadingScreen() {
                 <div
                   style={{
                     fontFamily: 'var(--font-mono)',
-                    fontSize: 'clamp(40px, 7vw, 90px)',
+                    fontSize: 'clamp(50px, 8.5vw, 115px)',
                     fontWeight: 700,
                     letterSpacing: '-0.03em',
                     lineHeight: 1.0,
-                    marginBottom: 16,
+                    marginBottom: 20,
                   }}
                 >
                   <span style={{ color: '#EDE8E4' }}>
                     <WordReveal text="Omar" delay={0.2} />
                   </span>{' '}
-                  <span style={{ color: '#E63946' }}>
+                  <span style={{ color: '#E11D1D' }}>
                     <WordReveal text="Mubaidin." delay={0.38} />
                   </span>
                 </div>
@@ -490,11 +497,11 @@ export default function LoadingScreen() {
                   }}
                   style={{
                     fontFamily: 'var(--font-mono)',
-                    fontSize: 'clamp(13px, 1.8vw, 17px)',
-                    fontWeight: 300,
-                    color: '#6B625E',
-                    letterSpacing: '0.05em',
-                    marginBottom: 40,
+                    fontSize: 'clamp(18px, 2.5vw, 28px)',
+                    fontWeight: 400,
+                    color: '#EDE8E4',
+                    letterSpacing: '0.08em',
+                    marginBottom: 48,
                   }}
                 >
                   Welcome to my Portfolio
@@ -538,7 +545,7 @@ export default function LoadingScreen() {
                         right: 0,
                         height: '38%',
                         background:
-                          'linear-gradient(to bottom, transparent, #E63946, transparent)',
+                          'linear-gradient(to bottom, transparent, #E11D1D, transparent)',
                         borderRadius: 1,
                       }}
                     />

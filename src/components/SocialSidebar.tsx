@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 
 // Brand-accurate colors
 const socials = [
@@ -48,7 +49,10 @@ const socials = [
 ]
 
 export default function SocialSidebar() {
+  const pathname = usePathname()
   const [hovered, setHovered] = useState<string | null>(null)
+
+  if (pathname?.startsWith('/links')) return null
 
   return (
     <motion.div
