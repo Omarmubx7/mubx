@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import Marquee from '@/components/ui/Marquee'
 
 const marqueeItems = [
@@ -26,365 +27,143 @@ export default function Hero() {
   const [displayText, setDisplayText] = useState('')
   const [charIndex, setCharIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
-  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
     const currentRole = roles[roleIndex]
     let timeout: ReturnType<typeof setTimeout>
 
     if (!isDeleting && charIndex < currentRole.length) {
-      timeout = setTimeout(() => {
-        setDisplayText(currentRole.slice(0, charIndex + 1))
-        setCharIndex((prev) => prev + 1)
-      }, 30)
+      timeout = setTimeout(() => { setDisplayText(currentRole.slice(0, charIndex + 1)); setCharIndex((p) => p + 1) }, 30)
     } else if (!isDeleting && charIndex === currentRole.length) {
-      timeout = setTimeout(() => setIsDeleting(true), 2000)
+      timeout = setTimeout(() => setIsDeleting(true), 2200)
     } else if (isDeleting && charIndex > 0) {
-      timeout = setTimeout(() => {
-        setDisplayText(currentRole.slice(0, charIndex - 1))
-        setCharIndex((prev) => prev - 1)
-      }, 15)
+      timeout = setTimeout(() => { setDisplayText(currentRole.slice(0, charIndex - 1)); setCharIndex((p) => p - 1) }, 15)
     } else if (isDeleting && charIndex === 0) {
       setIsDeleting(false)
-      setRoleIndex((prev) => (prev + 1) % roles.length)
+      setRoleIndex((p) => (p + 1) % roles.length)
     }
 
     return () => clearTimeout(timeout)
   }, [charIndex, isDeleting, roleIndex])
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const el = document.getElementById('hero')
-      if (!el) return
-      const rect = el.getBoundingClientRect()
-      const total = el.offsetHeight - window.innerHeight
-      const scrolled = -rect.top
-      setProgress(Math.max(0, Math.min(1, scrolled / total)))
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const gO = Math.max(0, 1 - progress * 2.5)
-  const gY = progress * 80
-  const hO = Math.max(0, Math.min(1, (progress - 0.4) * 3))
-  const hY = (1 - hO) * 60
-
   return (
-    <section
-      id="hero"
-      style={{
-        height: '200vh',
-        background: '#0D0D0D',
-        position: 'relative',
-      }}
-    >
+    <section id="hero" style={{ background: '#0D0D0D', position: 'relative', minHeight: '100vh' }}>
+      {/* Background glow */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 80% 50% at 50% 40%, rgba(230,57,70,0.08) 0%, transparent 70%)',
-        }}
+        style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 40%, rgba(230,57,70,0.07) 0%, transparent 70%)' }}
       />
 
-      <div
-        style={{
-          position: 'sticky',
-          top: 0,
-          height: '100vh',
-          overflow: 'hidden',
-        }}
+      {/* Hero content */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+        style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '100vh', position: 'relative', zIndex: 10 }}
       >
-        {/* Greeting layer */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            opacity: gO,
-            transform: `translateY(-${gY}px)`,
-            zIndex: 20,
-            pointerEvents: gO < 0.1 ? 'none' : 'auto',
-          }}
-        >
-          <div
-            style={{
-              fontSize: 'clamp(1.5rem, 5vw, 3rem)',
-              fontFamily: 'var(--font-mono)',
-              fontWeight: 300,
-              color: '#EDE8E4',
-              marginBottom: 12,
-              textAlign: 'center',
-            }}
-          >
-            Hi, my name is
-          </div>
-          <div
-            style={{
-              fontSize: 'clamp(2rem, 7vw, 4.5rem)',
-              fontFamily: 'var(--font-mono)',
-              fontWeight: 700,
-              color: '#E63946',
-              textAlign: 'center',
-            }}
-          >
-            Omar Mubaidin
-          </div>
+        <div className="max-w-[1200px] mx-auto w-full px-6 md:px-12">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
 
-          <div
-            style={{
-              position: 'fixed',
-              bottom: 32,
-              left: '50%',
-              transform: 'translateX(-50%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: 8,
-              color: '#9E9490',
-              fontFamily: 'var(--font-mono)',
-              fontSize: 12,
-              letterSpacing: '0.1em',
-              opacity: Math.max(0, 1 - progress * 3),
-            }}
-          >
-            <span
-              style={{
-                fontSize: 20,
-                lineHeight: 1,
-                color: '#E63946',
-                animation: 'loaderBounce 1.5s ease-in-out infinite',
-              }}
-            >
-              ↓
-            </span>
-            scroll to enter
-          </div>
-        </div>
+            {/* Text */}
+            <div className="flex-1 min-w-0 w-full">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, fontFamily: 'var(--font-mono)', color: '#9E9490', marginBottom: 24 }}
+              >
+                <span style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#22c55e', display: 'inline-block', boxShadow: '0 0 8px rgba(34,197,94,0.5)' }} />
+                Available for work &middot; Amman, Jordan
+              </motion.div>
 
-        {/* Hero content layer */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            opacity: hO,
-            transform: `translateY(${hY}px)`,
-            zIndex: 10,
-            pointerEvents: hO < 0.5 ? 'none' : 'auto',
-          }}
-        >
-          <div className="max-w-[1200px] mx-auto w-full px-6 md:px-12">
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: 'clamp(2rem, 6vw, 4rem)',
-              }}
-              className="flex-col lg:flex-row"
-            >
-              {/* Left: text */}
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 8,
-                    fontSize: 14,
-                    fontFamily: 'var(--font-mono)',
-                    color: '#9E9490',
-                    marginBottom: 24,
-                  }}
-                >
-                  <span
-                    style={{
-                      width: 8,
-                      height: 8,
-                      borderRadius: '50%',
-                      backgroundColor: '#22c55e',
-                      display: 'inline-block',
-                    }}
-                  />
-                  Available for work &middot; Amman, Jordan
-                </div>
-
-                <div style={{ marginBottom: 16 }}>
-                  <h1
-                    style={{
-                      fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                      fontFamily: 'var(--font-mono)',
-                      fontWeight: 300,
-                      letterSpacing: '-0.02em',
-                      lineHeight: 1.05,
-                      color: '#EDE8E4',
-                    }}
+              <div style={{ marginBottom: 16 }}>
+                {[
+                  { text: 'Omar Mubaidin.', color: '#EDE8E4', delay: 0.35 },
+                  { text: 'Web Dev &', color: '#EDE8E4', delay: 0.5 },
+                  { text: 'AI Engineer.', color: '#E63946', delay: 0.65 },
+                ].map(({ text, color, delay }) => (
+                  <motion.div
+                    key={text}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ fontSize: 'clamp(2.2rem, 5vw, 5rem)', fontFamily: 'var(--font-mono)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.05, color }}
                   >
-                    Omar Mubaidin.
-                  </h1>
-                  <p
-                    style={{
-                      fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                      fontFamily: 'var(--font-mono)',
-                      fontWeight: 300,
-                      letterSpacing: '-0.02em',
-                      lineHeight: 1.05,
-                      color: '#EDE8E4',
-                    }}
-                  >
-                    Web Dev &amp;
-                  </p>
-                  <p
-                    style={{
-                      fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                      fontFamily: 'var(--font-mono)',
-                      fontWeight: 300,
-                      letterSpacing: '-0.02em',
-                      lineHeight: 1.05,
-                      color: '#E63946',
-                    }}
-                  >
-                    AI Engineer.
-                  </p>
-                </div>
-
-                <p
-                  style={{
-                    fontSize: 16,
-                    color: '#9E9490',
-                    maxWidth: 560,
-                    lineHeight: 1.6,
-                    fontFamily: 'var(--font-mono)',
-                    marginBottom: 24,
-                    minHeight: '1.5em',
-                  }}
-                >
-                  {displayText}
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      width: '0.6em',
-                      height: '1.1em',
-                      backgroundColor: '#E63946',
-                      marginLeft: 4,
-                      verticalAlign: 'middle',
-                      animation: 'blink 1s step-end infinite',
-                    }}
-                  />
-                </p>
-
-                <div style={{ display: 'flex', gap: 16 }}>
-                  <button
-                    onClick={() => scrollTo('projects')}
-                    style={{
-                      padding: '16px 32px',
-                      fontSize: 16,
-                      fontFamily: 'var(--font-mono)',
-                      fontWeight: 700,
-                      color: '#fff',
-                      backgroundColor: '#E63946',
-                      border: 'none',
-                      cursor: 'pointer',
-                      letterSpacing: '0.05em',
-                      textTransform: 'uppercase',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.boxShadow = '0 0 30px rgba(230,57,70,0.4)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.boxShadow = 'none'
-                    }}
-                  >
-                    Explore Projects
-                  </button>
-                  <a
-                    href="https://calendly.com/omarmubaidincs/30min"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      padding: '16px 32px',
-                      fontSize: 16,
-                      fontFamily: 'var(--font-mono)',
-                      fontWeight: 700,
-                      color: '#EDE8E4',
-                      border: '1px solid rgba(255,255,255,0.15)',
-                      cursor: 'pointer',
-                      letterSpacing: '0.05em',
-                      textTransform: 'uppercase',
-                      textDecoration: 'none',
-                      display: 'inline-block',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(230,57,70,0.6)'
-                      e.currentTarget.style.color = '#E63946'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'
-                      e.currentTarget.style.color = '#EDE8E4'
-                    }}
-                  >
-                    Book a Call
-                  </a>
-                </div>
+                    {text}
+                  </motion.div>
+                ))}
               </div>
 
-              {/* Right: image */}
-              <div style={{ flexShrink: 0 }}>
-                <Image
-                  src="/omarmub.webp"
-                  alt="Omar Mubaidin"
-                  width={432}
-                  height={576}
-                  priority
-                  style={{
-                    borderRadius: 24,
-                    border: '1px solid rgba(230,57,70,0.3)',
-                    boxShadow: '0 0 40px rgba(230,57,70,0.15)',
-                    maxWidth: 'clamp(200px, 30vw, 432px)',
-                    height: 'auto',
-                  }}
-                />
-              </div>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.85 }}
+                style={{ fontSize: 16, color: '#9E9490', maxWidth: 560, lineHeight: 1.6, fontFamily: 'var(--font-mono)', marginBottom: 24, minHeight: '1.5em' }}
+              >
+                {displayText}
+                <span style={{ display: 'inline-block', width: '0.6em', height: '1.1em', backgroundColor: '#E63946', marginLeft: 4, verticalAlign: 'middle', animation: 'blink 1s step-end infinite' }} />
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.05 }}
+                style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}
+              >
+                <button
+                  onClick={() => scrollTo('projects')}
+                  style={{ padding: '16px 32px', fontSize: 16, fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#fff', backgroundColor: '#E63946', border: 'none', cursor: 'pointer', letterSpacing: '0.05em', textTransform: 'uppercase' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 0 30px rgba(230,57,70,0.45)' }}
+                  onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none' }}
+                >
+                  Explore Projects
+                </button>
+                <a
+                  href="https://calendly.com/omarmubaidincs/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ padding: '16px 32px', fontSize: 16, fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#EDE8E4', border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer', letterSpacing: '0.05em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(230,57,70,0.6)'; e.currentTarget.style.color = '#E63946' }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; e.currentTarget.style.color = '#EDE8E4' }}
+                >
+                  Book a Call
+                </a>
+              </motion.div>
             </div>
+
+            {/* Profile image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              className="flex-shrink-0 w-[120px] sm:w-[160px] md:w-[200px] lg:w-auto"
+            >
+              <Image
+                src="/omarmub.webp"
+                alt="Omar Mubaidin"
+                width={432}
+                height={576}
+                priority
+                className="w-full h-auto"
+                style={{ borderRadius: 24, border: '1px solid rgba(230,57,70,0.3)', boxShadow: '0 0 40px rgba(230,57,70,0.15)', maxWidth: 'clamp(120px, 22vw, 380px)' }}
+              />
+            </motion.div>
           </div>
         </div>
+      </motion.div>
 
-        {/* Marquee at bottom */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            borderTop: '1px solid rgba(255,255,255,0.04)',
-            opacity: Math.max(0, Math.min(1, (progress - 0.6) * 4)),
-          }}
-        >
-          <Marquee items={marqueeItems} />
-        </div>
+      {/* Bottom marquee */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+        <Marquee items={marqueeItems} />
       </div>
 
       <style>{`
-        @keyframes loaderBounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(6px); }
-        }
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
       `}</style>
     </section>
   )

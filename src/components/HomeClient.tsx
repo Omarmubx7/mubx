@@ -46,6 +46,8 @@ function HomeMain() {
     };
 
     useEffect(() => {
+        const isMobile = window.matchMedia("(max-width: 1024px)").matches;
+        if (isMobile) return;
         const timer = setTimeout(() => setShowCanvas(true), 3500);
         return () => clearTimeout(timer);
     }, []);
@@ -185,11 +187,11 @@ function HomeMain() {
                         <div id="about" className="scroll-mt-24">
                             <About />
                         </div>
-                        <div id="tech-stack" className="scroll-mt-24">
-                            <TechStack />
-                        </div>
                         <div id="journey" className="scroll-mt-24">
                             <Timeline />
+                        </div>
+                        <div id="tech-stack" className="scroll-mt-24">
+                            <TechStack />
                         </div>
 
                         <div id="contact" className="scroll-mt-24">

@@ -97,7 +97,6 @@ const nextConfig: NextConfig = {
   experimental: {
     urlImports: ['https://framer.com/m/', 'https://framerusercontent.com/'],
   },
-  turbopack: {},
 };
 
 export default nextConfig;

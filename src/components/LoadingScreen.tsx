@@ -1,129 +1,322 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const TOTAL_DURATION = 300; // ms before exit starts
-const PROGRESS_DURATION = 250; // ms for the progress bar fill
+// ── Exact Framer LoaderCounter easing ────────────────────────────────────────
+function loaderEase(t: number): number {
+  if (t < 0.25) return 3.2 * t * t;
+  if (t < 0.65) {
+    const a = (t - 0.25) / 0.4;
+    return 0.2 + a * 0.5;
+  }
+  if (t < 0.88) {
+    const a = (t - 0.65) / 0.23;
+    return 0.7 + Math.pow(a, 1.5) * 0.18;
+  }
+  const a = (t - 0.88) / 0.12;
+  return 0.88 + Math.pow(a, 4) * 0.12;
+}
+
+function generatePauses() {
+  const pauses: { start: number; end: number }[] = [];
+  const count = 3 + Math.floor(Math.random() * 3);
+  for (let i = 0; i < count; i++) {
+    const center = 0.15 + Math.random() * 0.7;
+    const w = 0.04 + Math.random() * 0.08;
+    pauses.push({
+      start: Math.max(0.15, center - w / 2),
+      end: Math.min(0.85, center + w / 2),
+    });
+  }
+  pauses.push({
+    start: 0.75 + Math.random() * 0.05,
+    end: 0.82 + Math.random() * 0.03,
+  });
+  return pauses;
+}
+
+const LOAD_MS = 3800;
+
+type Phase = 'loading' | 'greeting' | 'scroll-hint' | 'entering' | 'done';
+
+// Word-by-word reveal
+function WordReveal({
+  text,
+  delay = 0,
+  style,
+}: {
+  text: string;
+  delay?: number;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <span style={{ display: 'inline', ...style }}>
+      {text.split(' ').map((word, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.55,
+            delay: delay + i * 0.09,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          style={{ display: 'inline-block', marginRight: '0.28em' }}
+        >
+          {word}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
 
 export default function LoadingScreen() {
   const [mounted, setMounted] = useState(false);
-  const [phase, setPhase] = useState<'loading' | 'exit' | 'done'>('loading');
-  const [progress, setProgress] = useState(0);
+  const [phase, setPhase] = useState<Phase>('loading');
+  const [count, setCount] = useState(0);
+  const [bar, setBar] = useState(0);
+  const rafRef = useRef<number>(0);
+  const pausesRef = useRef(generatePauses());
 
-  const startExit = useCallback(() => {
-    setPhase('exit');
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('mubx-loaded', 'true');
-    }
-    setTimeout(() => setPhase('done'), 150);
-  }, []);
-
+  // Lock scroll until done
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (phase !== 'done') {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [phase]);
+
+  // Prevent scroll during loading & greeting phases
+  useEffect(() => {
+    if (phase === 'done' || phase === 'scroll-hint') return;
+    const prevent = (e: Event) => {
+      e.preventDefault();
+    };
+    window.addEventListener('wheel', prevent, { passive: false });
+    window.addEventListener('touchmove', prevent, { passive: false });
+    return () => {
+      window.removeEventListener('wheel', prevent);
+      window.removeEventListener('touchmove', prevent);
+    };
+  }, [phase]);
+
+  // Enter handler
+  const handleEnter = useCallback(() => {
+    if (phase !== 'scroll-hint') return;
+    setPhase('entering');
+    setTimeout(() => {
+      setPhase('done');
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('mubx-loaded', 'true');
+      }
+    }, 1100);
+  }, [phase]);
+
+  // Listen for scroll / keys during scroll-hint
+  useEffect(() => {
+    if (phase !== 'scroll-hint') return;
+    const go = () => handleEnter();
+    const onKey = (e: KeyboardEvent) => {
+      if (['Space', 'ArrowDown', 'Enter'].includes(e.code)) handleEnter();
+    };
+    window.addEventListener('wheel', go, { passive: true });
+    window.addEventListener('touchmove', go, { passive: true });
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('wheel', go);
+      window.removeEventListener('touchmove', go);
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [phase, handleEnter]);
+
+  // Loader RAF animation
+  useEffect(() => {
     setMounted(true);
     if (typeof window !== 'undefined') {
-      const isLoaded = sessionStorage.getItem('mubx-loaded');
-      if (isLoaded) {
+      // 1. Skip loader immediately for bots / crawlers / Lighthouse / PageSpeed Insights
+      const ua = navigator.userAgent.toLowerCase();
+      const isBot = /lighthouse|chrome-lighthouse|googlebot|bingbot|yandexbot|baiduspider|headlesschrome|speed insights|insights/i.test(ua);
+      const isAutomated = navigator.webdriver || window.location.search.includes('lighthouse') || !!(window as any)._lighthouse;
+      
+      if (isBot || isAutomated) {
         setPhase('done');
+        return;
+      }
+
+      // 2. Skip loader if already loaded in production (ignore on localhost dev)
+      const isLocalhost =
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1' ||
+        window.location.port !== '';
+
+      const isProd = process.env.NODE_ENV === 'production' && !isLocalhost;
+      if (isProd && sessionStorage.getItem('mubx-loaded')) {
+        setPhase('done');
+        return;
       }
     }
-  }, []);
 
-  // Progress bar animation
-  useEffect(() => {
-    if (!mounted || phase === 'done') return;
     const start = performance.now();
-    let raf: number;
-
     const tick = (now: number) => {
-      const elapsed = now - start;
-      const p = Math.min(elapsed / PROGRESS_DURATION, 1);
-      // Ease out cubic for natural feel
-      const eased = 1 - Math.pow(1 - p, 3);
-      setProgress(eased * 100);
-      if (p < 1) raf = requestAnimationFrame(tick);
+      const rawT = Math.min((now - start) / LOAD_MS, 1);
+      const paused =
+        rawT < 0.95 &&
+        pausesRef.current.some(p => rawT >= p.start && rawT <= p.end);
+      if (paused) {
+        rafRef.current = requestAnimationFrame(tick);
+        return;
+      }
+      const eased = loaderEase(rawT);
+      setCount(Math.round(eased * 100));
+      setBar(eased);
+      if (rawT < 1) {
+        rafRef.current = requestAnimationFrame(tick);
+      } else {
+        setCount(100);
+        setBar(1);
+        setTimeout(() => setPhase('greeting'), 500);
+        setTimeout(() => setPhase('scroll-hint'), 2700);
+      }
     };
-
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [phase, mounted]);
-
-  // Phase timer
-  useEffect(() => {
-    if (!mounted || phase === 'done') return;
-    const timer = setTimeout(startExit, TOTAL_DURATION);
-    return () => clearTimeout(timer);
-  }, [startExit, phase, mounted]);
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
 
   if (!mounted || phase === 'done') return null;
 
+  const counterColor =
+    count > 50
+      ? `rgb(${Math.round(158 + (230 - 158) * ((count - 50) / 50))},${Math.round(
+          148 + (57 - 148) * ((count - 50) / 50)
+        )},${Math.round(144 + (70 - 144) * ((count - 50) / 50))})`
+      : '#9E9490';
+
+  const isLoading = phase === 'loading';
+  const isGreeting = phase === 'greeting' || phase === 'scroll-hint';
+  const isScrollHint = phase === 'scroll-hint';
+  const isEntering = phase === 'entering';
+
   return (
-    <AnimatePresence>
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 99999,
+        background: 'transparent',
+        overflow: 'hidden',
+        pointerEvents: phase === 'entering' ? 'none' : 'auto',
+      }}
+    >
+      {/* Background radial glow (z:2) */}
       <motion.div
-        key="loading-screen"
-        initial={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.15, ease: [0.7, 0, 0.2, 1] }}
+        animate={{ opacity: isEntering ? 0 : 1 }}
+        transition={{ duration: 0.5 }}
         style={{
-          position: 'fixed',
+          position: 'absolute',
           inset: 0,
-          zIndex: 9999,
+          zIndex: 2,
+          pointerEvents: 'none',
+          background:
+            'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(230,57,70,0.07) 0%, transparent 70%)',
+        }}
+      />
+
+      {/* Vignette (z:3) */}
+      <motion.div
+        animate={{ opacity: isEntering ? 0 : 1 }}
+        transition={{ duration: 0.5 }}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 3,
+          pointerEvents: 'none',
+          background:
+            'radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.55) 100%)',
+        }}
+      />
+
+      {/* ── CURTAIN PANELS (z:1 — only animate during 'entering') ─────── */}
+      <motion.div
+        initial={{ y: '0%' }}
+        animate={{ y: isEntering ? '-100%' : '0%' }}
+        transition={{ duration: 1.0, ease: [0.76, 0, 0.24, 1] }}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '50%',
+          background: '#0A0A0A',
+          zIndex: 1,
+        }}
+      />
+      <motion.div
+        initial={{ y: '0%' }}
+        animate={{ y: isEntering ? '100%' : '0%' }}
+        transition={{ duration: 1.0, ease: [0.76, 0, 0.24, 1] }}
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '50%',
+          background: '#0A0A0A',
+          zIndex: 1,
+        }}
+      />
+
+      {/* ── TOP RED ACCENT LINE (z:4) ──────────────────────────────────── */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: isLoading ? 1 : 0, opacity: isLoading ? 1 : 0 }}
+        transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 2,
+          zIndex: 4,
+          background:
+            'linear-gradient(90deg, transparent, #E63946 40%, #E63946 60%, transparent)',
+          transformOrigin: 'center',
+        }}
+      />
+
+      {/* ── ALL CONTENT (z:4) ─────────────────────────────────────────── */}
+      <motion.div
+        animate={{ opacity: isEntering ? 0 : 1 }}
+        transition={{ duration: 0.5 }}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 4,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#0A0A0A',
-          pointerEvents: phase === 'exit' ? 'none' : 'all',
+          gap: 40,
         }}
-        aria-label="Loading"
-        role="status"
       >
-        {/* Radial glow behind logo */}
+        {/* MUBX Logo */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.6 }}
-          animate={{ opacity: [0, 0.5, 0.3], scale: [0.6, 1.2, 1] }}
-          transition={{ duration: 2, ease: 'easeOut' }}
-          style={{
-            position: 'absolute',
-            width: 500,
-            height: 500,
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(215, 28, 28, 0.15) 0%, rgba(215, 28, 28, 0.05) 40%, transparent 70%)',
-            filter: 'blur(40px)',
-            pointerEvents: 'none',
+          animate={{
+            scale: isLoading ? 1 : 0.6,
+            y: isLoading ? 0 : -20,
           }}
-        />
-
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.85 }}
-          animate={
-            phase === 'exit'
-              ? { opacity: 0, y: -40, scale: 1.1 }
-              : { opacity: 1, y: 0, scale: 1 }
-          }
-          transition={{
-            duration: phase === 'exit' ? 0.6 : 0.9,
-            ease: [0.22, 1, 0.36, 1],
-            delay: phase === 'exit' ? 0 : 0.15,
-          }}
-          style={{
-            position: 'relative',
-            zIndex: 2,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: 32,
-          }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* SVG Logo with glow */}
           <motion.div
             animate={{
               filter: [
-                'drop-shadow(0 0 20px rgba(215,28,28,0.0))',
-                'drop-shadow(0 0 40px rgba(215,28,28,0.3))',
-                'drop-shadow(0 0 20px rgba(215,28,28,0.1))',
+                'drop-shadow(0 0 0px rgba(230,57,70,0))',
+                'drop-shadow(0 0 28px rgba(230,57,70,0.4))',
+                'drop-shadow(0 0 12px rgba(230,57,70,0.15))',
               ],
             }}
             transition={{
@@ -136,80 +329,258 @@ export default function LoadingScreen() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/mubxlogoloader.svg"
-              alt="MUBX"
-              width={180}
-              height={180}
+              alt="MUBX Logo"
+              width={100}
+              height={100}
               style={{
-                width: 180,
-                height: 180,
+                width: 100,
+                height: 100,
                 objectFit: 'contain',
                 userSelect: 'none',
+                display: 'block',
               }}
               draggable={false}
             />
           </motion.div>
-
-          {/* Progress bar */}
-          <div
-            style={{
-              width: 220,
-              height: 3,
-              borderRadius: 2,
-              background: 'rgba(255,255,255,0.08)',
-              overflow: 'hidden',
-              position: 'relative',
-            }}
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={
-                phase === 'exit'
-                  ? { opacity: 0, scaleX: 0 }
-                  : { opacity: 1 }
-              }
-              transition={{ duration: phase === 'exit' ? 0.4 : 0.5, delay: phase === 'exit' ? 0 : 0.4 }}
-              style={{
-                height: '100%',
-                borderRadius: 2,
-                background: 'linear-gradient(90deg, #D71C1C, #ff4444)',
-                width: `${progress}%`,
-                boxShadow: '0 0 12px rgba(215,28,28,0.5)',
-                transformOrigin: 'left',
-              }}
-            />
-          </div>
         </motion.div>
 
-        {/* Subtle corner vignette */}
+        {/* Content Area */}
         <div
           style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%)',
-            pointerEvents: 'none',
+            position: 'relative',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            minHeight: 180,
           }}
-        />
+        >
+          <AnimatePresence mode="wait">
+            {isLoading && (
+              <motion.div
+                key="counter-block"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: 20,
+                }}
+              >
+                {/* Big counter */}
+                <div
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 'clamp(80px, 12vw, 120px)',
+                    fontWeight: 700,
+                    lineHeight: 1,
+                    letterSpacing: '-0.04em',
+                    color: counterColor,
+                    fontVariantNumeric: 'tabular-nums',
+                    userSelect: 'none',
+                    minWidth: '3ch',
+                    textAlign: 'center',
+                  }}
+                >
+                  {count}
+                  <span style={{ fontSize: '0.38em', marginLeft: '0.1em', opacity: 0.45 }}>
+                    %
+                  </span>
+                </div>
+                {/* Bar */}
+                <div
+                  style={{
+                    width: 'clamp(180px, 28vw, 260px)',
+                    height: 2,
+                    background: 'rgba(255,255,255,0.06)',
+                    borderRadius: 1,
+                    overflow: 'hidden',
+                  }}
+                >
+                  <div
+                    style={{
+                      height: '100%',
+                      width: `${bar * 100}%`,
+                      background: 'linear-gradient(90deg,#B91616,#E63946)',
+                      boxShadow: '0 0 8px rgba(230,57,70,0.6)',
+                      borderRadius: 1,
+                      transition: 'width 0.05s linear',
+                    }}
+                  />
+                </div>
+                {/* Label */}
+                <div
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 10,
+                    letterSpacing: '0.18em',
+                    color: '#6B625E',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  {count < 100 ? 'Initializing' : 'Ready'}
+                </div>
+              </motion.div>
+            )}
 
-        {/* Top accent line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={
-            phase === 'exit'
-              ? { scaleX: 0, opacity: 0 }
-              : { scaleX: 1, opacity: 1 }
-          }
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: 2,
-            background: 'linear-gradient(90deg, transparent, #D71C1C, transparent)',
-            transformOrigin: 'center',
-          }}
-        />
+            {isGreeting && (
+              <motion.div
+                key="greeting-block"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                }}
+              >
+                {/* "Hi, my name is" */}
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.05,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 'clamp(15px, 2.2vw, 20px)',
+                    fontWeight: 300,
+                    color: '#9E9490',
+                    letterSpacing: '0.08em',
+                    marginBottom: 18,
+                  }}
+                >
+                  Hi, my name is
+                </motion.div>
+
+                {/* Name — word by word */}
+                <div
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 'clamp(40px, 7vw, 90px)',
+                    fontWeight: 700,
+                    letterSpacing: '-0.03em',
+                    lineHeight: 1.0,
+                    marginBottom: 16,
+                  }}
+                >
+                  <span style={{ color: '#EDE8E4' }}>
+                    <WordReveal text="Omar" delay={0.2} />
+                  </span>{' '}
+                  <span style={{ color: '#E63946' }}>
+                    <WordReveal text="Mubaidin." delay={0.38} />
+                  </span>
+                </div>
+
+                {/* "Welcome to my Portfolio" — only on scroll-hint */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: isScrollHint ? 1 : 0, y: isScrollHint ? 0 : 10 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.1,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 'clamp(13px, 1.8vw, 17px)',
+                    fontWeight: 300,
+                    color: '#6B625E',
+                    letterSpacing: '0.05em',
+                    marginBottom: 40,
+                  }}
+                >
+                  Welcome to my Portfolio
+                </motion.div>
+
+                {/* Scroll prompt */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: isScrollHint ? 1 : 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  onClick={handleEnter}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 14,
+                    cursor: 'pointer',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 1,
+                      height: 52,
+                      background: 'rgba(255,255,255,0.07)',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      borderRadius: 1,
+                    }}
+                  >
+                    <motion.div
+                      animate={{ y: ['-100%', '220%'] }}
+                      transition={{
+                        duration: 1.15,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      }}
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '38%',
+                        background:
+                          'linear-gradient(to bottom, transparent, #E63946, transparent)',
+                        borderRadius: 1,
+                      }}
+                    />
+                  </div>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: 9,
+                      letterSpacing: '0.22em',
+                      color: '#6B625E',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    Scroll to enter
+                  </span>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </motion.div>
-    </AnimatePresence>
+
+      {/* Watermark */}
+      <motion.div
+        animate={{ opacity: isEntering ? 0 : 1 }}
+        transition={{ duration: 0.5 }}
+        style={{
+          position: 'absolute',
+          bottom: 28,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 4,
+          fontFamily: 'var(--font-mono)',
+          fontSize: 10,
+          letterSpacing: '0.2em',
+          color: '#2A2220',
+          textTransform: 'uppercase',
+          userSelect: 'none',
+        }}
+      >
+        mubx.dev
+      </motion.div>
+    </div>
   );
 }

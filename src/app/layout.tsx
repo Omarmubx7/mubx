@@ -1,24 +1,14 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
-import Loader from '@/components/Loader'
 import Navbar from '@/components/Navbar'
+import SocialSidebar from '@/components/SocialSidebar'
+import FloatingLogo from '@/components/FloatingLogo'
+import MobileGate from '@/components/MobileGate'
+import LoadingScreen from '@/components/LoadingScreen'
 import ScrollProgress from '@/components/ui/ScrollProgress'
 import JsonLd from '@/components/JsonLd'
 import { ScrollSpyProvider } from '@/context/ScrollSpyContext'
 import { LanguageProvider } from '@/context/LanguageContext'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-jetbrains',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mubx.dev'),
@@ -72,11 +62,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="canonical" href="https://mubx.dev" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -85,16 +71,19 @@ export default function RootLayout({
         <meta name="theme-color" content="#E63946" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-sans antialiased">
+        <LoadingScreen />
+        <MobileGate />
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <Loader />
         <LanguageProvider>
         <ScrollSpyProvider>
           <Navbar />
+          <SocialSidebar />
+          <FloatingLogo />
           <ScrollProgress />
         <JsonLd
           data={{

@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('/fonts/Mona-Sans.woff2') format('woff2');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('/fonts/Mona-Sans-Italic.woff2') format('woff2');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
   /* Blended color palette */
   --color-bg-dark: #0D0D0D;
@@ -27,8 +45,8 @@
   --color-card: rgba(255, 255, 255, 0.06);
   --color-border: rgba(255, 255, 255, 0.12);
 
-  --font-mono: "Bitcount Prop Single", 'JetBrains Mono', monospace;
-  --font-sans: "Bitcount Prop Single", 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -64,6 +82,9 @@
   --card: rgba(255, 255, 255, 0.02);
   --border: rgba(255, 255, 255, 0.06);
   --marquee-duration: 20s;
+  --font-heading: 'Mona Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 html {
@@ -111,8 +132,10 @@ a:focus-visible,
 .font-mono { font-family: var(--font-mono); }
 .font-sans { font-family: var(--font-sans); }
 
-code, pre, kbd, samp { font-family: var(--font-mono), monospace; }
-h1, h2, h3, h4, h5, h6 { letter-spacing: -0.02em; }
+body, p { font-family: var(--font-body); font-weight: 400; }
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; }
+h5, h6 { letter-spacing: -0.02em; }
+code, pre, kbd, samp { font-family: var(--font-mono); }
 
 ::selection { background: var(--color-red); color: white; }
 
