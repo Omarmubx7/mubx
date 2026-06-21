@@ -21,14 +21,14 @@
 
   /* Legacy compatibility (for sub-pages) */
   --color-neon: #E63946;
-  --color-background: #050505;
-  --color-foreground: #F9FAFB;
-  --color-muted: #9CA3AF;
+  --color-background: #0D0D0D;
+  --color-foreground: #EDE8E4;
+  --color-muted: #9E9490;
   --color-card: rgba(255, 255, 255, 0.06);
   --color-border: rgba(255, 255, 255, 0.12);
 
-  --font-mono: 'JetBrains Mono', monospace;
-  --font-sans: 'Inter', sans-serif;
+  --font-mono: "Bitcount Prop Single", 'JetBrains Mono', monospace;
+  --font-sans: "Bitcount Prop Single", 'Inter', sans-serif;
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -84,7 +84,6 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
   background-color: var(--background);
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
@@ -92,6 +91,8 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.6;
+  font-optical-sizing: auto;
+  font-variation-settings: "slnt" 0, "CRSV" 0.5, "ELSH" 0, "ELXP" 0;
 }
 
 *:focus-visible {

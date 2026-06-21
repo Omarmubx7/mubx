@@ -45,6 +45,8 @@ const NavbarContent = () => {
     const pathname = usePathname();
     const { activeSection } = useActiveSectionContext();
 
+    if (pathname.startsWith('/links')) return null;
+
     const isLinkActive = (href: string) => {
         const cleanPathname = pathname.split('?')[0];
         if (cleanPathname === '/') {

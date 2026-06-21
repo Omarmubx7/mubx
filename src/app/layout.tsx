@@ -83,6 +83,9 @@ export default function RootLayout({
         <link rel="icon" href="/mubxlogoloader.svg" type="image/svg+xml" />
         <link rel="manifest" href="/manifest.webmanifest" />
         <meta name="theme-color" content="#E63946" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap" rel="stylesheet" />
       </head>
       <body className="font-sans antialiased">
         <a href="#main-content" className="skip-link">

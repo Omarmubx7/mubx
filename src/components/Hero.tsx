@@ -120,7 +120,7 @@ export default function Hero() {
           <div
             style={{
               fontSize: 'clamp(1.5rem, 5vw, 3rem)',
-              fontFamily: 'var(--font-jetbrains), monospace',
+              fontFamily: 'var(--font-mono)',
               fontWeight: 300,
               color: '#EDE8E4',
               marginBottom: 12,
@@ -132,7 +132,7 @@ export default function Hero() {
           <div
             style={{
               fontSize: 'clamp(2rem, 7vw, 4.5rem)',
-              fontFamily: 'var(--font-jetbrains), monospace',
+              fontFamily: 'var(--font-mono)',
               fontWeight: 700,
               color: '#E63946',
               textAlign: 'center',
@@ -152,7 +152,7 @@ export default function Hero() {
               alignItems: 'center',
               gap: 8,
               color: '#9E9490',
-              fontFamily: 'var(--font-jetbrains), monospace',
+              fontFamily: 'var(--font-mono)',
               fontSize: 12,
               letterSpacing: '0.1em',
               opacity: Math.max(0, 1 - progress * 3),
@@ -204,7 +204,7 @@ export default function Hero() {
                     alignItems: 'center',
                     gap: 8,
                     fontSize: 14,
-                    fontFamily: 'var(--font-jetbrains), monospace',
+                    fontFamily: 'var(--font-mono)',
                     color: '#9E9490',
                     marginBottom: 24,
                   }}
@@ -225,7 +225,7 @@ export default function Hero() {
                   <h1
                     style={{
                       fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                      fontFamily: 'var(--font-jetbrains), monospace',
+                      fontFamily: 'var(--font-mono)',
                       fontWeight: 300,
                       letterSpacing: '-0.02em',
                       lineHeight: 1.05,
@@ -237,7 +237,7 @@ export default function Hero() {
                   <p
                     style={{
                       fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                      fontFamily: 'var(--font-jetbrains), monospace',
+                      fontFamily: 'var(--font-mono)',
                       fontWeight: 300,
                       letterSpacing: '-0.02em',
                       lineHeight: 1.05,
@@ -249,7 +249,7 @@ export default function Hero() {
                   <p
                     style={{
                       fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                      fontFamily: 'var(--font-jetbrains), monospace',
+                      fontFamily: 'var(--font-mono)',
                       fontWeight: 300,
                       letterSpacing: '-0.02em',
                       lineHeight: 1.05,
@@ -266,7 +266,7 @@ export default function Hero() {
                     color: '#9E9490',
                     maxWidth: 560,
                     lineHeight: 1.6,
-                    fontFamily: 'var(--font-jetbrains), monospace',
+                    fontFamily: 'var(--font-mono)',
                     marginBottom: 24,
                     minHeight: '1.5em',
                   }}
@@ -291,7 +291,7 @@ export default function Hero() {
                     style={{
                       padding: '16px 32px',
                       fontSize: 16,
-                      fontFamily: 'var(--font-jetbrains), monospace',
+                      fontFamily: 'var(--font-mono)',
                       fontWeight: 700,
                       color: '#fff',
                       backgroundColor: '#E63946',
@@ -316,7 +316,7 @@ export default function Hero() {
                     style={{
                       padding: '16px 32px',
                       fontSize: 16,
-                      fontFamily: 'var(--font-jetbrains), monospace',
+                      fontFamily: 'var(--font-mono)',
                       fontWeight: 700,
                       color: '#EDE8E4',
                       border: '1px solid rgba(255,255,255,0.15)',
