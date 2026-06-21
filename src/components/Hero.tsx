@@ -85,7 +85,7 @@ export default function Hero() {
                 {[
                   { text: 'Omar Mubaidin.', color: '#EDE8E4', delay: 0.35 },
                   { text: 'Web Dev &', color: '#EDE8E4', delay: 0.5 },
-                  { text: 'AI Engineer.', color: '#E63946', delay: 0.65 },
+                  { text: 'AI Engineer.', color: '#E11D1D', delay: 0.65 },
                 ].map(({ text, color, delay }) => (
                   <motion.div
                     key={text}
@@ -106,7 +106,7 @@ export default function Hero() {
                 style={{ fontSize: 16, color: '#9E9490', maxWidth: 560, lineHeight: 1.6, fontFamily: 'var(--font-mono)', marginBottom: 24, minHeight: '1.5em' }}
               >
                 {displayText}
-                <span style={{ display: 'inline-block', width: '0.6em', height: '1.1em', backgroundColor: '#E63946', marginLeft: 4, verticalAlign: 'middle', animation: 'blink 1s step-end infinite' }} />
+                <span style={{ display: 'inline-block', width: '0.6em', height: '1.1em', backgroundColor: '#E11D1D', marginLeft: 4, verticalAlign: 'middle', animation: 'blink 1s step-end infinite' }} />
               </motion.p>
 
               <motion.div
@@ -117,8 +117,8 @@ export default function Hero() {
               >
                 <button
                   onClick={() => scrollTo('projects')}
-                  style={{ padding: '16px 32px', fontSize: 16, fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#fff', backgroundColor: '#E63946', border: 'none', cursor: 'pointer', letterSpacing: '0.05em', textTransform: 'uppercase' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 0 30px rgba(230,57,70,0.45)' }}
+                  style={{ padding: '16px 32px', fontSize: 16, fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#fff', backgroundColor: '#E11D1D', border: 'none', cursor: 'pointer', letterSpacing: '0.05em', textTransform: 'uppercase' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 0 30px rgba(225,29,29,0.45)' }}
                   onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none' }}
                 >
                   Explore Projects
@@ -128,7 +128,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ padding: '16px 32px', fontSize: 16, fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#EDE8E4', border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer', letterSpacing: '0.05em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(230,57,70,0.6)'; e.currentTarget.style.color = '#E63946' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(225,29,29,0.6)'; e.currentTarget.style.color = '#E11D1D' }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; e.currentTarget.style.color = '#EDE8E4' }}
                 >
                   Book a Call
@@ -141,16 +141,16 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="flex-shrink-0 w-[120px] sm:w-[160px] md:w-[200px] lg:w-auto"
+              className="flex-shrink-0 relative w-[120px] sm:w-[160px] md:w-[200px] lg:w-[300px] xl:w-[380px] aspect-[3/4]"
             >
               <Image
                 src="/omarmub.webp"
                 alt="Omar Mubaidin"
-                width={432}
-                height={576}
+                fill
                 priority
-                className="w-full h-auto"
-                style={{ borderRadius: 24, border: '1px solid rgba(230,57,70,0.3)', boxShadow: '0 0 40px rgba(230,57,70,0.15)', maxWidth: 'clamp(120px, 22vw, 380px)' }}
+                sizes="(max-width: 640px) 120px, (max-width: 768px) 160px, (max-width: 1024px) 200px, 380px"
+                className="object-cover"
+                style={{ borderRadius: 24, border: '1px solid rgba(225,29,29,0.3)', boxShadow: '0 0 40px rgba(225,29,29,0.15)' }}
               />
             </motion.div>
           </div>

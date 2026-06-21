@@ -26,10 +26,10 @@
   --color-bg-light-warm: #F5F0ED;
   --color-surface-dark: #1A1414;
   --color-surface-light: #FFFFFF;
-  --color-red: #E63946;
-  --color-red-soft: rgba(230, 57, 70, 0.12);
-  --color-red-glow: rgba(230, 57, 70, 0.25);
-  --color-warm-glow: rgba(230, 57, 70, 0.06);
+  --color-red: #E11D1D;
+  --color-red-soft: rgba(225, 29, 29, 0.12);
+  --color-red-glow: rgba(225, 29, 29, 0.25);
+  --color-warm-glow: rgba(225, 29, 29, 0.06);
   --color-text-primary-dark: #EDE8E4;
   --color-text-secondary-dark: #9E9490;
   --color-text-primary-light: #1A1414;
@@ -38,7 +38,7 @@
   --color-border-light: rgba(0, 0, 0, 0.07);
 
   /* Legacy compatibility (for sub-pages) */
-  --color-neon: #E63946;
+  --color-neon: #E11D1D;
   --color-background: #0D0D0D;
   --color-foreground: #EDE8E4;
   --color-muted: #9E9490;
@@ -69,15 +69,15 @@
   }
 
   @keyframes glow-pulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(230, 57, 70, 0.1); }
-    50% { box-shadow: 0 0 40px rgba(230, 57, 70, 0.25); }
+    0%, 100% { box-shadow: 0 0 20px rgba(225, 29, 29, 0.1); }
+    50% { box-shadow: 0 0 40px rgba(225, 29, 29, 0.25); }
   }
 }
 
 :root {
   --background: #0D0D0D;
   --foreground: #EDE8E4;
-  --neon: #E63946;
+  --neon: #E11D1D;
   --muted: #9E9490;
   --card: rgba(255, 255, 255, 0.02);
   --border: rgba(255, 255, 255, 0.06);
@@ -117,7 +117,7 @@ body {
 }
 
 *:focus-visible {
-  outline: 2px solid #E63946;
+  outline: 2px solid #E11D1D;
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -125,7 +125,7 @@ body {
 button:focus-visible,
 a:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid #E63946;
+  outline: 2px solid #E11D1D;
   outline-offset: 3px;
 }
 
@@ -155,7 +155,7 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
 
 /* Warm gradient glow for dark sections */
 .warm-glow {
-  background: radial-gradient(ellipse at 50% 0%, rgba(230, 57, 70, 0.04) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(225, 29, 29, 0.04) 0%, transparent 70%);
 }
 
 /* Legacy utility classes for sub-pages */
