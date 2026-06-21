@@ -1,34 +1,23 @@
-import { Metadata } from 'next';
-import { siteConfig } from '@/config/seo';
-import HomeClient from '@/components/HomeClient';
+import Hero from '@/components/Hero'
+import Roles from '@/components/Roles'
+import Journey from '@/components/Journey'
+import Work from '@/components/Work'
+import Stack from '@/components/Stack'
+import Now from '@/components/Now'
+import Contact from '@/components/Contact'
+import Footer from '@/components/Footer'
 
-export async function generateMetadata(): Promise<Metadata> {
-  const meta = siteConfig.metadata.en;
-
-  return {
-    title: {
-      absolute: meta.title,
-    },
-    description: meta.description,
-    alternates: {
-      canonical: siteConfig.url
-    },
-    openGraph: {
-      ...siteConfig.openGraph,
-      title: meta.title,
-      description: meta.description,
-      locale: 'en_US',
-      type: 'website',
-    },
-    twitter: {
-      ...siteConfig.twitter,
-      title: meta.title,
-      description: meta.description,
-    }
-  }
+export default function Home() {
+  return (
+    <>
+      <Hero />
+      <Roles />
+      <Journey />
+      <Work />
+      <Stack />
+      <Now />
+      <Contact />
+      <Footer />
+    </>
+  )
 }
-
-export default async function Home() {
-  return <HomeClient />;
-}
-

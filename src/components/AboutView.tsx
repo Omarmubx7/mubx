@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
 
 import Badge from '@/components/ui/Badge';
 import { Download, Calendar, CheckCircle2 } from 'lucide-react';
@@ -20,8 +19,6 @@ export default function AboutView() {
 
     return (
         <main className="min-h-screen bg-black text-white selection:bg-neon selection:text-black">
-            <Navbar />
-
             <div className="container mx-auto px-6 md:px-12 pt-32 pb-20">
                 <div className="max-w-4xl mx-auto">
                     <Breadcrumbs items={breadcrumbItems} />

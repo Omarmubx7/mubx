@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { Send, Loader2 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { fadeUp } from '@/lib/motion';
-import Navbar from '@/components/Navbar';
 import { getBookingQuarter } from '@/utils/date';
 
 import Badge from '@/components/ui/Badge';
@@ -95,7 +94,6 @@ export default function ContactView() {
 
     return (
         <main className="bg-background min-h-screen selection:bg-neon selection:text-black">
-            <Navbar />
             <div className="pt-32 pb-24 container mx-auto px-6 md:px-12">
 
                 <motion.div

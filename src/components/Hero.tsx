@@ -1,150 +1,391 @@
-'use client';
+'use client'
 
-import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import Badge from './ui/Badge';
-import { ProTextType, SwipeLettersButton } from './framer/FramerComponents';
-import TextReveal from './ui/TextReveal';
-import { ContainerScroll } from './ui/container-scroll-animation';
-import { FloatingPaths } from './ui/background-paths';
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import Marquee from '@/components/ui/Marquee'
+
+const marqueeItems = [
+  'WEB DEVELOPER',
+  'AI ENGINEER',
+  'SOLO DEV',
+  'FULL-STACK',
+  'HTU CS STUDENT',
+  'EXPERIMENTAL BUILDER',
+  'MUBXAI',
+  'MEN ONLY',
+]
+
+const roles = [
+  'I build AI-powered products and clean web experiences.',
+  'From chatbots to full-stack apps — I ship things that work.',
+  'Full-stack developer, AI engineer, and experimental builder.',
+]
 
 export default function Hero() {
-    return (
-        <section className="relative min-h-screen bg-background border-b border-border/30 overflow-hidden py-12 md:py-20 flex flex-col justify-center items-center">
-            {/* Background Animations */}
-            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                {/* Tech Dot Grid */}
-                <div className="absolute inset-0 bg-[radial-gradient(rgba(225,29,29,0.015)_1px,transparent_1px)] dark:bg-[radial-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] [background-size:20px_20px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)] pointer-events-none z-0" />
-                
-                {/* Glowing backdrop elements */}
-                <div className="absolute top-0 right-[-10%] w-[80vw] h-[80vw] bg-neon/5 blur-[120px] rounded-full mix-blend-screen" />
-                <div className="absolute bottom-[-20%] left-[-10%] w-[80vw] h-[80vw] bg-cyan/5 blur-[120px] rounded-full mix-blend-screen" />
-                
-                {/* Floating Paths Background */}
-                <FloatingPaths position={1} />
-                <FloatingPaths position={-1} />
-            </div>
+  const [roleIndex, setRoleIndex] = useState(0)
+  const [displayText, setDisplayText] = useState('')
+  const [charIndex, setCharIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [progress, setProgress] = useState(0)
 
-            {/* Main Scroll Container */}
-            <div className="w-full relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <ContainerScroll
-                    titleComponent={
-                        <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-8">
-                            <div className="flex justify-center mb-6">
-                                <Badge variant="neon">
-                                    Web Developer Portfolio
-                                </Badge>
-                            </div>
+  useEffect(() => {
+    const currentRole = roles[roleIndex]
+    let timeout: ReturnType<typeof setTimeout>
 
-                            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black mb-6 leading-[1.1] tracking-tight text-foreground">
-                                <span className="block mb-2 text-3xl md:text-5xl">
-                                    <TextReveal text="Hi, my name is Omar" splitType="letter" delay={0.2} />
-                                </span>
+    if (!isDeleting && charIndex < currentRole.length) {
+      timeout = setTimeout(() => {
+        setDisplayText(currentRole.slice(0, charIndex + 1))
+        setCharIndex((prev) => prev + 1)
+      }, 30)
+    } else if (!isDeleting && charIndex === currentRole.length) {
+      timeout = setTimeout(() => setIsDeleting(true), 2000)
+    } else if (isDeleting && charIndex > 0) {
+      timeout = setTimeout(() => {
+        setDisplayText(currentRole.slice(0, charIndex - 1))
+        setCharIndex((prev) => prev - 1)
+      }, 15)
+    } else if (isDeleting && charIndex === 0) {
+      setIsDeleting(false)
+      setRoleIndex((prev) => (prev + 1) % roles.length)
+    }
 
-                                <div className="text-neon relative inline-block text-3xl sm:text-5xl md:text-6xl min-h-[1.4em] w-full mt-2 mb-2 overflow-visible font-display">
-                                    <ProTextType
-                                        text={['SCALABLE SYSTEMS', 'REVENUE FOCUSED', 'HIGH PERFORMANCE']}
-                                        typingSpeed={70}
-                                        deletingSpeed={30}
-                                        pauseDuration={2500}
-                                        loop={true}
-                                        cursorCharacterPreset="|"
-                                        cursorBlinkDuration={0.8}
-                                        startOnVisible={true}
-                                        className="text-neon font-black drop-shadow-[0_0_12px_rgba(225,29,29,0.35)]"
-                                    />
-                                </div>
+    return () => clearTimeout(timeout)
+  }, [charIndex, isDeleting, roleIndex])
 
-                                <span className="block mt-2 text-3xl md:text-5xl">
-                                    <TextReveal text="I build high-performance web applications." splitType="letter" delay={0.6} />
-                                </span>
-                            </h1>
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = document.getElementById('hero')
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      const total = el.offsetHeight - window.innerHeight
+      const scrolled = -rect.top
+      setProgress(Math.max(0, Math.min(1, scrolled / total)))
+    }
 
-                            <div className="text-base md:text-lg text-muted mb-8 max-w-lg mx-auto leading-relaxed font-medium">
-                                <TextReveal text="Welcome to my portfolio. I engineer custom web systems, high-speed interfaces, and secure local integrations. Here is what I've built:" splitType="word" delay={1} />
-                            </div>
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 1.4 }}
-                                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                            >
-                                <SwipeLettersButton
-                                    label="Book a 15-min call"
-                                    link="https://calendly.com/omarmubaidincs/30min"
-                                    defaultState={{ bgColor: '#E11D1D', borderColor: 'transparent', textColor: '#FFFFFF' }}
-                                    hoverState={{ bgColor: '#B91616', borderColor: '#E11D1D', textColor: '#FFFFFF' }}
-                                    font={{ fontSize: '16px', fontWeight: 'bold', letterSpacing: '0.4px' }}
-                                    paddingX={28}
-                                    paddingY={14}
-                                />
-                                <SwipeLettersButton
-                                    label="View selected work"
-                                    link="#projects"
-                                    defaultState={{ bgColor: 'transparent', borderColor: 'rgba(255,255,255,0.15)', textColor: '#FFFFFF' }}
-                                    hoverState={{ bgColor: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.3)', textColor: '#FFFFFF' }}
-                                    font={{ fontSize: '16px', fontWeight: 'bold', letterSpacing: '0.4px' }}
-                                    paddingX={28}
-                                    paddingY={14}
-                                    marginClass="ml-0 sm:ml-4"
-                                />
-                            </motion.div>
-                        </div>
-                    }
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const gO = Math.max(0, 1 - progress * 2.5)
+  const gY = progress * 80
+  const hO = Math.max(0, Math.min(1, (progress - 0.4) * 3))
+  const hY = (1 - hO) * 60
+
+  return (
+    <section
+      id="hero"
+      style={{
+        height: '200vh',
+        background: '#0D0D0D',
+        position: 'relative',
+      }}
+    >
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 50% at 50% 40%, rgba(230,57,70,0.08) 0%, transparent 70%)',
+        }}
+      />
+
+      <div
+        style={{
+          position: 'sticky',
+          top: 0,
+          height: '100vh',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Greeting layer */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            opacity: gO,
+            transform: `translateY(-${gY}px)`,
+            zIndex: 20,
+            pointerEvents: gO < 0.1 ? 'none' : 'auto',
+          }}
+        >
+          <div
+            style={{
+              fontSize: 'clamp(1.5rem, 5vw, 3rem)',
+              fontFamily: 'var(--font-jetbrains), monospace',
+              fontWeight: 300,
+              color: '#EDE8E4',
+              marginBottom: 12,
+              textAlign: 'center',
+            }}
+          >
+            Hi, my name is
+          </div>
+          <div
+            style={{
+              fontSize: 'clamp(2rem, 7vw, 4.5rem)',
+              fontFamily: 'var(--font-jetbrains), monospace',
+              fontWeight: 700,
+              color: '#E63946',
+              textAlign: 'center',
+            }}
+          >
+            Omar Mubaidin
+          </div>
+
+          <div
+            style={{
+              position: 'fixed',
+              bottom: 32,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 8,
+              color: '#9E9490',
+              fontFamily: 'var(--font-jetbrains), monospace',
+              fontSize: 12,
+              letterSpacing: '0.1em',
+              opacity: Math.max(0, 1 - progress * 3),
+            }}
+          >
+            <span
+              style={{
+                fontSize: 20,
+                lineHeight: 1,
+                color: '#E63946',
+                animation: 'loaderBounce 1.5s ease-in-out infinite',
+              }}
+            >
+              ↓
+            </span>
+            scroll to enter
+          </div>
+        </div>
+
+        {/* Hero content layer */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            opacity: hO,
+            transform: `translateY(${hY}px)`,
+            zIndex: 10,
+            pointerEvents: hO < 0.5 ? 'none' : 'auto',
+          }}
+        >
+          <div className="max-w-[1200px] mx-auto w-full px-6 md:px-12">
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 'clamp(2rem, 6vw, 4rem)',
+              }}
+              className="flex-col lg:flex-row"
+            >
+              {/* Left: text */}
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    fontSize: 14,
+                    fontFamily: 'var(--font-jetbrains), monospace',
+                    color: '#9E9490',
+                    marginBottom: 24,
+                  }}
                 >
-                    {/* Premium Dashboard Frame inside the 3D scroll card */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 h-full w-full gap-4 bg-zinc-950 text-white p-4">
-                        {/* Left Side: Portrait Image */}
-                        <div className="relative h-48 md:h-full w-full rounded-xl overflow-hidden border border-white/10 bg-background/50">
-                            <Image
-                                src="/omarmub.webp"
-                                alt="Omar Mubaidin"
-                                fill
-                                priority
-                                className="object-cover object-top w-full h-full grayscale hover:grayscale-0 transition-all duration-700 ease-out"
-                                sizes="(max-width: 768px) 460px, (max-width: 1024px) 540px, 620px"
-                            />
-                        </div>
+                  <span
+                    style={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: '50%',
+                      backgroundColor: '#22c55e',
+                      display: 'inline-block',
+                    }}
+                  />
+                  Available for work &middot; Amman, Jordan
+                </div>
 
-                        {/* Right Side: Professional Terminal / Console info */}
-                        <div className="flex flex-col justify-between p-4 md:p-6 bg-zinc-900/40 backdrop-blur-md rounded-xl border border-white/5 font-mono text-[11px] md:text-xs leading-relaxed text-left">
-                            <div className="space-y-4">
-                                <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                                    <span className="text-neon font-bold font-sans text-sm tracking-wider">MUBX CONSOLE v2.6</span>
-                                    <span className="flex items-center gap-1.5">
-                                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                        <span className="text-[9px] uppercase tracking-widest text-green-500">ACTIVE</span>
-                                    </span>
-                                </div>
-                                <div className="space-y-2 text-zinc-300">
-                                    <p className="text-zinc-500">&gt; cat profile.json</p>
-                                    <p>&gt; <span className="text-neon">name:</span> "Omar Mubaidin"</p>
-                                    <p>&gt; <span className="text-neon">role:</span> "Full Stack Web Engineer"</p>
-                                    <p>&gt; <span className="text-neon">location:</span> "Amman, Jordan"</p>
-                                    <p>&gt; <span className="text-neon">stack:</span> ["Next.js", "React", "TypeScript", "TailwindCSS"]</p>
-                                    <p>&gt; <span className="text-neon">focus:</span> "High-Performance Systems & Local Payment Integrations"</p>
-                                </div>
-                            </div>
-                            <div className="border-t border-white/10 pt-4 space-y-2 text-[10px] md:text-xs">
-                                <div className="flex justify-between text-zinc-400">
-                                    <span>[ LIGHTHOUSE SCORE ]</span>
-                                    <span className="text-neon font-bold">100/100</span>
-                                </div>
-                                <div className="flex justify-between text-zinc-400">
-                                    <span>[ AVERAGE LOAD TIME ]</span>
-                                    <span className="text-neon font-bold">&lt; 1.5s ON 4G</span>
-                                </div>
-                                <div className="flex justify-between text-zinc-400">
-                                    <span>[ SYSTEM DESIGN ]</span>
-                                    <span className="text-neon font-bold">CS ENGINEERED</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ContainerScroll>
+                <div style={{ marginBottom: 16 }}>
+                  <h1
+                    style={{
+                      fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+                      fontFamily: 'var(--font-jetbrains), monospace',
+                      fontWeight: 300,
+                      letterSpacing: '-0.02em',
+                      lineHeight: 1.05,
+                      color: '#EDE8E4',
+                    }}
+                  >
+                    Omar Mubaidin.
+                  </h1>
+                  <p
+                    style={{
+                      fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+                      fontFamily: 'var(--font-jetbrains), monospace',
+                      fontWeight: 300,
+                      letterSpacing: '-0.02em',
+                      lineHeight: 1.05,
+                      color: '#EDE8E4',
+                    }}
+                  >
+                    Web Dev &amp;
+                  </p>
+                  <p
+                    style={{
+                      fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+                      fontFamily: 'var(--font-jetbrains), monospace',
+                      fontWeight: 300,
+                      letterSpacing: '-0.02em',
+                      lineHeight: 1.05,
+                      color: '#E63946',
+                    }}
+                  >
+                    AI Engineer.
+                  </p>
+                </div>
+
+                <p
+                  style={{
+                    fontSize: 16,
+                    color: '#9E9490',
+                    maxWidth: 560,
+                    lineHeight: 1.6,
+                    fontFamily: 'var(--font-jetbrains), monospace',
+                    marginBottom: 24,
+                    minHeight: '1.5em',
+                  }}
+                >
+                  {displayText}
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      width: '0.6em',
+                      height: '1.1em',
+                      backgroundColor: '#E63946',
+                      marginLeft: 4,
+                      verticalAlign: 'middle',
+                      animation: 'blink 1s step-end infinite',
+                    }}
+                  />
+                </p>
+
+                <div style={{ display: 'flex', gap: 16 }}>
+                  <button
+                    onClick={() => scrollTo('projects')}
+                    style={{
+                      padding: '16px 32px',
+                      fontSize: 16,
+                      fontFamily: 'var(--font-jetbrains), monospace',
+                      fontWeight: 700,
+                      color: '#fff',
+                      backgroundColor: '#E63946',
+                      border: 'none',
+                      cursor: 'pointer',
+                      letterSpacing: '0.05em',
+                      textTransform: 'uppercase',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = '0 0 30px rgba(230,57,70,0.4)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = 'none'
+                    }}
+                  >
+                    Explore Projects
+                  </button>
+                  <a
+                    href="https://calendly.com/omarmubaidincs/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      padding: '16px 32px',
+                      fontSize: 16,
+                      fontFamily: 'var(--font-jetbrains), monospace',
+                      fontWeight: 700,
+                      color: '#EDE8E4',
+                      border: '1px solid rgba(255,255,255,0.15)',
+                      cursor: 'pointer',
+                      letterSpacing: '0.05em',
+                      textTransform: 'uppercase',
+                      textDecoration: 'none',
+                      display: 'inline-block',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = 'rgba(230,57,70,0.6)'
+                      e.currentTarget.style.color = '#E63946'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'
+                      e.currentTarget.style.color = '#EDE8E4'
+                    }}
+                  >
+                    Book a Call
+                  </a>
+                </div>
+              </div>
+
+              {/* Right: image */}
+              <div style={{ flexShrink: 0 }}>
+                <Image
+                  src="/omarmub.webp"
+                  alt="Omar Mubaidin"
+                  width={432}
+                  height={576}
+                  priority
+                  style={{
+                    borderRadius: 24,
+                    border: '1px solid rgba(230,57,70,0.3)',
+                    boxShadow: '0 0 40px rgba(230,57,70,0.15)',
+                    maxWidth: 'clamp(200px, 30vw, 432px)',
+                    height: 'auto',
+                  }}
+                />
+              </div>
             </div>
-        </section>
-    );
+          </div>
+        </div>
+
+        {/* Marquee at bottom */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            borderTop: '1px solid rgba(255,255,255,0.04)',
+            opacity: Math.max(0, Math.min(1, (progress - 0.6) * 4)),
+          }}
+        >
+          <Marquee items={marqueeItems} />
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes loaderBounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(6px); }
+        }
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+      `}</style>
+    </section>
+  )
 }

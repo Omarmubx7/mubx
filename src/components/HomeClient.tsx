@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Download, Calendar } from 'lucide-react';
-import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import GithubStatus from '@/components/GithubStatus';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -60,7 +59,6 @@ function HomeMain() {
 
     return (
         <>
-            <Navbar />
             {showCanvas && <StarsCanvas />}
 
             <div className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-12 border-collapse relative">
@@ -176,25 +174,25 @@ function HomeMain() {
                 {/* Scrollable Right Panel */}
                 <div className="lg:col-span-8 bg-background flex flex-col min-h-screen">
                     <Suspense fallback={null}>
-                        <div id="hero">
+                        <div id="hero" className="scroll-mt-24">
                             <Hero />
                         </div>
                         <TrustedBy />
-                        <div id="projects">
+                        <div id="projects" className="scroll-mt-24">
                             <Projects />
                         </div>
 
-                        <div id="about">
+                        <div id="about" className="scroll-mt-24">
                             <About />
                         </div>
-                        <div id="tech-stack">
+                        <div id="tech-stack" className="scroll-mt-24">
                             <TechStack />
                         </div>
-                        <div id="journey">
+                        <div id="journey" className="scroll-mt-24">
                             <Timeline />
                         </div>
 
-                        <div id="contact">
+                        <div id="contact" className="scroll-mt-24">
                             <Contact />
                         </div>
                         <div>

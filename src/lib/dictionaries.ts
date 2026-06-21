@@ -16,6 +16,7 @@ export const dictionary = {
             work: 'Work',
             articles: 'Articles',
 
+            tools: 'Tools',
             freeTools: 'Free Tools (Open Source)',
             arabicVer: 'Arabic Version (عربي)', // Kept for legacy if needed, but toggle replaces this
             bookCall: 'Book a Call',

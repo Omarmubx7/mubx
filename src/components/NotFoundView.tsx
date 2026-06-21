@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import Navbar from '@/components/Navbar';
 
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -11,7 +10,6 @@ export default function NotFoundView() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6 text-center">
-            <Navbar />
             <div className="flex flex-col items-center justify-center flex-grow">
                 <h1 className="text-neon text-9xl font-black mb-4">404</h1>
                 <h2 className="text-2xl md:text-4xl font-bold mb-6">Page Not Found</h2>

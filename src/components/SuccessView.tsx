@@ -1,6 +1,5 @@
 'use client';
 
-import Navbar from '@/components/Navbar';
 
 import { motion } from 'framer-motion';
 import { fadeUp } from '@/lib/motion';
@@ -10,7 +9,6 @@ import Link from 'next/link';
 export default function SuccessView() {
     return (
         <main className="bg-black min-h-screen selection:bg-neon selection:text-black">
-            <Navbar />
             <div className="pt-32 pb-24 container mx-auto px-6 md:px-12 flex flex-col items-center justify-center min-h-[80vh]">
                 <motion.div
                     initial="hidden"
