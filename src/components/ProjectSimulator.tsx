@@ -17,7 +17,8 @@ const projectScreenshots: Record<string, string> = {
     'vynex-media': '/images/projects/vynex-media.png',
     'htu-martial-arts': '/images/projects/htu-martial-arts.png',
     'blob-jo': '/images/projects/blob-jo.png',
-    'qadumyweb': '/images/projects/qadumyweb.png'
+    'qadumyweb': '/images/projects/qadumyweb.png',
+    'jordan-fa': '/images/projects/jordan-fa.png'
 };
 
 const projectUrls: Record<string, string> = {
@@ -29,7 +30,8 @@ const projectUrls: Record<string, string> = {
     'vynex-media': 'https://vynexmedia.vercel.app',
     'htu-martial-arts': 'https://htu-martial-arts-man.vercel.app',
     'blob-jo': 'https://blobjor.me',
-    qadumyweb: 'https://qadumyweb.vercel.app'
+    qadumyweb: 'https://qadumyweb.vercel.app',
+    'jordan-fa': 'https://jordan-jfa.vercel.app'
 };
 
 export default function ProjectSimulator({ slug }: Readonly<SimulatorProps>) {

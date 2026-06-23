@@ -35,6 +35,7 @@ export default function Projects() {
             case 'men-only-show':
             case 'the-glorious-page':
             case 'vynex-media':
+            case 'jordan-fa':
                 return 'creative';
             default:
                 return '';

@@ -46,10 +46,25 @@ function TechIcon({ name }: { name: string }) {
   )
 }
 
-function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+interface HoverState {
+  screenshot: string
+  name: string
+  x: number
+  y: number
+}
+
+function ProjectCard({
+  project,
+  index,
+  onHoverStart,
+  onHoverEnd,
+}: {
+  project: (typeof projects)[0]
+  index: number
+  onHoverStart: (screenshot: string, name: string, x: number, y: number) => void
+  onHoverEnd: () => void
+}) {
   const ref = useRef<HTMLAnchorElement>(null)
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const [showScreenshot, setShowScreenshot] = useState(false)
   const isHoveredRef = useRef(false)
   const hoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
   const x = useMotionValue(0.5)
@@ -65,21 +80,27 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
     const py = (e.clientY - rect.top) / rect.height
     x.set(px)
     y.set(py)
-    setMousePos({ x: e.clientX, y: e.clientY })
-  }, [x, y])
+    if (isHoveredRef.current && project.screenshot) {
+      onHoverStart(project.screenshot, project.name, e.clientX, e.clientY)
+    }
+  }, [x, y, project, onHoverStart])
 
-  const handleMouseEnter = useCallback(() => {
+  const handleMouseEnter = useCallback((e: React.MouseEvent) => {
     isHoveredRef.current = true
-    hoverTimeout.current = setTimeout(() => setShowScreenshot(true), 200)
-  }, [])
+    hoverTimeout.current = setTimeout(() => {
+      if (project.screenshot) {
+        onHoverStart(project.screenshot, project.name, e.clientX, e.clientY)
+      }
+    }, 200)
+  }, [project, onHoverStart])
 
   const handleMouseLeave = useCallback(() => {
     x.set(0.5)
     y.set(0.5)
     isHoveredRef.current = false
-    setShowScreenshot(false)
+    onHoverEnd()
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current)
-  }, [x, y])
+  }, [x, y, onHoverEnd])
 
   return (
     <SectionWrapper delay={index * 0.08}>
@@ -173,80 +194,102 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
           </div>
         </div>
       </motion.a>
+    </SectionWrapper>
+  )
+}
 
+export default function Work() {
+  const [hover, setHover] = useState<HoverState | null>(null)
+
+  const handleHoverStart = useCallback((screenshot: string, name: string, x: number, y: number) => {
+    setHover({ screenshot, name, x, y })
+  }, [])
+
+  const handleHoverEnd = useCallback(() => {
+    setHover(null)
+  }, [])
+
+  return (
+    <>
+      <section
+        id="projects"
+        className="relative py-14 md:py-20 px-6 md:px-12"
+        style={{
+          backgroundColor: '#0D0D0D',
+        }}
+      >
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse 60% 35% at 50% 0%, rgba(230,57,70,0.03) 0%, transparent 60%)',
+          }}
+        />
+        <div className="max-w-[1200px] mx-auto w-full relative z-10">
+          <SectionWrapper>
+            <div className="text-lg font-mono font-bold uppercase tracking-[0.15em] text-red mb-12">
+              WORK
+            </div>
+          </SectionWrapper>
+
+          <div className="relative">
+            {projects.map((project, i) => (
+              <ProjectCard
+                key={project.name}
+                project={project}
+                index={i}
+                onHoverStart={handleHoverStart}
+                onHoverEnd={handleHoverEnd}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Preview rendered OUTSIDE the section — fixed on the right side of viewport */}
       <AnimatePresence>
-        {showScreenshot && project.screenshot && (
+        {hover && (
           <motion.div
-            className="fixed z-50 pointer-events-none hidden md:block"
+            className="fixed z-[9999] pointer-events-none hidden lg:block"
             style={{
-              left: mousePos.x + 20,
-              top: mousePos.y - 90,
+              right: 40,
+              top: '50%',
+              transform: 'translateY(-50%)',
             }}
-            initial={{ opacity: 0, scale: 0.92, y: 5 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.92, y: 5 }}
-            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, x: 30, scale: 0.92 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 30, scale: 0.92 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <div
               className="relative overflow-hidden"
               style={{
                 width: 480,
                 height: 300,
-                borderRadius: 6,
-                boxShadow: '0 16px 56px rgba(0,0,0,0.18), 0 4px 20px rgba(0,0,0,0.1)',
-                border: '1px solid rgba(255,255,255,0.15)',
+                borderRadius: 10,
+                boxShadow: '0 30px 70px rgba(0,0,0,0.4), 0 10px 30px rgba(225,29,29,0.06)',
+                border: '1px solid rgba(255,255,255,0.1)',
               }}
             >
               <Image
-                src={project.screenshot}
-                alt={`${project.name} screenshot`}
+                src={hover.screenshot}
+                alt={`${hover.name} screenshot`}
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 sizes="480px"
+                priority
+                unoptimized
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-2.5 bg-gradient-to-t from-black/40 to-transparent">
-                  <span className="text-xs font-mono text-white/80">
-                  {project.name}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 px-4 py-2.5 bg-gradient-to-t from-black/60 to-transparent backdrop-blur-sm">
+                <span className="text-xs font-mono text-white/90 tracking-wide">
+                  {hover.name}
                 </span>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </SectionWrapper>
-  )
-}
-
-export default function Work() {
-  return (
-    <section
-      id="projects"
-      className="relative py-14 md:py-20 px-6 md:px-12"
-      style={{
-        backgroundColor: '#0D0D0D',
-      }}
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 60% 35% at 50% 0%, rgba(230,57,70,0.03) 0%, transparent 60%)',
-        }}
-      />
-      <div className="max-w-[1200px] mx-auto w-full relative z-10">
-        <SectionWrapper>
-          <div className="text-lg font-mono font-bold uppercase tracking-[0.15em] text-red mb-12">
-            WORK
-          </div>
-        </SectionWrapper>
-
-        <div className="relative">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.name} project={project} index={i} />
-          ))}
-        </div>
-      </div>
-    </section>
+    </>
   )
 }
