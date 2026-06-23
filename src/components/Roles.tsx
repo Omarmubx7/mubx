@@ -44,7 +44,7 @@ export default function Roles() {
       <div className="max-w-[1200px] mx-auto w-full relative z-10">
         <SectionWrapper>
           <div className="text-lg font-mono font-bold uppercase tracking-[0.15em] text-red mb-8">
-            WHAT I DO
+            WHAT I BUILD
           </div>
         </SectionWrapper>
 

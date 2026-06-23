@@ -23,7 +23,7 @@ export default function Journey() {
       <div className="max-w-[1200px] mx-auto w-full relative z-10">
         <SectionWrapper>
           <div className="text-lg font-mono font-bold uppercase tracking-[0.15em] text-red mb-12">
-            JOURNEY
+            MY PATH TO FULL-STACK DEVELOPMENT
           </div>
         </SectionWrapper>
 

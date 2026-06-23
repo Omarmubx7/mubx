@@ -38,7 +38,7 @@ export default function TrustedBy() {
                 {/* Info Column */}
                 <div className="lg:col-span-3 p-6 md:p-8 flex flex-col justify-center border-b lg:border-b-0 lg:border-r rtl:lg:border-r-0 rtl:lg:border-l border-border/30 bg-card/5 select-none">
                     <span className="text-[10px] font-bold text-neon uppercase tracking-[0.2em] font-mono mb-2">
-                        // TRUSTED BY
+                        // TRUSTED BY JORDANIAN BRANDS
                     </span>
                     <p className="text-xs text-muted leading-relaxed font-mono">
                         {t.trustedBy.line}

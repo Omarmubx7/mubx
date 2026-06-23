@@ -25,22 +25,22 @@ export const dictionary = {
             myServices: 'My Services',
         },
         hero: {
-            badge: 'Web Developer Portfolio',
+            badge: 'Full-Stack Developer in Amman, Jordan',
             titleStart: "Hi, my name is Omar",
-            titleHighlight: "I'm a web developer",
-            titleEnd: "I build high-performance web applications.",
-            description: "Welcome to my portfolio. I engineer custom web systems, high-speed interfaces, and secure local integrations. Here is what I've built:",
+            titleHighlight: "I'm a full-stack developer",
+            titleEnd: "I build high-performance web systems and AI-powered products.",
+            description: "Welcome to my portfolio. I engineer custom web systems, high-speed interfaces, and secure local integrations for businesses in Jordan and beyond.",
             ctaPrimary: 'Book a 15-min call',
             ctaSecondary: 'View selected work',
-            imageAlt: 'Omar Mubaidin - Web Developer',
+            imageAlt: 'Omar Mubaidin - Full-Stack Developer in Amman, Jordan',
         },
         trustedBy: {
             line: 'Helping ambitious Jordanian brands scale through technical excellence',
         },
         services: {
-            title: 'SERVICES &',
-            titleHighlight: 'PRICING',
-            subtitle: 'Clear packages. No hidden fees. Delivered on time.',
+            title: 'WEB DEVELOPMENT',
+            titleHighlight: 'SERVICES & PRICING',
+            subtitle: 'Transparent pricing for web development, e-commerce, and custom web systems in Jordan.',
             popular: 'Most Popular',
             packages: {
                 linkBio: {
@@ -119,11 +119,11 @@ export const dictionary = {
 
         // Add other sections like About, Projects, etc. as needed
         about: {
-            titleStart: 'Web Developer in',
-            titleHighlight: 'Amman',
+            titleStart: 'Full-Stack Developer in',
+            titleHighlight: 'Amman, Jordan',
             name: 'Omar Mubaidin',
-            descriptionStart: "I’m ",
-            descriptionMiddle: ", a Computer Science student at HTU and a web developer based in Amman, Jordan. I'm obsessed with late-night coding sessions, building apps that solve real-world problems in Jordan, and aiming for financial independence through tech.",
+            descriptionStart: "I'm ",
+            descriptionMiddle: ", a Computer Science student at HTU and full-stack developer based in Amman, Jordan. I specialize in building high-performance web systems, custom e-commerce engines, and secure local integrations.",
             descriptionEnd: "Unlike typical template-users, I engineer ",
             performance: "performance-focused",
             descriptionContext: " systems. My academic background in CS allows me to build secure, database-driven software that safeguards customer data.",
@@ -131,7 +131,7 @@ export const dictionary = {
             quoteHighlight: "1.5s on 4G",
             quoteEnd: "networks in Jordan.",
             whyChoose: {
-                title: 'Why entrepreneurs choose me',
+                title: 'Why businesses in Jordan choose MUBX',
                 reason1: {
                     title: 'Revenue-Driven Design',
                     desc: 'I align design directly with your business goals, optimizing conversions, customer flows, and landing page layouts to turn passive visitors into paying customers.'
@@ -158,8 +158,8 @@ export const dictionary = {
             }
         },
         process: {
-            badge: 'Workflow',
-            title: 'How I Work',
+            badge: 'HOW I WORK',
+            title: 'My Web Development Process',
             step1: {
                 title: 'Discovery',
                 desc: 'I start with a strategy call to audit your current system and define ROI-focused goals.'
@@ -178,9 +178,9 @@ export const dictionary = {
             }
         },
         pricing: {
-            badge: 'Investment',
-            title: 'Transparent Pricing',
-            desc: 'High-performance engineering for every stage of your business.',
+            badge: 'TRANSPARENT PRICING',
+            title: 'Web Development Pricing Plans',
+            desc: 'High-performance engineering for every stage of your business in Jordan.',
             cta: 'Start Project',
             popular: 'Most Popular',
             tiers: {
@@ -211,8 +211,8 @@ export const dictionary = {
             }
         },
         faq: {
-            badge: 'Questions',
-            title: 'Frequently Asked',
+            badge: 'COMMON QUESTIONS',
+            title: 'Frequently Asked Questions About Web Development',
             questions: [
                 {
                     q: 'How long does a typical project take?',
@@ -233,10 +233,10 @@ export const dictionary = {
             ]
         },
         contact: {
-            connect: "Let's Connect",
-            titleStart: "Ready to build with",
-            titleHighlight: "MUBX",
-            desc1: "Ready to scale? I'm currently accepting new projects for Q3 2026.",
+            connect: "START A PROJECT",
+            titleStart: "Let's Build Your Next",
+            titleHighlight: "Web Project",
+            desc1: "Full-stack developer in Amman, Jordan. Currently accepting new projects for Q3 2026.",
             desc2: "Let's discuss how I can engineer your growth.",
             desc3: "Whether you need a full-stack audit, a database redesign, or a complete product build, I'm ready to architect the solution.",
             availability: {
@@ -317,8 +317,8 @@ export const dictionary = {
             }
         },
         reviews: {
-            title: 'What Clients',
-            titleHighlight: 'Say',
+            title: 'What My Clients',
+            titleHighlight: 'Say About Working With Me',
             list: [
                 {
                     client: 'Mahmoud Hussam',
@@ -377,7 +377,7 @@ export const dictionary = {
             ]
         },
         projects: {
-            titleStart: 'Selected',
+            titleStart: 'Featured Web Development',
             titleHighlight: 'Projects',
             readCaseStudy: 'Read Case Study',
             visitLive: 'Visit Live Website'
@@ -423,10 +423,10 @@ export const dictionary = {
             }
         },
         blog: {
-            badge: 'The Lab',
-            titleStart: 'Writing &',
-            titleHighlight: 'Thoughts',
-            description: 'Behind the scenes of my projects and technical experiments.',
+            badge: 'DEVELOPMENT INSIGHTS',
+            titleStart: 'Web Development Blog &',
+            titleHighlight: 'Technical Insights',
+            description: 'Insights on React, Next.js, AI, and building scalable web applications.',
             readMore: 'Read Article',
             backToNotes: 'Back to Notes'
         },
@@ -524,13 +524,13 @@ export const dictionary = {
             api: 'API Development'
         },
         tech: {
-            title: 'Technical ',
-            titleHighlight: 'Expertise',
-            subtitle: 'Modern tools for high-performance systems.',
+            title: 'Technologies I Use to Build',
+            titleHighlight: 'Fast, Scalable Web Apps',
+            subtitle: 'React, Next.js, Node.js, PostgreSQL, and the tools I use to ship production-grade applications.',
             categories: {
-                frontend: 'Frontend & UI',
-                backend: 'Backend & Database',
-                tools: 'Tools & Deployment'
+                frontend: 'Frontend Development',
+                backend: 'Backend & Databases',
+                tools: 'Tools & Infrastructure'
             }
         },
         photography: {
@@ -540,9 +540,9 @@ export const dictionary = {
             viewGallery: 'View Gallery'
         },
         timeline: {
-            title: 'My ',
-            titleHighlight: 'Journey',
-            subtitle: 'The path that led me here.',
+            title: 'My Path to Becoming a',
+            titleHighlight: 'Full-Stack Developer',
+            subtitle: 'The journey that led me to building high-performance web systems.',
             items: [
                 {
                     year: '2026 - Present',
@@ -611,11 +611,11 @@ export const dictionary = {
             }
         },
         brandStory: {
-            title: 'The MUBX Mission',
-            highlight: 'Engineering Growth',
+            title: 'THE MUBX MISSION',
+            highlight: 'Engineering High-Performance Web Systems',
             desc1: 'MUBX was founded by Omar Mubaidin with a singular vision: to bridge the gap between technical complexity and business outcomes in Jordan.',
             desc2: 'The name MUBX originates from "Mubaidin Expertise" — a promise to deliver precision-engineered web systems that are not just beautiful, but are functional tools for revenue generation.',
-            desc3: 'Based in Amman, I specialize in high-performance stacks that allow local startups to compete on a global scale.',
+            desc3: 'Based in Amman, Jordan, I specialize in high-performance stacks that allow local startups to compete on a global scale.',
             stats: {
                 performance: '99+ Lighthouse Score',
                 integrity: 'Bilingual (AR/EN)',
@@ -625,36 +625,36 @@ export const dictionary = {
         breadcrumbs: {
             home: 'Home',
             about: 'About Omar Mubaidin',
-            services: 'Creative Services',
-            blog: 'Web Dev Lab',
-            projects: 'Selected Works',
-            contact: 'Project Estimate',
+            services: 'Web Development Services',
+            blog: 'Web Development Blog',
+            projects: 'Featured Projects',
+            contact: 'Start a Project',
             legal: 'Legal'
         },
         seo: {
             home: {
-                title: 'Omar Mubaidin | Freelance Web Developer & Engineer in Jordan — MUBX',
-                description: 'Omar Mubaidin (عمر مبيضين) is a freelance web developer and founder of MUBX in Amman, Jordan. Expert in Next.js, E-commerce, Zain Cash & CliQ payments, and high-performance SEO for startups.',
+                title: 'Omar Mubaidin | Full-Stack Developer & AI Engineer in Amman, Jordan — MUBX',
+                description: 'Omar Mubaidin (عمر مبيضين) is a full-stack developer and founder of MUBX in Amman, Jordan. Expert in Next.js, React, AI engineering, e-commerce, Zain Cash & CliQ payments, and high-performance SEO for startups.',
             },
             about: {
-                title: 'About Omar Mubaidin | MUBX — Freelance Full Stack Developer',
-                description: 'Meet Omar Mubaidin: Computer Science student, freelance full-stack developer, and founder of MUBX. Building revenue-focused web systems for startups in Amman, Jordan.',
+                title: 'About Omar Mubaidin | MUBX — Full-Stack Developer in Amman, Jordan',
+                description: 'Meet Omar Mubaidin: Computer Science student at HTU, full-stack developer, and founder of MUBX. Building revenue-focused web systems for startups in Amman, Jordan.',
             },
             services: {
                 title: 'Web Development Services & Pricing in Jordan | MUBX',
-                description: 'Professional web development services in Amman, Jordan. Landing pages, e-commerce stores with local payments, and custom web systems by Omar Mubaidin.',
+                description: 'Professional web development services in Amman, Jordan. Landing pages, e-commerce stores with local payments, and custom web systems by full-stack developer Omar Mubaidin.',
             },
             projects: {
-                title: 'Selected Projects | MUBX — Case Studies & Solutions',
+                title: 'Featured Web Development Projects | MUBX — Case Studies & Solutions',
                 description: 'Explore my latest web development projects. From high-conversion landing pages to complex web systems and payment integrations in Jordan.',
             },
             blog: {
-                title: 'MUBX Blog — Web Development Thoughts & Experiments',
-                description: 'Technical articles, startup insights, and behind-the-scenes of building high-performance web systems in Jordan by Omar Mubaidin.',
+                title: 'Web Development Blog | MUBX — React, Next.js & AI Insights',
+                description: 'Technical articles on React, Next.js, AI engineering, and building scalable web applications in Jordan by full-stack developer Omar Mubaidin.',
             },
             contact: {
-                title: 'Get a Project Estimate | MUBX — Start Your Project',
-                description: 'Ready to scale your business? Contact Omar Mubaidin for a custom web development estimate. Expert freelance solutions for startups in Jordan.',
+                title: 'Start a Web Project | MUBX — Full-Stack Developer in Jordan',
+                description: 'Ready to scale your business? Contact Omar Mubaidin for a custom web development estimate. Expert full-stack solutions for startups in Amman, Jordan.',
             },
             links: {
                 title: 'Links | Omar Mubaidin — MUBX Social & Connect',

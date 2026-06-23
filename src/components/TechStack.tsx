@@ -1,14 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { fadeUp, staggerContainer } from '@/lib/motion';
-import { useState, useEffect } from 'react';
+import { fadeUp } from '@/lib/motion';
 import { useLanguage } from '@/context/LanguageContext';
 import GradientText from './ui/GradientText';
-import CardTilt from './ui/CardTilt';
 import Image from 'next/image';
-import { Code, Database, Terminal } from 'lucide-react';
 
 interface TechItem {
     name: string;
@@ -19,16 +16,16 @@ interface TechItem {
 
 interface TechCategory {
     id: 'frontend' | 'backend' | 'tools';
-    icon: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+    label: string;
     items: TechItem[];
 }
 
 const techCategories: TechCategory[] = [
     {
         id: 'frontend',
-        icon: Code,
+        label: 'Frontend',
         items: [
-            { name: 'Next.js', icon: '/techstackicons/next-dot-js-svgrepo-com.svg', isCore: true, role: 'Primary Framework' },
+            { name: 'Next.js', icon: '/techstackicons/next.svg', isCore: true, role: 'Framework' },
             { name: 'React', icon: '/techstackicons/react-svgrepo-com.svg', isCore: true, role: 'UI Library' },
             { name: 'TypeScript', icon: '/techstackicons/typescript-icon-svgrepo-com.svg', isCore: true, role: 'Type Safety' },
             { name: 'Tailwind CSS', icon: '/techstackicons/tailwindcss-icon-svgrepo-com.svg', isCore: false },
@@ -40,10 +37,10 @@ const techCategories: TechCategory[] = [
     },
     {
         id: 'backend',
-        icon: Database,
+        label: 'Backend',
         items: [
-            { name: 'Node.js', icon: '/techstackicons/nodejs-icon-svgrepo-com.svg', isCore: true, role: 'Backend Runtime' },
-            { name: 'PostgreSQL', icon: '/techstackicons/postgresql-svgrepo-com.svg', isCore: true, role: 'Primary Database' },
+            { name: 'Node.js', icon: '/techstackicons/nodejs-icon-svgrepo-com.svg', isCore: true, role: 'Runtime' },
+            { name: 'PostgreSQL', icon: '/techstackicons/postgresql-svgrepo-com.svg', isCore: true, role: 'Database' },
             { name: 'Supabase', icon: '/techstackicons/supabase-logo-icon.svg', isCore: false },
             { name: 'Prisma', icon: '/techstackicons/prisma-svgrepo-com.svg', isCore: false },
             { name: 'Python', icon: '/techstackicons/python-svgrepo-com.svg', isCore: false },
@@ -52,264 +49,269 @@ const techCategories: TechCategory[] = [
             { name: 'Java', icon: '/techstackicons/java-svgrepo-com.svg', isCore: false },
             { name: 'C++', icon: '/techstackicons/c-1.svg', isCore: false },
             { name: 'Swift', icon: '/techstackicons/swift-svgrepo-com.svg', isCore: false },
+            { name: 'Kotlin', icon: '/techstackicons/Kotlin.svg', isCore: false },
         ]
     },
     {
         id: 'tools',
-        icon: Terminal,
+        label: 'Tools',
         items: [
-            { name: 'Vercel', icon: '/techstackicons/vercel-logo-svgrepo-com.svg', isCore: true, role: 'Hosting & Edge' },
+            { name: 'Vercel', icon: '/techstackicons/vercel.svg', isCore: true, role: 'Hosting' },
             { name: 'Git', icon: '/techstackicons/git-svgrepo-com.svg', isCore: false },
-            { name: 'GitHub', icon: '/techstackicons/github-svgrepo-com.svg', isCore: false },
+            { name: 'GitHub', icon: '/techstackicons/github (1).svg', isCore: false },
             { name: 'Docker', icon: '/techstackicons/docker-svgrepo-com.svg', isCore: false },
             { name: 'NPM', icon: '/techstackicons/NPM.svg', isCore: false },
             { name: 'VS Code', icon: '/techstackicons/Visual Studio Code (VS Code).svg', isCore: false },
             { name: 'Postman', icon: '/techstackicons/postman-icon-svgrepo-com.svg', isCore: false },
             { name: 'Bash', icon: '/techstackicons/bash-icon-svgrepo-com.svg', isCore: false },
             { name: 'GoLand', icon: '/techstackicons/GoLand.svg', isCore: false },
+            { name: 'PowerShell', icon: '/techstackicons/Powershell_128.svg', isCore: false },
+            { name: 'Android Studio', icon: '/techstackicons/Android_Studio_icon_(2023).svg', isCore: false },
+            { name: 'Groq', icon: '/techstackicons/groq.svg', isCore: false },
+            { name: 'Claude AI', icon: '/techstackicons/Claude_AI_symbol.svg', isCore: false },
+            { name: 'Perplexity', icon: '/techstackicons/perplexity-color.svg', isCore: false },
+            { name: 'OpenCode', icon: '/techstackicons/opencode-logo-dark-square (1).svg', isCore: false },
         ]
     }
 ];
 
-const categoryDescriptions = {
-    frontend: 'Building responsive, modern, and interactive user experiences.',
-    backend: 'Architecting secure, scalable, and database-driven solutions.',
-    tools: 'Leveraging automation, version control, and CI/CD workflows.'
-};
+function CoreHexagon({ item, index }: { item: TechItem; index: number }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-30px' }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
+            className="group relative"
+        >
+            <div className="relative w-28 h-[128px] md:w-32 md:h-[144px] cursor-default">
+                {/* Core hexagon */}
+                <svg viewBox="0 0 100 115" className="absolute inset-0 w-full h-full">
+                    <defs>
+                        <linearGradient id={`core-grad-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="rgba(225,29,29,0.15)" />
+                            <stop offset="100%" stopColor="rgba(225,29,29,0.04)" />
+                        </linearGradient>
+                        <filter id={`core-glow-${index}`}>
+                            <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="rgba(225,29,29,0.25)" />
+                        </filter>
+                    </defs>
+                    <polygon
+                        points="50 0, 93.3 25, 93.3 90, 50 115, 6.7 90, 6.7 25"
+                        fill={`url(#core-grad-${index})`}
+                        stroke="rgba(225,29,29,0.4)"
+                        strokeWidth="1.5"
+                        filter={`url(#core-glow-${index})`}
+                        className="group-hover:stroke-[#E11D1D] group-hover:fill-[#E11D1D]/[0.15] transition-all duration-300"
+                    />
+                    <polygon
+                        points="50 5, 89 27, 89 88, 50 110, 11 88, 11 27"
+                        fill="none"
+                        stroke="rgba(225,29,29,0.15)"
+                        strokeWidth="0.5"
+                        className="group-hover:stroke-[#E11D1D]/30 transition-all duration-300"
+                    />
+                </svg>
+
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center z-10 p-3">
+                    <div className="relative w-12 h-12 md:w-14 md:h-14 mb-2">
+                        <Image
+                            src={item.icon}
+                            alt={item.name}
+                            fill
+                            className="object-contain grayscale-[0.15] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-300"
+                            sizes="(max-width: 768px) 48px, 56px"
+                        />
+                        {/* Core badge */}
+                        <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#E11D1D] flex items-center justify-center shadow-lg shadow-[#E11D1D]/30">
+                            <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                    </div>
+                    <span className="text-[10px] md:text-[11px] font-mono font-medium text-[#EDE8E4] group-hover:text-white transition-colors duration-300 text-center leading-tight">
+                        {item.name}
+                    </span>
+                    {item.role && (
+                        <span className="text-[8px] md:text-[9px] font-mono text-[#E11D1D] mt-0.5">
+                            {item.role}
+                        </span>
+                    )}
+                </div>
+
+                {/* Tooltip */}
+                <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-30">
+                    <div className="bg-[#1A1414] border border-[#E11D1D]/30 rounded-lg px-3 py-1.5 whitespace-nowrap shadow-xl shadow-[#E11D1D]/10">
+                        <p className="text-[10px] font-bold font-mono text-[#EDE8E4]">{item.name}</p>
+                        {item.role && <p className="text-[9px] text-[#E11D1D] font-mono">{item.role}</p>}
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
+function SmallHexagon({ item, index }: { item: TechItem; index: number }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-30px' }}
+            transition={{ duration: 0.4, delay: index * 0.03 }}
+            className="group relative"
+        >
+            <div className="relative w-16 h-[74px] md:w-20 md:h-[92px] cursor-default">
+                {/* Small hexagon */}
+                <svg viewBox="0 0 100 115" className="absolute inset-0 w-full h-full">
+                    <defs>
+                        <linearGradient id={`small-grad-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="rgba(255,255,255,0.05)" />
+                            <stop offset="100%" stopColor="rgba(255,255,255,0.02)" />
+                        </linearGradient>
+                    </defs>
+                    <polygon
+                        points="50 0, 93.3 25, 93.3 90, 50 115, 6.7 90, 6.7 25"
+                        fill={`url(#small-grad-${index})`}
+                        stroke="rgba(255,255,255,0.08)"
+                        strokeWidth="1"
+                        className="group-hover:stroke-[#E11D1D]/60 group-hover:fill-[#E11D1D]/[0.08] transition-all duration-300"
+                    />
+                </svg>
+
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center z-10 p-2">
+                    <div className="relative w-8 h-8 md:w-10 md:h-10 mb-1">
+                        <Image
+                            src={item.icon}
+                            alt={item.name}
+                            fill
+                            className="object-contain grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-300"
+                            sizes="(max-width: 768px) 32px, 40px"
+                        />
+                    </div>
+                    <span className="text-[8px] md:text-[9px] font-mono text-[#9E9490] group-hover:text-[#EDE8E4] transition-colors duration-300 text-center leading-tight">
+                        {item.name}
+                    </span>
+                </div>
+
+                {/* Tooltip */}
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-30">
+                    <div className="bg-[#1A1414] border border-[rgba(255,255,255,0.07)] rounded-lg px-3 py-1.5 whitespace-nowrap shadow-xl">
+                        <p className="text-[10px] font-bold font-mono text-[#EDE8E4]">{item.name}</p>
+                        {item.role && <p className="text-[9px] text-[#E11D1D] font-mono">{item.role}</p>}
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
+function MixedSizeHoneycomb({ items }: { items: TechItem[] }) {
+    const coreItems = useMemo(() => items.filter(i => i.isCore), [items]);
+    const smallItems = useMemo(() => items.filter(i => !i.isCore), [items]);
+
+    // Calculate grid layout
+    const coreSize = 144; // height of core hex
+    const smallSize = 92; // height of small hex
+    const gap = 6;
+
+    // Arrange: core items in center row, small items around them
+    const coreCols = coreItems.length;
+    const smallCols = Math.max(smallItems.length, coreCols + 2);
+
+    const totalRows = 3; // small row, core row, small row
+    const rowHeight = smallSize * 0.75 + gap;
+
+    return (
+        <div className="relative w-full overflow-hidden">
+            <div className="flex flex-col items-center" style={{ gap: gap }}>
+                {/* Top row - small items */}
+                <div className="flex justify-center" style={{ gap: gap }}>
+                    {smallItems.slice(0, Math.ceil(smallItems.length / 2)).map((item, index) => (
+                        <SmallHexagon key={item.name} item={item} index={index} />
+                    ))}
+                </div>
+
+                {/* Middle row - core items */}
+                <div className="flex justify-center" style={{ gap: gap }}>
+                    {coreItems.map((item, index) => (
+                        <CoreHexagon key={item.name} item={item} index={index} />
+                    ))}
+                </div>
+
+                {/* Bottom row - remaining small items */}
+                <div className="flex justify-center" style={{ gap: gap }}>
+                    {smallItems.slice(Math.ceil(smallItems.length / 2)).map((item, index) => (
+                        <SmallHexagon key={item.name} item={item} index={coreItems.length + index} />
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function TechCategorySection({ category, index }: { category: TechCategory; index: number }) {
+    const { t } = useLanguage();
+    const categoryName = t.tech.categories[category.id] || category.label;
+
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="relative"
+        >
+            {/* Category Header */}
+            <div className="flex items-center gap-4 mb-8 md:mb-12">
+                <span className="text-[10px] font-bold text-[#E11D1D] uppercase tracking-[0.2em] font-mono">
+                    // {categoryName}
+                </span>
+                <div className="flex-1 h-px bg-[rgba(255,255,255,0.07)]" />
+                <span className="text-[10px] font-mono text-[#9E9490]">
+                    {category.items.length} technologies
+                </span>
+            </div>
+
+            {/* Mixed Size Honeycomb */}
+            <MixedSizeHoneycomb items={category.items} />
+        </motion.div>
+    );
+}
 
 export default function TechStack() {
     const { t } = useLanguage();
-    const [isMobile, setIsMobile] = useState(true);
-
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.matchMedia("(max-width: 1024px)").matches);
-        };
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
 
     return (
-        <section className="py-24 bg-background relative overflow-hidden border-t border-border/50">
-            {/* Inject pulse styles */}
-            <style dangerouslySetInnerHTML={{ __html: `
-                @keyframes techPulseFlow {
-                    0% {
-                        stroke-dashoffset: 100;
-                    }
-                    100% {
-                        stroke-dashoffset: 0;
-                    }
-                }
-                .tech-pulse-line {
-                    stroke-dasharray: 10 40;
-                    animation: techPulseFlow 3s linear infinite;
-                    opacity: 0.8;
-                }
-            `}} />
+        <section className="relative bg-[#0D0D0D] border-t border-[rgba(255,255,255,0.07)]">
+            {/* Background warm glow */}
+            <div className="absolute inset-0 warm-glow pointer-events-none" />
 
-            {/* Global background neon accents */}
-            <div className="absolute top-1/4 left-0 w-96 h-96 bg-neon/3 blur-[120px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-neon/3 blur-[120px] rounded-full pointer-events-none" />
-
-            <div className="w-full px-6 md:px-12 lg:px-16 xl:px-24 relative z-10">
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={isMobile ? fadeUp : staggerContainer}
-                    className="space-y-16"
-                >
-                    {/* Header */}
-                    <div className="text-center max-w-3xl mx-auto space-y-4">
-                        <motion.div variants={fadeUp}>
-                            <p className="text-neon font-mono text-sm mb-4 tracking-widest">05</p>
-                            <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-                                {t.tech.title} <GradientText>{t.tech.titleHighlight}</GradientText>
-                            </h2>
-                        </motion.div>
-                        <motion.p variants={fadeUp} className="text-muted text-lg">
+            <div className="relative z-10 py-16 md:py-24 lg:py-32">
+                {/* Section Header */}
+                <div className="px-6 md:px-12 lg:px-16 xl:px-24 mb-16 md:mb-24">
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: '-100px' }}
+                        variants={fadeUp}
+                    >
+                        <span className="text-[10px] font-bold text-[#E11D1D] uppercase tracking-[0.2em] font-mono mb-4 block">
+                            // TECHNOLOGIES & TOOLS
+                        </span>
+                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#EDE8E4] mb-4">
+                            {t.tech.title} <GradientText>{t.tech.titleHighlight}</GradientText>
+                        </h2>
+                        <p className="text-[#9E9490] text-base md:text-lg max-w-2xl">
                             {t.tech.subtitle}
-                        </motion.p>
-                    </div>
+                        </p>
+                    </motion.div>
+                </div>
 
-                    {/* Desktop Tree View (Top-Down Org tree with organic curves) */}
-                    {!isMobile && (
-                        <div className="w-full py-10 flex flex-col items-center">
-                            {techCategories.map((category) => {
-                                const categoryName = t.tech.categories[category.id] || category.id;
-                                const categoryDesc = categoryDescriptions[category.id];
-                                const CategoryIcon = category.icon;
-
-                                return (
-                                    <div key={category.id} className="w-full flex flex-col items-center relative mb-24 last:mb-0">
-                                        
-                                        {/* Category hub card (Centered) */}
-                                        <div className="w-full max-w-[280px] border border-border/30 bg-card/10 backdrop-blur-sm flex flex-col items-center p-4 relative z-20 text-center rounded-none shadow-none">
-                                            <div className="w-10 h-10 border border-neon bg-background flex items-center justify-center text-neon mb-2">
-                                                <CategoryIcon className="w-5 h-5" />
-                                            </div>
-                                            <h3 className="text-lg font-bold text-foreground font-display tracking-wide uppercase">
-                                                {categoryName}
-                                            </h3>
-                                            <p className="text-[10px] text-muted-foreground mt-1 leading-relaxed">
-                                                {categoryDesc}
-                                            </p>
-                                        </div>
-
-                                        {/* Top-Down Connector Lines SVG (Organic Curves & Light Pulses) */}
-                                        <div className="w-full max-w-5xl mx-auto h-16 relative">
-                                            <svg className="w-full h-full overflow-visible pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
-                                                {/* Background static organic curves */}
-                                                <path d="M 50,0 C 50,50 12.5,50 12.5,100" stroke="rgba(255, 255, 255, 0.08)" strokeWidth="1.5" fill="none" />
-                                                <path d="M 50,0 C 50,50 37.5,50 37.5,100" stroke="rgba(255, 255, 255, 0.08)" strokeWidth="1.5" fill="none" />
-                                                <path d="M 50,0 C 50,50 62.5,50 62.5,100" stroke="rgba(255, 255, 255, 0.08)" strokeWidth="1.5" fill="none" />
-                                                <path d="M 50,0 C 50,50 87.5,50 87.5,100" stroke="rgba(255, 255, 255, 0.08)" strokeWidth="1.5" fill="none" />
-                                                
-                                                {/* Animated pulsing light flow curves overlay */}
-                                                <path d="M 50,0 C 50,50 12.5,50 12.5,100" stroke="var(--neon)" strokeWidth="1.5" strokeLinecap="round" className="tech-pulse-line" style={{ animationDelay: '0s' }} fill="none" />
-                                                <path d="M 50,0 C 50,50 37.5,50 37.5,100" stroke="var(--neon)" strokeWidth="1.5" strokeLinecap="round" className="tech-pulse-line" style={{ animationDelay: '0.7s' }} fill="none" />
-                                                <path d="M 50,0 C 50,50 62.5,50 62.5,100" stroke="var(--neon)" strokeWidth="1.5" strokeLinecap="round" className="tech-pulse-line" style={{ animationDelay: '1.4s' }} fill="none" />
-                                                <path d="M 50,0 C 50,50 87.5,50 87.5,100" stroke="var(--neon)" strokeWidth="1.5" strokeLinecap="round" className="tech-pulse-line" style={{ animationDelay: '2.1s' }} fill="none" />
-                                            </svg>
-                                        </div>
-
-                                        {/* Grid of Skill Cards (4 columns wrapped in CardTilt) */}
-                                        <div className="grid grid-cols-4 gap-x-8 gap-y-12 w-full max-w-5xl mx-auto relative z-10">
-                                            {category.items.map((item, index) => {
-                                                const coreLabel = 'Core';
-                                                
-                                                // If item is in the second or third row (index >= 4), render a top connector vertical line linking to the row above
-                                                const hasTopConnector = index >= 4;
-
-                                                return (
-                                                    <div key={item.name} className="relative w-full group">
-                                                        {hasTopConnector && (
-                                                            <div className="absolute top-[-48px] left-1/2 -translate-x-1/2 w-[1.5px] h-[48px] bg-white/10 pointer-events-none" />
-                                                        )}
-                                                        
-                                                        <CardTilt className="w-full h-full">
-                                                            <div className="w-full relative p-4 rounded-none bg-card/10 border border-border/30 hover:border-neon/40 hover:bg-white/[0.015] transition-all duration-300 flex items-center justify-between group/tech cursor-default text-left shadow-none">
-                                                                <div className="flex items-center gap-3 w-full justify-between">
-                                                                    <div className="flex items-center gap-3">
-                                                                        <div className="w-8 h-8 flex items-center justify-center relative shrink-0">
-                                                                            <Image
-                                                                                src={item.icon}
-                                                                                alt={item.name}
-                                                                                width={32}
-                                                                                height={32}
-                                                                                className="w-full h-full object-contain grayscale group-hover/tech:grayscale-0 transition-all duration-300"
-                                                                            />
-                                                                        </div>
-                                                                        <div className="flex flex-col">
-                                                                            <span className="text-xs md:text-sm font-bold font-mono text-foreground tracking-tight">
-                                                                                {item.name}
-                                                                            </span>
-                                                                            {item.isCore && item.role && (
-                                                                                <span className="text-[9px] text-muted-foreground font-mono">
-                                                                                    {item.role}
-                                                                                </span>
-                                                                            )}
-                                                                        </div>
-                                                                    </div>
-                                                                    {item.isCore && (
-                                                                        <span className="text-[8px] tracking-wider uppercase font-bold px-1.5 py-0.5 rounded-none border border-neon/30 text-neon bg-neon/5 font-mono">
-                                                                            {coreLabel}
-                                                                        </span>
-                                                                    )}
-                                                                </div>
-                                                            </div>
-                                                        </CardTilt>
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    )}
-
-                    {/* Mobile Timeline/Tree View (Responsive fallback for screen <= 1024px) */}
-                    {isMobile && (
-                        <div className="relative w-full py-4">
-                            {techCategories.map((category) => {
-                                const categoryName = t.tech.categories[category.id] || category.id;
-                                const categoryDesc = categoryDescriptions[category.id];
-                                const CategoryIcon = category.icon;
-
-                                return (
-                                    <div key={category.id} className="relative mb-10 last:mb-0 w-full border border-border/30 bg-card/5">
-                                        {/* Mobile Category Header - Flat Box */}
-                                        <div className="border-b border-border/30 bg-card/10 p-4 flex flex-col md:flex-row md:items-center justify-between gap-2">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 border border-neon bg-background flex items-center justify-center text-neon shrink-0">
-                                                    <CategoryIcon className="w-5 h-5" />
-                                                </div>
-                                                <div>
-                                                    <h3 className="text-base md:text-lg font-bold text-foreground font-display tracking-wide uppercase">
-                                                        {categoryName}
-                                                    </h3>
-                                                    <p className="text-[10px] text-muted-foreground mt-0.5 max-w-md">
-                                                        {categoryDesc}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Mobile Cards stack with Blueprint schematic connectors */}
-                                        <div className="p-4 pl-8 pr-4 relative space-y-3">
-                                            {/* Vertical Trunk Line inside the category stack */}
-                                            <div className="absolute left-[16px] top-0 bottom-6 w-[1px] bg-border/30" />
-
-                                            {category.items.map((item) => {
-                                                const coreLabel = 'Core';
-                                                return (
-                                                    <div key={item.name} className="relative pl-4 group">
-                                                        {/* Right-angled L-connector in CSS */}
-                                                        <div className="absolute left-[-16px] top-[22px] w-4 h-[1px] bg-border/30" />
-
-                                                        <div className="w-full relative p-3 rounded-none bg-background/40 border border-border/20 hover:border-neon/30 transition-all duration-300 flex items-center justify-between group cursor-default text-left">
-                                                            <div className="flex items-center justify-between w-full relative z-10">
-                                                                <div className="flex items-center gap-3">
-                                                                    <div className="w-7 h-7 flex items-center justify-center relative shrink-0">
-                                                                        <Image
-                                                                            src={item.icon}
-                                                                            alt={item.name}
-                                                                            width={24}
-                                                                            height={24}
-                                                                            className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                                                                        />
-                                                                    </div>
-                                                                    <div className="flex flex-col">
-                                                                        <span className="text-xs font-bold font-mono text-foreground tracking-tight">
-                                                                            {item.name}
-                                                                        </span>
-                                                                        {item.isCore && item.role && (
-                                                                            <span className="text-[9px] text-muted-foreground font-mono">
-                                                                                {item.role}
-                                                                            </span>
-                                                                        )}
-                                                                    </div>
-                                                                </div>
-                                                                {item.isCore && (
-                                                                    <span className="text-[8px] tracking-wider uppercase font-bold px-1.5 py-0.5 rounded-none border border-neon/30 text-neon bg-neon/5 font-mono">
-                                                                        {coreLabel}
-                                                                    </span>
-                                                                )}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    )}
-                </motion.div>
+                {/* Categories */}
+                <div className="px-4 md:px-8 lg:px-12 xl:px-16 space-y-16 md:space-y-24">
+                    {techCategories.map((category, index) => (
+                        <TechCategorySection key={category.id} category={category} index={index} />
+                    ))}
+                </div>
             </div>
         </section>
     );

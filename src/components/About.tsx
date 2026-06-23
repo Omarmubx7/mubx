@@ -101,7 +101,7 @@ export default function About() {
                         {/* Flat Editorial 2x2 grid container */}
                         <div className="w-full space-y-2 relative z-10">
                             <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-widest block font-bold">
-                                {"// TECHNICAL STATS"}
+                                {"// PERFORMANCE METRICS"}
                             </span>
                             <div className="grid grid-cols-2 w-full border border-border/30 bg-card/10 backdrop-blur-md rounded-none overflow-hidden">
                             {stats.map((stat, index) => {

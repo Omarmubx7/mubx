@@ -38,7 +38,7 @@ export default function Testimonials() {
 
             <div className="container mx-auto px-6 md:px-12">
                 <div className="text-center mb-16">
-                    <span className="text-neon font-bold tracking-widest uppercase mb-4 block">Social Proof</span>
+                    <span className="text-neon font-bold tracking-widest uppercase mb-4 block">// CLIENT RESULTS</span>
                     <h2 className="text-3xl md:text-5xl font-bold text-foreground">
                         {t.reviews.title} <span className="text-neon">{t.reviews.titleHighlight}</span>
                     </h2>

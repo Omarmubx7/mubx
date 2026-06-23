@@ -29,29 +29,28 @@ export default function Contact() {
       <div className="max-w-[1200px] mx-auto w-full relative z-10">
         <SectionWrapper>
           <div className="text-lg font-mono font-bold uppercase tracking-[0.15em] text-red mb-6">
-            LET&rsquo;S WORK
+            START A PROJECT
           </div>
         </SectionWrapper>
 
         <SectionWrapper delay={0.1}>
           <h2 className="text-4xl md:text-6xl font-mono font-light tracking-tight text-text-primary-dark mb-4">
-            Have a project?
+            Let&apos;s Build Your Next
             <br />
             <motion.span
               className="text-red inline-block"
               animate={{ opacity: [1, 0.7, 1] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             >
-              Let&rsquo;s talk.
+              Web Project.
             </motion.span>
           </h2>
         </SectionWrapper>
 
         <SectionWrapper delay={0.2}>
           <p className="text-lg text-text-secondary-dark max-w-lg mb-8 leading-relaxed">
-            I&rsquo;m open to internships, freelance work, and startup
-            collaborations. Based in Amman, Jordan &mdash; open to remote work
-            globally.
+            Full-stack developer in Amman, Jordan. Available for freelance,
+            contracts, and remote collaborations worldwide.
           </p>
         </SectionWrapper>
 

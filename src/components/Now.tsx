@@ -29,7 +29,7 @@ export default function Now() {
       <div className="max-w-[1200px] mx-auto w-full relative z-10">
         <SectionWrapper>
           <div className="text-lg font-mono font-bold uppercase tracking-[0.15em] text-red mb-8">
-            NOW
+            CURRENTLY BUILDING
           </div>
         </SectionWrapper>
 

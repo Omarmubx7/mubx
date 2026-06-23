@@ -103,12 +103,12 @@ export default function ContactView() {
                     className="max-w-4xl mx-auto"
                 >
                     <div className="text-center mb-16">
-                        <Badge variant="neon" className="mb-6">{t.contact.availability.title}</Badge>
+                        <Badge variant="neon" className="mb-6">START A PROJECT</Badge>
                         <h1 className="text-4xl md:text-6xl font-black mb-6">
-                            {t.contact.titleStart} <span className="text-neon">{t.contact.titleHighlight}</span>
+                            Let&apos;s Build Your Next <span className="text-neon">Web Project</span>
                         </h1>
                         <p className="text-muted text-lg max-w-2xl mx-auto">
-                            {descText}
+                            Full-stack developer in Amman, Jordan. Currently accepting new projects for {bookingQuarter}.
                             <br />
                             <span className="text-foreground/80 font-medium">{t.contact.availability.response} {t.contact.availability.responseTime}.</span>
                         </p>

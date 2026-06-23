@@ -30,15 +30,16 @@ export default function AboutView() {
                         variants={fadeUp}
                         className="mb-16"
                     >
-                        <Badge variant="neon" className="mb-6">The Developer Behind MUBX</Badge>
+                        <Badge variant="neon" className="mb-6">Full-Stack Developer & AI Engineer</Badge>
                         <h1 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
-                            More Than Just <br />
-                            <span className="text-neon">Code.</span>
+                            Engineering High-Performance <br />
+                            <span className="text-neon">Web Systems.</span>
                         </h1>
                         <p className="text-xl text-muted leading-relaxed">
                             I don&apos;t just write functions; I engineer digital assets.
-                            As a Computer Science student in Amman, I noticed a gap:
-                            Businesses need <strong className="text-white">speed</strong> and <strong className="text-white">local payment integration</strong>, not just pretty templates.
+                            As a Computer Science student at HTU in Amman, Jordan, I build
+                            <strong className="text-white"> high-performance web systems</strong> and
+                            <strong className="text-white"> AI-powered products</strong> for businesses that need speed and reliability.
                         </p>
                     </motion.div>
 
@@ -64,13 +65,13 @@ export default function AboutView() {
 
                     {/* The Story / Content */}
                     <div className="prose prose-invert prose-lg max-w-none mb-20">
-                        <h2 className="text-3xl font-bold text-white mb-6">Why I Started MUBX</h2>
+                        <h2 className="text-3xl font-bold text-white mb-6">Why Businesses in Jordan Choose MUBX</h2>
                         <p className="text-muted mb-8">
                             Freelancing in Jordan is often chaotic. Clients get ghosted, projects get delayed, and code quality is often an afterthought.
-                            I founded <strong>MUBX</strong> to bring an engineering mindset to freelance web development.
+                            I founded <strong>MUBX</strong> to bring an engineering mindset to freelance web development in Amman.
                         </p>
 
-                        <h3 className="text-2xl font-bold text-white mb-4">My Philosophy</h3>
+                        <h3 className="text-2xl font-bold text-white mb-4">My Approach to Web Development</h3>
                         <ul className="space-y-4 mb-8 list-none pl-0">
                             <li className="flex items-start gap-3">
                                 <CheckCircle2 className="w-6 h-6 text-neon shrink-0 mt-1" />
@@ -89,7 +90,7 @@ export default function AboutView() {
 
                     {/* Tech Stack Horizontal Scroll/Grid */}
                     <div className="mb-20">
-                        <h2 className="text-2xl font-bold text-white mb-8">Technical Arsenal</h2>
+                        <h2 className="text-2xl font-bold text-white mb-8">Technologies & Tools I Work With</h2>
                         <div className="flex flex-wrap gap-3">
                             {['Next.js 15', 'React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL', 'Framer Motion', 'Docker', 'Git'].map(tech => (
                                 <span key={tech} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-bold text-muted hover:border-neon/50 hover:text-white transition-colors cursor-default">
@@ -101,7 +102,7 @@ export default function AboutView() {
 
                     {/* CTA Section */}
                     <div className="p-10 rounded-3xl bg-neon/10 border border-neon/20 text-center">
-                        <h2 className="text-3xl font-bold text-white mb-4">Let&apos;s Work Together</h2>
+                        <h2 className="text-3xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
                         <p className="text-muted mb-8 max-w-lg mx-auto">
                             I am currently accepting new projects. Whether it&apos;s a simple landing page or a complex SaaS,
                             I&apos;m ready to engineer it.
