@@ -8,7 +8,7 @@ import Tag from '@/components/ui/Tag'
 import { projects } from '@/data/projects'
 
 const techIcons: Record<string, string> = {
-  'Next.js': '/techstackicons/next-dot-js-svgrepo-com.svg',
+  'Next.js': '/techstackicons/next.svg',
   'React': '/techstackicons/react-svgrepo-com.svg',
   'Tailwind': '/techstackicons/tailwindcss-icon-svgrepo-com.svg',
   'Framer Motion': '',
@@ -20,6 +20,8 @@ const techIcons: Record<string, string> = {
   'PHP': '',
   'MySQL': '',
   'Bootstrap': '/techstackicons/Bootstrap.svg',
+  'AI Integration': '',
+  'Authentication': '',
 }
 
 function TechIcon({ name }: { name: string }) {

@@ -3,7 +3,6 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import SocialSidebar from '@/components/SocialSidebar'
 import FloatingLogo from '@/components/FloatingLogo'
-import MobileGate from '@/components/MobileGate'
 import LoadingScreen from '@/components/LoadingScreen'
 import ScrollProgress from '@/components/ui/ScrollProgress'
 import JsonLd from '@/components/JsonLd'
@@ -75,7 +74,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         <LoadingScreen />
-        <MobileGate />
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>

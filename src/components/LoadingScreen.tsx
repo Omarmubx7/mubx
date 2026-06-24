@@ -76,6 +76,7 @@ function WordReveal({
 export default function LoadingScreen() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [phase, setPhase] = useState<Phase>('loading');
   const [count, setCount] = useState(0);
   const [bar, setBar] = useState(0);
@@ -86,7 +87,7 @@ export default function LoadingScreen() {
 
   // Lock scroll until done
   useEffect(() => {
-    if (isLinksPage) return;
+    if (isLinksPage || !visible) return;
     if (phase !== 'done') {
       document.body.style.overflow = 'hidden';
     } else {
@@ -95,11 +96,11 @@ export default function LoadingScreen() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [phase, isLinksPage]);
+  }, [phase, isLinksPage, visible]);
 
   // Prevent scroll during loading & greeting phases
   useEffect(() => {
-    if (isLinksPage || phase === 'done' || phase === 'scroll-hint') return;
+    if (isLinksPage || !visible || phase === 'done' || phase === 'scroll-hint') return;
     const prevent = (e: Event) => {
       e.preventDefault();
     };
@@ -109,7 +110,7 @@ export default function LoadingScreen() {
       window.removeEventListener('wheel', prevent);
       window.removeEventListener('touchmove', prevent);
     };
-  }, [phase, isLinksPage]);
+  }, [phase, isLinksPage, visible]);
 
   // Enter handler
   const handleEnter = useCallback(() => {
@@ -117,6 +118,7 @@ export default function LoadingScreen() {
     setPhase('entering');
     setTimeout(() => {
       setPhase('done');
+      setVisible(false);
       if (typeof window !== 'undefined') {
         sessionStorage.setItem('mubx-loaded', 'true');
       }
@@ -152,6 +154,7 @@ export default function LoadingScreen() {
       
       if (isBot || isAutomated) {
         setPhase('done');
+        setVisible(false);
         return;
       }
 
@@ -164,6 +167,7 @@ export default function LoadingScreen() {
       const isProd = process.env.NODE_ENV === 'production' && !isLocalhost;
       if (isProd && sessionStorage.getItem('mubx-loaded')) {
         setPhase('done');
+        setVisible(false);
         return;
       }
     }
@@ -194,7 +198,7 @@ export default function LoadingScreen() {
     return () => cancelAnimationFrame(rafRef.current);
   }, [isLinksPage]);
 
-  if (isLinksPage || !mounted || phase === 'done') return null;
+  if (isLinksPage || !mounted || !visible) return null;
 
   const counterColor =
     count > 50

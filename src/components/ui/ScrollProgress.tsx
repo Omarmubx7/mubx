@@ -32,7 +32,7 @@ export default function ScrollProgress() {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[2px] bg-red origin-left z-[110] pointer-events-none"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-red origin-left z-[300] pointer-events-none"
         style={{ scaleX: scrollYProgress }}
         aria-hidden="true"
       />

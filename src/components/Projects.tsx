@@ -7,6 +7,23 @@ import { useLanguage } from '@/context/LanguageContext';
 import TextReveal from '@/components/ui/TextReveal';
 import ProjectSimulator from './ProjectSimulator';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+
+const techLogos: Record<string, string> = {
+  'Next.js': '/techstackicons/next.svg',
+  'React': '/techstackicons/react-svgrepo-com.svg',
+  'Tailwind': '/techstackicons/tailwindcss-icon-svgrepo-com.svg',
+  'Framer Motion': '',
+  'TypeScript': '/techstackicons/typescript-icon-svgrepo-com.svg',
+  'Node.js': '/techstackicons/nodejs-icon-svgrepo-com.svg',
+  'AI Integration': '',
+  'PHP': '',
+  'MySQL': '',
+  'Bootstrap': '/techstackicons/Bootstrap.svg',
+  'E-commerce': '',
+  'UX Design': '',
+  'Authentication': '',
+};
 
 export default function Projects() {
     const { language, t } = useLanguage();
@@ -155,6 +172,31 @@ export default function Projects() {
                                             </p>
                                         </div>
 
+                                        {/* Tech Logos */}
+                                        <div className="flex flex-wrap items-center gap-2 mb-3">
+                                            {project.tech.map((tech: string) => {
+                                                const iconPath = techLogos[tech];
+                                                return (
+                                                    <span key={tech} className="inline-flex items-center gap-1 px-1.5 py-0.5 border border-border/20 bg-muted/5 rounded-sm">
+                                                        {iconPath ? (
+                                                            <span className="relative w-3.5 h-3.5 shrink-0">
+                                                                <Image
+                                                                    src={iconPath}
+                                                                    alt={tech}
+                                                                    fill
+                                                                    className="object-contain opacity-70"
+                                                                    sizes="14px"
+                                                                />
+                                                            </span>
+                                                        ) : null}
+                                                        <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-wider">
+                                                            {tech}
+                                                        </span>
+                                                    </span>
+                                                );
+                                            })}
+                                        </div>
+
                                         {/* Impact / Outcome */}
                                         <div className="mt-4 pt-3 border-t border-border/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                                             <div className="bg-neon/5 border border-neon/15 px-3 py-1.5 rounded-none flex items-center gap-2 flex-1">
@@ -242,6 +284,31 @@ export default function Projects() {
                                     }`}>
                                         {project.description}
                                     </p>
+
+                                    {/* Tech Logos */}
+                                    <div className="flex flex-wrap items-center gap-1.5 mb-2">
+                                        {project.tech.map((tech: string) => {
+                                            const iconPath = techLogos[tech];
+                                            return (
+                                                <span key={tech} className="inline-flex items-center gap-1 px-1.5 py-0.5 border border-border/20 bg-muted/5 rounded-sm">
+                                                    {iconPath ? (
+                                                        <span className="relative w-3 h-3 shrink-0">
+                                                            <Image
+                                                                src={iconPath}
+                                                                alt={tech}
+                                                                fill
+                                                                className="object-contain opacity-70"
+                                                                sizes="12px"
+                                                            />
+                                                        </span>
+                                                    ) : null}
+                                                    <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-wider">
+                                                        {tech}
+                                                    </span>
+                                                </span>
+                                            );
+                                        })}
+                                    </div>
 
                                     {!isSelected && (
                                         <div className="text-[10px] font-mono text-neon font-bold uppercase tracking-wider mt-2 flex items-center gap-1">
