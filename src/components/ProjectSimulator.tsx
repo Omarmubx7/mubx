@@ -18,7 +18,7 @@ const projectScreenshots: Record<string, string> = {
     'htu-martial-arts': '/images/projects/htu-martial-arts.png',
     'blob-jo': '/images/projects/blob-jo.png',
     'qadumyweb': '/images/projects/qadumyweb.png',
-    'jordan-fa': '/images/projects/jordan-fav2.png'
+    'jordan-fa': '/images/projects/jordan-fav3.png'
 };
 
 const projectUrls: Record<string, string> = {

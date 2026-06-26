@@ -181,7 +181,7 @@ export const projects: Project[] = [
     stack: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
     link: 'https://jordan-jfa.vercel.app/',
     logo: '/images/jordan-fa-logo.png',
-    screenshot: '/images/projects/jordan-fav2.png',
+    screenshot: '/images/projects/jordan-fav3.png',
     metrics: 'Historic Debut',
     timeframe: '2 weeks',
     outcome: 'A complete digital platform celebrating Jordan\'s first-ever World Cup appearance with rich storytelling and real-time data.',
