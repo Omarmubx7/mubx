@@ -129,6 +129,12 @@ export default async function LinksPage() {
             primary: true
         },
         {
+            name: "Jordan FA",
+            url: "https://jordan-jfa.vercel.app/",
+            icon: Globe,
+            sub: "Jordan National Team's historic World Cup 2026 debut",
+        },
+        {
             name: "MUBXAI",
             url: "https://ai.mubx.dev/",
             icon: Globe,
