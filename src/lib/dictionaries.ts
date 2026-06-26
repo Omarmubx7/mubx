@@ -245,10 +245,7 @@ export const dictionary = {
                 response: "I read every message myself and reply within",
                 responseTime: "24 hours",
                 context: "Currently prioritizing e-commerce and SaaS projects.",
-                urgent: "Need a faster reply?",
-                whatsapp: "WhatsApp: Best for quick voice notes",
-                whatsappUrl: "https://wa.me/962780090453",
-                whatsappNumber: "+962 780090453"
+                urgent: "Need a faster reply?"
 
             },
             email: "Email",
@@ -283,7 +280,7 @@ export const dictionary = {
                 sending: 'Sending Brief...',
                 footer: 'I will review your brief and reply with a strategic direction within 24 hours.',
                 success: 'Brief received! I\'ll be in touch within 24 hours to discuss the next steps.',
-                error: 'There was a problem submitting your brief. Please try again or reach out on WhatsApp.'
+                error: 'There was a problem submitting your brief. Please try again or reach out via email.'
             },
             typical: "Typical projects:",
             typicalList: "landing pages, e-commerce MVPs, and web systems",

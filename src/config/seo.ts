@@ -72,7 +72,6 @@ export const siteConfig = {
         github: "https://github.com/Omarmubx7",
         linkedin: "https://www.linkedin.com/in/omarmubaidin",
         instagram: "https://www.instagram.com/mubx.dev",
-        whatsapp: "https://wa.me/962780090453",
         calendly: "https://calendly.com/omarmubaidincs/30min",
     },
     locale: 'en_US',

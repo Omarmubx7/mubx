@@ -16,7 +16,6 @@ This document contains the complete content of the MUBX Portfolio, including sit
 - GitHub: https://github.com/Omarmubx7
 - LinkedIn: https://www.linkedin.com/in/omarmubaidin
 - Instagram: https://www.instagram.com/mubx.dev
-- WhatsApp: https://wa.me/962780090453
 
 ---
 

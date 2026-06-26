@@ -81,23 +81,23 @@ export default function Hero() {
                 Available for work &middot; Amman, Jordan
               </motion.div>
 
-              <div style={{ marginBottom: 16 }}>
+              <h1 style={{ marginBottom: 16 }}>
                 {[
                   { text: 'Omar Mubaidin.', color: '#EDE8E4', delay: 0.35 },
                   { text: 'Web Dev &', color: '#EDE8E4', delay: 0.5 },
                   { text: 'AI Engineer.', color: '#E11D1D', delay: 0.65 },
                 ].map(({ text, color, delay }) => (
-                  <motion.div
+                  <motion.span
                     key={text}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] }}
-                    style={{ fontSize: 'clamp(2.2rem, 5vw, 5rem)', fontFamily: 'var(--font-mono)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.05, color }}
+                    style={{ display: 'block', fontSize: 'clamp(2.2rem, 5vw, 5rem)', fontFamily: 'var(--font-mono)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.05, color }}
                   >
                     {text}
-                  </motion.div>
+                  </motion.span>
                 ))}
-              </div>
+              </h1>
 
               <motion.p
                 initial={{ opacity: 0 }}

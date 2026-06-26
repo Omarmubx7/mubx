@@ -1,10 +1,11 @@
 
 import { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 
 import Badge from '@/components/ui/Badge';
-import { GithubIcon, LinkedinIcon, Globe, Phone, InstagramIcon, ArrowRight, Mail, Mic, Bot } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, Globe, InstagramIcon, ArrowRight, Mail, Mic, Bot } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 import { dictionary, Locale } from '@/lib/dictionaries';
@@ -59,43 +60,57 @@ type LinkCardProps = {
 }
 
 function LinkCard({ link, isPrimary = false }: Readonly<LinkCardProps>) {
+    const isInternal = link.url.startsWith('/');
+    const cardContent = (
+        <>
+            <div className="flex items-center gap-4 md:gap-5">
+                <div className={`p-3 rounded-xl transition-all duration-500 ${isPrimary
+                    ? "bg-background/20 text-background"
+                    : "bg-foreground/5 text-foreground/70 group-hover:text-neon group-hover:scale-110"
+                    }`}>
+                    <link.icon className="w-5 h-5 md:w-6 md:h-6" />
+                </div>
+                <div className="flex flex-col text-left gap-0.5 md:gap-1">
+                    <span className={`font-bold text-base md:text-lg tracking-tight ${isPrimary ? "text-background" : "text-foreground group-hover:text-neon transition-colors"
+                        }`}>
+                        {link.name}
+                    </span>
+                    <span className={`text-xs md:text-sm font-medium ${isPrimary ? "text-background/70" : "text-muted group-hover:text-foreground/80 transition-colors"
+                        }`}>
+                        {link.sub}
+                    </span>
+                </div>
+            </div>
+
+            <div className={`pr-1 md:pr-2 transition-all duration-500 ${isPrimary
+                ? "translate-x-0 opacity-100"
+                : "-translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0"
+                }`}>
+                <ArrowRight className={`w-4 h-4 md:w-5 md:h-5 ${isPrimary ? "text-background" : "text-neon"}`} />
+            </div>
+        </>
+    );
+    const className = `group relative flex items-center justify-between p-5 md:p-6 rounded-2xl md:rounded-3xl transition-all duration-500 border backdrop-blur-md ${isPrimary
+        ? "bg-foreground text-background border-foreground hover:opacity-90 shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_30px_rgba(255,255,255,0.05)]"
+        : "bg-foreground/3 border-foreground/10 hover:border-neon/50 hover:bg-foreground/6 text-foreground"
+        }`;
+
     return (
         <div className="w-full">
-            <a
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group relative flex items-center justify-between p-5 md:p-6 rounded-2xl md:rounded-3xl transition-all duration-500 border backdrop-blur-md ${isPrimary
-                    ? "bg-foreground text-background border-foreground hover:opacity-90 shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_30px_rgba(255,255,255,0.05)]"
-                    : "bg-foreground/3 border-foreground/10 hover:border-neon/50 hover:bg-foreground/6 text-foreground"
-                    }`}
-            >
-                <div className="flex items-center gap-4 md:gap-5">
-                    <div className={`p-3 rounded-xl transition-all duration-500 ${isPrimary
-                        ? "bg-background/20 text-background"
-                        : "bg-foreground/5 text-foreground/70 group-hover:text-neon group-hover:scale-110"
-                        }`}>
-                        <link.icon className="w-5 h-5 md:w-6 md:h-6" />
-                    </div>
-                    <div className="flex flex-col text-left gap-0.5 md:gap-1">
-                        <span className={`font-bold text-base md:text-lg tracking-tight ${isPrimary ? "text-background" : "text-foreground group-hover:text-neon transition-colors"
-                            }`}>
-                            {link.name}
-                        </span>
-                        <span className={`text-xs md:text-sm font-medium ${isPrimary ? "text-background/70" : "text-muted group-hover:text-foreground/80 transition-colors"
-                            }`}>
-                            {link.sub}
-                        </span>
-                    </div>
-                </div>
-
-                <div className={`pr-1 md:pr-2 transition-all duration-500 ${isPrimary
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0"
-                    }`}>
-                    <ArrowRight className={`w-4 h-4 md:w-5 md:h-5 ${isPrimary ? "text-background" : "text-neon"}`} />
-                </div>
-            </a>
+            {isInternal ? (
+                <Link href={link.url} className={className}>
+                    {cardContent}
+                </Link>
+            ) : (
+                <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={className}
+                >
+                    {cardContent}
+                </a>
+            )}
         </div>
     );
 }
@@ -109,13 +124,6 @@ export default async function LinksPage() {
             url: "mailto:mubxdev@proton.me",
             icon: Mail,
             sub: "mubxdev@proton.me",
-            primary: false
-        },
-        {
-            name: "WhatsApp",
-            url: "https://wa.me/962780090453",
-            icon: Phone,
-            sub: "Chat directly for project inquiries",
             primary: false
         }
     ];
@@ -154,7 +162,7 @@ export default async function LinksPage() {
         },
         {
             name: "Portfolio Website",
-            url: "https://www.mubx.dev/",
+            url: "/",
             icon: Globe,
             sub: "View my latest work & case studies",
         }
