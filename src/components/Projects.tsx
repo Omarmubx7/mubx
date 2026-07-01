@@ -53,6 +53,7 @@ export default function Projects() {
             case 'the-glorious-page':
             case 'vynex-media':
             case 'jordan-fa':
+            case 'porsche-noir':
                 return 'creative';
             default:
                 return '';

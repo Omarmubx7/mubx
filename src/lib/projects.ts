@@ -201,6 +201,24 @@ const projectsList: Project[] = [
             solution: 'Built a visually immersive Next.js site with dynamic match schedules, animated squad profiles, kit showcases, a historical timeline, and real-time group standings.',
             outcome: 'A complete digital platform that captures the emotion of Jordan\'s first-ever World Cup appearance, combining rich storytelling with live data.',
         }
+    },
+    {
+        slug: 'porsche-noir',
+        title: 'Porsche Noir',
+        description: 'A scroll-driven cinematic 3D experience celebrating sixty years of the Porsche 911 evolution.',
+        tech: ['Three.js', 'GSAP', 'Lenis', 'Vite'],
+        links: { live: 'https://911-legacy-git-main-omarmubx7s-projects.vercel.app/' },
+        logo: '/images/porsche-logo.svg',
+        metrics: '60fps WebGL',
+        verified_outcome: 'WebGL Live',
+        timeframe: '3 weeks',
+        category: { en: 'Interactive Experience', icon: '🏎️', color: 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20' },
+        caseStudy: {
+            problem: 'Standard car websites are cluttered marketing templates that ignore historical heritage and design craftsmanship.',
+            role: 'Lead Creative Developer & 3D Specialist',
+            solution: 'Built a dark, highly focused, single-page editorial experience utilizing WebGL, GSAP, and scroll-bound animations to highlight the 911’s iconic design.',
+            outcome: 'Created a premium interactive 3D narrative with 60fps rendering and responsive mechanical pacing.',
+        }
     }
 ];
 

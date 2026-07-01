@@ -18,7 +18,8 @@ const projectScreenshots: Record<string, string> = {
     'htu-martial-arts': '/images/projects/htu-martial-arts.png',
     'blob-jo': '/images/projects/blob-jo.png',
     'qadumyweb': '/images/projects/qadumyweb.png',
-    'jordan-fa': '/images/projects/jordan-fav3.png'
+    'jordan-fa': '/images/projects/jordan-fav3.png',
+    'porsche-noir': '/images/projects/911porshe.png'
 };
 
 const projectUrls: Record<string, string> = {
@@ -31,7 +32,8 @@ const projectUrls: Record<string, string> = {
     'htu-martial-arts': 'https://htu-martial-arts-man.vercel.app',
     'blob-jo': 'https://blobjor.me',
     qadumyweb: 'https://qadumyweb.vercel.app',
-    'jordan-fa': 'https://jordan-jfa.vercel.app'
+    'jordan-fa': 'https://jordan-jfa.vercel.app',
+    'porsche-noir': 'https://911-legacy-git-main-omarmubx7s-projects.vercel.app'
 };
 
 export default function ProjectSimulator({ slug }: Readonly<SimulatorProps>) {
