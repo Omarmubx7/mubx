@@ -196,7 +196,7 @@ export const projects: Project[] = [
     description: 'Scroll-driven cinematic 3D experience celebrating 60 years of the Porsche 911.',
     longDescription: 'A high-performance scroll-driven cinematic 3D experience and digital monument to the Porsche 911’s engineering philosophy, translating sixty years of design continuity into an immersive WebGL exhibition.',
     stack: ['Three.js', 'GSAP', 'Lenis', 'Vite'],
-    link: 'https://911-legacy-git-main-omarmubx7s-projects.vercel.app/',
+    link: 'https://911-legacy.vercel.app/',
     logo: '/images/porsche-logo.svg',
     screenshot: '/images/projects/911porshe.png',
     metrics: '60fps WebGL',

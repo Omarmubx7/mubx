@@ -33,7 +33,7 @@ const projectUrls: Record<string, string> = {
     'blob-jo': 'https://blobjor.me',
     qadumyweb: 'https://qadumyweb.vercel.app',
     'jordan-fa': 'https://jordan-jfa.vercel.app',
-    'porsche-noir': 'https://911-legacy-git-main-omarmubx7s-projects.vercel.app'
+    'porsche-noir': 'https://911-legacy.vercel.app'
 };
 
 export default function ProjectSimulator({ slug }: Readonly<SimulatorProps>) {
