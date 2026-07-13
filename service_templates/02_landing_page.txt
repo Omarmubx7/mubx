@@ -3,7 +3,7 @@ SERVICE PROTOCOL: LANDING PAGE (QUICK LAUNCH)
 ==============================================================================
 
 SERVICE:      Landing Page
-PRICE:        From 200 JD
+PRICE:        From 200 JDD
 TIMELINE:     5-7 Days
 DELIVERABLES: Copywriting, Speed Optimization (90+), Basic Analytics, Hosting
 
