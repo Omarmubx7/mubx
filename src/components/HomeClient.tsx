@@ -12,7 +12,7 @@ import { LanguageProvider, useLanguage } from '@/context/LanguageContext';
 import { Locale } from '@/lib/dictionaries';
 import { ScrollSpyProvider, useActiveSectionContext } from '@/context/ScrollSpyContext';
 
-const Projects = dynamic(() => import('@/components/Projects'), {
+const ProjectShowcase = dynamic(() => import('@/components/ProjectShowcase'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
 
@@ -189,7 +189,7 @@ function HomeMain() {
                         </div>
 
                         <div id="projects" className="scroll-mt-24">
-                            <Projects />
+                            <ProjectShowcase />
                         </div>
                         <div id="tech-stack" className="scroll-mt-24">
                             <TechStack />

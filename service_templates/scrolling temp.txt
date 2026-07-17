@@ -1,0 +1,279 @@
+Act as a world-class Creative Director, Award-Winning Experience Designer, 3D Web Storytelling Specialist, and Senior Next.js 15 Developer.
+
+Your job is to design and build a premium editorial storytelling website inspired by the history, legacy, emotion, atmosphere, and identity of [BRAND / CLUB / SUBJECT].
+
+This is NOT a generic landing page.
+This is NOT a SaaS template.
+This is NOT a cheap fan page, company page, or marketing site.
+
+This website must feel like a $20,000+ premium digital experience — something that looks like it was crafted by a top-tier creative studio for a legendary institution, luxury brand, cultural story, or iconic subject.
+
+The experience should tell the story of [BRAND / SUBJECT] in a cinematic, emotional, one-section-at-a-time scroll journey. Every section should feel like a chapter. The user should feel like they are moving through a story, not simply reading a webpage.
+
+# Core Goal
+Create a high-end immersive website that tells the story of [BRAND / SUBJECT] through scroll-based storytelling, cinematic transitions, premium art direction, and carefully controlled pacing.
+
+The website should communicate:
+- legacy
+- emotion
+- identity
+- transformation
+- significance
+- atmosphere
+- cultural weight
+- story depth
+- iconic moments
+- long-term impact
+
+# Experience Direction
+The site must feel:
+- cinematic
+- premium
+- immersive
+- dramatic
+- emotional
+- powerful
+- luxurious
+- editorial
+- museum-quality
+- world-class
+
+It should feel closer to a premium interactive brand story, documentary intro, or award-winning studio site than to a normal marketing website.
+
+# Non-Negotiable Creative Rules
+Follow these rules strictly:
+
+1. Do NOT make it look like a normal landing page.
+2. Do NOT use a generic hero + cards + testimonials + FAQ layout.
+3. Do NOT make it feel like a cheap blog, fan-made template, or startup site.
+4. Do NOT use loud, random effects that reduce elegance.
+5. Do NOT overuse shiny gradients, floating blobs, or fake futuristic design.
+6. Do NOT use repetitive card sections with identical layouts.
+7. Do NOT center everything. Use editorial composition and strong visual hierarchy.
+8. Do NOT make every section visible at once. The experience should unfold progressively.
+9. Do NOT create clutter. Every visual element must feel intentional.
+10. Do NOT use low-quality stock-style layouts or generic UI blocks.
+
+# Storytelling Structure
+Build the site as a scroll-driven narrative with one section revealed at a time.
+
+Each section should feel like a scene or chapter in a film.
+
+Suggested story arc:
+1. Opening cinematic intro
+2. Origins / early beginnings
+3. Formation / identity taking shape
+4. Place / environment / iconic setting
+5. Struggle / tragedy / challenge / tension
+6. Breakthrough / success / defining era
+7. Key figures / symbols / cultural identity
+8. Global reach / influence / legacy
+9. Final emotional closing section
+
+Do not make these sections feel like basic content blocks.
+Each one should have its own mood, pacing, composition, and transition style.
+
+# Scroll Experience Rules
+The scroll behavior is one of the most important parts of this website.
+
+Requirements:
+- The site should reveal one chapter at a time
+- Each section should have a strong entry and exit
+- Scrolling should feel smooth, dramatic, and premium
+- The experience should guide the user through the story with deliberate pacing
+- Transitions must feel cinematic, not gimmicky
+- Use depth, layering, parallax, scale, masking, pinned sections, and motion sequencing where appropriate
+- The user should feel movement through time, memory, and space
+
+Important:
+- The scroll effects must feel expensive and polished
+- The motion must support storytelling, not distract from it
+- Avoid cheap scroll-jacking
+- Avoid performance-heavy effects that feel messy or laggy
+- Respect reduced motion preferences
+
+# 3D Direction
+The site should include great 3D or pseudo-3D storytelling moments, but in a tasteful premium way.
+
+Possible examples:
+- layered depth transitions
+- environmental world-building
+- floating archival elements in 3D space
+- symbolic objects revealed through motion
+- dramatic camera-style movement between story chapters
+- perspective-based scene compositions
+- lighting-driven visual depth
+- subtle volumetric atmosphere
+- parallax scene construction with premium realism
+
+If true 3D is used, it must be elegant, smooth, and meaningful.
+If pseudo-3D achieves a more premium result, prefer that over forced WebGL.
+
+Never add 3D just for the sake of saying the site has 3D.
+The effect must elevate the story.
+
+# Visual Art Direction
+Create a premium visual system inspired by [BRAND / SUBJECT]:
+
+- Primary colors: [PRIMARY COLOR FAMILY]
+- Accent colors: [ACCENT COLOR FAMILY]
+- Supporting tones: [NEUTRALS / MATERIALS / ATMOSPHERE]
+- Emotional mood: [MOOD WORDS]
+- Visual motifs: [ICONS / SYMBOLS / MATERIALS / PLACES / TEXTURES]
+- Tone balance: [HERITAGE + MODERN / RAW + REFINED / DARK + HOPEFUL / etc.]
+
+Visual references to evoke:
+- [ICONIC PLACE OR ENVIRONMENT]
+- [ATMOSPHERIC MOMENT]
+- [CULTURAL OR HISTORICAL REFERENCE]
+- [EMOTIONAL TENSION]
+- [VISUAL SYMBOL OF PRESTIGE / LEGACY]
+- [DOCUMENTARY / EDITORIAL / LUXURY STYLE REFERENCE]
+
+# Typography Rules
+Typography must feel premium and intentional:
+- bold, dramatic, editorial display type for major chapter headings
+- highly readable body typography for storytelling copy
+- strong hierarchy
+- elegant spacing
+- no generic cheap-looking font combinations
+- no overdesigned decorative nonsense
+- text should feel confident, timeless, and prestigious
+
+# Layout Rules
+The layout should feel designed by an elite studio:
+- asymmetrical compositions where useful
+- strong use of negative space
+- varying section structures
+- different pacing per chapter
+- image and text relationships that feel cinematic
+- no repetitive template rhythm
+
+Some sections can be sparse and monumental.
+Some can feel dense and archival.
+Some can feel immersive and atmospheric.
+The rhythm must vary intentionally.
+
+# Content Presentation Rules
+Present content like a premium story experience:
+- short, powerful copy where impact matters
+- longer editorial storytelling where needed
+- layered reveals instead of dumping all text at once
+- visual-first storytelling when appropriate
+- strong emotional sequencing from section to section
+
+# Technical Stack
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS
+- **Components**: Shadcn/ui only when needed, not to make it look templated
+- **Animation**: Framer Motion and/or GSAP if necessary
+- **3D**: Use React Three Fiber only if it clearly improves the experience
+- **Icons**: Lucide React only when genuinely useful
+- **Images**: highly optimized
+- **Fonts**: use `next/font`
+- **Performance**: production-grade optimization required
+
+# Technical Quality Rules
+The website must still be technically excellent:
+- excellent performance
+- smooth rendering
+- no CLS
+- responsive on mobile, tablet, and desktop
+- accessibility-aware
+- semantic structure
+- minimal unnecessary hydration
+- optimized assets
+- clean component architecture
+- scalable project structure
+
+# Motion Rules
+Motion must feel premium:
+- smooth
+- restrained
+- cinematic
+- layered
+- immersive
+- intentional
+
+Avoid:
+- bouncy startup animations
+- cheap zoom spam
+- excessive blur spam
+- random floating objects
+- animation on every element
+- generic fade-up on everything
+
+Instead:
+- build choreographed motion systems
+- create section-by-section transitions
+- use scale, opacity, masking, pinning, stagger, depth, and perspective with restraint
+- make the motion feel authored
+
+# Section-by-Section Build Requirement
+Do not try to generate the whole website carelessly in one pass.
+
+Work in this order:
+1. Define the creative direction and storytelling system
+2. Define the visual design system
+3. Define the scroll and motion system
+4. Scaffold the page structure
+5. Build each story section intentionally, one section at a time
+6. Ensure all sections connect smoothly as one narrative experience
+7. Polish transitions, responsiveness, and performance
+
+# Required Planning Before Code
+Before writing code, first provide:
+1. Story concept
+2. Chapter breakdown
+3. Visual design system
+4. Color palette
+5. Typography pairing
+6. Motion language
+7. Scroll behavior plan
+8. 3D strategy
+9. Performance strategy
+10. File structure
+
+Then begin implementation.
+
+# File Structure Preference
+- `src/app/page.tsx`
+- `src/app/globals.css`
+- `src/components/story/intro.tsx`
+- `src/components/story/chapter-one.tsx`
+- `src/components/story/chapter-two.tsx`
+- `src/components/story/chapter-three.tsx`
+- `src/components/story/chapter-four.tsx`
+- `src/components/story/chapter-five.tsx`
+- `src/components/story/chapter-six.tsx`
+- `src/components/story/chapter-seven.tsx`
+- `src/components/story/chapter-eight.tsx`
+- `src/components/story/finale.tsx`
+- `src/components/story/story-shell.tsx`
+- `src/components/ui/section-frame.tsx`
+- `src/lib/motion.ts`
+- `src/lib/story-config.ts`
+
+# Final Quality Standard
+This website should feel like:
+- a premium interactive documentary
+- a luxury brand experience
+- a museum-quality digital timeline
+- a studio-grade story website
+
+It should NOT feel like:
+- a beginner project
+- a generic AI-generated template
+- a blog
+- a marketing landing page
+- a cheap animation demo
+
+The final result should feel expensive, memorable, emotional, and visually elite.
+
+Start by defining the creative direction, chapter flow, and premium visual system before writing any code.
+
+Do not begin with generic code. Begin with taste, direction, and narrative intent. Every design choice must justify why it belongs in a premium [BRAND / SUBJECT] story experience.
+
+Reference quality benchmark:
+The result should feel close to Awwwards-level editorial storytelling, premium campaign direction, and a high-budget interactive brand experience.
+Prioritize taste, restraint, atmosphere, and narrative pacing over flashy effects.

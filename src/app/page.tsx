@@ -1,19 +1,21 @@
 import Hero from '@/components/Hero'
-import Roles from '@/components/Roles'
 import Journey from '@/components/Journey'
-import Work from '@/components/Work'
+import dynamic from 'next/dynamic'
 import Stack from '@/components/Stack'
 import Now from '@/components/Now'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
+const ProjectShowcase = dynamic(() => import('@/components/ProjectShowcase'), {
+  loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
+})
+
 export default function Home() {
   return (
     <>
       <Hero />
-      <Roles />
       <Journey />
-      <Work />
+      <ProjectShowcase />
       <Stack />
       <Now />
       <Contact />

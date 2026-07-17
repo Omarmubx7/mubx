@@ -71,16 +71,6 @@ export default function Hero() {
 
             {/* Text */}
             <div className="flex-1 min-w-0 w-full">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, fontFamily: 'var(--font-mono)', color: '#9E9490', marginBottom: 24 }}
-              >
-                <span style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#22c55e', display: 'inline-block', boxShadow: '0 0 8px rgba(34,197,94,0.5)' }} />
-                Available for work &middot; Amman, Jordan
-              </motion.div>
-
               <h1 style={{ marginBottom: 16 }}>
                 {[
                   { text: 'Omar Mubaidin.', color: '#EDE8E4', delay: 0.35 },
