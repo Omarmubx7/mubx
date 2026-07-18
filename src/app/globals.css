@@ -190,6 +190,82 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
   50% { opacity: 0; }
 }
 
+/* ── CRT Vignette ── */
+.crt-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 16;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+/* ── VHS Noise Grain ── */
+.vhs-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  animation: vhs-drift 0.3s steps(4) infinite;
+  mix-blend-mode: overlay;
+}
+
+@keyframes vhs-drift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, 2px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ── Glitch flicker for image ── */
+@keyframes glitch-flicker {
+  0%, 100% { transform: translate(0, 0); filter: none; }
+  5% { transform: translate(-3px, 0); filter: hue-rotate(20deg); }
+  10% { transform: translate(2px, -1px); filter: hue-rotate(-10deg) saturate(1.5); }
+  15% { transform: translate(0, 0); filter: none; }
+  40% { transform: translate(0, 0); filter: none; }
+  42% { transform: translate(4px, 0); filter: hue-rotate(-30deg) brightness(1.3); }
+  44% { transform: translate(-2px, 1px); filter: hue-rotate(15deg); }
+  46% { transform: translate(0, 0); filter: none; }
+  80% { transform: translate(0, 0); filter: none; }
+  82% { transform: translate(-1px, -2px); filter: saturate(2) hue-rotate(10deg); }
+  84% { transform: translate(0, 0); filter: none; }
+}
+
+.vhs-glitch {
+  animation: glitch-flicker 3s ease-in-out infinite;
+}
+
+/* ── Terminal cursor ── */
+.terminal-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  background-color: #E11D1D;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: blink 0.8s step-end infinite;
+}
+
+/* ── Hero tilt layer ── */
+.hero-tilt-layer {
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 768px) {
+  .hero-tilt-layer {
+    transform: none !important;
+  }
+}
+
 .skip-link {
   position: absolute; top: -100%; left: 1rem; z-index: 9999;
   padding: 1rem 1.5rem; background: var(--neon); color: #000;
@@ -198,3 +274,157 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
 }
 
 .skip-link:focus { top: 1rem; outline: 2px solid var(--neon); outline-offset: 4px; }
+
+/* ── Animated grid background ── */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-grid::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-drift 25s linear infinite;
+}
+
+.hero-grid::after {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image:
+    linear-gradient(rgba(225, 29, 29, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(225, 29, 29, 0.015) 1px, transparent 1px);
+  background-size: 120px 120px;
+  animation: grid-drift 40s linear infinite reverse;
+}
+
+@keyframes grid-drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(60px, 60px); }
+}
+
+/* ── CRT scan-line overlay ── */
+.scan-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  z-index: 5;
+  opacity: 0.4;
+}
+
+/* ── ASCII art container ── */
+.ascii-container {
+  font-family: var(--font-mono);
+  font-size: clamp(3px, 0.65vw, 7px);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.ascii-container span {
+  display: inline;
+}
+
+/* ── Scene backgrounds ── */
+.scene-gradient-1 {
+  background: radial-gradient(ellipse 80% 50% at 50% 40%, rgba(230, 57, 70, 0.06) 0%, transparent 70%);
+}
+
+.scene-gradient-2 {
+  background: radial-gradient(ellipse 70% 60% at 30% 50%, rgba(230, 57, 70, 0.04) 0%, transparent 60%),
+              radial-gradient(ellipse 50% 40% at 80% 60%, rgba(225, 29, 29, 0.03) 0%, transparent 50%);
+}
+
+.scene-gradient-3 {
+  background: radial-gradient(ellipse 90% 40% at 60% 30%, rgba(230, 57, 70, 0.05) 0%, transparent 60%);
+}
+
+/* ── Progress line ── */
+.progress-track {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 50;
+  pointer-events: none;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #E11D1D, rgba(225, 29, 29, 0.3));
+  transform-origin: top center;
+}
+
+/* ── Large background year text ── */
+.year-bg {
+  font-family: var(--font-mono);
+  font-size: clamp(6rem, 15vw, 20rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.03);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── Chromatic aberration on images ── */
+.chromatic {
+  position: relative;
+}
+
+.chromatic::before,
+.chromatic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  border-radius: inherit;
+}
+
+.chromatic::before {
+  mix-blend-mode: screen;
+  opacity: 0.3;
+  transform: translate(-2px, 0);
+  filter: hue-rotate(-30deg);
+}
+
+.chromatic::after {
+  mix-blend-mode: screen;
+  opacity: 0.3;
+  transform: translate(2px, 0);
+  filter: hue-rotate(30deg);
+}
+
+@media (max-width: 768px) {
+  .progress-track {
+    display: none;
+  }
+
+  .ascii-container {
+    font-size: clamp(4px, 1.2vw, 8px);
+  }
+}

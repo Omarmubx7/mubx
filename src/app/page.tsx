@@ -1,5 +1,5 @@
 import Hero from '@/components/Hero'
-import Journey from '@/components/Journey'
+import About from '@/components/About'
 import dynamic from 'next/dynamic'
 import Stack from '@/components/Stack'
 import Now from '@/components/Now'
@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Journey />
+      <About />
       <ProjectShowcase />
       <Stack />
       <Now />

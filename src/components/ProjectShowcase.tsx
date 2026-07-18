@@ -254,7 +254,7 @@ export default function ProjectShowcase() {
 
     if (isMobile) {
         return (
-            <section className="py-24 relative bg-background border-b border-border/30">
+            <section id="projects" className="py-24 relative bg-background border-b border-border/30">
                 <div className="w-full px-6 md:px-12 relative z-10">
                     {/* Header */}
                     <motion.div
@@ -285,7 +285,7 @@ export default function ProjectShowcase() {
     return (
         <>
             {/* Intro header (before the scroll-pinned section) */}
-            <section className="pt-24 pb-16 relative bg-background border-b border-border/30">
+            <section id="projects" className="pt-24 pb-16 relative bg-background border-b border-border/30">
                 <div className="w-full px-6 md:px-12 lg:px-16 xl:px-24 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}

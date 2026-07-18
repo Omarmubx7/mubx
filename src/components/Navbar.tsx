@@ -1,28 +1,41 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, Suspense, useEffect } from 'react';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import { useState, Suspense, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { useActiveSectionContext } from '@/context/ScrollSpyContext';
 import { usePathname } from 'next/navigation';
 
-
 const NavbarContent = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+    const [navHidden, setNavHidden] = useState(false);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const lastScrollY = useRef(0);
+    const navItemsRef = useRef<(HTMLLIElement | null)[]>([]);
+
+    const { scrollY } = useScroll();
+
+    useMotionValueEvent(scrollY, 'change', (latest) => {
+        const previous = lastScrollY.current;
+        const diff = latest - previous;
+
+        if (latest < 80) {
+            setNavHidden(false);
+        } else if (diff > 30) {
+            setNavHidden(true);
+        } else if (diff < -10) {
+            setNavHidden(false);
+        }
+
+        lastScrollY.current = latest;
+    });
 
     useEffect(() => {
         setMounted(true);
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        handleScroll();
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     useEffect(() => {
@@ -34,7 +47,7 @@ const NavbarContent = () => {
         return () => { document.body.style.overflow = ''; };
     }, [isOpen]);
 
-    const { t, language } = useLanguage();
+    const { t } = useLanguage();
 
     const menuVariants = {
         hidden: { x: '100%' },
@@ -59,10 +72,6 @@ const NavbarContent = () => {
         visible: { opacity: 1, x: 0 }
     };
 
-    const getHref = (path: string) => {
-        return path;
-    };
-
     const pathname = usePathname();
     const { activeSection } = useActiveSectionContext();
 
@@ -77,7 +86,7 @@ const NavbarContent = () => {
             if (hashPart) {
                 const hash = hashPart.split('?')[0];
                 if (hash === 'about') {
-                    return activeSection === 'about' || activeSection === 'journey';
+                    return activeSection === 'about';
                 }
                 return activeSection === hash;
             }
@@ -87,8 +96,9 @@ const NavbarContent = () => {
         return cleanPathname === cleanHref || (cleanPathname.startsWith(cleanHref) && cleanHref !== '/');
     };
 
-    const sectionLinks = [
-        { name: 'About & Journey', href: '#about' },
+    const navLinks = [
+        { name: t.nav.home, href: '/' },
+        { name: 'About', href: '#about' },
         { name: t.nav.projects, href: '#projects' },
         { name: t.nav.tools, href: '#tech-stack' },
         { name: t.nav.contact, href: '#contact' },
@@ -96,122 +106,185 @@ const NavbarContent = () => {
 
     return (
         <>
-            <motion.nav
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ 
-                    opacity: 1, 
-                    y: 0,
-                    paddingTop: (mounted && scrolled) ? 14 : 22,
-                    paddingBottom: (mounted && scrolled) ? 14 : 22,
-                    backgroundColor: (mounted && scrolled) ? 'rgba(10,10,10,0.92)' : 'rgba(13,13,13,0.88)',
-                    borderBottomColor: (mounted && scrolled) ? 'rgba(225,29,29,0.15)' : 'rgba(255,255,255,0.08)',
-                    boxShadow: (mounted && scrolled) ? '0 8px 32px rgba(0,0,0,0.5)' : '0 1px 8px rgba(0,0,0,0.3)'
+            {/* Desktop: Floating pill navbar */}
+            <motion.header
+                variants={{
+                    visible: { y: 0, opacity: 1 },
+                    hidden: { y: -100, opacity: 0 },
                 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-between px-6 md:px-12"
-                style={{
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    borderBottomWidth: 1,
-                    borderBottomStyle: 'solid',
-                }}
+                animate={navHidden ? 'hidden' : 'visible'}
+                transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+                className="fixed top-0 left-0 right-0 z-[200] hidden lg:flex justify-center pt-5 px-6"
+                onMouseEnter={() => setNavHidden(false)}
             >
-                <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2" aria-label="MUBX Home">
-                    <div className="relative h-14 w-28 md:h-16 md:w-32 transition-transform group-hover:scale-105 active:scale-95">
-                        <Image
-                            src="/mubxlogoloader.svg"
-                            alt="MUBX Logo"
-                            fill
-                            className="object-contain"
-                            priority
-                        />
-                    </div>
-                </Link>
-
-                <div className="hidden lg:flex items-center gap-1">
-                    <Link
-                        href="/"
-                        aria-current={isLinkActive('/') ? 'page' : undefined}
-                        className="relative px-6 py-3 text-base font-medium tracking-wide transition-colors"
-                        style={{
-                            color: isLinkActive('/') ? '#E11D1D' : 'rgba(237,232,228,0.8)',
-                        }}
-                        onMouseEnter={(e) => { e.currentTarget.style.color = '#E11D1D' }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.color = isLinkActive('/') ? '#E11D1D' : 'rgba(237,232,228,0.8)'
-                        }}
-                    >
-                        {t.nav.home}
+                <motion.nav
+                    className="flex items-center gap-1 px-2 py-2 rounded-full"
+                    style={{
+                        backgroundColor: 'rgba(13,13,13,0.85)',
+                        backdropFilter: 'blur(24px)',
+                        WebkitBackdropFilter: 'blur(24px)',
+                        border: '1px solid rgba(255,255,255,0.06)',
+                        boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)',
+                    }}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                >
+                    {/* Logo */}
+                    <Link href="/" className="relative z-10 p-2 mr-2 shrink-0" aria-label="MUBX Home">
+                        <div className="relative h-10 w-20 transition-transform hover:scale-105 active:scale-95">
+                            <Image
+                                src="/mubxlogoloader.svg"
+                                alt="MUBX Logo"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </div>
                     </Link>
-                    {sectionLinks.map((link) => (
+
+                    <div className="h-5 w-[1px] mr-2" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
+
+                    {/* Nav items with hover pill */}
+                    {navLinks.map((link, index) => {
+                        const active = isLinkActive(link.href);
+                        return (
+                            <li
+                                key={link.href}
+                                ref={(el) => { navItemsRef.current[index] = el; }}
+                                className="relative list-none px-1"
+                                onMouseEnter={() => setHoveredIndex(index)}
+                            >
+                                <a
+                                    href={link.href}
+                                    className="relative z-10 px-4 py-2.5 text-[13px] font-medium tracking-wide block transition-colors duration-200"
+                                    style={{
+                                        color: active ? '#E11D1D' : hoveredIndex === index ? '#EDE8E4' : 'rgba(237,232,228,0.6)',
+                                    }}
+                                >
+                                    {link.name}
+                                </a>
+                                {hoveredIndex === index && (
+                                    <motion.div
+                                        layoutId="nav-hover-pill"
+                                        className="absolute inset-0 rounded-full z-0"
+                                        style={{
+                                            backgroundColor: 'rgba(225,29,29,0.08)',
+                                            border: '1px solid rgba(225,29,29,0.12)',
+                                        }}
+                                        transition={{
+                                            type: 'spring',
+                                            stiffness: 350,
+                                            damping: 30,
+                                        }}
+                                    />
+                                )}
+                            </li>
+                        );
+                    })}
+
+                    <div className="h-5 w-[1px] mx-2" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
+
+                    {/* Resume */}
+                    <li className="relative list-none px-1">
                         <a
-                            key={link.href}
-                            href={link.href}
-                            aria-current={isLinkActive(link.href) ? 'page' : undefined}
-                            className="relative px-6 py-3 text-base font-medium tracking-wide transition-colors"
+                            href="/cv.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative z-10 px-4 py-2.5 text-[13px] font-medium tracking-wide block transition-colors duration-200"
                             style={{
-                                color: isLinkActive(link.href) ? '#E11D1D' : 'rgba(237,232,228,0.8)',
+                                color: hoveredIndex === navLinks.length ? '#E11D1D' : 'rgba(237,232,228,0.6)',
                             }}
-                            onMouseEnter={(e) => { e.currentTarget.style.color = '#E11D1D' }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.color = isLinkActive(link.href) ? '#E11D1D' : 'rgba(237,232,228,0.8)'
-                            }}
+                            onMouseEnter={() => setHoveredIndex(navLinks.length)}
                         >
-                            {link.name}
+                            {t.nav.resume}
                         </a>
-                    ))}
+                        {hoveredIndex === navLinks.length && (
+                            <motion.div
+                                layoutId="nav-hover-pill"
+                                className="absolute inset-0 rounded-full z-0"
+                                style={{
+                                    backgroundColor: 'rgba(225,29,29,0.08)',
+                                    border: '1px solid rgba(225,29,29,0.12)',
+                                }}
+                                transition={{
+                                    type: 'spring',
+                                    stiffness: 350,
+                                    damping: 30,
+                                }}
+                            />
+                        )}
+                    </li>
 
-                    <div className="h-6 w-[1px] mx-4" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
+                    <div className="h-5 w-[1px] mx-2" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
 
-                    <a
-                        href="/cv.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-3 text-base font-medium tracking-wide transition-colors"
-                        style={{ color: 'rgba(237,232,228,0.8)' }}
-                        onMouseEnter={(e) => { e.currentTarget.style.color = '#E11D1D' }}
-                        onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(237,232,228,0.8)' }}
-                    >
-                        {t.nav.resume}
-                    </a>
-
-                    {mounted && (
+                    {/* Book Call CTA */}
+                    <li className="relative list-none pl-1 pr-1.5">
                         <a
                             href="https://calendly.com/omarmubaidincs/30min"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="ml-4 px-7 py-3 text-base font-bold text-white transition-all"
+                            className="relative z-10 px-5 py-2.5 text-[13px] font-bold text-white tracking-wide block rounded-full transition-all duration-200"
                             style={{
                                 backgroundColor: '#E11D1D',
                             }}
                             onMouseEnter={(e) => {
-                                e.currentTarget.style.boxShadow = '0 0 24px rgba(225,29,29,0.35)'
+                                e.currentTarget.style.boxShadow = '0 0 24px rgba(225,29,29,0.4)';
                             }}
                             onMouseLeave={(e) => {
-                                e.currentTarget.style.boxShadow = 'none'
+                                e.currentTarget.style.boxShadow = 'none';
                             }}
                         >
                             {t.nav.bookCall}
                         </a>
-                    )}
-                </div>
+                    </li>
+                </motion.nav>
+            </motion.header>
 
-                {/* Mobile Hamburger Button */}
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="relative z-[210] p-2.5 lg:hidden transition-colors"
-                    style={{ color: '#E11D1D' }}
-                    aria-label="Toggle Menu"
+            {/* Mobile: Fixed top bar with hamburger */}
+            <motion.header
+                variants={{
+                    visible: { y: 0, opacity: 1 },
+                    hidden: { y: -100, opacity: 0 },
+                }}
+                animate={navHidden ? 'hidden' : 'visible'}
+                transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+                className="fixed top-0 left-0 right-0 z-[200] lg:hidden"
+            >
+                <nav
+                    className="flex items-center justify-between px-5 py-3"
+                    style={{
+                        backgroundColor: 'rgba(10,10,10,0.92)',
+                        backdropFilter: 'blur(20px)',
+                        WebkitBackdropFilter: 'blur(20px)',
+                        borderBottom: '1px solid rgba(255,255,255,0.06)',
+                    }}
                 >
-                    {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                </button>
-            </motion.nav>
+                    <Link href="/" className="relative z-50 p-1 -ml-1" aria-label="MUBX Home">
+                        <div className="relative h-10 w-20">
+                            <Image
+                                src="/mubxlogoloader.svg"
+                                alt="MUBX Logo"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </div>
+                    </Link>
 
-            {/* Mobile Slide-in Menu - outside nav to avoid backdrop-filter containing block */}
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="relative z-[210] p-2 transition-colors"
+                        style={{ color: '#E11D1D' }}
+                        aria-label="Toggle Menu"
+                    >
+                        {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                    </button>
+                </nav>
+            </motion.header>
+
+            {/* Mobile Slide-in Menu */}
             <AnimatePresence>
                 {isOpen && (
                     <>
-                        {/* Backdrop */}
                         <motion.div
                             variants={backdropVariants}
                             initial="hidden"
@@ -222,7 +295,6 @@ const NavbarContent = () => {
                             onClick={() => setIsOpen(false)}
                         />
 
-                        {/* Slide-in Panel */}
                         <motion.div
                             variants={menuVariants}
                             initial="hidden"
@@ -236,7 +308,6 @@ const NavbarContent = () => {
                                 borderLeft: '1px solid rgba(255,255,255,0.06)',
                             }}
                         >
-                            {/* Panel Header */}
                             <div className="flex items-center justify-end p-5 pb-2">
                                 <button
                                     onClick={() => setIsOpen(false)}
@@ -248,24 +319,8 @@ const NavbarContent = () => {
                                 </button>
                             </div>
 
-                            {/* Navigation Links */}
                             <div className="flex flex-col px-6 pt-4 pb-6 gap-1">
-                                <motion.div variants={itemVariants}>
-                                    <Link
-                                        href="/"
-                                        onClick={() => setIsOpen(false)}
-                                        className={`flex items-center gap-3 py-3 text-[15px] font-medium tracking-wide transition-colors min-h-[44px] ${
-                                            isLinkActive('/') ? 'text-[#E11D1D]' : 'text-[rgba(237,232,228,0.75)] hover:text-[#E11D1D]'
-                                        }`}
-                                    >
-                                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 transition-all ${
-                                            isLinkActive('/') ? 'bg-[#E11D1D] scale-125' : 'bg-transparent'
-                                        }`} />
-                                        {t.nav.home}
-                                    </Link>
-                                </motion.div>
-
-                                {sectionLinks.map((link, i) => (
+                                {navLinks.map((link) => (
                                     <motion.div key={link.href} variants={itemVariants}>
                                         <a
                                             href={link.href}
@@ -298,30 +353,27 @@ const NavbarContent = () => {
                                 </motion.div>
                             </div>
 
-                            {/* Bottom CTA */}
                             <div className="mt-auto px-6 pb-8 pt-4 border-t border-white/5">
-                                {mounted && (
-                                    <motion.div variants={itemVariants}>
-                                        <a
-                                            href="https://calendly.com/omarmubaidincs/30min"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="w-full flex items-center justify-center py-3.5 font-bold text-white text-sm tracking-wide transition-all min-h-[44px]"
-                                            style={{
-                                                backgroundColor: '#E11D1D',
-                                                boxShadow: '0 0 20px rgba(225,29,29,0.2)',
-                                            }}
-                                            onMouseEnter={(e) => {
-                                                e.currentTarget.style.boxShadow = '0 0 30px rgba(225,29,29,0.35)';
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.currentTarget.style.boxShadow = '0 0 20px rgba(225,29,29,0.2)';
-                                            }}
-                                        >
-                                            {t.nav.bookCall}
-                                        </a>
-                                    </motion.div>
-                                )}
+                                <motion.div variants={itemVariants}>
+                                    <a
+                                        href="https://calendly.com/omarmubaidincs/30min"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full flex items-center justify-center py-3.5 font-bold text-white text-sm tracking-wide transition-all min-h-[44px] rounded-full"
+                                        style={{
+                                            backgroundColor: '#E11D1D',
+                                            boxShadow: '0 0 20px rgba(225,29,29,0.2)',
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.boxShadow = '0 0 30px rgba(225,29,29,0.35)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.boxShadow = '0 0 20px rgba(225,29,29,0.2)';
+                                        }}
+                                    >
+                                        {t.nav.bookCall}
+                                    </a>
+                                </motion.div>
                             </div>
                         </motion.div>
                     </>

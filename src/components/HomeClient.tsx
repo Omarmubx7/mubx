@@ -21,10 +21,6 @@ const About = dynamic(() => import('@/components/About'));
 const TechStack = dynamic(() => import('@/components/TechStack'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
-const Timeline = dynamic(() => import('@/components/Timeline'), {
-    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
-});
-
 const Contact = dynamic(() => import('@/components/Contact'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
@@ -54,7 +50,7 @@ function HomeMain() {
 
     const navLinks = [
         { id: 'hero', name: t.nav.home },
-        { id: 'about', name: 'About & Journey' },
+        { id: 'about', name: 'About' },
         { id: 'projects', name: t.nav.projects },
         { id: 'contact', name: t.nav.contact }
     ];
@@ -98,7 +94,7 @@ function HomeMain() {
                         {/* Sticky Sidebar Navigation Shortcuts */}
                         <nav className="flex flex-col gap-3.5 font-mono text-[10px] tracking-wider uppercase">
                             {navLinks.map((link) => {
-                                const isActive = activeSection === link.id || (link.id === 'about' && activeSection === 'journey') || (link.id === 'projects' && activeSection === 'tech-stack');
+                                const isActive = activeSection === link.id || (link.id === 'projects' && activeSection === 'tech-stack');
                                 return (
                                     <a
                                         key={link.id}
@@ -183,9 +179,6 @@ function HomeMain() {
 
                         <div id="about" className="scroll-mt-24">
                             <About />
-                        </div>
-                        <div id="journey" className="scroll-mt-24">
-                            <Timeline />
                         </div>
 
                         <div id="projects" className="scroll-mt-24">
