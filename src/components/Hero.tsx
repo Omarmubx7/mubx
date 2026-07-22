@@ -1,14 +1,11 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
-import Image from 'next/image'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef, useEffect, useState } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Marquee from '@/components/ui/Marquee'
-import { useMouseTilt } from '@/lib/mouse-tilt'
-import MatrixRain from '@/components/hero/MatrixRain'
-import NeuralNetwork from '@/components/hero/NeuralNetwork'
-import CrtBootOverlay from '@/components/hero/CrtBootOverlay'
-import TerminalBoot from '@/components/hero/TerminalBoot'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const marqueeItems = [
   'WEB DEVELOPER',
@@ -18,288 +15,50 @@ const marqueeItems = [
   'HTU CS STUDENT',
   'EXPERIMENTER BUILDER',
   'MUBXAI',
-  'MEN ONLY',
 ]
 
-/* ─── ASCII Art from image via canvas ─── */
-function useAsciiImage(src: string, columns: number = 80) {
-  const [lines, setLines] = useState<{ text: string; colors: string[] }[]>([])
-  const [loaded, setLoaded] = useState(false)
-
-  useEffect(() => {
-    const img = new window.Image()
-    img.crossOrigin = 'anonymous'
-    img.onload = () => {
-      const canvas = document.createElement('canvas')
-      const ctx = canvas.getContext('2d')!
-      const aspectRatio = img.height / img.width
-      const charAspect = 0.55
-      const rows = Math.floor(columns * aspectRatio * charAspect)
-      canvas.width = columns
-      canvas.height = rows
-      ctx.drawImage(img, 0, 0, columns, rows)
-      const imageData = ctx.getImageData(0, 0, columns, rows)
-      const pixels = imageData.data
-      const charSet = ' .,:;i1tfLCG08@'
-      const result: { text: string; colors: string[] }[] = []
-      for (let y = 0; y < rows; y++) {
-        let text = ''
-        const colors: string[] = []
-        for (let x = 0; x < columns; x++) {
-          const idx = (y * columns + x) * 4
-          const r = pixels[idx]
-          const g = pixels[idx + 1]
-          const b = pixels[idx + 2]
-          const brightness = (r + g + b) / 3
-          const charIdx = Math.min(
-            Math.floor((brightness / 255) * (charSet.length - 1)),
-            charSet.length - 1
-          )
-          text += charSet[charIdx]
-          colors.push(`rgb(${r},${g},${b})`)
-        }
-        result.push({ text, colors })
-      }
-      setLines(result)
-      setLoaded(true)
-    }
-    img.src = src
-  }, [src, columns])
-
-  return { lines, loaded }
-}
-
-/* ─── ASCII Art Image ─── */
-function AsciiPortrait({ src, opacity }: { src: string; opacity: any }) {
-  const { lines, loaded } = useAsciiImage(src, 90)
-
-  if (!loaded) return null
-
+/* ─── Reveal wrapper: overflow-hidden + translateY animation ─── */
+function Reveal({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <motion.div style={{ opacity }} className="ascii-container">
-      {lines.map((line, i) => (
-        <div key={i}>
-          {line.text.split('').map((char, j) => (
-            <span key={j} style={{ color: line.colors[j] }}>
-              {char}
-            </span>
-          ))}
-        </div>
-      ))}
-    </motion.div>
+    <div className={`overflow-hidden ${className ?? ''}`}>
+      <div className="reveal-inner">{children}</div>
+    </div>
   )
 }
 
-/* ─── Scroll-driven hero content (only mounts after hydration) ─── */
-function HeroScrollContent() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const tiltRef = useMouseTilt(3)
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end start'],
-  })
-
-  const gridY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-  const glowOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3])
-  const imageRealOpacity = useTransform(scrollYProgress, [0, 0.1, 0.2], [0, 0, 1])
-  const asciiOpacity = useTransform(scrollYProgress, [0, 0.1, 0.2], [1, 1, 0])
-  const contentY = useTransform(scrollYProgress, [0, 0.4], ['0%', '-8%'])
-
-  return (
-    <section
-      ref={sectionRef}
-      id="hero"
-      style={{
-        background: '#0D0D0D',
-        position: 'relative',
-        minHeight: '100vh',
-        overflow: 'hidden',
-      }}
-    >
-      {/* z-0: Matrix rain canvas */}
-      <MatrixRain density={28} />
-
-      {/* z-1: Neural network canvas */}
-      <NeuralNetwork nodeCount={50} />
-
-      {/* z-2: Animated grid */}
-      <motion.div className="hero-grid" style={{ y: gridY }} />
-
-      {/* z-3: Glow */}
-      <motion.div
-        style={{ opacity: glowOpacity }}
-        className="absolute inset-0 pointer-events-none"
-      >
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'radial-gradient(ellipse 80% 50% at 50% 40%, rgba(230,57,70,0.08) 0%, transparent 70%)',
-          }}
-        />
-      </motion.div>
-
-      {/* z-10: Content with 3D tilt */}
-      <motion.div
-        style={{ y: contentY }}
-        className="absolute inset-0 flex flex-col justify-center z-10"
-      >
-        <div className="max-w-[1200px] mx-auto w-full px-6 md:px-12">
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
-
-            {/* Text side — tilt layer */}
-            <div ref={tiltRef} className="hero-tilt-layer flex-1 min-w-0 w-full">
-              <TerminalBoot />
-            </div>
-
-            {/* Image / ASCII side */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, delay: 2.0, ease: [0.16, 1, 0.3, 1] }}
-              className="flex-shrink-0 relative"
-              style={{ width: 'clamp(200px, 25vw, 380px)', aspectRatio: '3/4' }}
-            >
-              {/* Real image — fades out on scroll, with VHS glitch */}
-              <motion.div style={{ opacity: imageRealOpacity }} className="absolute inset-0">
-                <div className="vhs-glitch" style={{ width: '100%', height: '100%' }}>
-                  <Image
-                    src="/omarmub.webp"
-                    alt="Omar Mubaidin"
-                    fill
-                    priority
-                    sizes="(max-width: 640px) 200px, (max-width: 1024px) 250px, 380px"
-                    className="object-cover"
-                    style={{
-                      borderRadius: 24,
-                      border: '1px solid rgba(225,29,29,0.3)',
-                      boxShadow: '0 0 40px rgba(225,29,29,0.15)',
-                    }}
-                  />
-                  {/* Chromatic aberration layers */}
-                  <div
-                    className="chromatic"
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      borderRadius: 24,
-                      border: '1px solid rgba(225,29,29,0.15)',
-                      pointerEvents: 'none',
-                    }}
-                  />
-                </div>
-              </motion.div>
-
-              {/* ASCII art — fades in on scroll */}
-              <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-                <AsciiPortrait src="/omarmub.webp" opacity={asciiOpacity} />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* z-15/16: CRT effects (scan lines, vignette, VHS noise) */}
-      <div className="scan-lines" />
-      <CrtBootOverlay />
-
-      {/* z-30: Bottom marquee */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          borderTop: '1px solid rgba(255,255,255,0.04)',
-          zIndex: 30,
-        }}
-      >
-        <Marquee items={marqueeItems} />
-      </div>
-    </section>
-  )
-}
-
-/* ─── Fallback while JS hydrates (pure static HTML — no client components) ─── */
+/* ─── Fallback while JS hydrates ─── */
 function HeroFallback() {
   return (
     <section
       id="hero"
-      style={{
-        background: '#0D0D0D',
-        position: 'relative',
-        minHeight: '100vh',
-      }}
+      className="relative min-h-screen flex items-center justify-center bg-bg-dark"
     >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          minHeight: '100vh',
-          position: 'relative',
-          zIndex: 10,
-        }}
-      >
-        <div className="max-w-[1200px] mx-auto w-full px-6 md:px-12">
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
-            <div className="flex-1 min-w-0 w-full">
-              <div
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 'clamp(14px, 1.8vw, 22px)',
-                  lineHeight: 1.6,
-                  color: '#9E9490',
-                }}
-              >
-                <div><span style={{ color: '#E11D1D' }}>$ </span>boot --profile omar-mubaidin</div>
-                <div style={{ color: '#22c55e' }}>[OK] Kernel loaded</div>
-                <div style={{ color: '#22c55e' }}>[OK] Neural network initialized</div>
-                <div style={{ color: '#22c55e' }}>[OK] 47 skills compiled</div>
-                <div style={{ color: '#22c55e' }}>[OK] Full-stack modules ready</div>
-                <div style={{ height: '0.5em' }} />
-                <div><span style={{ color: '#E11D1D' }}>$ </span>whoami</div>
-                <div style={{ color: '#EDE8E4' }}>Omar Mubaidin.</div>
-                <div style={{ color: '#E11D1D' }}>Web Dev &amp; AI Engineer.</div>
-                <div style={{ height: '0.5em' }} />
-                <div><span style={{ color: '#E11D1D' }}>$ </span>cat bio.txt</div>
-                <div>I build AI-powered products and clean web experiences.</div>
-                <div style={{ height: '0.5em' }} />
-                <div><span style={{ color: '#E11D1D' }}>$ </span>cat status.txt</div>
-                <div style={{ color: '#22c55e' }}>&gt; Available for hire</div>
-                <div style={{ height: '0.5em' }} />
-                <div><span style={{ color: '#E11D1D' }}>$ </span>cd projects <span style={{ color: '#5A504C', fontSize: '0.85em' }}># explore my work</span></div>
-                <div><span style={{ color: '#E11D1D' }}>$ </span>book --call <span style={{ color: '#5A504C', fontSize: '0.85em' }}># let&apos;s talk</span></div>
-              </div>
-            </div>
-
-            <div
-              className="flex-shrink-0 relative"
-              style={{
-                width: 'clamp(200px, 25vw, 380px)',
-                aspectRatio: '3/4',
-                borderRadius: 24,
-                border: '1px solid rgba(225,29,29,0.2)',
-                background: 'rgba(225,29,29,0.03)',
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          borderTop: '1px solid rgba(255,255,255,0.04)',
-          zIndex: 30,
-        }}
-      >
-        <Marquee items={marqueeItems} />
+      <div className="text-center px-6">
+        <p
+          style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 'clamp(10px, 1vw, 12px)',
+            fontWeight: 500,
+            color: '#E11D1D',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+          }}
+        >
+          Where Things Get Built
+        </p>
+        <h1
+          className="uppercase mt-3"
+          style={{
+            fontFamily: "'Bebas Neue', sans-serif",
+            fontSize: 'clamp(72px, 18vw, 200px)',
+            fontWeight: 400,
+            color: '#EDE8E4',
+            letterSpacing: '-0.04em',
+            lineHeight: 0.85,
+          }}
+        >
+          MUBX
+        </h1>
       </div>
     </section>
   )
@@ -308,11 +67,190 @@ function HeroFallback() {
 /* ─── Main Hero ─── */
 export default function Hero() {
   const [hydrated, setHydrated] = useState(false)
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const pinRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setHydrated(true)
   }, [])
 
+  useEffect(() => {
+    if (!hydrated || !sectionRef.current || !pinRef.current) return
+
+    const timer = setTimeout(() => {
+      const ctx = gsap.context(() => {
+        const reveals = gsap.utils.toArray<HTMLElement>('.reveal-inner', pinRef.current)
+
+        gsap.set(reveals, { opacity: 0, yPercent: 100 })
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 0.5,
+          },
+        })
+
+        /* Phase 1: Name (0–30%) */
+        tl.to(reveals[0], { opacity: 1, yPercent: 0, duration: 0.3, ease: 'power3.out' }, 0)
+
+        /* Phase 2: Role (20–45%) */
+        if (reveals[1]) {
+          tl.to(reveals[1], { opacity: 1, yPercent: 0, duration: 0.25, ease: 'power3.out' }, 0.2)
+        }
+
+        /* Phase 3: Definition (35–55%) */
+        if (reveals[2]) {
+          tl.to(reveals[2], { opacity: 1, yPercent: 0, duration: 0.2, ease: 'power2.out' }, 0.35)
+        }
+
+        /* Phase 4: Body (50–70%) */
+        if (reveals[3]) {
+          tl.to(reveals[3], { opacity: 1, yPercent: 0, duration: 0.2, ease: 'power2.out' }, 0.5)
+        }
+
+        /* Phase 5: CTA (65–80%) */
+        if (reveals[4]) {
+          tl.to(reveals[4], { opacity: 1, yPercent: 0, duration: 0.15, ease: 'power2.out' }, 0.65)
+        }
+      }, sectionRef)
+
+      return () => ctx.revert()
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [hydrated])
+
   if (!hydrated) return <HeroFallback />
-  return <HeroScrollContent />
+
+  return (
+    <>
+      <section ref={sectionRef} className="relative h-[250vh] bg-bg-dark">
+        <div
+          ref={pinRef}
+          className="sticky top-0 h-dvh w-full flex items-center justify-center"
+        >
+          <div className="w-full px-6 md:px-12 lg:px-16 xl:px-24 text-center max-w-2xl mx-auto">
+            {/* Tagline */}
+            <Reveal>
+              <p
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 'clamp(10px, 1vw, 12px)',
+                  fontWeight: 500,
+                  color: '#E11D1D',
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Where Things Get Built
+              </p>
+            </Reveal>
+
+            {/* Name */}
+            <Reveal className="mt-3">
+              <h1
+                className="uppercase"
+                style={{
+                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontSize: 'clamp(64px, 14vw, 180px)',
+                  fontWeight: 400,
+                  color: '#EDE8E4',
+                  letterSpacing: '-0.04em',
+                  lineHeight: 0.85,
+                }}
+              >
+                MUBX
+              </h1>
+            </Reveal>
+
+            {/* Definition */}
+            <Reveal className="mt-10">
+              <div className="space-y-2">
+                <p
+                  className="uppercase text-text-secondary-dark"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 'clamp(10px, 1vw, 12px)',
+                    letterSpacing: '0.1em',
+                  }}
+                >
+                  [ MUBX ], noun
+                </p>
+                <ol
+                  className="list-decimal pl-4 space-y-1 text-left inline-block"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 'clamp(10px, 1vw, 12px)',
+                    color: '#9E9490',
+                    letterSpacing: '0.02em',
+                  }}
+                >
+                  <li>The Perfection Behind Every Build.</li>
+                  <li>A Studio Engineering Ideas into Reality.</li>
+                </ol>
+              </div>
+            </Reveal>
+
+            {/* Body */}
+            <Reveal className="mt-8">
+              <p
+                className="text-text-secondary-dark leading-relaxed mx-auto max-w-md"
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: 'clamp(13px, 1.2vw, 15px)',
+                }}
+              >
+                you&apos;ve got a product that needs to be fast, polished, and
+                built to last. we get it there — design, engineering, and system
+                thinking working together so you ship with confidence, not
+                compromise.
+              </p>
+            </Reveal>
+
+            {/* CTA */}
+            <Reveal className="mt-8">
+              <a
+                href="https://calendly.com/omarmubaidincs/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-neon text-white transition-all hover:bg-[#B91616] hover:shadow-[0_0_25px_rgba(255,30,30,0.4)]"
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 'clamp(10px, 1vw, 12px)',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                }}
+              >
+                Let&apos;s Talk
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </a>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Marquee — outside pinned area, scrolls in naturally */}
+      <div
+        className="relative z-30 bg-bg-dark"
+        style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}
+      >
+        <Marquee items={marqueeItems} />
+      </div>
+    </>
+  )
 }

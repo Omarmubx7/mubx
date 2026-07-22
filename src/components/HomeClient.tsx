@@ -61,7 +61,7 @@ function HomeMain() {
 
             <div className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-12 border-collapse relative">
                 {/* Sticky Left Sidebar (Desktop only) */}
-                <aside className="hidden lg:flex lg:col-span-4 lg:h-screen lg:sticky lg:top-0 border-b lg:border-b-0 lg:border-r border-border/30 bg-background flex-col justify-between p-8 lg:p-12 xl:p-16 select-none overflow-y-auto z-40">
+                <aside className="hidden lg:flex lg:w-1/3 lg:h-screen lg:fixed lg:top-0 border-b lg:border-b-0 lg:border-r border-border/30 bg-background flex-col justify-between p-8 lg:p-12 xl:p-16 select-none overflow-y-auto z-40">
                     <div className="space-y-8 xl:space-y-12">
                         {/* Profile/Logo Block */}
                         <div className="space-y-4">
@@ -170,11 +170,9 @@ function HomeMain() {
                 </aside>
 
                 {/* Scrollable Right Panel */}
-                <div className="lg:col-span-8 bg-background flex flex-col min-h-screen">
+                <div className="lg:col-span-8 lg:ml-[33.333%] bg-background flex flex-col min-h-screen">
                     <Suspense fallback={null}>
-                        <div id="hero" className="scroll-mt-24">
-                            <Hero />
-                        </div>
+                        <Hero />
                         <TrustedBy />
 
                         <div id="about" className="scroll-mt-24">
