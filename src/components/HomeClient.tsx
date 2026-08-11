@@ -139,15 +139,30 @@ function HomeMain() {
                         </a>
 
                         {/* View Resume Prominent CTA Button */}
-                        <a
-                            href="/cv.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full py-3 border border-border/30 hover:border-neon/50 text-muted-foreground hover:text-neon text-xs font-bold rounded-none flex items-center justify-center gap-2 bg-card/5 hover:bg-white/[0.02] transition-colors uppercase tracking-wider font-mono"
-                        >
-                            <Download className="w-3.5 h-3.5" />
-                            {t.nav.resume}
-                        </a>
+                        <div className="flex gap-2">
+                            <a
+                                href="/cv.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-1 py-3 border border-border/30 hover:border-neon/50 text-muted-foreground hover:text-neon text-xs font-bold rounded-none flex items-center justify-center gap-2 bg-card/5 hover:bg-white/[0.02] transition-colors uppercase tracking-wider font-mono"
+                            >
+                                <svg className="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M12 3v12"></path>
+                                    <path d="M7 10l5 5 5-5"></path>
+                                    <path d="M5 21h14"></path>
+                                </svg>
+                                {t.nav.resume}
+                            </a>
+                            <a
+                                href="/cv.pdf"
+                                download="Omar-Mubaidin-Resume.pdf"
+                                aria-label="Download Resume"
+                                title="Download Resume"
+                                className="w-[42px] py-3 border border-neon/40 hover:bg-neon hover:text-white text-neon flex items-center justify-center bg-neon/5 transition-all shadow-[0_0_10px_rgba(225,29,29,0.1)] hover:shadow-[0_0_20px_rgba(225,29,29,0.3)]"
+                            >
+                                <Download className="w-3.5 h-3.5" />
+                            </a>
+                        </div>
 
                         {/* Toggles and Socials Row */}
                         <div className="flex items-center justify-between gap-4">

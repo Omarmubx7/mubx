@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useState, Suspense, useEffect, useRef } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { useActiveSectionContext } from '@/context/ScrollSpyContext';
@@ -184,18 +184,31 @@ const NavbarContent = () => {
                     <div className="h-5 w-[1px] mx-2" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
 
                     {/* Resume */}
-                    <li className="relative list-none px-1">
+                    <li className="relative list-none px-1 flex items-center">
                         <a
                             href="/cv.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="relative z-10 px-4 py-2.5 text-[13px] font-medium tracking-wide block transition-colors duration-200"
+                            className="relative z-10 pl-4 pr-2 py-2.5 text-[13px] font-medium tracking-wide block transition-colors duration-200"
                             style={{
                                 color: hoveredIndex === navLinks.length ? '#E11D1D' : 'rgba(237,232,228,0.6)',
                             }}
                             onMouseEnter={() => setHoveredIndex(navLinks.length)}
                         >
                             {t.nav.resume}
+                        </a>
+                        <a
+                            href="/cv.pdf"
+                            download="Omar-Mubaidin-Resume.pdf"
+                            aria-label="Download Resume"
+                            title="Download Resume"
+                            className="relative z-10 px-2 py-2.5 flex items-center transition-colors duration-200"
+                            style={{
+                                color: hoveredIndex === navLinks.length ? '#E11D1D' : 'rgba(237,232,228,0.6)',
+                            }}
+                            onMouseEnter={() => setHoveredIndex(navLinks.length)}
+                        >
+                            <Download className="w-3.5 h-3.5" />
                         </a>
                         {hoveredIndex === navLinks.length && (
                             <motion.div
@@ -340,16 +353,28 @@ const NavbarContent = () => {
                                 <div className="h-[1px] my-3" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }} />
 
                                 <motion.div variants={itemVariants}>
-                                    <a
-                                        href="/cv.pdf"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        onClick={() => setIsOpen(false)}
-                                        className="flex items-center gap-3 py-3 text-[15px] font-medium tracking-wide text-[rgba(237,232,228,0.75)] hover:text-[#E11D1D] transition-colors min-h-[44px]"
-                                    >
-                                        <span className="w-1.5 h-1.5 rounded-full shrink-0 bg-transparent" />
-                                        {t.nav.resume}
-                                    </a>
+                                    <div className="flex items-center">
+                                        <a
+                                            href="/cv.pdf"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={() => setIsOpen(false)}
+                                            className="flex items-center gap-3 py-3 text-[15px] font-medium tracking-wide text-[rgba(237,232,228,0.75)] hover:text-[#E11D1D] transition-colors min-h-[44px] flex-1"
+                                        >
+                                            <span className="w-1.5 h-1.5 rounded-full shrink-0 bg-transparent" />
+                                            {t.nav.resume}
+                                        </a>
+                                        <a
+                                            href="/cv.pdf"
+                                            download="Omar-Mubaidin-Resume.pdf"
+                                            aria-label="Download Resume"
+                                            title="Download Resume"
+                                            onClick={() => setIsOpen(false)}
+                                            className="flex items-center py-3 px-4 text-[rgba(237,232,228,0.75)] hover:text-[#E11D1D] transition-colors min-h-[44px]"
+                                        >
+                                            <Download className="w-4 h-4" />
+                                        </a>
+                                    </div>
                                 </motion.div>
                             </div>
 
