@@ -6,7 +6,7 @@ import { timeline } from '@/data/timeline'
 import { useDecodeText } from '@/lib/decode'
 import { slideFromLeft, sceneStagger } from '@/lib/motion'
 
-/* ─── Data ─── */
+/* Data */
 const yearGroups = [
   { year: '2023', entries: [timeline[0]] },
   { year: '2024', entries: [timeline[1], timeline[2]] },
@@ -14,7 +14,7 @@ const yearGroups = [
   { year: '2026', entries: [timeline[5]] },
 ]
 
-/* ─── Decode heading that triggers on scroll ─── */
+/* Decode heading that triggers on scroll */
 function DecodeHeading({ text, delay = 0 }: { text: string; delay?: number }) {
   const ref = useRef<HTMLSpanElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
@@ -31,7 +31,7 @@ function DecodeHeading({ text, delay = 0 }: { text: string; delay?: number }) {
   )
 }
 
-/* ─── Desktop: Scroll-driven scenes ─── */
+/* Desktop: Scroll-driven scenes */
 function DesktopView() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -51,7 +51,7 @@ function DesktopView() {
         className="sticky top-0 h-screen w-full overflow-hidden"
         style={{ willChange: 'transform', contain: 'layout style' }}
       >
-        {/* Progress line — scoped to sticky viewport */}
+        {/* Progress line scoped to sticky viewport */}
         <div className="progress-track hidden md:block">
           <motion.div
             className="progress-fill"
@@ -59,14 +59,14 @@ function DesktopView() {
           />
         </div>
 
-        {/* MY PATH — horizontal strip */}
+        {/* MY PATH horizontal strip */}
         <MyPathPhase scrollYProgress={scrollYProgress} />
       </div>
     </div>
   )
 }
 
-/* ─── Desktop: Year card for horizontal strip ─── */
+/* Desktop: Year card for horizontal strip */
 function DesktopYearCard({
   group,
 }: {
@@ -104,7 +104,7 @@ function DesktopYearCard({
   )
 }
 
-/* ─── Desktop: MY PATH — horizontal strip ─── */
+/* Desktop: MY PATH horizontal strip */
 function MyPathPhase({ scrollYProgress }: { scrollYProgress: any }) {
   const opacity = useTransform(scrollYProgress, [0, 0.06], [0, 1])
   const y = useTransform(scrollYProgress, [0, 0.06], [40, 0])
@@ -149,7 +149,7 @@ function MyPathPhase({ scrollYProgress }: { scrollYProgress: any }) {
   )
 }
 
-/* ─── Mobile: MY PATH — horizontal scroll-snap strip ─── */
+/* Mobile: MY PATH horizontal scroll-snap strip */
 function MobileMyPath() {
   return (
     <section
@@ -215,7 +215,7 @@ function MobileMyPath() {
   )
 }
 
-/* ─── Main ─── */
+/* Main */
 export default function Journey() {
   const [isMobile, setIsMobile] = useState(true)
 

@@ -8,7 +8,7 @@ export const timeline: TimelineEntry[] = [
   {
     year: '2023',
     title: 'First Lines of Code',
-    description: 'Late nights learning HTML, CSS, and JavaScript — the spark that turned curiosity into a craft.',
+    description: 'Late nights learning HTML, CSS, and JavaScript the spark that turned curiosity into a craft.',
   },
   {
     year: '2024',
@@ -18,7 +18,7 @@ export const timeline: TimelineEntry[] = [
   {
     year: '2024',
     title: 'MUBXbot',
-    description: 'Built an AI chatbot for HTU instructor office hours — my first production AI product serving real students on campus.',
+    description: 'Built an AI chatbot for HTU instructor office hours my first production AI product serving real students on campus.',
   },
   {
     year: '2025',
@@ -32,7 +32,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     year: '2026',
-    title: 'Now — Building Daily',
+    title: 'Now Building Daily',
     description: 'Daily experiments in AI engineering, full-stack development, and product design. Always shipping, always learning.',
   },
 ]

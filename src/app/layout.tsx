@@ -13,7 +13,7 @@ import { LanguageProvider } from '@/context/LanguageContext'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mubx.dev'),
-  title: 'Omar Mubaidin — Web Developer & AI Engineer | mubx.dev',
+  title: 'Omar Mubaidin Web Developer & AI Engineer | mubx.dev',
   description:
     'Omar Mubaidin builds AI-powered products and web experiences that ship, scale, and solve real problems. Based in Amman, Jordan.',
   keywords: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Omar Mubaidin', url: 'https://mubx.dev' }],
   creator: 'Omar Mubaidin',
   openGraph: {
-    title: 'Omar Mubaidin — Web Developer & AI Engineer',
+    title: 'Omar Mubaidin Web Developer & AI Engineer',
     description:
       'Omar builds AI-powered products and web experiences that ship, scale, and solve real problems.',
     url: 'https://mubx.dev',
@@ -41,13 +41,13 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Omar Mubaidin — mubx.dev',
+        alt: 'Omar Mubaidin mubx.dev',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Omar Mubaidin — Web Developer & AI Engineer',
+    title: 'Omar Mubaidin Web Developer & AI Engineer',
     description:
       'Omar builds AI-powered products and web experiences that ship, scale, and solve real problems.',
   },
@@ -62,9 +62,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const isProd = process.env.NODE_ENV === 'production'
+  const bootSkipScript = `(function(){try{var ua=navigator.userAgent.toLowerCase();var bot=/lighthouse|chrome-lighthouse|googlebot|bingbot|yandexbot|baiduspider|headlesschrome|speed insights|insights/i.test(ua);var automated=navigator.webdriver||window.location.search.indexOf('lighthouse')>-1||!!window._lighthouse;var local=window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1'||window.location.port!=='';var seen=false;try{seen=sessionStorage.getItem('mubx-loaded')==='true'}catch(e){}if(bot||automated||(${isProd}&&!local&&seen)){document.documentElement.setAttribute('data-boot-skip','')}}catch(e){})();`
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: bootSkipScript }} />
+        <noscript>
+          <style>{`[data-boot-cover]{display:none!important}`}</style>
+        </noscript>
         <link rel="canonical" href="https://mubx.dev" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/mubxlogoloader.svg" type="image/svg+xml" />

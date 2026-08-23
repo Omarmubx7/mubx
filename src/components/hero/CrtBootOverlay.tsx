@@ -39,10 +39,10 @@ export default function CrtBootOverlay() {
         }}
       />
 
-      {/* CRT Vignette — stays permanently */}
+      {/* CRT Vignette stays permanently */}
       <div className="crt-vignette" />
 
-      {/* VHS noise grain — stays permanently */}
+      {/* VHS noise grain stays permanently */}
       <div className="vhs-noise" />
     </>
   )

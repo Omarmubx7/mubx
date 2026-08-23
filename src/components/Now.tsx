@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 
 const lines = [
-  'Building MUBXAI — AI-powered academic tools for HTU students',
+  'Building MUBXAI AI-powered academic tools for HTU students',
   'Exploring AI agent patterns and LLM orchestration',
   'Learning distributed systems and system design',
   'Shipping new experiments weekly on mubx.dev',

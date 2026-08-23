@@ -44,7 +44,7 @@ export function useScrollSpy(
         return current;
     }, [ids, idsKey, triggerRatio]);
 
-    // Lazy initializer runs once synchronously before any render — no effect needed
+    // Lazy initializer runs once synchronously before any render no effect needed
     const [activeId, setActiveId] = useState<string>(() => ids[0] ?? '');
 
     useEffect(() => {

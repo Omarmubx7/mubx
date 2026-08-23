@@ -1,12 +1,20 @@
 
-import { Metadata } from 'next';
-import Image from 'next/image';
+import { Suspense } from 'react';
 import Link from 'next/link';
-import { LanguageProvider } from '@/context/LanguageContext';
-
-import Badge from '@/components/ui/Badge';
-import { GithubIcon, LinkedinIcon, Globe, InstagramIcon, ArrowRight, Mail, Mic, Bot } from 'lucide-react';
+import Image from 'next/image';
+import {
+    ArrowRight,
+    Download,
+    GithubIcon,
+    Globe,
+    InstagramIcon,
+    LinkedinIcon,
+    Mail,
+} from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import type { Metadata } from 'next';
+
+import { LanguageProvider } from '@/context/LanguageContext';
 
 import { dictionary, Locale } from '@/lib/dictionaries';
 import { siteConfig } from '@/config/seo';
@@ -44,252 +52,136 @@ export async function generateMetadata(): Promise<Metadata> {
     };
 }
 
-import { Suspense } from 'react';
-
-type LinkItem = {
-    name: string;
-    url: string;
+type PillLink = {
+    label: string;
+    href: string;
     icon: LucideIcon;
-    sub: string;
-    primary?: boolean;
-}
+    external?: boolean;
+    download?: string;
+    accent?: boolean;
+};
 
-type LinkCardProps = {
-    link: LinkItem;
-    isPrimary?: boolean;
-}
+const pillLinks: PillLink[] = [
+    { label: 'Website', href: '/', icon: Globe },
+    {
+        label: 'Instagram',
+        href: 'https://www.instagram.com/mubx.dev?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+        icon: InstagramIcon,
+        external: true,
+    },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/omarmubaidin', icon: LinkedinIcon, external: true },
+    { label: 'GitHub', href: 'https://github.com/Omarmubx7', icon: GithubIcon, external: true },
+    { label: 'Email', href: 'mailto:mubxdev@proton.me', icon: Mail },
+];
 
-function LinkCard({ link, isPrimary = false }: Readonly<LinkCardProps>) {
-    const isInternal = link.url.startsWith('/');
-    const cardContent = (
+function PillButton({ link }: Readonly<{ link: PillLink }>) {
+    const { label, href, icon: Icon, external, download, accent } = link;
+
+    const content = (
         <>
-            <div className="flex items-center gap-4 md:gap-5">
-                <div className={`p-3 rounded-xl transition-all duration-500 ${isPrimary
-                    ? "bg-background/20 text-background"
-                    : "bg-foreground/5 text-foreground/70 group-hover:text-neon group-hover:scale-110"
-                    }`}>
-                    <link.icon className="w-5 h-5 md:w-6 md:h-6" />
-                </div>
-                <div className="flex flex-col text-left gap-0.5 md:gap-1">
-                    <span className={`font-bold text-base md:text-lg tracking-tight ${isPrimary ? "text-background" : "text-foreground group-hover:text-neon transition-colors"
-                        }`}>
-                        {link.name}
-                    </span>
-                    <span className={`text-xs md:text-sm font-medium ${isPrimary ? "text-background/70" : "text-muted group-hover:text-foreground/80 transition-colors"
-                        }`}>
-                        {link.sub}
-                    </span>
-                </div>
-            </div>
-
-            <div className={`pr-1 md:pr-2 transition-all duration-500 ${isPrimary
-                ? "translate-x-0 opacity-100"
-                : "-translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0"
-                }`}>
-                <ArrowRight className={`w-4 h-4 md:w-5 md:h-5 ${isPrimary ? "text-background" : "text-neon"}`} />
-            </div>
+            <span
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${
+                    accent ? 'bg-neon/15 text-neon' : 'bg-foreground/8 text-foreground/80 group-hover:bg-neon/12 group-hover:text-neon'
+                }`}
+            >
+                <Icon className="h-4 w-4" />
+            </span>
+            <span
+                className={`flex-1 text-sm font-semibold tracking-wide transition-colors duration-300 ${
+                    accent ? 'text-neon' : 'text-foreground group-hover:text-neon'
+                }`}
+            >
+                {label}
+            </span>
+            <ArrowRight
+                className={`h-4 w-4 shrink-0 transition-all duration-300 group-hover:translate-x-1 ${
+                    accent ? 'text-neon' : 'text-muted group-hover:text-neon'
+                }`}
+            />
         </>
     );
-    const className = `group relative flex items-center justify-between p-5 md:p-6 rounded-2xl md:rounded-3xl transition-all duration-500 border backdrop-blur-md ${isPrimary
-        ? "bg-foreground text-background border-foreground hover:opacity-90 shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_30px_rgba(255,255,255,0.05)]"
-        : "bg-foreground/3 border-foreground/10 hover:border-neon/50 hover:bg-foreground/6 text-foreground"
-        }`;
+
+    const className = `group flex w-full items-center gap-3.5 rounded-full border px-5 py-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none ${
+        accent
+            ? 'border-neon/40 bg-neon/8 shadow-[0_0_25px_rgba(225,29,29,0.12)] hover:border-neon hover:bg-neon/12'
+            : 'border-foreground/10 bg-foreground/[0.04] hover:border-neon/50 hover:bg-neon/[0.06]'
+    }`;
+
+    if (href.startsWith('/')) {
+        return (
+            <Link href={href} aria-label={label} className={className}>
+                {content}
+            </Link>
+        );
+    }
 
     return (
-        <div className="w-full">
-            {isInternal ? (
-                <Link href={link.url} className={className}>
-                    {cardContent}
-                </Link>
-            ) : (
-                <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={className}
-                >
-                    {cardContent}
-                </a>
-            )}
-        </div>
+        <a
+            href={href}
+            aria-label={label}
+            {...(download ? { download } : {})}
+            {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            className={className}
+        >
+            {content}
+        </a>
     );
 }
 
 export default async function LinksPage() {
     const lang: Locale = 'en';
 
-    const workLinks: LinkItem[] = [
-        {
-            name: "Email Me",
-            url: "mailto:mubxdev@proton.me",
-            icon: Mail,
-            sub: "mubxdev@proton.me",
-            primary: false
-        }
-    ];
-
-    const latestProjectsLinks: LinkItem[] = [
-        {
-            name: "QadumyWeb",
-            url: "https://qadumyweb.vercel.app/",
-            icon: Globe,
-            sub: "Ahmad Al-Qaddomy — Marketer & Content Creator",
-            primary: true
-        },
-        {
-            name: "Jordan FA",
-            url: "https://jordan-jfa.vercel.app/",
-            icon: Globe,
-            sub: "Jordan National Team's historic World Cup 2026 debut",
-        },
-        {
-            name: "MUBXAI",
-            url: "https://ai.mubx.dev/",
-            icon: Globe,
-            sub: "HTU Course Tracker & GPA Calculator",
-        },
-        {
-            name: "MUBXbot",
-            url: "https://bot.mubx.dev/",
-            icon: Bot,
-            sub: "AI assistant by MUBX",
-        },
-        {
-            name: "Men Only Show",
-            url: "https://menonlyshow-gray.vercel.app/",
-            icon: Mic,
-            sub: "Arab World's First Men's Talk Show",
-        },
-        {
-            name: "Portfolio Website",
-            url: "/",
-            icon: Globe,
-            sub: "View my latest work & case studies",
-        }
-    ];
-
-    const socialLinks: LinkItem[] = [
-        {
-            name: "Instagram",
-            url: "https://www.instagram.com/mubx.dev?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-            icon: InstagramIcon,
-            sub: "Behind the scenes & design tips",
-        },
-        {
-            name: "LinkedIn",
-            url: "https://www.linkedin.com/in/omarmubaidin",
-            icon: LinkedinIcon,
-            sub: "Professional network",
-        },
-        {
-            name: "GitHub",
-            url: "https://github.com/Omarmubx7",
-            icon: GithubIcon,
-            sub: "Check my open source code",
-
-        },
-        {
-            name: "GitHub Student Pack",
-            url: "https://education.github.com/pack",
-            icon: GithubIcon,
-            sub: "Free access to the best developer tools",
-        }
-    ];
+    const cvLink: PillLink = {
+        label: 'CV',
+        href: '/cv.pdf',
+        icon: Download,
+        download: 'Omar-Mubaidin-Resume.pdf',
+        accent: true,
+    };
 
     return (
         <Suspense>
             <LanguageProvider initialLocale={lang}>
-                <main className="relative flex flex-col min-h-screen">
-                    {/* Background Texture - Theme Aware */}
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10 opacity-[0.05] dark:opacity-[0.1]" />
+                <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-20">
+                    {/* Subtle red glow behind photo */}
+                    <div
+                        aria-hidden
+                        className="pointer-events-none absolute left-1/2 top-1/3 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon/8 blur-[110px]"
+                    />
 
-                    <div className="grow pt-24 pb-20 md:pt-32">
-                        <div className="container mx-auto px-6 max-w-2xl">
-
-                            {/* Hero Section */}
-                            <header className="text-center flex flex-col items-center mb-16">
-                                <div className="mb-8 w-full flex justify-center">
-                                    <div className="relative group">
-                                        <div className="absolute -inset-1 bg-linear-to-r from-neon to-[#FF8E8E] rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                                        <div className="relative w-28 h-28 md:w-36 md:h-36">
-                                            <Image
-                                                src="/mubxlogoloader.svg"
-                                                alt="MUBX Profile"
-                                                fill
-                                                className="object-contain p-2 bg-black/50 rounded-full border-4 border-background shadow-2xl transition-transform duration-500 group-hover:scale-105"
-                                                priority
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="w-full">
-                                    <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase leading-none">
-                                        Omar <span className="text-foreground/30">/</span> Mubaidin
-                                    </h1>
-                                </div>
-
-                                <div className="w-full">
-                                    <p className="text-lg md:text-xl text-muted font-medium max-w-md mx-auto leading-relaxed mb-8">
-                                        Building the modern web. <span className="text-foreground">Web systems for brands that want to scale.</span>
-                                    </p>
-                                </div>
-
-                                <div className="flex flex-wrap justify-center gap-2 w-full">
-                                    <Badge variant="outline">⚡ NEXT.JS</Badge>
-                                    <Badge variant="outline">TS TYPESCRIPT</Badge>
-                                    <Badge variant="outline">TAILWIND</Badge>
-                                    <Badge variant="neon">FREELANCE</Badge>
-                                </div>
-                            </header>
-
-                            {/* Links List - Single Column */}
-                            <div className="flex flex-col gap-12">
-
-                                {/* Work Section */}
-                                <section className="flex flex-col gap-4">
-                                    <div className="flex items-center gap-3 mb-2 px-2 w-full">
-                                        <div className="h-px bg-neon w-8" />
-                                        <h2 className="text-xs font-bold text-neon uppercase tracking-widest">Work & Contact</h2>
-                                    </div>
-                                    <div className="flex flex-col gap-3">
-                                        {workLinks.map((link) => (
-                                            <LinkCard key={link.name} link={link} isPrimary={link.primary} />
-                                        ))}
-                                    </div>
-                                </section>
-
-                                {/* Latest Projects Section */}
-                                <section className="flex flex-col gap-4">
-                                    <div className="flex items-center gap-3 mb-2 px-2 w-full">
-                                        <div className="h-px bg-neon w-8" />
-                                        <h2 className="text-xs font-bold text-neon uppercase tracking-widest">My Latest Projects</h2>
-                                    </div>
-                                    <div className="flex flex-col gap-3">
-                                        {latestProjectsLinks.map((link) => (
-                                            <LinkCard key={link.name} link={link} />
-                                        ))}
-                                    </div>
-                                </section>
-
-                                {/* Social Section */}
-                                <section className="flex flex-col gap-4">
-                                    <div className="flex items-center gap-3 mb-2 px-2 w-full">
-                                        <div className="h-px bg-foreground/20 w-8" />
-                                        <h2 className="text-xs font-bold text-foreground/40 uppercase tracking-widest">Social & Code</h2>
-                                    </div>
-                                    <div className="flex flex-col gap-3">
-                                        {socialLinks.map((link) => (
-                                            <LinkCard key={link.name} link={link} />
-                                        ))}
-                                    </div>
-                                </section>
-
-                            </div>
-
+                    {/* Photo */}
+                    <div className="relative mb-7">
+                        <div aria-hidden className="absolute -inset-4 bg-neon/10 blur-2xl" />
+                        <div className="relative h-40 w-32 overflow-hidden rounded-2xl shadow-[0_0_50px_rgba(225,29,29,0.18)] md:h-48 md:w-40">
+                            <Image
+                                src="/omarmub.webp"
+                                alt="Omar Mubaidin"
+                                fill
+                                priority
+                                sizes="(max-width: 768px) 128px, 160px"
+                                className="object-cover"
+                            />
                         </div>
                     </div>
 
+                    {/* Name + title */}
+                    <h1 className="text-center text-3xl font-black uppercase tracking-tighter md:text-4xl">
+                        Omar Mubaidin
+                    </h1>
+                    <p className="mt-2.5 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-neon md:text-xs">
+                        Full-Stack Developer &amp; AI Engineer
+                    </p>
+
+                    {/* Pill buttons */}
+                    <nav
+                        aria-label="Links"
+                        className="mt-11 flex w-full max-w-sm flex-col gap-3.5"
+                    >
+                        {pillLinks.map((link) => (
+                            <PillButton key={link.label} link={link} />
+                        ))}
+                        <PillButton link={cvLink} />
+                    </nav>
                 </main>
             </LanguageProvider>
         </Suspense>

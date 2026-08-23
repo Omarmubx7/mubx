@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
 
-// ── Exact Framer LoaderCounter easing ────────────────────────────────────────
+// Exact Framer LoaderCounter easing
 function loaderEase(t: number): number {
   if (t < 0.25) return 3.2 * t * t;
   if (t < 0.65) {
@@ -75,7 +75,6 @@ function WordReveal({
 
 export default function LoadingScreen() {
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(true);
   const [phase, setPhase] = useState<Phase>('loading');
   const [count, setCount] = useState(0);
@@ -145,13 +144,12 @@ export default function LoadingScreen() {
   // Loader RAF animation
   useEffect(() => {
     if (isLinksPage) return;
-    setMounted(true);
     if (typeof window !== 'undefined') {
       // 1. Skip loader immediately for bots / crawlers / Lighthouse / PageSpeed Insights
       const ua = navigator.userAgent.toLowerCase();
       const isBot = /lighthouse|chrome-lighthouse|googlebot|bingbot|yandexbot|baiduspider|headlesschrome|speed insights|insights/i.test(ua);
       const isAutomated = navigator.webdriver || window.location.search.includes('lighthouse') || !!(window as any)._lighthouse;
-      
+
       if (isBot || isAutomated) {
         setPhase('done');
         setVisible(false);
@@ -198,7 +196,7 @@ export default function LoadingScreen() {
     return () => cancelAnimationFrame(rafRef.current);
   }, [isLinksPage]);
 
-  if (isLinksPage || !mounted || !visible) return null;
+  if (isLinksPage || !visible) return null;
 
   const counterColor =
     count > 50
@@ -214,6 +212,7 @@ export default function LoadingScreen() {
 
   return (
     <div
+      data-boot-cover=""
       style={{
         position: 'fixed',
         inset: 0,
@@ -251,7 +250,7 @@ export default function LoadingScreen() {
         }}
       />
 
-      {/* ── CURTAIN PANELS (z:1 — only animate during 'entering') ─────── */}
+      {/* CURTAIN PANELS (z:1 only animate during 'entering') */}
       <motion.div
         initial={{ y: '0%' }}
         animate={{ y: isEntering ? '-100%' : '0%' }}
@@ -281,7 +280,7 @@ export default function LoadingScreen() {
         }}
       />
 
-      {/* ── TOP RED ACCENT LINE (z:4) ──────────────────────────────────── */}
+      {/* TOP RED ACCENT LINE (z:4) */}
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: isLoading ? 1 : 0, opacity: isLoading ? 1 : 0 }}
@@ -299,7 +298,7 @@ export default function LoadingScreen() {
         }}
       />
 
-      {/* ── ALL CONTENT (z:4) ─────────────────────────────────────────── */}
+      {/* ALL CONTENT (z:4) */}
       <motion.div
         animate={{ opacity: isEntering ? 0 : 1 }}
         transition={{ duration: 0.5 }}
@@ -471,7 +470,7 @@ export default function LoadingScreen() {
                   Hi, my name is
                 </motion.div>
 
-                {/* Name — word by word */}
+                {/* Name word by word */}
                 <div
                   style={{
                     fontFamily: 'var(--font-mono)',
@@ -490,7 +489,7 @@ export default function LoadingScreen() {
                   </span>
                 </div>
 
-                {/* "Welcome to my Portfolio" — only on scroll-hint */}
+                {/* "Welcome to my Portfolio" only on scroll-hint */}
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: isScrollHint ? 1 : 0, y: isScrollHint ? 0 : 10 }}

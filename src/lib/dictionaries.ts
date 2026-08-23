@@ -102,7 +102,7 @@ export const dictionary = {
             cta: 'Get a Project Estimate'
         },
         footer: {
-            brandDesc: 'Built by Omar Mubaidin — Web Developer & CS Student in Amman, Jordan. Creating secure, high-performance web systems.',
+            brandDesc: 'Built by Omar Mubaidin Web Developer & CS Student in Amman, Jordan. Creating secure, high-performance web systems.',
             navigation: 'Navigation',
             payments: 'Payments Supported',
             connect: 'Connect',
@@ -322,7 +322,7 @@ export const dictionary = {
                     role: 'Agency Lead @ Vynex Media',
                     project: 'Agency Landing Page',
                     year: 'Jan 2024',
-                    outcome: 'Vynex Media — +20% leads in first month',
+                    outcome: 'Vynex Media +20% leads in first month',
                     text: "Omar helped us launch faster and look more professional by building a high-performance landing page. He was reliable, proactive, and delivered on time.",
                     linkLabel: "View on Instagram"
                 },
@@ -331,7 +331,7 @@ export const dictionary = {
                     role: 'Club Manager @ HTU Martial Arts',
                     project: 'Club Management System',
                     year: 'Feb 2025',
-                    outcome: 'Club Portal — Managed 100+ students',
+                    outcome: 'Club Portal Managed 100+ students',
                     text: "Our old process for members was messy; after Omar’s system, managing bookings and payments became seamless. I’d recommend him to any club that needs solid web systems.",
                     linkLabel: "Visit HTU.edu.jo"
                 },
@@ -340,7 +340,7 @@ export const dictionary = {
                     role: 'Founder @ BloB.JO',
                     project: 'E-commerce Store',
                     year: 'Jan 2025',
-                    outcome: 'BloB Store — 200% online sales boost',
+                    outcome: 'BloB Store 200% online sales boost',
                     text: "Customers can now explore designs and track orders online, turning what used to be manual communication into a smoother digital flow. The print-on-demand store he built is a game changer.",
                     linkLabel: "Visit BloB.JO"
                 },
@@ -349,7 +349,7 @@ export const dictionary = {
                     role: "Founder @ The Glorious",
                     project: "Artistic Bio Link",
                     year: "Feb 2025",
-                    outcome: "The Glorious — High-end brand integration",
+                    outcome: "The Glorious High-end brand integration",
                     text: "Omar transformed our social presence with a custom bio link that perfectly captures our aesthetic. It's fast, beautiful, and much more professional than standard tools.",
                     linkLabel: "Follow Majd"
                 },
@@ -358,7 +358,7 @@ export const dictionary = {
                     role: "Founder @ Aqabwi",
                     project: "Photography Portfolio",
                     year: "Feb 2025",
-                    outcome: "Aqabwi — Cinematic portfolio launch",
+                    outcome: "Aqabwi Cinematic portfolio launch",
                     text: "Working with Omar was a game-changer for my photography business. He built a high-performance portfolio that truly showcases my work with stunning detail and speed.",
                     linkLabel: "View Aqabwi"
                 },
@@ -367,7 +367,7 @@ export const dictionary = {
                     role: "Founder @ Men Only Show",
                     project: "Podcast Platform",
                     year: "Feb 2025",
-                    outcome: "Men Only Show — Arab world's first platform",
+                    outcome: "Men Only Show Arab world's first platform",
                     text: "Omar delivered a high-quality platform that perfectly matches the scale and vision of our show. The performance and design are top-notch.",
                     linkLabel: "Visit Show"
                 }
@@ -397,7 +397,7 @@ export const dictionary = {
                 ],
                 caseStudy: {
                     title: 'Case Study: BloB.JO',
-                    desc: "I helped BloB.JO launch a custom Print-on-Demand store in Amman. Users can design products specifically on the site—something Shopify couldn't do easily.",
+                    desc: "I helped BloB.JO launch a custom Print-on-Demand store in Amman. Users can design products specifically on the site something Shopify couldn't do easily.",
                     outcome: 'Outcome: Full operational flow in 3 weeks.'
                 },
                 faq: {
@@ -611,7 +611,7 @@ export const dictionary = {
             title: 'THE MUBX MISSION',
             highlight: 'Engineering High-Performance Web Systems',
             desc1: 'MUBX was founded by Omar Mubaidin with a singular vision: to bridge the gap between technical complexity and business outcomes in Jordan.',
-            desc2: 'The name MUBX originates from "Mubaidin Expertise" — a promise to deliver precision-engineered web systems that are not just beautiful, but are functional tools for revenue generation.',
+            desc2: 'The name MUBX originates from "Mubaidin Expertise" a promise to deliver precision-engineered web systems that are not just beautiful, but are functional tools for revenue generation.',
             desc3: 'Based in Amman, Jordan, I specialize in high-performance stacks that allow local startups to compete on a global scale.',
             stats: {
                 performance: '99+ Lighthouse Score',
@@ -630,11 +630,11 @@ export const dictionary = {
         },
         seo: {
             home: {
-                title: 'Omar Mubaidin | Full-Stack Developer & AI Engineer in Amman, Jordan — MUBX',
+                title: 'Omar Mubaidin | Full-Stack Developer & AI Engineer in Amman, Jordan MUBX',
                 description: 'Omar Mubaidin (عمر مبيضين) is a full-stack developer and founder of MUBX in Amman, Jordan. Expert in Next.js, React, AI engineering, e-commerce, Zain Cash & CliQ payments, and high-performance SEO for startups.',
             },
             about: {
-                title: 'About Omar Mubaidin | MUBX — Full-Stack Developer in Amman, Jordan',
+                title: 'About Omar Mubaidin | MUBX Full-Stack Developer in Amman, Jordan',
                 description: 'Meet Omar Mubaidin: Computer Science student at HTU, full-stack developer, and founder of MUBX. Building revenue-focused web systems for startups in Amman, Jordan.',
             },
             services: {
@@ -642,19 +642,19 @@ export const dictionary = {
                 description: 'Professional web development services in Amman, Jordan. Landing pages, e-commerce stores with local payments, and custom web systems by full-stack developer Omar Mubaidin.',
             },
             projects: {
-                title: 'Featured Web Development Projects | MUBX — Case Studies & Solutions',
+                title: 'Featured Web Development Projects | MUBX Case Studies & Solutions',
                 description: 'Explore my latest web development projects. From high-conversion landing pages to complex web systems and payment integrations in Jordan.',
             },
             blog: {
-                title: 'Web Development Blog | MUBX — React, Next.js & AI Insights',
+                title: 'Web Development Blog | MUBX React, Next.js & AI Insights',
                 description: 'Technical articles on React, Next.js, AI engineering, and building scalable web applications in Jordan by full-stack developer Omar Mubaidin.',
             },
             contact: {
-                title: 'Start a Web Project | MUBX — Full-Stack Developer in Jordan',
+                title: 'Start a Web Project | MUBX Full-Stack Developer in Jordan',
                 description: 'Ready to scale your business? Contact Omar Mubaidin for a custom web development estimate. Expert full-stack solutions for startups in Amman, Jordan.',
             },
             links: {
-                title: 'Links | Omar Mubaidin — MUBX Social & Connect',
+                title: 'Links | Omar Mubaidin MUBX Social & Connect',
                 description: 'Connect with Omar Mubaidin (MUBX) across social platforms. View portfolio, book a call, and explore latest projects.',
             }
         }

@@ -248,7 +248,7 @@ export default function Work() {
         </div>
       </section>
 
-      {/* Preview rendered OUTSIDE the section — fixed on the right side of viewport */}
+      {/* Preview rendered OUTSIDE the section fixed on the right side of viewport */}
       <AnimatePresence>
         {hover && (
           <motion.div

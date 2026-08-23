@@ -9,7 +9,7 @@ const socials = [
   {
     label: 'GitHub',
     href: 'https://github.com/Omarmubx7',
-    // GitHub's brand color is black/white — on dark bg we use #f0f6fc (GitHub's light text)
+    // GitHub's brand color is black/white on dark bg we use #f0f6fc (GitHub's light text)
     defaultColor: '#6B625E',
     hoverColor: '#f0f6fc',
     hoverBg: 'rgba(240,246,252,0.08)',

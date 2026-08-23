@@ -14,7 +14,7 @@ const columns = [
   {
     label: '// THE WHY',
     title: 'Why I Code',
-    text: "I don't write code for the sake of code. I write it because it's the fastest way to turn an idea into something real. One person, one laptop, one weekend — and you can ship something that reaches thousands.",
+    text: "I don't write code for the sake of code. I write it because it's the fastest way to turn an idea into something real. One person, one laptop, one weekend and you can ship something that reaches thousands.",
   },
   {
     label: '// HOW I THINK',

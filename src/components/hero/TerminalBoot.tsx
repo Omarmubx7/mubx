@@ -144,7 +144,7 @@ export default function TerminalBoot() {
         </div>
       )}
 
-      {/* Terminal actions — appear after boot completes */}
+      {/* Terminal actions appear after boot completes */}
       {done && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}

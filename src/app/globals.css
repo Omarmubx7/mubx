@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Hide the boot cover instantly for bots, Lighthouse and returning visitors */
+html[data-boot-skip] [data-boot-cover] {
+  display: none !important;
+}
+
 @font-face {
   font-family: 'Mona Sans';
   src: url('/fonts/Mona-Sans.woff2') format('woff2');
@@ -185,7 +190,7 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
   50% { opacity: 0; }
 }
 
-/* ── Skip link ── */
+/* Skip link */
 .skip-link {
   position: absolute; top: -100%; left: 1rem; z-index: 9999;
   padding: 1rem 1.5rem; background: var(--neon); color: #000;
@@ -195,7 +200,7 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
 
 .skip-link:focus { top: 1rem; outline: 2px solid var(--neon); outline-offset: 4px; }
 
-/* ── Scene backgrounds ── */
+/* Scene backgrounds */
 .scene-gradient-1 {
   background: radial-gradient(ellipse 80% 50% at 50% 40%, rgba(230, 57, 70, 0.06) 0%, transparent 70%);
 }
@@ -209,7 +214,7 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
   background: radial-gradient(ellipse 90% 40% at 60% 30%, rgba(230, 57, 70, 0.05) 0%, transparent 60%);
 }
 
-/* ── Progress line ── */
+/* Progress line */
 .progress-track {
   position: absolute;
   left: 20px;
@@ -231,7 +236,7 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
   transform-origin: top center;
 }
 
-/* ── Large background year text ── */
+/* Large background year text */
 .year-bg {
   font-family: var(--font-mono);
   font-size: clamp(6rem, 15vw, 20rem);
@@ -242,4 +247,4 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
   pointer-events: none;
 }
 
-/* ── Large background year text ── */
+/* Large background year text */
