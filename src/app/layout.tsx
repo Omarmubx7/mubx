@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-images.png',
         width: 1200,
         height: 630,
         alt: 'Omar Mubaidin mubx.dev',
@@ -101,7 +101,7 @@ export default function RootLayout({
               name: 'Omar Mubaidin',
               alternateName: 'MUBX',
               url: 'https://mubx.dev',
-              image: 'https://mubx.dev/og-image.jpg',
+              image: 'https://mubx.dev/og-images.png',
               jobTitle: 'Web Developer & AI Engineer',
               description:
                 'Omar builds AI-powered products and web experiences that ship, scale, and solve real problems.',
