@@ -108,7 +108,7 @@ export default function FloatingLogo() {
           }}
         >
           <Image
-            src="/mubxlogoloader.svg"
+            src="/mubxnewlogo.png"
             alt="MUBX"
             width={28}
             height={28}

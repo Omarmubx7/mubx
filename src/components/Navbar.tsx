@@ -132,7 +132,7 @@ const NavbarContent = () => {
                     <Link href="/" className="relative z-10 p-2 mr-2 shrink-0" aria-label="MUBX Home">
                         <div className="relative h-10 w-20 transition-transform hover:scale-105 active:scale-95">
                             <Image
-                                src="/mubxlogoloader.svg"
+                                src="/mubxnewlogo.png"
                                 alt="MUBX Logo"
                                 fill
                                 className="object-contain"
@@ -274,7 +274,7 @@ const NavbarContent = () => {
                     <Link href="/" className="relative z-50 p-1 -ml-1" aria-label="MUBX Home">
                         <div className="relative h-10 w-20">
                             <Image
-                                src="/mubxlogoloader.svg"
+                                src="/mubxnewlogo.png"
                                 alt="MUBX Logo"
                                 fill
                                 className="object-contain"

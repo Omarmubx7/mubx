@@ -45,7 +45,7 @@ export default function MobileGate() {
       {/* Logo */}
       <div className="relative w-20 h-20 mb-8">
         <Image
-          src="/mubxlogoloader.svg"
+          src="/mubxnewlogo.png"
           alt="MUBX"
           fill
           className="object-contain"

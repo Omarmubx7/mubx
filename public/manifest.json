@@ -8,9 +8,9 @@
     "theme_color": "#D71C1C",
     "icons": [
         {
-            "src": "/mubxlogoloader.svg",
+            "src": "/mubxnewlogo.png",
             "sizes": "any",
-            "type": "image/svg+xml",
+            "type": "image/png",
             "purpose": "any maskable"
         },
         {

@@ -67,7 +67,7 @@ function HomeMain() {
                         <div className="space-y-4">
                             <Link href={getHref('/')} className="inline-block relative h-12 w-24 md:h-14 md:w-28 transition-transform hover:scale-105 active:scale-95">
                                 <Image
-                                    src="/mubxlogoloader.svg"
+                                    src="/mubxnewlogo.png"
                                     alt="MUBX Logo"
                                     fill
                                     className="object-contain dark:invert-0 invert"

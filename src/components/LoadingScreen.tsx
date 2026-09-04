@@ -338,7 +338,7 @@ export default function LoadingScreen() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/mubxlogoloader.svg"
+              src="/mubxnewlogo.png"
               alt="MUBX Logo"
               width={100}
               height={100}

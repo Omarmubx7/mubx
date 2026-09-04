@@ -74,7 +74,7 @@ export default function RootLayout({
         </noscript>
         <link rel="canonical" href="https://mubx.dev" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/mubxlogoloader.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/brand-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
         <meta name="theme-color" content="#E63946" />
