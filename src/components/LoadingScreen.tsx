@@ -3,6 +3,8 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import { useLenis } from 'lenis/react';
+import { useBoot } from '@/context/BootContext';
 
 
 // Exact Framer LoaderCounter easing
@@ -75,6 +77,8 @@ function WordReveal({
 
 export default function LoadingScreen() {
   const pathname = usePathname();
+  const lenis = useLenis();
+  const { setBooted } = useBoot();
   const [visible, setVisible] = useState(true);
   const [phase, setPhase] = useState<Phase>('loading');
   const [count, setCount] = useState(0);
@@ -84,18 +88,25 @@ export default function LoadingScreen() {
 
   const isLinksPage = pathname?.includes('/links');
 
-  // Lock scroll until done
+  // Lock scroll until done: stop Lenis (it ignores body overflow) + freeze overflow.
   useEffect(() => {
-    if (isLinksPage || !visible) return;
+    if (isLinksPage || !visible) {
+      lenis?.start();
+      return;
+    }
     if (phase !== 'done') {
+      lenis?.stop();
       document.body.style.overflow = 'hidden';
     } else {
+      lenis?.start();
       document.body.style.overflow = '';
+      lenis?.scrollTo(0, { immediate: true });
+      window.scrollTo(0, 0);
     }
     return () => {
       document.body.style.overflow = '';
     };
-  }, [phase, isLinksPage, visible]);
+  }, [phase, isLinksPage, visible, lenis]);
 
   // Prevent scroll during loading & greeting phases
   useEffect(() => {
@@ -114,6 +125,7 @@ export default function LoadingScreen() {
   // Enter handler
   const handleEnter = useCallback(() => {
     if (phase !== 'scroll-hint') return;
+    setBooted(true);
     setPhase('entering');
     setTimeout(() => {
       setPhase('done');
@@ -122,7 +134,7 @@ export default function LoadingScreen() {
         sessionStorage.setItem('mubx-loaded', 'true');
       }
     }, 1100);
-  }, [phase]);
+  }, [phase, setBooted]);
 
   // Listen for scroll / keys during scroll-hint
   useEffect(() => {
@@ -151,6 +163,7 @@ export default function LoadingScreen() {
       const isAutomated = navigator.webdriver || window.location.search.includes('lighthouse') || !!(window as any)._lighthouse;
 
       if (isBot || isAutomated) {
+        setBooted(true);
         setPhase('done');
         setVisible(false);
         return;
@@ -164,6 +177,7 @@ export default function LoadingScreen() {
 
       const isProd = process.env.NODE_ENV === 'production' && !isLocalhost;
       if (isProd && sessionStorage.getItem('mubx-loaded')) {
+        setBooted(true);
         setPhase('done');
         setVisible(false);
         return;
@@ -194,7 +208,7 @@ export default function LoadingScreen() {
     };
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [isLinksPage]);
+  }, [isLinksPage, setBooted]);
 
   if (isLinksPage || !visible) return null;
 

@@ -1,5 +1,12 @@
 {
   "snyk.advanced.autoSelectOrganization": true,
-  "workbench.colorCustomizations": {},
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#FCEBD3",
+    "titleBar.inactiveBackground": "#FCEBD3",
+    "titleBar.activeForeground": "#1e1e1e",
+    "titleBar.inactiveForeground": "#6d6c6f",
+    "statusBar.background": "#FCEBD3",
+    "statusBar.foreground": "#1e1e1e"
+  },
   "workbench.experimental.modernUI": false
 }

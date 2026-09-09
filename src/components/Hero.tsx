@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Calendar, Download } from 'lucide-react'
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { useLanguage } from '@/context/LanguageContext'
+import { useBoot } from '@/context/BootContext'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -83,6 +84,7 @@ const endText: Variants = {
 export default function Hero() {
   const { t } = useLanguage()
   const rm = useReducedMotion()
+  const { booted } = useBoot()
 
   return (
     <section
@@ -103,9 +105,10 @@ export default function Hero() {
             className="font-mono"
           >
             <motion.span
+              key={rm ? 'static' : booted ? 'play' : 'idle'}
               className="block"
               initial={rm ? false : 'hidden'}
-              animate="show"
+              animate={rm ? undefined : booted ? 'show' : 'hidden'}
             >
               {/* Root */}
               <span className="flex flex-col items-center">
