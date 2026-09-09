@@ -103,7 +103,7 @@ function PillButton({ link }: Readonly<{ link: PillLink }>) {
 
     const className = `group flex w-full items-center gap-3.5 rounded-full border px-5 py-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none ${
         accent
-            ? 'border-neon/40 bg-neon/8 shadow-[0_0_25px_rgba(225,29,29,0.12)] hover:border-neon hover:bg-neon/12'
+            ? 'border-neon/40 bg-neon/8 shadow-[0_0_25px_rgba(255,46,46,0.12)] hover:border-neon hover:bg-neon/12'
             : 'border-foreground/10 bg-foreground/[0.04] hover:border-neon/50 hover:bg-neon/[0.06]'
     }`;
 
@@ -152,7 +152,7 @@ export default async function LinksPage() {
                     {/* Photo */}
                     <div className="relative mb-7">
                         <div aria-hidden className="absolute -inset-4 bg-neon/10 blur-2xl" />
-                        <div className="relative h-40 w-32 overflow-hidden rounded-2xl shadow-[0_0_50px_rgba(225,29,29,0.18)] md:h-48 md:w-40">
+                        <div className="relative h-40 w-32 overflow-hidden rounded-2xl shadow-[0_0_50px_rgba(255,46,46,0.18)] md:h-48 md:w-40">
                             <Image
                                 src="/omarmub.webp"
                                 alt="Omar Mubaidin"

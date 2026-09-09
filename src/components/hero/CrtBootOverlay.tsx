@@ -34,7 +34,7 @@ export default function CrtBootOverlay() {
           position: 'absolute',
           inset: 0,
           zIndex: 24,
-          background: 'rgba(225,29,29,0.15)',
+          background: 'rgba(255,46,46,0.15)',
           pointerEvents: 'none',
         }}
       />

@@ -157,7 +157,7 @@ const NavbarContent = () => {
                                     href={link.href}
                                     className="relative z-10 px-4 py-2.5 text-[13px] font-medium tracking-wide block transition-colors duration-200"
                                     style={{
-                                        color: active ? '#E11D1D' : hoveredIndex === index ? '#EDE8E4' : 'rgba(237,232,228,0.6)',
+                                        color: active ? '#FF2E2E' : hoveredIndex === index ? '#EDE8E4' : 'rgba(237,232,228,0.6)',
                                     }}
                                 >
                                     {link.name}
@@ -167,8 +167,8 @@ const NavbarContent = () => {
                                         layoutId="nav-hover-pill"
                                         className="absolute inset-0 rounded-full z-0"
                                         style={{
-                                            backgroundColor: 'rgba(225,29,29,0.08)',
-                                            border: '1px solid rgba(225,29,29,0.12)',
+                                            backgroundColor: 'rgba(255,46,46,0.08)',
+                                            border: '1px solid rgba(255,46,46,0.12)',
                                         }}
                                         transition={{
                                             type: 'spring',
@@ -191,7 +191,7 @@ const NavbarContent = () => {
                             rel="noopener noreferrer"
                             className="relative z-10 pl-4 pr-2 py-2.5 text-[13px] font-medium tracking-wide block transition-colors duration-200"
                             style={{
-                                color: hoveredIndex === navLinks.length ? '#E11D1D' : 'rgba(237,232,228,0.6)',
+                                color: hoveredIndex === navLinks.length ? '#FF2E2E' : 'rgba(237,232,228,0.6)',
                             }}
                             onMouseEnter={() => setHoveredIndex(navLinks.length)}
                         >
@@ -204,7 +204,7 @@ const NavbarContent = () => {
                             title="Download Resume"
                             className="relative z-10 px-2 py-2.5 flex items-center transition-colors duration-200"
                             style={{
-                                color: hoveredIndex === navLinks.length ? '#E11D1D' : 'rgba(237,232,228,0.6)',
+                                color: hoveredIndex === navLinks.length ? '#FF2E2E' : 'rgba(237,232,228,0.6)',
                             }}
                             onMouseEnter={() => setHoveredIndex(navLinks.length)}
                         >
@@ -215,8 +215,8 @@ const NavbarContent = () => {
                                 layoutId="nav-hover-pill"
                                 className="absolute inset-0 rounded-full z-0"
                                 style={{
-                                    backgroundColor: 'rgba(225,29,29,0.08)',
-                                    border: '1px solid rgba(225,29,29,0.12)',
+                                    backgroundColor: 'rgba(255,46,46,0.08)',
+                                    border: '1px solid rgba(255,46,46,0.12)',
                                 }}
                                 transition={{
                                     type: 'spring',
@@ -237,10 +237,10 @@ const NavbarContent = () => {
                             rel="noopener noreferrer"
                             className="relative z-10 px-5 py-2.5 text-[13px] font-bold text-white tracking-wide block rounded-full transition-all duration-200"
                             style={{
-                                backgroundColor: '#E11D1D',
+                                backgroundColor: '#FF2E2E',
                             }}
                             onMouseEnter={(e) => {
-                                e.currentTarget.style.boxShadow = '0 0 24px rgba(225,29,29,0.4)';
+                                e.currentTarget.style.boxShadow = '0 0 24px rgba(255,46,46,0.4)';
                             }}
                             onMouseLeave={(e) => {
                                 e.currentTarget.style.boxShadow = 'none';
@@ -286,7 +286,7 @@ const NavbarContent = () => {
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className="relative z-[210] p-2 transition-colors"
-                        style={{ color: '#E11D1D' }}
+                        style={{ color: '#FF2E2E' }}
                         aria-label="Toggle Menu"
                     >
                         {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -339,11 +339,11 @@ const NavbarContent = () => {
                                             href={link.href}
                                             onClick={() => setIsOpen(false)}
                                             className={`flex items-center gap-3 py-3 text-[15px] font-medium tracking-wide transition-colors min-h-[44px] ${
-                                                isLinkActive(link.href) ? 'text-[#E11D1D]' : 'text-[rgba(237,232,228,0.75)] hover:text-[#E11D1D]'
+                                                isLinkActive(link.href) ? 'text-[#FF2E2E]' : 'text-[rgba(237,232,228,0.75)] hover:text-[#FF2E2E]'
                                             }`}
                                         >
                                             <span className={`w-1.5 h-1.5 rounded-full shrink-0 transition-all ${
-                                                isLinkActive(link.href) ? 'bg-[#E11D1D] scale-125' : 'bg-transparent'
+                                                isLinkActive(link.href) ? 'bg-[#FF2E2E] scale-125' : 'bg-transparent'
                                             }`} />
                                             {link.name}
                                         </a>
@@ -359,7 +359,7 @@ const NavbarContent = () => {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             onClick={() => setIsOpen(false)}
-                                            className="flex items-center gap-3 py-3 text-[15px] font-medium tracking-wide text-[rgba(237,232,228,0.75)] hover:text-[#E11D1D] transition-colors min-h-[44px] flex-1"
+                                            className="flex items-center gap-3 py-3 text-[15px] font-medium tracking-wide text-[rgba(237,232,228,0.75)] hover:text-[#FF2E2E] transition-colors min-h-[44px] flex-1"
                                         >
                                             <span className="w-1.5 h-1.5 rounded-full shrink-0 bg-transparent" />
                                             {t.nav.resume}
@@ -370,7 +370,7 @@ const NavbarContent = () => {
                                             aria-label="Download Resume"
                                             title="Download Resume"
                                             onClick={() => setIsOpen(false)}
-                                            className="flex items-center py-3 px-4 text-[rgba(237,232,228,0.75)] hover:text-[#E11D1D] transition-colors min-h-[44px]"
+                                            className="flex items-center py-3 px-4 text-[rgba(237,232,228,0.75)] hover:text-[#FF2E2E] transition-colors min-h-[44px]"
                                         >
                                             <Download className="w-4 h-4" />
                                         </a>
@@ -386,14 +386,14 @@ const NavbarContent = () => {
                                         rel="noopener noreferrer"
                                         className="w-full flex items-center justify-center py-3.5 font-bold text-white text-sm tracking-wide transition-all min-h-[44px] rounded-full"
                                         style={{
-                                            backgroundColor: '#E11D1D',
-                                            boxShadow: '0 0 20px rgba(225,29,29,0.2)',
+                                            backgroundColor: '#FF2E2E',
+                                            boxShadow: '0 0 20px rgba(255,46,46,0.2)',
                                         }}
                                         onMouseEnter={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 0 30px rgba(225,29,29,0.35)';
+                                            e.currentTarget.style.boxShadow = '0 0 30px rgba(255,46,46,0.35)';
                                         }}
                                         onMouseLeave={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 0 20px rgba(225,29,29,0.2)';
+                                            e.currentTarget.style.boxShadow = '0 0 20px rgba(255,46,46,0.2)';
                                         }}
                                     >
                                         {t.nav.bookCall}

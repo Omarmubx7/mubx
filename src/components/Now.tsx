@@ -12,20 +12,13 @@ const lines = [
 
 export default function Now() {
   return (
-    <section
+<section
       id="now"
       className="relative py-14 md:py-20 px-6 md:px-12"
       style={{
         backgroundColor: '#0D0D0D',
       }}
     >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 60% 30% at 50% 0%, rgba(230,57,70,0.03) 0%, transparent 60%)',
-        }}
-      />
       <div className="max-w-[1200px] mx-auto w-full relative z-10">
         <SectionWrapper>
           <h2 className="text-lg font-mono font-bold uppercase tracking-[0.15em] text-red mb-8">

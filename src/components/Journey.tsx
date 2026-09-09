@@ -81,11 +81,11 @@ function DesktopYearCard({
       }}
     >
       {/* Year */}
-      <div className="text-5xl font-black text-[#E11D1D] font-mono leading-none">
+      <div className="text-5xl font-black text-[#FF2E2E] font-mono leading-none">
         {group.year}
       </div>
 
-      <div className="w-full h-[1px] bg-[#E11D1D]/15" />
+      <div className="w-full h-[1px] bg-[#FF2E2E]/15" />
 
       {/* Entries */}
       <div className="space-y-4">
@@ -133,14 +133,14 @@ function MyPathPhase({ scrollYProgress }: { scrollYProgress: any }) {
         </motion.div>
 
         {/* Horizontal progress line */}
-        <div className="mt-6 md:mt-8 h-[1px] w-full bg-[#E11D1D]/10 relative">
+        <div className="mt-6 md:mt-8 h-[1px] w-full bg-[#FF2E2E]/10 relative">
           <motion.div
             style={{ scaleX: progressScaleX }}
             className="absolute inset-y-0 left-0 w-full origin-left"
           >
             <div
               className="h-full w-full"
-              style={{ background: 'linear-gradient(90deg, #E11D1D, rgba(225,29,29,0.15))' }}
+              style={{ background: '#FF2E2E' }}
             />
           </motion.div>
         </div>
@@ -157,12 +157,6 @@ function MobileMyPath() {
       className="relative py-14 md:py-20 px-6 md:px-12"
       style={{ backgroundColor: '#0D0D0D' }}
     >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 70% 60% at 30% 50%, rgba(230,57,70,0.04) 0%, transparent 60%)',
-        }}
-      />
       <div className="relative z-10">
         <motion.div
           variants={sceneStagger}
@@ -188,10 +182,10 @@ function MobileMyPath() {
                 border: '1px solid rgba(255,255,255,0.06)',
               }}
             >
-              <div className="text-4xl font-black text-[#E11D1D] font-mono leading-none">
+              <div className="text-4xl font-black text-[#FF2E2E] font-mono leading-none">
                 {group.year}
               </div>
-              <div className="w-full h-[1px] bg-[#E11D1D]/15" />
+              <div className="w-full h-[1px] bg-[#FF2E2E]/15" />
               <div className="space-y-3">
                 {group.entries.map((entry) => (
                   <div key={entry.title}>
@@ -209,7 +203,7 @@ function MobileMyPath() {
         </div>
 
         {/* Horizontal progress line */}
-        <div className="mt-4 h-[1px] w-full bg-[#E11D1D]/10" />
+        <div className="mt-4 h-[1px] w-full bg-[#FF2E2E]/10" />
       </div>
     </section>
   )

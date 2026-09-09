@@ -126,13 +126,13 @@ export default function Services() {
                                         <CardTilt
                                             className={`group relative rounded-3xl border p-8 md:p-10 backdrop-blur-md flex flex-col justify-between overflow-hidden transition-all duration-500 h-full w-full ${
                                                 isPopular 
-                                                    ? 'border-neon/50 bg-white/5 shadow-[0_0_30px_rgba(225,29,29,0.15)] hover:border-neon' 
+                                                    ? 'border-neon/50 bg-white/5 shadow-[0_0_30px_rgba(255,46,46,0.15)] hover:border-neon' 
                                                     : 'border-white/5 bg-white/3 hover:bg-white/[0.04] hover:border-white/20'
                                             }`}
                                         >
                                         {/* Accent Top Banner for Popular Tier */}
                                         {isPopular && (
-                                            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-neon to-red-500 z-10" />
+                                            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#FF2E2E] z-10" />
                                         )}
                                         {/* Glow effects */}
                                         <div className={`absolute -bottom-20 -right-20 w-48 h-48 rounded-full pointer-events-none blur-[60px] transition-all duration-500 group-hover:scale-110 ${
@@ -298,7 +298,7 @@ export default function Services() {
                                                 href={getHref('/contact')}
                                                 className={`w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 border cursor-pointer ${
                                                     isPopular 
-                                                        ? 'bg-neon text-white border-transparent hover:bg-transparent hover:text-foreground hover:border-neon/50 shadow-[0_0_20px_rgba(255,30,30,0.15)] hover:shadow-none' 
+                                                        ? 'bg-neon text-white border-transparent hover:bg-transparent hover:text-foreground hover:border-neon/50 shadow-[0_0_20px_rgba(255,46,46,0.15)] hover:shadow-none' 
                                                         : 'bg-white/5 text-foreground border-white/10 hover:bg-neon hover:text-white hover:border-transparent'
                                                 }`}
                                             >

@@ -31,10 +31,10 @@ html[data-boot-skip] [data-boot-cover] {
   --color-bg-light-warm: #F5F0ED;
   --color-surface-dark: #1A1414;
   --color-surface-light: #FFFFFF;
-  --color-red: #E11D1D;
-  --color-red-soft: rgba(225, 29, 29, 0.12);
-  --color-red-glow: rgba(225, 29, 29, 0.25);
-  --color-warm-glow: rgba(225, 29, 29, 0.06);
+  --color-red: #FF2E2E;
+  --color-red-soft: rgba(255, 46, 46, 0.12);
+  --color-red-glow: rgba(255, 46, 46, 0.25);
+  --color-warm-glow: rgba(255, 46, 46, 0.06);
   --color-text-primary-dark: #EDE8E4;
   --color-text-secondary-dark: #9E9490;
   --color-text-primary-light: #1A1414;
@@ -43,7 +43,7 @@ html[data-boot-skip] [data-boot-cover] {
   --color-border-light: rgba(0, 0, 0, 0.07);
 
   /* Legacy compatibility (for sub-pages) */
-  --color-neon: #E11D1D;
+  --color-neon: #FF2E2E;
   --color-background: #0D0D0D;
   --color-foreground: #EDE8E4;
   --color-muted: #9E9490;
@@ -74,8 +74,8 @@ html[data-boot-skip] [data-boot-cover] {
   }
 
   @keyframes glow-pulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(225, 29, 29, 0.1); }
-    50% { box-shadow: 0 0 40px rgba(225, 29, 29, 0.25); }
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 46, 46, 0.1); }
+    50% { box-shadow: 0 0 40px rgba(255, 46, 46, 0.25); }
   }
 
   @keyframes orbit {
@@ -87,7 +87,7 @@ html[data-boot-skip] [data-boot-cover] {
 :root {
   --background: #0D0D0D;
   --foreground: #EDE8E4;
-  --neon: #E11D1D;
+  --neon: #FF2E2E;
   --muted: #9E9490;
   --card: rgba(255, 255, 255, 0.02);
   --border: rgba(255, 255, 255, 0.06);
@@ -122,7 +122,7 @@ body {
 }
 
 *:focus-visible {
-  outline: 2px solid #E11D1D;
+  outline: 2px solid #FF2E2E;
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -130,7 +130,7 @@ body {
 button:focus-visible,
 a:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid #E11D1D;
+  outline: 2px solid #FF2E2E;
   outline-offset: 3px;
 }
 
@@ -147,20 +147,9 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Section transition gradient overlays */
-.section-transition-dark-light {
-  background: linear-gradient(180deg, #0D0D0D 0%, #120B0B 30%, #F2EFED 70%, #F5F0ED 100%);
-  position: relative;
-}
-
-.section-transition-light-dark {
-  background: linear-gradient(180deg, #F5F0ED 0%, #F2EFED 30%, #120B0B 70%, #0D0D0D 100%);
-  position: relative;
-}
-
-/* Warm gradient glow for dark sections */
+/* Subtle solid warm tint for dark sections */
 .warm-glow {
-  background: radial-gradient(ellipse at 50% 0%, rgba(225, 29, 29, 0.04) 0%, transparent 70%);
+  background: rgba(255, 46, 46, 0.03);
 }
 
 /* Legacy utility classes for sub-pages */
@@ -182,12 +171,16 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
   }
 }
 
-.border-glow { box-shadow: 0 0 10px rgba(255, 30, 30, 0.2); }
+.border-glow { box-shadow: 0 0 10px rgba(255, 46, 46, 0.2); }
 .gpu-accelerate { transform: translateZ(0); will-change: transform; }
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1.1s step-end infinite;
 }
 
 /* Skip link */
@@ -199,20 +192,6 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
 }
 
 .skip-link:focus { top: 1rem; outline: 2px solid var(--neon); outline-offset: 4px; }
-
-/* Scene backgrounds */
-.scene-gradient-1 {
-  background: radial-gradient(ellipse 80% 50% at 50% 40%, rgba(230, 57, 70, 0.06) 0%, transparent 70%);
-}
-
-.scene-gradient-2 {
-  background: radial-gradient(ellipse 70% 60% at 30% 50%, rgba(230, 57, 70, 0.04) 0%, transparent 60%),
-              radial-gradient(ellipse 50% 40% at 80% 60%, rgba(225, 29, 29, 0.03) 0%, transparent 50%);
-}
-
-.scene-gradient-3 {
-  background: radial-gradient(ellipse 90% 40% at 60% 30%, rgba(230, 57, 70, 0.05) 0%, transparent 60%);
-}
 
 /* Progress line */
 .progress-track {
@@ -232,7 +211,7 @@ code, pre, kbd, samp { font-family: var(--font-mono); }
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #E11D1D, rgba(225, 29, 29, 0.3));
+  background: #FF2E2E;
   transform-origin: top center;
 }
 

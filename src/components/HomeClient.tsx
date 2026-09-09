@@ -118,7 +118,7 @@ function HomeMain() {
                         {/* My Services Button */}
                         <Link
                             href={getHref('/services')}
-                            className="w-full py-3 border border-neon/50 hover:bg-neon hover:text-white text-neon hover:border-transparent text-xs font-bold rounded-none flex items-center justify-center gap-2 bg-neon/5 transition-all shadow-[0_0_10px_rgba(225,29,29,0.1)] hover:shadow-[0_0_20px_rgba(225,29,29,0.3)] uppercase tracking-wider font-mono cursor-pointer"
+                            className="w-full py-3 border border-neon/50 hover:bg-neon hover:text-white text-neon hover:border-transparent text-xs font-bold rounded-none flex items-center justify-center gap-2 bg-neon/5 transition-all shadow-[0_0_10px_rgba(255,46,46,0.1)] hover:shadow-[0_0_20px_rgba(255,46,46,0.3)] uppercase tracking-wider font-mono cursor-pointer"
                         >
                             <svg className="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
@@ -132,7 +132,7 @@ function HomeMain() {
                             href="https://calendly.com/omarmubaidincs/30min"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full py-3 bg-neon text-white text-xs font-bold rounded-none flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(255,30,30,0.25)] hover:shadow-[0_0_25px_rgba(255,30,30,0.4)] hover:bg-[#B91616] uppercase tracking-wider font-mono cursor-pointer"
+                            className="w-full py-3 bg-neon text-white text-xs font-bold rounded-none flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(255,46,46,0.25)] hover:shadow-[0_0_25px_rgba(255,46,46,0.4)] hover:bg-[#D91F1F] uppercase tracking-wider font-mono cursor-pointer"
                         >
                             <Calendar className="w-3.5 h-3.5" />
                             {t.nav.bookCall}
@@ -158,7 +158,7 @@ function HomeMain() {
                                 download="Omar-Mubaidin-Resume.pdf"
                                 aria-label="Download Resume"
                                 title="Download Resume"
-                                className="w-[42px] py-3 border border-neon/40 hover:bg-neon hover:text-white text-neon flex items-center justify-center bg-neon/5 transition-all shadow-[0_0_10px_rgba(225,29,29,0.1)] hover:shadow-[0_0_20px_rgba(225,29,29,0.3)]"
+                                className="w-[42px] py-3 border border-neon/40 hover:bg-neon hover:text-white text-neon flex items-center justify-center bg-neon/5 transition-all shadow-[0_0_10px_rgba(255,46,46,0.1)] hover:shadow-[0_0_20px_rgba(255,46,46,0.3)]"
                             >
                                 <Download className="w-3.5 h-3.5" />
                             </a>

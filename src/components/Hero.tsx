@@ -16,14 +16,14 @@ const BRANCHES = [
 const BASE_DELAY = 0.48
 const STEP = 0.18
 
-const FLASH_OFF = '0 0 0px rgba(225,29,29,0)'
+const FLASH_OFF = '0 0 0px rgba(255,46,46,0)'
 
 const rootGlyph: Variants = {
   hidden: { opacity: 0, scale: 0.75 },
   show: {
     opacity: [0, 1, 1],
     scale: [0.75, 1.06, 1],
-    textShadow: [FLASH_OFF, '0 0 30px rgba(225,29,29,0.55)', '0 0 18px rgba(225,29,29,0.25)'],
+    textShadow: [FLASH_OFF, '0 0 30px rgba(255,46,46,0.55)', '0 0 18px rgba(255,46,46,0.25)'],
     transition: { duration: 0.6, times: [0, 0.55, 1], ease: EASE },
   },
 }
@@ -57,7 +57,7 @@ const word: Variants = {
   show: (i: number) => ({
     opacity: [0, 1, 1],
     scale: [0.6, 1.1, 1],
-    textShadow: [FLASH_OFF, '0 0 22px rgba(225,29,29,0.4)', FLASH_OFF],
+    textShadow: [FLASH_OFF, '0 0 22px rgba(255,46,46,0.4)', FLASH_OFF],
     transition: { duration: 0.55, delay: BASE_DELAY + STEP * i + 0.13, times: [0, 0.55, 1], ease: EASE },
   }),
 }
@@ -75,7 +75,7 @@ const endText: Variants = {
   show: {
     opacity: [0, 1, 1],
     scale: [0.7, 1.08, 1],
-    textShadow: [FLASH_OFF, '0 0 45px rgba(225,29,29,0.75)', '0 0 35px rgba(225,29,29,0.35)'],
+    textShadow: [FLASH_OFF, '0 0 45px rgba(255,46,46,0.75)', '0 0 35px rgba(255,46,46,0.35)'],
     transition: { duration: 0.6, delay: 1.3, times: [0, 0.55, 1], ease: EASE },
   },
 }
@@ -89,15 +89,6 @@ export default function Hero() {
       id="hero"
       className="relative min-h-dvh flex items-center overflow-hidden bg-bg-dark"
     >
-      {/* Ambient glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 70% 50% at 15% 30%, rgba(225,29,29,0.05) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 90% 70%, rgba(225,29,29,0.04) 0%, transparent 60%)',
-        }}
-      />
-
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 py-24 lg:py-28 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 items-center">
         {/* Text Column */}
         <div className="order-2 lg:order-1">
@@ -121,7 +112,7 @@ export default function Hero() {
                 <motion.span
                   variants={rootGlyph}
                   className={`block text-4xl md:text-5xl xl:text-6xl font-black leading-none text-neon ${
-                    rm ? '[text-shadow:0_0_18px_rgba(225,29,29,0.25)]' : ''
+                    rm ? '[text-shadow:0_0_18px_rgba(255,46,46,0.25)]' : ''
                   }`}
                 >
                   I
@@ -226,7 +217,7 @@ export default function Hero() {
                 >
                   <span className="text-foreground">your&nbsp;</span>
                   {rm ? (
-                    <span className="text-neon [text-shadow:0_0_35px_rgba(225,29,29,0.35)]">
+                    <span className="text-neon [text-shadow:0_0_35px_rgba(255,46,46,0.35)]">
                       systems
                     </span>
                   ) : (
@@ -234,9 +225,9 @@ export default function Hero() {
                       className="text-neon"
                       animate={{
                         textShadow: [
-                          '0 0 30px rgba(225,29,29,0.30)',
-                          '0 0 45px rgba(225,29,29,0.50)',
-                          '0 0 30px rgba(225,29,29,0.30)',
+                          '0 0 30px rgba(255,46,46,0.30)',
+                          '0 0 45px rgba(255,46,46,0.50)',
+                          '0 0 30px rgba(255,46,46,0.30)',
                         ],
                       }}
                       transition={{
@@ -260,7 +251,7 @@ export default function Hero() {
               href="https://calendly.com/omarmubaidincs/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-neon text-white text-xs font-bold uppercase tracking-wider font-mono transition-all hover:bg-[#B91616] hover:shadow-[0_0_25px_rgba(255,30,30,0.4)] shadow-[0_0_15px_rgba(255,30,30,0.25)]"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-neon text-white text-xs font-bold uppercase tracking-wider font-mono transition-all hover:bg-[#D91F1F] hover:shadow-[0_0_25px_rgba(255,46,46,0.4)] shadow-[0_0_15px_rgba(255,46,46,0.25)]"
             >
               <Calendar className="w-4 h-4" />
               {t.nav.bookCall}
@@ -281,7 +272,7 @@ export default function Hero() {
           {/* Glow behind photo */}
           <div className="absolute -inset-4 bg-neon/10 blur-3xl" aria-hidden="true" />
 
-          <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/10 shadow-[0_0_40px_rgba(225,29,29,0.15)]">
+          <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/10 shadow-[0_0_40px_rgba(255,46,46,0.15)]">
             <Image
               src="/omarmub.webp"
               alt={t.hero.imageAlt}

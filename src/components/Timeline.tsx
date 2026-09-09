@@ -63,7 +63,7 @@ export default function Timeline() {
                                 </div>
 
                                 {/* Active bottom border highlight on hover */}
-                                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-neon scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rtl:origin-right shadow-[0_0_8px_#E11D1D]" />
+                                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-neon scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rtl:origin-right shadow-[0_0_8px_#FF2E2E]" />
                             </motion.div>
                         ))}
                     </div>

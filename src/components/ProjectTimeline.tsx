@@ -106,8 +106,8 @@ function TimelineNode({
                         animate={{
                             scale: isExpanded ? 1.4 : 1,
                             boxShadow: isExpanded
-                                ? '0 0 20px rgba(225,29,29,0.5)'
-                                : '0 0 0px rgba(225,29,29,0)',
+                                ? '0 0 20px rgba(255,46,46,0.5)'
+                                : '0 0 0px rgba(255,46,46,0)',
                         }}
                         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                         className="relative z-10 w-4 h-4 rounded-full bg-neon border-2 border-background cursor-pointer shrink-0 mt-8"
@@ -142,8 +142,8 @@ function TimelineNode({
                         animate={{
                             scale: isExpanded ? 1.4 : 1,
                             boxShadow: isExpanded
-                                ? '0 0 20px rgba(225,29,29,0.5)'
-                                : '0 0 0px rgba(225,29,29,0)',
+                                ? '0 0 20px rgba(255,46,46,0.5)'
+                                : '0 0 0px rgba(255,46,46,0)',
                         }}
                         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                         className="relative z-10 w-3.5 h-3.5 rounded-full bg-neon border-2 border-background shrink-0 mt-7"
@@ -197,7 +197,7 @@ function ProjectNodeCard({
         <div
             className={`group border transition-all duration-300 ${
                 isExpanded
-                    ? 'border-neon bg-neon/[0.02] shadow-[0_0_20px_rgba(225,29,29,0.06)]'
+                    ? 'border-neon bg-neon/[0.02] shadow-[0_0_20px_rgba(255,46,46,0.06)]'
                     : 'border-border/30 bg-transparent hover:border-neon/30'
             } ${mobile ? '' : side === 'left' ? 'mr-8' : 'ml-8'}`}
         >
@@ -370,7 +370,7 @@ export default function ProjectTimeline() {
             <div className="fixed left-0 top-0 bottom-0 w-[3px] z-50 hidden lg:block">
                 <motion.div
                     className="w-full bg-neon origin-top"
-                    style={{ height: progressHeight, boxShadow: '0 0 8px rgba(225,29,29,0.4)' }}
+                    style={{ height: progressHeight, boxShadow: '0 0 8px rgba(255,46,46,0.4)' }}
                 />
             </div>
 
@@ -400,7 +400,7 @@ export default function ProjectTimeline() {
                                 onClick={() => handleCategoryChange(cat.id)}
                                 className={`px-4 py-2 border text-[10px] md:text-xs font-mono font-bold tracking-wider transition-all duration-300 rounded-full flex items-center gap-2 cursor-pointer group ${
                                     isActive
-                                        ? 'border-neon bg-neon/10 text-neon shadow-[0_0_15px_rgba(225,29,29,0.15)]'
+                                        ? 'border-neon bg-neon/10 text-neon shadow-[0_0_15px_rgba(255,46,46,0.15)]'
                                         : 'border-border/30 text-muted-foreground hover:border-neon/40 hover:text-neon'
                                 }`}
                             >

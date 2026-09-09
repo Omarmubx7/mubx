@@ -20,7 +20,7 @@ const BOOT_LINES: BootLine[] = [
   { text: '', color: '#EDE8E4', delay: 200 },
   { prompt: true, text: 'whoami', color: '#EDE8E4', delay: 300, typeSpeed: 40 },
   { text: 'Omar Mubaidin.', color: '#EDE8E4', delay: 80, typeSpeed: 45 },
-  { text: 'Web Dev & AI Engineer.', color: '#E11D1D', delay: 60, typeSpeed: 45 },
+  { text: 'Web Dev & AI Engineer.', color: '#FF2E2E', delay: 60, typeSpeed: 45 },
   { text: '', color: '#EDE8E4', delay: 100 },
   { prompt: true, text: 'cat bio.txt', color: '#EDE8E4', delay: 250, typeSpeed: 35 },
   { text: 'I build AI-powered products and clean web experiences.', color: '#9E9490', delay: 80, typeSpeed: 20 },
@@ -128,7 +128,7 @@ export default function TerminalBoot() {
                 wordBreak: 'break-word',
               }}
             >
-              {line.prompt && <span style={{ color: '#E11D1D' }}>$ </span>}
+              {line.prompt && <span style={{ color: '#FF2E2E' }}>$ </span>}
               {line.text}
             </div>
           )
@@ -138,7 +138,7 @@ export default function TerminalBoot() {
       {/* Active typing line */}
       {activeLine && (
         <div style={{ color: activeLine.color, whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-          {activeLine.prompt && <span style={{ color: '#E11D1D' }}>$ </span>}
+          {activeLine.prompt && <span style={{ color: '#FF2E2E' }}>$ </span>}
           {currentText}
           <span className="terminal-cursor" />
         </div>
@@ -168,13 +168,13 @@ export default function TerminalBoot() {
               transition: 'color 0.2s ease',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.color = '#E11D1D'
+              e.currentTarget.style.color = '#FF2E2E'
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.color = '#9E9490'
             }}
           >
-            <span style={{ color: '#E11D1D' }}>$ </span>cd projects <span style={{ color: '#5A504C', fontSize: '0.85em' }}># explore my work</span>
+            <span style={{ color: '#FF2E2E' }}>$ </span>cd projects <span style={{ color: '#5A504C', fontSize: '0.85em' }}># explore my work</span>
           </button>
           <a
             href="https://calendly.com/omarmubaidincs/30min"
@@ -196,13 +196,13 @@ export default function TerminalBoot() {
               transition: 'color 0.2s ease',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.color = '#E11D1D'
+              e.currentTarget.style.color = '#FF2E2E'
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.color = '#9E9490'
             }}
           >
-            <span style={{ color: '#E11D1D' }}>$ </span>book --call <span style={{ color: '#5A504C', fontSize: '0.85em' }}># let&apos;s talk</span>
+            <span style={{ color: '#FF2E2E' }}>$ </span>book --call <span style={{ color: '#5A504C', fontSize: '0.85em' }}># let&apos;s talk</span>
           </a>
         </motion.div>
       )}

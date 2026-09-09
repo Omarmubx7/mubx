@@ -99,7 +99,7 @@ export default function NeuralNetwork({ nodeCount = 50 }: { nodeCount?: number }
             ctx.beginPath()
             ctx.moveTo(n.x, n.y)
             ctx.lineTo(m.x, m.y)
-            ctx.strokeStyle = `rgba(225,29,29,${lineAlpha + mouseBoost})`
+            ctx.strokeStyle = `rgba(255,46,46,${lineAlpha + mouseBoost})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
@@ -110,13 +110,13 @@ export default function NeuralNetwork({ nodeCount = 50 }: { nodeCount?: number }
 
         ctx.beginPath()
         ctx.arc(n.x, n.y, nodeRadius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(225,29,29,${totalOpacity})`
+        ctx.fillStyle = `rgba(255,46,46,${totalOpacity})`
         ctx.fill()
 
         if (n.currentOpacity > 0.1) {
           ctx.beginPath()
           ctx.arc(n.x, n.y, nodeRadius + 4, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(225,29,29,${n.currentOpacity * 0.15})`
+          ctx.fillStyle = `rgba(255,46,46,${n.currentOpacity * 0.15})`
           ctx.fill()
         }
       }

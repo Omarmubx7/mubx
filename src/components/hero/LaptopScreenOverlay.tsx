@@ -98,11 +98,6 @@ export default function LaptopScreenOverlay({ scrollProgress }: LaptopScreenOver
                 ))}
                 <span className="animate-pulse inline-block w-2.5 h-4 bg-current align-bottom ml-1"></span>
             </div>
-
-            {/* Gemini Gradient Glow for mode 3 */}
-            {mode === 'gemini' && (
-                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 via-purple-500/10 to-transparent pointer-events-none mix-blend-screen" />
-            )}
         </motion.div>
     );
 }

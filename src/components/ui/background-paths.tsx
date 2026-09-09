@@ -14,7 +14,7 @@ export function FloatingPaths({ position }: { position: number }) {
         } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
             684 - i * 5 * position
         } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-        color: `rgba(225,29,29,${0.1 + i * 0.03})`,
+        color: `rgba(255,46,46,${0.1 + i * 0.03})`,
         width: 0.5 + i * 0.03,
     }));
 

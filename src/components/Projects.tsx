@@ -114,7 +114,7 @@ export default function Projects() {
                                 onClick={() => handleCategoryChange(cat.id)}
                                 className={`px-4 py-2 border text-[10px] md:text-xs font-mono font-bold tracking-wider transition-all duration-300 rounded-full flex items-center gap-2 cursor-pointer group ${
                                     isActive
-                                        ? 'border-neon bg-neon/10 text-neon shadow-[0_0_15px_rgba(225,29,29,0.15)]'
+                                        ? 'border-neon bg-neon/10 text-neon shadow-[0_0_15px_rgba(255,46,46,0.15)]'
                                         : 'border-border/30 text-muted-foreground hover:border-neon/40 hover:text-neon'
                                 }`}
                             >
@@ -143,7 +143,7 @@ export default function Projects() {
                                         }}
                                         className={`group relative p-6 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                                             isActive 
-                                                ? 'border-neon bg-neon/[0.02] shadow-[0_0_15px_rgba(225,29,29,0.05)]' 
+                                                ? 'border-neon bg-neon/[0.02] shadow-[0_0_15px_rgba(255,46,46,0.05)]' 
                                                 : 'border-border/30 bg-transparent hover:border-neon/30'
                                         }`}
                                     >

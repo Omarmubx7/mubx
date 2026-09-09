@@ -36,7 +36,7 @@ export default function SuccessView() {
 
                         <Link
                             href="/"
-                            className="px-8 py-4 bg-neon text-white font-bold rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,30,30,0.3)]"
+                            className="px-8 py-4 bg-neon text-white font-bold rounded-full hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,46,46,0.3)]"
                         >
                             Back to Home
                         </Link>

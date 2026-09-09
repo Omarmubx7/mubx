@@ -108,7 +108,7 @@ function SlideContent({ project }: { project: Project }) {
                         href={project.links.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-3 bg-neon text-white text-[11px] font-mono font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(225,29,29,0.3)] hover:shadow-[0_0_30px_rgba(225,29,29,0.5)] hover:bg-[#B91616]"
+                        className="px-6 py-3 bg-neon text-white text-[11px] font-mono font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,46,46,0.3)] hover:shadow-[0_0_30px_rgba(255,46,46,0.5)] hover:bg-[#D91F1F]"
                     >
                         <span>Visit Website</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -203,7 +203,7 @@ function MobileSlide({ project, index }: { project: Project; index: number }) {
                 href={project.links.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full px-4 py-3 bg-neon text-white text-[10px] font-mono font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(225,29,29,0.25)]"
+                className="w-full px-4 py-3 bg-neon text-white text-[10px] font-mono font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,46,46,0.25)]"
             >
                 <span>Visit Website</span>
                 <ArrowRight className="w-3 h-3" />
@@ -340,7 +340,7 @@ export default function ProjectShowcase() {
                             {/* Progress bar */}
                             <motion.div
                                 className="h-[3px] bg-neon origin-left"
-                                style={{ width: progressWidth, boxShadow: '0 0 10px rgba(225,29,29,0.5)' }}
+                                style={{ width: progressWidth, boxShadow: '0 0 10px rgba(255,46,46,0.5)' }}
                             />
 
                             <div className="flex items-center justify-between px-8 py-6">
@@ -361,7 +361,7 @@ export default function ProjectShowcase() {
                                             <div
                                                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                                                     i === activeIndex
-                                                        ? 'bg-neon scale-125 shadow-[0_0_8px_rgba(225,29,29,0.5)]'
+                                                        ? 'bg-neon scale-125 shadow-[0_0_8px_rgba(255,46,46,0.5)]'
                                                         : 'bg-border/50 group-hover:bg-muted-foreground/50'
                                                 }`}
                                             />

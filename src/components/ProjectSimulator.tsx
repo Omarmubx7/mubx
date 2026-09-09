@@ -46,15 +46,15 @@ export default function ProjectSimulator({ slug }: Readonly<SimulatorProps>) {
             onMouseLeave={() => setHovered(false)}
             className="w-full h-full border border-border/30 bg-card/5 backdrop-blur-md relative overflow-hidden flex flex-col rounded-none shadow-2xl transition-all duration-300"
             style={{
-                borderColor: hovered ? 'rgba(225,29,29,0.3)' : 'rgba(255,255,255,0.07)',
-                boxShadow: hovered ? '0 12px 40px rgba(225,29,29,0.08)' : 'none'
+                borderColor: hovered ? 'rgba(255,46,46,0.3)' : 'rgba(255,255,255,0.07)',
+                boxShadow: hovered ? '0 12px 40px rgba(255,46,46,0.08)' : 'none'
             }}
         >
             {/* Monitor window chrome */}
             <div className="w-full border-b border-border/30 bg-card/10 px-4 py-2.5 flex items-center gap-3 pointer-events-none select-none shrink-0">
                 {/* Window dots */}
                 <div className="flex items-center gap-1.5 shrink-0">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#E11D1D]/30" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#FF2E2E]/30" />
                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/20" />
                     <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
                 </div>

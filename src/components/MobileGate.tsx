@@ -33,14 +33,7 @@ export default function MobileGate() {
   return (
     <div className="lg:hidden fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#0D0D0D] px-8 text-center">
       {/* Animated border */}
-      <div className="absolute inset-4 rounded-2xl border border-[#E11D1D]/20 pointer-events-none" />
-      <div
-        className="absolute inset-4 rounded-2xl pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(225,29,29,0.07) 0%, transparent 70%)',
-        }}
-      />
+      <div className="absolute inset-4 rounded-2xl border border-[#FF2E2E]/20 pointer-events-none" />
 
       {/* Logo */}
       <div className="relative w-20 h-20 mb-8">
@@ -54,7 +47,7 @@ export default function MobileGate() {
       </div>
 
       {/* Desktop icon */}
-      <div className="mb-6 text-[#E11D1D]">
+      <div className="mb-6 text-[#FF2E2E]">
         <svg
           width="56"
           height="56"
@@ -89,14 +82,14 @@ export default function MobileGate() {
       {/* Continue button */}
       <button
         onClick={handleDismiss}
-        className="px-6 py-3 bg-[#E11D1D] hover:bg-[#B31414] text-white text-xs font-mono font-bold tracking-widest uppercase transition-all shadow-[0_0_15px_rgba(225,29,29,0.2)] active:scale-95 cursor-pointer z-50"
+        className="px-6 py-3 bg-[#FF2E2E] hover:bg-[#D91F1F] text-white text-xs font-mono font-bold tracking-widest uppercase transition-all shadow-[0_0_15px_rgba(255,46,46,0.2)] active:scale-95 cursor-pointer z-50"
       >
         Enter Light Version
       </button>
 
       <div className="mt-12 flex items-center gap-3">
         <span
-          className="w-2 h-2 rounded-full bg-[#E11D1D] animate-pulse"
+          className="w-2 h-2 rounded-full bg-[#FF2E2E] animate-pulse"
           style={{ animationDuration: '2s' }}
         />
         <span

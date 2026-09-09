@@ -89,27 +89,27 @@ function CoreHexagon({ item, index }: { item: TechItem; index: number }) {
                 <svg viewBox="0 0 100 115" className="absolute inset-0 w-full h-full">
                     <defs>
                         <linearGradient id={`core-grad-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="rgba(225,29,29,0.15)" />
-                            <stop offset="100%" stopColor="rgba(225,29,29,0.04)" />
+                            <stop offset="0%" stopColor="rgba(255,46,46,0.15)" />
+                            <stop offset="100%" stopColor="rgba(255,46,46,0.04)" />
                         </linearGradient>
                         <filter id={`core-glow-${index}`}>
-                            <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="rgba(225,29,29,0.25)" />
+                            <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="rgba(255,46,46,0.25)" />
                         </filter>
                     </defs>
                     <polygon
                         points="50 0, 93.3 25, 93.3 90, 50 115, 6.7 90, 6.7 25"
                         fill={`url(#core-grad-${index})`}
-                        stroke="rgba(225,29,29,0.4)"
+                        stroke="rgba(255,46,46,0.4)"
                         strokeWidth="1.5"
                         filter={`url(#core-glow-${index})`}
-                        className="group-hover:stroke-[#E11D1D] group-hover:fill-[#E11D1D]/[0.15] transition-all duration-300"
+                        className="group-hover:stroke-[#FF2E2E] group-hover:fill-[#FF2E2E]/[0.15] transition-all duration-300"
                     />
                     <polygon
                         points="50 5, 89 27, 89 88, 50 110, 11 88, 11 27"
                         fill="none"
-                        stroke="rgba(225,29,29,0.15)"
+                        stroke="rgba(255,46,46,0.15)"
                         strokeWidth="0.5"
-                        className="group-hover:stroke-[#E11D1D]/30 transition-all duration-300"
+                        className="group-hover:stroke-[#FF2E2E]/30 transition-all duration-300"
                     />
                 </svg>
 
@@ -124,7 +124,7 @@ function CoreHexagon({ item, index }: { item: TechItem; index: number }) {
                             sizes="(max-width: 768px) 48px, 56px"
                         />
                         {/* Core badge */}
-                        <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#E11D1D] flex items-center justify-center shadow-lg shadow-[#E11D1D]/30">
+                        <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#FF2E2E] flex items-center justify-center shadow-lg shadow-[#FF2E2E]/30">
                             <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg>
@@ -134,7 +134,7 @@ function CoreHexagon({ item, index }: { item: TechItem; index: number }) {
                         {item.name}
                     </span>
                     {item.role && (
-                        <span className="text-[8px] md:text-[9px] font-mono text-[#E11D1D] mt-0.5">
+                        <span className="text-[8px] md:text-[9px] font-mono text-[#FF2E2E] mt-0.5">
                             {item.role}
                         </span>
                     )}
@@ -142,9 +142,9 @@ function CoreHexagon({ item, index }: { item: TechItem; index: number }) {
 
                 {/* Tooltip */}
                 <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-30">
-                    <div className="bg-[#1A1414] border border-[#E11D1D]/30 rounded-lg px-3 py-1.5 whitespace-nowrap shadow-xl shadow-[#E11D1D]/10">
+                    <div className="bg-[#1A1414] border border-[#FF2E2E]/30 rounded-lg px-3 py-1.5 whitespace-nowrap shadow-xl shadow-[#FF2E2E]/10">
                         <p className="text-[10px] font-bold font-mono text-[#EDE8E4]">{item.name}</p>
-                        {item.role && <p className="text-[9px] text-[#E11D1D] font-mono">{item.role}</p>}
+                        {item.role && <p className="text-[9px] text-[#FF2E2E] font-mono">{item.role}</p>}
                     </div>
                 </div>
             </div>
@@ -175,7 +175,7 @@ function SmallHexagon({ item, index }: { item: TechItem; index: number }) {
                         fill={`url(#small-grad-${index})`}
                         stroke="rgba(255,255,255,0.08)"
                         strokeWidth="1"
-                        className="group-hover:stroke-[#E11D1D]/60 group-hover:fill-[#E11D1D]/[0.08] transition-all duration-300"
+                        className="group-hover:stroke-[#FF2E2E]/60 group-hover:fill-[#FF2E2E]/[0.08] transition-all duration-300"
                     />
                 </svg>
 
@@ -199,7 +199,7 @@ function SmallHexagon({ item, index }: { item: TechItem; index: number }) {
                 <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-30">
                     <div className="bg-[#1A1414] border border-[rgba(255,255,255,0.07)] rounded-lg px-3 py-1.5 whitespace-nowrap shadow-xl">
                         <p className="text-[10px] font-bold font-mono text-[#EDE8E4]">{item.name}</p>
-                        {item.role && <p className="text-[9px] text-[#E11D1D] font-mono">{item.role}</p>}
+                        {item.role && <p className="text-[9px] text-[#FF2E2E] font-mono">{item.role}</p>}
                     </div>
                 </div>
             </div>
@@ -262,7 +262,7 @@ function TechCategorySection({ category, index }: { category: TechCategory; inde
         >
             {/* Category Header */}
             <div className="flex items-center gap-4 mb-8 md:mb-12">
-                <span className="text-[10px] font-bold text-[#E11D1D] uppercase tracking-[0.2em] font-mono">
+                <span className="text-[10px] font-bold text-[#FF2E2E] uppercase tracking-[0.2em] font-mono">
                     // {categoryName}
                 </span>
                 <div className="flex-1 h-px bg-[rgba(255,255,255,0.07)]" />
@@ -294,7 +294,7 @@ export default function TechStack() {
                         viewport={{ once: true, margin: '-100px' }}
                         variants={fadeUp}
                     >
-                        <span className="text-[10px] font-bold text-[#E11D1D] uppercase tracking-[0.2em] font-mono mb-4 block">
+                        <span className="text-[10px] font-bold text-[#FF2E2E] uppercase tracking-[0.2em] font-mono mb-4 block">
                             // TECHNOLOGIES & TOOLS
                         </span>
                         <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#EDE8E4] mb-4">

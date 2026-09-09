@@ -1,446 +1,302 @@
-﻿'use client'
+'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, useReducedMotion, type Variants } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform, useReducedMotion, type MotionValue } from 'framer-motion'
 import Image from 'next/image'
-import { stack } from '@/data/stack'
+import { stack, type StackItem } from '@/data/stack'
+import { techLogos } from '@/data/techLogos'
 
-const techLogos: Record<string, string> = {
-  'Next.js': '/techstackicons/next.svg',
-  'React': '/techstackicons/react-svgrepo-com.svg',
-  'TypeScript': '/techstackicons/typescript-icon-svgrepo-com.svg',
-  'Tailwind CSS': '/techstackicons/tailwindcss-icon-svgrepo-com.svg',
-  'Figma': '/techstackicons/figma-icon.svg',
-  'HTML5': '/techstackicons/HTML5.svg',
-  'CSS3': '/techstackicons/CSS3.svg',
-  'Bootstrap': '/techstackicons/Bootstrap.svg',
-  'Node.js': '/techstackicons/nodejs-icon-svgrepo-com.svg',
-  'PostgreSQL': '/techstackicons/postgresql-svgrepo-com.svg',
-  'Supabase': '/techstackicons/supabase-logo-icon.svg',
-  'Prisma': '/techstackicons/prisma-svgrepo-com.svg',
-  'Python': '/techstackicons/python-svgrepo-com.svg',
-  'FastAPI': '/techstackicons/FastAPI.svg',
-  'Laravel': '/techstackicons/laravel-2.svg',
-  'Java': '/techstackicons/java-svgrepo-com.svg',
-  'C++': '/techstackicons/c-1.svg',
-  'Swift': '/techstackicons/swift-svgrepo-com.svg',
-  'Kotlin': '/techstackicons/Kotlin.svg',
-  'Vercel': '/techstackicons/vercel.svg',
-  'Git': '/techstackicons/git-svgrepo-com.svg',
-  'GitHub': '/techstackicons/github (1).svg',
-  'Docker': '/techstackicons/docker-svgrepo-com.svg',
-  'NPM': '/techstackicons/NPM.svg',
-  'VS Code': '/techstackicons/Visual Studio Code (VS Code).svg',
-  'Postman': '/techstackicons/postman-icon-svgrepo-com.svg',
-  'Bash': '/techstackicons/bash-icon-svgrepo-com.svg',
-  'GoLand': '/techstackicons/GoLand.svg',
-  'PowerShell': '/techstackicons/Powershell_128.svg',
-  'Android Studio': '/techstackicons/Android_Studio_icon_(2023).svg',
-  'Groq': '/techstackicons/groq.svg',
-  'Claude AI': '/techstackicons/Claude_AI_symbol.svg',
-  'Perplexity': '/techstackicons/perplexity-color.svg',
-  'OpenCode': '/techstackicons/opencode-logo-dark-square (1).svg',
+type CategoryKey = 'Frontend & UI' | 'Backend & Database' | 'Tools & Deployment'
+
+type ChapterCfg = {
+  key: CategoryKey
+  num: string
+  label: string
+  desc: string
+  range: [number, number]
 }
 
-const categoryMeta: Record<string, { label: string; desc: string }> = {
-  Frontend: { label: 'Frontend', desc: 'Building responsive, modern, and interactive user experiences.' },
-  Backend: { label: 'Backend', desc: 'Architecting secure, scalable, and database-driven solutions.' },
-  Tools: { label: 'Tools', desc: 'Leveraging automation, version control, and CI/CD workflows.' },
-}
-
-const BRANCHES = [
-  { key: 'Frontend & UI', meta: 'Frontend', chip: 'feat/frontend-ui' },
-  { key: 'Backend & Database', meta: 'Backend', chip: 'core/backend-db' },
-  { key: 'Tools & Deployment', meta: 'Tools', chip: 'chore/tools-deployment' },
-] as const
-
-const EASE = [0.16, 1, 0.3, 1] as const
-
-const laneV = (i: number): Variants => ({
-  hidden: { scaleY: 0 },
-  show: {
-    scaleY: 1,
-    transition: { duration: 0.9, delay: 0.1 + i * 0.1, ease: EASE },
+const CHAPTERS: ChapterCfg[] = [
+  {
+    key: 'Frontend & UI',
+    num: '01',
+    label: 'FRONTEND & UI',
+    desc: 'responsive, modern, interactive user interfaces',
+    range: [0.0, 0.3],
   },
-})
-
-const chipV: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: EASE },
+  {
+    key: 'Backend & Database',
+    num: '02',
+    label: 'BACKEND & DATABASE',
+    desc: 'secure, scalable, database-driven solutions',
+    range: [0.27, 0.6],
   },
+  {
+    key: 'Tools & Deployment',
+    num: '03',
+    label: 'TOOLS & DEPLOYMENT',
+    desc: 'automation, version control, and CI/CD workflows',
+    range: [0.58, 0.92],
+  },
+]
+
+const TOTAL_HEIGHT = 360
+
+const rootsOf = (key: CategoryKey) => stack.filter(s => s.category === key && s.core)
+const kidsOf = (key: CategoryKey) => stack.filter(s => s.category === key && !s.core)
+
+/* Pinned story: every chapter cross-fades into the next inside one sticky viewport. */
+function Story() {
+  const ref = useRef<HTMLDivElement>(null)
+  const rm = useReducedMotion()
+  const { scrollYProgress: p } = useScroll({
+    target: ref,
+    offset: ['start start', 'end end'],
+  })
+
+  if (rm) return <StaticStory />
+
+  return (
+    <div ref={ref} className="relative" style={{ height: `${TOTAL_HEIGHT}vh` }}>
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <div className="progress-track hidden md:block">
+          <motion.div className="progress-fill" style={{ scaleY: p }} />
+        </div>
+
+        <div className="relative h-screen w-full">
+          {CHAPTERS.map(config => (
+            <ChapterScene key={config.key} config={config} p={p} />
+          ))}
+        </div>
+      </div>
+    </div>
+  )
 }
 
-const nodeV: Variants = {
-  hidden: { opacity: 0, x: -12, scale: 0.92 },
-  show: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: { duration: 0.4, delay: 0.25 + i * 0.06, ease: EASE },
-  }),
-}
+/* One chapter: root icon(s) first, then the offspring branches out below. */
+function ChapterScene({ config, p }: { config: ChapterCfg; p: MotionValue<number> }) {
+  const local = useTransform(p, config.range, [0, 1])
 
-const mergeV = (i: number): Variants => ({
-  hidden: { pathLength: 0 },
-  show: {
-    pathLength: 1,
-    transition: { duration: 0.6, delay: 1.15 + i * 0.12, ease: EASE },
-  },
-})
+  const sceneOp = useTransform(local, [0, 0.05, 0.92, 1], [0, 1, 1, 0])
+  const sceneScale = useTransform(local, [0, 0.05], [0.985, 1])
+  const pointer = useTransform(local, v => (v > 0.03 && v < 0.97 ? 'auto' : 'none'))
 
-const endDotV: Variants = {
-  hidden: { scale: 0 },
-  show: {
-    scale: [0, 1.35, 1],
-    transition: { duration: 0.45, delay: 1.65, ease: EASE },
-  },
-}
+  const introOp = useTransform(local, [0.02, 0.09], [0, 1])
+  const introY = useTransform(local, [0.02, 0.09], [24, 0])
+  const truncOp = useTransform(local, [0.3, 0.36], [0, 1])
+  const trunkScaleY = useTransform(local, [0.3, 0.36], [0, 1])
 
-const endTextV: Variants = {
-  hidden: { opacity: 0, scale: 0.85 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.55, delay: 1.72, ease: EASE },
-  },
-}
+  const roots = rootsOf(config.key)
+  const kids = kidsOf(config.key)
 
-function GitNode({ name, role, core, index }: { name: string; role?: string; core?: boolean; index: number }) {
-  const logoSrc = techLogos[name]
   return (
     <motion.div
-      variants={nodeV}
-      custom={index}
-      className="group flex h-12 items-center hover:bg-foreground/[0.03] hover:translate-x-1 transition-all duration-200"
+      className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-12"
+      style={{ opacity: sceneOp, scale: sceneScale, pointerEvents: pointer }}
     >
-      <span className="flex w-6 shrink-0 items-center justify-center">
-        {core ? (
-          <span className="h-3 w-3 rounded-full bg-neon shadow-[0_0_10px_rgba(225,29,29,0.7)] group-hover:shadow-[0_0_16px_rgba(225,29,29,0.9)] transition-shadow duration-200" />
-        ) : (
-          <span className="h-2.5 w-2.5 rounded-full border border-foreground/40 bg-[#0D0D0D] group-hover:border-neon/70 group-hover:shadow-[0_0_8px_rgba(225,29,29,0.4)] transition-all duration-200" />
-        )}
-      </span>
-      <span className="relative w-8 h-8 shrink-0">
-        {logoSrc && (
-          <Image
-            src={logoSrc}
-            alt=""
-            fill
-            className="object-contain grayscale-[0.35] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-300"
-            sizes="32px"
-          />
-        )}
-      </span>
-      <span className={`ml-3 font-mono text-[15px] md:text-base leading-tight ${core ? 'text-foreground font-bold' : 'text-muted'} group-hover:text-foreground transition-colors duration-200`}>
-        {name}
-      </span>
-      {role && (
-        <span className="ml-auto hidden lg:block pl-3 font-mono text-[11px] text-neon whitespace-nowrap">
-          {role}
-        </span>
-      )}
+      {/* Chapter intro */}
+      <motion.div style={{ opacity: introOp, y: introY }} className="text-center">
+        <div className="flex items-center justify-center gap-3 md:gap-4">
+          <span className="font-mono text-3xl md:text-4xl font-black text-[#FF2E2E] leading-none">
+            {config.num}
+          </span>
+          <span className="h-px w-10 md:w-16 bg-[#FF2E2E]/40" />
+          <span className="font-mono text-sm md:text-lg font-bold tracking-[0.25em] text-[#EDE8E4]">
+            {config.label}
+            <span className="ml-2 inline-block h-4 md:h-5 w-2 bg-[#FF2E2E] align-middle cursor-blink" />
+          </span>
+        </div>
+        <p className="mt-3 font-mono text-[10px] md:text-xs text-[#9E9490] tracking-[0.2em] uppercase">
+          {'// '}
+          {config.desc}
+        </p>
+        <p className="mt-1.5 font-mono text-[10px] text-[#9E9490]/60">
+          <span className="text-[#FF2E2E]">{roots.length}</span> core · <span className="text-[#FF2E2E]">{kids.length}</span> supporting tools
+        </p>
+      </motion.div>
+
+      {/* The root */}
+      <div className="mt-8 md:mt-10 flex flex-wrap items-end justify-center gap-5 md:gap-10">
+        {roots.map((r, i) => (
+          <RootTile key={r.name} item={r} index={i} local={local} />
+        ))}
+      </div>
+
+      {/* Trunk */}
+      <motion.div aria-hidden="true" className="mt-5 h-7 md:h-9">
+        <motion.div
+          className="mx-auto h-full w-px bg-[#FF2E2E]/40"
+          style={{ scaleY: trunkScaleY, transformOrigin: 'top' }}
+        >
+          <span className="block h-1.5 w-1.5 -translate-x-[2.5px] translate-y-full rounded-full bg-[#FF2E2E] shadow-[0_0_8px_rgba(255,46,46,0.8)]" />
+        </motion.div>
+      </motion.div>
+
+      {/* Offspring */}
+      <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-center gap-2 gap-y-2.5 md:gap-3">
+        {kids.map((kid, i) => (
+          <KidChip key={kid.name} item={kid} index={i} count={kids.length} local={local} />
+        ))}
+      </div>
+      <motion.span aria-hidden="true" className="mt-5 h-1.5 w-1.5 rounded-full bg-[#FF2E2E]/70" style={{ opacity: truncOp }} />
     </motion.div>
   )
 }
 
-function BranchLane({ branchKey, chip, metaKey, index }: { branchKey: string; chip: string; metaKey: string; index: number }) {
-  const items = stack.filter(s => s.category === branchKey)
-  const meta = categoryMeta[metaKey]
-  const rm = useReducedMotion()
-  return (
-    <div className="flex flex-col">
-      <motion.div variants={chipV} className="h-14 pl-7 flex flex-col justify-center gap-0.5">
-        <p className="font-mono text-sm md:text-base font-bold text-neon">
-          &#9095; {chip}
-          <span className="ml-2 text-muted font-normal">({items.length})</span>
-        </p>
-        <p className="hidden xl:block font-mono text-[10px] text-muted/70 leading-snug">{meta.desc}</p>
-      </motion.div>
+function RootTile({ item, index, local }: { item: StackItem; index: number; local: MotionValue<number> }) {
+  const start = 0.09 + index * 0.045
+  const end = start + 0.07
+  const opacity = useTransform(local, [start, end], [0, 1])
+  const scale = useTransform(local, [start, end], [0.82, 1])
+  const y = useTransform(local, [start, end], [26, 0])
+  const src = techLogos[item.name]
 
-      <div className="relative flex-1">
-        <motion.span
-          aria-hidden="true"
-          variants={laneV(index)}
-          style={{ transformOrigin: 'top' }}
-          className="absolute left-[11px] top-1 bottom-0 w-px bg-gradient-to-b from-neon/50 via-foreground/20 to-neon/40"
-        />
-        {!rm && (
-          <motion.span
-            aria-hidden="true"
-            className="absolute left-[11px] -translate-x-1/2 h-1 w-3 rounded-full bg-neon shadow-[0_0_8px_rgba(225,29,29,0.9)]"
-            animate={{ top: ['1%', '97%'], opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 4.5, repeat: Infinity, repeatDelay: 2.5, delay: index * 1.4, ease: 'linear' }}
+  return (
+    <motion.div style={{ opacity, scale, y }} className="group flex flex-col items-center gap-2">
+      <div className="relative h-16 w-16 md:h-24 md:w-24 rounded-2xl border-2 border-[#FF2E2E]/60 bg-[#FF2E2E]/[0.06] shadow-[0_0_24px_rgba(255,46,46,0.22)] transition-shadow duration-300 group-hover:shadow-[0_0_36px_rgba(255,46,46,0.38)]">
+        {src && (
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-contain p-2.5 md:p-3.5 transition-transform duration-300 group-hover:scale-110"
+            sizes="96px"
           />
         )}
-        <div className="relative pt-1">
-          {items.map((item, i) => (
-            <GitNode key={item.name} name={item.name} role={item.role} core={item.core} index={i} />
-          ))}
-        </div>
       </div>
+      <p className="font-mono text-sm font-bold text-[#EDE8E4] md:text-base">{item.name}</p>
+      <p className="-mt-1 font-mono text-[10px] text-[#FF2E2E] md:text-[11px]">{item.role}</p>
+    </motion.div>
+  )
+}
+
+function KidChip({ item, index, count, local }: { item: StackItem; index: number; count: number; local: MotionValue<number> }) {
+  const span = 0.54
+  const start = 0.37 + index * (span / count)
+  const end = Math.min(start + (span / count) * 0.75, 0.95)
+  const opacity = useTransform(local, [start, end], [0, 1])
+  const y = useTransform(local, [start, end], [16, 0])
+  const src = techLogos[item.name]
+
+  return (
+    <motion.div
+      style={{ opacity, y }}
+      className="group flex shrink-0 cursor-default items-center gap-2 rounded-lg border border-[rgba(255,255,255,0.08)] bg-white/[0.02] px-3 py-1.5 transition-colors duration-300 hover:border-[#FF2E2E]/50 hover:bg-[#FF2E2E]/[0.06]"
+    >
+      <span className="relative h-5 w-5 shrink-0 md:h-6 md:w-6">
+        {src && (
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-contain grayscale-[0.35] transition-all duration-300 group-hover:grayscale-0"
+            sizes="24px"
+          />
+        )}
+      </span>
+      <span className="font-mono text-[11px] text-[#9E9490] transition-colors duration-300 group-hover:text-[#EDE8E4] md:text-xs">
+        {item.name}
+      </span>
+    </motion.div>
+  )
+}
+
+/* Finale: hand off straight into the contact block — the story just ends. */
+/* Reduced-motion fallback: the same story, fully visible, no scroll pinning. */
+function StaticStory() {
+  return (
+    <div className="mx-auto max-w-4xl space-y-16 px-6 py-16">
+      {CHAPTERS.map(config => {
+        const roots = rootsOf(config.key)
+        const kids = kidsOf(config.key)
+        const desc = config.desc
+        return (
+          <div key={config.key} className="text-center">
+            <div className="flex items-center justify-center gap-3">
+              <span className="font-mono text-3xl font-bold text-[#FF2E2E]">{config.num}</span>
+              <span className="h-px w-10 bg-[#FF2E2E]/40" />
+              <span className="font-mono text-sm font-bold tracking-[0.25em] text-[#EDE8E4]">{config.label}</span>
+            </div>
+            <p className="mt-2 font-mono text-[10px] text-[#9E9490] uppercase tracking-[0.2em]">{`// ${desc}`}</p>
+            <div className="mt-6 flex flex-wrap items-end justify-center gap-6">
+              {roots.map(r => <StaticRoot key={r.name} item={r} />)}
+            </div>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
+              {kids.map(kid => <StaticChip key={kid.name} item={kid} />)}
+            </div>
+          </div>
+        )
+      })}
+
+      <div className="flex flex-col items-center gap-6">
+        <p className="font-mono text-xs text-[#9E9490]">$ 36 tools — one stack. Your turn.</p>
+        <a
+          href="#contact"
+          className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF2E2E] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all hover:bg-[#D91F1F]"
+        >
+          Start a project
+        </a>
+      </div>
+    </div>
+  )
+}
+
+function StaticRoot({ item }: { item: StackItem }) {
+  const src = techLogos[item.name]
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <div className="relative h-16 w-16 rounded-2xl border-2 border-[#FF2E2E]/60 bg-[#FF2E2E]/[0.06] shadow-[0_0_24px_rgba(255,46,46,0.22)]">
+        {src && (
+          <Image src={src} alt="" fill className="object-contain p-2.5" sizes="64px" />
+        )}
+      </div>
+      <p className="font-mono text-sm font-bold text-[#EDE8E4]">{item.name}</p>
+      <p className="-mt-1 font-mono text-[10px] text-[#FF2E2E]">{item.role}</p>
+    </div>
+  )
+}
+
+function StaticChip({ item }: { item: StackItem }) {
+  const src = techLogos[item.name]
+  return (
+    <div className="flex shrink-0 items-center gap-2 rounded-lg border border-[rgba(255,255,255,0.08)] bg-white/[0.02] px-3 py-1.5">
+      {src && (
+        <span className="relative h-5 w-5">
+          <Image src={src} alt="" fill className="object-contain" sizes="20px" />
+        </span>
+      )}
+      <span className="font-mono text-[11px] text-[#9E9490]">{item.name}</span>
     </div>
   )
 }
 
 export default function Stack() {
-  const [isMobile, setIsMobile] = useState(true)
-  const rm = useReducedMotion()
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-
-  if (isMobile) {
-    return (
-      <section id="tech-stack" className="relative bg-[#0D0D0D] border-t border-[rgba(255,255,255,0.07)] overflow-hidden">
-        <div className="absolute inset-0 warm-glow pointer-events-none" />
-        <div className="relative z-10 py-16 px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-[10px] font-bold text-[#E63946] uppercase tracking-[0.2em] font-mono mb-4 block">
-              {'// TOOLS OF THE TRADE'}
-            </span>
-            <h2 className="text-3xl font-bold text-[#EDE8E4] mb-4">My Tech Stack</h2>
-            <p className="text-[#9E9490] text-sm">React, Next.js, Node.js, PostgreSQL and everything I ship with.</p>
-          </motion.div>
-          <MobileHexGrid />
-        </div>
-      </section>
-    )
-  }
-
   return (
-    <section id="tech-stack" className="relative pt-24 pb-24 bg-[#0D0D0D] border-t border-[rgba(255,255,255,0.07)] overflow-hidden">
+    <section id="tech-stack" className="relative bg-[#0D0D0D] border-t border-[rgba(255,255,255,0.07)]">
       <div className="absolute inset-0 warm-glow pointer-events-none" />
 
-      <div className="relative z-10 px-6 md:px-12 lg:px-16 xl:px-24 max-w-6xl mx-auto">
+      <div className="relative z-10">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          className="px-6 md:px-12 lg:px-16 xl:px-24 max-w-6xl mx-auto pt-20 md:pt-24"
         >
-          <span className="text-[10px] font-bold text-[#E63946] uppercase tracking-[0.2em] font-mono mb-4 block">
+          <span className="mb-4 block font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF2E2E]">
             {'// TOOLS OF THE TRADE'}
           </span>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#EDE8E4] mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-[#EDE8E4] md:text-5xl lg:text-6xl">
             My Tech Stack
           </h2>
-          <p className="text-[#9E9490] text-base md:text-lg max-w-2xl">
+          <p className="max-w-2xl text-[#9E9490] text-base md:text-lg">
             React, Next.js, Node.js, PostgreSQL and everything I ship with.
           </p>
         </motion.div>
 
-        {/* Git log graph */}
-        <motion.div
-          className="mt-14"
-          initial={rm ? false : 'hidden'}
-          whileInView="show"
-          viewport={{ once: true, margin: '-60px' }}
-        >
-          <div className="grid md:grid-cols-3 gap-x-10">
-            {BRANCHES.map((b, i) => (
-              <BranchLane key={b.key} branchKey={b.key} chip={b.chip} metaKey={b.meta} index={i} />
-            ))}
-          </div>
-
-          {/* Merge fan */}
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 1200 96"
-            preserveAspectRatio="none"
-            className="w-full h-16 md:h-20 mt-1"
-          >
-            {[0, 1, 2].map(i => {
-              const x = [12, 426, 840][i]
-              return (
-                <motion.path
-                  key={i}
-                  variants={mergeV(i)}
-                  d={`M ${x} 0 C ${x} 58, 600 38, 600 94`}
-                  fill="none"
-                  stroke="rgba(225,29,29,0.45)"
-                  strokeWidth="1"
-                  vectorEffect="non-scaling-stroke"
-                />
-              )
-            })}
-          </svg>
-
-          {/* Merge point: your systems */}
-          <div className="flex flex-col items-center -mt-1">
-            <motion.span
-              aria-hidden="true"
-              variants={endDotV}
-              className={`h-3 w-3 rounded-full bg-neon shadow-[0_0_14px_rgba(225,29,29,0.7)] ${rm ? '' : 'animate-glow-pulse'}`}
-              style={rm ? undefined : { animationDelay: '2.4s' }}
-            />
-            <motion.p
-              variants={endTextV}
-              className="mt-3 font-mono text-2xl md:text-3xl font-black tracking-tight"
-            >
-              <span className="text-foreground">merged into&nbsp;</span>
-              <span className="text-neon [text-shadow:0_0_30px_rgba(225,29,29,0.35)]">
-                your systems
-              </span>
-            </motion.p>
-            <p className="mt-1 font-mono text-[10px] text-muted/60 uppercase tracking-[0.2em]">
-              36 commits &#183; 3 branches &#183; 1 trunk
-            </p>
-          </div>
-        </motion.div>
+        <Story />
       </div>
     </section>
-  )
-}
-
-/* ---------- Mobile hex grid (unchanged legacy layout) ---------- */
-
-type CellData =
-  | { type: 'label'; key: string; id: string }
-  | { type: 'item'; name: string; id: string }
-
-function buildCells(): CellData[] {
-  const fe = stack.filter(i => i.category === 'Frontend & UI')
-  const be = stack.filter(i => i.category === 'Backend & Database')
-  const tl = stack.filter(i => i.category === 'Tools & Deployment')
-  return [
-    { type: 'label', key: 'Frontend', id: 'lbl-fe' },
-    ...fe.map(i => ({ type: 'item' as const, name: i.name, id: i.name })),
-    { type: 'label', key: 'Backend', id: 'lbl-be' },
-    ...be.map(i => ({ type: 'item' as const, name: i.name, id: i.name })),
-    { type: 'label', key: 'Tools', id: 'lbl-tl' },
-    ...tl.map(i => ({ type: 'item' as const, name: i.name, id: i.name })),
-  ]
-}
-
-function HexCellContent({ cell, globalIndex }: { cell: CellData; globalIndex: number }) {
-  const isLabel = cell.type === 'label'
-  const item = !isLabel ? stack.find(s => s.name === cell.name) : null
-  const logoSrc = !isLabel ? techLogos[cell.name] : undefined
-  const isCore = item?.core || false
-  const meta = isLabel ? categoryMeta[cell.key] : null
-
-  return (
-    <>
-      <svg viewBox="0 0 100 115" className="absolute inset-0 w-full h-full">
-        <defs>
-          <linearGradient id={`mg-${globalIndex}`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={isCore ? 'rgba(230,57,70,0.15)' : isLabel ? 'rgba(230,57,70,0.08)' : 'rgba(255,255,255,0.05)'} />
-            <stop offset="100%" stopColor={isCore ? 'rgba(230,57,70,0.04)' : isLabel ? 'rgba(230,57,70,0.02)' : 'rgba(255,255,255,0.02)'} />
-          </linearGradient>
-          {(isCore || isLabel) && (
-            <filter id={`mg-${globalIndex}-glow`}>
-              <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="rgba(230,57,70,0.2)" />
-            </filter>
-          )}
-        </defs>
-        <polygon
-          points="50 0, 93.3 25, 93.3 90, 50 115, 6.7 90, 6.7 25"
-          fill={`url(#mg-${globalIndex})`}
-          stroke={isCore ? 'rgba(230,57,70,0.4)' : isLabel ? 'rgba(230,57,70,0.3)' : 'rgba(255,255,255,0.08)'}
-          strokeWidth={isCore || isLabel ? '1.5' : '1'}
-          filter={(isCore || isLabel) ? `url(#mg-${globalIndex}-glow)` : undefined}
-          className="group-hover:stroke-[#E63946]/70 group-hover:fill-[#E63946]/[0.1] transition-all duration-300"
-        />
-        <polygon
-          points="50 5, 89 27, 89 88, 50 110, 11 88, 11 27"
-          fill="none"
-          stroke={isCore ? 'rgba(230,57,70,0.12)' : 'rgba(255,255,255,0.04)'}
-          strokeWidth="0.5"
-          className="group-hover:stroke-[#E63946]/25 transition-all duration-300"
-        />
-      </svg>
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 p-2">
-        {isLabel ? (
-          <span className="text-[12px] font-bold text-[#E63946] uppercase tracking-wider font-mono text-center leading-tight">
-            {meta?.label}
-          </span>
-        ) : (
-          <>
-            <div className="relative w-12 h-12 md:w-14 md:h-14 mb-1">
-              {logoSrc && (
-                <Image
-                  src={logoSrc}
-                  alt={cell.name}
-                  fill
-                  className="object-contain grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-300"
-                  sizes="56px"
-                />
-              )}
-              {isCore && (
-                <div className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#E63946] flex items-center justify-center shadow-lg shadow-[#E63946]/30">
-                  <svg className="w-2.5 h-2.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-              )}
-            </div>
-            <span className="text-[10px] md:text-[11px] font-mono text-[#9E9490] group-hover:text-[#EDE8E4] transition-colors duration-300 text-center leading-tight">
-              {cell.name}
-            </span>
-            {item?.role && (
-              <span className="text-[8px] md:text-[9px] font-mono text-[#E63946] mt-0.5 leading-tight">
-                {item.role}
-              </span>
-            )}
-          </>
-        )}
-      </div>
-      <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-30">
-        <div className="bg-[#1A1414] border border-[rgba(255,255,255,0.07)] rounded-lg px-3 py-1.5 whitespace-nowrap shadow-xl">
-          <p className="text-[10px] font-bold font-mono text-[#EDE8E4]">{isLabel ? meta?.label : cell.name}</p>
-          {item?.role && <p className="text-[9px] text-[#E63946] font-mono">{item.role}</p>}
-          {isLabel && meta?.desc && (
-            <p className="text-[9px] text-[#9E9490] font-mono max-w-[200px] whitespace-normal mt-0.5">{meta.desc}</p>
-          )}
-        </div>
-      </div>
-    </>
-  )
-}
-
-function MobileHex({ cell, globalIndex }: { cell: CellData; globalIndex: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: '-30px' }}
-      transition={{ duration: 0.45, delay: globalIndex * 0.03 }}
-      className="group relative shrink-0"
-    >
-      <div className="relative w-[100px] h-[115px] cursor-default">
-        <HexCellContent cell={cell} globalIndex={globalIndex} />
-      </div>
-    </motion.div>
-  )
-}
-
-function MobileHexGrid() {
-  const cells = buildCells()
-  const rows: CellData[][] = []
-  for (let i = 0; i < cells.length; i += 3) {
-    rows.push(cells.slice(i, i + 3))
-  }
-  return (
-    <div className="mt-12 space-y-[-18px]">
-      {rows.map((row, ri) => (
-        <div key={ri} className="flex justify-center gap-2">
-          {row.map((cell, ci) => (
-            <MobileHex key={cell.id} cell={cell} globalIndex={ri * 3 + ci} />
-          ))}
-        </div>
-      ))}
-    </div>
   )
 }

@@ -131,12 +131,12 @@ function ProjectCard({
             borderBottom: index < projects.length - 1 ? 'none' : '1px solid rgba(255,255,255,0.06)',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-red-soft to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+          <div className="absolute inset-0 bg-red-soft opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
           <div className="flex items-start gap-6 relative z-10 flex-1">
             <motion.span
               className="text-3xl md:text-4xl font-mono font-light leading-none shrink-0"
-              style={{ color: '#E63946' }}
+              style={{ color: '#FF2E2E' }}
               whileHover={{ scale: 1.2 }}
               transition={{ duration: 0.2 }}
             >
@@ -220,13 +220,6 @@ export default function Work() {
           backgroundColor: '#0D0D0D',
         }}
       >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse 60% 35% at 50% 0%, rgba(230,57,70,0.03) 0%, transparent 60%)',
-          }}
-        />
         <div className="max-w-[1200px] mx-auto w-full relative z-10">
           <SectionWrapper>
             <div className="text-lg font-mono font-bold uppercase tracking-[0.15em] text-red mb-12">
@@ -269,7 +262,7 @@ export default function Work() {
                 width: 480,
                 height: 300,
                 borderRadius: 10,
-                boxShadow: '0 30px 70px rgba(0,0,0,0.4), 0 10px 30px rgba(225,29,29,0.06)',
+                boxShadow: '0 30px 70px rgba(0,0,0,0.4), 0 10px 30px rgba(255,46,46,0.06)',
                 border: '1px solid rgba(255,255,255,0.1)',
               }}
             >

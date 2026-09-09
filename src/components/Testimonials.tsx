@@ -88,7 +88,7 @@ export default function Testimonials() {
                                         </p>
 
                                         <div className="flex flex-col items-center gap-4 pt-8 border-t border-border/50 w-full max-w-sm mx-auto">
-                                            <div className="w-16 h-16 rounded-full bg-neon/10 border-2 border-neon/30 flex items-center justify-center text-2xl font-black text-neon shadow-[0_0_20px_rgba(255,30,30,0.1)]">
+                                            <div className="w-16 h-16 rounded-full bg-neon/10 border-2 border-neon/30 flex items-center justify-center text-2xl font-black text-neon shadow-[0_0_20px_rgba(255,46,46,0.1)]">
                                                 {reviews[activeIndex].client[0]}
                                             </div>
                                             <div>

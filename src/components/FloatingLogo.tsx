@@ -75,7 +75,7 @@ export default function FloatingLogo() {
           <circle
             cx={CX} cy={CY} r={R}
             fill="none"
-            stroke="#E63946"
+            stroke="#FF2E2E"
             strokeWidth={STROKE}
             strokeLinecap="round"
             strokeDasharray={circumference}
@@ -88,9 +88,9 @@ export default function FloatingLogo() {
         <motion.div
           animate={{
             boxShadow: [
-              '0 0 10px rgba(230,57,70,0.15)',
-              '0 0 22px rgba(230,57,70,0.3)',
-              '0 0 10px rgba(230,57,70,0.15)',
+              '0 0 10px rgba(255,46,46,0.15)',
+              '0 0 22px rgba(255,46,46,0.3)',
+              '0 0 10px rgba(255,46,46,0.15)',
             ],
           }}
           transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
@@ -98,7 +98,7 @@ export default function FloatingLogo() {
             position: 'absolute',
             inset: STROKE + 3,
             borderRadius: 10,
-            border: '1px solid rgba(230,57,70,0.2)',
+            border: '1px solid rgba(255,46,46,0.2)',
             background: 'rgba(13,13,13,0.9)',
             backdropFilter: 'blur(10px)',
             display: 'flex',
@@ -123,7 +123,7 @@ export default function FloatingLogo() {
           fontSize: 9,
           fontFamily: 'var(--font-mono)',
           letterSpacing: '0.1em',
-          color: pct > 0 ? '#E63946' : '#6B625E',
+          color: pct > 0 ? '#FF2E2E' : '#6B625E',
           textTransform: 'uppercase',
           transition: 'color 0.3s',
         }}

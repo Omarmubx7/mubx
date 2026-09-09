@@ -8,7 +8,6 @@ const links = [
   { id: 'hero', label: 'Home' },
   { id: 'roles', label: 'About' },
   { id: 'work', label: 'Work' },
-  { id: 'now', label: 'Now' },
   { id: 'contact', label: 'Contact' },
 ]
 

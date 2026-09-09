@@ -30,7 +30,7 @@ export default function Footer() {
         </motion.div>
         <motion.div
           className="text-[11px] font-mono"
-          style={{ color: '#E63946' }}
+          style={{ color: '#FF2E2E' }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

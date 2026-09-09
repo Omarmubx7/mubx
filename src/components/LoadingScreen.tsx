@@ -200,9 +200,9 @@ export default function LoadingScreen() {
 
   const counterColor =
     count > 50
-      ? `rgb(${Math.round(158 + (230 - 158) * ((count - 50) / 50))},${Math.round(
-          148 + (57 - 148) * ((count - 50) / 50)
-        )},${Math.round(144 + (70 - 144) * ((count - 50) / 50))})`
+      ? `rgb(${Math.round(158 + (255 - 158) * ((count - 50) / 50))},${Math.round(
+          148 + (46 - 148) * ((count - 50) / 50)
+        )},${Math.round(144 + (46 - 144) * ((count - 50) / 50))})`
       : '#9E9490';
 
   const isLoading = phase === 'loading';
@@ -222,21 +222,7 @@ export default function LoadingScreen() {
         pointerEvents: phase === 'entering' ? 'none' : 'auto',
       }}
     >
-      {/* Background radial glow (z:2) */}
-      <motion.div
-        animate={{ opacity: isEntering ? 0 : 1 }}
-        transition={{ duration: 0.5 }}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 2,
-          pointerEvents: 'none',
-          background:
-            'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(230,57,70,0.07) 0%, transparent 70%)',
-        }}
-      />
-
-      {/* Vignette (z:3) */}
+{/* Vignette (z:3) */}
       <motion.div
         animate={{ opacity: isEntering ? 0 : 1 }}
         transition={{ duration: 0.5 }}
@@ -292,8 +278,7 @@ export default function LoadingScreen() {
           right: 0,
           height: 2,
           zIndex: 4,
-          background:
-            'linear-gradient(90deg, transparent, #E11D1D 40%, #E11D1D 60%, transparent)',
+          background: '#FF2E2E',
           transformOrigin: 'center',
         }}
       />
@@ -324,9 +309,9 @@ export default function LoadingScreen() {
           <motion.div
             animate={{
               filter: [
-                'drop-shadow(0 0 0px rgba(230,57,70,0))',
-                'drop-shadow(0 0 28px rgba(230,57,70,0.4))',
-                'drop-shadow(0 0 12px rgba(230,57,70,0.15))',
+                'drop-shadow(0 0 0px rgba(255,46,46,0))',
+                'drop-shadow(0 0 28px rgba(255,46,46,0.4))',
+                'drop-shadow(0 0 12px rgba(255,46,46,0.15))',
               ],
             }}
             transition={{
@@ -413,8 +398,8 @@ export default function LoadingScreen() {
                     style={{
                       height: '100%',
                       width: `${bar * 100}%`,
-                      background: 'linear-gradient(90deg,#991212,#E11D1D)',
-                      boxShadow: '0 0 8px rgba(225,29,29,0.6)',
+                      background: '#FF2E2E',
+                      boxShadow: '0 0 8px rgba(255,46,46,0.6)',
                       borderRadius: 1,
                       transition: 'width 0.05s linear',
                     }}
@@ -484,7 +469,7 @@ export default function LoadingScreen() {
                   <span style={{ color: '#EDE8E4' }}>
                     <WordReveal text="Omar" delay={0.2} />
                   </span>{' '}
-                  <span style={{ color: '#E11D1D' }}>
+                  <span style={{ color: '#FF2E2E' }}>
                     <WordReveal text="Mubaidin." delay={0.38} />
                   </span>
                 </div>
@@ -547,8 +532,7 @@ export default function LoadingScreen() {
                         left: 0,
                         right: 0,
                         height: '38%',
-                        background:
-                          'linear-gradient(to bottom, transparent, #E11D1D, transparent)',
+                        background: '#FF2E2E',
                         borderRadius: 1,
                       }}
                     />
