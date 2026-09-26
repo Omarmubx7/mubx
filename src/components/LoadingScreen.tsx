@@ -519,18 +519,18 @@ export default function LoadingScreen() {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    gap: 14,
+                    gap: 18,
                     cursor: 'pointer',
                   }}
                 >
                   <div
                     style={{
-                      width: 1,
-                      height: 52,
-                      background: 'rgba(255,255,255,0.07)',
+                      width: 2,
+                      height: 84,
+                      background: 'rgba(255,255,255,0.08)',
                       position: 'relative',
                       overflow: 'hidden',
-                      borderRadius: 1,
+                      borderRadius: 2,
                     }}
                   >
                     <motion.div
@@ -545,18 +545,18 @@ export default function LoadingScreen() {
                         top: 0,
                         left: 0,
                         right: 0,
-                        height: '38%',
+                        height: '40%',
                         background: '#FF2E2E',
-                        borderRadius: 1,
+                        borderRadius: 2,
                       }}
                     />
                   </div>
                   <span
                     style={{
                       fontFamily: 'var(--font-mono)',
-                      fontSize: 9,
+                      fontSize: 18,
                       letterSpacing: '0.22em',
-                      color: '#6B625E',
+                      color: '#EDE8E4',
                       textTransform: 'uppercase',
                     }}
                   >
