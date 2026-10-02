@@ -225,6 +225,7 @@ const projectsList: Project[] = [
         title: 'Porsche Noir',
         description: 'A scroll-driven cinematic 3D experience celebrating sixty years of the Porsche 911 evolution.',
         tech: ['Three.js', 'GSAP', 'Lenis', 'Vite'],
+
         links: { live: 'https://911-legacy.vercel.app/' },
         logo: '/images/porsche-logo.svg',
         metrics: '60fps WebGL',
