@@ -42,6 +42,7 @@ export default function Projects() {
 
     const getFilterCategory = (slug: string): string => {
         switch (slug) {
+            case 'trujo':
             case 'mubxai':
             case 'mubxbot':
             case 'htu-martial-arts':

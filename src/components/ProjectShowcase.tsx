@@ -30,6 +30,7 @@ const techLogos: Record<string, string> = {
 };
 
 const projectScreenshots: Record<string, string> = {
+    trujo: '/images/projects/trujo.png',
     mubxai: '/images/projects/mubxai.png',
     mubxbot: '/images/projects/mubxbot.png',
     aqabwi: '/images/projects/aqabwi.png',

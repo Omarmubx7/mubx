@@ -20,6 +20,23 @@ export interface Project {
 export const projects: Project[] = [
   {
     index: 1,
+    name: 'TruJO',
+    slug: 'trujo',
+    category: ['Web', 'Interactive Atlas'],
+    description: "Jordan's verified travel guide and safety atlas with live destination mapping.",
+    longDescription: "A sovereign travel guide and safety atlas for Jordan's cities and landmarks. Featuring real-time interactive mapping, verified safety ratings, AI claim verification, and sovereign context.",
+    stack: ['React', 'Vite', 'Tailwind', 'Interactive Atlas'],
+    link: 'https://trujo.mubx.dev/',
+    logo: '/images/trujo-logo.png',
+    screenshot: '/images/projects/trujo.png',
+    metrics: 'Sovereign Atlas',
+    timeframe: '1 week',
+    outcome: 'Empowers visitors to explore Jordan with verified safety ratings and sovereign context.',
+    problem: 'Lack of centralized, verified safety ratings and interactive destination guides for travelers in Jordan.',
+    role: 'Full Stack Architect & Lead Developer',
+  },
+  {
+    index: 2,
     name: 'MUBXAI',
     slug: 'mubxai',
     category: ['AI', 'Academic'],
@@ -36,7 +53,7 @@ export const projects: Project[] = [
     role: 'Full Stack Developer',
   },
   {
-    index: 2,
+    index: 3,
     name: 'Men Only Show',
     slug: 'men-only-show',
     category: ['Web', 'Media'],
@@ -53,7 +70,7 @@ export const projects: Project[] = [
     role: 'Technical Consultant',
   },
   {
-    index: 3,
+    index: 4,
     name: 'MUBXbot',
     slug: 'mubxbot',
     category: ['AI', 'Chat'],
@@ -70,7 +87,7 @@ export const projects: Project[] = [
     role: 'AI Product Developer',
   },
   {
-    index: 4,
+    index: 5,
     name: 'Aqabwi',
     slug: 'aqabwi',
     category: ['Web', 'Portfolio'],
@@ -87,7 +104,7 @@ export const projects: Project[] = [
     role: 'Technical Consultant & Lead Developer',
   },
   {
-    index: 5,
+    index: 6,
     name: 'The Glorious Page',
     slug: 'the-glorious-page',
     category: ['Web', 'Brand'],
@@ -104,7 +121,7 @@ export const projects: Project[] = [
     role: 'Full Stack Architect',
   },
   {
-    index: 6,
+    index: 7,
     name: 'BloB.JO',
     slug: 'blob-jo',
     category: ['E-commerce', 'Web'],
@@ -121,7 +138,7 @@ export const projects: Project[] = [
     role: 'E-commerce Consultant',
   },
   {
-    index: 7,
+    index: 8,
     name: 'HTU Martial Arts',
     slug: 'htu-martial-arts',
     category: ['Web', 'System'],
@@ -138,7 +155,7 @@ export const projects: Project[] = [
     role: 'System Architect',
   },
   {
-    index: 8,
+    index: 9,
     name: 'Vynex Media',
     slug: 'vynex-media',
     category: ['Web', 'Agency'],
@@ -155,7 +172,7 @@ export const projects: Project[] = [
     role: 'Lead Architect',
   },
   {
-    index: 9,
+    index: 10,
     name: 'QadumyWeb',
     slug: 'qadumyweb',
     category: ['Web', 'Portfolio'],
@@ -172,7 +189,7 @@ export const projects: Project[] = [
     role: 'Full Stack Developer & Designer',
   },
   {
-    index: 10,
+    index: 11,
     name: 'Jordan FA',
     slug: 'jordan-fa',
     category: ['Web', 'Sports'],
@@ -189,7 +206,7 @@ export const projects: Project[] = [
     role: 'Full Stack Developer',
   },
   {
-    index: 11,
+    index: 12,
     name: 'Porsche Noir',
     slug: 'porsche-noir',
     category: ['WebGL', 'Creative'],

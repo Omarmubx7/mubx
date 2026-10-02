@@ -23,6 +23,24 @@ export interface Project {
 
 const projectsList: Project[] = [
     {
+        slug: 'trujo',
+        title: 'TruJO',
+        description: 'Verified travel guide and safety atlas for Jordan\'s cities and landmarks with real-time interactive mapping and sovereign data.',
+        tech: ['React', 'Vite', 'Tailwind', 'Interactive Atlas'],
+        links: { live: 'https://trujo.mubx.dev/' },
+        logo: '/images/trujo-logo.png',
+        metrics: 'Sovereign Atlas',
+        verified_outcome: 'Live Platform',
+        timeframe: '1 week',
+        category: { en: 'Travel & Safety Atlas', icon: '🇯🇴', color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20' },
+        caseStudy: {
+            problem: 'Travelers to Jordan lacked a centralized, real-time platform providing verified safety ratings, interactive maps, and authentic local travel guides backed by sovereign sources.',
+            role: 'Full Stack Architect & Lead Developer',
+            solution: 'Engineered TruJO — an interactive travel & safety atlas featuring real-time destination mapping, AI claim verification, sovereign data sourcing, and curated travel packages.',
+            outcome: 'A sovereign travel atlas empowering visitors to explore Jordan with verified safety data, interactive routing, and live destination insights.',
+        }
+    },
+    {
         slug: 'mubxai',
         title: 'MUBXAI',
         description: 'A real-time GPA calculator and course tracking tool designed specifically for HTU students with local data persistence.',

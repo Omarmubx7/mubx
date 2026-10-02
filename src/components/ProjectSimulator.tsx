@@ -9,6 +9,7 @@ interface SimulatorProps {
 }
 
 const projectScreenshots: Record<string, string> = {
+    trujo: '/images/projects/trujo.png',
     mubxai: '/images/projects/mubxai.png',
     mubxbot: '/images/projects/mubxbot.png',
     aqabwi: '/images/projects/aqabwi.png',
@@ -23,6 +24,7 @@ const projectScreenshots: Record<string, string> = {
 };
 
 const projectUrls: Record<string, string> = {
+    trujo: 'https://trujo.mubx.dev',
     mubxai: 'https://ai.mubx.dev',
     mubxbot: 'https://bot.mubx.dev',
     aqabwi: 'https://aqabwi.vercel.app',
