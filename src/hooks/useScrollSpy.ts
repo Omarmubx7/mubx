@@ -22,6 +22,15 @@ export function useScrollSpy(
     const getActive = useCallback(() => {
         if (typeof window === 'undefined') return ids[0] ?? '';
         const idsArray = idsKey.split(',').filter(Boolean);
+
+        // Check if scrolled near the bottom of the page to activate the last section (e.g. Contact)
+        const scrolledToBottom =
+            window.innerHeight + window.scrollY >=
+            document.documentElement.scrollHeight - 120;
+        if (scrolledToBottom && idsArray.length > 0) {
+            return idsArray[idsArray.length - 1];
+        }
+
         const trigger = window.innerHeight * triggerRatio;
 
         let current = idsArray[0] ?? '';
@@ -35,7 +44,7 @@ export function useScrollSpy(
         return current;
     }, [ids, idsKey, triggerRatio]);
 
-    // Lazy initializer runs once synchronously before any render — no effect needed
+    // Lazy initializer runs once synchronously before any render no effect needed
     const [activeId, setActiveId] = useState<string>(() => ids[0] ?? '');
 
     useEffect(() => {

@@ -1,34 +1,21 @@
-import { Metadata } from 'next';
-import { siteConfig } from '@/config/seo';
-import HomeClient from '@/components/HomeClient';
+import Hero from '@/components/Hero'
+import About from '@/components/About'
+import dynamic from 'next/dynamic'
+import Stack from '@/components/Stack'
+import Contact from '@/components/Contact'
 
-export async function generateMetadata(): Promise<Metadata> {
-  const meta = siteConfig.metadata.en;
+const ProjectShowcase = dynamic(() => import('@/components/ProjectShowcase'), {
+  loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
+})
 
-  return {
-    title: {
-      absolute: meta.title,
-    },
-    description: meta.description,
-    alternates: {
-      canonical: siteConfig.url
-    },
-    openGraph: {
-      ...siteConfig.openGraph,
-      title: meta.title,
-      description: meta.description,
-      locale: 'en_US',
-      type: 'website',
-    },
-    twitter: {
-      ...siteConfig.twitter,
-      title: meta.title,
-      description: meta.description,
-    }
-  }
+export default function Home() {
+  return (
+    <>
+      <Hero />
+      <About />
+      <ProjectShowcase />
+      <Stack />
+      <Contact />
+    </>
+  )
 }
-
-export default async function Home() {
-  return <HomeClient />;
-}
-

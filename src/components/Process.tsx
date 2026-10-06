@@ -51,7 +51,7 @@ export default function Process() {
                                     key={index}
                                     className={`rounded-2xl border backdrop-blur-md transition-all duration-300 overflow-hidden ${
                                         isExpanded 
-                                            ? 'border-neon bg-white/5 shadow-[0_0_20px_rgba(225,29,29,0.08)]' 
+                                            ? 'border-neon bg-white/5 shadow-[0_0_20px_rgba(255,46,46,0.08)]' 
                                             : 'border-white/5 bg-white/3'
                                     }`}
                                 >
@@ -110,7 +110,7 @@ export default function Process() {
                                 className="flex flex-col items-center text-center group"
                             >
                                 <div className="w-24 h-24 rounded-3xl bg-card border border-border flex items-center justify-center mb-6 group-hover:border-neon transition-all duration-500 relative bg-glass">
-                                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-neon text-white text-xs font-black flex items-center justify-center shadow-[0_0_15px_rgba(225,29,29,0.5)]">
+                                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-neon text-white text-xs font-black flex items-center justify-center shadow-[0_0_15px_rgba(255,46,46,0.5)]">
                                         {step.num}
                                     </div>
                                     <step.icon className="w-10 h-10 text-muted group-hover:text-neon transition-colors duration-500" />

@@ -24,7 +24,7 @@ export default function Blog() {
                             ENGINEERING <span className="text-neon">NOTES</span>
                         </h2>
                         <p className="text-muted text-lg max-w-xl">
-                            We&apos;re building something special. Check back soon for insights on web development, security, and scaling systems.
+                            I&apos;m building something special. Check back soon for insights on web development, security, and scaling systems.
                         </p>
                     </motion.div>
 

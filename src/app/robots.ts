@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
                 allow: '/',
                 disallow: ['/private/', '/contract', '/client', '/api/'],
             },
-            // AI crawlers — explicitly allow for AEO/GEO discoverability
+            // AI crawlers explicitly allow for AEO/GEO discoverability
             { userAgent: 'GPTBot', allow: '/' },
             { userAgent: 'Google-Extended', allow: '/' },
             { userAgent: 'CCBot', allow: '/' },

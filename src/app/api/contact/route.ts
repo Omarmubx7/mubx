@@ -107,9 +107,9 @@ export async function POST(req: Request) {
 
         return NextResponse.json({ ok: true });
     } catch (error: unknown) {
-        console.error('POST /api/contact failed:', error);
-
         const message = error instanceof Error ? error.message : 'Internal Server Error';
+        const isSslError = message.includes('self-signed certificate') || message.includes('certificate chain') || message.includes('CERT_') || message.includes('SSL') || message.includes('TLS');
+        console.error('POST /api/contact failed:', isSslError ? `SSL/TLS Error: ${message}` : message);
 
         if (isPgLikeError(error) && error.code === '42501') {
             return NextResponse.json(
@@ -133,10 +133,8 @@ export async function POST(req: Request) {
 
         return NextResponse.json(
             {
-                error: 'Internal Server Error',
-                errorCode: 'CONTACT_INSERT_FAILED',
-                details: message,
-                fullError: String(error) + ' | ' + JSON.stringify(error, Object.getOwnPropertyNames(error))
+                error: isSslError ? 'Database SSL connection failed. Check your TLS configuration.' : 'Internal Server Error',
+                errorCode: isSslError ? 'DB_SSL_ERROR' : 'CONTACT_INSERT_FAILED',
             },
             { status: 500 },
         );

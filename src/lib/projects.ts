@@ -23,6 +23,24 @@ export interface Project {
 
 const projectsList: Project[] = [
     {
+        slug: 'trujo',
+        title: 'TruJO',
+        description: 'Verified travel guide and safety atlas for Jordan\'s cities and landmarks with real-time interactive mapping and sovereign data.',
+        tech: ['React', 'Vite', 'Tailwind', 'Interactive Atlas'],
+        links: { live: 'https://trujo.mubx.dev/' },
+        logo: '/images/trujo-logo.png',
+        metrics: 'Sovereign Atlas',
+        verified_outcome: 'Live Platform',
+        timeframe: '1 week',
+        category: { en: 'Travel & Safety Atlas', icon: '🇯🇴', color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20' },
+        caseStudy: {
+            problem: 'Travelers to Jordan lacked a centralized, real-time platform providing verified safety ratings, interactive maps, and authentic local travel guides backed by sovereign sources.',
+            role: 'Full Stack Architect & Lead Developer',
+            solution: 'Engineered TruJO — an interactive travel & safety atlas featuring real-time destination mapping, AI claim verification, sovereign data sourcing, and curated travel packages.',
+            outcome: 'A sovereign travel atlas empowering visitors to explore Jordan with verified safety data, interactive routing, and live destination insights.',
+        }
+    },
+    {
         slug: 'mubxai',
         title: 'MUBXAI',
         description: 'A real-time GPA calculator and course tracking tool designed specifically for HTU students with local data persistence.',
@@ -185,21 +203,40 @@ const projectsList: Project[] = [
         }
     },
     {
-        slug: 'blob-jo',
-        title: 'BloB.JO',
-        description: 'E-commerce Brand. Built Jordan\'s first custom Print-on-Demand store with real-time design tools.',
-        tech: ['React', 'Node.js', 'E-commerce', 'UX Design'],
-        links: { live: 'https://www.blobjor.me/', code: 'https://github.com/Omarmubx7/blobjor' },
-        logo: '/images/blobjor-logo.webp',
-        metrics: 'Zain Cash / CliQ',
-        verified_outcome: 'Operational since Jan 2025',
-        timeframe: '3 Weeks',
-        category: { en: 'E-commerce', icon: '🛍️', color: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20' },
+        slug: 'jordan-fa',
+        title: 'Jordan FA',
+        description: "A comprehensive website for the Jordan National Football Team's historic debut at the 2026 FIFA World Cup, featuring match schedules, squad profiles, kit collections, and team history.",
+        tech: ['Next.js', 'React', 'Tailwind', 'Framer Motion'],
+        links: { live: 'https://jordan-jfa.vercel.app/' },
+        logo: '/images/jordan-fa-logo.png',
+        metrics: 'Historic Debut',
+        verified_outcome: 'Live & Active',
+        timeframe: '2 weeks',
+        category: { en: 'Sports Platform', icon: '⚽', color: 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20' },
         caseStudy: {
-            problem: 'Lack of local Print-on-Demand infrastructure with custom design tools for the Jordanian creative market.',
-            role: 'E-commerce Consultant',
-            solution: 'Developed a custom e-commerce engine with real-time product visualization and integrated local payment gateways (Zain Cash/CliQ).',
-            outcome: 'Launched Jordan\'s first fully operational POD platform, enabling local artists to sell at scale without technical barriers.',
+            problem: "Lack of a dedicated, high-quality digital platform to celebrate and document Jordan's historic World Cup 2026 journey for fans worldwide.",
+            role: 'Full Stack Developer',
+            solution: 'Built a visually immersive Next.js site with dynamic match schedules, animated squad profiles, kit showcases, a historical timeline, and real-time group standings.',
+            outcome: 'A complete digital platform that captures the emotion of Jordan\'s first-ever World Cup appearance, combining rich storytelling with live data.',
+        }
+    },
+    {
+        slug: 'porsche-noir',
+        title: 'Porsche Noir',
+        description: 'A scroll-driven cinematic 3D experience celebrating sixty years of the Porsche 911 evolution.',
+        tech: ['Three.js', 'GSAP', 'Lenis', 'Vite'],
+
+        links: { live: 'https://911-legacy.vercel.app/' },
+        logo: '/images/porsche-logo.svg',
+        metrics: '60fps WebGL',
+        verified_outcome: 'WebGL Live',
+        timeframe: '3 weeks',
+        category: { en: 'Interactive Experience', icon: '🏎️', color: 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20' },
+        caseStudy: {
+            problem: 'Standard car websites are cluttered marketing templates that ignore historical heritage and design craftsmanship.',
+            role: 'Lead Creative Developer & 3D Specialist',
+            solution: 'Built a dark, highly focused, single-page editorial experience utilizing WebGL, GSAP, and scroll-bound animations to highlight the 911’s iconic design.',
+            outcome: 'Created a premium interactive 3D narrative with 60fps rendering and responsive mechanical pacing.',
         }
     }
 ];

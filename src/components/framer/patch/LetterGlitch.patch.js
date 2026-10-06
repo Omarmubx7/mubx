@@ -21,7 +21,7 @@ const CHAR_WIDTH = 10;
 const CHAR_HEIGHT = 20;
 
 function LetterGlitch({
-    glitchColors = ["#4a0d0d", "#E11D1D", "#dc6161"],
+    glitchColors = ["#4a0d0d", "#FF2E2E", "#dc6161"],
     glitchSpeed = 50,
     smooth = true,
     centerVignette = true,
@@ -246,7 +246,7 @@ addPropertyControls(LetterGlitch, {
         type: ControlType.Array,
         title: "Colors",
         control: { type: ControlType.Color },
-        defaultValue: ["#4a0d0d", "#E11D1D", "#dc6161"],
+        defaultValue: ["#4a0d0d", "#FF2E2E", "#dc6161"],
     },
     glitchSpeed: {
         type: ControlType.Number,

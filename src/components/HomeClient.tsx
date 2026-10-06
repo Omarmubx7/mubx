@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Download, Calendar } from 'lucide-react';
-import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import GithubStatus from '@/components/GithubStatus';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -13,7 +12,7 @@ import { LanguageProvider, useLanguage } from '@/context/LanguageContext';
 import { Locale } from '@/lib/dictionaries';
 import { ScrollSpyProvider, useActiveSectionContext } from '@/context/ScrollSpyContext';
 
-const Projects = dynamic(() => import('@/components/Projects'), {
+const ProjectShowcase = dynamic(() => import('@/components/ProjectShowcase'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
 
@@ -22,10 +21,6 @@ const About = dynamic(() => import('@/components/About'));
 const TechStack = dynamic(() => import('@/components/TechStack'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
-const Timeline = dynamic(() => import('@/components/Timeline'), {
-    loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
-});
-
 const Contact = dynamic(() => import('@/components/Contact'), {
     loading: () => <div className="h-96 w-full animate-pulse bg-muted/20" />,
 });
@@ -47,31 +42,32 @@ function HomeMain() {
     };
 
     useEffect(() => {
+        const isMobile = window.matchMedia("(max-width: 1024px)").matches;
+        if (isMobile) return;
         const timer = setTimeout(() => setShowCanvas(true), 3500);
         return () => clearTimeout(timer);
     }, []);
 
     const navLinks = [
         { id: 'hero', name: t.nav.home },
+        { id: 'about', name: 'About' },
         { id: 'projects', name: t.nav.projects },
-        { id: 'about', name: 'About & Journey' },
         { id: 'contact', name: t.nav.contact }
     ];
 
     return (
         <>
-            <Navbar />
             {showCanvas && <StarsCanvas />}
 
             <div className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-12 border-collapse relative">
                 {/* Sticky Left Sidebar (Desktop only) */}
-                <aside className="hidden lg:flex lg:col-span-4 lg:h-screen lg:sticky lg:top-0 border-b lg:border-b-0 lg:border-r border-border/30 bg-background flex-col justify-between p-8 lg:p-12 xl:p-16 select-none overflow-y-auto z-40">
+                <aside className="hidden lg:flex lg:w-1/3 lg:h-screen lg:fixed lg:top-0 border-b lg:border-b-0 lg:border-r border-border/30 bg-background flex-col justify-between p-8 lg:p-12 xl:p-16 select-none overflow-y-auto z-40">
                     <div className="space-y-8 xl:space-y-12">
                         {/* Profile/Logo Block */}
                         <div className="space-y-4">
                             <Link href={getHref('/')} className="inline-block relative h-12 w-24 md:h-14 md:w-28 transition-transform hover:scale-105 active:scale-95">
                                 <Image
-                                    src="/mubxlogoloader.svg"
+                                    src="/mubxnewlogo.png"
                                     alt="MUBX Logo"
                                     fill
                                     className="object-contain dark:invert-0 invert"
@@ -98,7 +94,7 @@ function HomeMain() {
                         {/* Sticky Sidebar Navigation Shortcuts */}
                         <nav className="flex flex-col gap-3.5 font-mono text-[10px] tracking-wider uppercase">
                             {navLinks.map((link) => {
-                                const isActive = activeSection === link.id || (link.id === 'about' && (activeSection === 'tech-stack' || activeSection === 'journey'));
+                                const isActive = activeSection === link.id || (link.id === 'projects' && activeSection === 'tech-stack');
                                 return (
                                     <a
                                         key={link.id}
@@ -122,7 +118,7 @@ function HomeMain() {
                         {/* My Services Button */}
                         <Link
                             href={getHref('/services')}
-                            className="w-full py-3 border border-neon/50 hover:bg-neon hover:text-white text-neon hover:border-transparent text-xs font-bold rounded-none flex items-center justify-center gap-2 bg-neon/5 transition-all shadow-[0_0_10px_rgba(225,29,29,0.1)] hover:shadow-[0_0_20px_rgba(225,29,29,0.3)] uppercase tracking-wider font-mono cursor-pointer"
+                            className="w-full py-3 border border-neon/50 hover:bg-neon hover:text-white text-neon hover:border-transparent text-xs font-bold rounded-none flex items-center justify-center gap-2 bg-neon/5 transition-all shadow-[0_0_10px_rgba(255,46,46,0.1)] hover:shadow-[0_0_20px_rgba(255,46,46,0.3)] uppercase tracking-wider font-mono cursor-pointer"
                         >
                             <svg className="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
@@ -136,22 +132,37 @@ function HomeMain() {
                             href="https://calendly.com/omarmubaidincs/30min"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full py-3 bg-neon text-white text-xs font-bold rounded-none flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(255,30,30,0.25)] hover:shadow-[0_0_25px_rgba(255,30,30,0.4)] hover:bg-[#B91616] uppercase tracking-wider font-mono cursor-pointer"
+                            className="w-full py-3 bg-neon text-white text-xs font-bold rounded-none flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(255,46,46,0.25)] hover:shadow-[0_0_25px_rgba(255,46,46,0.4)] hover:bg-[#D91F1F] uppercase tracking-wider font-mono cursor-pointer"
                         >
                             <Calendar className="w-3.5 h-3.5" />
                             {t.nav.bookCall}
                         </a>
 
                         {/* View Resume Prominent CTA Button */}
-                        <a
-                            href="/cv.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full py-3 border border-border/30 hover:border-neon/50 text-muted-foreground hover:text-neon text-xs font-bold rounded-none flex items-center justify-center gap-2 bg-card/5 hover:bg-white/[0.02] transition-colors uppercase tracking-wider font-mono"
-                        >
-                            <Download className="w-3.5 h-3.5" />
-                            {t.nav.resume}
-                        </a>
+                        <div className="flex gap-2">
+                            <a
+                                href="/cv.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-1 py-3 border border-border/30 hover:border-neon/50 text-muted-foreground hover:text-neon text-xs font-bold rounded-none flex items-center justify-center gap-2 bg-card/5 hover:bg-white/[0.02] transition-colors uppercase tracking-wider font-mono"
+                            >
+                                <svg className="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M12 3v12"></path>
+                                    <path d="M7 10l5 5 5-5"></path>
+                                    <path d="M5 21h14"></path>
+                                </svg>
+                                {t.nav.resume}
+                            </a>
+                            <a
+                                href="/cv.pdf"
+                                download="Omar-Mubaidin-Resume.pdf"
+                                aria-label="Download Resume"
+                                title="Download Resume"
+                                className="w-[42px] py-3 border border-neon/40 hover:bg-neon hover:text-white text-neon flex items-center justify-center bg-neon/5 transition-all shadow-[0_0_10px_rgba(255,46,46,0.1)] hover:shadow-[0_0_20px_rgba(255,46,46,0.3)]"
+                            >
+                                <Download className="w-3.5 h-3.5" />
+                            </a>
+                        </div>
 
                         {/* Toggles and Socials Row */}
                         <div className="flex items-center justify-between gap-4">
@@ -174,27 +185,23 @@ function HomeMain() {
                 </aside>
 
                 {/* Scrollable Right Panel */}
-                <div className="lg:col-span-8 bg-background flex flex-col min-h-screen">
+                <div className="lg:col-span-8 lg:ml-[33.333%] bg-background flex flex-col min-h-screen">
                     <Suspense fallback={null}>
-                        <div id="hero">
-                            <Hero />
-                        </div>
+                        <Hero />
                         <TrustedBy />
-                        <div id="projects">
-                            <Projects />
-                        </div>
 
-                        <div id="about">
+                        <div id="about" className="scroll-mt-24">
                             <About />
                         </div>
-                        <div id="tech-stack">
+
+                        <div id="projects" className="scroll-mt-24">
+                            <ProjectShowcase />
+                        </div>
+                        <div id="tech-stack" className="scroll-mt-24">
                             <TechStack />
                         </div>
-                        <div id="journey">
-                            <Timeline />
-                        </div>
 
-                        <div id="contact">
+                        <div id="contact" className="scroll-mt-24">
                             <Contact />
                         </div>
                         <div>

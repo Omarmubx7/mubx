@@ -7,6 +7,23 @@ import { useLanguage } from '@/context/LanguageContext';
 import TextReveal from '@/components/ui/TextReveal';
 import ProjectSimulator from './ProjectSimulator';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+
+const techLogos: Record<string, string> = {
+  'Next.js': '/techstackicons/next.svg',
+  'React': '/techstackicons/react-svgrepo-com.svg',
+  'Tailwind': '/techstackicons/tailwindcss-icon-svgrepo-com.svg',
+  'Framer Motion': '',
+  'TypeScript': '/techstackicons/typescript-icon-svgrepo-com.svg',
+  'Node.js': '/techstackicons/nodejs-icon-svgrepo-com.svg',
+  'AI Integration': '',
+  'PHP': '',
+  'MySQL': '',
+  'Bootstrap': '/techstackicons/Bootstrap.svg',
+  'E-commerce': '',
+  'UX Design': '',
+  'Authentication': '',
+};
 
 export default function Projects() {
     const { language, t } = useLanguage();
@@ -25,6 +42,7 @@ export default function Projects() {
 
     const getFilterCategory = (slug: string): string => {
         switch (slug) {
+            case 'trujo':
             case 'mubxai':
             case 'mubxbot':
             case 'htu-martial-arts':
@@ -35,6 +53,8 @@ export default function Projects() {
             case 'men-only-show':
             case 'the-glorious-page':
             case 'vynex-media':
+            case 'jordan-fa':
+            case 'porsche-noir':
                 return 'creative';
             default:
                 return '';
@@ -95,7 +115,7 @@ export default function Projects() {
                                 onClick={() => handleCategoryChange(cat.id)}
                                 className={`px-4 py-2 border text-[10px] md:text-xs font-mono font-bold tracking-wider transition-all duration-300 rounded-full flex items-center gap-2 cursor-pointer group ${
                                     isActive
-                                        ? 'border-neon bg-neon/10 text-neon shadow-[0_0_15px_rgba(225,29,29,0.15)]'
+                                        ? 'border-neon bg-neon/10 text-neon shadow-[0_0_15px_rgba(255,46,46,0.15)]'
                                         : 'border-border/30 text-muted-foreground hover:border-neon/40 hover:text-neon'
                                 }`}
                             >
@@ -124,7 +144,7 @@ export default function Projects() {
                                         }}
                                         className={`group relative p-6 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                                             isActive 
-                                                ? 'border-neon bg-neon/[0.02] shadow-[0_0_15px_rgba(225,29,29,0.05)]' 
+                                                ? 'border-neon bg-neon/[0.02] shadow-[0_0_15px_rgba(255,46,46,0.05)]' 
                                                 : 'border-border/30 bg-transparent hover:border-neon/30'
                                         }`}
                                     >
@@ -152,6 +172,31 @@ export default function Projects() {
                                             <p className="text-muted-foreground text-xs leading-relaxed mt-1">
                                                 {project.description}
                                             </p>
+                                        </div>
+
+                                        {/* Tech Logos */}
+                                        <div className="flex flex-wrap items-center gap-2 mb-3">
+                                            {project.tech.map((tech: string) => {
+                                                const iconPath = techLogos[tech];
+                                                return (
+                                                    <span key={tech} className="inline-flex items-center gap-1 px-1.5 py-0.5 border border-border/20 bg-muted/5 rounded-sm">
+                                                        {iconPath ? (
+                                                            <span className="relative w-3.5 h-3.5 shrink-0">
+                                                                <Image
+                                                                    src={iconPath}
+                                                                    alt={tech}
+                                                                    fill
+                                                                    className="object-contain opacity-70"
+                                                                    sizes="14px"
+                                                                />
+                                                            </span>
+                                                        ) : null}
+                                                        <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-wider">
+                                                            {tech}
+                                                        </span>
+                                                    </span>
+                                                );
+                                            })}
                                         </div>
 
                                         {/* Impact / Outcome */}
@@ -187,7 +232,7 @@ export default function Projects() {
                         </div>
 
                         {/* Right Column: Sticky Simulator Preview */}
-                        <div className="col-span-7 sticky top-28 h-[400px]">
+                        <div className="col-span-7 sticky top-28 h-[480px]">
                             <AnimatePresence mode="wait">
                                 {activeSlug && (
                                     <motion.div
@@ -241,6 +286,31 @@ export default function Projects() {
                                     }`}>
                                         {project.description}
                                     </p>
+
+                                    {/* Tech Logos */}
+                                    <div className="flex flex-wrap items-center gap-1.5 mb-2">
+                                        {project.tech.map((tech: string) => {
+                                            const iconPath = techLogos[tech];
+                                            return (
+                                                <span key={tech} className="inline-flex items-center gap-1 px-1.5 py-0.5 border border-border/20 bg-muted/5 rounded-sm">
+                                                    {iconPath ? (
+                                                        <span className="relative w-3 h-3 shrink-0">
+                                                            <Image
+                                                                src={iconPath}
+                                                                alt={tech}
+                                                                fill
+                                                                className="object-contain opacity-70"
+                                                                sizes="12px"
+                                                            />
+                                                        </span>
+                                                    ) : null}
+                                                    <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-wider">
+                                                        {tech}
+                                                    </span>
+                                                </span>
+                                            );
+                                        })}
+                                    </div>
 
                                     {!isSelected && (
                                         <div className="text-[10px] font-mono text-neon font-bold uppercase tracking-wider mt-2 flex items-center gap-1">

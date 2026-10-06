@@ -28,7 +28,7 @@ export async function POST(req: Request) {
             <p>${message}</p>
           </div>
           <footer style="margin-top: 30px; font-size: 12px; color: #888;">
-            Sent from your portfolio at mubx.dev
+            Sent from your portfolio at me.mubx.dev
           </footer>
         </div>
       `,
@@ -47,6 +47,12 @@ export async function POST(req: Request) {
     console.log('✅ Resend success:', data);
     return NextResponse.json({ data });
   } catch (error) {
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    const msg = error instanceof Error ? error.message : 'Unknown error';
+    const isSslError = msg.includes('self-signed certificate') || msg.includes('certificate chain') || msg.includes('CERT_') || msg.includes('SSL') || msg.includes('TLS');
+    console.error('🔥 /api/notify error:', isSslError ? `SSL/TLS Error: ${msg}` : msg);
+    return NextResponse.json({
+      error: 'Failed to send email notification',
+      errorCode: isSslError ? 'SSL_ERROR' : 'NOTIFY_FAILED',
+    }, { status: 500 });
   }
 }

@@ -2,253 +2,415 @@
 
 import Link from 'next/link';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
-import { useState, Suspense, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, Suspense, useEffect, useRef } from 'react';
+import { Menu, X, Download } from 'lucide-react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
-import { ThemeToggle } from './ThemeToggle';
 import { useActiveSectionContext } from '@/context/ScrollSpyContext';
 import { usePathname } from 'next/navigation';
 
-
 const NavbarContent = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [hidden, setHidden] = useState(false);
     const [mounted, setMounted] = useState(false);
+    const [navHidden, setNavHidden] = useState(false);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const lastScrollY = useRef(0);
+    const navItemsRef = useRef<(HTMLLIElement | null)[]>([]);
+
     const { scrollY } = useScroll();
 
+    useMotionValueEvent(scrollY, 'change', (latest) => {
+        const previous = lastScrollY.current;
+        const diff = latest - previous;
+
+        if (latest < 80) {
+            setNavHidden(false);
+        } else if (diff > 30) {
+            setNavHidden(true);
+        } else if (diff < -10) {
+            setNavHidden(false);
+        }
+
+        lastScrollY.current = latest;
+    });
+
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
     }, []);
 
-    useMotionValueEvent(scrollY, "change", (latest: number) => {
-        const previous = scrollY.getPrevious() ?? 0;
-        const shouldHide = latest > previous && latest > 150;
-        if (shouldHide !== hidden) {
-            setHidden(shouldHide);
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
         }
-    });
+        return () => { document.body.style.overflow = ''; };
+    }, [isOpen]);
 
-
-    const { t, language } = useLanguage();
+    const { t } = useLanguage();
 
     const menuVariants = {
-        hidden: { opacity: 0, y: -20 },
+        hidden: { x: '100%' },
         visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.2
-            }
+            x: 0,
+            transition: { type: 'tween' as const, duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }
         },
-        exit: { opacity: 0, y: -20 }
+        exit: {
+            x: '100%',
+            transition: { type: 'tween' as const, duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }
+        }
+    };
+
+    const backdropVariants = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { duration: 0.3 } },
+        exit: { opacity: 0, transition: { duration: 0.2 } }
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, x: -20 },
+        hidden: { opacity: 0, x: 20 },
         visible: { opacity: 1, x: 0 }
-    };
-
-    const getHref = (path: string) => {
-        return path;
     };
 
     const pathname = usePathname();
     const { activeSection } = useActiveSectionContext();
 
+    if (pathname.startsWith('/links')) return null;
+
     const isLinkActive = (href: string) => {
+        if (!mounted) return href === '/';
         const cleanPathname = pathname.split('?')[0];
-        if (cleanPathname === '/') {
+        const isHomepage = cleanPathname === '/' || cleanPathname === '/ar';
+        if (isHomepage) {
             const hashPart = href.split('#')[1];
             if (hashPart) {
                 const hash = hashPart.split('?')[0];
+                if (hash === 'about') {
+                    return activeSection === 'about';
+                }
                 return activeSection === hash;
             }
-            // Home link (no hash) → active when on hero section or page top
             return activeSection === 'hero' || activeSection === '';
         }
         const cleanHref = href.split('?')[0];
         return cleanPathname === cleanHref || (cleanPathname.startsWith(cleanHref) && cleanHref !== '/');
     };
 
-    const links = [
-        { name: t.nav.home, href: getHref('/') },
-        { name: t.nav.services, href: getHref('/services') },
-        { name: t.nav.projects, href: getHref('/#projects') },
-        { name: t.nav.about, href: getHref('/#about') },
-        { name: t.nav.contact, href: getHref('/contact') },
+    const navLinks = [
+        { name: t.nav.home, href: '/' },
+        { name: 'About', href: '#about' },
+        { name: t.nav.projects, href: '#projects' },
+        { name: t.nav.tools, href: '#tech-stack' },
+        { name: t.nav.contact, href: '#contact' },
     ];
 
-        const isHomepage = pathname === '/';
-
-        return (
-            <motion.nav
-                initial="hidden"
-                animate={hidden ? "hiddenNav" : "visible"}
+    return (
+        <>
+            {/* Desktop: Floating pill navbar */}
+            <motion.header
                 variants={{
-                    hidden: { opacity: 0, y: -20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-                    hiddenNav: { y: "-100%", transition: { duration: 0.35, ease: "easeInOut" } }
+                    visible: { y: 0, opacity: 1 },
+                    hidden: { y: -100, opacity: 0 },
                 }}
-                className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 py-4 md:px-12 bg-glass ${
-                    isHomepage ? 'lg:hidden' : ''
-                }`}
+                animate={navHidden ? 'hidden' : 'visible'}
+                transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+                className="fixed top-0 left-0 right-0 z-[200] hidden lg:flex justify-center pt-5 px-6"
+                onMouseEnter={() => setNavHidden(false)}
             >
-            <Link href={getHref('/')} className="group relative z-50 p-2 -ml-2" aria-label="MUBX Home">
-                <div className="relative h-12 w-24 md:h-14 md:w-28 transition-transform group-hover:scale-105 active:scale-95">
-                    <Image
-                        src="/mubxlogoloader.svg"
-                        alt="MUBX Logo"
-                        fill
-                        className="object-contain"
-                        priority
-                    />
-                </div>
-            </Link>
+                <motion.nav
+                    className="flex items-center gap-1 px-2 py-2 rounded-full"
+                    style={{
+                        backgroundColor: 'rgba(13,13,13,0.85)',
+                        backdropFilter: 'blur(24px)',
+                        WebkitBackdropFilter: 'blur(24px)',
+                        border: '1px solid rgba(255,255,255,0.06)',
+                        boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)',
+                    }}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                >
+                    {/* Logo */}
+                    <Link href="/" className="relative z-10 p-2 mr-2 shrink-0" aria-label="MUBX Home">
+                        <div className="relative h-10 w-20 transition-transform hover:scale-105 active:scale-95">
+                            <Image
+                                src="/mubxnewlogo.png"
+                                alt="MUBX Logo"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </div>
+                    </Link>
 
-            {/* Desktop Navigation - Shows at lg breakpoint (1024px+) */}
-            <div className="hidden lg:flex items-center gap-6">
-                {links.map((link) => (
-                    <Link
-                        key={link.name}
-                        href={link.href}
-                        aria-current={isLinkActive(link.href) ? 'page' : undefined}
-                        className={`text-sm font-medium transition-colors relative group ${isLinkActive(link.href) ? 'text-neon font-bold' : 'text-muted hover:text-neon'
-                            }`}
-                    >
+                    <div className="h-5 w-[1px] mr-2" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
 
-                        {link.name}
-                        {/* Hover Underline */}
-                        <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-neon to-red-500 rounded-full w-0 group-hover:w-full transition-all duration-300 ease-out" />
+                    {/* Nav items with hover pill */}
+                    {navLinks.map((link, index) => {
+                        const active = isLinkActive(link.href);
+                        return (
+                            <li
+                                key={link.href}
+                                ref={(el) => { navItemsRef.current[index] = el; }}
+                                className="relative list-none px-1"
+                                onMouseEnter={() => setHoveredIndex(index)}
+                            >
+                                <a
+                                    href={link.href}
+                                    className="relative z-10 px-4 py-2.5 text-[13px] font-medium tracking-wide block transition-colors duration-200"
+                                    style={{
+                                        color: active ? '#FF2E2E' : hoveredIndex === index ? '#EDE8E4' : 'rgba(237,232,228,0.6)',
+                                    }}
+                                >
+                                    {link.name}
+                                </a>
+                                {hoveredIndex === index && (
+                                    <motion.div
+                                        layoutId="nav-hover-pill"
+                                        className="absolute inset-0 rounded-full z-0"
+                                        style={{
+                                            backgroundColor: 'rgba(255,46,46,0.08)',
+                                            border: '1px solid rgba(255,46,46,0.12)',
+                                        }}
+                                        transition={{
+                                            type: 'spring',
+                                            stiffness: 350,
+                                            damping: 30,
+                                        }}
+                                    />
+                                )}
+                            </li>
+                        );
+                    })}
 
-                        {/* Active Indicator (Keep existing but make it compatible) */}
-                        {isLinkActive(link.href) && (
+                    <div className="h-5 w-[1px] mx-2" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
+
+                    {/* Resume */}
+                    <li className="relative list-none px-1 flex items-center">
+                        <a
+                            href="/cv.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative z-10 pl-4 pr-2 py-2.5 text-[13px] font-medium tracking-wide block transition-colors duration-200"
+                            style={{
+                                color: hoveredIndex === navLinks.length ? '#FF2E2E' : 'rgba(237,232,228,0.6)',
+                            }}
+                            onMouseEnter={() => setHoveredIndex(navLinks.length)}
+                        >
+                            {t.nav.resume}
+                        </a>
+                        <a
+                            href="/cv.pdf"
+                            download="Omar-Mubaidin-Resume.pdf"
+                            aria-label="Download Resume"
+                            title="Download Resume"
+                            className="relative z-10 px-2 py-2.5 flex items-center transition-colors duration-200"
+                            style={{
+                                color: hoveredIndex === navLinks.length ? '#FF2E2E' : 'rgba(237,232,228,0.6)',
+                            }}
+                            onMouseEnter={() => setHoveredIndex(navLinks.length)}
+                        >
+                            <Download className="w-3.5 h-3.5" />
+                        </a>
+                        {hoveredIndex === navLinks.length && (
                             <motion.div
-                                layoutId="activeNav"
-                                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-neon rounded-full"
-                                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                layoutId="nav-hover-pill"
+                                className="absolute inset-0 rounded-full z-0"
+                                style={{
+                                    backgroundColor: 'rgba(255,46,46,0.08)',
+                                    border: '1px solid rgba(255,46,46,0.12)',
+                                }}
+                                transition={{
+                                    type: 'spring',
+                                    stiffness: 350,
+                                    damping: 30,
+                                }}
                             />
                         )}
-                    </Link>
-                ))}
-                {/* Resume Link */}
-                <a
-                    href="/cv.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-muted hover:text-neon transition-colors flex items-center gap-1"
-                >
-                    {t.nav.resume}
-                </a>
+                    </li>
 
+                    <div className="h-5 w-[1px] mx-2" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
 
-                <div className="h-6 w-[1px] bg-border mx-2" />
-
-                <ThemeToggle />
-
-                {mounted && (
-                    <>
-                        <Link
-                            href={getHref('/tools/website-cost-calculator-jordan')}
-                            className="hidden md:flex px-4 py-2.5 text-xs font-bold text-foreground border border-border rounded-full hover:border-neon transition-all z-[101]"
-                        >
-                            {t.nav.estimate}
-                        </Link>
-
+                    {/* Book Call CTA */}
+                    <li className="relative list-none pl-1 pr-1.5">
                         <a
                             href="https://calendly.com/omarmubaidincs/30min"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-5 py-2.5 text-sm font-bold text-white bg-neon rounded-full hover:bg-background hover:text-foreground border border-transparent hover:border-neon transition-all shadow-[0_0_15px_rgba(255,30,30,0.3)] hover:shadow-[0_0_25px_rgba(255,30,30,0.4)] ml-2 z-[101] cursor-pointer"
+                            className="relative z-10 px-5 py-2.5 text-[13px] font-bold text-white tracking-wide block rounded-full transition-all duration-200"
+                            style={{
+                                backgroundColor: '#FF2E2E',
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.boxShadow = '0 0 24px rgba(255,46,46,0.4)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.boxShadow = 'none';
+                            }}
                         >
                             {t.nav.bookCall}
                         </a>
-                    </>
-                )}
-            </div>
+                    </li>
+                </motion.nav>
+            </motion.header>
 
-            {/* Mobile Menu Toggle */}
-            <div className="flex items-center gap-4 lg:hidden">
-                <ThemeToggle />
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="relative z-50 p-2 text-neon hover:text-foreground transition-colors"
-                    aria-label="Toggle Menu"
+            {/* Mobile: Fixed top bar with hamburger */}
+            <motion.header
+                variants={{
+                    visible: { y: 0, opacity: 1 },
+                    hidden: { y: -100, opacity: 0 },
+                }}
+                animate={navHidden ? 'hidden' : 'visible'}
+                transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+                className="fixed top-0 left-0 right-0 z-[200] lg:hidden"
+            >
+                <nav
+                    className="flex items-center justify-between px-5 py-3"
+                    style={{
+                        backgroundColor: 'rgba(10,10,10,0.92)',
+                        backdropFilter: 'blur(20px)',
+                        WebkitBackdropFilter: 'blur(20px)',
+                        borderBottom: '1px solid rgba(255,255,255,0.06)',
+                    }}
                 >
-                    {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
-                </button>
-            </div>
+                    <Link href="/" className="relative z-50 p-1 -ml-1" aria-label="MUBX Home">
+                        <div className="relative h-10 w-20">
+                            <Image
+                                src="/mubxnewlogo.png"
+                                alt="MUBX Logo"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </div>
+                    </Link>
 
-            {/* Mobile Navigation Content */}
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="relative z-[210] p-2 transition-colors"
+                        style={{ color: '#FF2E2E' }}
+                        aria-label="Toggle Menu"
+                    >
+                        {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                    </button>
+                </nav>
+            </motion.header>
+
+            {/* Mobile Slide-in Menu */}
             <AnimatePresence>
                 {isOpen && (
-                    <motion.div
-                        variants={menuVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-2xl p-6 pt-20 lg:hidden flex flex-col gap-4 shadow-2xl h-screen overflow-y-auto border-b border-white/10"
-                    >
-                        {links.map((link) => (
-                            <motion.div key={link.name} variants={itemVariants}>
-                                <Link
-                                    href={link.href}
+                    <>
+                        <motion.div
+                            variants={backdropVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                            className="fixed inset-0 z-[205] lg:hidden"
+                            style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
+                            onClick={() => setIsOpen(false)}
+                        />
+
+                        <motion.div
+                            variants={menuVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                            className="fixed top-0 right-0 bottom-0 z-[206] w-[280px] lg:hidden flex flex-col overflow-y-auto"
+                            style={{
+                                backgroundColor: 'rgba(13,13,13,0.98)',
+                                backdropFilter: 'blur(24px)',
+                                WebkitBackdropFilter: 'blur(24px)',
+                                borderLeft: '1px solid rgba(255,255,255,0.06)',
+                            }}
+                        >
+                            <div className="flex items-center justify-end p-5 pb-2">
+                                <button
                                     onClick={() => setIsOpen(false)}
-                                    className="text-xl font-bold text-foreground hover:text-neon transition-colors uppercase tracking-wider"
+                                    className="p-2 -mr-2 transition-colors"
+                                    style={{ color: 'rgba(237,232,228,0.5)' }}
+                                    aria-label="Close Menu"
                                 >
-                                    {link.name}
-                                </Link>
-                            </motion.div>
-                        ))}
-                        {/* Resume Link - Mobile */}
-                        <motion.div variants={itemVariants}>
-                            <a
-                                href="/cv.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => setIsOpen(false)}
-                                className="text-xl font-bold text-foreground hover:text-neon transition-colors uppercase tracking-wider"
-                            >
-                                {t.nav.resume}
-                            </a>
-                        </motion.div>
-                        <div className="flex flex-col gap-3 mt-8">
-                            {mounted && (
-                                <>
-                                    <motion.div variants={itemVariants}>
-                                        <Link
-                                            href={getHref('/tools/website-cost-calculator-jordan')}
-                                            onClick={() => setIsOpen(false)}
-                                            className="w-full flex items-center justify-center gap-2 py-4 bg-card border border-border text-foreground font-bold rounded-2xl"
-                                        >
-                                            {t.nav.estimate}
-                                        </Link>
-                                    </motion.div>
-                                    <motion.div variants={itemVariants}>
+                                    <X className="w-5 h-5" />
+                                </button>
+                            </div>
+
+                            <div className="flex flex-col px-6 pt-4 pb-6 gap-1">
+                                {navLinks.map((link) => (
+                                    <motion.div key={link.href} variants={itemVariants}>
                                         <a
-                                            href="https://wa.me/962780090453"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="w-full flex items-center justify-center gap-2 py-4 bg-neon text-white font-bold rounded-2xl shadow-[0_0_20px_rgba(255,30,30,0.3)]"
+                                            href={link.href}
+                                            onClick={() => setIsOpen(false)}
+                                            className={`flex items-center gap-3 py-3 text-[15px] font-medium tracking-wide transition-colors min-h-[44px] ${
+                                                isLinkActive(link.href) ? 'text-[#FF2E2E]' : 'text-[rgba(237,232,228,0.75)] hover:text-[#FF2E2E]'
+                                            }`}
                                         >
-                                            {t.nav.bookCall}
+                                            <span className={`w-1.5 h-1.5 rounded-full shrink-0 transition-all ${
+                                                isLinkActive(link.href) ? 'bg-[#FF2E2E] scale-125' : 'bg-transparent'
+                                            }`} />
+                                            {link.name}
                                         </a>
                                     </motion.div>
-                                </>
-                            )}
-                        </div>
-                    </motion.div>
+                                ))}
+
+                                <div className="h-[1px] my-3" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }} />
+
+                                <motion.div variants={itemVariants}>
+                                    <div className="flex items-center">
+                                        <a
+                                            href="/cv.pdf"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={() => setIsOpen(false)}
+                                            className="flex items-center gap-3 py-3 text-[15px] font-medium tracking-wide text-[rgba(237,232,228,0.75)] hover:text-[#FF2E2E] transition-colors min-h-[44px] flex-1"
+                                        >
+                                            <span className="w-1.5 h-1.5 rounded-full shrink-0 bg-transparent" />
+                                            {t.nav.resume}
+                                        </a>
+                                        <a
+                                            href="/cv.pdf"
+                                            download="Omar-Mubaidin-Resume.pdf"
+                                            aria-label="Download Resume"
+                                            title="Download Resume"
+                                            onClick={() => setIsOpen(false)}
+                                            className="flex items-center py-3 px-4 text-[rgba(237,232,228,0.75)] hover:text-[#FF2E2E] transition-colors min-h-[44px]"
+                                        >
+                                            <Download className="w-4 h-4" />
+                                        </a>
+                                    </div>
+                                </motion.div>
+                            </div>
+
+                            <div className="mt-auto px-6 pb-8 pt-4 border-t border-white/5">
+                                <motion.div variants={itemVariants}>
+                                    <a
+                                        href="https://calendly.com/omarmubaidincs/30min"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full flex items-center justify-center py-3.5 font-bold text-white text-sm tracking-wide transition-all min-h-[44px] rounded-full"
+                                        style={{
+                                            backgroundColor: '#FF2E2E',
+                                            boxShadow: '0 0 20px rgba(255,46,46,0.2)',
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.boxShadow = '0 0 30px rgba(255,46,46,0.35)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.boxShadow = '0 0 20px rgba(255,46,46,0.2)';
+                                        }}
+                                    >
+                                        {t.nav.bookCall}
+                                    </a>
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    </>
                 )}
             </AnimatePresence>
-        </motion.nav>
+        </>
     );
 };
 
 export default function Navbar() {
     return (
-        <Suspense fallback={<div className="h-20 w-full fixed top-0 left-0 bg-background/80 backdrop-blur-sm z-50 border-b border-white/5" />}>
+        <Suspense fallback={<div className="h-16 w-full fixed top-0 left-0 z-50" style={{ backgroundColor: 'rgba(13,13,13,0.7)', backdropFilter: 'blur(24px)' }} />}>
             <NavbarContent />
         </Suspense>
     );

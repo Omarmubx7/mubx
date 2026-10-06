@@ -6,15 +6,16 @@ let pool: Pool | null = null;
 function getPool(): Pool {
     if (pool) return pool;
 
-    const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+    const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.POSTGRES_URL_NO_SSL;
 
     if (!connectionString) {
         throw new Error('DATABASE_URL or POSTGRES_URL is not configured.');
     }
 
+    const isSslUrl = connectionString.includes('sslmode=require') || connectionString.includes('sslmode=verify');
     pool = new Pool({
         connectionString,
-        ssl: { rejectUnauthorized: false },
+        ssl: isSslUrl ? { rejectUnauthorized: false } : false,
     });
 
     return pool;
