@@ -12,8 +12,8 @@ import { ScrollSpyProvider } from '@/context/ScrollSpyContext'
 import { LanguageProvider } from '@/context/LanguageContext'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mubx.dev'),
-  title: 'Omar Mubaidin Web Developer & AI Engineer | mubx.dev',
+  metadataBase: new URL('https://me.mubx.dev'),
+  title: 'Omar Mubaidin Web Developer & AI Engineer | me.mubx.dev',
   description:
     'Omar Mubaidin builds AI-powered products and web experiences that ship, scale, and solve real problems. Based in Amman, Jordan.',
   keywords: [
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
     'full-stack',
     'Amman',
   ],
-  authors: [{ name: 'Omar Mubaidin', url: 'https://mubx.dev' }],
+  authors: [{ name: 'Omar Mubaidin', url: 'https://me.mubx.dev' }],
   creator: 'Omar Mubaidin',
   openGraph: {
     title: 'Omar Mubaidin Web Developer & AI Engineer',
     description:
       'Omar builds AI-powered products and web experiences that ship, scale, and solve real problems.',
-    url: 'https://mubx.dev',
-    siteName: 'mubx.dev',
+    url: 'https://me.mubx.dev',
+    siteName: 'Omar Mubaidin Portfolio',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         url: '/og-images.png',
         width: 1200,
         height: 630,
-        alt: 'Omar Mubaidin mubx.dev',
+        alt: 'Omar Mubaidin me.mubx.dev',
       },
     ],
   },
@@ -72,7 +72,7 @@ export default function RootLayout({
         <noscript>
           <style>{`[data-boot-cover]{display:none!important}`}</style>
         </noscript>
-        <link rel="canonical" href="https://mubx.dev" />
+        <link rel="canonical" href="https://me.mubx.dev" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/brand-icon.png" />
@@ -100,11 +100,16 @@ export default function RootLayout({
               '@type': 'Person',
               name: 'Omar Mubaidin',
               alternateName: 'MUBX',
-              url: 'https://mubx.dev',
-              image: 'https://mubx.dev/og-images.png',
+              url: 'https://me.mubx.dev',
+              image: 'https://me.mubx.dev/og-images.png',
               jobTitle: 'Web Developer & AI Engineer',
               description:
                 'Omar builds AI-powered products and web experiences that ship, scale, and solve real problems.',
+              worksFor: {
+                '@type': 'Organization',
+                name: 'MUBX',
+                url: 'https://mubx.dev',
+              },
               address: {
                 '@type': 'PostalAddress',
                 addressLocality: 'Amman',

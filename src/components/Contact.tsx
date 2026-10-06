@@ -144,7 +144,15 @@ export default function Contact() {
               © 2026 Omar Mubaidin
             </span>
             <span className="font-mono text-[11px] text-center" style={{ color: '#6B625E' }}>
-              Designed &amp; built by Omar · mubx.dev
+              Portfolio of Omar · me.mubx.dev ·{' '}
+              <a
+                href="https://mubx.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-dotted transition-colors hover:text-[#FF2E2E]"
+              >
+                MUBX company
+              </a>
             </span>
             <span className="font-mono text-[11px]" style={{ color: '#FF2E2E' }}>
               <motion.span

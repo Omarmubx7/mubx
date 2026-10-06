@@ -587,7 +587,7 @@ export default function LoadingScreen() {
           userSelect: 'none',
         }}
       >
-        mubx.dev
+        me.mubx.dev
       </motion.div>
     </div>
   );

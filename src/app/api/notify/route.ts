@@ -28,7 +28,7 @@ export async function POST(req: Request) {
             <p>${message}</p>
           </div>
           <footer style="margin-top: 30px; font-size: 12px; color: #888;">
-            Sent from your portfolio at mubx.dev
+            Sent from your portfolio at me.mubx.dev
           </footer>
         </div>
       `,

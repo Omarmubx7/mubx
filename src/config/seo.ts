@@ -2,10 +2,10 @@ export const siteConfig = {
     name: "MUBX",
     title: "Omar Mubaidin | Freelance Web Developer & Engineer in Jordan MUBX",
     description: "Omar Mubaidin (عمر مبيضين) is a freelance web developer and founder of MUBX in Amman, Jordan. Expert in Next.js, E-commerce, Zain Cash & CliQ payments, and high-performance SEO for startups.",
-    url: "https://mubx.dev",
+    url: "https://me.mubx.dev",
     author: {
         name: "Omar Mubaidin | عمر مبيضين",
-        url: "https://mubx.dev",
+        url: "https://me.mubx.dev",
         twitter: "@omarmubx",
         email: "mubxdev@proton.me",
     },
@@ -67,12 +67,13 @@ export const siteConfig = {
         'revenue focused web design',
         'technical SEO Jordan',
     ],
-    ogImage: "https://mubx.dev/og-images.png",
+    ogImage: "https://me.mubx.dev/og-images.png",
     links: {
         github: "https://github.com/Omarmubx7",
         linkedin: "https://www.linkedin.com/in/omarmubaidin",
         instagram: "https://www.instagram.com/mubx.dev",
         calendly: "https://calendly.com/omarmubaidincs/30min",
+        company: "https://mubx.dev",
     },
     locale: 'en_US',
     metadata: {
@@ -84,14 +85,14 @@ export const siteConfig = {
     openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: 'https://mubx.dev',
-        siteName: 'MUBX Omar Mubaidin',
+        url: 'https://me.mubx.dev',
+        siteName: 'Omar Mubaidin | MUBX',
         images: [
             {
-                url: 'https://mubx.dev/og-images.png',
+                url: 'https://me.mubx.dev/og-images.png',
                 width: 1200,
                 height: 630,
-                alt: 'MUBX Omar Mubaidin | Freelance Web Developer in Jordan',
+                alt: 'Omar Mubaidin | Freelance Web Developer in Jordan',
             },
         ],
     },
@@ -99,7 +100,7 @@ export const siteConfig = {
         card: 'summary_large_image',
         creator: '@omarmubx',
         site: '@omarmubx',
-        images: ['https://mubx.dev/og-images.png'],
+        images: ['https://me.mubx.dev/og-images.png'],
     },
 };
 
