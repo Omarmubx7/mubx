@@ -13,43 +13,53 @@ import { LanguageProvider } from '@/context/LanguageContext'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://me.mubx.dev'),
-  title: 'Omar Mubaidin Web Developer & AI Engineer | me.mubx.dev',
+  applicationName: 'Omar Mubaidin',
+  title: 'Omar Mubaidin — Web Developer & AI Engineer in Amman, Jordan',
   description:
-    'Omar Mubaidin builds AI-powered products and web experiences that ship, scale, and solve real problems. Based in Amman, Jordan.',
+    'Omar Mubaidin builds AI-powered products and web experiences that ship, scale, and solve real problems. Web developer & AI engineer based in Amman, Jordan.',
   keywords: [
     'Omar Mubaidin',
+    'عمر مبيضين',
+    'Omar Mubaidin web developer',
+    'Omar Mubaidin portfolio',
     'MUBX',
-    'web developer',
+    'web developer Jordan',
     'AI engineer',
     'Jordan',
-    'Next.js',
-    'full-stack',
+    'Next.js developer',
+    'full-stack developer',
     'Amman',
   ],
   authors: [{ name: 'Omar Mubaidin', url: 'https://me.mubx.dev' }],
   creator: 'Omar Mubaidin',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Omar Mubaidin Web Developer & AI Engineer',
+    title: 'Omar Mubaidin — Web Developer & AI Engineer in Amman, Jordan',
     description:
       'Omar builds AI-powered products and web experiences that ship, scale, and solve real problems.',
     url: 'https://me.mubx.dev',
-    siteName: 'Omar Mubaidin Portfolio',
+    siteName: 'Omar Mubaidin — Portfolio',
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: '/og-images.png',
+        url: 'https://me.mubx.dev/og-images.png',
         width: 1200,
         height: 630,
-        alt: 'Omar Mubaidin me.mubx.dev',
+        alt: 'Omar Mubaidin — Web Developer & AI Engineer in Amman, Jordan',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Omar Mubaidin Web Developer & AI Engineer',
+    site: '@omarmubx',
+    creator: '@omarmubx',
+    title: 'Omar Mubaidin — Web Developer & AI Engineer in Amman, Jordan',
     description:
       'Omar builds AI-powered products and web experiences that ship, scale, and solve real problems.',
+    images: ['https://me.mubx.dev/og-images.png'],
   },
   robots: {
     index: true,
@@ -72,8 +82,6 @@ export default function RootLayout({
         <noscript>
           <style>{`[data-boot-cover]{display:none!important}`}</style>
         </noscript>
-        <link rel="canonical" href="https://me.mubx.dev" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/brand-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
@@ -124,6 +132,14 @@ export default function RootLayout({
                 'https://github.com/Omarmubx7',
                 'https://www.linkedin.com/in/omarmubaidin',
                 'https://www.instagram.com/mubx.dev',
+              ],
+              knowsAbout: [
+                'Web Development',
+                'Next.js, React & TypeScript',
+                'Full-Stack Development',
+                'AI Engineering & AI-Powered Products',
+                'E-commerce & Payment Integration (Zain Cash, CliQ)',
+                'Web Performance Optimization & Technical SEO',
               ],
             }}
           />

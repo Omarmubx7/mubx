@@ -44,7 +44,7 @@ const projectScreenshots: Record<string, string> = {
     'porsche-noir': '/images/projects/911porshe.png',
 };
 
-function SlideContent({ project }: { project: Project }) {
+function SlideContent({ project, priority = true }: { project: Project; priority?: boolean }) {
     const screenshot = projectScreenshots[project.slug];
 
     return (
@@ -129,7 +129,7 @@ function SlideContent({ project }: { project: Project }) {
 
             {/* Right: Simulator */}
             <div className="flex-1 max-w-2xl w-full h-[300px] md:h-[400px] lg:h-[480px] z-10">
-                <ProjectSimulator slug={project.slug} />
+                <ProjectSimulator slug={project.slug} priority={priority} />
             </div>
         </div>
     );
@@ -171,7 +171,7 @@ function MobileSlide({ project, index }: { project: Project; index: number }) {
 
             {/* Simulator */}
             <div className="w-full h-[240px] border border-border/20 mb-5">
-                <ProjectSimulator slug={project.slug} />
+                <ProjectSimulator slug={project.slug} priority={index === 0} />
             </div>
 
             {/* Tech stack */}
@@ -387,7 +387,7 @@ export default function ProjectShowcase() {
                                 transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                                 className="absolute inset-0 flex items-center justify-center will-change-[opacity,transform]"
                             >
-                                <SlideContent project={projectsData[activeIndex]} />
+                                <SlideContent project={projectsData[activeIndex]} priority />
                             </motion.div>
                         </AnimatePresence>
 

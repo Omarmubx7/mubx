@@ -6,6 +6,7 @@ import { Lock, RotateCw, ArrowLeft, ArrowRight, ExternalLink } from 'lucide-reac
 
 interface SimulatorProps {
     slug: string;
+    priority?: boolean;
 }
 
 const projectScreenshots: Record<string, string> = {
@@ -38,7 +39,7 @@ const projectUrls: Record<string, string> = {
     'porsche-noir': 'https://911-legacy.vercel.app'
 };
 
-export default function ProjectSimulator({ slug }: Readonly<SimulatorProps>) {
+export default function ProjectSimulator({ slug, priority = false }: Readonly<SimulatorProps>) {
     const imageSrc = projectScreenshots[slug];
     const [hovered, setHovered] = React.useState(false);
 
@@ -106,7 +107,7 @@ export default function ProjectSimulator({ slug }: Readonly<SimulatorProps>) {
                                 height={2400}
                                 sizes="(max-width: 1024px) 100vw, 50vw"
                                 className="w-full h-auto object-cover object-top"
-                                priority
+                                priority={priority}
                             />
                         </div>
                         {/* Hover hint overlay */}
