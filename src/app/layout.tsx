@@ -85,6 +85,8 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/brand-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="alternate" type="text/plain" hrefLang="en" href="/llms.txt" title="LLM context" />
+        <link rel="alternate" type="text/plain" hrefLang="en" href="/llms-full.txt" title="LLM context (extended)" />
         <meta name="theme-color" content="#FF2E2E" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -125,7 +127,8 @@ export default function RootLayout({
               },
               alumniOf: {
                 '@type': 'CollegeOrUniversity',
-                name: 'Hussein Technical University',
+                name: 'Al Hussein Technical University (HTU)',
+                alternateName: 'HTU',
                 url: 'https://htu.edu.jo',
               },
               sameAs: [

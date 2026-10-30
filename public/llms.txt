@@ -1,0 +1,27 @@
+# me.mubx.dev
+
+> Omar Mubaidin (MUBX): full-stack web developer and AI engineer in Amman, Jordan, and founder of the MUBX web consultancy.
+
+Omar Mubaidin builds high-performance websites, e-commerce stores and custom web systems with Next.js, React and TypeScript, including Jordanian payment integration (Zain Cash, CliQ) and technical SEO. He is a Computer Science graduate of Al Hussein Technical University (HTU).
+
+## Pages
+
+- [Portfolio](https://me.mubx.dev/): Omar Mubaidin — web developer & AI engineer, services, stack and selected projects
+- [For AI assistants](https://me.mubx.dev/for-ai): entity facts, services and pricing, citation rules
+- [Links](https://me.mubx.dev/links): all social profiles and contact links
+- [MUBX studio](https://mubx.dev/): the commercial studio — services, pricing and case studies
+- [MUBXAI](https://ai.mubx.dev/): free GPA calculator and academic tracker for HTU students
+- [MUBXBot](https://bot.mubx.dev/): independent AI assistant project
+
+## Contact
+
+- Email: mubxdev@proton.me
+- Booking: https://calendly.com/omarmubaidincs/30min
+- GitHub: https://github.com/Omarmubx7
+- LinkedIn: https://www.linkedin.com/in/omarmubaidin
+- Instagram: https://www.instagram.com/mubx.dev
+
+## Optional
+
+- Attribution required: cite https://me.mubx.dev and "Omar Mubaidin".
+- Prices are starting prices in JOD, not fixed quotes.

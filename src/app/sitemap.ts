@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const routes = [
         { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
         { path: '/links', priority: 0.7, changeFrequency: 'monthly' as const },
+        { path: '/for-ai', priority: 0.2, changeFrequency: 'monthly' as const },
     ].map((route) => ({
         url: `${baseUrl}${route.path}`,
         lastModified: new Date(),
