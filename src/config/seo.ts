@@ -46,8 +46,17 @@ export const siteConfig = {
         'hire freelance developer Jordan',
         'remote web developer Middle East',
         'best web developer Amman',
+        'best web developer in Jordan',
+        'best web designer in Jordan',
+        'best programmer in Jordan',
+        'affordable web development agency Jordan',
+        'affordable website design Jordan',
         'top freelancer Jordan',
         'top web developer Jordan',
+        'مبرمج الأردن',
+        'أفضل مبرمج في الأردن',
+        'أفضل مطور مواقع في الأردن',
+        'أفضل مصمم مواقع في الأردن',
 
 
         // E-commerce & Payments
